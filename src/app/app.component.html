@@ -1,6 +1,2 @@
-<h1 class="gameSelectBoxTitle" *ngIf="!!playgroundContainer && !playgroundContainer.isPlaygroundDisplayed()">Select Game!</h1>
-<div id="gameSelectContainer" *ngIf="!!playgroundContainer && !playgroundContainer.isPlaygroundDisplayed()">
-	<button ion-button class="gameSelectBox" *ngFor="let g of getGameList()"  (click)="selectGame(g)">{{g.title}}</button>
-</div>
-
+<app-menu (select)="selectGame($event)" *ngIf="!!playgroundContainer && !playgroundContainer.isPlaygroundDisplayed()">></app-menu>
 <playgroundContainer></playgroundContainer>

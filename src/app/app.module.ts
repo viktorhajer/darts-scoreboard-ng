@@ -14,6 +14,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MenuComponent} from './components/menu.component';
 
 const entries = [X01Playground, CricketPlayground, ShanghaiPlayground, AroundClockPlayground,
   KillerPlayground, ChaseDragonPlayground];
@@ -22,7 +23,7 @@ const entries = [X01Playground, CricketPlayground, ShanghaiPlayground, AroundClo
   imports: [
     BrowserModule, BrowserAnimationsModule, FormsModule, ReactiveFormsModule, AppRoutingModule, MaterialModule
   ],
-  declarations: [AppComponent, PlaygroundDirective, ModalComponent, PlaygroundContainer, ...entries],
+  declarations: [AppComponent, MenuComponent, PlaygroundDirective, ModalComponent, PlaygroundContainer, ...entries],
   providers: [],
   entryComponents: [...entries],
   bootstrap: [AppComponent]
