@@ -1,0 +1,43 @@
+<ng-container *ngIf="!settingsOpen">
+	<div class="player {{(i == game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}" *ngFor="let player of game.players; let i = index">
+	  <div class="player_info">
+      <div class="name left">{{player.name}}</div>
+	    <div class="shoots right">
+        <div class="shoot"><p>{{!player.throws[2] ? '-' : player.throws[2]}}</p></div>
+        <div class="shoot"><p>{{!player.throws[1] ? '-' : player.throws[1]}}</p></div>
+        <div class="shoot"><p>{{!player.throws[0] ? '-' : player.throws[0]}}</p></div>
+	    </div>
+	    <div class="clear"></div>
+	    <div class="point right" *ngIf="getPlayerField(player) !== '0'"><label>Field: </label>{{getPlayerField(player)}}</div>
+      <div class="clear" *ngIf="getPlayerField(player) !== '0'"></div>
+	    <div class="point2 right"><label>Life: </label>{{getLife(player)}}</div>
+      <div class="point2 right" *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</div>
+      <div class="clear"></div>
+	  </div>
+	</div>
+</ng-container>
+
+<app-modal></app-modal>
+
+<div class="settings" *ngIf="settingsOpen">
+  <h1>Killer Game Settings</h1>
+  
+  <h2>Players</h2>
+  <button ion-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
+  <button ion-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
+  <div class="clear"></div>
+  <div *ngFor="let player of game.players; let i = index">
+      <p>
+          Player #{{i+1}} name: <input [(ngModel)]="player.name" name="input" type="text">
+          <button ion-button class="button small" (click)="removePlayer(player)"> - </button>
+      </p>
+  </div>
+  <div class="clear"></div>
+  <p>Life limit: <input [(ngModel)]="settings.numberOfLives" name="input" type="number"></p>
+  <p>Boarding: <input [(ngModel)]="settings.boardingLimit" name="input" type="number"></p>
+  <div class="clear"></div>
+  
+  <div class="clear space"></div>
+  <button ion-button class="button left big" (click)="newGame()">Save and Start</button>
+  <button ion-button class="button left big" (click)="container.quit()">Cancel</button>
+</div>

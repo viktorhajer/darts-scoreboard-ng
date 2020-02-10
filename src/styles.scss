@@ -1,0 +1,442 @@
+$background-color: #222222;
+$background-color2: #191919;
+$body-background: linear-gradient(to top, #151515, $background-color);
+$highlight-color: rgb(10, 35, 79);
+$highlight-color2: rgb(19, 53, 80);
+$linear-highlight: linear-gradient(to top, $highlight-color2 , $highlight-color);
+$linear-highlight2: linear-gradient(to top, $highlight-color2 , $highlight-color);
+$highlight-color-dark: rgb(6, 23, 52);
+$dark-color: #3a3a3a;
+$dark-color2: #303030;
+$dark-color3: #282828;
+$middle-light-color1: #656565;
+$middle-light-color2: #444444;
+$light-color: #888;
+$light-color-active: #ffffff;
+$field-active: #4D9DB3;
+$gray-button: linear-gradient(to top, $dark-color, $dark-color2);
+$red-number: linear-gradient(to top, #463030, #4e3434);
+
+body {
+	background: $body-background;
+	font-size: 1.5vw;
+	font-family: sans-serif;
+}
+
+button {
+  border: none;
+  color: white;
+}
+
+.app-root {
+	background: linear-gradient(to top, $background-color2 , $background-color);
+}	
+
+
+.hidden {
+	display: none;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+.capitalize {
+	text-transform: capitalize;
+}
+
+
+h1 {
+	font-size: calc(10px + 1.5vw);
+	color: $light-color-active;
+}
+
+h2, h3 {
+	font-size: calc(5px + 1.5vw);
+	color: $light-color;
+}
+
+.space {
+	margin: 7vw 0;
+}
+
+.line {
+	margin: 1vw 0;
+	border-top: 1px solid $light-color;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.small {
+	font-size: calc(0.6vw + 0.5vh);
+	font-weight: bold;
+}
+
+.highlighted .line {
+	border-top: 1px solid $light-color-active;
+}
+
+#playgroundContent {
+	
+    width: 100vw;
+    height: 100vh;
+	color: $light-color;
+	
+	.side_left {
+		width: 30%;
+	}
+	.side_right {
+		width: 70%;
+	}
+
+	.left {
+		.toolbar {
+			.button {
+				float: left;
+				background: $gray-button;
+				margin: 1vh 0.1vw 0vh 0.1vw;
+				border-radius: 0.5vw;
+				cursor: pointer;
+				height: 8vh;
+				line-height: 8vh;
+				width: 10vw;
+				font-size: calc(0.7vh + 0.7vw);
+				text-align: center;
+				color: $light-color-active;
+				
+				&:active {
+					background: $linear-highlight;
+					border-radius: 0.5vw;
+				}
+
+				img {
+					width: 2.5vw;
+				}
+
+			}
+
+			p {
+				&.button {
+					cursor: default;
+					background: $linear-highlight;
+					color: $light-color-active;
+					font-size: calc(0.9vh + 0.9vw);
+					font-weight: bold;
+				}
+			}
+		}
+	}
+	
+	.right {
+
+		text-align: right;
+		
+		.number {
+			background: $gray-button;
+			color: $light-color;
+			float: left;
+			margin: 0.1vw;
+			border-radius: 0.8vw;
+			font-size: calc(10px + 0.8vw + 0.8vh);
+			font-weight: bold;
+			cursor: pointer;
+			height: 19.4vh;
+			line-height: 18vh;
+			width: 13.7vw;
+			text-align: center;
+			text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.3);
+			
+			&.highlighted {
+				background: $linear-highlight;
+				color: $light-color-active;
+				border-radius: 0.5vw;
+			}
+			
+			&:active {
+				background: $linear-highlight;
+				color: $light-color-active;
+				border-radius: 0.5vw;
+			}
+
+			&.inactive {
+				background: $dark-color3;		
+			}
+
+			&.highlighted2 {
+				background: $gray-button;	
+			}
+		}
+	}
+}
+
+.gameSelectBoxTitle {
+	text-align: center;
+	text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#gameSelectContainer {
+	
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	color: $light-color;
+	
+	.gameSelectBox {
+			
+		background: $gray-button;
+		margin: 1vh 10vw;
+		border-radius: 0.5vw;
+		cursor: pointer;
+		height: 10vh;
+		line-height: 10vh;
+		font-size: calc(10px + 1vw);
+		text-align: center;
+		vertical-align: middle;
+		font-weight: bold;
+		clear: both;
+		width: 80vw;
+		
+		&:active {
+			background: $linear-highlight;
+			color: $light-color-active;
+			border-radius: 0.5vw;
+		}
+	}
+}
+
+.settings {
+	position: absolute;
+	width: 80vw;
+	font-size: calc(3px + 1vw);
+	padding: 1vh 1vw;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100vh;
+	
+	p {
+		font-size: calc(3px + 1vw);
+	}
+	
+	.description {
+		padding: 5px 0;
+		clear: both; 
+		font-size: calc(2px + 1vw);
+	}
+	
+	input {
+	    width: 26vw;
+	    font-size: calc(3px + 1vw);
+	    height: calc(10px + 1.2vh + 1.2vw);
+	    padding: 0.5vh 1vw;
+	    font-weight: bold;
+	    border-radius: 0.5vw;
+	    border: none;
+	}
+
+	.button {
+		background: $gray-button;
+		margin: 0.1vw;
+		border-radius: 0.5vw;
+		cursor: pointer;
+		width: 10vw;
+		height: 6vh;
+		line-height: 6vh;
+		font-size: calc(10px + 1vw);
+		text-align: center;
+		font-weight: bold;
+		color: $light-color;
+
+		
+		&:active {
+			background: $linear-highlight;
+			color: $light-color-active;
+			border-radius: 0.5vw;
+		}
+		
+		&.big {
+			width: 30.4vw;
+		}
+		
+		&.medium {
+			width: 20.2vw;
+		}
+		
+		&.shortmedium {
+			width: 15vw;
+		}
+
+		&.small {
+			width: 0.1vw;
+			padding: 1vh 1.3vw;
+			height: calc(10px + 1.2vh + 1.2vw);
+			top: -0.6vh;
+		}
+		
+		&.inactive {
+			cursor: default;
+			:active {
+				background-color: $middle-light-color2;
+				color: $light-color;
+				border-radius: 0.5vw;
+			}
+		}
+		
+		&.highlighted {
+			background: $linear-highlight;
+		}
+	}
+}
+
+
+.modalBackground {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+
+.modalWindow {
+  color: $light-color-active;
+  font-weight: bold;
+  font-size: calc(10px + 1vw);
+  text-align: center;
+  background: $linear-highlight;
+  width: 40vw;
+  line-height: 10vh;
+  border-radius: 10px;
+  z-index: 100;
+  position: relative;
+  margin: 0 auto;
+
+  .scoresTable {
+	font-size: calc(7px + 0.8vw);
+	padding: 2vh 2vw 0 2vw;
+	margin: 0;
+	line-height: 3vh;
+	opacity: 0.2;
+
+	&.winner {
+		opacity: 1;
+	}
+  }
+
+  .clear {
+	line-height: 3vh;
+  }
+}		
+
+.player {
+	background-color: $dark-color;
+	color: $light-color;
+	margin: 0.7vw 0.1vw;
+	border-radius: 0.5vw;
+
+  &.inactive {
+    opacity: 0.4;
+  }
+
+	&.highlighted, &.highlighted2 {
+		background: $linear-highlight;
+		text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+		.player_info {
+			.shoot {
+				background: $highlight-color-dark;
+				p {
+					color: $light-color-active;
+				}
+			}
+			.field {
+				color: $light-color-active;
+				opacity: 0.5;
+
+			    &.highlighted {
+					color: $field-active;
+					opacity: 1;
+				}
+				&.active {
+					color: $light-color-active;
+					opacity: 1;
+				}
+			}
+			.name, .point {
+				color: $light-color-active;
+			}
+		}
+	}
+  &.highlighted2 {
+    background: linear-gradient(to top, #763f3f, #674d48);
+  }
+  &.highlighted {
+    &.highlighted2 {
+      background: linear-gradient(to top, #742323, #842716);
+    }
+  }
+
+	.player_info {
+		padding: 1vw;
+		.name {
+			font-size: calc(5px + 1vw);
+		}
+		.point {
+			font-size: 3.2vw;
+			letter-spacing: 0.5vw;
+			font-weight: bold;
+
+			label {
+				font-size: 1vw;
+				letter-spacing: 0.2vw;
+			}
+		}
+    .point2 {
+      font-size: 2.0vw;
+      margin-right: 10px;
+      label {
+        font-size: 1.5vw;
+      }
+    }
+		.field {
+		    margin: 0.1vw;
+		    font-size: calc(0.7vw + 0.7vh);
+		    width: 6.5vw;
+		    color: $light-color; 
+		    &.highlighted {
+		    	color: $field-active;
+			}
+			&.active {
+				color: $field-active;
+			}
+		}
+		.shoot {
+			float: right;
+			background: $middle-light-color2;
+			margin: 0.1vw;
+			border-radius: 0.5vw;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+			
+			 p {
+				width: 3vw;
+				height: 3vw;
+				font-size: calc(6px + 1vw);
+				text-align: center;
+				display: table-cell;
+				vertical-align: middle;
+				font-weight: bold;
+			}
+			
+			&.total {
+				background: $middle-light-color1;
+				margin-left: 10px;
+				p {
+					width: 3vw;
+				}
+			}
+		}
+	}
+
+}

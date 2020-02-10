@@ -1,0 +1,13 @@
+<div class="modalBackground" [@backgroundState]="state">
+  <div class="modalWindow" [@windowState]="state" (click)="hide()">
+    {{message}}
+    <br *ngIf="extraMessage && extraMessage"/>
+    {{extraMessage && extraMessage != '' ? extraMessage : ''}}
+
+    <div class="scoresTable clear {{player.win ? 'winner' : ''}}" *ngFor="let player of players; let i = index">
+        <div class="left">{{i+1}}. {{player.name}}</div>
+        <div class="right">{{player.score}}</div>
+    </div>
+    <div class="clear">&nbsp;</div>
+  </div>
+</div>
