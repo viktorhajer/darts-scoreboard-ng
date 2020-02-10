@@ -1,36 +1,15 @@
-<div id="playgroundContent" class="{{ isPlaygroundDisplayed() ? '' : 'hidden'}}">
+<div id="playgroundContent" class="{{ !!playground ? '' : 'hidden'}}">
 
 	<div class="left side_left">
 
-		<div class="toolbar" *ngIf="!isPlaygroundSettings()">
-			<button ion-button class="button" (click)="quit()">
-				MAIN
-			</button>
-			<button ion-button class="button" (click)="playground.newGame(true)">
-				NEW
-			</button>
-			<button ion-button class="button" (click)="showSettings()">
-				BACK
-			</button>
-			<button ion-button class="button" (click)="playground.undo()">
-				UNDO
-			</button>
-			<p class="button">{{getGame().round+1}}.</p>
-		</div>
+    <app-game-toolbar [playground]="playground" *ngIf="!!playground && !playground.settingsOpen"></app-game-toolbar>
 
-		<div class="clear" *ngIf="!isPlaygroundSettings()"></div>
+		<div class="clear" *ngIf="!!playground && !playground.settingsOpen"></div>
 	
 		<ng-template playground-host></ng-template>
 
 	</div>
 
-	<div class="right side_right" *ngIf="!isPlaygroundSettings()">
-		<button ion-button class="number {{isHighlighted(i) ? 'highlighted' : isSecondHighlighted(i) ? 'highlighted2' : !isFieldEnabledToThrow(i) ? 'inactive' : ''}}" *ngFor="let i of getNumbers()" (click)="isFieldEnabledToThrow(i) ? playground.throwNumber(i) : playground.throwNumber(0)">{{i}}</button>
-		<button ion-button class="number {{isHighlighted(25) ? 'highlighted' : isSecondHighlighted(25) ? 'highlighted2' : !isFieldEnabledToThrow(25) ? 'inactive' : ''}}" (click)="isFieldEnabledToThrow(25) ? playground.throwNumber(25) : playground.throwNumber(0)">Bull</button>
-		<button ion-button class="number {{getGame().multiplier == 2 ? 'highlighted' : ''}}" (click)="playground.doublePoint()" *ngIf="playground && playground.multiEnabled">Double</button>
-		<button ion-button class="number {{getGame().multiplier == 3 ? 'highlighted' : ''}}" (click)="playground.triplePoint()" *ngIf="playground && playground.multiEnabled">Triple</button>
-		<button ion-button class="number" (click)="playground.skip()" *ngIf="playground && playground.nextEnabled">Next</button>
-		<button ion-button class="number" (click)="playground.throwNumber(0)" *ngIf="playground && playground.zeroEnabled">0</button>
-	</div>
+  <app-number-plate [playground]="playground" *ngIf="!!playground && !playground.settingsOpen"></app-number-plate>
 
 </div>
