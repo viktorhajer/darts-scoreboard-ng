@@ -1,13 +1,15 @@
-import {Component} from '@angular/core';
 import {Routes} from '@angular/router';
-import {X01Module} from '../x01/x01.module';
-import {CricketModule} from '../cricket/cricket.module';
-import {AroundClockModule} from '../aroundclock/around-clock.module';
-import {ShanghaiModule} from '../shanghai/shanghai.module';
-import {ChaseDragonModule} from '../chase-dragon/chase-dragon.module';
-import {KillerModule} from '../killer/killer.module';
+import {MenuComponent} from './components/menu.component';
+import {X01Module} from './x01/x01.module';
+import {CricketModule} from './cricket/cricket.module';
+import {AroundClockModule} from './aroundclock/around-clock.module';
+import {ShanghaiModule} from './shanghai/shanghai.module';
+import {ChaseDragonModule} from './chase-dragon/chase-dragon.module';
+import {KillerModule} from './killer/killer.module';
 
-const routes: Routes = [
+export const routes: Routes = [
+  {path: '', component: MenuComponent},
+  {path: 'menu', component: MenuComponent},
   {
     path: 'x01',
     data: {name: 'Classic X01'},
@@ -39,14 +41,3 @@ const routes: Routes = [
     loadChildren: () => KillerModule
   }
 ];
-
-
-@Component({
-  templateUrl: './menu.component.html',
-})
-export class MenuComponent {
-
-  getGameList(): Routes {
-    return routes.filter(r => !!r.data);
-  }
-}

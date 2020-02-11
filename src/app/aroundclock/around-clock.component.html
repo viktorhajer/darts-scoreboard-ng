@@ -1,0 +1,57 @@
+<div id="playgroundContent">
+
+  <div class="left side_left">
+
+    <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
+
+    <div class="clear" *ngIf="!settingsOpen"></div>
+
+    <ng-container *ngIf="!settingsOpen">
+      <div class="player {{(i == game.actualPlayerIndex) ? 'highlighted' : ''}}"
+           *ngFor="let player of game.players; let i = index">
+        <div class="player_info">
+          <div class="name left">{{player.name}}</div>
+          <div class="shoots right">
+            <div class="shoot"><p>{{!player.throws[2] ? '-' : player.throws[2]}}</p></div>
+            <div class="shoot"><p>{{!player.throws[1] ? '-' : player.throws[1]}}</p></div>
+            <div class="shoot"><p>{{!player.throws[0] ? '-' : player.throws[0]}}</p></div>
+          </div>
+          <div class="clear"></div>
+          <div class="point right"><label>Field: </label>{{getActualField(player)}}</div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </ng-container>
+
+    <app-modal></app-modal>
+
+    <div class="settings" *ngIf="settingsOpen">
+      <h1>Around The Clock Settings</h1>
+
+      <h2>Players</h2>
+      <button ion-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
+      <button ion-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
+      <div class="clear"></div>
+      <div *ngFor="let player of game.players; let i = index">
+        <p>
+          Player #{{i + 1}} name: <input [(ngModel)]="player.name" name="input" type="text">
+          <button ion-button class="button small" (click)="removePlayer(player)"> -</button>
+        </p>
+      </div>
+      <div class="clear"></div>
+
+      <button ion-button class="button left shortmedium {{settings.jump?'highlighted':''}}"
+              (click)="settings.toggleJump()">Enable Jump
+      </button>
+      <div class="clear"></div>
+
+      <div class="clear space"></div>
+      <button ion-button class="button left big" (click)="newGame()">Save and Start</button>
+      <button ion-button class="button left big" (click)="quit()">Cancel</button>
+    </div>
+
+  </div>
+
+  <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
+
+</div>

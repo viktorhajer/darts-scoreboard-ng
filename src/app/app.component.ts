@@ -1,6 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {PlaygroundContainer} from './components/playground.container';
-import {GameType} from './models/game-type.model';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +6,4 @@ import {GameType} from './models/game-type.model';
   styles: []
 })
 export class AppComponent {
-
-  @ViewChild(PlaygroundContainer) playgroundContainer: PlaygroundContainer;
-
-  selectGame(gameType: GameType) {
-    this.playgroundContainer.createGame(gameType);
-  }
 }

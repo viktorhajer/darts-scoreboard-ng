@@ -1,4 +1,4 @@
 <h1 class="gameSelectBoxTitle">Select Game!</h1>
 <div id="gameSelectContainer">
-  <button ion-button class="gameSelectBox" *ngFor="let g of getGameList()"  (click)="select.emit(g)">{{g.title}}</button>
+  <button class="gameSelectBox" *ngFor="let g of getGameList()"  [routerLink]="['/' + g.path]">{{g.data.name}}</button>
 </div>
