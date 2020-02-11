@@ -1,13 +1,23 @@
 {
   "name": "darts-scoreboard-ng",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Viktor Hajer",
+    "email": "viktor.hajer@gmail.com"
+  },
+  "description": "See Readme",
+  "homepage": "https://github.com/viktorhajer/darts-scoreboard-ng#readme",
+  "bugs": {
+    "url": "https://github.com/viktorhajer/darts-scoreboard-ng/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "eslint": "eslint src/**/*.ts"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "~9.0.0",
     "@angular/cdk": "^9.0.0",
