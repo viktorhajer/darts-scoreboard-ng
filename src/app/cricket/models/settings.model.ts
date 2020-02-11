@@ -9,14 +9,20 @@ export class Settings {
     let defaultSet = false;
     for (let i = 0; i < 21; i++) {
       this.numbs[i] = defaultSet;
-      if (i == 13) defaultSet = true;
+      if (i === 13) {
+        defaultSet = true;
+      }
     }
     this.initFields();
   }
 
   randomize() {
-    for (let i = 0; i < this.numbs.length; i++) this.numbs[i] = false;
-    for (let i = 0; i < 7; i++) this.numbs[Math.floor(Math.random() * 21)] = true;
+    for (let i = 0; i < this.numbs.length; i++) {
+      this.numbs[i] = false;
+    }
+    for (let i = 0; i < 7; i++) {
+      this.numbs[Math.floor(Math.random() * 21)] = true;
+    }
     this.initFields();
   }
 
@@ -34,12 +40,6 @@ export class Settings {
 
   even() {
     this.setAllowedField([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21]);
-  }
-
-  private setAllowedField(fields: number[]) {
-    for (let i = 0; i < this.numbs.length; i++) this.numbs[i] = false;
-    for (let i = 0; i < fields.length; i++) this.numbs[fields[i] - 1] = true;
-    this.initFields();
   }
 
   getNumbers(): number[] {
@@ -63,24 +63,32 @@ export class Settings {
     this.fields = [];
     for (let i = 0; i < 21; i++) {
       if (this.numbs[i]) {
-        this.fields.push(i == 20 ? 'B' : ((i + 1) + ''));
+        this.fields.push(i === 20 ? 'B' : ((i + 1) + ''));
       }
     }
   }
 
   isScoreGame(): boolean {
-    return this.style == 1;
+    return this.style === 1;
   }
 
   isPunishGame(): boolean {
-    return this.style == 2;
+    return this.style === 2;
   }
 
   isNoScoreGame(): boolean {
-    return this.style == 3;
+    return this.style === 3;
   }
 
   isBlackOutGame(): boolean {
-    return this.style == 4;
+    return this.style === 4;
+  }
+
+  private setAllowedField(fields: number[]) {
+    for (let i = 0; i < this.numbs.length; i++) {
+      this.numbs[i] = false;
+    }
+    fields.forEach(f => this.numbs[f - 1] = true);
+    this.initFields();
   }
 }

@@ -21,9 +21,9 @@ import {Player} from '../models/player.model';
   ]
 })
 export class ModalComponent {
-  state: string = 'inactive';
-  message: string = '';
-  extraMessage: string = '';
+  state = 'inactive';
+  message = '';
+  extraMessage = '';
   players: Player[];
 
   show() {

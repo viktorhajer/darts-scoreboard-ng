@@ -13,13 +13,17 @@ export class Settings {
     let defaultSet = true;
     for (let i = 0; i < 21; i++) {
       this.numbs[i] = defaultSet;
-      if (i == 19) defaultSet = false;
+      if (i === 19) {
+        defaultSet = false;
+      }
     }
     this.initFields();
   }
 
   randomize() {
-    for (let i = 0; i < this.numbs.length; i++) this.numbs[i] = false;
+    for (let i = 0; i < this.numbs.length; i++) {
+      this.numbs[i] = false;
+    }
     for (let i = 0; i < this.numberOfMaxFields; i++) {
       let rand = Math.floor(Math.random() * 21);
       while (this.numbs[rand]) {
@@ -40,7 +44,7 @@ export class Settings {
 
 
   getNumbers() {
-    let numbers: number[] = [];
+    const numbers: number[] = [];
     for (let i = 0; i < 21; i++) {
       numbers[i] = (i + 1);
     }
@@ -56,8 +60,7 @@ export class Settings {
     this.fields = [];
     for (let i = 0; i < 21; i++) {
       if (this.numbs[i]) {
-        let nm: string = i == 20 ? 'B' : ((i + 1) + '');
-        this.fields.push(nm);
+        this.fields.push(i === 20 ? 'B' : ((i + 1) + ''));
       }
     }
   }

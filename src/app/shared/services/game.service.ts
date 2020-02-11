@@ -17,11 +17,11 @@ export class GameService {
   }
 
   isTheFirstThrow(): boolean {
-    return this.actualThrow == 1;
+    return this.actualThrow === 1;
   }
 
   isTheLastThrow(): boolean {
-    return this.actualThrow == 3;
+    return this.actualThrow === 3;
   }
 
   getActualPlayer(): Player {
@@ -45,7 +45,7 @@ export class GameService {
   }
 
   isTheFirstPlayer(player: Player): boolean {
-    return player.id == this.getTheFirstPlayer().id;
+    return player.id === this.getTheFirstPlayer().id;
   }
 
   isActualPlayerIsTheFirst(): boolean {
@@ -57,7 +57,7 @@ export class GameService {
   }
 
   isTheLastPlayer(player: Player): boolean {
-    return player.id == this.getTheLastPlayer().id;
+    return player.id === this.getTheLastPlayer().id;
   }
 
   isActualPlayerTheLast(): boolean {
@@ -83,7 +83,7 @@ export class GameService {
   isDraw(): boolean {
     const winners = this.players.filter(player => player.win);
     if (winners.length > 0) {
-      return this.players.filter(player => player.id != winners[0].id && player.score == winners[0].score).length > 0;
+      return this.players.filter(player => player.id !== winners[0].id && player.score === winners[0].score).length > 0;
     }
     return false;
   }
@@ -117,7 +117,7 @@ export class GameService {
     game.multiplier = this.multiplier;
     game.extraEndingMsg = this.extraEndingMsg;
     game.round = this.round;
-    let players: Player[] = [];
+    const players: Player[] = [];
     this.players.forEach(player => {
       players.push(player.clone());
     });

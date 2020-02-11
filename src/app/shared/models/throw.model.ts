@@ -1,17 +1,17 @@
 export class Throw {
   field: string;
-  field_num: number;
+  fieldNum: number;
   multi: number;
   order: number;
 
-  constructor(field_num: number, multi: number, order: number) {
-    this.field_num = field_num;
-    this.field = field_num == 25 ? 'B' : field_num + '';
+  constructor(fieldNum: number, multi: number, order: number) {
+    this.fieldNum = fieldNum;
+    this.field = fieldNum === 25 ? 'B' : fieldNum + '';
     this.multi = multi;
     this.order = order;
   }
 
   clone(): Throw {
-    return new Throw(this.field_num, this.multi, this.order);
+    return new Throw(this.fieldNum, this.multi, this.order);
   }
 }

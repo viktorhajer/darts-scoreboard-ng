@@ -8,7 +8,7 @@
 
     <ng-container *ngIf="!settingsOpen">
       <div
-          class="player {{(i == game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
+          class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
           *ngFor="let player of game.players; let i = index">
         <div class="player_info">
           <div class="name left">{{player.name}}</div>

@@ -8,8 +8,7 @@ export class Settings {
     this.boardingLimit = 3;
     this.fields = [];
     for (let i = 0; i < 21; i++) {
-      let nm: string = i == 20 ? 'B' : ((i + 1) + '');
-      this.fields.push(nm);
+      this.fields.push(i === 20 ? 'B' : ((i + 1) + ''));
     }
   }
 }

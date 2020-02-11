@@ -30,7 +30,7 @@ export class ShanghaiState extends PlaygroundState {
   }
 
   clone(): ShanghaiState {
-    let state: ShanghaiState = new ShanghaiState(this.player);
+    const state: ShanghaiState = new ShanghaiState(this.player);
     this.fieldCount.forEach(fv => state.fieldCount.push(fv.clone()));
     this.fieldScore.forEach(fv => state.fieldScore.push(fv.clone()));
     return state;

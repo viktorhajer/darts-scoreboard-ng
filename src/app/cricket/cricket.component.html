@@ -7,7 +7,7 @@
     <div class="clear" *ngIf="!settingsOpen"></div>
 
     <ng-container *ngIf="!settingsOpen">
-      <div class="player {{(i == game.actualPlayerIndex) ? 'highlighted' : ''}}"
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <div class="player_info">
           <div class="name left">{{player.name}}</div>
@@ -50,7 +50,7 @@
       <h2>Fields</h2>
       <button ion-button class="button left {{ settings.numbs[i] ? 'highlighted' : '' }}"
               *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
-        {{numb == 21 ? 'B' : numb}}
+        {{numb === 21 ? 'B' : numb}}
       </button>
       <button ion-button class="button left capitalize" (click)="settings.upper()">Upper</button>
       <button ion-button class="button left capitalize" (click)="settings.lower()">Lower</button>

@@ -10,13 +10,10 @@ import {Router} from '@angular/router';
 @Component({
   templateUrl: './killer.component.html'
 })
-export class KillerComponent extends PlaygroundModel {
+export class KillerComponent extends PlaygroundModel<KillerState> {
 
   @ViewChild(ModalComponent) dialog: ModalComponent;
   settings: Settings;
-  state: KillerState[];
-  stateHistory: KillerState[][];
-  playground = this;
 
   constructor(game: GameService, route: Router) {
     super(game, route);
@@ -31,7 +28,6 @@ export class KillerComponent extends PlaygroundModel {
     this.game.players.forEach(player => {
       this.state.push(new KillerState(player, this.settings.numberOfLives, this.settings.boardingLimit));
     }, this);
-    this.stateHistory = [];
   }
 
   customNext() {
@@ -91,7 +87,7 @@ export class KillerComponent extends PlaygroundModel {
       const actualPlayer = this.game.getActualPlayer();
       actualPlayer.win = !this.game.players.some(p => p.id !== actualPlayer.id && !this.getPlayerState(p).isDead());
     }
-    if (this.game.round === 0 || this.game.actualThrow == 3) {
+    if (this.game.round === 0 || this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }
     while (this.getPlayerState(this.game.getActualPlayer()).isDead()) {
@@ -109,10 +105,6 @@ export class KillerComponent extends PlaygroundModel {
       return !this.getAllEnabledFields().some(f => f === field);
     }
     return this.getAllEnabledFields().some(f => f === field);
-  }
-
-  private getAllEnabledFields(): number[] {
-    return this.game.players.filter(p => !this.getPlayerState(p).isDead()).map(p => this.getPlayerState(p).actField);
   }
 
   isHighlighted(field: number): boolean {
@@ -136,7 +128,7 @@ export class KillerComponent extends PlaygroundModel {
 
   getPlayerField(player: Player): string {
     const score = this.getPlayerState(player).actField;
-    return score == 25 ? 'B' : (score + '');
+    return score === 25 ? 'B' : (score + '');
   }
 
   getLife(player: Player): number {
@@ -155,27 +147,19 @@ export class KillerComponent extends PlaygroundModel {
     return this.getPlayerState(player).isDead();
   }
 
-  private getPlayerState(player: Player): KillerState {
-    return this.state.filter(s => s.player.id == player.id)[0];
-  }
-
-  saveState() {
-    const state = [];
-    this.state.forEach(s => state.push(s.clone()));
-    this.stateHistory.push(state);
-  }
-
-  undoState() {
-    if (this.stateHistory.length > 0) {
-      this.state = this.stateHistory.pop();
-    }
-  }
-
   isLastRound(): boolean {
     return false;
   }
 
   canBeDraw(): boolean {
     return false;
+  }
+
+  private getAllEnabledFields(): number[] {
+    return this.game.players.filter(p => !this.getPlayerState(p).isDead()).map(p => this.getPlayerState(p).actField);
+  }
+
+  private getPlayerState(player: Player): KillerState {
+    return this.state.filter(s => s.player.id === player.id)[0];
   }
 }

@@ -5,22 +5,26 @@ import {Player} from './player.model';
 import {Throw} from './throw.model';
 import {ModalComponent} from '../components/modal.component';
 import {Router} from '@angular/router';
+import {PlaygroundState} from '~models/playground-state.model';
 
-export abstract class PlaygroundModel implements OnInit {
+export abstract class PlaygroundModel<T extends PlaygroundState> implements OnInit {
 
-  throwEnabled: boolean = true;
-  settingsOpen: boolean = true;
+  throwEnabled = true;
+  settingsOpen = true;
   gameHistory: GameService[];
   nextEnabled = true;
   zeroEnabled = true;
   multiEnabled = true;
+  state: T[];
+  stateHistory: T[][] = [];
+  playground = this;
 
   protected constructor(public game: GameService, public route: Router) {
   }
 
   ngOnInit() {
     this.settingsOpen = true;
-    if (this.game.players.length == 0) {
+    if (this.game.players.length === 0) {
       this.addPlayer();
     }
   }
@@ -29,13 +33,13 @@ export abstract class PlaygroundModel implements OnInit {
     if (this.throwEnabled) {
       this.save();
       this.throwEnabled = false;
-      if (score == 25 && this.game.multiplier == 3) {
+      if (score === 25 && this.game.multiplier === 3) {
         this.game.multiplier = 1;
       }
 
       const actualPlayer = this.game.getActualPlayer();
       actualPlayer.addThrowHistory(new Throw(score, this.game.multiplier, this.game.actualThrow));
-      if (this.game.actualThrow == 0) {
+      if (this.game.actualThrow === 0) {
         actualPlayer.throws = [];
       }
       actualPlayer.throws[this.game.actualThrow] = score * this.game.multiplier;
@@ -47,13 +51,8 @@ export abstract class PlaygroundModel implements OnInit {
           this.game.multiplier = 1;
           this.game.players.forEach(player => {
             if (player.win) {
-
               const dialog = this.getDialog();
-              if (this.canBeDraw() && this.game.isDraw()) {
-                dialog.message = `End in a Draw`;
-              } else {
-                dialog.message = `${player.name} is the winner!`;
-              }
+              dialog.message = (this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`;
               dialog.extraMessage = this.game.extraEndingMsg;
               dialog.players = this.game.clone().players;
               dialog.show();
@@ -66,30 +65,19 @@ export abstract class PlaygroundModel implements OnInit {
   }
 
   triplePoint() {
-    this.game.multiplier = this.game.multiplier == 3 ? 1 : 3;
+    this.game.multiplier = this.game.multiplier === 3 ? 1 : 3;
   }
 
   doublePoint() {
-    this.game.multiplier = this.game.multiplier == 2 ? 1 : 2;
+    this.game.multiplier = this.game.multiplier === 2 ? 1 : 2;
   }
 
-  newGame(rotate: boolean = false) {
+  newGame(rotate = false) {
     this.settingsOpen = !this.validatePlayerSettings() || !this.validateSettings();
     this.reset();
     if (rotate) {
       this.game.rotatePlayers();
     }
-  }
-
-  private validatePlayerSettings(): boolean {
-    const players: Player[] = [];
-    this.game.players.forEach(player => {
-      if (player.name.length != 0) {
-        players.push(player);
-      }
-    });
-    this.game.players = players;
-    return players.length != 0;
   }
 
   addPlayer(): void {
@@ -100,13 +88,14 @@ export abstract class PlaygroundModel implements OnInit {
 
   removePlayer(player: Player): void {
     if (this.game.players.length > 1) {
-      this.game.players = this.game.players.filter(p => p != player);
+      this.game.players = this.game.players.filter(p => p !== player);
     }
   }
 
   reset(): void {
     this.gameHistory = [];
     this.game.resetScore();
+    this.stateHistory = [];
     this.customReset();
   }
 
@@ -117,17 +106,15 @@ export abstract class PlaygroundModel implements OnInit {
   }
 
   getFieldValueAsNumber(field: string): number {
-    return field == 'B' ? 25 : parseInt(field);
-  }
-
-  getFieldValueAsString(num: number): string {
-    return num == 25 ? 'B' : num + '';
+    return field === 'B' ? 25 : parseInt(field, 10);
   }
 
   undo() {
     if (this.gameHistory.length > 0) {
       this.game = this.gameHistory.pop();
-      this.undoState();
+      if (this.stateHistory.length > 0) {
+        this.state = this.stateHistory.pop();
+      }
     }
   }
 
@@ -144,14 +131,29 @@ export abstract class PlaygroundModel implements OnInit {
     this.game.resetScore();
   }
 
+  customNext() {
+    // should be implemented
+  }
+
+  private validatePlayerSettings(): boolean {
+    const players: Player[] = [];
+    this.game.players.forEach(player => {
+      if (player.name.length !== 0) {
+        players.push(player);
+      }
+    });
+    this.game.players = players;
+    return players.length !== 0;
+  }
+
   private save() {
     this.gameHistory.push(this.game.clone());
-    this.saveState();
+    const state = [];
+    this.state.forEach(s => state.push(s.clone()));
+    this.stateHistory.push(state);
   }
 
   abstract customReset(): void;
-
-  abstract customNext(): void;
 
   abstract validateSettings(): boolean;
 
@@ -167,11 +169,8 @@ export abstract class PlaygroundModel implements OnInit {
 
   abstract isSecondHighlighted(field: number): boolean;
 
-  abstract saveState();
-
-  abstract undoState();
-
   abstract isLastRound(): boolean;
 
   abstract canBeDraw(): boolean;
+
 }

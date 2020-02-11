@@ -2,7 +2,7 @@
   <div class="modalWindow" [@windowState]="state" (click)="hide()">
     {{message}}
     <br *ngIf="extraMessage && extraMessage"/>
-    {{extraMessage && extraMessage != '' ? extraMessage : ''}}
+    {{extraMessage && extraMessage !== '' ? extraMessage : ''}}
 
     <div class="scoresTable clear {{player.win ? 'winner' : ''}}" *ngFor="let player of players; let i = index">
         <div class="left">{{i+1}}. {{player.name}}</div>

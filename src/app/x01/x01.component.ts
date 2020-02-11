@@ -5,15 +5,15 @@ import {PlaygroundModel} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
+import {PlaygroundState} from '~models/playground-state.model';
 
 @Component({
   templateUrl: './x01.component.html'
 })
-export class X01Component extends PlaygroundModel {
+export class X01Component extends PlaygroundModel<PlaygroundState> {
 
   @ViewChild(ModalComponent) dialog: ModalComponent;
   settings: Settings;
-  playground = this;
 
   constructor(game: GameService, route: Router) {
     super(game, route);
@@ -24,9 +24,6 @@ export class X01Component extends PlaygroundModel {
     this.game.players.forEach(player => player.score = this.settings.startValue);
   }
 
-  customNext() {
-  }
-
   validateSettings(): boolean {
     return true;
   }
@@ -35,10 +32,10 @@ export class X01Component extends PlaygroundModel {
     const player = this.game.getActualPlayer();
     const actualScore = score * this.game.multiplier;
 
-    const validStart: boolean = !player.first || this.settings.isNormalStart()
+    const validStart = !player.first || this.settings.isNormalStart()
       || (player.first
-        && ((this.settings.isDoubleStart() && this.game.multiplier == 2)
-          || (this.settings.isTripleStart() && this.game.multiplier == 3)));
+        && ((this.settings.isDoubleStart() && this.game.multiplier === 2)
+          || (this.settings.isTripleStart() && this.game.multiplier === 3)));
 
     if (validStart) {
       player.first = false;
@@ -50,8 +47,8 @@ export class X01Component extends PlaygroundModel {
 
   countDown(player: Player, score: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
-      var id = setInterval(() => {
-        if (score == 0) {
+      const id = setInterval(() => {
+        if (score === 0) {
           clearInterval(id);
           resolve();
         } else if (player.score < 0) {
@@ -67,25 +64,23 @@ export class X01Component extends PlaygroundModel {
 
   checkPlayerState(): Promise<any> {
     const player = this.game.getActualPlayer();
-    let next: boolean = false;
+    let next = false;
 
     if ((this.settings.isHighScoreGame() && player.score <= 0) ||
-      ((player.score == 0 && (this.settings.isNormalCheckout()
-        || (this.settings.isDoubleCheckout() && this.game.multiplier == 2)
-        || (this.settings.isTripleCheckout() && this.game.multiplier == 3))))) {
+      ((player.score === 0 && (this.settings.isNormalCheckout()
+        || (this.settings.isDoubleCheckout() && this.game.multiplier === 2)
+        || (this.settings.isTripleCheckout() && this.game.multiplier === 3))))) {
       player.win = true;
       next = true;
     } else if (player.score <= 0
       || (this.settings.isDoubleCheckout() && player.score < 2)
       || (this.settings.isTripleCheckout() && player.score < 3)) {
-      for (let i = 0; i < player.throws.length; i++) {
-        player.score += player.throws[i];
-      }
+      player.throws.forEach(t => player.score += t);
       next = true;
       this.busted();
     }
 
-    if (this.game.actualThrow == 3 || next) {
+    if (this.game.actualThrow === 3 || next) {
       this.game.nextPlayer();
     }
     return Promise.resolve();
@@ -105,12 +100,6 @@ export class X01Component extends PlaygroundModel {
 
   isSecondHighlighted(field: number): boolean {
     return false;
-  }
-
-  saveState() {
-  }
-
-  undoState() {
   }
 
   isLastRound(): boolean {

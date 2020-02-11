@@ -2,12 +2,12 @@ import {Throw} from './throw.model';
 
 export class Player {
   id: number;
-  name: string = '';
-  score: number = 0;
+  name = '';
+  score = 0;
   throws: number[] = [];
   throwsHistory: Throw[];
-  win: boolean = false;
-  first: boolean = true;
+  win = false;
+  first = true;
 
   constructor(id: number) {
     this.id = id;
