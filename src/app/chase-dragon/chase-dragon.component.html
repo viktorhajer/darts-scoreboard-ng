@@ -27,25 +27,25 @@
       <h1>Chase the Dragon Settings</h1>
 
       <h2>Players</h2>
-      <button ion-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
-      <button ion-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
+      <button mat-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
+      <button mat-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
       <div class="clear"></div>
       <div *ngFor="let player of game.players; let i = index">
         <p>
           Player #{{i + 1}} name: <input [(ngModel)]="player.name" name="input" type="text">
-          <button ion-button class="button small" (click)="removePlayer(player)"> -</button>
+          <button mat-button class="button small" (click)="removePlayer(player)"> -</button>
         </p>
       </div>
       <div class="clear"></div>
 
-      <button ion-button class="button left medium {{settings.long?'highlighted':''}}" (click)="settings.toggleLong()">
+      <button mat-button class="button left medium {{settings.long?'highlighted':''}}" (click)="settings.toggleLong()">
         Long Dragon
       </button>
       <div class="clear"></div>
 
       <div class="clear space"></div>
-      <button ion-button class="button left big" (click)="newGame()">Save and Start</button>
-      <button ion-button class="button left big" (click)="quit()">Cancel</button>
+      <button mat-button class="button left big" (click)="newGame()">Save and Start</button>
+      <button mat-button class="button left big" (click)="quit()">Cancel</button>
     </div>
 
   </div>

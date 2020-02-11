@@ -7,8 +7,7 @@
     <div class="clear" *ngIf="!settingsOpen"></div>
 
     <ng-container *ngIf="!settingsOpen">
-      <div
-          class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
           *ngFor="let player of game.players; let i = index">
         <div class="player_info">
           <div class="name left">{{player.name}}</div>
@@ -32,13 +31,13 @@
       <h1>Killer Game Settings</h1>
 
       <h2>Players</h2>
-      <button ion-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
-      <button ion-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
+      <button mat-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
+      <button mat-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
       <div class="clear"></div>
       <div *ngFor="let player of game.players; let i = index">
         <p>
           Player #{{i + 1}} name: <input [(ngModel)]="player.name" name="input" type="text">
-          <button ion-button class="button small" (click)="removePlayer(player)"> -</button>
+          <button mat-button class="button small" (click)="removePlayer(player)"> -</button>
         </p>
       </div>
       <div class="clear"></div>
@@ -47,8 +46,8 @@
       <div class="clear"></div>
 
       <div class="clear space"></div>
-      <button ion-button class="button left big" (click)="newGame()">Save and Start</button>
-      <button ion-button class="button left big" (click)="quit()">Cancel</button>
+      <button mat-button class="button left big" (click)="newGame()">Save and Start</button>
+      <button mat-button class="button left big" (click)="quit()">Cancel</button>
     </div>
 
   </div>

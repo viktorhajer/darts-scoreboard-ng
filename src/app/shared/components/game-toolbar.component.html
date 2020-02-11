@@ -1,14 +1,14 @@
 <div class="toolbar">
-  <button ion-button class="button" (click)="quit()">
+  <button mat-button class="button" (click)="quit()">
     MAIN
   </button>
-  <button ion-button class="button" (click)="playground.newGame(true)">
+  <button mat-button class="button" (click)="playground.newGame(true)">
     NEW
   </button>
-  <button ion-button class="button" (click)="showSettings()">
+  <button mat-button class="button" (click)="showSettings()">
     BACK
   </button>
-  <button ion-button class="button" (click)="playground.undo()">
+  <button mat-button class="button" (click)="playground.undo()">
     UNDO
   </button>
   <p class="button">{{game.round+1}}.</p>

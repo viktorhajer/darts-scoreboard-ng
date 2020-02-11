@@ -1,4 +1,4 @@
 <h1 class="gameSelectBoxTitle">Select Game!</h1>
 <div id="gameSelectContainer">
-  <button class="gameSelectBox" *ngFor="let g of getGameList()"  [routerLink]="['/' + g.path]">{{g.data.name}}</button>
+  <button mat-button class="gameSelectBox" *ngFor="let g of getGameList()"  [routerLink]="['/' + g.path]">{{g.data.name}}</button>
 </div>
