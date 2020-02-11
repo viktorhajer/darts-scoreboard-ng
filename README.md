@@ -4,6 +4,11 @@ Is your dart board near your PC or can you bring your laptop to your dartboard.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
 
+## Demo page
+
+[https://viktorhajer.github.io/darts-scoreboard-ng/](https://viktorhajer.github.io/darts-scoreboard-ng/)
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
