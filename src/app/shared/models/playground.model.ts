@@ -3,9 +3,9 @@ import {v4 as uuid} from 'uuid';
 import {GameService} from '../services/game.service';
 import {Player} from './player.model';
 import {Throw} from './throw.model';
-import {ModalComponent} from '../components/modal.component';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
+import {DialogService} from '~services/dialog.service';
 
 export abstract class PlaygroundModel<T extends PlaygroundState> implements OnInit {
 
@@ -19,7 +19,9 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   stateHistory: T[][] = [];
   playground = this;
 
-  protected constructor(public game: GameService, public route: Router) {
+  protected constructor(public game: GameService,
+                        public route: Router,
+                        public dialogService: DialogService) {
   }
 
   ngOnInit() {
@@ -51,11 +53,9 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
           this.game.multiplier = 1;
           this.game.players.forEach(player => {
             if (player.win) {
-              const dialog = this.getDialog();
-              dialog.message = (this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`;
-              dialog.extraMessage = this.game.extraEndingMsg;
-              dialog.players = this.game.clone().players;
-              dialog.show();
+              this.dialogService.openDialog(this.game.extraEndingMsg,
+                (this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`,
+                this.game.clone().players);
               this.newGame(true);
             }
           });
@@ -100,9 +100,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   busted(): void {
-    const dialog = this.getDialog();
-    dialog.message = `${this.game.getActualPlayer().name} busted!`;
-    dialog.show();
+    this.dialogService.openDialog('Game Over', `${this.game.getActualPlayer().name} busted!`);
   }
 
   getFieldValueAsNumber(field: string): number {
@@ -148,9 +146,11 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   private save() {
     this.gameHistory.push(this.game.clone());
-    const state = [];
-    this.state.forEach(s => state.push(s.clone()));
-    this.stateHistory.push(state);
+    if (this.state) {
+      const state = [];
+      this.state.forEach(s => state.push(s.clone()));
+      this.stateHistory.push(state);
+    }
   }
 
   abstract customReset(): void;
@@ -160,8 +160,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   abstract calculatePoints(score: number): Promise<any>;
 
   abstract checkPlayerState(): Promise<any>;
-
-  abstract getDialog(): ModalComponent;
 
   abstract isFieldEnabledToThrow(field: number): boolean;
 

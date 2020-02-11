@@ -17,6 +17,9 @@ $field-active: #4D9DB3;
 $gray-button: linear-gradient(to top, $dark-color, $dark-color2);
 $red-number: linear-gradient(to top, #463030, #4e3434);
 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 body {
 	background: $body-background;
 	font-size: 1.5vw;

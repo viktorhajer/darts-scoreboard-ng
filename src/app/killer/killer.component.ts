@@ -1,22 +1,21 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {KillerState} from './models/state.model';
 import {Settings} from './models/settings.model';
 import {PlaygroundModel} from '~models/playground.model';
-import {ModalComponent} from '~components/modal.component';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
+import {DialogService} from '~services/dialog.service';
 
 @Component({
   templateUrl: './killer.component.html'
 })
 export class KillerComponent extends PlaygroundModel<KillerState> {
 
-  @ViewChild(ModalComponent) dialog: ModalComponent;
   settings: Settings;
 
-  constructor(game: GameService, route: Router) {
-    super(game, route);
+  constructor(game: GameService, route: Router, dialogService: DialogService) {
+    super(game, route, dialogService);
     this.settings = new Settings();
     this.nextEnabled = false;
     this.zeroEnabled = false;
@@ -94,10 +93,6 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
       this.game.nextPlayer();
     }
     return Promise.resolve();
-  }
-
-  getDialog(): ModalComponent {
-    return this.dialog;
   }
 
   isFieldEnabledToThrow(field: number): boolean {

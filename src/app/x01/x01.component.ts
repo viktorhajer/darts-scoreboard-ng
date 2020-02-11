@@ -1,22 +1,21 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Settings} from './models/settings.model';
-import {ModalComponent} from '~components/modal.component';
 import {PlaygroundModel} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
+import {DialogService} from '~services/dialog.service';
 
 @Component({
   templateUrl: './x01.component.html'
 })
 export class X01Component extends PlaygroundModel<PlaygroundState> {
 
-  @ViewChild(ModalComponent) dialog: ModalComponent;
   settings: Settings;
 
-  constructor(game: GameService, route: Router) {
-    super(game, route);
+  constructor(game: GameService, route: Router, dialogService: DialogService) {
+    super(game, route, dialogService);
     this.settings = new Settings();
   }
 
@@ -84,10 +83,6 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
       this.game.nextPlayer();
     }
     return Promise.resolve();
-  }
-
-  getDialog(): ModalComponent {
-    return this.dialog;
   }
 
   isFieldEnabledToThrow(field: number): boolean {

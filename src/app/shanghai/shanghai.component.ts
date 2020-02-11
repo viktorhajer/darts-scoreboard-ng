@@ -1,22 +1,21 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {ShanghaiState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {ModalComponent} from '~components/modal.component';
 import {PlaygroundModel} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
+import {DialogService} from '~services/dialog.service';
 
 @Component({
   templateUrl: './shanghai.component.html'
 })
 export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
 
-  @ViewChild(ModalComponent) dialog: ModalComponent;
   settings: Settings;
 
-  constructor(game: GameService, route: Router) {
-    super(game, route);
+  constructor(game: GameService, route: Router, dialogService: DialogService) {
+    super(game, route, dialogService);
     this.settings = new Settings();
     this.nextEnabled = false;
   }
@@ -81,10 +80,6 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     }
 
     return Promise.resolve();
-  }
-
-  getDialog(): ModalComponent {
-    return this.dialog;
   }
 
   getFieldValue(player: Player, field: string): string {
