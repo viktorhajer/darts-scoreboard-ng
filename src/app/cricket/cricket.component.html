@@ -24,7 +24,7 @@
               {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
             </div>
           </div>
-          <div class="point" *ngIf="!settings.isNoScoreGame()">{{player.score}}</div>
+          <div class="score" *ngIf="!settings.isNoScoreGame()">{{player.score}}</div>
           <div class="clear"></div>
         </div>
       </div>

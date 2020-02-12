@@ -15,11 +15,16 @@
             <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
           </div>
           <div class="clear"></div>
-          <div class="point" *ngIf="getPlayerField(player) !== '0'">
-            <label>Field: </label>{{getPlayerField(player)}}</div>
+          <div class="score" *ngIf="getPlayerField(player) !== '0'">
+            <label>Field: </label>{{getPlayerField(player)}}
+          </div>
           <div class="clear" *ngIf="getPlayerField(player) !== '0'"></div>
-          <div class="point2"><label>Life: </label>{{getLife(player)}}</div>
-          <div class="point2" *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</div>
+          <div class="note">
+            <label>Life: </label>{{getLife(player)}}
+          </div>
+          <div class="note" *ngIf="!isKiller(player)">
+            <label>Boarding: </label>{{getBoarding(player)}}
+          </div>
           <div class="clear"></div>
         </div>
       </div>
