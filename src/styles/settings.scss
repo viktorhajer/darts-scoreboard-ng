@@ -1,0 +1,30 @@
+.settings {
+  position: absolute;
+  padding: 2vh 2vw;
+
+  h2 {
+    display: flex;
+    align-items: center;
+  }
+
+  mat-divider {
+    clear: both;
+    margin: 2vh 0;
+  }
+
+  .button {
+    margin: 0.1vw;
+
+    &.big {
+      width: 30.4vw;
+    }
+
+    &.medium {
+      width: 20.2vw;
+    }
+
+    &.shortmedium {
+      width: 15vw;
+    }
+  }
+}

@@ -6,7 +6,8 @@ import {PlaygroundState} from '~models/playground-state.model';
 
 @Component({
   selector: 'app-game-toolbar',
-  templateUrl: './game-toolbar.component.html'
+  templateUrl: './game-toolbar.component.html',
+  styleUrls: ['./game-toolbar.component.scss']
 })
 export class GameToolbarComponent {
 

@@ -1,6 +1,6 @@
 <div id="playgroundContent">
 
-  <div class="left side_left">
+  <div class="side_left">
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
@@ -10,7 +10,7 @@
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <div class="player_info">
-          <div class="name left">{{player.name}}</div>
+          <div class="name">{{player.name}}</div>
           <div class="shoots right">
             <div class="shoot total"><p>{{player.getThrowsTotal()}}</p></div>
             <div class="shoot"><p>{{player.throws[2]}}</p></div>
@@ -20,7 +20,7 @@
           <div class="clear"></div>
           <div class="line"></div>
           <div
-              class="field left {{isActiveField(player, field) && settings.isBlackOutGame()  ? 'active': ''}} {{isFieldDoneForPlayer(player, field) ? 'highlighted' : ''}}"
+              class="field {{isActiveField(player, field) && settings.isBlackOutGame()  ? 'active': ''}} {{isFieldDoneForPlayer(player, field) ? 'highlighted' : ''}}"
               *ngFor="let field of settings.fields">
             {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
           </div>
@@ -33,47 +33,47 @@
     <div class="settings" *ngIf="settingsOpen">
       <h1>Cricket Settings</h1>
 
-      <h2>Players</h2>
-      <button mat-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
-      <button mat-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
-      <div class="clear"></div>
+      <h2>Players <button mat-icon-button (click)="addPlayer()" [disabled]="!game.canAddPlayer()"><mat-icon>add_circle</mat-icon></button></h2>
       <div *ngFor="let player of game.players; let i = index">
-        <p>
-          Player #{{i + 1}} name: <input [(ngModel)]="player.name" name="input" type="text">
-          <button mat-button class="button small" (click)="removePlayer(player)"> -</button>
-        </p>
+        <mat-form-field appearance="fill">
+          <mat-label>Player #{{i + 1}} name:</mat-label>
+          <input [(ngModel)]="player.name" type="text" matInput>
+        </mat-form-field>
+        <button mat-icon-button (click)="removePlayer(player)"><mat-icon>remove_circle</mat-icon></button>
       </div>
-      <div class="clear"></div>
+      <mat-divider></mat-divider>
 
       <h2>Fields</h2>
-      <button mat-button class="button left {{ settings.numbs[i] ? 'highlighted' : '' }}"
+      <button mat-raised-button class="button" [color]="settings.numbs[i]?'primary':''"
               *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
         {{numb === 21 ? 'B' : numb}}
       </button>
-      <button mat-button class="button left capitalize" (click)="settings.upper()">Upper</button>
-      <button mat-button class="button left capitalize" (click)="settings.lower()">Lower</button>
-      <button mat-button class="button left capitalize" (click)="settings.odd()">Odd</button>
-      <button mat-button class="button left capitalize" (click)="settings.even()">Even</button>
-      <button mat-button class="button left capitalize" (click)="settings.randomize()">Random</button>
-      <div class="clear"></div>
+      <mat-divider></mat-divider>
+
+      <button mat-raised-button class="button" (click)="settings.upper()">Upper</button>
+      <button mat-raised-button class="button" (click)="settings.lower()">Lower</button>
+      <button mat-raised-button class="button" (click)="settings.odd()">Odd</button>
+      <button mat-raised-button class="button" (click)="settings.even()">Even</button>
+      <button mat-raised-button class="button" (click)="settings.randomize()">Random</button>
+      <mat-divider></mat-divider>
 
       <h2>Style</h2>
-      <button mat-button class="button left shortmedium {{settings.style==1?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''"
               (click)="settings.setStyle(1)">Classic
       </button>
-      <button mat-button class="button left shortmedium {{settings.style==2?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.style==2?'primary':''"
               (click)="settings.setStyle(2)">Cut-Throat
       </button>
-      <button mat-button class="button left shortmedium {{settings.style==3?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
               (click)="settings.setStyle(3)">No Score
       </button>
-      <button mat-button class="button left shortmedium {{settings.style==4?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''"
               (click)="settings.setStyle(4)">Black Out
       </button>
 
-      <div class="clear space"></div>
-      <button mat-button class="button left big" (click)="newGame()">Save and Start</button>
-      <button mat-button class="button left big" (click)="quit()">Cancel</button>
+      <mat-divider></mat-divider>
+      <button mat-raised-button class="button big" (click)="newGame()">Save and Start</button>
+      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
     </div>
 
   </div>

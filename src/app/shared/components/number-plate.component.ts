@@ -3,7 +3,8 @@ import {GameService} from '../services/game.service';
 
 @Component({
   selector: 'app-number-plate',
-  templateUrl: './number-plate.component.html'
+  templateUrl: './number-plate.component.html',
+  styleUrls: ['./number-plate.component.scss']
 })
 export class NumberPlateComponent {
 
@@ -18,6 +19,19 @@ export class NumberPlateComponent {
       numbers[i - 1] = i;
     }
     return numbers;
+  }
+
+  getNumberColor(field: number): string {
+    if (this.playground.isHighlighted(field)) {
+      return 'primary';
+    } else if (this.playground.isSecondHighlighted(field)) {
+      return 'accent';
+    }
+    return '';
+  }
+
+  isNumberDisabled(field: number): boolean {
+    return !this.playground.isFieldEnabledToThrow(field);
   }
 }
 

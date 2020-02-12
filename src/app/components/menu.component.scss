@@ -1,0 +1,15 @@
+#menu {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  .gameSelectBox {
+    margin: 1vh 10vw;
+    height: 10vh;
+    line-height: 10vh;
+    font-size: calc(10px + 1vw);
+    text-align: center;
+    font-weight: bold;
+    width: 80vw;
+  }
+}

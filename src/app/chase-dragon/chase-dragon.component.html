@@ -1,6 +1,6 @@
 <div id="playgroundContent">
 
-  <div class="left side_left">
+  <div class="side_left">
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
@@ -10,7 +10,7 @@
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <div class="player_info">
-          <div class="name left">{{player.name}}</div>
+          <div class="name">{{player.name}}</div>
           <div class="shoots right">
             <div class="shoot"><p>{{!player.throws[2] ? '-' : player.throws[2]}}</p></div>
             <div class="shoot"><p>{{!player.throws[1] ? '-' : player.throws[1]}}</p></div>
@@ -26,26 +26,23 @@
     <div class="settings" *ngIf="settingsOpen">
       <h1>Chase the Dragon Settings</h1>
 
-      <h2>Players</h2>
-      <button mat-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
-      <button mat-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
-      <div class="clear"></div>
+      <h2>Players <button mat-icon-button (click)="addPlayer()" [disabled]="!game.canAddPlayer()"><mat-icon>add_circle</mat-icon></button></h2>
       <div *ngFor="let player of game.players; let i = index">
-        <p>
-          Player #{{i + 1}} name: <input [(ngModel)]="player.name" name="input" type="text">
-          <button mat-button class="button small" (click)="removePlayer(player)"> -</button>
-        </p>
+        <mat-form-field appearance="fill">
+          <mat-label>Player #{{i + 1}} name:</mat-label>
+          <input [(ngModel)]="player.name" type="text" matInput>
+        </mat-form-field>
+        <button mat-icon-button (click)="removePlayer(player)"><mat-icon>remove_circle</mat-icon></button>
       </div>
-      <div class="clear"></div>
+      <mat-divider></mat-divider>
 
-      <button mat-button class="button left medium {{settings.long?'highlighted':''}}" (click)="settings.toggleLong()">
+      <button mat-raised-button class="button medium"  [color]="settings.long?'primary':''" (click)="settings.toggleLong()">
         Long Dragon
       </button>
-      <div class="clear"></div>
 
-      <div class="clear space"></div>
-      <button mat-button class="button left big" (click)="newGame()">Save and Start</button>
-      <button mat-button class="button left big" (click)="quit()">Cancel</button>
+      <mat-divider></mat-divider>
+      <button mat-raised-button class="button big" (click)="newGame()">Save and Start</button>
+      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
     </div>
 
   </div>

@@ -1,0 +1,25 @@
+.number {
+  float: left;
+  margin: 0.1vw;
+  font-size: calc(10px + 0.8vw + 0.8vh);
+  height: 19.4vh;
+  width: 13.7vw;
+
+  &.highlighted {
+    background: #133550;
+    color: #ffffff;
+  }
+
+  &:active {
+    background: #133550;
+    color: #ffffff;
+  }
+
+  &.inactive {
+    background: #3a3a3a;
+  }
+
+  &.highlighted2 {
+    background: #3a3a3a;
+  }
+}

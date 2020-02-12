@@ -1,8 +1,15 @@
 <div class="right side_right">
-  <button mat-button class="number {{playground.isHighlighted(i) ? 'highlighted' : playground.isSecondHighlighted(i) ? 'highlighted2' : !playground.isFieldEnabledToThrow(i) ? 'inactive' : ''}}" *ngFor="let i of getNumbers()" (click)="playground.isFieldEnabledToThrow(i) ? playground.throwNumber(i) : playground.throwNumber(0)">{{i}}</button>
-  <button mat-button class="number {{playground.isHighlighted(25) ? 'highlighted' : playground.isSecondHighlighted(25) ? 'highlighted2' : !playground.isFieldEnabledToThrow(25) ? 'inactive' : ''}}" (click)="playground.isFieldEnabledToThrow(25) ? playground.throwNumber(25) : playground.throwNumber(0)">Bull</button>
-  <button mat-button class="number {{game.multiplier === 2 ? 'highlighted' : ''}}" (click)="playground.doublePoint()" *ngIf="playground && playground.multiEnabled">Double</button>
-  <button mat-button class="number {{game.multiplier === 3 ? 'highlighted' : ''}}" (click)="playground.triplePoint()" *ngIf="playground && playground.multiEnabled">Triple</button>
-  <button mat-button class="number" (click)="playground.skip()" *ngIf="playground && playground.nextEnabled">Next</button>
-  <button mat-button class="number" (click)="playground.throwNumber(0)" *ngIf="playground && playground.zeroEnabled">0</button>
+
+  <button mat-raised-button *ngFor="let i of getNumbers()" class="number" [color]="getNumberColor(i)" [disabled]="isNumberDisabled(i)"
+          (click)="playground.isFieldEnabledToThrow(i) ? playground.throwNumber(i) : playground.throwNumber(0)">{{i}}</button>
+  <button mat-raised-button class="number" [color]="getNumberColor(25)" [disabled]="isNumberDisabled(25)"
+          (click)="playground.isFieldEnabledToThrow(25) ? playground.throwNumber(25) : playground.throwNumber(0)">Bull</button>
+
+  <button mat-raised-button class="number" [color]="game.multiplier === 2 ? 'primary' : ''"
+          (click)="playground.doublePoint()" *ngIf="playground && playground.multiEnabled">Double</button>
+  <button mat-raised-button class="number" [color]="game.multiplier === 3 ? 'primary' : ''"
+          (click)="playground.triplePoint()" *ngIf="playground && playground.multiEnabled">Triple</button>
+
+  <button mat-raised-button class="number" (click)="playground.skip()" *ngIf="playground && playground.nextEnabled">Next</button>
+  <button mat-raised-button class="number" (click)="playground.throwNumber(0)" *ngIf="playground && playground.zeroEnabled">0</button>
 </div>

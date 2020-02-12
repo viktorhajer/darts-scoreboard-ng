@@ -43,6 +43,7 @@ const routes: Routes = [
 
 @Component({
   templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
 

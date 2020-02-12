@@ -1,6 +1,6 @@
 <div id="playgroundContent">
 
-  <div class="left side_left">
+  <div class="side_left">
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
@@ -10,7 +10,7 @@
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <div class="player_info">
-          <div class="name left">{{player.name}}</div>
+          <div class="name">{{player.name}}</div>
           <div class="shoots right">
             <div class="shoot total"><p>{{player.getThrowsTotal()}}</p></div>
             <div class="shoot"><p>{{player.throws[2]}}</p></div>
@@ -19,7 +19,7 @@
           </div>
           <div class="clear"></div>
           <div class="line"></div>
-          <div class="point left">{{player.score}}</div>
+          <div class="point">{{player.score}}</div>
           <div class="clear"></div>
         </div>
       </div>
@@ -28,68 +28,66 @@
     <div class="settings" *ngIf="settingsOpen">
       <h1>X01 Settings</h1>
 
-      <h2>Players</h2>
-      <button mat-button class="button left big" (click)="addPlayer()" *ngIf="game.canAddPlayer()">New Player</button>
-      <button mat-button class="button left big inactive" *ngIf="!game.canAddPlayer()">New Player</button>
-      <div class="clear"></div>
+      <h2>Players <button mat-icon-button (click)="addPlayer()" [disabled]="!game.canAddPlayer()"><mat-icon>add_circle</mat-icon></button></h2>
       <div *ngFor="let player of game.players; let i = index">
-        <p>
-          Player #{{i + 1}} name: <input [(ngModel)]="player.name" name="input" type="text">
-          <button mat-button class="button small" (click)="removePlayer(player)"> -</button>
-        </p>
+        <mat-form-field appearance="fill">
+          <mat-label>Player #{{i + 1}} name:</mat-label>
+          <input [(ngModel)]="player.name" type="text" matInput>
+        </mat-form-field>
+        <button mat-icon-button (click)="removePlayer(player)"><mat-icon>remove_circle</mat-icon></button>
       </div>
-      <div class="clear"></div>
+      <mat-divider></mat-divider>
 
       <h2>Games</h2>
-      <button mat-button class="button left {{settings.startValue==101?'highlighted':''}}"
+      <button mat-raised-button class="button" [color]="settings.startValue===101?'primary':''"
               (click)="settings.setStartValue(101)">101
       </button>
-      <button mat-button class="button left {{settings.startValue==201?'highlighted':''}}"
+      <button mat-raised-button class="button" [color]="settings.startValue===201?'primary':''"
               (click)="settings.setStartValue(201)">201
       </button>
-      <button mat-button class="button left {{settings.startValue==301?'highlighted':''}}"
+      <button mat-raised-button class="button" [color]="settings.startValue===301?'primary':''"
               (click)="settings.setStartValue(301)">301
       </button>
-      <button mat-button class="button left {{settings.startValue==501?'highlighted':''}}"
+      <button mat-raised-button class="button" [color]="settings.startValue===501?'primary':''"
               (click)="settings.setStartValue(501)">501
       </button>
-      <button mat-button class="button left {{settings.startValue==701?'highlighted':''}}"
+      <button mat-raised-button class="button" [color]="settings.startValue===701?'primary':''"
               (click)="settings.setStartValue(701)">701
       </button>
-      <button mat-button class="button left {{settings.startValue==901?'highlighted':''}}"
+      <button mat-raised-button class="button" [color]="settings.startValue===901?'primary':''"
               (click)="settings.setStartValue(901)">901
       </button>
-      <div class="clear"></div>
+      <mat-divider></mat-divider>
 
       <h2>Start</h2>
-      <button mat-button class="button left shortmedium {{settings.start==1?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.start===1?'primary':''"
               (click)="settings.setStart(1)">Single
       </button>
-      <button mat-button class="button left shortmedium {{settings.start==2?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.start===2?'primary':''"
               (click)="settings.setStart(2)">Double
       </button>
-      <button mat-button class="button left shortmedium {{settings.start==3?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.start===3?'primary':''"
               (click)="settings.setStart(3)">Triple
       </button>
-      <div class="clear"></div>
+      <mat-divider></mat-divider>
 
       <h2>Checkout</h2>
-      <button mat-button class="button left shortmedium {{settings.checkout==1?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===1?'primary':''"
               (click)="settings.setCheckout(1)">Single
       </button>
-      <button mat-button class="button left shortmedium {{settings.checkout==2?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===2?'primary':''"
               (click)="settings.setCheckout(2)">Double
       </button>
-      <button mat-button class="button left shortmedium {{settings.checkout==3?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===3?'primary':''"
               (click)="settings.setCheckout(3)">Triple
       </button>
-      <button mat-button class="button left shortmedium {{settings.checkout==4?'highlighted':''}}"
+      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===4?'primary':''"
               (click)="settings.setCheckout(4)">None
       </button>
 
-      <div class="clear space"></div>
-      <button mat-button class="button left big" (click)="newGame()">Save and Start</button>
-      <button mat-button class="button left big" (click)="quit()">Cancel</button>
+      <mat-divider></mat-divider>
+      <button mat-raised-button class="button big" (click)="newGame()">Save and Start</button>
+      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
     </div>
 
   </div>
