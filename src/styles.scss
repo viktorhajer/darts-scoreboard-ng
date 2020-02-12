@@ -30,11 +30,8 @@ body {
     width: 30vw;
   }
 
-  .side_right {
+  .side-right {
     width: 70vw;
-  }
-
-  .right {
-    text-align: right;
+    float: right;
   }
 }
