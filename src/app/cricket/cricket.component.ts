@@ -91,22 +91,6 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldClosed(fieldStr);
   }
 
-  isHighlighted(field: number): boolean {
-    return false;
-  }
-
-  isSecondHighlighted(field: number): boolean {
-    return false;
-  }
-
-  isLastRound(): boolean {
-    return false;
-  }
-
-  canBeDraw(): boolean {
-    return false;
-  }
-
   private getPlayerTotal(player: Player) {
     let total = 0;
     if (this.settings.isPunishGame() || this.settings.isBlackOutGame()) {

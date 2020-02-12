@@ -1,6 +1,6 @@
 <div id="playgroundContent">
 
-  <div class="side_left">
+  <div class="side-left">
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
@@ -36,8 +36,14 @@
       </div>
       <mat-divider></mat-divider>
 
-      <button mat-raised-button class="button shortmedium" [color]="settings.jump?'primary':''"
-              (click)="settings.toggleJump()">Enable Jump
+      <button mat-raised-button class="button medium" [color]="settings.jump?'primary':''"
+              (click)="settings.toggleJump()">
+        Enable Jump
+      </button>
+
+      <button mat-raised-button class="button medium" [color]="settings.punishment?'primary':''"
+              (click)="settings.togglePunishment()">
+        Enable Punishment
       </button>
 
       <mat-divider></mat-divider>

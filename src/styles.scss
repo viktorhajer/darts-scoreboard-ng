@@ -1,5 +1,6 @@
 @import "styles/settings";
 @import "styles/player-score";
+@import "styles/theming";
 
 html, body {
   height: 100%;
@@ -8,7 +9,8 @@ html, body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: #303030;
+  background: mat-color($basic, 900);
+  color: mat-color($basic, 50);
 }
 
 .right {
@@ -23,10 +25,9 @@ body {
 
   width: 100vw;
   height: 100vh;
-  color: #ffffff;
   display: flex;
 
-  .side_left {
+  .side-left {
     width: 30vw;
   }
 

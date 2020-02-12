@@ -53,9 +53,8 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
           this.game.multiplier = 1;
           this.game.players.forEach(player => {
             if (player.win) {
-              this.dialogService.openDialog(this.game.extraEndingMsg,
-                (this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`,
-                this.game.clone().players);
+              this.dialogService.openDialog((this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`,
+                this.game.extraEndingMsg, this.game.clone().players);
               this.newGame(true);
             }
           });
@@ -100,7 +99,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   busted(): void {
-    this.dialogService.openDialog('Game Over', `${this.game.getActualPlayer().name} busted!`);
+    this.dialogService.openDialog(`${this.game.getActualPlayer().name} busted!`);
   }
 
   getFieldValueAsNumber(field: string): number {
@@ -133,6 +132,26 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     // should be implemented
   }
 
+  isSecondHighlighted(field: number): boolean {
+    return false;
+  }
+
+  isHighlighted(field: number): boolean {
+    return false;
+  }
+
+  isLastRound(): boolean {
+    return false;
+  }
+
+  isFieldEnabledToThrow(field: number): boolean {
+    return true;
+  }
+
+  canBeDraw(): boolean {
+    return false;
+  }
+
   private validatePlayerSettings(): boolean {
     const players: Player[] = [];
     this.game.players.forEach(player => {
@@ -160,15 +179,4 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   abstract calculatePoints(score: number): Promise<any>;
 
   abstract checkPlayerState(): Promise<any>;
-
-  abstract isFieldEnabledToThrow(field: number): boolean;
-
-  abstract isHighlighted(field: number): boolean;
-
-  abstract isSecondHighlighted(field: number): boolean;
-
-  abstract isLastRound(): boolean;
-
-  abstract canBeDraw(): boolean;
-
 }

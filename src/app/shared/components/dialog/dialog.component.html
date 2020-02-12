@@ -1,13 +1,11 @@
 <div class="dialog-container evo-typography">
-  <div mat-dialog-title class="subtitle-1">Title</div>
+  <div mat-dialog-title class="subtitle-1"><p>{{ data.title }}</p></div>
   <mat-dialog-content class="body-2">
     <p>{{ data.content }}</p>
-
-    <div class="scoresTable {{player.win ? 'winner' : ''}}" *ngFor="let player of data.players; let i = index">
-      <div>{{i+1}}. {{player.name}}</div>
+    <div class="score-line" *ngFor="let player of data.players; let i = index" [class.winner]="player.win">
+      <div>{{i+1}}. {{player.name}} <mat-icon color="warn" *ngIf="player.win">star</mat-icon></div>
       <div>{{player.score}}</div>
     </div>
-
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button [mat-dialog-close]="true">Ok</button>

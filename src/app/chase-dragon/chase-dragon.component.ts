@@ -74,14 +74,8 @@ export class ChaseDragonComponent extends PlaygroundModel<ChaseDragonState> {
       if (field === 25) {
         fieldStr = 'B';
       }
-      this.game.players.forEach(player => {
-        if (player !== this.game.getActualPlayer()) {
-          ret = this.settings.fields.indexOf(fieldStr) === this.getPlayerState(player).getActFieldIndex();
-          if (ret) {
-            return;
-          }
-        }
-      });
+      ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
+        .some(p => this.settings.fields.indexOf(fieldStr) === this.getPlayerState(p).getActFieldIndex());
     }
     return ret;
   }

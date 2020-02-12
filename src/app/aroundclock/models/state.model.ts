@@ -18,6 +18,13 @@ export class AroundClockState extends PlaygroundState {
     this.actFieldIndex += value ? value : 1;
   }
 
+  decreaseActFieldIndex() {
+    this.actFieldIndex--;
+    if (this.actFieldIndex < 0) {
+      this.actFieldIndex = 0;
+    }
+  }
+
   clone(): AroundClockState {
     const state: AroundClockState = new AroundClockState(this.player);
     state.actFieldIndex = this.actFieldIndex;

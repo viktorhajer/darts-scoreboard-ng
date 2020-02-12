@@ -114,20 +114,8 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     return this.settings.fields.indexOf(fieldStr) === this.game.round;
   }
 
-  isHighlighted(field: number): boolean {
-    return false;
-  }
-
-  isSecondHighlighted(field: number): boolean {
-    return false;
-  }
-
   isLastRound(): boolean {
     return this.game.round === this.settings.fields.length - 1;
-  }
-
-  canBeDraw(): boolean {
-    return true;
   }
 
   private getPreviousField(): string {

@@ -142,14 +142,6 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
     return this.getPlayerState(player).isDead();
   }
 
-  isLastRound(): boolean {
-    return false;
-  }
-
-  canBeDraw(): boolean {
-    return false;
-  }
-
   private getAllEnabledFields(): number[] {
     return this.game.players.filter(p => !this.getPlayerState(p).isDead()).map(p => this.getPlayerState(p).actField);
   }

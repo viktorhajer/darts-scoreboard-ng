@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {MenuComponent} from './components/menu.component';
+import {MenuComponent} from './components/menu/menu.component';
 import {X01Module} from './x01/x01.module';
 import {CricketModule} from './cricket/cricket.module';
 import {AroundClockModule} from './aroundclock/around-clock.module';

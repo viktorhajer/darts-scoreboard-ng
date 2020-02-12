@@ -52,6 +52,16 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     if ((this.settings.fields.length - 1) < this.getPlayerState(player).getActFieldIndex()) {
       player.win = true;
     } else if (this.game.actualThrow === 3) {
+      let multi = 1;
+      for (let i = 0; i < 3; i++) {
+        const t = player.throwsHistory[player.throwsHistory.length - i - 1];
+        if (t.field === this.getPreviousField()) {
+          multi *= (t.multi + 1);
+        }
+      }
+      if (multi === 1 && this.settings.punishment) {
+        this.getPlayerState(player).decreaseActFieldIndex();
+      }
       this.game.nextPlayer();
     }
     return Promise.resolve();
@@ -76,14 +86,8 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
       if (field === 25) {
         fieldStr = 'B';
       }
-      this.game.players.forEach(player => {
-        if (player !== this.game.getActualPlayer()) {
-          ret = this.settings.fields.indexOf(fieldStr) === this.getPlayerState(player).getActFieldIndex();
-          if (ret) {
-            return;
-          }
-        }
-      });
+      ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
+        .some(p => this.settings.fields.indexOf(fieldStr) === this.getPlayerState(p).getActFieldIndex());
     }
     return ret;
   }
@@ -98,6 +102,10 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
 
   canBeDraw(): boolean {
     return false;
+  }
+
+  private getPreviousField(): string {
+    return this.settings.fields[this.game.round > 0 ? this.game.round : 0];
   }
 
   private getPlayerState(player: Player): AroundClockState {

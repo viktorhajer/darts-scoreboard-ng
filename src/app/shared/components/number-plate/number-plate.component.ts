@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {GameService} from '../services/game.service';
+import {GameService} from '~services/game.service';
 
 @Component({
   selector: 'app-number-plate',
@@ -31,7 +31,7 @@ export class NumberPlateComponent {
   }
 
   isNumberDisabled(field: number): boolean {
-    return !this.playground.isFieldEnabledToThrow(field);
+    return !this.playground.isFieldEnabledToThrow(field) && !this.getNumberColor(field);
   }
 
   throwNumber(field: number) {

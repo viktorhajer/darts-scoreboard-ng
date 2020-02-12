@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {Routes} from '@angular/router';
-import {X01Module} from '../x01/x01.module';
-import {CricketModule} from '../cricket/cricket.module';
-import {AroundClockModule} from '../aroundclock/around-clock.module';
-import {ShanghaiModule} from '../shanghai/shanghai.module';
-import {ChaseDragonModule} from '../chase-dragon/chase-dragon.module';
-import {KillerModule} from '../killer/killer.module';
+import {X01Module} from '../../x01/x01.module';
+import {CricketModule} from '../../cricket/cricket.module';
+import {AroundClockModule} from '../../aroundclock/around-clock.module';
+import {ShanghaiModule} from '../../shanghai/shanghai.module';
+import {ChaseDragonModule} from '../../chase-dragon/chase-dragon.module';
+import {KillerModule} from '../../killer/killer.module';
 
 const routes: Routes = [
   {

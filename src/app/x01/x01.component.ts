@@ -84,24 +84,4 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
     }
     return Promise.resolve();
   }
-
-  isFieldEnabledToThrow(field: number): boolean {
-    return true;
-  }
-
-  isHighlighted(field: number): boolean {
-    return false;
-  }
-
-  isSecondHighlighted(field: number): boolean {
-    return false;
-  }
-
-  isLastRound(): boolean {
-    return false;
-  }
-
-  canBeDraw(): boolean {
-    return false;
-  }
 }
