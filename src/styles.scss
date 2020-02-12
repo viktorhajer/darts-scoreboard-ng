@@ -13,10 +13,6 @@ body {
   color: mat-color($basic, 50);
 }
 
-.right {
-  float: right;
-}
-
 .clear {
   clear: both;
 }
@@ -35,4 +31,8 @@ body {
     width: 70vw;
     float: right;
   }
+}
+
+mat-card {
+  margin: 3px;
 }

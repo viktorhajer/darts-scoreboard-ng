@@ -4,20 +4,18 @@
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
-    <div class="clear" *ngIf="!settingsOpen"></div>
-
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <div class="player_info">
           <div class="name">{{player.name}}</div>
-          <div class="shoots right">
-            <div class="shoot"><p>{{!player.throws[2] ? '-' : player.throws[2]}}</p></div>
-            <div class="shoot"><p>{{!player.throws[1] ? '-' : player.throws[1]}}</p></div>
-            <div class="shoot"><p>{{!player.throws[0] ? '-' : player.throws[0]}}</p></div>
+          <div class="shoots">
+            <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>
+            <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>
+            <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
           </div>
           <div class="clear"></div>
-          <div class="point right"><label>Field: </label>{{getActualField(player)}}</div>
+          <div class="point"><label>Field: </label>{{getActualField(player)}}</div>
           <div class="clear"></div>
         </div>
       </div>

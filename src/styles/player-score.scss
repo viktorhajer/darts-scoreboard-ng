@@ -1,82 +1,39 @@
-$highlight-color: rgb(10, 35, 79);
-$highlight-color2: rgb(19, 53, 80);
-$linear-highlight: linear-gradient(to top, $highlight-color2, $highlight-color);
-$highlight-color-dark: rgb(6, 23, 52);
-$dark-color: #3a3a3a;
-$dark-color2: #303030;
-$middle-light-color1: #656565;
-$middle-light-color2: #444444;
-$light-color: #888;
-$light-color-active: #ffffff;
-$field-active: #4D9DB3;
+@import "./theming";
 
 .player {
-  background-color: $dark-color;
-  color: $light-color;
+  background: linear-gradient(to top, mat-color($basic, 800), mat-color($basic, 900));
   margin: 0.7vw 0.1vw;
   border-radius: 0.5vw;
 
-  &.inactive {
-    opacity: 0.4;
-  }
+  .shoots {
+    display: flex;
+    justify-content: flex-end;
 
-  &.highlighted, &.highlighted2 {
-    background: $linear-highlight;
-    text-shadow: 5px 5px 6px rgba(0, 0, 0, 0.4);
+    .shoot {
+      margin: 0.1vw;
+      border-radius: 0.5vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 3vw;
+      height: 3vw;
+      font-size: calc(6px + 1vw);
+      background: mat-color($basic, 800);
 
-    .player_info {
-
-      .line {
-        border-top: 1px solid $light-color-active;
-      }
-
-      .shoot {
-        background: $highlight-color-dark;
-
-        p {
-          color: $light-color-active;
-        }
-      }
-
-      .field {
-        color: $light-color-active;
-        opacity: 0.5;
-
-        &.highlighted {
-          color: $field-active;
-          opacity: 1;
-        }
-
-        &.active {
-          color: $light-color-active;
-          opacity: 1;
-        }
-      }
-
-      .name, .point {
-        color: $light-color-active;
+      &.total {
+        margin-left: 10px;
+        background: mat-color($basic, 500);
       }
     }
   }
 
-  &.highlighted2 {
-    background: linear-gradient(to top, #763f3f, #674d48);
-  }
-
-  &.highlighted {
-    &.highlighted2 {
-      background: linear-gradient(to top, #742323, #842716);
-    }
+  .line {
+    margin: 1vw 0;
+    border-top: 1px solid mat-color($basic, 500);
   }
 
   .player_info {
     padding: 1vw;
-
-    .line {
-      margin: 1vw 0;
-      border-top: 1px solid $light-color;
-      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    }
 
     .small {
       font-size: calc(0.6vw + 0.5vh);
@@ -91,6 +48,7 @@ $field-active: #4D9DB3;
       font-size: 3.2vw;
       letter-spacing: 0.5vw;
       font-weight: bold;
+      float: right;
 
       label {
         font-size: 1vw;
@@ -101,52 +59,63 @@ $field-active: #4D9DB3;
     .point2 {
       font-size: 2.0vw;
       margin-right: 10px;
+      float: right;
 
       label {
         font-size: 1.5vw;
       }
     }
-
+    .field-set {
+      display: flex;
+      flex-flow: row wrap;
+    }
     .field {
-      margin: 0.1vw;
       font-size: calc(0.7vw + 0.7vh);
-      width: 6.5vw;
-      color: $light-color;
+      width: 70px;
+      color: mat-color($basic, 300);
+      opacity: 0.4;
 
-      &.highlighted {
-        color: $field-active;
+      &.highlighted, &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.highlighted {
+    background: linear-gradient(to top, mat-color($primary, 700), mat-color($primary, 800));
+
+    &.highlighted2 {
+      opacity: 1;
+    }
+  }
+
+  &.highlighted2 {
+    background: mat-color($primary, 700);
+    opacity: 0.6;
+  }
+
+  &.inactive {
+    opacity: 0.4;
+  }
+
+  &.highlighted, &.highlighted2 {
+    .player_info {
+      .shoot {
+        background: mat-color($primary, 900);
+
+        &.total {
+          background: mat-color($basic, 900);
+        }
       }
 
-      &.active {
-        color: $field-active;
+      .field {
+        color: mat-color($basic, 300);
       }
     }
 
-    .shoot {
-      float: right;
-      background: $middle-light-color2;
-      margin: 0.1vw;
-      border-radius: 0.5vw;
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-
-      p {
-        width: 3vw;
-        height: 3vw;
-        font-size: calc(6px + 1vw);
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-        font-weight: bold;
-      }
-
-      &.total {
-        background: $middle-light-color1;
-        margin-left: 10px;
-
-        p {
-          width: 3vw;
-        }
-      }
+    .line {
+      margin: 1vw 0;
+      border-top: 1px solid mat-color($basic, 900);
     }
   }
 }

@@ -4,24 +4,22 @@
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
-    <div class="clear" *ngIf="!settingsOpen"></div>
-
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
           *ngFor="let player of game.players; let i = index">
         <div class="player_info">
           <div class="name">{{player.name}}</div>
-          <div class="shoots right">
-            <div class="shoot"><p>{{!player.throws[2] ? '-' : player.throws[2]}}</p></div>
-            <div class="shoot"><p>{{!player.throws[1] ? '-' : player.throws[1]}}</p></div>
-            <div class="shoot"><p>{{!player.throws[0] ? '-' : player.throws[0]}}</p></div>
+          <div class="shoots">
+            <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>
+            <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>
+            <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
           </div>
           <div class="clear"></div>
-          <div class="point right" *ngIf="getPlayerField(player) !== '0'">
+          <div class="point" *ngIf="getPlayerField(player) !== '0'">
             <label>Field: </label>{{getPlayerField(player)}}</div>
           <div class="clear" *ngIf="getPlayerField(player) !== '0'"></div>
-          <div class="point2 right"><label>Life: </label>{{getLife(player)}}</div>
-          <div class="point2 right" *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</div>
+          <div class="point2"><label>Life: </label>{{getLife(player)}}</div>
+          <div class="point2" *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</div>
           <div class="clear"></div>
         </div>
       </div>

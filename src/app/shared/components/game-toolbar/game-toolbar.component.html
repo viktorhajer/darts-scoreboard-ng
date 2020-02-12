@@ -11,7 +11,6 @@
   <button mat-raised-button (click)="playground.undo()">
     <mat-icon>undo</mat-icon>
   </button>
-  <mat-chip-list>
-    <mat-chip color="accent" selected> {{game.round+1}}</mat-chip>
-  </mat-chip-list>
+  <button mat-stroked-button color="accent"><span class="round-info">{{game.round+1}}</span> </button>
 </div>
+<div class="clear"></div>

@@ -4,27 +4,27 @@
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 
-    <div class="clear" *ngIf="!settingsOpen"></div>
-
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <div class="player_info">
           <div class="name">{{player.name}}</div>
-          <div class="shoots right">
-            <div class="shoot total"><p>{{player.getThrowsTotal()}}</p></div>
-            <div class="shoot"><p>{{player.throws[2]}}</p></div>
-            <div class="shoot"><p>{{player.throws[1]}}</p></div>
-            <div class="shoot"><p>{{player.throws[0]}}</p></div>
+          <div class="shoots">
+            <div class="shoot">{{player.throws[0]}}</div>
+            <div class="shoot">{{player.throws[1]}}</div>
+            <div class="shoot">{{player.throws[2]}}</div>
+            <div class="shoot total">{{player.getThrowsTotal()}}</div>
           </div>
           <div class="clear"></div>
           <div class="line"></div>
-          <div
-              class="field {{isActiveField(player, field) && settings.isBlackOutGame()  ? 'active': ''}} {{isFieldDoneForPlayer(player, field) ? 'highlighted' : ''}}"
-              *ngFor="let field of settings.fields">
-            {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
+          <div class="field-set">
+            <div
+                class="field {{isActiveField(player, field) && settings.isBlackOutGame()  ? 'active': ''}} {{!isFieldDoneForPlayer(player, field) ? 'highlighted' : ''}}"
+                *ngFor="let field of settings.fields">
+              {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
+            </div>
           </div>
-          <div class="point right" *ngIf="!settings.isNoScoreGame()">{{player.score}}</div>
+          <div class="point" *ngIf="!settings.isNoScoreGame()">{{player.score}}</div>
           <div class="clear"></div>
         </div>
       </div>
