@@ -76,7 +76,7 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
       || (this.settings.isTripleCheckout() && player.score < 3)) {
       player.throws.forEach(t => player.score += t);
       next = true;
-      this.busted();
+      this.dialogService.openDialog(`${this.game.getActualPlayer().name} busted!`);
     }
 
     if (this.game.actualThrow === 3 || next) {

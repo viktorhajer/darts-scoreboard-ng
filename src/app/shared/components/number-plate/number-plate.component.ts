@@ -35,8 +35,7 @@ export class NumberPlateComponent {
   }
 
   throwNumber(field: number) {
-    this.playground.isFieldEnabledToThrow(field) ?
-      this.playground.throwNumber(field) : this.playground.throwNumber(0);
+    this.playground.throwNumber(this.playground.isFieldEnabledToThrow(field) ? field : 0);
   }
 }
 

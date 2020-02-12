@@ -24,9 +24,8 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
 
   customReset(): void {
     this.state = [];
-    this.game.players.forEach(player => {
-      this.state.push(new KillerState(player, this.settings.numberOfLives, this.settings.boardingLimit));
-    }, this);
+    this.game.players.forEach(player =>
+      this.state.push(new KillerState(player, this.settings.numberOfLives, this.settings.boardingLimit)));
   }
 
   customNext() {

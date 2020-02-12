@@ -21,7 +21,7 @@ export class ChaseDragonComponent extends PlaygroundModel<ChaseDragonState> {
 
   customReset(): void {
     this.state = [];
-    this.game.players.forEach(player => this.state.push(new ChaseDragonState(player)), this);
+    this.game.players.forEach(player => this.state.push(new ChaseDragonState(player)));
   }
 
   validateSettings(): boolean {

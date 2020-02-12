@@ -21,7 +21,7 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
 
   customReset(): void {
     this.state = [];
-    this.game.players.forEach(player => this.state.push(new AroundClockState(player)), this);
+    this.game.players.forEach(player => this.state.push(new AroundClockState(player)));
   }
 
   validateSettings(): boolean {

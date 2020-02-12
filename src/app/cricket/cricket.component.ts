@@ -21,7 +21,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
 
   customReset(): void {
     this.state = [];
-    this.game.players.forEach(player => this.state.push(new CricketState(player)), this);
+    this.game.players.forEach(player => this.state.push(new CricketState(player)));
   }
 
   validateSettings(): boolean {
@@ -105,7 +105,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     let total = 0;
     this.settings.fields.forEach(field => {
       if (this.isFieldDoneForPlayer(player, field)) {
-        total += (this.getPlayerState(player).getFieldCount(field) - 3) * this.getFieldValueAsNumber(field);
+        total += (this.getPlayerState(player).getFieldCount(field) - 3) * PlaygroundModel.getFieldValueAsNumber(field);
       }
     }, this);
     return total;
@@ -114,7 +114,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
   private getPlayerTotalForPunishGame(player: Player) {
     let total = 0;
     this.settings.fields.forEach(field => {
-      total += this.getPlayerState(player).getPunishCount(field) * this.getFieldValueAsNumber(field);
+      total += this.getPlayerState(player).getPunishCount(field) * PlaygroundModel.getFieldValueAsNumber(field);
     }, this);
     return total;
   }
@@ -161,13 +161,13 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
 
   private getFieldScore(player: Player, field: string): number {
     if (this.isFieldDoneForPlayer(player, field)) {
-      return (this.getPlayerState(player).getFieldCount(field) - 3) * this.getFieldValueAsNumber(field);
+      return (this.getPlayerState(player).getFieldCount(field) - 3) * PlaygroundModel.getFieldValueAsNumber(field);
     }
     return 0;
   }
 
   private getPunishScore(player: Player, field: string): number {
-    return this.getPlayerState(player).getPunishCount(field) * this.getFieldValueAsNumber(field);
+    return this.getPlayerState(player).getPunishCount(field) * PlaygroundModel.getFieldValueAsNumber(field);
   }
 
   private isFieldClosed(field: string) {

@@ -24,6 +24,10 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
                         public dialogService: DialogService) {
   }
 
+  static getFieldValueAsNumber(field: string): number {
+    return field === 'B' ? 25 : parseInt(field, 10);
+  }
+
   ngOnInit() {
     this.settingsOpen = true;
     if (this.game.players.length === 0) {
@@ -63,14 +67,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     }
   }
 
-  triplePoint() {
-    this.game.multiplier = this.game.multiplier === 3 ? 1 : 3;
-  }
-
-  doublePoint() {
-    this.game.multiplier = this.game.multiplier === 2 ? 1 : 2;
-  }
-
   newGame(rotate = false) {
     this.settingsOpen = !this.validatePlayerSettings() || !this.validateSettings();
     this.reset();
@@ -91,19 +87,19 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     }
   }
 
+  triplePoint() {
+    this.game.multiplier = this.game.multiplier === 3 ? 1 : 3;
+  }
+
+  doublePoint() {
+    this.game.multiplier = this.game.multiplier === 2 ? 1 : 2;
+  }
+
   reset(): void {
     this.gameHistory = [];
     this.game.resetScore();
     this.stateHistory = [];
     this.customReset();
-  }
-
-  busted(): void {
-    this.dialogService.openDialog(`${this.game.getActualPlayer().name} busted!`);
-  }
-
-  getFieldValueAsNumber(field: string): number {
-    return field === 'B' ? 25 : parseInt(field, 10);
   }
 
   undo() {
