@@ -84,10 +84,6 @@ export class ChaseDragonComponent extends PlaygroundModel<ChaseDragonState> {
     return false;
   }
 
-  canBeDraw(): boolean {
-    return false;
-  }
-
   private getPlayerState(player: Player): ChaseDragonState {
     return this.state.filter(s => s.player.id === player.id)[0];
   }

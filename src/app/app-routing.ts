@@ -9,7 +9,6 @@ import {KillerModule} from './killer/killer.module';
 
 export const routes: Routes = [
   {path: '', component: MenuComponent},
-  {path: 'menu', component: MenuComponent},
   {
     path: 'x01',
     data: {name: 'Classic X01'},

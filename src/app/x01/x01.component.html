@@ -84,6 +84,11 @@
       </button>
 
       <mat-divider></mat-divider>
+      <button mat-raised-button class="button medium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
+        Victory First
+      </button>
+
+      <mat-divider></mat-divider>
       <button mat-raised-button class="button big" (click)="newGame()">Start</button>
       <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
     </div>

@@ -31,7 +31,9 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   ngOnInit() {
     this.settingsOpen = true;
+    console.log('ngOn');
     for (let i = 0; i < this.minimumNumberOfPlayers - this.game.players.length; i++) {
+      console.log('add');
       this.addPlayer();
     }
   }
@@ -56,14 +58,21 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
         .then(() => this.checkPlayerState())
         .then(() => {
           this.game.multiplier = 1;
-          this.game.players.forEach(player => {
-            if (player.win) {
-              this.dialogService.openDialog((this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`,
-                this.game.extraEndingMsg, this.game.clone().players);
+
+          const winners = this.game.players.filter(p => p.win);
+          if (winners.length > 0) {
+            if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
+              this.dialogService.openDialog('Game Over!', this.game.extraEndingMsg, this.game.clone().players);
               this.newGame(true);
-              return;
+            } else if (this.game.victoryFirst) {
+              this.dialogService.openDialog('Game Over!', this.game.extraEndingMsg, this.game.clone().players);
+              this.newGame(true);
+            } else {
+              while (this.game.getActualPlayer().win) {
+                this.game.nextPlayer();
+              }
             }
-          });
+          }
           this.throwEnabled = true;
         });
     }
@@ -128,7 +137,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   quit() {
-    this.route.navigate(['/menu']);
+    this.route.navigate(['/']);
     this.game.resetScore();
   }
 
@@ -158,10 +167,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   isFieldEnabledToThrow(field: number): boolean {
     return true;
-  }
-
-  canBeDraw(): boolean {
-    return false;
   }
 
   private playerSettingsValidation(): boolean {

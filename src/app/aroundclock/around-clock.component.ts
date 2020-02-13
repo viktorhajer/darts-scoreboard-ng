@@ -96,10 +96,6 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     return false;
   }
 
-  canBeDraw(): boolean {
-    return false;
-  }
-
   private getPreviousField(): string {
     return this.settings.fields[this.game.round > 0 ? this.game.round : 0];
   }

@@ -38,6 +38,9 @@
       <button mat-raised-button class="button medium"  [color]="settings.long?'primary':''" (click)="settings.toggleLong()">
         Long Dragon
       </button>
+      <button mat-raised-button class="button medium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
+        Victory First
+      </button>
 
       <mat-divider></mat-divider>
       <button mat-raised-button class="button big" (click)="newGame()">Start</button>

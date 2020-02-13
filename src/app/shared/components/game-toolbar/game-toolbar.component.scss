@@ -6,12 +6,13 @@
   .buttons {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-evenly;
   }
 
   button {
     width: calc(50% - 10px);
     height: calc(50% - 10px);
-    margin: 5px 0 5px 5px;
+    margin: 0;
   }
 
   .round-info {

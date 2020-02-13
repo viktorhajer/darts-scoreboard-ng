@@ -17,7 +17,7 @@ export class GameToolbarComponent {
   }
 
   quit() {
-    this.route.navigate(['/menu']);
+    this.route.navigate(['/']);
     this.game.resetScore();
   }
 

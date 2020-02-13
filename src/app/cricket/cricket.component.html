@@ -51,11 +51,11 @@
       </button>
       <mat-divider></mat-divider>
 
-      <button mat-raised-button class="button" (click)="settings.upper()">Upper</button>
-      <button mat-raised-button class="button" (click)="settings.lower()">Lower</button>
-      <button mat-raised-button class="button" (click)="settings.odd()">Odd</button>
-      <button mat-raised-button class="button" (click)="settings.even()">Even</button>
-      <button mat-raised-button class="button" (click)="settings.randomize()">Random</button>
+      <button mat-raised-button class="button shortmedium" (click)="settings.upper()">Upper</button>
+      <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
+      <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
+      <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
+      <button mat-raised-button class="button shortmedium" (click)="settings.randomize()">Random</button>
       <mat-divider></mat-divider>
 
       <h2>Style</h2>
@@ -70,6 +70,9 @@
       </button>
       <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''"
               (click)="settings.setStyle(4)">Black Out
+      </button>
+      <button mat-raised-button class="button shortmedium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
+        Victory First
       </button>
 
       <mat-divider></mat-divider>

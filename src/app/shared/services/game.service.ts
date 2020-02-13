@@ -11,6 +11,11 @@ export class GameService {
   multiplier: number;
   extraEndingMsg: string;
   round: number;
+  victoryFirst = true;
+
+  toggleVictoryFirst() {
+    this.victoryFirst = !this.victoryFirst;
+  }
 
   canAddPlayer(): boolean {
     return this.players.length < MAXIMUM_NUMBER_OF_PLAYERS;
@@ -66,7 +71,7 @@ export class GameService {
 
   isTheBestPlayer(actPlayer: Player): boolean {
     let bestPlayer = true;
-    this.players.forEach(player => {
+    this.players.filter(p => !p.win).forEach(player => {
       bestPlayer = bestPlayer && actPlayer.score >= player.score;
     });
     return bestPlayer;
@@ -74,18 +79,10 @@ export class GameService {
 
   isTheWorstPlayer(actPlayer: Player): boolean {
     let lastPlayer = true;
-    this.players.forEach(player => {
+    this.players.filter(p => !p.win).forEach(player => {
       lastPlayer = lastPlayer && actPlayer.score <= player.score;
     });
     return lastPlayer;
-  }
-
-  isDraw(): boolean {
-    const winners = this.players.filter(player => player.win);
-    if (winners.length > 0) {
-      return this.players.filter(player => player.id !== winners[0].id && player.score === winners[0].score).length > 0;
-    }
-    return false;
   }
 
   nextRound(): void {

@@ -68,12 +68,9 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     const gameEnded = (this.game.round === (this.settings.fields.length - 1))
       && this.game.isActualPlayerTheLast() && this.game.isTheLastThrow();
     if (gameEnded) {
-      this.game.players.forEach(p => {
-        p.win = this.game.isTheBestPlayer(p);
-        if (p.win) {
-          return;
-        }
-      }, this);
+      this.game.players.forEach(p => p.win = this.game.isTheBestPlayer(p));
+      console.log(this.game.players);
+
     } else if (this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }
