@@ -1,7 +1,10 @@
 <div class="side-right">
 
   <button mat-raised-button *ngFor="let i of getNumbers()" class="number" [color]="getNumberColor(i)"
-          [disabled]="isNumberDisabled(i)" (click)="throwNumber(i)">{{i}}</button>
+          [disabled]="isNumberDisabled(i)" (click)="throwNumber(i)">
+    {{i}}
+    <mat-icon *ngIf="playground.getFieldIcon(i)">{{ playground.getFieldIcon(i)}}</mat-icon>
+  </button>
   <button mat-raised-button class="number" [color]="getNumberColor(25)" [disabled]="isNumberDisabled(25)"
           (click)="throwNumber(25)">Bull</button>
 

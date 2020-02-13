@@ -4,4 +4,11 @@
   font-size: calc(10px + 0.8vw + 0.8vh);
   height: 19.4vh;
   width: 13.7vw;
+
+  mat-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 30px;
+  }
 }

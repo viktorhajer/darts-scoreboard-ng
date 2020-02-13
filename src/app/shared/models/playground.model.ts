@@ -148,6 +148,10 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     return false;
   }
 
+  getFieldIcon(field: number): string {
+    return '';
+  }
+
   isLastRound(): boolean {
     return false;
   }
