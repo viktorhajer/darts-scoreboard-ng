@@ -15,6 +15,7 @@
             <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
           </div>
           <div class="clear"></div>
+          <div class="line"></div>
           <div class="score"><label>Field: </label>{{getActualField(player)}}</div>
           <div class="clear"></div>
         </div>
@@ -39,10 +40,10 @@
         Enable Jump
       </button>
 
-      <button mat-raised-button class="button medium" [color]="settings.punishment?'primary':''"
-              (click)="settings.togglePunishment()">
-        Enable Punishment
-      </button>
+<!--      <button mat-raised-button class="button medium" [color]="settings.punishment?'primary':''"-->
+<!--              (click)="settings.togglePunishment()">-->
+<!--        Enable Punishment-->
+<!--      </button>-->
 
       <mat-divider></mat-divider>
       <button mat-raised-button class="button big" (click)="newGame()">Start</button>

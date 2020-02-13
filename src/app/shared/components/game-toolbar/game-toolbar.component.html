@@ -1,16 +1,18 @@
 <div class="toolbar">
-  <button mat-raised-button (click)="quit()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <button mat-raised-button (click)="playground.newGame(true)">
-    <mat-icon>refresh</mat-icon>
-  </button>
-  <button mat-raised-button (click)="showSettings()">
-    <mat-icon>build</mat-icon>
-  </button>
-  <button mat-raised-button (click)="playground.undo()">
-    <mat-icon>undo</mat-icon>
-  </button>
-  <button mat-stroked-button color="accent"><span class="round-info">{{game.round+1}}</span> </button>
+  <div class="buttons">
+    <button mat-raised-button (click)="quit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-raised-button (click)="playground.newGame(true)">
+      <mat-icon>refresh</mat-icon>
+    </button>
+    <button mat-raised-button (click)="showSettings()">
+      <mat-icon>build</mat-icon>
+    </button>
+    <button mat-raised-button (click)="playground.undo()">
+      <mat-icon>undo</mat-icon>
+    </button>
+  </div>
+  <div class="round-info">{{game.round+1}}</div>
 </div>
 <div class="clear"></div>

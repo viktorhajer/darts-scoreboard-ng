@@ -2,11 +2,17 @@
 @import "styles/player-score";
 @import "styles/theming";
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: mat-color($basic, 900);
   color: mat-color($basic, 50);
+  touch-action: manipulation;
+  width: 100%;
 }
 
 .clear {

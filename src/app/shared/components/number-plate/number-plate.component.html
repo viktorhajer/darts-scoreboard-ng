@@ -6,10 +6,10 @@
           (click)="throwNumber(25)">Bull</button>
 
   <button mat-raised-button class="number" [color]="game.multiplier === 2 ? 'primary' : ''"
-          (click)="playground.doublePoint()" *ngIf="playground.multiEnabled">Double</button>
+          (click)="playground.doublePoint()" [disabled]="!playground.multiEnabled">Double</button>
   <button mat-raised-button class="number" [color]="game.multiplier === 3 ? 'primary' : ''"
-          (click)="playground.triplePoint()" *ngIf="playground.multiEnabled">Triple</button>
+          (click)="playground.triplePoint()" [disabled]="!playground.multiEnabled">Triple</button>
 
-  <button mat-raised-button class="number" (click)="playground.skip()" *ngIf="playground.nextEnabled">Next</button>
-  <button mat-raised-button class="number" (click)="playground.throwNumber(0)" *ngIf="playground.zeroEnabled">0</button>
+  <button mat-raised-button class="number" (click)="playground.skip()" [disabled]="!playground.nextEnabled">Next</button>
+  <button mat-raised-button class="number" (click)="playground.throwNumber(0)" [disabled]="!playground.zeroEnabled">0</button>
 </div>

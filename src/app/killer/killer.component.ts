@@ -96,7 +96,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
 
   isFieldEnabledToThrow(field: number): boolean {
     if (this.game.round === 0) {
-      return !this.getAllEnabledFields().some(f => f === field);
+      return field !== 25 && !this.getAllEnabledFields().some(f => f === field);
     }
     return this.getAllEnabledFields().some(f => f === field);
   }

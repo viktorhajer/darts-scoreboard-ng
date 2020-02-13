@@ -1,13 +1,28 @@
+@import "../../../../styles/theming";
+
 .toolbar {
+  display: flex;
+
+  .buttons {
+    display: flex;
+    flex-flow: row wrap;
+  }
 
   button {
-    width: 40px;
-    height: 40px;
-    margin: 3px;
-    float: left;
+    width: calc(50% - 10px);
+    height: calc(50% - 10px);
+    margin: 5px 0 5px 5px;
   }
 
   .round-info {
     font-size: 18px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    border: 3px solid mat-color($basic, 700);
+    border-radius: 8px;
+    margin: 5px 5px 5px 0;
   }
 }
