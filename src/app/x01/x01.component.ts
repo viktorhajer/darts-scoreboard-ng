@@ -23,10 +23,6 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
     this.game.players.forEach(player => player.score = this.settings.startValue);
   }
 
-  validateSettings(): boolean {
-    return true;
-  }
-
   calculatePoints(score: number): Promise<any> {
     const player = this.game.getActualPlayer();
     const actualScore = score * this.game.multiplier;

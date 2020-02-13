@@ -21,7 +21,8 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   protected constructor(public game: GameService,
                         public route: Router,
-                        public dialogService: DialogService) {
+                        public dialogService: DialogService,
+                        public minimumNumberOfPlayers = 1) {
   }
 
   static getFieldValueAsNumber(field: string): number {
@@ -30,12 +31,12 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   ngOnInit() {
     this.settingsOpen = true;
-    if (this.game.players.length === 0) {
+    for (let i = 0; i < this.minimumNumberOfPlayers - this.game.players.length; i++) {
       this.addPlayer();
     }
   }
 
-  throwNumber(score: number) {
+  throwNumber(score: number): Promise<void> {
     if (this.throwEnabled) {
       this.save();
       this.throwEnabled = false;
@@ -51,7 +52,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
       actualPlayer.throws[this.game.actualThrow] = score * this.game.multiplier;
       this.game.actualThrow++;
 
-      this.calculatePoints(score)
+      return this.calculatePoints(score)
         .then(() => this.checkPlayerState())
         .then(() => {
           this.game.multiplier = 1;
@@ -60,6 +61,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
               this.dialogService.openDialog((this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`,
                 this.game.extraEndingMsg, this.game.clone().players);
               this.newGame(true);
+              return;
             }
           });
           this.throwEnabled = true;
@@ -68,7 +70,12 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   newGame(rotate = false) {
-    this.settingsOpen = !this.validatePlayerSettings() || !this.validateSettings();
+    this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+    if (!this.playerSettingsValidation()) {
+      this.dialogService.openDialog('Error!', 'Number of players are incorrect.');
+    } else if (this.settingsOpen) {
+      this.dialogService.openDialog('Error!', 'Settings is incorrect.');
+    }
     this.reset();
     if (rotate) {
       this.game.rotatePlayers();
@@ -112,11 +119,12 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   skip() {
-    if (!(this.game.isActualPlayerTheLast() && this.isLastRound())) {
-      this.save();
-      this.game.nextPlayer();
-      this.customNext();
-    }
+    const actThrow = this.game.actualThrow;
+    this.throwNumber(0).then(() => {
+      if (actThrow !== 2) {
+        this.skip();
+      }
+    });
   }
 
   quit() {
@@ -126,6 +134,10 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   customNext() {
     // should be implemented
+  }
+
+  customSettingsValidation(): boolean {
+    return true;
   }
 
   isSecondHighlighted(field: number): boolean {
@@ -148,7 +160,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     return false;
   }
 
-  private validatePlayerSettings(): boolean {
+  private playerSettingsValidation(): boolean {
     const players: Player[] = [];
     this.game.players.forEach(player => {
       if (player.name.length !== 0) {
@@ -156,7 +168,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
       }
     });
     this.game.players = players;
-    return players.length !== 0;
+    return players.length >= this.minimumNumberOfPlayers;
   }
 
   private save() {
@@ -169,8 +181,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   abstract customReset(): void;
-
-  abstract validateSettings(): boolean;
 
   abstract calculatePoints(score: number): Promise<any>;
 

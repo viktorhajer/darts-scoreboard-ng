@@ -17,7 +17,6 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
   constructor(game: GameService, route: Router, dialogService: DialogService) {
     super(game, route, dialogService);
     this.settings = new Settings();
-    this.nextEnabled = false;
   }
 
   customReset(): void {
@@ -25,7 +24,7 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     this.game.players.forEach(player => this.state.push(new ShanghaiState(player)));
   }
 
-  validateSettings(): boolean {
+  customSettingsValidation(): boolean {
     return this.settings.fields.length > 0;
   }
 

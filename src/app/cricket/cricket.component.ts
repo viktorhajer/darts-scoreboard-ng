@@ -24,7 +24,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     this.game.players.forEach(player => this.state.push(new CricketState(player)));
   }
 
-  validateSettings(): boolean {
+  customSettingsValidation(): boolean {
     return this.settings.fields.length > 0;
   }
 

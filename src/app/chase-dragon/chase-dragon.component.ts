@@ -24,10 +24,6 @@ export class ChaseDragonComponent extends PlaygroundModel<ChaseDragonState> {
     this.game.players.forEach(player => this.state.push(new ChaseDragonState(player)));
   }
 
-  validateSettings(): boolean {
-    return this.settings.fields.length > 0;
-  }
-
   calculatePoints(score: number): Promise<any> {
     const player = this.game.getActualPlayer();
     const field = score === 25 ? 'B' : (score + '');

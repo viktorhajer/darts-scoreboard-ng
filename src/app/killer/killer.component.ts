@@ -15,7 +15,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
   settings: Settings;
 
   constructor(game: GameService, route: Router, dialogService: DialogService) {
-    super(game, route, dialogService);
+    super(game, route, dialogService, 2);
     this.settings = new Settings();
     this.nextEnabled = false;
     this.zeroEnabled = false;
@@ -34,8 +34,8 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
     }
   }
 
-  validateSettings(): boolean {
-    return this.settings.fields.length > 0;
+  customSettingsValidation(): boolean {
+    return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
   }
 
   calculatePoints(score: number): Promise<any> {

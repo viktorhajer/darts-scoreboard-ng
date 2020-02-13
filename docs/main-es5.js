@@ -717,7 +717,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r103.newGame();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Save and Start");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Start");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -795,11 +795,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.game.players.forEach(function (player) {
             return _this2.state.push(new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"](player));
           });
-        }
-      }, {
-        key: "validateSettings",
-        value: function validateSettings() {
-          return this.settings.fields.length > 0;
         }
       }, {
         key: "calculatePoints",
@@ -932,7 +927,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
+      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
       template: function AroundClockComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1571,7 +1566,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r149.newGame();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Save and Start");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Start");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1645,11 +1640,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.game.players.forEach(function (player) {
             return _this6.state.push(new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ChaseDragonState"](player));
           });
-        }
-      }, {
-        key: "validateSettings",
-        value: function validateSettings() {
-          return this.settings.fields.length > 0;
         }
       }, {
         key: "calculatePoints",
@@ -1760,7 +1750,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
+      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
       template: function ChaseDragonComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -2124,13 +2114,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var g_r176 = ctx.$implicit;
+        var g_r175 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + g_r176.path));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + g_r175.path));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", g_r176.data.name, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", g_r175.data.name, " ");
       }
     }
 
@@ -2235,7 +2225,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       },
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLink"]],
-      styles: ["#menu[_ngcontent-%COMP%] {\n  width: 100vw;\n  height: 100vh;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-flow: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%] {\n  margin: 1vh 10vw;\n  height: 10vh;\n  line-height: 10vh;\n  font-size: calc(10px + 1vw);\n  text-align: center;\n  font-weight: bold;\n  width: 80vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZW51L0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcY29tcG9uZW50c1xcbWVudVxcbWVudS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxpQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDQ0Y7QURDRTtFQUNFLGdCQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsMkJBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWVudSB7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuXG4gIC5nYW1lU2VsZWN0Qm94IHtcbiAgICBtYXJnaW46IDF2aCAxMHZ3O1xuICAgIGhlaWdodDogMTB2aDtcbiAgICBsaW5lLWhlaWdodDogMTB2aDtcbiAgICBmb250LXNpemU6IGNhbGMoMTBweCArIDF2dyk7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIHdpZHRoOiA4MHZ3O1xuICB9XG59XG4iLCIjbWVudSB7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuI21lbnUgLmdhbWVTZWxlY3RCb3gge1xuICBtYXJnaW46IDF2aCAxMHZ3O1xuICBoZWlnaHQ6IDEwdmg7XG4gIGxpbmUtaGVpZ2h0OiAxMHZoO1xuICBmb250LXNpemU6IGNhbGMoMTBweCArIDF2dyk7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHdpZHRoOiA4MHZ3O1xufSJdfQ== */"]
+      styles: ["#menu[_ngcontent-%COMP%] {\n  width: 100vw;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-flow: column;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-top: 10vh;\n}\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%] {\n  margin: 0.2vh 0;\n  height: 8vh;\n  font-size: calc(10px + 1vw);\n  width: 80vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZW51L0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcY29tcG9uZW50c1xcbWVudVxcbWVudS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLGlCQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLGdCQUFBO0FDQ0Y7QURDRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsMkJBQUE7RUFDQSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL21lbnUvbWVudS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtZW51IHtcbiAgd2lkdGg6IDEwMHZ3O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgbWFyZ2luLXRvcDogMTB2aDtcblxuICAuZ2FtZVNlbGVjdEJveCB7XG4gICAgbWFyZ2luOiAwLjJ2aCAwO1xuICAgIGhlaWdodDogOHZoO1xuICAgIGZvbnQtc2l6ZTogY2FsYygxMHB4ICsgMXZ3KTtcbiAgICB3aWR0aDogODB2dztcbiAgfVxufVxuIiwiI21lbnUge1xuICB3aWR0aDogMTAwdnc7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAxMHZoO1xufVxuI21lbnUgLmdhbWVTZWxlY3RCb3gge1xuICBtYXJnaW46IDAuMnZoIDA7XG4gIGhlaWdodDogOHZoO1xuICBmb250LXNpemU6IGNhbGMoMTBweCArIDF2dyk7XG4gIHdpZHRoOiA4MHZ3O1xufSJdfQ== */"]
     });
     /*@__PURE__*/
 
@@ -2842,7 +2832,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r84.newGame();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Save and Start");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Start");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -2934,8 +2924,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
-        key: "validateSettings",
-        value: function validateSettings() {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
           return this.settings.fields.length > 0;
         }
       }, {
@@ -3163,7 +3153,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], ["class", "point", 4, "ngIf"], [1, "small"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]],
+      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], ["class", "score", 4, "ngIf"], [1, "small"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]],
       template: function CricketComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -3684,9 +3674,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function KillerComponent_ng_container_3_div_1_div_12_Template(rf, ctx) {
+    function KillerComponent_ng_container_3_div_1_div_13_ng_container_7_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Boarding: ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var player_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+
+        var ctx_r159 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r159.getBoarding(player_r156));
+      }
+    }
+
+    function KillerComponent_ng_container_3_div_1_div_13_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
 
@@ -3695,6 +3711,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Life: ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, KillerComponent_ng_container_3_div_1_div_13_ng_container_7_Template, 4, 1, "ng-container", 3);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -3706,39 +3732,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r158.getPlayerField(player_r156));
-      }
-    }
-
-    function KillerComponent_ng_container_3_div_1_div_13_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 11);
-      }
-    }
-
-    function KillerComponent_ng_container_3_div_1_div_18_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Boarding: ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var player_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-
-        var ctx_r160 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r158.getPlayerField(player_r156), " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r160.getBoarding(player_r156));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r158.getLife(player_r156), " ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r158.isKiller(player_r156));
       }
     }
 
@@ -3778,25 +3780,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "div", 11);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, KillerComponent_ng_container_3_div_1_div_12_Template, 4, 1, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, KillerComponent_ng_container_3_div_1_div_13_Template, 1, 0, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, KillerComponent_ng_container_3_div_1_div_13_Template, 8, 3, "div", 13);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 14);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "label");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Life: ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, KillerComponent_ng_container_3_div_1_div_18_Template, 4, 1, "div", 15);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "div", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3827,21 +3815,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](!player_r156.throws[2] ? "-" : player_r156.throws[2]);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r155.getPlayerField(player_r156) !== "0");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r155.getPlayerField(player_r156) !== "0");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r155.getLife(player_r156));
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r155.isKiller(player_r156));
       }
     }
 
@@ -3849,7 +3825,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, KillerComponent_ng_container_3_div_1_Template, 20, 13, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, KillerComponent_ng_container_3_div_1_Template, 15, 10, "div", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
@@ -3865,11 +3841,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function KillerComponent_div_4_div_8_Template(rf, ctx) {
       if (rf & 1) {
-        var _r167 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r166 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 19);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-label");
 
@@ -3877,29 +3853,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 22);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_div_8_Template_input_ngModelChange_4_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r167);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r166);
 
-          var player_r164 = ctx.$implicit;
-          return player_r164.name = $event;
+          var player_r163 = ctx.$implicit;
+          return player_r163.name = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 23);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_div_8_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r167);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r166);
 
-          var player_r164 = ctx.$implicit;
+          var player_r163 = ctx.$implicit;
 
-          var ctx_r168 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r167 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r168.removePlayer(player_r164);
+          return ctx_r167.removePlayer(player_r163);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-icon");
@@ -3914,24 +3890,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r164 = ctx.$implicit;
-        var i_r165 = ctx.index;
+        var player_r163 = ctx.$implicit;
+        var i_r164 = ctx.index;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Player #", i_r165 + 1, " name:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Player #", i_r164 + 1, " name:");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", player_r164.name);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", player_r163.name);
       }
     }
 
     function KillerComponent_div_4_Template(rf, ctx) {
       if (rf & 1) {
-        var _r170 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r169 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 15);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
 
@@ -3943,14 +3919,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Players ");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 16);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169);
 
-          var ctx_r169 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r168 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r169.addPlayer();
+          return ctx_r168.addPlayer();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-icon");
@@ -3963,35 +3939,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, KillerComponent_div_4_div_8_Template, 8, 2, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, KillerComponent_div_4_div_8_Template, 8, 2, "div", 17);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "mat-divider");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-form-field", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 18);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-form-field", 19);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Life limit");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-label");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Life limit");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "input", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "input", 20);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_13_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_14_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169);
 
-          var ctx_r171 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r170 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r171.settings.numberOfLives = $event;
+          return ctx_r170.settings.numberOfLives = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "mat-divider");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "mat-form-field", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "mat-form-field", 19);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-label");
 
@@ -3999,15 +3975,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "input", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "input", 20);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_18_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169);
 
-          var ctx_r172 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r171 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r172.settings.boardingLimit = $event;
+          return ctx_r171.settings.boardingLimit = $event;
         });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4015,28 +3993,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mat-divider");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 21);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_20_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169);
 
-          var ctx_r173 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r172 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r173.newGame();
+          return ctx_r172.newGame();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Save and Start");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Start");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 21);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_22_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169);
 
-          var ctx_r174 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r173 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r174.quit();
+          return ctx_r173.quit();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Cancel");
@@ -4057,11 +4035,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r153.game.players);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r153.settings.numberOfLives);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r153.settings.boardingLimit);
       }
@@ -4089,7 +4067,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _classCallCheck(this, KillerComponent);
 
-        _this20 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, game, route, dialogService));
+        _this20 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, game, route, dialogService, 2));
         _this20.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
         _this20.nextEnabled = false;
         _this20.zeroEnabled = false;
@@ -4115,9 +4093,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
-        key: "validateSettings",
-        value: function validateSettings() {
-          return this.settings.fields.length > 0;
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
+          return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
         }
       }, {
         key: "calculatePoints",
@@ -4292,7 +4270,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], ["class", "point", 4, "ngIf"], ["class", "clear", 4, "ngIf"], [1, "point2"], ["class", "point2", 4, "ngIf"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["appearance", "fill"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
+      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "line"], ["class", "score", 4, "ngIf"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], [1, "field-set"], ["appearance", "fill"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
       template: function KillerComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -4536,7 +4514,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           state.life = this.life;
           state.boarding = this.boarding;
           state.killer = this.killer;
-          state.dead = this.dead;
           return state;
         }
       }]);
@@ -5316,7 +5293,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r131.newGame();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Save and Start");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Start");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -5386,7 +5363,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _this27 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, game, route, dialogService));
         _this27.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        _this27.nextEnabled = false;
         return _this27;
       }
 
@@ -5401,8 +5377,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
-        key: "validateSettings",
-        value: function validateSettings() {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
           return this.settings.fields.length > 0;
         }
       }, {
@@ -5544,7 +5520,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], [1, "point"], [1, "small"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "big", "capitalize", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]],
+      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], [1, "score"], [1, "small"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "big", "capitalize", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]],
       template: function ShanghaiComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -6650,34 +6626,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _services_game_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../services/game.service */
-    "./src/app/shared/services/game.service.ts");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-    /* harmony import */
-
-
-    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ~services/dialog.service */
-    "./src/app/shared/services/dialog.service.ts");
 
     var PlaygroundModel =
     /*#__PURE__*/
     function () {
       function PlaygroundModel(game, route, dialogService) {
+        var minimumNumberOfPlayers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+
         _classCallCheck(this, PlaygroundModel);
 
         this.game = game;
         this.route = route;
         this.dialogService = dialogService;
+        this.minimumNumberOfPlayers = minimumNumberOfPlayers;
         this.throwEnabled = true;
         this.settingsOpen = true;
         this.nextEnabled = true;
@@ -6692,7 +6653,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngOnInit() {
           this.settingsOpen = true;
 
-          if (this.game.players.length === 0) {
+          for (var i = 0; i < this.minimumNumberOfPlayers - this.game.players.length; i++) {
             this.addPlayer();
           }
         }
@@ -6718,7 +6679,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             actualPlayer.throws[this.game.actualThrow] = score * this.game.multiplier;
             this.game.actualThrow++;
-            this.calculatePoints(score).then(function () {
+            return this.calculatePoints(score).then(function () {
               return _this30.checkPlayerState();
             }).then(function () {
               _this30.game.multiplier = 1;
@@ -6728,6 +6689,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this30.dialogService.openDialog(_this30.canBeDraw() && _this30.game.isDraw() ? 'End in a Draw' : "".concat(player.name, " is the winner!"), _this30.game.extraEndingMsg, _this30.game.clone().players);
 
                   _this30.newGame(true);
+
+                  return;
                 }
               });
 
@@ -6739,7 +6702,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "newGame",
         value: function newGame() {
           var rotate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-          this.settingsOpen = !this.validatePlayerSettings() || !this.validateSettings();
+          this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+
+          if (!this.playerSettingsValidation()) {
+            this.dialogService.openDialog('Error!', 'Number of players are incorrect.');
+          } else if (this.settingsOpen) {
+            this.dialogService.openDialog('Error!', 'Settings is incorrect.');
+          }
+
           this.reset();
 
           if (rotate) {
@@ -6794,11 +6764,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "skip",
         value: function skip() {
-          if (!(this.game.isActualPlayerTheLast() && this.isLastRound())) {
-            this.save();
-            this.game.nextPlayer();
-            this.customNext();
-          }
+          var _this31 = this;
+
+          var actThrow = this.game.actualThrow;
+          this.throwNumber(0).then(function () {
+            if (actThrow !== 2) {
+              _this31.skip();
+            }
+          });
         }
       }, {
         key: "quit",
@@ -6809,6 +6782,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customNext",
         value: function customNext() {// should be implemented
+        }
+      }, {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
+          return true;
         }
       }, {
         key: "isSecondHighlighted",
@@ -6836,8 +6814,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return false;
         }
       }, {
-        key: "validatePlayerSettings",
-        value: function validatePlayerSettings() {
+        key: "playerSettingsValidation",
+        value: function playerSettingsValidation() {
           var players = [];
           this.game.players.forEach(function (player) {
             if (player.name.length !== 0) {
@@ -6845,7 +6823,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           });
           this.game.players = players;
-          return players.length !== 0;
+          return players.length >= this.minimumNumberOfPlayers;
         }
       }, {
         key: "save",
@@ -6871,7 +6849,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     PlaygroundModel.ɵfac = function PlaygroundModel_Factory(t) {
-      return new (t || PlaygroundModel)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"]));
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinvalidFactory"]();
     };
 
     PlaygroundModel.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineDirective"]({
@@ -7967,7 +7945,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r32.newGame();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "Save and Start");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "Start");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8071,28 +8049,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(X01Component, _models_playground_mo6);
 
       function X01Component(game, route, dialogService) {
-        var _this31;
+        var _this32;
 
         _classCallCheck(this, X01Component);
 
-        _this31 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, game, route, dialogService));
-        _this31.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this31;
+        _this32 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, game, route, dialogService));
+        _this32.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this32;
       }
 
       _createClass(X01Component, [{
         key: "customReset",
         value: function customReset() {
-          var _this32 = this;
+          var _this33 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this32.settings.startValue;
+            return player.score = _this33.settings.startValue;
           });
-        }
-      }, {
-        key: "validateSettings",
-        value: function validateSettings() {
-          return true;
         }
       }, {
         key: "calculatePoints",
@@ -8164,7 +8137,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
+      consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]],
       template: function X01Component_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);

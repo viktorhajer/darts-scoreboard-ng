@@ -24,10 +24,6 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     this.game.players.forEach(player => this.state.push(new AroundClockState(player)));
   }
 
-  validateSettings(): boolean {
-    return this.settings.fields.length > 0;
-  }
-
   calculatePoints(score: number): Promise<any> {
 
     const player = this.game.getActualPlayer();

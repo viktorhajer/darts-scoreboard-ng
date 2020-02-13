@@ -15,15 +15,11 @@
             <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
           </div>
           <div class="clear"></div>
+          <div class="line"></div>
           <div class="score" *ngIf="getPlayerField(player) !== '0'">
             <label>Field: </label>{{getPlayerField(player)}}
-          </div>
-          <div class="clear" *ngIf="getPlayerField(player) !== '0'"></div>
-          <div class="note">
             <label>Life: </label>{{getLife(player)}}
-          </div>
-          <div class="note" *ngIf="!isKiller(player)">
-            <label>Boarding: </label>{{getBoarding(player)}}
+            <ng-container *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</ng-container>
           </div>
           <div class="clear"></div>
         </div>
@@ -43,18 +39,19 @@
       </div>
       <mat-divider></mat-divider>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Life limit</mat-label>
-        <input [(ngModel)]="settings.numberOfLives" type="number" matInput>
-      </mat-form-field>
-      <mat-divider></mat-divider>
-      <mat-form-field appearance="fill">
-        <mat-label>Boarding</mat-label>
-        <input [(ngModel)]="settings.boardingLimit" type="number" matInput>
-      </mat-form-field>
+      <div class="field-set">
+        <mat-form-field appearance="fill">
+          <mat-label>Life limit</mat-label>
+          <input [(ngModel)]="settings.numberOfLives" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Boarding</mat-label>
+          <input [(ngModel)]="settings.boardingLimit" type="number" matInput>
+        </mat-form-field>
+      </div>
 
       <mat-divider></mat-divider>
-      <button mat-raised-button class="button big" (click)="newGame()">Save and Start</button>
+      <button mat-raised-button class="button big" (click)="newGame()">Start</button>
       <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
     </div>
 

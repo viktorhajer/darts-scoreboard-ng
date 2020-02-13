@@ -2,10 +2,6 @@
 @import "styles/player-score";
 @import "styles/theming";
 
-html, body {
-  height: 100%;
-}
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -20,7 +16,6 @@ body {
 #playgroundContent {
 
   width: 100vw;
-  height: 100vh;
   display: flex;
 
   .side-left {

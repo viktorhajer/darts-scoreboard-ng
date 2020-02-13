@@ -1,18 +1,14 @@
 #menu {
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-flow: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 10vh;
 
   .gameSelectBox {
-    margin: 1vh 10vw;
-    height: 10vh;
-    line-height: 10vh;
+    margin: 0.2vh 0;
+    height: 8vh;
     font-size: calc(10px + 1vw);
-    text-align: center;
-    font-weight: bold;
     width: 80vw;
   }
 }

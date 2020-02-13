@@ -5,7 +5,6 @@ export class KillerState extends PlaygroundState {
 
   actField: number;
   killer: boolean;
-  dead: boolean;
 
   constructor(player: Player, public life = 5, public boarding = 3) {
     super(player);
@@ -23,7 +22,6 @@ export class KillerState extends PlaygroundState {
     state.life = this.life;
     state.boarding = this.boarding;
     state.killer = this.killer;
-    state.dead = this.dead;
     return state;
   }
 }

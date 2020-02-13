@@ -324,7 +324,7 @@ function AroundClockComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "mat-divider");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_div_4_Template_button_click_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r100); const ctx_r103 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r103.newGame(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Save and Start");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Start");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "button", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_div_4_Template_button_click_17_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r100); const ctx_r104 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r104.quit(); });
@@ -356,9 +356,6 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
     customReset() {
         this.state = [];
         this.game.players.forEach(player => this.state.push(new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"](player)));
-    }
-    validateSettings() {
-        return this.settings.fields.length > 0;
     }
     calculatePoints(score) {
         const player = this.game.getActualPlayer();
@@ -436,7 +433,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
     }
 }
 AroundClockComponent.ɵfac = function AroundClockComponent_Factory(t) { return new (t || AroundClockComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"])); };
-AroundClockComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AroundClockComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function AroundClockComponent_Template(rf, ctx) { if (rf & 1) {
+AroundClockComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AroundClockComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function AroundClockComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, AroundClockComponent_app_game_toolbar_2_Template, 1, 1, "app-game-toolbar", 2);
@@ -732,7 +729,7 @@ function ChaseDragonComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "mat-divider");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChaseDragonComponent_div_4_Template_button_click_13_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r147); const ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r149.newGame(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Save and Start");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Start");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ChaseDragonComponent_div_4_Template_button_click_15_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r147); const ctx_r150 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r150.quit(); });
@@ -762,9 +759,6 @@ class ChaseDragonComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
     customReset() {
         this.state = [];
         this.game.players.forEach(player => this.state.push(new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ChaseDragonState"](player)));
-    }
-    validateSettings() {
-        return this.settings.fields.length > 0;
     }
     calculatePoints(score) {
         const player = this.game.getActualPlayer();
@@ -827,7 +821,7 @@ class ChaseDragonComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
     }
 }
 ChaseDragonComponent.ɵfac = function ChaseDragonComponent_Factory(t) { return new (t || ChaseDragonComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"])); };
-ChaseDragonComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ChaseDragonComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function ChaseDragonComponent_Template(rf, ctx) { if (rf & 1) {
+ChaseDragonComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ChaseDragonComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function ChaseDragonComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ChaseDragonComponent_app_game_toolbar_2_Template, 1, 1, "app-game-toolbar", 2);
@@ -1004,10 +998,10 @@ function MenuComponent_button_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const g_r176 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + g_r176.path));
+    const g_r175 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + g_r175.path));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", g_r176.data.name, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", g_r175.data.name, " ");
 } }
 const routes = [
     {
@@ -1057,7 +1051,7 @@ MenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.getGameList());
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLink"]], styles: ["#menu[_ngcontent-%COMP%] {\n  width: 100vw;\n  height: 100vh;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-flow: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%] {\n  margin: 1vh 10vw;\n  height: 10vh;\n  line-height: 10vh;\n  font-size: calc(10px + 1vw);\n  text-align: center;\n  font-weight: bold;\n  width: 80vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZW51L0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcY29tcG9uZW50c1xcbWVudVxcbWVudS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxpQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDQ0Y7QURDRTtFQUNFLGdCQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0EsMkJBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWVudSB7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuXG4gIC5nYW1lU2VsZWN0Qm94IHtcbiAgICBtYXJnaW46IDF2aCAxMHZ3O1xuICAgIGhlaWdodDogMTB2aDtcbiAgICBsaW5lLWhlaWdodDogMTB2aDtcbiAgICBmb250LXNpemU6IGNhbGMoMTBweCArIDF2dyk7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgIHdpZHRoOiA4MHZ3O1xuICB9XG59XG4iLCIjbWVudSB7XG4gIHdpZHRoOiAxMDB2dztcbiAgaGVpZ2h0OiAxMDB2aDtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuI21lbnUgLmdhbWVTZWxlY3RCb3gge1xuICBtYXJnaW46IDF2aCAxMHZ3O1xuICBoZWlnaHQ6IDEwdmg7XG4gIGxpbmUtaGVpZ2h0OiAxMHZoO1xuICBmb250LXNpemU6IGNhbGMoMTBweCArIDF2dyk7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHdpZHRoOiA4MHZ3O1xufSJdfQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_8__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_9__["RouterLink"]], styles: ["#menu[_ngcontent-%COMP%] {\n  width: 100vw;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-flow: column;\n  -webkit-box-align: center;\n          align-items: center;\n  margin-top: 10vh;\n}\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%] {\n  margin: 0.2vh 0;\n  height: 8vh;\n  font-size: calc(10px + 1vw);\n  width: 80vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZW51L0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcY29tcG9uZW50c1xcbWVudVxcbWVudS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLGlCQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLGdCQUFBO0FDQ0Y7QURDRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsMkJBQUE7RUFDQSxXQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL21lbnUvbWVudS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNtZW51IHtcbiAgd2lkdGg6IDEwMHZ3O1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWZsb3c6IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgbWFyZ2luLXRvcDogMTB2aDtcblxuICAuZ2FtZVNlbGVjdEJveCB7XG4gICAgbWFyZ2luOiAwLjJ2aCAwO1xuICAgIGhlaWdodDogOHZoO1xuICAgIGZvbnQtc2l6ZTogY2FsYygxMHB4ICsgMXZ3KTtcbiAgICB3aWR0aDogODB2dztcbiAgfVxufVxuIiwiI21lbnUge1xuICB3aWR0aDogMTAwdnc7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAxMHZoO1xufVxuI21lbnUgLmdhbWVTZWxlY3RCb3gge1xuICBtYXJnaW46IDAuMnZoIDA7XG4gIGhlaWdodDogOHZoO1xuICBmb250LXNpemU6IGNhbGMoMTBweCArIDF2dyk7XG4gIHdpZHRoOiA4MHZ3O1xufSJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MenuComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -1307,7 +1301,7 @@ function CricketComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "mat-divider");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "button", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_div_4_Template_button_click_36_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r74); const ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r84.newGame(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Save and Start");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Start");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_div_4_Template_button_click_38_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r74); const ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r85.quit(); });
@@ -1346,7 +1340,7 @@ class CricketComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE
         this.state = [];
         this.game.players.forEach(player => this.state.push(new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["CricketState"](player)));
     }
-    validateSettings() {
+    customSettingsValidation() {
         return this.settings.fields.length > 0;
     }
     calculatePoints(score) {
@@ -1503,7 +1497,7 @@ class CricketComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE
     }
 }
 CricketComponent.ɵfac = function CricketComponent_Factory(t) { return new (t || CricketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"])); };
-CricketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CricketComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], ["class", "point", 4, "ngIf"], [1, "small"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]], template: function CricketComponent_Template(rf, ctx) { if (rf & 1) {
+CricketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: CricketComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], ["class", "score", 4, "ngIf"], [1, "small"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]], template: function CricketComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, CricketComponent_app_game_toolbar_2_Template, 1, 1, "app-game-toolbar", 2);
@@ -1767,34 +1761,40 @@ function KillerComponent_app_game_toolbar_2_Template(rf, ctx) { if (rf & 1) {
     const ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r151.playground);
 } }
-function KillerComponent_ng_container_3_div_1_div_12_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 16);
+function KillerComponent_ng_container_3_div_1_div_13_ng_container_7_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Boarding: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+} if (rf & 2) {
+    const player_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+    const ctx_r159 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r159.getBoarding(player_r156));
+} }
+function KillerComponent_ng_container_3_div_1_div_13_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Field: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Life: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, KillerComponent_ng_container_3_div_1_div_13_ng_container_7_Template, 4, 1, "ng-container", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const player_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
     const ctx_r158 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r158.getPlayerField(player_r156));
-} }
-function KillerComponent_ng_container_3_div_1_div_13_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 11);
-} }
-function KillerComponent_ng_container_3_div_1_div_18_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Boarding: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const player_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-    const ctx_r160 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r158.getPlayerField(player_r156), " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r160.getBoarding(player_r156));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r158.getLife(player_r156), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r158.isKiller(player_r156));
 } }
 function KillerComponent_ng_container_3_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
@@ -1814,16 +1814,9 @@ function KillerComponent_ng_container_3_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "div", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, KillerComponent_ng_container_3_div_1_div_12_Template, 4, 1, "div", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, KillerComponent_ng_container_3_div_1_div_13_Template, 1, 0, "div", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Life: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, KillerComponent_ng_container_3_div_1_div_18_Template, 4, 1, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "div", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "div", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, KillerComponent_ng_container_3_div_1_div_13_Template, 8, 3, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "div", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -1839,18 +1832,12 @@ function KillerComponent_ng_container_3_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](!player_r156.throws[1] ? "-" : player_r156.throws[1]);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](!player_r156.throws[2] ? "-" : player_r156.throws[2]);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r155.getPlayerField(player_r156) !== "0");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r155.getPlayerField(player_r156) !== "0");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r155.getLife(player_r156));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r155.isKiller(player_r156));
 } }
 function KillerComponent_ng_container_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, KillerComponent_ng_container_3_div_1_Template, 20, 13, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, KillerComponent_ng_container_3_div_1_Template, 15, 10, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
     const ctx_r152 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -1858,72 +1845,73 @@ function KillerComponent_ng_container_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r152.game.players);
 } }
 function KillerComponent_div_4_div_8_Template(rf, ctx) { if (rf & 1) {
-    const _r167 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r166 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 23);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_div_8_Template_input_ngModelChange_4_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r167); const player_r164 = ctx.$implicit; return player_r164.name = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_div_8_Template_input_ngModelChange_4_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r166); const player_r163 = ctx.$implicit; return player_r163.name = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_div_8_Template_button_click_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r167); const player_r164 = ctx.$implicit; const ctx_r168 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r168.removePlayer(player_r164); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_div_8_Template_button_click_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r166); const player_r163 = ctx.$implicit; const ctx_r167 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r167.removePlayer(player_r163); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-icon");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "remove_circle");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const player_r164 = ctx.$implicit;
-    const i_r165 = ctx.index;
+    const player_r163 = ctx.$implicit;
+    const i_r164 = ctx.index;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Player #", i_r165 + 1, " name:");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Player #", i_r164 + 1, " name:");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", player_r164.name);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", player_r163.name);
 } }
 function KillerComponent_div_4_Template(rf, ctx) { if (rf & 1) {
-    const _r170 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 17);
+    const _r169 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Killer Game Settings");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "h2");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Players ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170); const ctx_r169 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r169.addPlayer(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_5_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169); const ctx_r168 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r168.addPlayer(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-icon");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "add_circle");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, KillerComponent_div_4_div_8_Template, 8, 2, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, KillerComponent_div_4_div_8_Template, 8, 2, "div", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "mat-divider");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-form-field", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Life limit");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "mat-form-field", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Life limit");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "input", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_13_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170); const ctx_r171 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r171.settings.numberOfLives = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "input", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_14_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169); const ctx_r170 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r170.settings.numberOfLives = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "mat-divider");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "mat-form-field", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "mat-form-field", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "mat-label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Boarding");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "input", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_18_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170); const ctx_r172 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r172.settings.boardingLimit = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "input", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_div_4_Template_input_ngModelChange_18_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169); const ctx_r171 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r171.settings.boardingLimit = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mat-divider");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170); const ctx_r173 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r173.newGame(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Save and Start");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_20_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169); const ctx_r172 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r172.newGame(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Start");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_22_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r170); const ctx_r174 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r174.quit(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_div_4_Template_button_click_22_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r169); const ctx_r173 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r173.quit(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Cancel");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1933,9 +1921,9 @@ function KillerComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx_r153.game.canAddPlayer());
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r153.game.players);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r153.settings.numberOfLives);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r153.settings.boardingLimit);
 } }
 function KillerComponent_app_number_plate_5_Template(rf, ctx) { if (rf & 1) {
@@ -1946,7 +1934,7 @@ function KillerComponent_app_number_plate_5_Template(rf, ctx) { if (rf & 1) {
 } }
 class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["PlaygroundModel"] {
     constructor(game, route, dialogService) {
-        super(game, route, dialogService);
+        super(game, route, dialogService, 2);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
         this.nextEnabled = false;
         this.zeroEnabled = false;
@@ -1961,8 +1949,8 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
             this.game.nextPlayer();
         }
     }
-    validateSettings() {
-        return this.settings.fields.length > 0;
+    customSettingsValidation() {
+        return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
     }
     calculatePoints(score) {
         const player = this.game.getActualPlayer();
@@ -2066,7 +2054,7 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
     }
 }
 KillerComponent.ɵfac = function KillerComponent_Factory(t) { return new (t || KillerComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"])); };
-KillerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: KillerComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], ["class", "point", 4, "ngIf"], ["class", "clear", 4, "ngIf"], [1, "point2"], ["class", "point2", 4, "ngIf"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["appearance", "fill"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function KillerComponent_Template(rf, ctx) { if (rf & 1) {
+KillerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: KillerComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "clear"], [1, "line"], ["class", "score", 4, "ngIf"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], [1, "field-set"], ["appearance", "fill"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function KillerComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, KillerComponent_app_game_toolbar_2_Template, 1, 1, "app-game-toolbar", 2);
@@ -2194,7 +2182,6 @@ class KillerState extends _models_playground_state_model__WEBPACK_IMPORTED_MODUL
         state.life = this.life;
         state.boarding = this.boarding;
         state.killer = this.killer;
-        state.dead = this.dead;
         return state;
     }
 }
@@ -2574,7 +2561,7 @@ function ShanghaiComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "mat-divider");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "button", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_div_4_Template_button_click_21_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r127); const ctx_r131 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r131.newGame(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Save and Start");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Start");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_div_4_Template_button_click_23_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r127); const ctx_r132 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r132.quit(); });
@@ -2604,13 +2591,12 @@ class ShanghaiComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
     constructor(game, route, dialogService) {
         super(game, route, dialogService);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        this.nextEnabled = false;
     }
     customReset() {
         this.state = [];
         this.game.players.forEach(player => this.state.push(new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ShanghaiState"](player)));
     }
-    validateSettings() {
+    customSettingsValidation() {
         return this.settings.fields.length > 0;
     }
     calculatePoints(score) {
@@ -2703,7 +2689,7 @@ class ShanghaiComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
     }
 }
 ShanghaiComponent.ɵfac = function ShanghaiComponent_Factory(t) { return new (t || ShanghaiComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"])); };
-ShanghaiComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ShanghaiComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], [1, "point"], [1, "small"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "big", "capitalize", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]], template: function ShanghaiComponent_Template(rf, ctx) { if (rf & 1) {
+ShanghaiComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ShanghaiComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "field-set"], [1, "score"], [1, "small"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "big", "capitalize", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"]], template: function ShanghaiComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, ShanghaiComponent_app_game_toolbar_2_Template, 1, 1, "app-game-toolbar", 2);
@@ -3220,21 +3206,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _player_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./player.model */ "./src/app/shared/models/player.model.ts");
 /* harmony import */ var _throw_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./throw.model */ "./src/app/shared/models/throw.model.ts");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/game.service */ "./src/app/shared/services/game.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _services_dialog_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ~services/dialog.service */ "./src/app/shared/services/dialog.service.ts");
-
-
-
 
 
 
 
 class PlaygroundModel {
-    constructor(game, route, dialogService) {
+    constructor(game, route, dialogService, minimumNumberOfPlayers = 1) {
         this.game = game;
         this.route = route;
         this.dialogService = dialogService;
+        this.minimumNumberOfPlayers = minimumNumberOfPlayers;
         this.throwEnabled = true;
         this.settingsOpen = true;
         this.nextEnabled = true;
@@ -3248,7 +3229,7 @@ class PlaygroundModel {
     }
     ngOnInit() {
         this.settingsOpen = true;
-        if (this.game.players.length === 0) {
+        for (let i = 0; i < this.minimumNumberOfPlayers - this.game.players.length; i++) {
             this.addPlayer();
         }
     }
@@ -3266,7 +3247,7 @@ class PlaygroundModel {
             }
             actualPlayer.throws[this.game.actualThrow] = score * this.game.multiplier;
             this.game.actualThrow++;
-            this.calculatePoints(score)
+            return this.calculatePoints(score)
                 .then(() => this.checkPlayerState())
                 .then(() => {
                 this.game.multiplier = 1;
@@ -3274,6 +3255,7 @@ class PlaygroundModel {
                     if (player.win) {
                         this.dialogService.openDialog((this.canBeDraw() && this.game.isDraw()) ? 'End in a Draw' : `${player.name} is the winner!`, this.game.extraEndingMsg, this.game.clone().players);
                         this.newGame(true);
+                        return;
                     }
                 });
                 this.throwEnabled = true;
@@ -3281,7 +3263,13 @@ class PlaygroundModel {
         }
     }
     newGame(rotate = false) {
-        this.settingsOpen = !this.validatePlayerSettings() || !this.validateSettings();
+        this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+        if (!this.playerSettingsValidation()) {
+            this.dialogService.openDialog('Error!', 'Number of players are incorrect.');
+        }
+        else if (this.settingsOpen) {
+            this.dialogService.openDialog('Error!', 'Settings is incorrect.');
+        }
         this.reset();
         if (rotate) {
             this.game.rotatePlayers();
@@ -3318,11 +3306,12 @@ class PlaygroundModel {
         }
     }
     skip() {
-        if (!(this.game.isActualPlayerTheLast() && this.isLastRound())) {
-            this.save();
-            this.game.nextPlayer();
-            this.customNext();
-        }
+        const actThrow = this.game.actualThrow;
+        this.throwNumber(0).then(() => {
+            if (actThrow !== 2) {
+                this.skip();
+            }
+        });
     }
     quit() {
         this.route.navigate(['/menu']);
@@ -3330,6 +3319,9 @@ class PlaygroundModel {
     }
     customNext() {
         // should be implemented
+    }
+    customSettingsValidation() {
+        return true;
     }
     isSecondHighlighted(field) {
         return false;
@@ -3346,7 +3338,7 @@ class PlaygroundModel {
     canBeDraw() {
         return false;
     }
-    validatePlayerSettings() {
+    playerSettingsValidation() {
         const players = [];
         this.game.players.forEach(player => {
             if (player.name.length !== 0) {
@@ -3354,7 +3346,7 @@ class PlaygroundModel {
             }
         });
         this.game.players = players;
-        return players.length !== 0;
+        return players.length >= this.minimumNumberOfPlayers;
     }
     save() {
         this.gameHistory.push(this.game.clone());
@@ -3365,7 +3357,7 @@ class PlaygroundModel {
         }
     }
 }
-PlaygroundModel.ɵfac = function PlaygroundModel_Factory(t) { return new (t || PlaygroundModel)(_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_4__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_6__["DialogService"])); };
+PlaygroundModel.ɵfac = function PlaygroundModel_Factory(t) { _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵinvalidFactory"](); };
 PlaygroundModel.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵdefineDirective"]({ type: PlaygroundModel });
 
 
@@ -3862,7 +3854,7 @@ function X01Component_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "mat-divider");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "button", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_div_4_Template_button_click_45_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r32.newGame(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "Save and Start");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "Start");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "button", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_div_4_Template_button_click_47_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r33.quit(); });
@@ -3915,9 +3907,6 @@ class X01Component extends _models_playground_model__WEBPACK_IMPORTED_MODULE_2__
     }
     customReset() {
         this.game.players.forEach(player => player.score = this.settings.startValue);
-    }
-    validateSettings() {
-        return true;
     }
     calculatePoints(score) {
         const player = this.game.getActualPlayer();
@@ -3976,7 +3965,7 @@ class X01Component extends _models_playground_model__WEBPACK_IMPORTED_MODULE_2__
     }
 }
 X01Component.ɵfac = function X01Component_Factory(t) { return new (t || X01Component)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_3__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_5__["DialogService"])); };
-X01Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: X01Component, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "point"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function X01Component_Template(rf, ctx) { if (rf & 1) {
+X01Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: X01Component, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], ["class", "settings", 4, "ngIf"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [1, "player_info"], [1, "name"], [1, "shoots"], [1, "shoot"], [1, "shoot", "total"], [1, "clear"], [1, "line"], [1, "score"], [1, "settings"], ["mat-icon-button", "", 3, "disabled", "click"], [4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["appearance", "fill"], ["type", "text", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-icon-button", "", 3, "click"]], template: function X01Component_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, X01Component_app_game_toolbar_2_Template, 1, 1, "app-game-toolbar", 2);
