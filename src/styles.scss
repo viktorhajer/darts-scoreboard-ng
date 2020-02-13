@@ -2,6 +2,10 @@
 @import "styles/player-score";
 @import "styles/theming";
 
+* {
+  touch-action: manipulation;
+}
+
 html, body {
   height: 100%;
 }

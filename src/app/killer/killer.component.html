@@ -14,13 +14,17 @@
             <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>
             <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
           </div>
-          <div class="clear"></div>
-          <div class="line"></div>
-          <div class="score" *ngIf="getPlayerField(player) !== '0'">
-            <label>Field: </label>{{getPlayerField(player)}}
-            <label>Life: </label>{{getLife(player)}}
-            <ng-container *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</ng-container>
-          </div>
+          <ng-container *ngIf="getPlayerField(player) !== '0'">
+            <div class="clear"></div>
+            <div class="line"></div>
+            <div class="score"><label>Field: </label>{{getPlayerField(player)}}</div>
+            <div class="clear"></div>
+            <div class="line"></div>
+            <div class="score">
+              <label>Life: </label>{{getLife(player)}}
+              <ng-container *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</ng-container>
+            </div>
+          </ng-container>
           <div class="clear"></div>
         </div>
       </div>
