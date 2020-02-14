@@ -1,6 +1,14 @@
 @import "~@angular/material/theming";
 @include mat-core();
 
-$primary: mat-palette($mat-pink);
-$accent: mat-palette($mat-blue-grey);
-$basic: mat-palette($mat-grey);
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-grey);
+$app-theme: mat-dark-theme($primary, $accent);
+@include angular-material-theme($app-theme);
+
+.alternative-theme {
+  $alternate-primary: mat-palette($mat-indigo);
+  $alternate-accent: mat-palette($mat-pink);
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+  @include angular-material-theme($alternate-theme);
+}

@@ -6,4 +6,9 @@ import {Component} from '@angular/core';
   styles: []
 })
 export class AppComponent {
+  constructor() {
+    document.addEventListener('touchmove',  (event: any) => {
+      if (event.scale !== 1) { event.preventDefault(); }
+    }, { passive: false });
+  }
 }

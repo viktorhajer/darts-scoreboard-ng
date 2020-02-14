@@ -45,7 +45,7 @@
       <mat-divider></mat-divider>
 
       <h2>Fields</h2>
-      <button mat-raised-button class="button" [color]="settings.numbs[i]?'primary':''"
+      <button mat-raised-button class="button" [color]="settings.isFieldAllowed(i)?'primary':''"
               *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
         {{numb === 21 ? 'B' : numb}}
       </button>

@@ -50,6 +50,10 @@ export class Settings {
     return numbers;
   }
 
+  isFieldAllowed(field: number): boolean {
+    return !!this.numbs[field];
+  }
+
   setNumber(i: number) {
     this.numbs[i] = !this.numbs[i];
     this.initFields();

@@ -4,7 +4,6 @@ export class Settings {
   numbs: boolean[] = [];
   noScore: boolean;
   halveIt: boolean;
-  numberOfMaxFields = 8;
 
   constructor() {
     this.fields = [];
@@ -24,7 +23,7 @@ export class Settings {
     for (let i = 0; i < this.numbs.length; i++) {
       this.numbs[i] = false;
     }
-    for (let i = 0; i < this.numberOfMaxFields; i++) {
+    for (let i = 0; i < 8; i++) {
       let rand = Math.floor(Math.random() * 21);
       while (this.numbs[rand]) {
         rand = Math.floor(Math.random() * 21);

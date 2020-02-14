@@ -7,6 +7,9 @@ import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 
+export const FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
+export const FIELDS_COUNT = 21;
+
 export abstract class PlaygroundModel<T extends PlaygroundState> implements OnInit {
 
   throwEnabled = true;
@@ -31,9 +34,8 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   ngOnInit() {
     this.settingsOpen = true;
-    console.log('ngOn');
-    for (let i = 0; i < this.minimumNumberOfPlayers - this.game.players.length; i++) {
-      console.log('add');
+    const numberOfPlayerToAdd = this.minimumNumberOfPlayers - this.game.players.length;
+    for (let i = 0; i < numberOfPlayerToAdd; i++) {
       this.addPlayer();
     }
   }
@@ -93,7 +95,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   addPlayer(): void {
     const player = new Player(uuid());
-    player.name = 'Player ' + (this.game.players.length + 1);
+    player.name = 'P' + (this.game.players.length + 1);
     this.game.players.push(player);
   }
 
@@ -149,15 +151,19 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     return true;
   }
 
-  isSecondHighlighted(field: number): boolean {
-    return false;
-  }
-
   isHighlighted(field: number): boolean {
     return false;
   }
 
+  isSecondHighlighted(field: number): boolean {
+    return false;
+  }
+
   getFieldIcon(field: number): string {
+    return '';
+  }
+
+  getFieldNote(field: number): string {
     return '';
   }
 

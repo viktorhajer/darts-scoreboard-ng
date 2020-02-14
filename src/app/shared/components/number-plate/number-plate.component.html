@@ -4,9 +4,14 @@
           [disabled]="isNumberDisabled(i)" (click)="throwNumber(i)">
     {{i}}
     <mat-icon *ngIf="playground.getFieldIcon(i)">{{ playground.getFieldIcon(i)}}</mat-icon>
+    <div class="field-note" *ngIf="playground.getFieldNote(i)">{{ playground.getFieldNote(i)}}</div>
   </button>
   <button mat-raised-button class="number" [color]="getNumberColor(25)" [disabled]="isNumberDisabled(25)"
-          (click)="throwNumber(25)">Bull</button>
+          (click)="throwNumber(25)">
+    Bull
+    <mat-icon *ngIf="playground.getFieldIcon(25)">{{ playground.getFieldIcon(25)}}</mat-icon>
+    <div class="field-note" *ngIf="playground.getFieldNote(25)">{{ playground.getFieldNote(25)}}</div>
+  </button>
 
   <button mat-raised-button class="number" [color]="game.multiplier === 2 ? 'primary' : ''"
           (click)="playground.doublePoint()" [disabled]="!playground.multiEnabled">Double</button>

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AroundClockState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {PlaygroundModel} from '~models/playground.model';
+import {FIELDS, FIELDS_COUNT, PlaygroundModel} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
@@ -29,14 +29,14 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     const player = this.game.getActualPlayer();
     const field = score === 25 ? 'B' : (score + '');
     const state: AroundClockState = this.getPlayerState(player);
-    if (this.settings.fields[state.getActFieldIndex()] === field) {
+    if (FIELDS[state.getActFieldIndex()] === field) {
       // last throw
-      if (state.actFieldIndex >= this.settings.fields.length - this.game.multiplier) {
-        this.game.multiplier = this.game.multiplier === 1 ? 1 : this.settings.fields.length - (state.actFieldIndex + 1);
+      if (state.actFieldIndex >= FIELDS_COUNT - this.game.multiplier) {
+        this.game.multiplier = this.game.multiplier === 1 ? 1 : FIELDS_COUNT - (state.actFieldIndex + 1);
       }
       state.increaseActFieldIndex(this.settings.jump ? this.game.multiplier : 1);
-      if (state.actFieldIndex >= this.settings.fields.length) {
-        state.actFieldIndex = this.settings.fields.length;
+      if (state.actFieldIndex >= FIELDS_COUNT) {
+        state.actFieldIndex = FIELDS_COUNT;
       }
     }
     player.score++;
@@ -45,7 +45,7 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
 
   checkPlayerState(): Promise<any> {
     const player = this.game.getActualPlayer();
-    if ((this.settings.fields.length - 1) < this.getPlayerState(player).getActFieldIndex()) {
+    if ((FIELDS_COUNT - 1) < this.getPlayerState(player).getActFieldIndex()) {
       player.win = true;
     } else if (this.game.actualThrow === 3) {
       let multi = 1;
@@ -68,7 +68,7 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     if (field === 25) {
       fieldStr = 'B';
     }
-    return this.settings.fields.indexOf(fieldStr) === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
+    return FIELDS.indexOf(fieldStr) === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
   }
 
   isHighlighted(field: number): boolean {
@@ -83,13 +83,13 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
         fieldStr = 'B';
       }
       ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
-        .some(p => this.settings.fields.indexOf(fieldStr) === this.getPlayerState(p).getActFieldIndex());
+        .some(p => FIELDS.indexOf(fieldStr) === this.getPlayerState(p).getActFieldIndex());
     }
     return ret;
   }
 
   getActualField(player): string {
-    return this.settings.fields[this.getPlayerState(player).getActFieldIndex()];
+    return FIELDS[this.getPlayerState(player).getActFieldIndex()];
   }
 
   isLastRound(): boolean {
@@ -97,7 +97,7 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
   }
 
   private getPreviousField(): string {
-    return this.settings.fields[this.game.round > 0 ? this.game.round : 0];
+    return FIELDS[this.game.round > 0 ? this.game.round : 0];
   }
 
   private getPlayerState(player: Player): AroundClockState {

@@ -83,6 +83,24 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field;
   }
 
+  isHighlighted(field: number): boolean {
+    return this.isFieldEnabledToThrow(field) &&
+      !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
+  }
+
+  isSecondHighlighted(field: number): boolean {
+    return this.isFieldEnabledToThrow(field) &&
+      this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
+  }
+
+  getFieldNote(field: number): string {
+    if (this.isHighlighted(field)) {
+      const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(field === 25 ? 'B' : field + '');
+      return ''.padStart(3 - playerFieldCount, '●');
+    }
+    return '';
+  }
+
   isFieldEnabledToThrow(field: number): boolean {
     let fieldStr = field + '';
     if (field === 25) {

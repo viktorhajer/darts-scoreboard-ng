@@ -4,7 +4,6 @@ import {X01Module} from './x01/x01.module';
 import {CricketModule} from './cricket/cricket.module';
 import {AroundClockModule} from './aroundclock/around-clock.module';
 import {ShanghaiModule} from './shanghai/shanghai.module';
-import {ChaseDragonModule} from './chase-dragon/chase-dragon.module';
 import {KillerModule} from './killer/killer.module';
 
 export const routes: Routes = [
@@ -30,13 +29,11 @@ export const routes: Routes = [
     loadChildren: () => ShanghaiModule
   },
   {
-    path: 'chase-dragon',
-    data: {name: 'Chase the Dragon'},
-    loadChildren: () => ChaseDragonModule
-  },
-  {
     path: 'killer',
     data: {name: 'Killer'},
     loadChildren: () => KillerModule
+  },
+  {
+    path: '**', redirectTo: ''
   }
 ];
