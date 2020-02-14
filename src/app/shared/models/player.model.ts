@@ -46,6 +46,7 @@ export class Player {
     this.throwsHistory.forEach(throws => {
       player.throwsHistory.push(throws.clone());
     });
+    player.state = this.state.clone();
     return player;
   }
 }

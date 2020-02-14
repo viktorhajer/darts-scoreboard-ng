@@ -23,7 +23,10 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
 
   customReset(): void {
     this.state = [];
-    this.game.players.forEach(player => this.state.push(new AroundClockState(player)));
+    this.game.players.forEach(player => {
+      player.state = new AroundClockState(player);
+      this.state.push(new AroundClockState(player));
+    });
   }
 
   calculatePoints(score: number): Promise<any> {
@@ -100,9 +103,5 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
 
   private getPreviousField(): string {
     return FIELDS[this.game.round > 0 ? this.game.round : 0];
-  }
-
-  private getPlayerState(player: Player): AroundClockState {
-    return this.state.filter(s => s.player.id === player.id)[0];
   }
 }

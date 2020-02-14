@@ -182,6 +182,10 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     return true;
   }
 
+  getPlayerState(player: Player): T {
+    return <T>player.state;
+  }
+
   private playerSettingsValidation(): boolean {
     const players: Player[] = [];
     this.game.players.forEach(player => {

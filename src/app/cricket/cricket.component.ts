@@ -23,7 +23,10 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
 
   customReset(): void {
     this.state = [];
-    this.game.players.forEach(player => this.state.push(new CricketState(player)));
+    this.game.players.forEach(player => {
+      player.state = new CricketState(player);
+      this.state.push(new CricketState(player));
+    });
   }
 
   customSettingsValidation(): boolean {
@@ -214,9 +217,5 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
       done = done && this.isFieldDoneForPlayer(player, field);
     });
     return done;
-  }
-
-  private getPlayerState(player: Player): CricketState {
-    return this.state.filter(s => s.player.id === player.id)[0];
   }
 }

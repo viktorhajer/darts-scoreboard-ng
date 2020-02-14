@@ -22,7 +22,10 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
   }
 
   customReset(): void {
-    this.game.players.forEach(player => player.score = this.settings.startValue);
+    this.game.players.forEach(player => {
+      player.state = null;
+      player.score = this.settings.startValue;
+    });
   }
 
   calculatePoints(score: number): Promise<any> {
