@@ -1,4 +1,6 @@
 <div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
-
+<div class="color-chooser">
+  <button mat-icon-button (click)="applicationStateService.toggleColorMode()" color="primary"><mat-icon>brightness_1</mat-icon></button>
+</div>

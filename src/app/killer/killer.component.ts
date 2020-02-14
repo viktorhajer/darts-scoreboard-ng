@@ -125,7 +125,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
   getFieldIcon(field: number): string {
     if (this.game.players.some(p => {
       const s = this.getPlayerState(p)
-      return !s.isDead() && s.life < 2 && s.actField === field;
+      return !s.isDead() && s.life <= 2 && s.actField === field;
     })) {
       return 'sentiment_very_dissatisfied';
     } else if (this.game.players.some(p => {

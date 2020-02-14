@@ -1,13 +1,15 @@
 @import "~@angular/material/theming";
 @include mat-core();
 
-$primary: mat-palette($mat-indigo);
-$accent: mat-palette($mat-grey);
-$app-theme: mat-dark-theme($primary, $accent);
+$app-theme: mat-dark-theme(mat-palette($mat-indigo), mat-palette($mat-gray));
 
 @mixin shared-module-theme($theme) {
-  $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
+
+  body {
+    background: mat-color($accent, 900);
+    color: mat-color($accent, 50);
+  }
 
   .toolbar {
     .round-info {
@@ -24,6 +26,9 @@ $app-theme: mat-dark-theme($primary, $accent);
 }
 
 @mixin feature-module-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
   .player {
     background: linear-gradient(to top, mat-color($accent, 800), mat-color($accent, 900));
 
@@ -79,9 +84,7 @@ $app-theme: mat-dark-theme($primary, $accent);
 @include shared-module-theme($app-theme);
 @include feature-module-theme($app-theme);
 .alternative-theme {
-  $alternate-primary: mat-palette($mat-indigo);
-  $alternate-accent: mat-palette($mat-pink);
-  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+  $alternate-theme: mat-dark-theme(mat-palette($mat-pink), mat-palette($mat-gray));
   @include angular-material-theme($alternate-theme);
   @include shared-module-theme($alternate-theme);
   @include feature-module-theme($alternate-theme);
