@@ -8,8 +8,6 @@ export class GameService {
   players: Player[] = [];
   actualPlayerIndex: number;
   actualThrow: number;
-  multiplier: number;
-  extraEndingMsg: string;
   round: number;
   victoryFirst = true;
 
@@ -89,17 +87,10 @@ export class GameService {
     this.round++;
   }
 
-  reset(): void {
-    this.resetScore();
-    this.players = [];
-  }
-
   resetScore(): void {
-    this.extraEndingMsg = '';
     this.players.forEach(player => player.reset());
     this.actualPlayerIndex = 0;
     this.actualThrow = 0;
-    this.multiplier = 1;
     this.round = 0;
   }
 
@@ -111,8 +102,6 @@ export class GameService {
     const game = new GameService();
     game.actualPlayerIndex = this.actualPlayerIndex;
     game.actualThrow = this.actualThrow;
-    game.multiplier = this.multiplier;
-    game.extraEndingMsg = this.extraEndingMsg;
     game.round = this.round;
     const players: Player[] = [];
     this.players.forEach(player => {

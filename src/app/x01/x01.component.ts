@@ -6,9 +6,11 @@ import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
+import {slideInAnimation} from '../route-animation';
 
 @Component({
-  templateUrl: './x01.component.html'
+  templateUrl: './x01.component.html',
+  animations: [slideInAnimation],
 })
 export class X01Component extends PlaygroundModel<PlaygroundState> {
 
@@ -25,12 +27,12 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
 
   calculatePoints(score: number): Promise<any> {
     const player = this.game.getActualPlayer();
-    const actualScore = score * this.game.multiplier;
+    const actualScore = score * this.multiplier;
 
     const validStart = !player.first || this.settings.isNormalStart()
       || (player.first
-        && ((this.settings.isDoubleStart() && this.game.multiplier === 2)
-          || (this.settings.isTripleStart() && this.game.multiplier === 3)));
+        && ((this.settings.isDoubleStart() && this.multiplier === 2)
+          || (this.settings.isTripleStart() && this.multiplier === 3)));
 
     if (validStart) {
       player.first = false;
@@ -40,31 +42,14 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
     }
   }
 
-  countDown(player: Player, score: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const id = setInterval(() => {
-        if (score === 0) {
-          clearInterval(id);
-          resolve();
-        } else if (player.score < 0) {
-          player.score -= score;
-          score = 0;
-        } else {
-          player.score--;
-          score--;
-        }
-      }, 5);
-    });
-  }
-
   checkPlayerState(): Promise<any> {
     const player = this.game.getActualPlayer();
     let next = false;
 
     if ((this.settings.isHighScoreGame() && player.score <= 0) ||
       ((player.score === 0 && (this.settings.isNormalCheckout()
-        || (this.settings.isDoubleCheckout() && this.game.multiplier === 2)
-        || (this.settings.isTripleCheckout() && this.game.multiplier === 3))))) {
+        || (this.settings.isDoubleCheckout() && this.multiplier === 2)
+        || (this.settings.isTripleCheckout() && this.multiplier === 3))))) {
       player.win = true;
       next = true;
     } else if (player.score <= 0
@@ -79,5 +64,22 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
       this.game.nextPlayer();
     }
     return Promise.resolve();
+  }
+
+  private countDown(player: Player, score: number): Promise<any> {
+    return new Promise<any>((resolve) => {
+      const id = setInterval(() => {
+        if (score === 0) {
+          clearInterval(id);
+          resolve();
+        } else if (player.score < 0) {
+          player.score -= score;
+          score = 0;
+        } else {
+          player.score--;
+          score--;
+        }
+      }, 5);
+    });
   }
 }

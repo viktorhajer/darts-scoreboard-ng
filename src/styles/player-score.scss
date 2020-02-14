@@ -1,7 +1,4 @@
-@import "./theming";
-
 .player {
-  background: linear-gradient(to top, mat-color($accent, 800), mat-color($accent, 900));
   margin: 0.7vw 0.1vw;
   border-radius: 0.5vw;
 
@@ -18,18 +15,15 @@
       width: 3vw;
       height: 3vw;
       font-size: calc(6px + 1vw);
-      background: mat-color($accent, 800);
 
       &.total {
         margin-left: 10px;
-        background: mat-color($accent, 500);
       }
     }
   }
 
   .line {
     margin: 1vw 0;
-    border-top: 1px solid mat-color($accent, 500);
   }
 
   .player_info {
@@ -72,7 +66,6 @@
     .field {
       font-size: calc(0.7vw + 0.7vh);
       width: 70px;
-      color: mat-color($accent, 300);
       opacity: 0.4;
 
       &.highlighted, &.active {
@@ -82,15 +75,12 @@
   }
 
   &.highlighted {
-    background: linear-gradient(to top, mat-color($primary, 700), mat-color($primary, 800));
-
     &.highlighted2 {
       opacity: 1;
     }
   }
 
   &.highlighted2 {
-    background: mat-color($primary, 700);
     opacity: 0.6;
   }
 
@@ -99,23 +89,8 @@
   }
 
   &.highlighted, &.highlighted2 {
-    .player_info {
-      .shoot {
-        background: mat-color($primary, 900);
-
-        &.total {
-          background: mat-color($accent, 900);
-        }
-      }
-
-      .field {
-        color: mat-color($accent, 300);
-      }
-    }
-
     .line {
       margin: 1vw 0;
-      border-top: 1px solid mat-color($accent, 900);
     }
   }
 }

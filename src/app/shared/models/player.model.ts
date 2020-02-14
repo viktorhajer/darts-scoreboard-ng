@@ -1,4 +1,5 @@
 import {Throw} from './throw.model';
+import {PlaygroundState} from '~models/playground-state.model';
 
 export class Player {
   id: number;
@@ -8,6 +9,7 @@ export class Player {
   throwsHistory: Throw[];
   win = false;
   first = true;
+  state: PlaygroundState;
 
   constructor(id: number) {
     this.id = id;

@@ -6,9 +6,11 @@ import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
+import {slideInAnimation} from '../route-animation';
 
 @Component({
-  templateUrl: './around-clock.component.html'
+  templateUrl: './around-clock.component.html',
+  animations: [slideInAnimation],
 })
 export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
 
@@ -31,10 +33,10 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     const state: AroundClockState = this.getPlayerState(player);
     if (FIELDS[state.getActFieldIndex()] === field) {
       // last throw
-      if (state.actFieldIndex >= FIELDS_COUNT - this.game.multiplier) {
-        this.game.multiplier = this.game.multiplier === 1 ? 1 : FIELDS_COUNT - (state.actFieldIndex + 1);
+      if (state.actFieldIndex >= FIELDS_COUNT - this.multiplier) {
+        this.multiplier = this.multiplier === 1 ? 1 : FIELDS_COUNT - (state.actFieldIndex + 1);
       }
-      state.increaseActFieldIndex(this.settings.jump ? this.game.multiplier : 1);
+      state.increaseActFieldIndex(this.settings.jump ? this.multiplier : 1);
       if (state.actFieldIndex >= FIELDS_COUNT) {
         state.actFieldIndex = FIELDS_COUNT;
       }

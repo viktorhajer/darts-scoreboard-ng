@@ -4,11 +4,85 @@
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-grey);
 $app-theme: mat-dark-theme($primary, $accent);
-@include angular-material-theme($app-theme);
 
+@mixin shared-module-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .toolbar {
+    .round-info {
+      border: 3px solid mat-color($accent, 700);
+    }
+  }
+  .dialog-container {
+    .score-line {
+      &.winner {
+        background: mat-color($accent, 700);
+      }
+    }
+  }
+}
+
+@mixin feature-module-theme($theme) {
+  .player {
+    background: linear-gradient(to top, mat-color($accent, 800), mat-color($accent, 900));
+
+    .shoots {
+      .shoot {
+        background: mat-color($accent, 800);
+
+        &.total {
+          background: mat-color($accent, 500);
+        }
+      }
+    }
+
+    .line {
+      border-top: 1px solid mat-color($accent, 500);
+    }
+
+    .player_info {
+      .field {
+        color: mat-color($accent, 300);
+      }
+    }
+
+    &.highlighted {
+      background: linear-gradient(to top, mat-color($primary, 700), mat-color($primary, 800));
+    }
+
+    &.highlighted2 {
+      background: mat-color($primary, 700);
+    }
+
+    &.highlighted, &.highlighted2 {
+      .player_info {
+        .shoot {
+          background: mat-color($primary, 900);
+
+          &.total {
+            background: mat-color($accent, 900);
+          }
+        }
+        .field {
+          color: mat-color($accent, 300);
+        }
+      }
+      .line {
+        border-top: 1px solid mat-color($accent, 900);
+      }
+    }
+  }
+}
+
+@include angular-material-theme($app-theme);
+@include shared-module-theme($app-theme);
+@include feature-module-theme($app-theme);
 .alternative-theme {
   $alternate-primary: mat-palette($mat-indigo);
   $alternate-accent: mat-palette($mat-pink);
   $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
   @include angular-material-theme($alternate-theme);
+  @include shared-module-theme($alternate-theme);
+  @include feature-module-theme($alternate-theme);
 }

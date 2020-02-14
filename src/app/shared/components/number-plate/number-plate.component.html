@@ -13,9 +13,9 @@
     <div class="field-note" *ngIf="playground.getFieldNote(25)">{{ playground.getFieldNote(25)}}</div>
   </button>
 
-  <button mat-raised-button class="number" [color]="game.multiplier === 2 ? 'primary' : ''"
+  <button mat-raised-button class="number" [color]="playground.multiplier === 2 ? 'primary' : ''"
           (click)="playground.doublePoint()" [disabled]="!playground.multiEnabled">Double</button>
-  <button mat-raised-button class="number" [color]="game.multiplier === 3 ? 'primary' : ''"
+  <button mat-raised-button class="number" [color]="playground.multiplier === 3 ? 'primary' : ''"
           (click)="playground.triplePoint()" [disabled]="!playground.multiEnabled">Triple</button>
 
   <button mat-raised-button class="number" (click)="playground.skip()" [disabled]="!playground.nextEnabled">Next</button>

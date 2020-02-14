@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
+

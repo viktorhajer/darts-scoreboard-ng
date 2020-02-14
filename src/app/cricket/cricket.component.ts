@@ -6,9 +6,11 @@ import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
+import {slideInAnimation} from '../route-animation';
 
 @Component({
-  templateUrl: './cricket.component.html'
+  templateUrl: './cricket.component.html',
+  animations: [slideInAnimation],
 })
 export class CricketComponent extends PlaygroundModel<CricketState> {
 
@@ -146,15 +148,15 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
         this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field ||
         this.isFieldDoneForPlayer(player, field)) {
 
-        if (this.isFieldClosedForOthers(player, field) && (playerFieldCount + this.game.multiplier) > 3) {
+        if (this.isFieldClosedForOthers(player, field) && (playerFieldCount + this.multiplier) > 3) {
           this.getPlayerState(player).setFieldCount(field, 3);
         } else {
-          let multiplier = this.game.multiplier + 0;
-          if (playerFieldCount < 3 && (playerFieldCount + this.game.multiplier) >= 3) {
-            multiplier = (playerFieldCount + this.game.multiplier) % 3;
+          let multiplier = this.multiplier + 0;
+          if (playerFieldCount < 3 && (playerFieldCount + this.multiplier) >= 3) {
+            multiplier = (playerFieldCount + this.multiplier) % 3;
           }
-          this.getPlayerState(player).setFieldCount(field, playerFieldCount + this.game.multiplier);
-          this.game.multiplier = multiplier;
+          this.getPlayerState(player).setFieldCount(field, playerFieldCount + this.multiplier);
+          this.multiplier = multiplier;
         }
       }
 
@@ -172,7 +174,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
   private punishPlayers(field: string) {
     this.game.players.forEach(player => {
       if (!this.isFieldDoneForPlayer(player, field)) {
-        this.getPlayerState(player).setPunishCount(field, this.getPlayerState(player).getPunishCount(field) + this.game.multiplier);
+        this.getPlayerState(player).setPunishCount(field, this.getPlayerState(player).getPunishCount(field) + this.multiplier);
       }
     }, this);
   }

@@ -19,6 +19,8 @@ export class GameToolbarComponent {
   quit() {
     this.route.navigate(['/']);
     this.game.resetScore();
+    this.playground.multiplier = 1;
+    this.playground.extraEndingMsg = '';
   }
 
   showSettings() {

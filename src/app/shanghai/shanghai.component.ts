@@ -6,9 +6,11 @@ import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
+import {slideInAnimation} from '../route-animation';
 
 @Component({
-  templateUrl: './shanghai.component.html'
+  templateUrl: './shanghai.component.html',
+  animations: [slideInAnimation],
 })
 export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
 
@@ -34,11 +36,11 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     const field = score === 25 ? 'B' : (score + '');
     if (this.isActiveField(field)) {
       state.increaseFieldCount(field, 1);
-      state.increaseFieldScore(field, this.game.multiplier);
+      state.increaseFieldScore(field, this.multiplier);
       if (this.settings.noScore) {
         player.score++;
       } else {
-        player.score += PlaygroundModel.getFieldValueAsNumber(field) * this.game.multiplier;
+        player.score += PlaygroundModel.getFieldValueAsNumber(field) * this.multiplier;
       }
     }
     return Promise.resolve();
@@ -61,7 +63,7 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
       }
       player.win = multi === 24;
       if (player.win) {
-        this.game.extraEndingMsg = 'SHANGHAI!!!';
+        this.extraEndingMsg = 'SHANGHAI!!!';
       }
     }
 

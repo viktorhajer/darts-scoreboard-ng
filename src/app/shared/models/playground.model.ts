@@ -21,6 +21,8 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   state: T[];
   stateHistory: T[][] = [];
   playground = this;
+  multiplier: number;
+  extraEndingMsg: string;
 
   protected constructor(public game: GameService,
                         public route: Router,
@@ -34,6 +36,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   ngOnInit() {
     this.settingsOpen = true;
+    this.extraEndingMsg = '';
     const numberOfPlayerToAdd = this.minimumNumberOfPlayers - this.game.players.length;
     for (let i = 0; i < numberOfPlayerToAdd; i++) {
       this.addPlayer();
@@ -44,30 +47,30 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     if (this.throwEnabled) {
       this.save();
       this.throwEnabled = false;
-      if (score === 25 && this.game.multiplier === 3) {
-        this.game.multiplier = 1;
+      if (score === 25 && this.multiplier === 3) {
+        this.multiplier = 1;
       }
 
       const actualPlayer = this.game.getActualPlayer();
-      actualPlayer.addThrowHistory(new Throw(score, this.game.multiplier, this.game.actualThrow));
+      actualPlayer.addThrowHistory(new Throw(score, this.multiplier, this.game.actualThrow));
       if (this.game.actualThrow === 0) {
         actualPlayer.throws = [];
       }
-      actualPlayer.throws[this.game.actualThrow] = score * this.game.multiplier;
+      actualPlayer.throws[this.game.actualThrow] = score * this.multiplier;
       this.game.actualThrow++;
 
       return this.calculatePoints(score)
         .then(() => this.checkPlayerState())
         .then(() => {
-          this.game.multiplier = 1;
+          this.multiplier = 1;
 
           const winners = this.game.players.filter(p => p.win);
           if (winners.length > 0) {
             if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
-              this.dialogService.openDialog('Game Over!', this.game.extraEndingMsg, this.game.clone().players);
+              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.game.clone().players);
               this.newGame(true);
             } else if (this.game.victoryFirst) {
-              this.dialogService.openDialog('Game Over!', this.game.extraEndingMsg, this.game.clone().players);
+              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.game.clone().players);
               this.newGame(true);
             } else {
               while (this.game.getActualPlayer().win) {
@@ -106,16 +109,18 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   }
 
   triplePoint() {
-    this.game.multiplier = this.game.multiplier === 3 ? 1 : 3;
+    this.multiplier = this.multiplier === 3 ? 1 : 3;
   }
 
   doublePoint() {
-    this.game.multiplier = this.game.multiplier === 2 ? 1 : 2;
+    this.multiplier = this.multiplier === 2 ? 1 : 2;
   }
 
   reset(): void {
     this.gameHistory = [];
     this.game.resetScore();
+    this.multiplier = 1;
+    this.extraEndingMsg = '';
     this.stateHistory = [];
     this.customReset();
   }
@@ -141,6 +146,8 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   quit() {
     this.route.navigate(['/']);
     this.game.resetScore();
+    this.multiplier = 1;
+    this.extraEndingMsg = '';
   }
 
   customNext() {

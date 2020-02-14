@@ -6,9 +6,11 @@ import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
+import {slideInAnimation} from '../route-animation';
 
 @Component({
-  templateUrl: './killer.component.html'
+  templateUrl: './killer.component.html',
+  animations: [slideInAnimation],
 })
 export class KillerComponent extends PlaygroundModel<KillerState> {
 
@@ -54,7 +56,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
     } else {
       if (state.killer) {
         if (score === state.actField) {
-          state.life = Number(state.life) + Number(this.game.multiplier);
+          state.life = Number(state.life) + Number(this.multiplier);
           if (state.life > this.settings.numberOfLives) {
             state.life = this.settings.numberOfLives;
           }
@@ -62,7 +64,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
           this.game.players.filter(p => p.id !== player.id && !this.getPlayerState(p).isDead()).forEach(p => {
             const s = this.getPlayerState(p);
             if (s.actField === score) {
-              s.life -= this.game.multiplier;
+              s.life -= this.multiplier;
               if (s.life < 0) {
                 s.life = 0;
               }
@@ -70,7 +72,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
           });
         }
       } else if (score === state.actField) {
-        state.boarding -= this.game.multiplier;
+        state.boarding -= this.multiplier;
         if (state.boarding <= 0) {
           state.boarding = 0;
         }
