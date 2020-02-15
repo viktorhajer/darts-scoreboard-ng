@@ -1,12 +1,11 @@
 import {PlaygroundState} from '~models/playground-state.model';
-import {Player} from '~models/player.model';
 
 export class AroundClockState extends PlaygroundState {
 
   actFieldIndex: number;
 
-  constructor(player: Player) {
-    super(player);
+  constructor() {
+    super();
     this.actFieldIndex = 0;
   }
 
@@ -26,7 +25,7 @@ export class AroundClockState extends PlaygroundState {
   }
 
   clone(): AroundClockState {
-    const state: AroundClockState = new AroundClockState(this.player);
+    const state: AroundClockState = new AroundClockState();
     state.actFieldIndex = this.actFieldIndex;
     return state;
   }

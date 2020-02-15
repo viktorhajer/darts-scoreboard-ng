@@ -24,13 +24,8 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
     this.multiEnabled = false;
   }
 
-  customReset(): void {
-    this.state = [];
-    this.game.players.forEach(player =>
-    {
-      player.state = new KillerState(player, this.settings.numberOfLives, this.settings.boardingLimit);
-      this.state.push(new KillerState(player, this.settings.numberOfLives, this.settings.boardingLimit));
-    });
+  customReset() {
+    this.game.players.forEach(player => player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
   }
 
   customNext() {
@@ -141,6 +136,10 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
     return '';
   }
 
+  getFieldNote(field: number): string {
+    const owner = this.game.players.find(p => (<KillerState>p.state).actField === field);
+    return owner ? owner.name : '';
+  }
 
   getPlayerField(player: Player): string {
     const score = this.getPlayerState(player).actField;

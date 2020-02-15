@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Player} from '../models/player.model';
 
-const MAXIMUM_NUMBER_OF_PLAYERS = 6;
-
 @Injectable({providedIn: 'root'})
 export class GameService {
   players: Player[] = [];
@@ -13,10 +11,6 @@ export class GameService {
 
   toggleVictoryFirst() {
     this.victoryFirst = !this.victoryFirst;
-  }
-
-  canAddPlayer(): boolean {
-    return this.players.length < MAXIMUM_NUMBER_OF_PLAYERS;
   }
 
   isTheFirstThrow(): boolean {

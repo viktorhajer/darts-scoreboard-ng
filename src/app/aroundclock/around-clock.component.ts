@@ -21,12 +21,8 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     this.settings = new Settings();
   }
 
-  customReset(): void {
-    this.state = [];
-    this.game.players.forEach(player => {
-      player.state = new AroundClockState(player);
-      this.state.push(new AroundClockState(player));
-    });
+  customReset() {
+    this.game.players.forEach(player => player.state = new AroundClockState());
   }
 
   calculatePoints(score: number): Promise<any> {
@@ -53,15 +49,15 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     if ((FIELDS_COUNT - 1) < this.getPlayerState(player).getActFieldIndex()) {
       player.win = true;
     } else if (this.game.actualThrow === 3) {
-      let multi = 1;
-      for (let i = 0; i < 3; i++) {
-        const t = player.throwsHistory[player.throwsHistory.length - i - 1];
-        if (t.field === this.getPreviousField()) {
-          multi *= (t.multi + 1);
+      if (this.settings.punishment) {
+        let multi = 0;
+        for (let i = 0; i < 3; i++) {
+          const t = player.throwsHistory[player.throwsHistory.length - i - 1];
+          multi += t.fieldNum;
         }
-      }
-      if (multi === 1 && this.settings.punishment) {
-        this.getPlayerState(player).decreaseActFieldIndex();
+        if (multi === 0) {
+          this.getPlayerState(player).decreaseActFieldIndex();
+        }
       }
       this.game.nextPlayer();
     }
@@ -93,7 +89,7 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     return ret;
   }
 
-  getActualField(player): string {
+  getActualField(player: Player): string {
     return FIELDS[this.getPlayerState(player).getActFieldIndex()];
   }
 
@@ -101,7 +97,9 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
     return false;
   }
 
-  private getPreviousField(): string {
-    return FIELDS[this.game.round > 0 ? this.game.round : 0];
+  getFieldNote(field: number): string {
+    field = field === 25 ? 20 : field - 1;
+    const owners = this.game.players.filter(p => (<AroundClockState>p.state).actFieldIndex === field).map(p => p.name);
+    return !!owners.length ? owners.join(' ') : '';
   }
 }

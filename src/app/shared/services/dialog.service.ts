@@ -15,4 +15,11 @@ export class DialogService {
       data: {title, content, players},
     });
   }
+
+  openErrorDialog(title = '', content = ''): MatDialogRef<DialogComponent> {
+    return this.dialog.open(DialogComponent, {
+      panelClass: 'error-dialog',
+      data: {title, content, players: []},
+    });
+  }
 }

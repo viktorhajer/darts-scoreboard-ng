@@ -9,6 +9,7 @@ import {DialogService} from '~services/dialog.service';
 
 export const FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
 export const FIELDS_COUNT = 21;
+const MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
 export abstract class PlaygroundModel<T extends PlaygroundState> implements OnInit {
 
@@ -18,8 +19,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   nextEnabled = true;
   zeroEnabled = true;
   multiEnabled = true;
-  state: T[];
-  stateHistory: T[][] = [];
   playground = this;
   multiplier: number;
   extraEndingMsg: string;
@@ -37,10 +36,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   ngOnInit() {
     this.settingsOpen = true;
     this.extraEndingMsg = '';
-    const numberOfPlayerToAdd = this.minimumNumberOfPlayers - this.game.players.length;
-    for (let i = 0; i < numberOfPlayerToAdd; i++) {
-      this.addPlayer();
-    }
   }
 
   throwNumber(score: number): Promise<void> {
@@ -86,9 +81,9 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   newGame(rotate = false) {
     this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
     if (!this.playerSettingsValidation()) {
-      this.dialogService.openDialog('Error!', 'Number of players are incorrect.');
+      this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
     } else if (this.settingsOpen) {
-      this.dialogService.openDialog('Error!', 'Settings is incorrect.');
+      this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
     }
     this.reset();
     if (rotate) {
@@ -96,16 +91,19 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     }
   }
 
-  addPlayer(): void {
-    const player = new Player(uuid());
-    player.name = 'P' + (this.game.players.length + 1);
-    this.game.players.push(player);
+  canAddPlayer(): boolean {
+    return this.game.players.length < MAXIMUM_NUMBER_OF_PLAYERS;
   }
 
-  removePlayer(player: Player): void {
-    if (this.game.players.length > 1) {
-      this.game.players = this.game.players.filter(p => p !== player);
+  addPlayer(name: any) {
+    if (!!name.value.trim().length && !this.game.players.some(p => p.name === name.value)) {
+      this.game.players.push(new Player(uuid(), name.value));
     }
+    name.value = '';
+  }
+
+  removePlayer(player: Player) {
+    this.game.players = this.game.players.filter(p => p !== player);
   }
 
   triplePoint() {
@@ -116,21 +114,17 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
     this.multiplier = this.multiplier === 2 ? 1 : 2;
   }
 
-  reset(): void {
+  reset() {
     this.gameHistory = [];
     this.game.resetScore();
     this.multiplier = 1;
     this.extraEndingMsg = '';
-    this.stateHistory = [];
     this.customReset();
   }
 
   undo() {
     if (this.gameHistory.length > 0) {
       this.game = this.gameHistory.pop();
-      if (this.stateHistory.length > 0) {
-        this.state = this.stateHistory.pop();
-      }
     }
   }
 
@@ -199,11 +193,6 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
 
   private save() {
     this.gameHistory.push(this.game.clone());
-    if (this.state) {
-      const state = [];
-      this.state.forEach(s => state.push(s.clone()));
-      this.stateHistory.push(state);
-    }
   }
 
   abstract customReset(): void;

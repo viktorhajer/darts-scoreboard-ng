@@ -1,0 +1,17 @@
+.add-player {
+  margin-bottom: 10px;
+}
+
+.player-table  {
+  width: 60.8vw;
+  .player-row {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 5px;
+  }
+}

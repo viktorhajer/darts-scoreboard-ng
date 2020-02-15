@@ -1,6 +1,5 @@
 import {PlaygroundState} from '~models/playground-state.model';
 import {FieldValue} from '~models/field-value.model';
-import {Player} from '~models/player.model';
 
 export class CricketState extends PlaygroundState {
 
@@ -8,8 +7,8 @@ export class CricketState extends PlaygroundState {
   punishCount: FieldValue[];
   actFieldIndex: number;
 
-  constructor(player: Player) {
-    super(player);
+  constructor() {
+    super();
     this.fieldCount = [];
     this.punishCount = [];
     this.actFieldIndex = 0;
@@ -40,7 +39,7 @@ export class CricketState extends PlaygroundState {
   }
 
   clone(): CricketState {
-    const state: CricketState = new CricketState(this.player);
+    const state: CricketState = new CricketState();
     state.actFieldIndex = this.actFieldIndex;
     this.fieldCount.forEach(fv => state.fieldCount.push(fv.clone()));
     this.punishCount.forEach(fv => state.punishCount.push(fv.clone()));

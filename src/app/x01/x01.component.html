@@ -26,14 +26,8 @@
     <div class="settings" *ngIf="settingsOpen">
       <h1>X01 Settings</h1>
 
-      <h2>Players <button mat-icon-button (click)="addPlayer()" [disabled]="!game.canAddPlayer()"><mat-icon>add_circle</mat-icon></button></h2>
-      <div *ngFor="let player of game.players; let i = index">
-        <mat-form-field appearance="fill">
-          <mat-label>Player #{{i + 1}} name:</mat-label>
-          <input [(ngModel)]="player.name" type="text" matInput>
-        </mat-form-field>
-        <button mat-icon-button (click)="removePlayer(player)"><mat-icon>remove_circle</mat-icon></button>
-      </div>
+      <h2>Players</h2>
+      <app-player-settings [playground]="playground"></app-player-settings>
       <mat-divider></mat-divider>
 
       <h2>Games</h2>

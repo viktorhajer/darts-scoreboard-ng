@@ -21,7 +21,7 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
     this.settings = new Settings();
   }
 
-  customReset(): void {
+  customReset() {
     this.game.players.forEach(player => {
       player.state = null;
       player.score = this.settings.startValue;
@@ -60,7 +60,7 @@ export class X01Component extends PlaygroundModel<PlaygroundState> {
       || (this.settings.isTripleCheckout() && player.score < 3)) {
       player.throws.forEach(t => player.score += t);
       next = true;
-      this.dialogService.openDialog(`${this.game.getActualPlayer().name} busted!`);
+      this.dialogService.openErrorDialog(`${this.game.getActualPlayer().name} busted!`);
     }
 
     if (this.game.actualThrow === 3 || next) {

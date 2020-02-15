@@ -1,25 +1,30 @@
 @import "~@angular/material/theming";
 @include mat-core();
 
-$app-theme: mat-dark-theme(mat-palette($mat-indigo), mat-palette($mat-gray));
+$app-theme: mat-light-theme(mat-palette($mat-teal), mat-palette($mat-grey));
+$dark-theme: mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-gray));
+$basic: mat-palette($mat-grey);
 
 @mixin shared-module-theme($theme) {
   $accent: map-get($theme, accent);
-
-  body {
-    background: mat-color($accent, 900);
-    color: mat-color($accent, 50);
-  }
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
 
   .toolbar {
     .round-info {
-      border: 3px solid mat-color($accent, 700);
+      color: mat-color($primary, 50);
+      background: mat-color($primary, 500);
+    }
+  }
+  .error-dialog {
+    .mat-dialog-title {
+      color: mat-color($warn, 500);
     }
   }
   .dialog-container {
     .score-line {
       &.winner {
-        background: mat-color($accent, 700);
+        background: rgba(mat-color($accent, 400), 0.5);
       }
     }
   }
@@ -29,15 +34,25 @@ $app-theme: mat-dark-theme(mat-palette($mat-indigo), mat-palette($mat-gray));
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
 
+  .settings {
+    .player-row {
+      background: mat-color(map-get($theme, primary), 500);
+      color: mat-color($basic, 50);
+    }
+  }
+
   .player {
-    background: linear-gradient(to top, mat-color($accent, 800), mat-color($accent, 900));
+    color: mat-color($accent, 300);
+    background: mat-color($accent, 600);
 
     .shoots {
       .shoot {
-        background: mat-color($accent, 800);
+        background: mat-color($accent, 900);
+        color: mat-color($accent, 300);
 
         &.total {
-          background: mat-color($accent, 500);
+          background: mat-color($primary, 900);
+          color: mat-color($primary, 100);
         }
       }
     }
@@ -53,7 +68,7 @@ $app-theme: mat-dark-theme(mat-palette($mat-indigo), mat-palette($mat-gray));
     }
 
     &.highlighted {
-      background: linear-gradient(to top, mat-color($primary, 700), mat-color($primary, 800));
+      background: linear-gradient(to top, mat-color($primary, 500), mat-color($primary, 600));
     }
 
     &.highlighted2 {
@@ -64,13 +79,15 @@ $app-theme: mat-dark-theme(mat-palette($mat-indigo), mat-palette($mat-gray));
       .player_info {
         .shoot {
           background: mat-color($primary, 900);
-
+          color: mat-color($accent, 400);
+  
           &.total {
-            background: mat-color($accent, 900);
+            background: mat-color($primary, 900);
+            color: mat-color($accent, 100);
           }
         }
         .field {
-          color: mat-color($accent, 300);
+          color: mat-color($accent, 100);
         }
       }
       .line {
@@ -83,9 +100,17 @@ $app-theme: mat-dark-theme(mat-palette($mat-indigo), mat-palette($mat-gray));
 @include angular-material-theme($app-theme);
 @include shared-module-theme($app-theme);
 @include feature-module-theme($app-theme);
-.alternative-theme {
-  $alternate-theme: mat-dark-theme(mat-palette($mat-pink), mat-palette($mat-gray));
-  @include angular-material-theme($alternate-theme);
-  @include shared-module-theme($alternate-theme);
-  @include feature-module-theme($alternate-theme);
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include shared-module-theme($dark-theme);
+  @include feature-module-theme($dark-theme);
+}
+
+body {
+  background: linear-gradient(to top, mat-color($basic, 200), #efefef);
+  color: mat-color(map-get($app-theme, accent), 900);
+  &.dark-theme {
+    background: linear-gradient(to top, mat-color($basic, 800), #000000);
+    color: mat-color(map-get($dark-theme, primary), 200);
+  }
 }

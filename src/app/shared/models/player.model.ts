@@ -2,8 +2,6 @@ import {Throw} from './throw.model';
 import {PlaygroundState} from '~models/playground-state.model';
 
 export class Player {
-  id: number;
-  name = '';
   score = 0;
   throws: number[] = [];
   throwsHistory: Throw[];
@@ -11,8 +9,7 @@ export class Player {
   first = true;
   state: PlaygroundState;
 
-  constructor(id: number) {
-    this.id = id;
+  constructor(public id: number, public name = '') {
   }
 
   getThrowsTotal(): number {
@@ -32,8 +29,7 @@ export class Player {
   }
 
   clone(): Player {
-    const player = new Player(this.id);
-    player.name = this.name;
+    const player = new Player(this.id, this.name);
     player.score = this.score;
     player.throws = [];
     this.throws.forEach(t => {
@@ -46,7 +42,9 @@ export class Player {
     this.throwsHistory.forEach(throws => {
       player.throwsHistory.push(throws.clone());
     });
-    player.state = this.state.clone();
+    if (this.state) {
+        player.state = this.state.clone();
+    }
     return player;
   }
 }

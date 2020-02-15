@@ -1,6 +1,6 @@
 <div class="dialog-container evo-typography">
   <div mat-dialog-title class="subtitle-1"><p>{{ data.title }}</p></div>
-  <mat-dialog-content class="body-2">
+  <mat-dialog-content class="body-2" *ngIf="!!data.content || !!data.players.length">
     <p>{{ data.content }}</p>
     <div class="score-line" *ngFor="let player of data.players; let i = index" [class.winner]="player.win">
       <div>{{i+1}}. {{player.name}} <mat-icon color="warn" *ngIf="player.win">star</mat-icon></div>

@@ -1,0 +1,13 @@
+<div class="add-player">
+  <mat-form-field appearance="outline" class="big">
+    <mat-label>Player name</mat-label>
+    <input #playerNameInput type="text" matInput [disabled]="!playground.canAddPlayer()">
+  </mat-form-field>
+  <button mat-icon-button (click)="playground.addPlayer(playerNameInput)" [disabled]="!playground.canAddPlayer()"><mat-icon>add_circle</mat-icon></button>
+</div>
+<div class="player-table">
+  <div class="player-row" *ngFor="let player of playground.game.players; let i = index">
+    <div class="player-name">{{player.name}}</div>
+    <button mat-icon-button (click)="playground.removePlayer(player)"><mat-icon>remove_circle</mat-icon></button>
+  </div>
+</div>

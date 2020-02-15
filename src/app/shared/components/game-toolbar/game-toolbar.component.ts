@@ -13,12 +13,12 @@ export class GameToolbarComponent {
 
   @Input() playground: PlaygroundModel<PlaygroundState>;
 
-  constructor(public game: GameService, public route: Router) {
+  constructor(public route: Router) {
   }
 
   quit() {
     this.route.navigate(['/']);
-    this.game.resetScore();
+    this.playground.game.resetScore();
     this.playground.multiplier = 1;
     this.playground.extraEndingMsg = '';
   }

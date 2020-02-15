@@ -21,12 +21,8 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     this.settings = new Settings();
   }
 
-  customReset(): void {
-    this.state = [];
-    this.game.players.forEach(player => {
-      player.state = new ShanghaiState(player);
-      this.state.push(new ShanghaiState(player));
-    });
+  customReset() {
+    this.game.players.forEach(player => player.state = new ShanghaiState());
   }
 
   customSettingsValidation(): boolean {
@@ -41,7 +37,7 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
       state.increaseFieldCount(field, 1);
       state.increaseFieldScore(field, this.multiplier);
       if (this.settings.noScore) {
-        player.score++;
+        player.score += this.multiplier;
       } else {
         player.score += PlaygroundModel.getFieldValueAsNumber(field) * this.multiplier;
       }

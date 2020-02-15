@@ -21,12 +21,8 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     this.settings = new Settings();
   }
 
-  customReset(): void {
-    this.state = [];
-    this.game.players.forEach(player => {
-      player.state = new CricketState(player);
-      this.state.push(new CricketState(player));
-    });
+  customReset() {
+    this.game.players.forEach(player => player.state = new CricketState());
   }
 
   customSettingsValidation(): boolean {
@@ -88,6 +84,18 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field;
   }
 
+  isFieldEnabledToThrow(field: number): boolean {
+    let fieldStr = field + '';
+    if (field === 25) {
+      fieldStr = 'B';
+    }
+    if (this.settings.isNoScoreGame()) {
+      return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldStr);
+    }
+
+    return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldClosed(fieldStr);
+  }
+
   isHighlighted(field: number): boolean {
     return this.isFieldEnabledToThrow(field) &&
       !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
@@ -104,14 +112,6 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
       return ''.padStart(3 - playerFieldCount, '●');
     }
     return '';
-  }
-
-  isFieldEnabledToThrow(field: number): boolean {
-    let fieldStr = field + '';
-    if (field === 25) {
-      fieldStr = 'B';
-    }
-    return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldClosed(fieldStr);
   }
 
   private getPlayerTotal(player: Player) {
@@ -193,7 +193,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     return this.getPlayerState(player).getPunishCount(field) * PlaygroundModel.getFieldValueAsNumber(field);
   }
 
-  private isFieldClosed(field: string) {
+  private isFieldClosed(field: string): boolean {
     let closed = true;
     this.game.players.forEach(player => {
       closed = closed && this.isFieldDoneForPlayer(player, field);
@@ -201,7 +201,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     return closed;
   }
 
-  private isFieldClosedForOthers(player: Player, field: string) {
+  private isFieldClosedForOthers(player: Player, field: string): boolean {
     let closed = true;
     this.game.players.forEach(p => {
       if (p.id !== player.id) {
