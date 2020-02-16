@@ -1,7 +1,7 @@
 <div class="add-player">
   <mat-form-field appearance="outline" class="big">
     <mat-label>Player name</mat-label>
-    <input #playerNameInput type="text" matInput placeholder="Enter Location"
+    <input #playerNameInput type="text" matInput placeholder="Enter name"
       [disabled]="!playground.canAddPlayer()" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of getOptions()" [value]="option">
