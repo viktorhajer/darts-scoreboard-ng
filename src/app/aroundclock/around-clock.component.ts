@@ -1,23 +1,24 @@
 import {Component} from '@angular/core';
 import {AroundClockState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {FIELDS, FIELDS_COUNT, PlaygroundModel} from '~models/playground.model';
+import {FIELDS, FIELDS_COUNT, Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   templateUrl: './around-clock.component.html',
   animations: [slideInAnimation],
 })
-export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
+export class AroundClockComponent extends Playground<AroundClockState> {
 
   settings: Settings;
 
-  constructor(game: GameService, route: Router, dialogService: DialogService) {
-    super(game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
+    super(application, game, route, dialogService);
     this.settings = new Settings();
   }
 
@@ -26,7 +27,6 @@ export class AroundClockComponent extends PlaygroundModel<AroundClockState> {
   }
 
   calculatePoints(score: number): Promise<any> {
-
     const player = this.game.getActualPlayer();
     const field = score === 25 ? 'B' : (score + '');
     const state: AroundClockState = this.getPlayerState(player);

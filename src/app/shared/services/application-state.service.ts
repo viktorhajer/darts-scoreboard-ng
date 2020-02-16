@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApplicationSettings} from '~models/application-settings.model';
 
 const APPLICATION_KEY = 'ApplicationSettings';
+const PLAYER_KEY = 'Players';
 
 @Injectable({providedIn: 'root'})
 export class ApplicationStateService {
@@ -34,4 +35,16 @@ export class ApplicationStateService {
     localStorage.setItem(APPLICATION_KEY, JSON.stringify(this.settings));
   }
 
+  getStoredPlayers(): string[] {
+    const data = localStorage.getItem(PLAYER_KEY);
+    if (data) {
+      return JSON.parse(data);
+    }
+    return [];
+  }
+
+  storePlayer(name: string) {
+    const players = [name, ...this.getStoredPlayers()].filter((v, i, a) => a.indexOf(v) === i);
+    localStorage.setItem(PLAYER_KEY, JSON.stringify(players));
+  }
 }

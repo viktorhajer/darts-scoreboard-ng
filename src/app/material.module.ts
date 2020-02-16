@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 const materialImports = [
@@ -11,7 +12,8 @@ const materialImports = [
   MatButtonModule,
   MatIconModule,
   MatInputModule,
-  MatDividerModule
+  MatDividerModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

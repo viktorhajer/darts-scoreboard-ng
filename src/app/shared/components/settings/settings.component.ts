@@ -1,5 +1,5 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {PlaygroundModel} from '~models/playground.model';
+import {Playground} from '~models/playground.model';
 import {PlaygroundState} from '~models/playground-state.model';
 
 @Component({
@@ -9,6 +9,6 @@ import {PlaygroundState} from '~models/playground-state.model';
   encapsulation: ViewEncapsulation.None
 })
 export class SettingsComponent {
-  @Input() playground: PlaygroundModel<PlaygroundState>;
+  @Input() playground: Playground<PlaygroundState>;
   @Input() title: string;
 }

@@ -1,23 +1,24 @@
 import {Component} from '@angular/core';
 import {CricketState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {PlaygroundModel} from '~models/playground.model';
+import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   templateUrl: './cricket.component.html',
   animations: [slideInAnimation],
 })
-export class CricketComponent extends PlaygroundModel<CricketState> {
+export class CricketComponent extends Playground<CricketState> {
 
   settings: Settings;
 
-  constructor(game: GameService, route: Router, dialogService: DialogService) {
-    super(game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
+    super(application, game, route, dialogService);
     this.settings = new Settings();
   }
 
@@ -128,7 +129,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
     let total = 0;
     this.settings.fields.forEach(field => {
       if (this.isFieldDoneForPlayer(player, field)) {
-        total += (this.getPlayerState(player).getFieldCount(field) - 3) * PlaygroundModel.getFieldValueAsNumber(field);
+        total += (this.getPlayerState(player).getFieldCount(field) - 3) * Playground.getFieldValueAsNumber(field);
       }
     }, this);
     return total;
@@ -137,7 +138,7 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
   private getPlayerTotalForPunishGame(player: Player) {
     let total = 0;
     this.settings.fields.forEach(field => {
-      total += this.getPlayerState(player).getPunishCount(field) * PlaygroundModel.getFieldValueAsNumber(field);
+      total += this.getPlayerState(player).getPunishCount(field) * Playground.getFieldValueAsNumber(field);
     }, this);
     return total;
   }
@@ -184,13 +185,13 @@ export class CricketComponent extends PlaygroundModel<CricketState> {
 
   private getFieldScore(player: Player, field: string): number {
     if (this.isFieldDoneForPlayer(player, field)) {
-      return (this.getPlayerState(player).getFieldCount(field) - 3) * PlaygroundModel.getFieldValueAsNumber(field);
+      return (this.getPlayerState(player).getFieldCount(field) - 3) * Playground.getFieldValueAsNumber(field);
     }
     return 0;
   }
 
   private getPunishScore(player: Player, field: string): number {
-    return this.getPlayerState(player).getPunishCount(field) * PlaygroundModel.getFieldValueAsNumber(field);
+    return this.getPlayerState(player).getPunishCount(field) * Playground.getFieldValueAsNumber(field);
   }
 
   private isFieldClosed(field: string): boolean {

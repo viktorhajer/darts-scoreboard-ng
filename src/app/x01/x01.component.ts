@@ -1,23 +1,24 @@
 import {Component} from '@angular/core';
 import {Settings} from './models/settings.model';
-import {PlaygroundModel} from '~models/playground.model';
+import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   templateUrl: './x01.component.html',
   animations: [slideInAnimation],
 })
-export class X01Component extends PlaygroundModel<PlaygroundState> {
+export class X01Component extends Playground<PlaygroundState> {
 
   settings: Settings;
 
-  constructor(game: GameService, route: Router, dialogService: DialogService) {
-    super(game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
+    super(application, game, route, dialogService);
     this.settings = new Settings();
   }
 

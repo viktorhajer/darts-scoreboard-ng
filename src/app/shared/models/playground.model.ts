@@ -6,12 +6,13 @@ import {Throw} from './throw.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
+import {ApplicationStateService} from '~services/application-state.service';
 
 export const FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
-export abstract class PlaygroundModel<T extends PlaygroundState> implements OnInit {
+export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   throwEnabled = true;
   settingsOpen = true;
@@ -23,10 +24,11 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   multiplier: number;
   extraEndingMsg: string;
 
-  protected constructor(public game: GameService,
-                        public route: Router,
-                        public dialogService: DialogService,
-                        public minimumNumberOfPlayers = 1) {
+  protected constructor(public application: ApplicationStateService,
+    public game: GameService,
+    public route: Router,
+    public dialogService: DialogService,
+    public minimumNumberOfPlayers = 1) {
   }
 
   static getFieldValueAsNumber(field: string): number {
@@ -98,6 +100,7 @@ export abstract class PlaygroundModel<T extends PlaygroundState> implements OnIn
   addPlayer(name: any) {
     if (!!name.value.trim().length && !this.game.players.some(p => p.name === name.value)) {
       this.game.players.push(new Player(uuid(), name.value));
+      this.application.storePlayer(name.value);
     }
     name.value = '';
   }

@@ -1,23 +1,24 @@
 import {Component} from '@angular/core';
 import {KillerState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {PlaygroundModel} from '~models/playground.model';
+import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   templateUrl: './killer.component.html',
   animations: [slideInAnimation],
 })
-export class KillerComponent extends PlaygroundModel<KillerState> {
+export class KillerComponent extends Playground<KillerState> {
 
   settings: Settings;
 
-  constructor(game: GameService, route: Router, dialogService: DialogService) {
-    super(game, route, dialogService, 2);
+  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
+    super(application, game, route, dialogService, 2);
     this.settings = new Settings();
     this.nextEnabled = false;
     this.zeroEnabled = false;
@@ -138,7 +139,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
 
   getFieldNote(field: number): string {
     const owner = this.game.players.find(p => (<KillerState>p.state).actField === field);
-    return owner ? owner.name : '';
+    return owner ? `${owner.name}(${(<KillerState>owner.state).life})` : '';
   }
 
   getPlayerField(player: Player): string {

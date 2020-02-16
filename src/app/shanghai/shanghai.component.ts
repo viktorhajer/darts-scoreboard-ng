@@ -1,23 +1,24 @@
 import {Component} from '@angular/core';
 import {ShanghaiState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {PlaygroundModel} from '~models/playground.model';
+import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   templateUrl: './shanghai.component.html',
   animations: [slideInAnimation],
 })
-export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
+export class ShanghaiComponent extends Playground<ShanghaiState> {
 
   settings: Settings;
 
-  constructor(game: GameService, route: Router, dialogService: DialogService) {
-    super(game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
+    super(application, game, route, dialogService);
     this.settings = new Settings();
   }
 
@@ -39,7 +40,7 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
       if (this.settings.noScore) {
         player.score += this.multiplier;
       } else {
-        player.score += PlaygroundModel.getFieldValueAsNumber(field) * this.multiplier;
+        player.score += Playground.getFieldValueAsNumber(field) * this.multiplier;
       }
     }
     return Promise.resolve();
@@ -84,7 +85,7 @@ export class ShanghaiComponent extends PlaygroundModel<ShanghaiState> {
     if (fieldCount === 0) {
       return '○○○';
     } else {
-      let str = '' + this.getPlayerState(player).getFieldScore(field) * PlaygroundModel.getFieldValueAsNumber(field);
+      let str = '' + this.getPlayerState(player).getFieldScore(field) * Playground.getFieldValueAsNumber(field);
       for (let i = 0; i < fieldCount; i++) {
         str += '●';
       }
