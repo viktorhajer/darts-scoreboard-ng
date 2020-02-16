@@ -1,0 +1,13 @@
+<div class="settings">
+  <h1>{{title}} Settings</h1>
+
+  <h2>Players</h2>
+  <app-player-settings [playground]="playground"></app-player-settings>
+  <mat-divider></mat-divider>
+
+  <ng-content></ng-content>
+
+  <mat-divider></mat-divider>
+  <button mat-raised-button class="button big" (click)="playground.newGame()">Start</button>
+  <button mat-raised-button class="button big" (click)="playground.quit()">Cancel</button>
+</div>

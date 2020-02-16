@@ -1,94 +1,69 @@
 <div id="playgroundContent">
 
+  <app-settings *ngIf="settingsOpen" [title]="'X01'" [playground]="playground">
+
+    <h2>Games</h2>
+    <button mat-raised-button class="button" [color]="settings.startValue===101?'primary':''"
+            (click)="settings.setStartValue(101)">101
+    </button>
+    <button mat-raised-button class="button" [color]="settings.startValue===201?'primary':''"
+            (click)="settings.setStartValue(201)">201
+    </button>
+    <button mat-raised-button class="button" [color]="settings.startValue===301?'primary':''"
+            (click)="settings.setStartValue(301)">301
+    </button>
+    <button mat-raised-button class="button" [color]="settings.startValue===501?'primary':''"
+            (click)="settings.setStartValue(501)">501
+    </button>
+    <button mat-raised-button class="button" [color]="settings.startValue===701?'primary':''"
+            (click)="settings.setStartValue(701)">701
+    </button>
+    <button mat-raised-button class="button" [color]="settings.startValue===901?'primary':''"
+            (click)="settings.setStartValue(901)">901
+    </button>
+    <mat-divider></mat-divider>
+
+    <h2>Check In</h2>
+    <button mat-raised-button class="button shortmedium" [color]="settings.start===1?'primary':''"
+            (click)="settings.setStart(1)">Single
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.start===2?'primary':''"
+            (click)="settings.setStart(2)">Double
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.start===3?'primary':''"
+            (click)="settings.setStart(3)">Triple
+    </button>
+    <mat-divider></mat-divider>
+
+    <h2>Check Out</h2>
+    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===1?'primary':''"
+            (click)="settings.setCheckout(1)">Single
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===2?'primary':''"
+            (click)="settings.setCheckout(2)">Double
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===3?'primary':''"
+            (click)="settings.setCheckout(3)">Triple
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===4?'primary':''"
+            (click)="settings.setCheckout(4)">None
+    </button>
+
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button medium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
+      Victory First
+    </button>
+
+  </app-settings>
+
   <div class="side-left">
-
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
-
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <div class="player_info">
-          <div class="name">{{player.name}}</div>
-          <div class="shoots">
-            <div class="shoot">{{player.throws[0]}}</div>
-            <div class="shoot">{{player.throws[1]}}</div>
-            <div class="shoot">{{player.throws[2]}}</div>
-            <div class="shoot total">{{player.getThrowsTotal()}}</div>
-          </div>
-          <div class="clear"></div>
-          <div class="line"></div>
-          <div class="score">{{player.score}}</div>
-          <div class="clear"></div>
-        </div>
+        <app-player-score [player]="player" [hasContent]="false"></app-player-score>
       </div>
     </ng-container>
-
-    <div class="settings" *ngIf="settingsOpen">
-      <h1>X01 Settings</h1>
-
-      <h2>Players</h2>
-      <app-player-settings [playground]="playground"></app-player-settings>
-      <mat-divider></mat-divider>
-
-      <h2>Games</h2>
-      <button mat-raised-button class="button" [color]="settings.startValue===101?'primary':''"
-              (click)="settings.setStartValue(101)">101
-      </button>
-      <button mat-raised-button class="button" [color]="settings.startValue===201?'primary':''"
-              (click)="settings.setStartValue(201)">201
-      </button>
-      <button mat-raised-button class="button" [color]="settings.startValue===301?'primary':''"
-              (click)="settings.setStartValue(301)">301
-      </button>
-      <button mat-raised-button class="button" [color]="settings.startValue===501?'primary':''"
-              (click)="settings.setStartValue(501)">501
-      </button>
-      <button mat-raised-button class="button" [color]="settings.startValue===701?'primary':''"
-              (click)="settings.setStartValue(701)">701
-      </button>
-      <button mat-raised-button class="button" [color]="settings.startValue===901?'primary':''"
-              (click)="settings.setStartValue(901)">901
-      </button>
-      <mat-divider></mat-divider>
-
-      <h2>Start</h2>
-      <button mat-raised-button class="button shortmedium" [color]="settings.start===1?'primary':''"
-              (click)="settings.setStart(1)">Single
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.start===2?'primary':''"
-              (click)="settings.setStart(2)">Double
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.start===3?'primary':''"
-              (click)="settings.setStart(3)">Triple
-      </button>
-      <mat-divider></mat-divider>
-
-      <h2>Checkout</h2>
-      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===1?'primary':''"
-              (click)="settings.setCheckout(1)">Single
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===2?'primary':''"
-              (click)="settings.setCheckout(2)">Double
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===3?'primary':''"
-              (click)="settings.setCheckout(3)">Triple
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.checkout===4?'primary':''"
-              (click)="settings.setCheckout(4)">None
-      </button>
-
-      <mat-divider></mat-divider>
-      <button mat-raised-button class="button medium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
-        Victory First
-      </button>
-
-      <mat-divider></mat-divider>
-      <button mat-raised-button class="button big" (click)="newGame()">Start</button>
-      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
-    </div>
-
   </div>
-
   <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
-
 </div>

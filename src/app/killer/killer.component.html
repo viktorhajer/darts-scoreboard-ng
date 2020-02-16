@@ -1,22 +1,26 @@
 <div id="playgroundContent">
 
+  <app-settings *ngIf="settingsOpen" [title]="'Killer'" [playground]="playground">
+    <h2>Games</h2>
+    <div class="field-set">
+      <mat-form-field appearance="outline" class="big">
+        <mat-label>Life limit</mat-label>
+        <input [(ngModel)]="settings.numberOfLives" type="number" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="big">
+        <mat-label>Boarding</mat-label>
+        <input [(ngModel)]="settings.boardingLimit" type="number" matInput>
+      </mat-form-field>
+    </div>
+  </app-settings>
+
   <div class="side-left">
-
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
-
     <ng-container *ngIf="!settingsOpen">
-      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isDead(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isInactive(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
           *ngFor="let player of game.players; let i = index">
-        <div class="player_info">
-          <div class="name">{{player.name}}</div>
-          <div class="shoots">
-            <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>
-            <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>
-            <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
-          </div>
+        <app-player-score [player]="player" [scoreDisplayed]="false">
           <ng-container *ngIf="getPlayerField(player) !== '0'">
-            <div class="clear"></div>
-            <div class="line"></div>
             <div class="score"><label>Field: </label>{{getPlayerField(player)}}</div>
             <div class="clear"></div>
             <div class="line"></div>
@@ -25,36 +29,9 @@
               <ng-container *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</ng-container>
             </div>
           </ng-container>
-          <div class="clear"></div>
-        </div>
+        </app-player-score>
       </div>
     </ng-container>
-
-    <div class="settings" *ngIf="settingsOpen">
-      <h1>Killer Game Settings</h1>
-
-      <h2>Players</h2>
-      <app-player-settings [playground]="playground"></app-player-settings>
-      <mat-divider></mat-divider>
-
-      <div class="field-set">
-        <mat-form-field appearance="outline" class="big">
-          <mat-label>Life limit</mat-label>
-          <input [(ngModel)]="settings.numberOfLives" type="number" matInput>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="big">
-          <mat-label>Boarding</mat-label>
-          <input [(ngModel)]="settings.boardingLimit" type="number" matInput>
-        </mat-form-field>
-      </div>
-
-      <mat-divider></mat-divider>
-      <button mat-raised-button class="button big" (click)="newGame()">Start</button>
-      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
-    </div>
-
   </div>
-
   <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
-
 </div>

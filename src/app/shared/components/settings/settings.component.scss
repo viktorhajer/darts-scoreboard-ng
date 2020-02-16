@@ -1,5 +1,4 @@
 .settings {
-  position: absolute;
   padding: 2vh 2vw;
 
   h2 {
@@ -9,7 +8,7 @@
 
   mat-divider {
     clear: both;
-    margin: 2vh 0;
+    margin: 5px 0;
   }
 
   .field-set {
@@ -18,7 +17,7 @@
   }
 
   .button, mat-form-field {
-    margin: 0.1vw;
+    margin: 3px;
     height: 45px;
 
     &.big {

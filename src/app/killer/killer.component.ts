@@ -29,7 +29,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
   }
 
   customNext() {
-    while (this.getPlayerState(this.game.getActualPlayer()).isDead()) {
+    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
       this.game.nextPlayer();
     }
   }
@@ -59,7 +59,7 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
             state.life = this.settings.numberOfLives;
           }
         } else {
-          this.game.players.filter(p => p.id !== player.id && !this.getPlayerState(p).isDead()).forEach(p => {
+          this.game.players.filter(p => p.id !== player.id && !this.getPlayerState(p).isInactive()).forEach(p => {
             const s = this.getPlayerState(p);
             if (s.actField === score) {
               s.life -= this.multiplier;
@@ -83,12 +83,12 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
   checkPlayerState(): Promise<any> {
     if (this.game.round !== 0) {
       const actualPlayer = this.game.getActualPlayer();
-      actualPlayer.win = !this.game.players.some(p => p.id !== actualPlayer.id && !this.getPlayerState(p).isDead());
+      actualPlayer.win = !this.game.players.some(p => p.id !== actualPlayer.id && !this.getPlayerState(p).isInactive());
     }
     if (this.game.round === 0 || this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }
-    while (this.getPlayerState(this.game.getActualPlayer()).isDead()) {
+    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
       this.game.nextPlayer();
     }
     return Promise.resolve();
@@ -123,12 +123,12 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
   getFieldIcon(field: number): string {
     if (this.game.players.some(p => {
       const s = this.getPlayerState(p)
-      return !s.isDead() && s.life <= 2 && s.actField === field;
+      return !s.isInactive() && s.life <= 3 && s.actField === field;
     })) {
       return 'sentiment_very_dissatisfied';
     } else if (this.game.players.some(p => {
       const s = this.getPlayerState(p)
-      return s.isDead() && s.actField === field;
+      return s.isInactive() && s.actField === field;
     })) {
       return 'highlight_off';
     }
@@ -158,11 +158,11 @@ export class KillerComponent extends PlaygroundModel<KillerState> {
     return this.getPlayerState(player).killer;
   }
 
-  isDead(player: Player): boolean {
-    return this.getPlayerState(player).isDead();
+  isInactive(player: Player): boolean {
+    return this.getPlayerState(player).isInactive();
   }
 
   private getAllEnabledFields(): number[] {
-    return this.game.players.filter(p => !this.getPlayerState(p).isDead()).map(p => this.getPlayerState(p).actField);
+    return this.game.players.filter(p => !this.getPlayerState(p).isInactive()).map(p => this.getPlayerState(p).actField);
   }
 }

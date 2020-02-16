@@ -11,7 +11,7 @@ export class KillerState extends PlaygroundState {
     this.killer = false;
   }
 
-  isDead(): boolean {
+  isInactive(): boolean {
     return this.life <= 0;
   }
 

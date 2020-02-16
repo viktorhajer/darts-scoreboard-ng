@@ -1,64 +1,37 @@
 <div id="playgroundContent">
 
+  <app-settings *ngIf="settingsOpen" [title]="'Shanghai / Halve It'" [playground]="playground">
+    <h2>Fields</h2>
+    <button mat-raised-button class="button" [color]="settings.numbs[i]?'primary':''"
+            *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
+      {{numb === 21 ? 'B' : numb}}
+    </button>
+    <mat-divider></mat-divider>
+
+    <button mat-raised-button class="button big capitalize" (click)="settings.randomize()">Randomize</button>
+    <button mat-raised-button class="button shortmedium"  [color]="settings.noScore?'primary':''"
+            (click)="settings.toggleNoScore()">No score
+    </button>
+    <button mat-raised-button class="button shortmedium"  [color]="settings.halveIt?'primary':''"
+            (click)="settings.toggleHalveIt()">Halve It
+    </button>
+  </app-settings>
+
   <div class="side-left">
-
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
-
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <div class="player_info">
-          <div class="name">{{player.name}}</div>
-          <div class="shoots">
-            <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>
-            <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>
-            <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
-            <div class="shoot total">{{!player.getThrowsTotal() ? '-' : player.getThrowsTotal()}}</div>
-          </div>
-          <div class="clear"></div>
-          <div class="line"></div>
+        <app-player-score [player]="player">
           <div class="field-set">
             <div class="field {{isActiveField(field) ? 'active': ''}} {{isDoneField(field) ? '' : 'highlighted'}}"
                  *ngFor="let field of settings.fields">
               {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
             </div>
           </div>
-          <div class="line"></div>
-          <div class="score">{{player.score}}</div>
-          <div class="clear"></div>
-        </div>
+        </app-player-score>
       </div>
     </ng-container>
-
-    <div class="settings" *ngIf="settingsOpen">
-      <h1>Shanghai Settings</h1>
-
-      <h2>Players</h2>
-      <app-player-settings [playground]="playground"></app-player-settings>
-      <mat-divider></mat-divider>
-
-      <h2>Fields</h2>
-      <button mat-raised-button class="button" [color]="settings.numbs[i]?'primary':''"
-              *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
-        {{numb === 21 ? 'B' : numb}}
-      </button>
-      <mat-divider></mat-divider>
-
-      <button mat-raised-button class="button big capitalize" (click)="settings.randomize()">Randomize</button>
-      <button mat-raised-button class="button shortmedium"  [color]="settings.noScore?'primary':''"
-              (click)="settings.toggleNoScore()">No score
-      </button>
-      <button mat-raised-button class="button shortmedium"  [color]="settings.halveIt?'primary':''"
-              (click)="settings.toggleHalveIt()">Halve It
-      </button>
-
-      <mat-divider></mat-divider>
-      <button mat-raised-button class="button big" (click)="newGame()">Start</button>
-      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
-    </div>
-
   </div>
-
   <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
-
 </div>

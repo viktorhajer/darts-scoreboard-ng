@@ -1,5 +1,38 @@
 <div id="playgroundContent">
 
+  <app-settings *ngIf="settingsOpen" [title]="'Ultimate Cricket'" [playground]="playground">
+    <h2>Fields</h2>
+    <button mat-raised-button class="button" [color]="settings.isFieldAllowed(i)?'primary':''"
+            *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
+      {{numb === 21 ? 'B' : numb}}
+    </button>
+    <mat-divider></mat-divider>
+
+    <button mat-raised-button class="button shortmedium" (click)="settings.upper()">Upper</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.randomize()">Random</button>
+    <mat-divider></mat-divider>
+
+    <h2>Style</h2>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''"
+            (click)="settings.setStyle(1)">Classic
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==2?'primary':''"
+            (click)="settings.setStyle(2)">Cut-Throat
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
+            (click)="settings.setStyle(3)">No Score
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''"
+            (click)="settings.setStyle(4)">Black Out
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
+      Victory First
+    </button>
+  </app-settings>
+
   <div class="side-left">
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
@@ -7,16 +40,7 @@
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <div class="player_info">
-          <div class="name">{{player.name}}</div>
-          <div class="shoots">
-            <div class="shoot">{{player.throws[0]}}</div>
-            <div class="shoot">{{player.throws[1]}}</div>
-            <div class="shoot">{{player.throws[2]}}</div>
-            <div class="shoot total">{{player.getThrowsTotal()}}</div>
-          </div>
-          <div class="clear"></div>
-          <div class="line"></div>
+        <app-player-score [player]="player">
           <div class="field-set">
             <div
                 class="field {{isActiveField(player, field) && settings.isBlackOutGame()  ? 'active': ''}} {{!isFieldDoneForPlayer(player, field) ? 'highlighted' : ''}}"
@@ -24,58 +48,9 @@
               {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
             </div>
           </div>
-          <div class="line"></div>
-          <div class="score" *ngIf="!settings.isNoScoreGame()">{{player.score}}</div>
-          <div class="clear"></div>
-        </div>
+        </app-player-score>
       </div>
     </ng-container>
-
-    <div class="settings" *ngIf="settingsOpen">
-      <h1>Cricket Settings</h1>
-
-      <h2>Players</h2>
-      <app-player-settings [playground]="playground"></app-player-settings>
-      <mat-divider></mat-divider>
-
-      <h2>Fields</h2>
-      <button mat-raised-button class="button" [color]="settings.isFieldAllowed(i)?'primary':''"
-              *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
-        {{numb === 21 ? 'B' : numb}}
-      </button>
-      <mat-divider></mat-divider>
-
-      <button mat-raised-button class="button shortmedium" (click)="settings.upper()">Upper</button>
-      <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
-      <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
-      <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
-      <button mat-raised-button class="button shortmedium" (click)="settings.randomize()">Random</button>
-      <mat-divider></mat-divider>
-
-      <h2>Style</h2>
-      <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''"
-              (click)="settings.setStyle(1)">Classic
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.style==2?'primary':''"
-              (click)="settings.setStyle(2)">Cut-Throat
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
-              (click)="settings.setStyle(3)">No Score
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''"
-              (click)="settings.setStyle(4)">Black Out
-      </button>
-      <button mat-raised-button class="button shortmedium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
-        Victory First
-      </button>
-
-      <mat-divider></mat-divider>
-      <button mat-raised-button class="button big" (click)="newGame()">Start</button>
-      <button mat-raised-button class="button big" (click)="quit()">Cancel</button>
-    </div>
-
   </div>
-
   <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
-
 </div>
