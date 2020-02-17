@@ -180,7 +180,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   }
 
   getPlayerState(player: Player): T {
-    return <T>player.state;
+    return player.state as T;
   }
 
   getTheFinalResult(): Player[] {

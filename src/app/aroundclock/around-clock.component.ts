@@ -99,7 +99,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   getFieldNote(field: number): string {
     field = field === 25 ? 20 : field - 1;
-    const owners = this.game.players.filter(p => (<AroundClockState>p.state).actFieldIndex === field).map(p => p.name);
+    const owners = this.game.players.filter(p => (p.state as AroundClockState).actFieldIndex === field).map(p => p.name);
     return !!owners.length ? owners.join(' ') : '';
   }
 }

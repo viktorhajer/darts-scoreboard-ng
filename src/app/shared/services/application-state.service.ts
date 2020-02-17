@@ -23,18 +23,6 @@ export class ApplicationStateService {
     this.saveSettings();
   }
 
-  private setTheme() {
-    if (this.settings.darkTheme) {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.className = document.body.className.replace('dark-theme', '');
-    }
-  }
-
-  private saveSettings() {
-    localStorage.setItem(APPLICATION_KEY, JSON.stringify(this.settings));
-  }
-
   getStoredPlayers(): string[] {
     const data = localStorage.getItem(PLAYER_KEY);
     if (data) {
@@ -46,5 +34,17 @@ export class ApplicationStateService {
   storePlayer(name: string) {
     const players = [name, ...this.getStoredPlayers()].filter((v, i, a) => a.indexOf(v) === i);
     localStorage.setItem(PLAYER_KEY, JSON.stringify(players));
+  }
+
+  private setTheme() {
+    if (this.settings.darkTheme) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.className = document.body.className.replace('dark-theme', '');
+    }
+  }
+
+  private saveSettings() {
+    localStorage.setItem(APPLICATION_KEY, JSON.stringify(this.settings));
   }
 }

@@ -10,7 +10,7 @@ import {SettingsComponent} from '~components/settings/settings.component';
 import {PlayerScoreComponent} from '~components/player-score/player-score.component';
 
 const components = [NumberPlateComponent, GameToolbarComponent,
-  DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent]
+  DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent];
 
 @NgModule({
   imports: [CommonModule, MaterialModule],

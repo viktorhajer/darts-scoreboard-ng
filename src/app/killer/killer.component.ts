@@ -138,8 +138,8 @@ export class KillerComponent extends Playground<KillerState> {
   }
 
   getFieldNote(field: number): string {
-    const owner = this.game.players.find(p => (<KillerState>p.state).actField === field);
-    return owner ? `${owner.name}(${(<KillerState>owner.state).life})` : '';
+    const owner = this.game.players.find(p => (p.state as KillerState).actField === field);
+    return owner ? `${owner.name}(${(owner.state as KillerState).life})` : '';
   }
 
   getPlayerField(player: Player): string {
