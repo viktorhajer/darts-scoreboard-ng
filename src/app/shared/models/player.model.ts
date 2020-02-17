@@ -43,7 +43,7 @@ export class Player {
       player.throwsHistory.push(throws.clone());
     });
     if (this.state) {
-        player.state = this.state.clone();
+      player.state = this.state.clone();
     }
     return player;
   }

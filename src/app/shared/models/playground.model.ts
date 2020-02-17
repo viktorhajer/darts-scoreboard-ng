@@ -8,7 +8,8 @@ import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
 
-export const FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
+export const FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
+  '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
@@ -25,10 +26,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   extraEndingMsg: string;
 
   protected constructor(public application: ApplicationStateService,
-    public game: GameService,
-    public route: Router,
-    public dialogService: DialogService,
-    public minimumNumberOfPlayers = 1) {
+                        public game: GameService,
+                        public route: Router,
+                        public dialogService: DialogService,
+                        public minimumNumberOfPlayers = 1) {
   }
 
   static getFieldValueAsNumber(field: string): number {
@@ -60,14 +61,13 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
         .then(() => this.checkPlayerState())
         .then(() => {
           this.multiplier = 1;
-
           const winners = this.game.players.filter(p => p.win);
           if (winners.length > 0) {
             if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
-              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.game.clone().players);
+              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
               this.newGame(true);
             } else if (this.game.victoryFirst) {
-              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.game.clone().players);
+              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
               this.newGame(true);
             } else {
               while (this.game.getActualPlayer().win) {
@@ -181,6 +181,24 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   getPlayerState(player: Player): T {
     return <T>player.state;
+  }
+
+  getTheFinalResult(): Player[] {
+    let winners = this.game.players.filter(p => p.win);
+    if (!winners.length) {
+      return [];
+    }
+    let max = winners[0].score;
+    winners.forEach(p => {
+      max = p.score > max ? p.score : max;
+    });
+    winners = winners.filter(p => p.score === max).map(p => p.clone());
+    const losers  = this.game.players.filter(p => !winners.some(w => w.id === p.id)).map(p => {
+      const c = p.clone();
+      c.win = false;
+      return c;
+    });
+    return [...winners, ...losers];
   }
 
   private playerSettingsValidation(): boolean {

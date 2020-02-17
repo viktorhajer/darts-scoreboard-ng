@@ -123,13 +123,13 @@ export class KillerComponent extends Playground<KillerState> {
 
   getFieldIcon(field: number): string {
     if (this.game.players.some(p => {
-      const s = this.getPlayerState(p)
-      return !s.isInactive() && s.life <= 3 && s.actField === field;
+      const state = this.getPlayerState(p);
+      return !state.isInactive() && state.life <= 3 && state.actField === field;
     })) {
       return 'sentiment_very_dissatisfied';
     } else if (this.game.players.some(p => {
-      const s = this.getPlayerState(p)
-      return s.isInactive() && s.actField === field;
+      const state = this.getPlayerState(p);
+      return state.isInactive() && state.actField === field;
     })) {
       return 'highlight_off';
     }
