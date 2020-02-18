@@ -30,8 +30,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
                         public minimumNumberOfPlayers = 1) {
   }
 
-  static getFieldValueAsNumber(field: number): number {
-    return field === 20 ? 25 : field + 1;
+  static getFieldValueFromIndex(fieldIndex: number): number {
+    return fieldIndex === 20 ? 25 : fieldIndex + 1;
   }
 
   ngOnInit() {
@@ -39,7 +39,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.extraEndingMsg = '';
   }
 
-  throwNumber(score: number): Promise<void> {
+  throwNumber(score: number) {
     if (this.throwEnabled) {
       this.save();
       this.throwEnabled = false;
@@ -48,6 +48,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       }
 
       const actualPlayer = this.game.getActualPlayer();
+      const fieldIndex = score === 25 ? 20 : score - 1;
+
       actualPlayer.addThrowHistory(new Throw(score, this.multiplier, this.game.actualThrow));
       if (this.game.actualThrow === 0) {
         actualPlayer.throws = [];
@@ -55,26 +57,25 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       actualPlayer.throws[this.game.actualThrow] = score * this.multiplier;
       this.game.actualThrow++;
 
-      return this.calculatePoints(score)
-        .then(() => this.checkPlayerState())
-        .then(() => {
-          this.multiplier = 1;
-          const winners = this.game.players.filter(p => p.win);
-          if (winners.length > 0) {
-            if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
-              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
-              this.newGame(true);
-            } else if (this.game.victoryFirst) {
-              this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
-              this.newGame(true);
-            } else {
-              while (this.game.getActualPlayer().win) {
-                this.game.nextPlayer();
-              }
-            }
+      this.calculatePoints(actualPlayer, fieldIndex, score);
+      this.checkPlayerState(actualPlayer);
+
+      this.multiplier = 1;
+      const winners = this.game.players.filter(p => p.win);
+      if (winners.length > 0) {
+        if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
+          this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+          this.newGame(true);
+        } else if (this.game.victoryFirst) {
+          this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+          this.newGame(true);
+        } else {
+          while (this.game.getActualPlayer().win) {
+            this.game.nextPlayer();
           }
-          this.throwEnabled = true;
-        });
+        }
+      }
+      this.throwEnabled = true;
     }
   }
 
@@ -131,11 +132,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   skip() {
     const actThrow = this.game.actualThrow;
-    this.throwNumber(0).then(() => {
-      if (actThrow !== 2) {
-        this.skip();
-      }
-    });
+    this.throwNumber(0);
+    if (actThrow !== 2) {
+      this.skip();
+    }
   }
 
   quit() {
@@ -153,23 +153,23 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     return true;
   }
 
-  isHighlighted(field: number): boolean {
+  isHighlighted(fieldIndex: number): boolean {
     return false;
   }
 
-  isSecondHighlighted(field: number): boolean {
+  isSecondHighlighted(fieldIndex: number): boolean {
     return false;
   }
 
-  getFieldIcon(field: number): string {
+  getFieldIcon(fieldIndex: number): string {
     return '';
   }
 
-  getFieldNote(field: number): string {
+  getFieldNote(fieldIndex: number): string {
     return '';
   }
 
-  isFieldEnabledToThrow(field: number): boolean {
+  isFieldEnabledToThrow(fieldIndex: number): boolean {
     return true;
   }
 
@@ -210,7 +210,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   abstract customReset(): void;
 
-  abstract calculatePoints(score: number): Promise<any>;
+  abstract calculatePoints(player: Player, fieldIndex: number, score: number);
 
-  abstract checkPlayerState(): Promise<any>;
+  abstract checkPlayerState(player: Player);
 }

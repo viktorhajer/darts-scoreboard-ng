@@ -30,31 +30,27 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return this.settings.fields.length > 0;
   }
 
-  calculatePoints(score: number): Promise<any> {
-    const player = this.game.getActualPlayer();
+  calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state = this.getPlayerState(player);
-    const field = score === 25 ? 20 : score - 1;
-    if (this.isActiveField(field)) {
-      state.increaseFieldCount(field, 1);
-      state.increaseFieldScore(field, this.multiplier);
+    if (this.isActiveField(fieldIndex)) {
+      state.increaseFieldCount(fieldIndex, 1);
+      state.increaseFieldScore(fieldIndex, this.multiplier);
       if (this.settings.noScore) {
         player.score += this.multiplier;
       } else {
-        player.score += Playground.getFieldValueAsNumber(field) * this.multiplier;
+        player.score += score * this.multiplier;
       }
     }
-    return Promise.resolve();
   }
 
-  checkPlayerState(): Promise<any> {
-    const player = this.game.getActualPlayer();
-
+  checkPlayerState(player: Player) {
     // Shanghai rule
     if (this.game.actualThrow === 3) {
       let multi = 1;
+      const fieldIndex = this.settings.fields[this.game.round];
       for (let i = 0; i < 3; i++) {
         const t = player.throwsHistory[player.throwsHistory.length - i - 1];
-        if (t.fieldNum === this.getPreviousField()) {
+        if (t.score === Playground.getFieldValueFromIndex(fieldIndex)) {
           multi *= (t.multi + 1);
         }
       }
@@ -74,16 +70,14 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     } else if (this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }
-
-    return Promise.resolve();
   }
 
-  getFieldValue(player: Player, field: number): string {
-    const fieldCount = this.getPlayerState(player).getFieldCount(field);
+  getFieldValue(player: Player, fieldIndex: number): string {
+    const fieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
     if (fieldCount === 0) {
       return '○○○';
     } else {
-      let str = '' + this.getPlayerState(player).getFieldScore(field) * Playground.getFieldValueAsNumber(field);
+      let str = '' + this.getPlayerState(player).getFieldScore(fieldIndex) * Playground.getFieldValueFromIndex(fieldIndex);
       for (let i = 0; i < fieldCount; i++) {
         str += '●';
       }
@@ -94,21 +88,20 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     }
   }
 
-  isActiveField(field: number): boolean {
-    return this.settings.fields[this.game.round] === field;
+  isActiveField(fieldIndex: number): boolean {
+    return this.settings.fields[this.game.round] === fieldIndex;
   }
 
-  isFieldDoneForPlayer(field: number): boolean {
-    return this.settings.fields.indexOf(field) < this.game.round;
+  isFieldDoneForPlayer(fieldIndex: number): boolean {
+    return this.settings.fields.indexOf(fieldIndex) < this.game.round;
   }
 
-  isFieldEnabledToThrow(fieldValue: number): boolean {
-    const field = fieldValue === 25 ? 20 : (fieldValue - 1);
-    return this.settings.fields.indexOf(field) === this.game.round;
+  isFieldEnabledToThrow(fieldIndex: number): boolean {
+    return this.settings.fields.indexOf(fieldIndex) === this.game.round;
   }
 
-  isHighlighted(field: number): boolean {
-    return this.isFieldEnabledToThrow(field);
+  isHighlighted(fieldIndex: number): boolean {
+    return this.isFieldEnabledToThrow(fieldIndex);
   }
 
   getTheFinalResult(): Player[] {
@@ -127,9 +120,5 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       return c;
     });
     return [...winners, ...losers];
-  }
-
-  private getPreviousField(): number {
-    return this.settings.fields[this.game.round > 0 ? this.game.round : 0];
   }
 }

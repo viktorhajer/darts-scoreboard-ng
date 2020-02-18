@@ -40,13 +40,10 @@ export class KillerComponent extends Playground<KillerState> {
     return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
   }
 
-  calculatePoints(score: number): Promise<any> {
-
-    const player = this.game.getActualPlayer();
+  calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state: KillerState = this.getPlayerState(player);
-
     if (this.game.round === 0) {
-      state.actField = score;
+      state.actField = fieldIndex;
       player.score = score;
       if (this.game.isActualPlayerTheLast()) {
         this.nextEnabled = true;
@@ -55,7 +52,7 @@ export class KillerComponent extends Playground<KillerState> {
       }
     } else {
       if (state.killer) {
-        if (score === state.actField) {
+        if (fieldIndex === state.actField) {
           state.life = Number(state.life) + Number(this.multiplier);
           if (state.life > this.settings.numberOfLives) {
             state.life = this.settings.numberOfLives;
@@ -63,7 +60,7 @@ export class KillerComponent extends Playground<KillerState> {
         } else {
           this.game.players.filter(p => p.id !== player.id && !this.getPlayerState(p).isInactive()).forEach(p => {
             const s = this.getPlayerState(p);
-            if (s.actField === score) {
+            if (fieldIndex === s.actField) {
               s.life -= this.multiplier;
               if (s.life < 0) {
                 s.life = 0;
@@ -71,7 +68,7 @@ export class KillerComponent extends Playground<KillerState> {
             }
           });
         }
-      } else if (score === state.actField) {
+      } else if (fieldIndex === state.actField) {
         state.boarding -= this.multiplier;
         if (state.boarding <= 0) {
           state.boarding = 0;
@@ -79,14 +76,12 @@ export class KillerComponent extends Playground<KillerState> {
         state.killer = state.boarding === 0;
       }
     }
-    return Promise.resolve();
   }
 
-  checkPlayerState(): Promise<any> {
+  checkPlayerState(player: Player) {
     if (this.game.round !== 0) {
-      const actualPlayer = this.game.getActualPlayer();
-      actualPlayer.setWin(!this.game.players.some(p =>
-        p.id !== actualPlayer.id && !this.getPlayerState(p).isInactive()));
+      player.setWin(!this.game.players.some(p =>
+        p.id !== player.id && !this.getPlayerState(p).isInactive()));
     }
     if (this.game.round === 0 || this.game.actualThrow === 3) {
       this.game.nextPlayer();
@@ -94,58 +89,57 @@ export class KillerComponent extends Playground<KillerState> {
     while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
       this.game.nextPlayer();
     }
-    return Promise.resolve();
   }
 
-  isFieldEnabledToThrow(fieldValue: number): boolean {
+  isFieldEnabledToThrow(fieldIndex: number): boolean {
     if (this.game.round === 0) {
-      return fieldValue !== 25 && !this.getAllEnabledFields().some(f => f === fieldValue);
+      return fieldIndex !== 20 && !this.getAllEnabledFields().some(f => f === fieldIndex);
     }
-    return this.getAllEnabledFields().some(f => f === fieldValue);
+    return this.getAllEnabledFields().some(f => f === fieldIndex);
   }
 
-  isHighlighted(field: number): boolean {
+  isHighlighted(fieldIndex: number): boolean {
     if (this.game.round === 0) {
-      return this.isFieldEnabledToThrow(field);
+      return this.isFieldEnabledToThrow(fieldIndex);
     }
     const state = this.getPlayerState(this.game.getActualPlayer());
     if (state.killer) {
-      return this.isFieldEnabledToThrow(field) && !this.isSecondHighlighted(field);
+      return this.isFieldEnabledToThrow(fieldIndex) && !this.isSecondHighlighted(fieldIndex);
     }
-    return state.actField === field;
+    return state.actField === fieldIndex;
   }
 
-  isSecondHighlighted(field: number): boolean {
+  isSecondHighlighted(fieldIndex: number): boolean {
     const state = this.getPlayerState(this.game.getActualPlayer());
     if (state.killer) {
-      return state.actField === field;
+      return state.actField === fieldIndex;
     }
     return false;
   }
 
-  getFieldIcon(field: number): string {
+  getFieldIcon(fieldIndex: number): string {
     if (this.game.players.some(p => {
       const state = this.getPlayerState(p);
-      return !state.isInactive() && state.life <= 3 && state.actField === field;
+      return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
     })) {
       return 'sentiment_very_dissatisfied';
     } else if (this.game.players.some(p => {
       const state = this.getPlayerState(p);
-      return state.isInactive() && state.actField === field;
+      return state.isInactive() && state.actField === fieldIndex;
     })) {
       return 'highlight_off';
     }
     return '';
   }
 
-  getFieldNote(fieldValue: number): string {
-    const owner = this.game.players.find(p => (p.state as KillerState).actField === fieldValue);
+  getFieldNote(fieldIndex: number): string {
+    const owner = this.game.players.find(p => (p.state as KillerState).actField === fieldIndex);
     return owner ? `${owner.name}(${(owner.state as KillerState).life})` : '';
   }
 
   getPlayerField(player: Player): string {
-    const score = this.getPlayerState(player).actField;
-    return score === 25 ? 'B' : (score + '');
+    const fieldIndex = this.getPlayerState(player).actField;
+    return fieldIndex === 20 ? 'B' : (fieldIndex + 1) + '';
   }
 
   getLife(player: Player): number {

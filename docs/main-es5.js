@@ -681,12 +681,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "calculatePoints",
-        value: function calculatePoints(score) {
-          var player = this.game.getActualPlayer();
-          var field = score === 25 ? 20 : score - 1;
+        value: function calculatePoints(player, fieldIndex, score) {
           var state = this.getPlayerState(player);
 
-          if (state.getActFieldIndex() === field) {
+          if (state.getActFieldIndex() === fieldIndex) {
             // last throw
             if (state.actFieldIndex >= _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS_COUNT"] - this.multiplier) {
               this.multiplier = this.multiplier === 1 ? 1 : _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS_COUNT"] - (state.actFieldIndex + 1);
@@ -700,13 +698,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
 
           player.score++;
-          return Promise.resolve();
         }
       }, {
         key: "checkPlayerState",
-        value: function checkPlayerState() {
-          var player = this.game.getActualPlayer();
-
+        value: function checkPlayerState(player) {
           if (_models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS_COUNT"] - 1 < this.getPlayerState(player).getActFieldIndex()) {
             player.setWin();
           } else if (this.game.actualThrow === 3) {
@@ -715,7 +710,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               for (var i = 0; i < 3; i++) {
                 var t = player.throwsHistory[player.throwsHistory.length - i - 1];
-                multi += t.fieldNum;
+                multi += t.score;
               }
 
               if (multi === 0) {
@@ -725,33 +720,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             this.game.nextPlayer();
           }
-
-          return Promise.resolve();
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(field) {
-          field = field === 25 ? 20 : field - 1;
-          return field === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
+        value: function isFieldEnabledToThrow(fieldIndex) {
+          return fieldIndex === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
         }
       }, {
         key: "isHighlighted",
-        value: function isHighlighted(field) {
-          return this.isFieldEnabledToThrow(field);
+        value: function isHighlighted(fieldIndex) {
+          return this.isFieldEnabledToThrow(fieldIndex);
         }
       }, {
         key: "isSecondHighlighted",
-        value: function isSecondHighlighted(field) {
+        value: function isSecondHighlighted(fieldIndex) {
           var _this2 = this;
 
           var ret = false;
 
-          if (!this.isFieldEnabledToThrow(field)) {
-            field = field === 25 ? 20 : field - 1;
+          if (!this.isFieldEnabledToThrow(fieldIndex)) {
             ret = this.game.players.filter(function (p) {
               return p !== _this2.game.getActualPlayer();
             }).some(function (p) {
-              return field === _this2.getPlayerState(p).getActFieldIndex();
+              return fieldIndex === _this2.getPlayerState(p).getActFieldIndex();
             });
           }
 
@@ -759,10 +750,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "getFieldNote",
-        value: function getFieldNote(field) {
-          field = field === 25 ? 20 : field - 1;
+        value: function getFieldNote(fieldIndex) {
           var owners = this.game.players.filter(function (p) {
-            return p.state.actFieldIndex === field;
+            return p.state.actFieldIndex === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -1713,14 +1703,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "calculatePoints",
-        value: function calculatePoints(score) {
-          var player = this.game.getActualPlayer();
-          this.updateField(player, score);
-          return Promise.resolve();
+        value: function calculatePoints(player, fieldIndex, score) {
+          if (this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex)) {
+            var playerFieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
+
+            if (!this.settings.isBlackOutGame() || this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === fieldIndex || this.isFieldDoneForPlayer(player, fieldIndex)) {
+              if (this.isFieldClosedForOthers(player, fieldIndex) && playerFieldCount + this.multiplier > 3) {
+                this.getPlayerState(player).setFieldCount(fieldIndex, 3);
+              } else {
+                var multiplier = this.multiplier + 0;
+
+                if (playerFieldCount < 3 && playerFieldCount + this.multiplier >= 3) {
+                  multiplier = (playerFieldCount + this.multiplier) % 3;
+                }
+
+                this.getPlayerState(player).setFieldCount(fieldIndex, playerFieldCount + this.multiplier);
+                this.multiplier = multiplier;
+              }
+            }
+
+            if (this.isFieldDoneForPlayer(player, fieldIndex)) {
+              if (this.settings.isBlackOutGame()) {
+                if (this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === fieldIndex) {
+                  this.getPlayerState(player).increaseActFieldIndex();
+                }
+              }
+
+              this.punishPlayers(fieldIndex);
+            }
+          }
         }
       }, {
         key: "checkPlayerState",
-        value: function checkPlayerState() {
+        value: function checkPlayerState(player) {
           var _this5 = this;
 
           this.game.players.forEach(function (p) {
@@ -1734,15 +1749,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.game.actualThrow === 3) {
             this.game.nextPlayer();
           }
-
-          return Promise.resolve();
         }
       }, {
         key: "getFieldValue",
-        value: function getFieldValue(player, field) {
-          var score = this.getPunishScore(player, field);
+        value: function getFieldValue(player, fieldIndex) {
+          var score = this.getPunishScore(player, fieldIndex);
           var punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
-          var playerFieldCount = this.getPlayerState(player).getFieldCount(field);
+          var playerFieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
           var str = '';
 
           if (punishStyle && score !== 0) {
@@ -1752,7 +1765,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (playerFieldCount === 0 && str.length === 0) {
             return '○';
           } else if (playerFieldCount > 3 && !punishStyle && !this.settings.isNoScoreGame()) {
-            return this.getFieldScore(player, field) + '';
+            return this.getFieldScore(player, fieldIndex) + '';
           } else if (playerFieldCount === 3 || (punishStyle || this.settings.isNoScoreGame()) && playerFieldCount > 3) {
             str += '●●●';
           } else {
@@ -1765,40 +1778,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "isActiveField",
-        value: function isActiveField(player, field) {
-          return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field;
+        value: function isActiveField(player, fieldIndex) {
+          return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === fieldIndex;
         }
       }, {
         key: "isFieldDoneForPlayer",
-        value: function isFieldDoneForPlayer(player, field) {
-          return this.getPlayerState(player).getFieldCount(field) >= 3;
+        value: function isFieldDoneForPlayer(player, fieldIndex) {
+          return this.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldValue) {
-          var field = fieldValue === 25 ? 20 : fieldValue - 1;
-
+        value: function isFieldEnabledToThrow(fieldIndex) {
           if (this.settings.isNoScoreGame()) {
-            return this.settings.fields.indexOf(field) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field);
+            return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
           }
 
-          return this.settings.fields.indexOf(field) !== -1 && !this.isFieldClosed(field);
+          return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex);
         }
       }, {
         key: "isHighlighted",
-        value: function isHighlighted(field) {
-          return this.isFieldEnabledToThrow(field) && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 20 : field - 1);
+        value: function isHighlighted(fieldIndex) {
+          return this.isFieldEnabledToThrow(fieldIndex) && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
         }
       }, {
         key: "isSecondHighlighted",
-        value: function isSecondHighlighted(field) {
-          return this.isFieldEnabledToThrow(field) && this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 20 : field - 1);
+        value: function isSecondHighlighted(fieldIndex) {
+          return this.isFieldEnabledToThrow(fieldIndex) && this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
         }
       }, {
         key: "getFieldNote",
-        value: function getFieldNote(field) {
-          if (this.isHighlighted(field)) {
-            var playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(field === 25 ? 20 : field - 1);
+        value: function getFieldNote(fieldIndex) {
+          if (this.isHighlighted(fieldIndex)) {
+            var playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
             return ''.padStart(3 - playerFieldCount, '●');
           }
 
@@ -1823,9 +1834,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this6 = this;
 
           var total = 0;
-          this.settings.fields.forEach(function (field) {
-            if (_this6.isFieldDoneForPlayer(player, field)) {
-              total += (_this6.getPlayerState(player).getFieldCount(field) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueAsNumber(field);
+          this.settings.fields.forEach(function (fieldIndex) {
+            if (_this6.isFieldDoneForPlayer(player, fieldIndex)) {
+              total += (_this6.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -1836,90 +1847,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this7 = this;
 
           var total = 0;
-          this.settings.fields.forEach(function (field) {
-            total += _this7.getPlayerState(player).getPunishCount(field) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueAsNumber(field);
+          this.settings.fields.forEach(function (fieldIndex) {
+            total += _this7.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
       }, {
-        key: "updateField",
-        value: function updateField(player, score) {
-          var field = score === 25 ? 20 : score - 1;
-
-          if (this.settings.fields.indexOf(field) !== -1 && !this.isFieldClosed(field)) {
-            var playerFieldCount = this.getPlayerState(player).getFieldCount(field);
-
-            if (!this.settings.isBlackOutGame() || this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field || this.isFieldDoneForPlayer(player, field)) {
-              if (this.isFieldClosedForOthers(player, field) && playerFieldCount + this.multiplier > 3) {
-                this.getPlayerState(player).setFieldCount(field, 3);
-              } else {
-                var multiplier = this.multiplier + 0;
-
-                if (playerFieldCount < 3 && playerFieldCount + this.multiplier >= 3) {
-                  multiplier = (playerFieldCount + this.multiplier) % 3;
-                }
-
-                this.getPlayerState(player).setFieldCount(field, playerFieldCount + this.multiplier);
-                this.multiplier = multiplier;
-              }
-            }
-
-            if (this.isFieldDoneForPlayer(player, field)) {
-              if (this.settings.isBlackOutGame()) {
-                if (this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field) {
-                  this.getPlayerState(player).increaseActFieldIndex();
-                }
-              }
-
-              this.punishPlayers(field);
-            }
-          }
-        }
-      }, {
         key: "punishPlayers",
-        value: function punishPlayers(field) {
+        value: function punishPlayers(fieldIndex) {
           var _this8 = this;
 
           this.game.players.forEach(function (player) {
-            if (!_this8.isFieldDoneForPlayer(player, field)) {
-              _this8.getPlayerState(player).setPunishCount(field, _this8.getPlayerState(player).getPunishCount(field) + _this8.multiplier);
+            if (!_this8.isFieldDoneForPlayer(player, fieldIndex)) {
+              _this8.getPlayerState(player).setPunishCount(fieldIndex, _this8.getPlayerState(player).getPunishCount(fieldIndex) + _this8.multiplier);
             }
           }, this);
         }
       }, {
         key: "getFieldScore",
-        value: function getFieldScore(player, field) {
-          if (this.isFieldDoneForPlayer(player, field)) {
-            return (this.getPlayerState(player).getFieldCount(field) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueAsNumber(field);
+        value: function getFieldScore(player, fieldIndex) {
+          if (this.isFieldDoneForPlayer(player, fieldIndex)) {
+            return (this.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
           }
 
           return 0;
         }
       }, {
         key: "getPunishScore",
-        value: function getPunishScore(player, field) {
-          return this.getPlayerState(player).getPunishCount(field) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueAsNumber(field);
+        value: function getPunishScore(player, fieldIndex) {
+          return this.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
         }
       }, {
         key: "isFieldClosed",
-        value: function isFieldClosed(field) {
+        value: function isFieldClosed(fieldIndex) {
           var _this9 = this;
 
           var closed = true;
           this.game.players.forEach(function (player) {
-            closed = closed && _this9.isFieldDoneForPlayer(player, field);
+            closed = closed && _this9.isFieldDoneForPlayer(player, fieldIndex);
           }, this);
           return closed;
         }
       }, {
         key: "isFieldClosedForOthers",
-        value: function isFieldClosedForOthers(player, field) {
+        value: function isFieldClosedForOthers(player, fieldIndex) {
           var _this10 = this;
 
           var closed = true;
           this.game.players.forEach(function (p) {
             if (p.id !== player.id) {
-              closed = closed && _this10.isFieldDoneForPlayer(p, field);
+              closed = closed && _this10.isFieldDoneForPlayer(p, fieldIndex);
             }
           }, this);
           return closed;
@@ -1930,8 +1907,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this11 = this;
 
           var done = true;
-          this.settings.fields.forEach(function (field) {
-            done = done && _this11.isFieldDoneForPlayer(player, field);
+          this.settings.fields.forEach(function (fieldIndex) {
+            done = done && _this11.isFieldDoneForPlayer(player, fieldIndex);
           });
           return done;
         }
@@ -2306,23 +2283,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass(CricketState, [{
         key: "getFieldCount",
-        value: function getFieldCount(field) {
-          return this.getFieldValue(this.fieldCount, field).value;
+        value: function getFieldCount(fieldIndex) {
+          return this.getFieldValue(this.fieldCount, fieldIndex).value;
         }
       }, {
         key: "setFieldCount",
-        value: function setFieldCount(field, value) {
-          this.getFieldValue(this.fieldCount, field).value = value;
+        value: function setFieldCount(fieldIndex, value) {
+          this.getFieldValue(this.fieldCount, fieldIndex).value = value;
         }
       }, {
         key: "getPunishCount",
-        value: function getPunishCount(field) {
-          return this.getFieldValue(this.punishCount, field).value;
+        value: function getPunishCount(fieldIndex) {
+          return this.getFieldValue(this.punishCount, fieldIndex).value;
         }
       }, {
         key: "setPunishCount",
-        value: function setPunishCount(field, value) {
-          this.getFieldValue(this.punishCount, field).value = value;
+        value: function setPunishCount(fieldIndex, value) {
+          this.getFieldValue(this.punishCount, fieldIndex).value = value;
         }
       }, {
         key: "getActFieldIndex",
@@ -2751,14 +2728,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "calculatePoints",
-        value: function calculatePoints(score) {
+        value: function calculatePoints(player, fieldIndex, score) {
           var _this16 = this;
 
-          var player = this.game.getActualPlayer();
           var state = this.getPlayerState(player);
 
           if (this.game.round === 0) {
-            state.actField = score;
+            state.actField = fieldIndex;
             player.score = score;
 
             if (this.game.isActualPlayerTheLast()) {
@@ -2768,7 +2744,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           } else {
             if (state.killer) {
-              if (score === state.actField) {
+              if (fieldIndex === state.actField) {
                 state.life = Number(state.life) + Number(this.multiplier);
 
                 if (state.life > this.settings.numberOfLives) {
@@ -2780,7 +2756,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }).forEach(function (p) {
                   var s = _this16.getPlayerState(p);
 
-                  if (s.actField === score) {
+                  if (fieldIndex === s.actField) {
                     s.life -= _this16.multiplier;
 
                     if (s.life < 0) {
@@ -2789,7 +2765,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }
                 });
               }
-            } else if (score === state.actField) {
+            } else if (fieldIndex === state.actField) {
               state.boarding -= this.multiplier;
 
               if (state.boarding <= 0) {
@@ -2799,18 +2775,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               state.killer = state.boarding === 0;
             }
           }
-
-          return Promise.resolve();
         }
       }, {
         key: "checkPlayerState",
-        value: function checkPlayerState() {
+        value: function checkPlayerState(player) {
           var _this17 = this;
 
           if (this.game.round !== 0) {
-            var actualPlayer = this.game.getActualPlayer();
-            actualPlayer.setWin(!this.game.players.some(function (p) {
-              return p.id !== actualPlayer.id && !_this17.getPlayerState(p).isInactive();
+            player.setWin(!this.game.players.some(function (p) {
+              return p.id !== player.id && !_this17.getPlayerState(p).isInactive();
             }));
           }
 
@@ -2821,63 +2794,61 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
             this.game.nextPlayer();
           }
-
-          return Promise.resolve();
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldValue) {
+        value: function isFieldEnabledToThrow(fieldIndex) {
           if (this.game.round === 0) {
-            return fieldValue !== 25 && !this.getAllEnabledFields().some(function (f) {
-              return f === fieldValue;
+            return fieldIndex !== 20 && !this.getAllEnabledFields().some(function (f) {
+              return f === fieldIndex;
             });
           }
 
           return this.getAllEnabledFields().some(function (f) {
-            return f === fieldValue;
+            return f === fieldIndex;
           });
         }
       }, {
         key: "isHighlighted",
-        value: function isHighlighted(field) {
+        value: function isHighlighted(fieldIndex) {
           if (this.game.round === 0) {
-            return this.isFieldEnabledToThrow(field);
+            return this.isFieldEnabledToThrow(fieldIndex);
           }
 
           var state = this.getPlayerState(this.game.getActualPlayer());
 
           if (state.killer) {
-            return this.isFieldEnabledToThrow(field) && !this.isSecondHighlighted(field);
+            return this.isFieldEnabledToThrow(fieldIndex) && !this.isSecondHighlighted(fieldIndex);
           }
 
-          return state.actField === field;
+          return state.actField === fieldIndex;
         }
       }, {
         key: "isSecondHighlighted",
-        value: function isSecondHighlighted(field) {
+        value: function isSecondHighlighted(fieldIndex) {
           var state = this.getPlayerState(this.game.getActualPlayer());
 
           if (state.killer) {
-            return state.actField === field;
+            return state.actField === fieldIndex;
           }
 
           return false;
         }
       }, {
         key: "getFieldIcon",
-        value: function getFieldIcon(field) {
+        value: function getFieldIcon(fieldIndex) {
           var _this18 = this;
 
           if (this.game.players.some(function (p) {
             var state = _this18.getPlayerState(p);
 
-            return !state.isInactive() && state.life <= 3 && state.actField === field;
+            return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
             return 'sentiment_very_dissatisfied';
           } else if (this.game.players.some(function (p) {
             var state = _this18.getPlayerState(p);
 
-            return state.isInactive() && state.actField === field;
+            return state.isInactive() && state.actField === fieldIndex;
           })) {
             return 'highlight_off';
           }
@@ -2886,17 +2857,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "getFieldNote",
-        value: function getFieldNote(fieldValue) {
+        value: function getFieldNote(fieldIndex) {
           var owner = this.game.players.find(function (p) {
-            return p.state.actField === fieldValue;
+            return p.state.actField === fieldIndex;
           });
           return owner ? "".concat(owner.name, "(").concat(owner.state.life, ")") : '';
         }
       }, {
         key: "getPlayerField",
         value: function getPlayerField(player) {
-          var score = this.getPlayerState(player).actField;
-          return score === 25 ? 'B' : score + '';
+          var fieldIndex = this.getPlayerState(player).actField;
+          return fieldIndex === 20 ? 'B' : fieldIndex + 1 + '';
         }
       }, {
         key: "getLife",
@@ -3171,7 +3142,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _this20 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
         _this20.life = life;
         _this20.boarding = boarding;
-        _this20.actField = 0;
+        _this20.actField = -1;
         _this20.killer = false;
         return _this20;
       }
@@ -3915,38 +3886,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "calculatePoints",
-        value: function calculatePoints(score) {
-          var player = this.game.getActualPlayer();
+        value: function calculatePoints(player, fieldIndex, score) {
           var state = this.getPlayerState(player);
-          var field = score === 25 ? 20 : score - 1;
 
-          if (this.isActiveField(field)) {
-            state.increaseFieldCount(field, 1);
-            state.increaseFieldScore(field, this.multiplier);
+          if (this.isActiveField(fieldIndex)) {
+            state.increaseFieldCount(fieldIndex, 1);
+            state.increaseFieldScore(fieldIndex, this.multiplier);
 
             if (this.settings.noScore) {
               player.score += this.multiplier;
             } else {
-              player.score += _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueAsNumber(field) * this.multiplier;
+              player.score += score * this.multiplier;
             }
           }
-
-          return Promise.resolve();
         }
       }, {
         key: "checkPlayerState",
-        value: function checkPlayerState() {
+        value: function checkPlayerState(player) {
           var _this23 = this;
 
-          var player = this.game.getActualPlayer(); // Shanghai rule
-
+          // Shanghai rule
           if (this.game.actualThrow === 3) {
             var multi = 1;
+            var fieldIndex = this.settings.fields[this.game.round];
 
             for (var i = 0; i < 3; i++) {
               var t = player.throwsHistory[player.throwsHistory.length - i - 1];
 
-              if (t.fieldNum === this.getPreviousField()) {
+              if (t.score === _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex)) {
                 multi *= t.multi + 1;
               }
             }
@@ -3971,18 +3938,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else if (this.game.actualThrow === 3) {
             this.game.nextPlayer();
           }
-
-          return Promise.resolve();
         }
       }, {
         key: "getFieldValue",
-        value: function getFieldValue(player, field) {
-          var fieldCount = this.getPlayerState(player).getFieldCount(field);
+        value: function getFieldValue(player, fieldIndex) {
+          var fieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
 
           if (fieldCount === 0) {
             return '○○○';
           } else {
-            var str = '' + this.getPlayerState(player).getFieldScore(field) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueAsNumber(field);
+            var str = '' + this.getPlayerState(player).getFieldScore(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
 
             for (var i = 0; i < fieldCount; i++) {
               str += '●';
@@ -3997,24 +3962,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "isActiveField",
-        value: function isActiveField(field) {
-          return this.settings.fields[this.game.round] === field;
+        value: function isActiveField(fieldIndex) {
+          return this.settings.fields[this.game.round] === fieldIndex;
         }
       }, {
         key: "isFieldDoneForPlayer",
-        value: function isFieldDoneForPlayer(field) {
-          return this.settings.fields.indexOf(field) < this.game.round;
+        value: function isFieldDoneForPlayer(fieldIndex) {
+          return this.settings.fields.indexOf(fieldIndex) < this.game.round;
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldValue) {
-          var field = fieldValue === 25 ? 20 : fieldValue - 1;
-          return this.settings.fields.indexOf(field) === this.game.round;
+        value: function isFieldEnabledToThrow(fieldIndex) {
+          return this.settings.fields.indexOf(fieldIndex) === this.game.round;
         }
       }, {
         key: "isHighlighted",
-        value: function isHighlighted(field) {
-          return this.isFieldEnabledToThrow(field);
+        value: function isHighlighted(fieldIndex) {
+          return this.isFieldEnabledToThrow(fieldIndex);
         }
       }, {
         key: "getTheFinalResult",
@@ -4046,11 +4010,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return c;
           });
           return [].concat(_toConsumableArray(winners), _toConsumableArray(losers));
-        }
-      }, {
-        key: "getPreviousField",
-        value: function getPreviousField() {
-          return this.settings.fields[this.game.round > 0 ? this.game.round : 0];
         }
       }]);
 
@@ -4673,25 +4632,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _services_game_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ~models/playground.model */
+    "./src/app/shared/models/playground.model.ts");
+    /* harmony import */
+
+
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ~services/game.service */
     "./src/app/shared/services/game.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @angular/material/icon */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
 
@@ -4711,7 +4676,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r12.playground.getFieldIcon(i_r11));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r12.playground.getFieldIcon(i_r11 - 1));
       }
     }
 
@@ -4731,7 +4696,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r13.playground.getFieldNote(i_r11));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r13.playground.getFieldNote(i_r11 - 1));
       }
     }
 
@@ -4748,7 +4713,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           var ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r16.throwNumber(i_r11);
+          return ctx_r16.throwNumber(i_r11 - 1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -4765,7 +4730,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r8.getNumberColor(i_r11))("disabled", ctx_r8.isNumberDisabled(i_r11));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r8.getNumberColor(i_r11 - 1))("disabled", ctx_r8.isNumberDisabled(i_r11 - 1));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -4773,11 +4738,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.playground.getFieldIcon(i_r11));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.playground.getFieldIcon(i_r11 - 1));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.playground.getFieldNote(i_r11));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.playground.getFieldNote(i_r11 - 1));
       }
     }
 
@@ -4795,7 +4760,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r9.playground.getFieldIcon(25));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r9.playground.getFieldIcon(20));
       }
     }
 
@@ -4813,7 +4778,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r10.playground.getFieldNote(25));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r10.playground.getFieldNote(20));
       }
     }
 
@@ -4839,10 +4804,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "getNumberColor",
-        value: function getNumberColor(field) {
-          if (this.playground.isHighlighted(field)) {
+        value: function getNumberColor(fieldIndex) {
+          if (this.playground.isHighlighted(fieldIndex)) {
             return 'primary';
-          } else if (this.playground.isSecondHighlighted(field)) {
+          } else if (this.playground.isSecondHighlighted(fieldIndex)) {
             return 'accent';
           }
 
@@ -4850,13 +4815,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "isNumberDisabled",
-        value: function isNumberDisabled(field) {
-          return !this.playground.isFieldEnabledToThrow(field) && !this.getNumberColor(field);
+        value: function isNumberDisabled(fieldIndex) {
+          return !this.playground.isFieldEnabledToThrow(fieldIndex) && !this.getNumberColor(fieldIndex);
         }
       }, {
         key: "throwNumber",
-        value: function throwNumber(field) {
-          this.playground.throwNumber(this.playground.isFieldEnabledToThrow(field) ? field : 0);
+        value: function throwNumber(fieldIndex) {
+          this.playground.throwNumber(this.playground.isFieldEnabledToThrow(fieldIndex) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex) : 0);
         }
       }]);
 
@@ -4864,7 +4829,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     NumberPlateComponent.ɵfac = function NumberPlateComponent_Factory(t) {
-      return new (t || NumberPlateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_1__["GameService"]));
+      return new (t || NumberPlateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_2__["GameService"]));
     };
 
     NumberPlateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -4885,7 +4850,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "button", 2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NumberPlateComponent_Template_button_click_2_listener($event) {
-            return ctx.throwNumber(25);
+            return ctx.throwNumber(20);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Bull ");
@@ -4946,15 +4911,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx.getNumberColor(25))("disabled", ctx.isNumberDisabled(25));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx.getNumberColor(20))("disabled", ctx.isNumberDisabled(20));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.playground.getFieldIcon(25));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.playground.getFieldIcon(20));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.playground.getFieldNote(25));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.playground.getFieldNote(20));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -4973,7 +4938,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx.playground.zeroEnabled);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatButton"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_4__["MatIcon"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_4__["MatButton"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_5__["MatIcon"]],
       styles: [".number[_ngcontent-%COMP%] {\n  float: left;\n  margin: 0.1vw;\n  font-size: calc(10px + 0.8vw + 0.8vh);\n  height: 19.4vh;\n  width: 13.7vw;\n}\n.number[_ngcontent-%COMP%]   mat-icon[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 10px;\n  left: 5px;\n  font-size: 30px;\n}\n.number[_ngcontent-%COMP%]   .field-note[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 10px;\n  right: 7px;\n  font-size: 12px;\n  width: 48px;\n  overflow: hidden;\n  word-break: normal;\n  white-space: normal;\n  line-height: 16px;\n  text-align: right;\n}\n.number[_ngcontent-%COMP%]:disabled {\n  opacity: 0.5;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvbnVtYmVyLXBsYXRlL0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcc2hhcmVkXFxjb21wb25lbnRzXFxudW1iZXItcGxhdGVcXG51bWJlci1wbGF0ZS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvbnVtYmVyLXBsYXRlL251bWJlci1wbGF0ZS5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7RUFDQSxhQUFBO0VBQ0EscUNBQUE7RUFDQSxjQUFBO0VBQ0EsYUFBQTtBQ0NGO0FEQ0U7RUFDRSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsZUFBQTtBQ0NKO0FERUU7RUFDRSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxVQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLGlCQUFBO0FDQUo7QURJQTtFQUNFLFlBQUE7QUNERiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL251bWJlci1wbGF0ZS9udW1iZXItcGxhdGUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubnVtYmVyIHtcclxuICBmbG9hdDogbGVmdDtcclxuICBtYXJnaW46IDAuMXZ3O1xyXG4gIGZvbnQtc2l6ZTogY2FsYygxMHB4ICsgMC44dncgKyAwLjh2aCk7XHJcbiAgaGVpZ2h0OiAxOS40dmg7XHJcbiAgd2lkdGg6IDEzLjd2dztcclxuXHJcbiAgbWF0LWljb24ge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMHB4O1xyXG4gICAgbGVmdDogNXB4O1xyXG4gICAgZm9udC1zaXplOiAzMHB4O1xyXG4gIH1cclxuXHJcbiAgLmZpZWxkLW5vdGUge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMHB4O1xyXG4gICAgcmlnaHQ6IDdweDtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgIHdpZHRoOiA0OHB4O1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIHdvcmQtYnJlYWs6IG5vcm1hbDtcclxuICAgIHdoaXRlLXNwYWNlOiBub3JtYWw7XHJcbiAgICBsaW5lLWhlaWdodDogMTZweDtcclxuICAgIHRleHQtYWxpZ246IHJpZ2h0O1xyXG4gIH1cclxufVxyXG5cclxuLm51bWJlcjpkaXNhYmxlZCB7XHJcbiAgb3BhY2l0eTogMC41O1xyXG59XHJcbiIsIi5udW1iZXIge1xuICBmbG9hdDogbGVmdDtcbiAgbWFyZ2luOiAwLjF2dztcbiAgZm9udC1zaXplOiBjYWxjKDEwcHggKyAwLjh2dyArIDAuOHZoKTtcbiAgaGVpZ2h0OiAxOS40dmg7XG4gIHdpZHRoOiAxMy43dnc7XG59XG4ubnVtYmVyIG1hdC1pY29uIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDEwcHg7XG4gIGxlZnQ6IDVweDtcbiAgZm9udC1zaXplOiAzMHB4O1xufVxuLm51bWJlciAuZmllbGQtbm90ZSB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxMHB4O1xuICByaWdodDogN3B4O1xuICBmb250LXNpemU6IDEycHg7XG4gIHdpZHRoOiA0OHB4O1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICB3b3JkLWJyZWFrOiBub3JtYWw7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIGxpbmUtaGVpZ2h0OiAxNnB4O1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cblxuLm51bWJlcjpkaXNhYmxlZCB7XG4gIG9wYWNpdHk6IDAuNTtcbn0iXX0= */"]
     });
     /*@__PURE__*/
@@ -4988,7 +4953,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], function () {
         return [{
-          type: _services_game_service__WEBPACK_IMPORTED_MODULE_1__["GameService"]
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_2__["GameService"]
         }];
       }, {
         playground: [{
@@ -5855,17 +5820,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass(PlaygroundState, [{
         key: "getFieldValue",
-        value: function getFieldValue(list, field) {
+        value: function getFieldValue(list, fieldIndex) {
           var filtered = list.filter(function (f) {
-            return f.field === field;
+            return f.field === fieldIndex;
           });
 
           if (filtered.length === 0) {
-            list.push(new _field_value_model__WEBPACK_IMPORTED_MODULE_0__["FieldValue"](field, 0));
+            list.push(new _field_value_model__WEBPACK_IMPORTED_MODULE_0__["FieldValue"](fieldIndex, 0));
           }
 
           return list.filter(function (f) {
-            return f.field === field;
+            return f.field === fieldIndex;
           })[0];
         }
       }]);
@@ -5965,8 +5930,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "throwNumber",
         value: function throwNumber(score) {
-          var _this25 = this;
-
           if (this.throwEnabled) {
             this.save();
             this.throwEnabled = false;
@@ -5976,6 +5939,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             var actualPlayer = this.game.getActualPlayer();
+            var fieldIndex = score === 25 ? 20 : score - 1;
             actualPlayer.addThrowHistory(new _throw_model__WEBPACK_IMPORTED_MODULE_2__["Throw"](score, this.multiplier, this.game.actualThrow));
 
             if (this.game.actualThrow === 0) {
@@ -5984,33 +5948,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             actualPlayer.throws[this.game.actualThrow] = score * this.multiplier;
             this.game.actualThrow++;
-            return this.calculatePoints(score).then(function () {
-              return _this25.checkPlayerState();
-            }).then(function () {
-              _this25.multiplier = 1;
+            this.calculatePoints(actualPlayer, fieldIndex, score);
+            this.checkPlayerState(actualPlayer);
+            this.multiplier = 1;
+            var winners = this.game.players.filter(function (p) {
+              return p.win;
+            });
 
-              var winners = _this25.game.players.filter(function (p) {
-                return p.win;
-              });
-
-              if (winners.length > 0) {
-                if (_this25.game.victoryFirst || _this25.game.players.length - winners.length <= 1) {
-                  _this25.dialogService.openDialog('Game Over!', _this25.extraEndingMsg, _this25.getTheFinalResult());
-
-                  _this25.newGame(true);
-                } else if (_this25.game.victoryFirst) {
-                  _this25.dialogService.openDialog('Game Over!', _this25.extraEndingMsg, _this25.getTheFinalResult());
-
-                  _this25.newGame(true);
-                } else {
-                  while (_this25.game.getActualPlayer().win) {
-                    _this25.game.nextPlayer();
-                  }
+            if (winners.length > 0) {
+              if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
+                this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+                this.newGame(true);
+              } else if (this.game.victoryFirst) {
+                this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+                this.newGame(true);
+              } else {
+                while (this.game.getActualPlayer().win) {
+                  this.game.nextPlayer();
                 }
               }
+            }
 
-              _this25.throwEnabled = true;
-            });
+            this.throwEnabled = true;
           }
         }
       }, {
@@ -6084,14 +6043,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "skip",
         value: function skip() {
-          var _this26 = this;
-
           var actThrow = this.game.actualThrow;
-          this.throwNumber(0).then(function () {
-            if (actThrow !== 2) {
-              _this26.skip();
-            }
-          });
+          this.throwNumber(0);
+
+          if (actThrow !== 2) {
+            this.skip();
+          }
         }
       }, {
         key: "quit",
@@ -6113,27 +6070,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "isHighlighted",
-        value: function isHighlighted(field) {
+        value: function isHighlighted(fieldIndex) {
           return false;
         }
       }, {
         key: "isSecondHighlighted",
-        value: function isSecondHighlighted(field) {
+        value: function isSecondHighlighted(fieldIndex) {
           return false;
         }
       }, {
         key: "getFieldIcon",
-        value: function getFieldIcon(field) {
+        value: function getFieldIcon(fieldIndex) {
           return '';
         }
       }, {
         key: "getFieldNote",
-        value: function getFieldNote(field) {
+        value: function getFieldNote(fieldIndex) {
           return '';
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(field) {
+        value: function isFieldEnabledToThrow(fieldIndex) {
           return true;
         }
       }, {
@@ -6186,9 +6143,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.gameHistory.push(this.game.clone());
         }
       }], [{
-        key: "getFieldValueAsNumber",
-        value: function getFieldValueAsNumber(field) {
-          return field === 20 ? 25 : field + 1;
+        key: "getFieldValueFromIndex",
+        value: function getFieldValueFromIndex(fieldIndex) {
+          return fieldIndex === 20 ? 25 : fieldIndex + 1;
         }
       }]);
 
@@ -6228,19 +6185,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var Throw =
     /*#__PURE__*/
     function () {
-      function Throw(fieldNum, multi, order) {
+      function Throw(score, multi, order) {
         _classCallCheck(this, Throw);
 
-        this.fieldNum = fieldNum;
-        this.field = fieldNum === 25 ? 'B' : fieldNum + '';
+        this.score = score;
         this.multi = multi;
         this.order = order;
+        this.field = this.score === 25 ? 'B' : this.score + '';
       }
 
       _createClass(Throw, [{
         key: "clone",
         value: function clone() {
-          return new Throw(this.fieldNum, this.multi, this.order);
+          return new Throw(this.score, this.multi, this.order);
         }
       }]);
 
@@ -7351,43 +7308,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(X01Component, _models_playground_mo5);
 
       function X01Component(application, game, route, dialogService) {
-        var _this27;
+        var _this25;
 
         _classCallCheck(this, X01Component);
 
-        _this27 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this27.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this27;
+        _this25 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
+        _this25.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this25;
       }
 
       _createClass(X01Component, [{
         key: "customReset",
         value: function customReset() {
-          var _this28 = this;
+          var _this26 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this28.settings.startValue;
+            return player.score = _this26.settings.startValue;
           });
         }
       }, {
         key: "calculatePoints",
-        value: function calculatePoints(score) {
-          var player = this.game.getActualPlayer();
-          var actualScore = score * this.multiplier;
+        value: function calculatePoints(player, fieldIndex, score) {
           var validStart = !player.first || this.settings.isNormalStart() || player.first && (this.settings.isDoubleStart() && this.multiplier === 2 || this.settings.isTripleStart() && this.multiplier === 3);
 
           if (validStart) {
+            var actualScore = score * this.multiplier;
             player.first = false;
             player.score -= actualScore;
-            return this.countDown(player, actualScore);
-          } else {
-            return Promise.resolve();
           }
         }
       }, {
         key: "checkPlayerState",
-        value: function checkPlayerState() {
-          var player = this.game.getActualPlayer();
+        value: function checkPlayerState(player) {
           var next = false;
 
           if (this.settings.isHighScoreGame() && player.score <= 0 || player.score === 0 && (this.settings.isNormalCheckout() || this.settings.isDoubleCheckout() && this.multiplier === 2 || this.settings.isTripleCheckout() && this.multiplier === 3)) {
@@ -7404,26 +7356,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.game.actualThrow === 3 || next) {
             this.game.nextPlayer();
           }
-
-          return Promise.resolve();
-        }
-      }, {
-        key: "countDown",
-        value: function countDown(player, score) {
-          return new Promise(function (resolve) {
-            var id = setInterval(function () {
-              if (score === 0) {
-                clearInterval(id);
-                resolve();
-              } else if (player.score < 0) {
-                player.score -= score;
-                score = 0;
-              } else {
-                player.score--;
-                score--;
-              }
-            }, 5);
-          });
         }
       }]);
 

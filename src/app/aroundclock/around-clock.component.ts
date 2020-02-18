@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
+import {Player} from '~models/player.model';
 
 @Component({
   templateUrl: './around-clock.component.html',
@@ -25,12 +26,9 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     this.game.players.forEach(player => player.state = new AroundClockState());
   }
 
-  calculatePoints(score: number): Promise<any> {
-    const player = this.game.getActualPlayer();
-    const field = score === 25 ? 20 : score - 1;
-
+  calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state: AroundClockState = this.getPlayerState(player);
-    if (state.getActFieldIndex() === field) {
+    if (state.getActFieldIndex() === fieldIndex) {
       // last throw
       if (state.actFieldIndex >= FIELDS_COUNT - this.multiplier) {
         this.multiplier = this.multiplier === 1 ? 1 : FIELDS_COUNT - (state.actFieldIndex + 1);
@@ -41,11 +39,9 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       }
     }
     player.score++;
-    return Promise.resolve();
   }
 
-  checkPlayerState(): Promise<any> {
-    const player = this.game.getActualPlayer();
+  checkPlayerState(player: Player) {
     if ((FIELDS_COUNT - 1) < this.getPlayerState(player).getActFieldIndex()) {
       player.setWin();
     } else if (this.game.actualThrow === 3) {
@@ -53,7 +49,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         let multi = 0;
         for (let i = 0; i < 3; i++) {
           const t = player.throwsHistory[player.throwsHistory.length - i - 1];
-          multi += t.fieldNum;
+          multi += t.score;
         }
         if (multi === 0) {
           this.getPlayerState(player).decreaseActFieldIndex();
@@ -61,31 +57,27 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       }
       this.game.nextPlayer();
     }
-    return Promise.resolve();
   }
 
-  isFieldEnabledToThrow(field: number): boolean {
-    field = field === 25 ? 20 : field - 1;
-    return field === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
+  isFieldEnabledToThrow(fieldIndex: number): boolean {
+    return fieldIndex === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
   }
 
-  isHighlighted(field: number): boolean {
-    return this.isFieldEnabledToThrow(field);
+  isHighlighted(fieldIndex: number): boolean {
+    return this.isFieldEnabledToThrow(fieldIndex);
   }
 
-  isSecondHighlighted(field: number): boolean {
+  isSecondHighlighted(fieldIndex: number): boolean {
     let ret = false;
-    if (!this.isFieldEnabledToThrow(field)) {
-      field = field === 25 ? 20 : field - 1;
+    if (!this.isFieldEnabledToThrow(fieldIndex)) {
       ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
-        .some(p => field === this.getPlayerState(p).getActFieldIndex());
+        .some(p => fieldIndex === this.getPlayerState(p).getActFieldIndex());
     }
     return ret;
   }
 
-  getFieldNote(field: number): string {
-    field = field === 25 ? 20 : field - 1;
-    const owners = this.game.players.filter(p => (p.state as AroundClockState).actFieldIndex === field).map(p => p.name);
+  getFieldNote(fieldIndex: number): string {
+    const owners = this.game.players.filter(p => (p.state as AroundClockState).actFieldIndex === fieldIndex).map(p => p.name);
     return !!owners.length ? owners.join(' ') : '';
   }
 }

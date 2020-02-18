@@ -26,28 +26,20 @@ export class X01Component extends Playground<PlaygroundState> {
     this.game.players.forEach(player => player.score = this.settings.startValue);
   }
 
-  calculatePoints(score: number): Promise<any> {
-    const player = this.game.getActualPlayer();
-    const actualScore = score * this.multiplier;
-
+  calculatePoints(player: Player, fieldIndex: number, score: number) {
     const validStart = !player.first || this.settings.isNormalStart()
       || (player.first
         && ((this.settings.isDoubleStart() && this.multiplier === 2)
           || (this.settings.isTripleStart() && this.multiplier === 3)));
-
     if (validStart) {
+      const actualScore = score * this.multiplier;
       player.first = false;
       player.score -= actualScore;
-      return this.countDown(player, actualScore);
-    } else {
-      return Promise.resolve();
     }
   }
 
-  checkPlayerState(): Promise<any> {
-    const player = this.game.getActualPlayer();
+  checkPlayerState(player: Player) {
     let next = false;
-
     if ((this.settings.isHighScoreGame() && player.score <= 0) ||
       ((player.score === 0 && (this.settings.isNormalCheckout()
         || (this.settings.isDoubleCheckout() && this.multiplier === 2)
@@ -65,23 +57,5 @@ export class X01Component extends Playground<PlaygroundState> {
     if (this.game.actualThrow === 3 || next) {
       this.game.nextPlayer();
     }
-    return Promise.resolve();
-  }
-
-  private countDown(player: Player, score: number): Promise<any> {
-    return new Promise<any>((resolve) => {
-      const id = setInterval(() => {
-        if (score === 0) {
-          clearInterval(id);
-          resolve();
-        } else if (player.score < 0) {
-          player.score -= score;
-          score = 0;
-        } else {
-          player.score--;
-          score--;
-        }
-      }, 5);
-    });
   }
 }

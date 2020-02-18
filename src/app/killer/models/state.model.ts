@@ -7,7 +7,7 @@ export class KillerState extends PlaygroundState {
 
   constructor(public life = 5, public boarding = 3) {
     super();
-    this.actField = 0;
+    this.actField = -1;
     this.killer = false;
   }
 

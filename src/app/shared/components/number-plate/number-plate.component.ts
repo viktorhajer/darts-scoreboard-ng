@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {GameService} from '~services/game.service';
+import {Playground} from '~models/playground.model';
 
 @Component({
   selector: 'app-number-plate',
@@ -21,21 +22,21 @@ export class NumberPlateComponent {
     return numbers;
   }
 
-  getNumberColor(field: number): string {
-    if (this.playground.isHighlighted(field)) {
+  getNumberColor(fieldIndex: number): string {
+    if (this.playground.isHighlighted(fieldIndex)) {
       return 'primary';
-    } else if (this.playground.isSecondHighlighted(field)) {
+    } else if (this.playground.isSecondHighlighted(fieldIndex)) {
       return 'accent';
     }
     return '';
   }
 
-  isNumberDisabled(field: number): boolean {
-    return !this.playground.isFieldEnabledToThrow(field) && !this.getNumberColor(field);
+  isNumberDisabled(fieldIndex: number): boolean {
+    return !this.playground.isFieldEnabledToThrow(fieldIndex) && !this.getNumberColor(fieldIndex);
   }
 
-  throwNumber(field: number) {
-    this.playground.throwNumber(this.playground.isFieldEnabledToThrow(field) ? field : 0);
+  throwNumber(fieldIndex: number) {
+    this.playground.throwNumber(this.playground.isFieldEnabledToThrow(fieldIndex) ? Playground.getFieldValueFromIndex(fieldIndex) : 0);
   }
 }
 
