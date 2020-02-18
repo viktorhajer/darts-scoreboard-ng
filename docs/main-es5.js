@@ -683,10 +683,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "calculatePoints",
         value: function calculatePoints(score) {
           var player = this.game.getActualPlayer();
-          var field = score === 25 ? 'B' : score + '';
+          var field = score === 25 ? 20 : score - 1;
           var state = this.getPlayerState(player);
 
-          if (_models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS"][state.getActFieldIndex()] === field) {
+          if (state.getActFieldIndex() === field) {
             // last throw
             if (state.actFieldIndex >= _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS_COUNT"] - this.multiplier) {
               this.multiplier = this.multiplier === 1 ? 1 : _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS_COUNT"] - (state.actFieldIndex + 1);
@@ -731,13 +731,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isFieldEnabledToThrow",
         value: function isFieldEnabledToThrow(field) {
-          var fieldStr = field + '';
-
-          if (field === 25) {
-            fieldStr = 'B';
-          }
-
-          return _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS"].indexOf(fieldStr) === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
+          field = field === 25 ? 20 : field - 1;
+          return field === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
         }
       }, {
         key: "isHighlighted",
@@ -752,30 +747,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var ret = false;
 
           if (!this.isFieldEnabledToThrow(field)) {
-            var fieldStr = field + '';
-
-            if (field === 25) {
-              fieldStr = 'B';
-            }
-
+            field = field === 25 ? 20 : field - 1;
             ret = this.game.players.filter(function (p) {
               return p !== _this2.game.getActualPlayer();
             }).some(function (p) {
-              return _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS"].indexOf(fieldStr) === _this2.getPlayerState(p).getActFieldIndex();
+              return field === _this2.getPlayerState(p).getActFieldIndex();
             });
           }
 
           return ret;
-        }
-      }, {
-        key: "getActualField",
-        value: function getActualField(player) {
-          return _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["FIELDS"][this.getPlayerState(player).getActFieldIndex()];
-        }
-      }, {
-        key: "isLastRound",
-        value: function isLastRound() {
-          return false;
         }
       }, {
         key: "getFieldNote",
@@ -1631,7 +1611,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r77, ": ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r77 === 20 ? "B" : field_r77 + 1, ": ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
@@ -1743,12 +1723,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function checkPlayerState() {
           var _this5 = this;
 
-          var player = this.game.getActualPlayer();
           this.game.players.forEach(function (p) {
-            p.score = _this5.getPlayerTotal(p);
-          }, this);
+            return p.score = _this5.getPlayerTotal(p);
+          });
           var punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
-          player.setWin(this.isPlayerDone(player) && (!punishStyle && this.game.isTheBestPlayer(player) || punishStyle && this.game.isTheWorstPlayer(player)));
+          this.game.players.forEach(function (p) {
+            return p.setWin(_this5.isPlayerDone(p) && (!punishStyle && _this5.game.isTheBestPlayer(p) || punishStyle && _this5.game.isTheWorstPlayer(p)));
+          });
 
           if (this.game.actualThrow === 3) {
             this.game.nextPlayer();
@@ -1783,45 +1764,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return str;
         }
       }, {
-        key: "isFieldDoneForPlayer",
-        value: function isFieldDoneForPlayer(player, field) {
-          return this.getPlayerState(player).getFieldCount(field) >= 3;
-        }
-      }, {
         key: "isActiveField",
         value: function isActiveField(player, field) {
           return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field;
         }
       }, {
+        key: "isFieldDoneForPlayer",
+        value: function isFieldDoneForPlayer(player, field) {
+          return this.getPlayerState(player).getFieldCount(field) >= 3;
+        }
+      }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(field) {
-          var fieldStr = field + '';
-
-          if (field === 25) {
-            fieldStr = 'B';
-          }
+        value: function isFieldEnabledToThrow(fieldValue) {
+          var field = fieldValue === 25 ? 20 : fieldValue - 1;
 
           if (this.settings.isNoScoreGame()) {
-            return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldStr);
+            return this.settings.fields.indexOf(field) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field);
           }
 
-          return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldClosed(fieldStr);
+          return this.settings.fields.indexOf(field) !== -1 && !this.isFieldClosed(field);
         }
       }, {
         key: "isHighlighted",
         value: function isHighlighted(field) {
-          return this.isFieldEnabledToThrow(field) && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
+          return this.isFieldEnabledToThrow(field) && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 20 : field - 1);
         }
       }, {
         key: "isSecondHighlighted",
         value: function isSecondHighlighted(field) {
-          return this.isFieldEnabledToThrow(field) && this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
+          return this.isFieldEnabledToThrow(field) && this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 20 : field - 1);
         }
       }, {
         key: "getFieldNote",
         value: function getFieldNote(field) {
           if (this.isHighlighted(field)) {
-            var playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(field === 25 ? 'B' : field + '');
+            var playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(field === 25 ? 20 : field - 1);
             return ''.padStart(3 - playerFieldCount, '●');
           }
 
@@ -1867,7 +1844,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateField",
         value: function updateField(player, score) {
-          var field = score === 25 ? 'B' : score + '';
+          var field = score === 25 ? 20 : score - 1;
 
           if (this.settings.fields.indexOf(field) !== -1 && !this.isFieldClosed(field)) {
             var playerFieldCount = this.getPlayerState(player).getFieldCount(field);
@@ -2154,7 +2131,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function Settings() {
         _classCallCheck(this, Settings);
 
-        this.fields = ['15', '16', '17', '18', '19', '20', 'B'];
+        this.fields = [14, 15, 16, 17, 18, 19, 20];
         this.numbs = [];
         this.style = 2;
         var defaultSet = false;
@@ -2181,6 +2158,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.numbs[Math.floor(Math.random() * 21)] = true;
           }
 
+          this.numbs[this.numbs.length - 1] = true;
           this.initFields();
         }
       }, {
@@ -2237,7 +2215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           for (var i = 0; i < 21; i++) {
             if (this.numbs[i]) {
-              this.fields.push(i === 20 ? 'B' : i + 1 + '');
+              this.fields.push(i);
             }
           }
         }
@@ -2848,15 +2826,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(field) {
+        value: function isFieldEnabledToThrow(fieldValue) {
           if (this.game.round === 0) {
-            return field !== 25 && !this.getAllEnabledFields().some(function (f) {
-              return f === field;
+            return fieldValue !== 25 && !this.getAllEnabledFields().some(function (f) {
+              return f === fieldValue;
             });
           }
 
           return this.getAllEnabledFields().some(function (f) {
-            return f === field;
+            return f === fieldValue;
           });
         }
       }, {
@@ -2908,9 +2886,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "getFieldNote",
-        value: function getFieldNote(field) {
+        value: function getFieldNote(fieldValue) {
           var owner = this.game.players.find(function (p) {
-            return p.state.actField === field;
+            return p.state.actField === fieldValue;
           });
           return owner ? "".concat(owner.name, "(").concat(owner.state.life, ")") : '';
         }
@@ -3472,7 +3450,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           for (var i = 0; i < 21; i++) {
             if (this.numbs[i]) {
-              this.fields.push(i === 20 ? 'B' : i + 1 + '');
+              this.fields.push(i);
             }
           }
         }
@@ -3831,11 +3809,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var ctx_r106 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r106.isActiveField(field_r107) ? "active" : "", " ", ctx_r106.isDoneField(field_r107) ? "" : "highlighted", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r106.isActiveField(field_r107) ? "active" : "", " ", ctx_r106.isFieldDoneForPlayer(field_r107) ? "" : "highlighted", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r107, ": ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r107 === 20 ? "B" : field_r107 + 1, ": ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
@@ -3940,7 +3918,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function calculatePoints(score) {
           var player = this.game.getActualPlayer();
           var state = this.getPlayerState(player);
-          var field = score === 25 ? 'B' : score + '';
+          var field = score === 25 ? 20 : score - 1;
 
           if (this.isActiveField(field)) {
             state.increaseFieldCount(field, 1);
@@ -3968,7 +3946,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             for (var i = 0; i < 3; i++) {
               var t = player.throwsHistory[player.throwsHistory.length - i - 1];
 
-              if (t.field === this.getPreviousField()) {
+              if (t.fieldNum === this.getPreviousField()) {
                 multi *= t.multi + 1;
               }
             }
@@ -4023,30 +4001,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.settings.fields[this.game.round] === field;
         }
       }, {
-        key: "isDoneField",
-        value: function isDoneField(field) {
+        key: "isFieldDoneForPlayer",
+        value: function isFieldDoneForPlayer(field) {
           return this.settings.fields.indexOf(field) < this.game.round;
         }
       }, {
         key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(field) {
-          var fieldStr = field + '';
-
-          if (field === 25) {
-            fieldStr = 'B';
-          }
-
-          return this.settings.fields.indexOf(fieldStr) === this.game.round;
+        value: function isFieldEnabledToThrow(fieldValue) {
+          var field = fieldValue === 25 ? 20 : fieldValue - 1;
+          return this.settings.fields.indexOf(field) === this.game.round;
         }
       }, {
         key: "isHighlighted",
         value: function isHighlighted(field) {
           return this.isFieldEnabledToThrow(field);
-        }
-      }, {
-        key: "isLastRound",
-        value: function isLastRound() {
-          return this.game.round === this.settings.fields.length - 1;
         }
       }, {
         key: "getTheFinalResult",
@@ -5914,19 +5882,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/shared/models/playground.model.ts ***!
     \***************************************************/
 
-  /*! exports provided: FIELDS, FIELDS_COUNT, Playground */
+  /*! exports provided: FIELDS_COUNT, Playground */
 
   /***/
   function srcAppSharedModelsPlaygroundModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "FIELDS", function () {
-      return FIELDS;
-    });
     /* harmony export (binding) */
 
 
@@ -5970,7 +5932,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
-    var FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
     var FIELDS_COUNT = 21;
     var MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
@@ -6142,7 +6103,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "customNext",
-        value: function customNext() {// should be implemented
+        value: function customNext() {
+          return;
         }
       }, {
         key: "customSettingsValidation",
@@ -6168,11 +6130,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getFieldNote",
         value: function getFieldNote(field) {
           return '';
-        }
-      }, {
-        key: "isLastRound",
-        value: function isLastRound() {
-          return false;
         }
       }, {
         key: "isFieldEnabledToThrow",
@@ -6231,7 +6188,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }], [{
         key: "getFieldValueAsNumber",
         value: function getFieldValueAsNumber(field) {
-          return field === 'B' ? 25 : parseInt(field, 10);
+          return field === 20 ? 25 : field + 1;
         }
       }]);
 
@@ -7409,8 +7366,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this28 = this;
 
           this.game.players.forEach(function (player) {
-            player.state = null;
-            player.score = _this28.settings.startValue;
+            return player.score = _this28.settings.startValue;
           });
         }
       }, {
@@ -7422,6 +7378,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (validStart) {
             player.first = false;
+            player.score -= actualScore;
             return this.countDown(player, actualScore);
           } else {
             return Promise.resolve();

@@ -33,7 +33,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   calculatePoints(score: number): Promise<any> {
     const player = this.game.getActualPlayer();
     const state = this.getPlayerState(player);
-    const field = score === 25 ? 'B' : (score + '');
+    const field = score === 25 ? 20 : score - 1;
     if (this.isActiveField(field)) {
       state.increaseFieldCount(field, 1);
       state.increaseFieldScore(field, this.multiplier);
@@ -54,7 +54,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       let multi = 1;
       for (let i = 0; i < 3; i++) {
         const t = player.throwsHistory[player.throwsHistory.length - i - 1];
-        if (t.field === this.getPreviousField()) {
+        if (t.fieldNum === this.getPreviousField()) {
           multi *= (t.multi + 1);
         }
       }
@@ -78,7 +78,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return Promise.resolve();
   }
 
-  getFieldValue(player: Player, field: string): string {
+  getFieldValue(player: Player, field: number): string {
     const fieldCount = this.getPlayerState(player).getFieldCount(field);
     if (fieldCount === 0) {
       return '○○○';
@@ -94,17 +94,17 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     }
   }
 
-  isActiveField(field: string): boolean {
+  isActiveField(field: number): boolean {
     return this.settings.fields[this.game.round] === field;
   }
 
-  isFieldDoneForPlayer(field: string): boolean {
+  isFieldDoneForPlayer(field: number): boolean {
     return this.settings.fields.indexOf(field) < this.game.round;
   }
 
-  isFieldEnabledToThrow(field: number): boolean {
-    const fieldStr = field === 25 ? 'B' : field + '';
-    return this.settings.fields.indexOf(fieldStr) === this.game.round;
+  isFieldEnabledToThrow(fieldValue: number): boolean {
+    const field = fieldValue === 25 ? 20 : (fieldValue - 1);
+    return this.settings.fields.indexOf(field) === this.game.round;
   }
 
   isHighlighted(field: number): boolean {
@@ -129,7 +129,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return [...winners, ...losers];
   }
 
-  private getPreviousField(): string {
+  private getPreviousField(): number {
     return this.settings.fields[this.game.round > 0 ? this.game.round : 0];
   }
 }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AroundClockState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {FIELDS, FIELDS_COUNT, Playground} from '~models/playground.model';
+import {FIELDS_COUNT, Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
@@ -27,9 +27,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   calculatePoints(score: number): Promise<any> {
     const player = this.game.getActualPlayer();
-    const field = score === 25 ? 'B' : (score + '');
+    const field = score === 25 ? 20 : score - 1;
+
     const state: AroundClockState = this.getPlayerState(player);
-    if (FIELDS[state.getActFieldIndex()] === field) {
+    if (state.getActFieldIndex() === field) {
       // last throw
       if (state.actFieldIndex >= FIELDS_COUNT - this.multiplier) {
         this.multiplier = this.multiplier === 1 ? 1 : FIELDS_COUNT - (state.actFieldIndex + 1);
@@ -75,12 +76,9 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   isSecondHighlighted(field: number): boolean {
     let ret = false;
     if (!this.isFieldEnabledToThrow(field)) {
-      let fieldStr = field + '';
-      if (field === 25) {
-        fieldStr = 'B';
-      }
+      field = field === 25 ? 20 : field - 1;
       ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
-        .some(p => FIELDS.indexOf(fieldStr) === this.getPlayerState(p).getActFieldIndex());
+        .some(p => field === this.getPlayerState(p).getActFieldIndex());
     }
     return ret;
   }

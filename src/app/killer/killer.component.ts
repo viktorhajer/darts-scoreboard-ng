@@ -97,11 +97,11 @@ export class KillerComponent extends Playground<KillerState> {
     return Promise.resolve();
   }
 
-  isFieldEnabledToThrow(field: number): boolean {
+  isFieldEnabledToThrow(fieldValue: number): boolean {
     if (this.game.round === 0) {
-      return field !== 25 && !this.getAllEnabledFields().some(f => f === field);
+      return fieldValue !== 25 && !this.getAllEnabledFields().some(f => f === fieldValue);
     }
-    return this.getAllEnabledFields().some(f => f === field);
+    return this.getAllEnabledFields().some(f => f === fieldValue);
   }
 
   isHighlighted(field: number): boolean {
@@ -135,12 +135,11 @@ export class KillerComponent extends Playground<KillerState> {
     })) {
       return 'highlight_off';
     }
-
     return '';
   }
 
-  getFieldNote(field: number): string {
-    const owner = this.game.players.find(p => (p.state as KillerState).actField === field);
+  getFieldNote(fieldValue: number): string {
+    const owner = this.game.players.find(p => (p.state as KillerState).actField === fieldValue);
     return owner ? `${owner.name}(${(owner.state as KillerState).life})` : '';
   }
 

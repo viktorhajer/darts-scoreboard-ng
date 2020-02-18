@@ -1,8 +1,8 @@
 export class FieldValue {
-  field: string;
+  field: number;
   value: number;
 
-  constructor(field: string, value: number) {
+  constructor(field: number, value: number) {
     this.field = field;
     this.value = value;
   }

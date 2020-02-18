@@ -26,7 +26,7 @@
           <div class="field-set">
             <div class="field {{isActiveField(field) ? 'active': ''}} {{isFieldDoneForPlayer(field) ? '' : 'highlighted'}}"
                  *ngFor="let field of settings.fields">
-              {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
+              {{field === 20 ? 'B' : (field + 1)}}: <span class="small">{{ getFieldValue(player, field) }}</span>
             </div>
           </div>
         </app-player-score>

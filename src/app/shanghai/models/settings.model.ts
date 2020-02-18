@@ -1,14 +1,12 @@
 export class Settings {
 
-  fields: string[];
-  fields2: number[];
+  fields: number[];
   numbs: boolean[] = [];
   noScore: boolean;
   halveIt: boolean;
 
   constructor() {
     this.fields = [];
-    this.fields2 = [];
     this.noScore = false;
     this.halveIt = false;
     let defaultSet = true;
@@ -59,11 +57,9 @@ export class Settings {
 
   initFields() {
     this.fields = [];
-    this.fields2 = [];
     for (let i = 0; i < 21; i++) {
       if (this.numbs[i]) {
-        this.fields.push(i === 20 ? 'B' : ((i + 1) + ''));
-        this.fields2.push(i);
+        this.fields.push(i);
       }
     }
   }

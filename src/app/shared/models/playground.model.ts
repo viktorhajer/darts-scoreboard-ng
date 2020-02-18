@@ -8,8 +8,6 @@ import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
 
-export const FIELDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
-  '12', '13', '14', '15', '16', '17', '18', '19', '20', 'B'];
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
@@ -32,8 +30,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
                         public minimumNumberOfPlayers = 1) {
   }
 
-  static getFieldValueAsNumber(field: string): number {
-    return field === 'B' ? 25 : parseInt(field, 10);
+  static getFieldValueAsNumber(field: number): number {
+    return field === 20 ? 25 : field + 1;
   }
 
   ngOnInit() {

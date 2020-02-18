@@ -14,19 +14,19 @@ export class CricketState extends PlaygroundState {
     this.actFieldIndex = 0;
   }
 
-  getFieldCount(field: string): number {
+  getFieldCount(field: number): number {
     return this.getFieldValue(this.fieldCount, field).value;
   }
 
-  setFieldCount(field: string, value: number) {
+  setFieldCount(field: number, value: number) {
     this.getFieldValue(this.fieldCount, field).value = value;
   }
 
-  getPunishCount(field: string): number {
+  getPunishCount(field: number): number {
     return this.getFieldValue(this.punishCount, field).value;
   }
 
-  setPunishCount(field: string, value: number) {
+  setPunishCount(field: number, value: number) {
     this.getFieldValue(this.punishCount, field).value = value;
   }
 

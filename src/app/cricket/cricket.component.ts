@@ -37,22 +37,18 @@ export class CricketComponent extends Playground<CricketState> {
   }
 
   checkPlayerState(): Promise<any> {
-    const player = this.game.getActualPlayer();
-
-    this.game.players.forEach(p => {
-      p.score = this.getPlayerTotal(p);
-    }, this);
-
+    this.game.players.forEach(p => p.score = this.getPlayerTotal(p));
     const punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
-    player.setWin(this.isPlayerDone(player)
-      && ((!punishStyle && this.game.isTheBestPlayer(player)) || (punishStyle && this.game.isTheWorstPlayer(player))));
+    this.game.players.forEach(p => p.setWin(
+      this.isPlayerDone(p) &&
+      ((!punishStyle && this.game.isTheBestPlayer(p)) || (punishStyle && this.game.isTheWorstPlayer(p)))));
     if (this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }
     return Promise.resolve();
   }
 
-  getFieldValue(player: Player, field: string): string {
+  getFieldValue(player: Player, field: number): string {
     const score = this.getPunishScore(player, field);
     const punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
     const playerFieldCount = this.getPlayerState(player).getFieldCount(field);
@@ -76,39 +72,36 @@ export class CricketComponent extends Playground<CricketState> {
     return str;
   }
 
-  isActiveField(player: Player, field: string): boolean {
+  isActiveField(player: Player, field: number): boolean {
     return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field;
   }
 
-  isFieldDoneForPlayer(player: Player, field: string): boolean {
+  isFieldDoneForPlayer(player: Player, field: number): boolean {
     return this.getPlayerState(player).getFieldCount(field) >= 3;
   }
 
-  isFieldEnabledToThrow(field: number): boolean {
-    let fieldStr = field + '';
-    if (field === 25) {
-      fieldStr = 'B';
-    }
+  isFieldEnabledToThrow(fieldValue: number): boolean {
+    const field = fieldValue === 25 ? 20 : (fieldValue - 1);
     if (this.settings.isNoScoreGame()) {
-      return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldStr);
+      return this.settings.fields.indexOf(field) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field);
     }
 
-    return this.settings.fields.indexOf(fieldStr) !== -1 && !this.isFieldClosed(fieldStr);
+    return this.settings.fields.indexOf(field) !== -1 && !this.isFieldClosed(field);
   }
 
   isHighlighted(field: number): boolean {
     return this.isFieldEnabledToThrow(field) &&
-      !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
+      !this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 20 : field - 1);
   }
 
   isSecondHighlighted(field: number): boolean {
     return this.isFieldEnabledToThrow(field) &&
-      this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 'B' : field + '');
+      this.isFieldDoneForPlayer(this.game.getActualPlayer(), field === 25 ? 20 : field - 1);
   }
 
   getFieldNote(field: number): string {
     if (this.isHighlighted(field)) {
-      const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(field === 25 ? 'B' : field + '');
+      const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(field === 25 ? 20 : field - 1);
       return ''.padStart(3 - playerFieldCount, '●');
     }
     return '';
@@ -143,7 +136,7 @@ export class CricketComponent extends Playground<CricketState> {
   }
 
   private updateField(player: Player, score: number) {
-    const field = score === 25 ? 'B' : (score + '');
+    const field = score === 25 ? 20 : score - 1;
 
     if (this.settings.fields.indexOf(field) !== -1 && !this.isFieldClosed(field)) {
       const playerFieldCount = this.getPlayerState(player).getFieldCount(field);
@@ -174,7 +167,7 @@ export class CricketComponent extends Playground<CricketState> {
     }
   }
 
-  private punishPlayers(field: string) {
+  private punishPlayers(field: number) {
     this.game.players.forEach(player => {
       if (!this.isFieldDoneForPlayer(player, field)) {
         this.getPlayerState(player).setPunishCount(field, this.getPlayerState(player).getPunishCount(field) + this.multiplier);
@@ -182,18 +175,18 @@ export class CricketComponent extends Playground<CricketState> {
     }, this);
   }
 
-  private getFieldScore(player: Player, field: string): number {
+  private getFieldScore(player: Player, field: number): number {
     if (this.isFieldDoneForPlayer(player, field)) {
       return (this.getPlayerState(player).getFieldCount(field) - 3) * Playground.getFieldValueAsNumber(field);
     }
     return 0;
   }
 
-  private getPunishScore(player: Player, field: string): number {
+  private getPunishScore(player: Player, field: number): number {
     return this.getPlayerState(player).getPunishCount(field) * Playground.getFieldValueAsNumber(field);
   }
 
-  private isFieldClosed(field: string): boolean {
+  private isFieldClosed(field: number): boolean {
     let closed = true;
     this.game.players.forEach(player => {
       closed = closed && this.isFieldDoneForPlayer(player, field);
@@ -201,7 +194,7 @@ export class CricketComponent extends Playground<CricketState> {
     return closed;
   }
 
-  private isFieldClosedForOthers(player: Player, field: string): boolean {
+  private isFieldClosedForOthers(player: Player, field: number): boolean {
     let closed = true;
     this.game.players.forEach(p => {
       if (p.id !== player.id) {

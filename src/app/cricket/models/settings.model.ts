@@ -1,6 +1,6 @@
 export class Settings {
 
-  fields: string[] = ['15', '16', '17', '18', '19', '20', 'B'];
+  fields: number[] = [14, 15, 16, 17, 18, 19, 20];
   numbs: boolean[] = [];
   style: number;
 
@@ -23,6 +23,7 @@ export class Settings {
     for (let i = 0; i < 7; i++) {
       this.numbs[Math.floor(Math.random() * 21)] = true;
     }
+    this.numbs[this.numbs.length - 1] = true;
     this.initFields();
   }
 
@@ -67,7 +68,7 @@ export class Settings {
     this.fields = [];
     for (let i = 0; i < 21; i++) {
       if (this.numbs[i]) {
-        this.fields.push(i === 20 ? 'B' : ((i + 1) + ''));
+        this.fields.push(i);
       }
     }
   }

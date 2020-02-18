@@ -45,7 +45,7 @@
             <div
                 class="field {{isActiveField(player, field) && settings.isBlackOutGame()  ? 'active': ''}} {{!isFieldDoneForPlayer(player, field) ? 'highlighted' : ''}}"
                 *ngFor="let field of settings.fields">
-              {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
+              {{field === 20 ? 'B' : (field + 1)}}: <span class="small">{{ getFieldValue(player, field) }}</span>
             </div>
           </div>
         </app-player-score>

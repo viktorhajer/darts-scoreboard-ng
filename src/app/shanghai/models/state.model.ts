@@ -12,19 +12,19 @@ export class ShanghaiState extends PlaygroundState {
     this.fieldScore = [];
   }
 
-  getFieldCount(field: string): number {
+  getFieldCount(field: number): number {
     return this.getFieldValue(this.fieldCount, field).value;
   }
 
-  increaseFieldCount(field: string, value: number) {
+  increaseFieldCount(field: number, value: number) {
     this.getFieldValue(this.fieldCount, field).value += value;
   }
 
-  getFieldScore(field: string): number {
+  getFieldScore(field: number): number {
     return this.getFieldValue(this.fieldScore, field).value;
   }
 
-  increaseFieldScore(field: string, value: number) {
+  increaseFieldScore(field: number, value: number) {
     this.getFieldValue(this.fieldScore, field).value += value;
   }
 
