@@ -54,7 +54,7 @@ export class X01Component extends Playground<PlaygroundState> {
       ((player.score === 0 && (this.settings.isNormalCheckout()
         || (this.settings.isDoubleCheckout() && this.multiplier === 2)
         || (this.settings.isTripleCheckout() && this.multiplier === 3))))) {
-      player.win = true;
+      player.setWin();
       next = true;
     } else if (player.score <= 0
       || (this.settings.isDoubleCheckout() && player.score < 2)

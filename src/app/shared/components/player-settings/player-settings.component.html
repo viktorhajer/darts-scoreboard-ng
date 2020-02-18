@@ -3,7 +3,7 @@
     <mat-label>Player name</mat-label>
     <input #playerNameInput type="text" matInput placeholder="Enter name"
       [disabled]="!playground.canAddPlayer()" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="playerSelected($event, playerNameInput)">
       <mat-option *ngFor="let option of getOptions()" [value]="option">
         {{option}}
       </mat-option>

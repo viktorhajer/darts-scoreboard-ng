@@ -6,10 +6,16 @@ export class Player {
   throws: number[] = [];
   throwsHistory: Throw[];
   win = false;
+  winDateTime = 0;
   first = true;
   state: PlaygroundState;
 
   constructor(public id: number, public name = '') {
+  }
+
+  setWin(win = true) {
+    this.win = win;
+    this.winDateTime = win ? new Date().getTime() : 0;
   }
 
   getThrowsTotal(): number {
@@ -25,6 +31,7 @@ export class Player {
     this.throws = [];
     this.throwsHistory = [];
     this.win = false;
+    this.winDateTime = 0;
     this.first = true;
   }
 
@@ -37,6 +44,7 @@ export class Player {
     });
     player.throwsHistory = this.throwsHistory;
     player.win = this.win;
+    player.winDateTime = this.winDateTime;
     player.first = this.first;
     player.throwsHistory = [];
     this.throwsHistory.forEach(throws => {

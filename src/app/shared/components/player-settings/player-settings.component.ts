@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Playground} from '~models/playground.model';
 import {PlaygroundState} from '~models/playground-state.model';
 import {ApplicationStateService} from '~services/application-state.service';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-player-settings',
@@ -19,5 +20,11 @@ export class PlayerSettingsComponent {
   getOptions() {
     return this.storedPlayers.filter(o => this.playground.game.players
       .map(p => p.name).indexOf(o) === -1);
+  }
+
+  playerSelected(event: MatAutocompleteSelectedEvent, playerNameInput: HTMLInputElement) {
+    this.playground.addPlayer(event.option);
+    playerNameInput.value = '';
+    playerNameInput.blur();
   }
 }

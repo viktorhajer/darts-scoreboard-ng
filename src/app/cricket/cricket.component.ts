@@ -44,9 +44,8 @@ export class CricketComponent extends Playground<CricketState> {
     }, this);
 
     const punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
-    player.win = this.isPlayerDone(player)
-      && ((!punishStyle && this.game.isTheBestPlayer(player)) || (punishStyle && this.game.isTheWorstPlayer(player)));
-
+    player.setWin(this.isPlayerDone(player)
+      && ((!punishStyle && this.game.isTheBestPlayer(player)) || (punishStyle && this.game.isTheWorstPlayer(player))));
     if (this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }

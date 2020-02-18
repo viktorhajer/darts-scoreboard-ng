@@ -62,19 +62,29 @@ export class GameService {
   }
 
   isTheBestPlayer(actPlayer: Player): boolean {
-    let bestPlayer = true;
-    this.players.filter(p => !p.win).forEach(player => {
-      bestPlayer = bestPlayer && actPlayer.score >= player.score;
+    let max = this.players[0].score;
+    this.players.forEach(player => {
+      max = player.score > max ? player.score : max;
     });
-    return bestPlayer;
+    return actPlayer.score === max;
+    // let bestPlayer = true;
+    // this.players.filter(p => !p.win).forEach(player => {
+    //   bestPlayer = bestPlayer && actPlayer.score >= player.score;
+    // });
+    // return bestPlayer;
   }
 
   isTheWorstPlayer(actPlayer: Player): boolean {
-    let lastPlayer = true;
-    this.players.filter(p => !p.win).forEach(player => {
-      lastPlayer = lastPlayer && actPlayer.score <= player.score;
+    let min = this.players[0].score;
+    this.players.forEach(player => {
+      min = player.score < min ? player.score : min;
     });
-    return lastPlayer;
+    return actPlayer.score === min;
+    // let lastPlayer = true;
+    // this.players.filter(p => !p.win).forEach(player => {
+    //   lastPlayer = lastPlayer && actPlayer.score <= player.score;
+    // });
+    // return lastPlayer;
   }
 
   nextRound(): void {

@@ -188,16 +188,14 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     if (!winners.length) {
       return [];
     }
-    let max = winners[0].score;
-    winners.forEach(p => {
-      max = p.score > max ? p.score : max;
-    });
-    winners = winners.filter(p => p.score === max).map(p => p.clone());
-    const losers  = this.game.players.filter(p => !winners.some(w => w.id === p.id)).map(p => {
-      const c = p.clone();
-      c.win = false;
-      return c;
-    });
+    winners = winners.sort((p1, p2) => p1.winDateTime < p2.winDateTime ? -1 : 1)
+      .slice(0, 1).map(p => p.clone());
+    const losers = this.game.players.filter(p => !winners.some(w => w.id === p.id))
+      .map(p => {
+        const c = p.clone();
+        c.win = false;
+        return c;
+      });
     return [...winners, ...losers];
   }
 

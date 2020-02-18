@@ -84,7 +84,7 @@ export class KillerComponent extends Playground<KillerState> {
   checkPlayerState(): Promise<any> {
     if (this.game.round !== 0) {
       const actualPlayer = this.game.getActualPlayer();
-      actualPlayer.win = !this.game.players.some(p => p.id !== actualPlayer.id && !this.getPlayerState(p).isInactive());
+      actualPlayer.setWin(!this.game.players.some(p => p.id !== actualPlayer.id && !this.getPlayerState(p).isInactive()));
     }
     if (this.game.round === 0 || this.game.actualThrow === 3) {
       this.game.nextPlayer();

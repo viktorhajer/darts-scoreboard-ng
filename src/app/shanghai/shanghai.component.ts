@@ -61,7 +61,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       if (multi === 1 && this.settings.halveIt) {
         player.score = Math.round(player.score / 2);
       }
-      player.win = multi === 24;
+      player.setWin(multi === 24);
       if (player.win) {
         this.extraEndingMsg = 'SHANGHAI!!!';
       }
@@ -70,9 +70,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     const gameEnded = (this.game.round === (this.settings.fields.length - 1))
       && this.game.isActualPlayerTheLast() && this.game.isTheLastThrow();
     if (gameEnded) {
-      this.game.players.forEach(p => p.win = this.game.isTheBestPlayer(p));
-      console.log(this.game.players);
-
+      this.game.players.forEach(p => p.setWin(this.game.isTheBestPlayer(p)));
     } else if (this.game.actualThrow === 3) {
       this.game.nextPlayer();
     }
@@ -118,6 +116,24 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
 
   isLastRound(): boolean {
     return this.game.round === this.settings.fields.length - 1;
+  }
+
+  getTheFinalResult(): Player[] {
+    let winners = this.game.players.filter(p => p.win);
+    if (!winners.length) {
+      return [];
+    }
+    let max = winners[0].score;
+    winners.forEach(p => {
+      max = p.score > max ? p.score : max;
+    });
+    winners = winners.filter(p => p.score === max).map(p => p.clone());
+    const losers  = this.game.players.filter(p => !winners.some(w => w.id === p.id)).map(p => {
+      const c = p.clone();
+      c.win = false;
+      return c;
+    });
+    return [...winners, ...losers];
   }
 
   private getPreviousField(): string {
