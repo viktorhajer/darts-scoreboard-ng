@@ -76,12 +76,12 @@ export class CricketComponent extends Playground<CricketState> {
     return str;
   }
 
-  isFieldDoneForPlayer(player: Player, field: string): boolean {
-    return this.getPlayerState(player).getFieldCount(field) >= 3;
-  }
-
   isActiveField(player: Player, field: string): boolean {
     return this.settings.fields[this.getPlayerState(player).getActFieldIndex()] === field;
+  }
+
+  isFieldDoneForPlayer(player: Player, field: string): boolean {
+    return this.getPlayerState(player).getFieldCount(field) >= 3;
   }
 
   isFieldEnabledToThrow(field: number): boolean {

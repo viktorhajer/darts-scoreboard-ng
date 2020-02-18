@@ -148,7 +148,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   }
 
   customNext() {
-    // should be implemented
+    return;
   }
 
   customSettingsValidation(): boolean {
@@ -169,10 +169,6 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   getFieldNote(field: number): string {
     return '';
-  }
-
-  isLastRound(): boolean {
-    return false;
   }
 
   isFieldEnabledToThrow(field: number): boolean {

@@ -24,7 +24,7 @@
            *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player">
           <div class="field-set">
-            <div class="field {{isActiveField(field) ? 'active': ''}} {{isDoneField(field) ? '' : 'highlighted'}}"
+            <div class="field {{isActiveField(field) ? 'active': ''}} {{isFieldDoneForPlayer(field) ? '' : 'highlighted'}}"
                  *ngFor="let field of settings.fields">
               {{field}}: <span class="small">{{ getFieldValue(player, field) }}</span>
             </div>

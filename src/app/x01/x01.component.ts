@@ -23,10 +23,7 @@ export class X01Component extends Playground<PlaygroundState> {
   }
 
   customReset() {
-    this.game.players.forEach(player => {
-      player.state = null;
-      player.score = this.settings.startValue;
-    });
+    this.game.players.forEach(player => player.score = this.settings.startValue);
   }
 
   calculatePoints(score: number): Promise<any> {
@@ -40,6 +37,7 @@ export class X01Component extends Playground<PlaygroundState> {
 
     if (validStart) {
       player.first = false;
+      player.score -= actualScore;
       return this.countDown(player, actualScore);
     } else {
       return Promise.resolve();

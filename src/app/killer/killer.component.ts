@@ -26,7 +26,8 @@ export class KillerComponent extends Playground<KillerState> {
   }
 
   customReset() {
-    this.game.players.forEach(player => player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
+    this.game.players.forEach(player =>
+      player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
   }
 
   customNext() {
@@ -84,7 +85,8 @@ export class KillerComponent extends Playground<KillerState> {
   checkPlayerState(): Promise<any> {
     if (this.game.round !== 0) {
       const actualPlayer = this.game.getActualPlayer();
-      actualPlayer.setWin(!this.game.players.some(p => p.id !== actualPlayer.id && !this.getPlayerState(p).isInactive()));
+      actualPlayer.setWin(!this.game.players.some(p =>
+        p.id !== actualPlayer.id && !this.getPlayerState(p).isInactive()));
     }
     if (this.game.round === 0 || this.game.actualThrow === 3) {
       this.game.nextPlayer();
@@ -164,6 +166,7 @@ export class KillerComponent extends Playground<KillerState> {
   }
 
   private getAllEnabledFields(): number[] {
-    return this.game.players.filter(p => !this.getPlayerState(p).isInactive()).map(p => this.getPlayerState(p).actField);
+    return this.game.players.filter(p => !this.getPlayerState(p).isInactive())
+      .map(p => this.getPlayerState(p).actField);
   }
 }

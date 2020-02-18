@@ -98,24 +98,17 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return this.settings.fields[this.game.round] === field;
   }
 
-  isDoneField(field: string): boolean {
+  isFieldDoneForPlayer(field: string): boolean {
     return this.settings.fields.indexOf(field) < this.game.round;
   }
 
   isFieldEnabledToThrow(field: number): boolean {
-    let fieldStr = field + '';
-    if (field === 25) {
-      fieldStr = 'B';
-    }
+    const fieldStr = field === 25 ? 'B' : field + '';
     return this.settings.fields.indexOf(fieldStr) === this.game.round;
   }
 
   isHighlighted(field: number): boolean {
     return this.isFieldEnabledToThrow(field);
-  }
-
-  isLastRound(): boolean {
-    return this.game.round === this.settings.fields.length - 1;
   }
 
   getTheFinalResult(): Player[] {

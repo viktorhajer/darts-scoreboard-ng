@@ -3,7 +3,6 @@ import {AroundClockState} from './models/state.model';
 import {Settings} from './models/settings.model';
 import {FIELDS, FIELDS_COUNT, Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
@@ -65,11 +64,8 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   isFieldEnabledToThrow(field: number): boolean {
-    let fieldStr = field + '';
-    if (field === 25) {
-      fieldStr = 'B';
-    }
-    return FIELDS.indexOf(fieldStr) === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
+    field = field === 25 ? 20 : field - 1;
+    return field === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
   }
 
   isHighlighted(field: number): boolean {
@@ -87,14 +83,6 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         .some(p => FIELDS.indexOf(fieldStr) === this.getPlayerState(p).getActFieldIndex());
     }
     return ret;
-  }
-
-  getActualField(player: Player): string {
-    return FIELDS[this.getPlayerState(player).getActFieldIndex()];
-  }
-
-  isLastRound(): boolean {
-    return false;
   }
 
   getFieldNote(field: number): string {
