@@ -9,6 +9,8 @@ import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 
+const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
+
 @Component({
   templateUrl: './killer.component.html',
   animations: [slideInAnimation],
@@ -23,21 +25,6 @@ export class KillerComponent extends Playground<KillerState> {
     this.nextEnabled = false;
     this.zeroEnabled = false;
     this.multiEnabled = false;
-  }
-
-  customReset() {
-    this.game.players.forEach(player =>
-      player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
-  }
-
-  customNext() {
-    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
-      this.game.nextPlayer();
-    }
-  }
-
-  customSettingsValidation(): boolean {
-    return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
@@ -91,25 +78,25 @@ export class KillerComponent extends Playground<KillerState> {
     }
   }
 
-  isFieldEnabledToThrow(fieldIndex: number): boolean {
+  isFieldEnabled(fieldIndex: number): boolean {
     if (this.game.round === 0) {
       return fieldIndex !== 20 && !this.getAllEnabledFields().some(f => f === fieldIndex);
     }
     return this.getAllEnabledFields().some(f => f === fieldIndex);
   }
 
-  isHighlighted(fieldIndex: number): boolean {
+  isPrimaryField(fieldIndex: number): boolean {
     if (this.game.round === 0) {
-      return this.isFieldEnabledToThrow(fieldIndex);
+      return this.isFieldEnabled(fieldIndex);
     }
     const state = this.getPlayerState(this.game.getActualPlayer());
     if (state.killer) {
-      return this.isFieldEnabledToThrow(fieldIndex) && !this.isSecondHighlighted(fieldIndex);
+      return this.isFieldEnabled(fieldIndex) && !this.isSecondaryField(fieldIndex);
     }
     return state.actField === fieldIndex;
   }
 
-  isSecondHighlighted(fieldIndex: number): boolean {
+  isSecondaryField(fieldIndex: number): boolean {
     const state = this.getPlayerState(this.game.getActualPlayer());
     if (state.killer) {
       return state.actField === fieldIndex;
@@ -122,12 +109,7 @@ export class KillerComponent extends Playground<KillerState> {
       const state = this.getPlayerState(p);
       return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
     })) {
-      return 'sentiment_very_dissatisfied';
-    } else if (this.game.players.some(p => {
-      const state = this.getPlayerState(p);
-      return state.isInactive() && state.actField === fieldIndex;
-    })) {
-      return 'highlight_off';
+      return DANGER_ZONE_ICON;
     }
     return '';
   }
@@ -142,20 +124,23 @@ export class KillerComponent extends Playground<KillerState> {
     return fieldIndex === 20 ? 'B' : (fieldIndex + 1) + '';
   }
 
-  getLife(player: Player): number {
-    return this.getPlayerState(player).life;
-  }
-
-  getBoarding(player: Player): number {
-    return this.getPlayerState(player).boarding;
-  }
-
-  isKiller(player: Player): boolean {
-    return this.getPlayerState(player).killer;
-  }
-
   isInactive(player: Player): boolean {
     return this.getPlayerState(player).isInactive();
+  }
+
+  customReset() {
+    this.game.players.forEach(player =>
+      player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
+  }
+
+  customNext() {
+    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+      this.game.nextPlayer();
+    }
+  }
+
+  customSettingsValidation(): boolean {
+    return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
   }
 
   private getAllEnabledFields(): number[] {

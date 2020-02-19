@@ -41,7 +41,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   throwNumber(score: number) {
     if (this.throwEnabled) {
-      this.save();
+      this.saveGameInHistory();
       this.throwEnabled = false;
       if (score === 25 && this.multiplier === 3) {
         this.multiplier = 1;
@@ -79,17 +79,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     }
   }
 
-  newGame(rotate = false) {
-    this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
-    if (!this.playerSettingsValidation()) {
-      this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
-    } else if (this.settingsOpen) {
-      this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
-    }
-    this.reset();
-    if (rotate) {
-      this.game.rotatePlayers();
-    }
+  getPlayerState(player: Player): T {
+    return player.state as T;
   }
 
   canAddPlayer(): boolean {
@@ -108,20 +99,25 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.game.players = this.game.players.filter(p => p !== player);
   }
 
+  newGame(rotate = false) {
+    this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+    if (!this.playerSettingsValidation()) {
+      this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
+    } else if (this.settingsOpen) {
+      this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
+    }
+    this.reset();
+    if (rotate) {
+      this.game.rotatePlayers();
+    }
+  }
+
   triplePoint() {
     this.multiplier = this.multiplier === 3 ? 1 : 3;
   }
 
   doublePoint() {
     this.multiplier = this.multiplier === 2 ? 1 : 2;
-  }
-
-  reset() {
-    this.gameHistory = [];
-    this.game.resetScore();
-    this.multiplier = 1;
-    this.extraEndingMsg = '';
-    this.customReset();
   }
 
   undo() {
@@ -138,11 +134,17 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     }
   }
 
-  quit() {
-    this.route.navigate(['/']);
+  reset() {
+    this.gameHistory = [];
     this.game.resetScore();
     this.multiplier = 1;
     this.extraEndingMsg = '';
+    this.customReset();
+  }
+
+  quit() {
+    this.reset();
+    this.route.navigate(['/']);
   }
 
   customNext() {
@@ -153,11 +155,15 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     return true;
   }
 
-  isHighlighted(fieldIndex: number): boolean {
+  isFieldEnabled(fieldIndex: number): boolean {
+    return true;
+  }
+
+  isPrimaryField(fieldIndex: number): boolean {
     return false;
   }
 
-  isSecondHighlighted(fieldIndex: number): boolean {
+  isSecondaryField(fieldIndex: number): boolean {
     return false;
   }
 
@@ -167,14 +173,6 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   getFieldNote(fieldIndex: number): string {
     return '';
-  }
-
-  isFieldEnabledToThrow(fieldIndex: number): boolean {
-    return true;
-  }
-
-  getPlayerState(player: Player): T {
-    return player.state as T;
   }
 
   getTheFinalResult(): Player[] {
@@ -204,7 +202,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     return players.length >= this.minimumNumberOfPlayers;
   }
 
-  private save() {
+  private saveGameInHistory() {
     this.gameHistory.push(this.game.clone());
   }
 

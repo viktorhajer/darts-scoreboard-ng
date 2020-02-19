@@ -673,13 +673,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(AroundClockComponent, [{
-        key: "customReset",
-        value: function customReset() {
-          this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"]();
-          });
-        }
-      }, {
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
           var state = this.getPlayerState(player);
@@ -722,31 +715,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
-        key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldIndex) {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex) {
           return fieldIndex === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
         }
       }, {
-        key: "isHighlighted",
-        value: function isHighlighted(fieldIndex) {
-          return this.isFieldEnabledToThrow(fieldIndex);
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
+          return this.isFieldEnabled(fieldIndex);
         }
       }, {
-        key: "isSecondHighlighted",
-        value: function isSecondHighlighted(fieldIndex) {
+        key: "isSecondaryField",
+        value: function isSecondaryField(fieldIndex) {
           var _this2 = this;
 
-          var ret = false;
-
-          if (!this.isFieldEnabledToThrow(fieldIndex)) {
-            ret = this.game.players.filter(function (p) {
+          if (!this.isFieldEnabled(fieldIndex)) {
+            return this.game.players.filter(function (p) {
               return p !== _this2.game.getActualPlayer();
             }).some(function (p) {
               return fieldIndex === _this2.getPlayerState(p).getActFieldIndex();
             });
           }
 
-          return ret;
+          return false;
         }
       }, {
         key: "getFieldNote",
@@ -757,6 +748,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             return p.name;
           });
           return !!owners.length ? owners.join(' ') : '';
+        }
+      }, {
+        key: "customReset",
+        value: function customReset() {
+          this.game.players.forEach(function (player) {
+            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"]();
+          });
         }
       }]);
 
@@ -1690,18 +1688,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(CricketComponent, [{
-        key: "customReset",
-        value: function customReset() {
-          this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["CricketState"]();
-          });
-        }
-      }, {
-        key: "customSettingsValidation",
-        value: function customSettingsValidation() {
-          return this.settings.fields.length > 0;
-        }
-      }, {
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
           if (this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex)) {
@@ -1787,8 +1773,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
         }
       }, {
-        key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldIndex) {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex) {
           if (this.settings.isNoScoreGame()) {
             return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
           }
@@ -1796,24 +1782,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex);
         }
       }, {
-        key: "isHighlighted",
-        value: function isHighlighted(fieldIndex) {
-          return this.isFieldEnabledToThrow(fieldIndex) && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
+          return this.isFieldEnabled(fieldIndex) && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
         }
       }, {
-        key: "isSecondHighlighted",
-        value: function isSecondHighlighted(fieldIndex) {
-          return this.isFieldEnabledToThrow(fieldIndex) && this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
+        key: "isSecondaryField",
+        value: function isSecondaryField(fieldIndex) {
+          return this.isFieldEnabled(fieldIndex) && this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
         }
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          if (this.isHighlighted(fieldIndex)) {
+          var _this6 = this;
+
+          if (this.isPrimaryField(fieldIndex)) {
             var playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
             return ''.padStart(3 - playerFieldCount, '●');
+          } else if (this.isSecondaryField(fieldIndex)) {
+            return this.game.players.filter(function (p) {
+              return !_this6.isFieldDoneForPlayer(p, fieldIndex);
+            }).map(function (p) {
+              return p.name.substr(0, 1);
+            }).join(',');
           }
 
           return '';
+        }
+      }, {
+        key: "customReset",
+        value: function customReset() {
+          this.game.players.forEach(function (player) {
+            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["CricketState"]();
+          });
+        }
+      }, {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
+          return this.settings.fields.length > 0;
         }
       }, {
         key: "getPlayerTotal",
@@ -1831,12 +1837,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForScoreGame",
         value: function getPlayerTotalForScoreGame(player) {
-          var _this6 = this;
+          var _this7 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            if (_this6.isFieldDoneForPlayer(player, fieldIndex)) {
-              total += (_this6.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            if (_this7.isFieldDoneForPlayer(player, fieldIndex)) {
+              total += (_this7.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -1844,22 +1850,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForPunishGame",
         value: function getPlayerTotalForPunishGame(player) {
-          var _this7 = this;
+          var _this8 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            total += _this7.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            total += _this8.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
       }, {
         key: "punishPlayers",
         value: function punishPlayers(fieldIndex) {
-          var _this8 = this;
+          var _this9 = this;
 
           this.game.players.forEach(function (player) {
-            if (!_this8.isFieldDoneForPlayer(player, fieldIndex)) {
-              _this8.getPlayerState(player).setPunishCount(fieldIndex, _this8.getPlayerState(player).getPunishCount(fieldIndex) + _this8.multiplier);
+            if (!_this9.isFieldDoneForPlayer(player, fieldIndex)) {
+              _this9.getPlayerState(player).setPunishCount(fieldIndex, _this9.getPlayerState(player).getPunishCount(fieldIndex) + _this9.multiplier);
             }
           }, this);
         }
@@ -1880,23 +1886,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isFieldClosed",
         value: function isFieldClosed(fieldIndex) {
-          var _this9 = this;
+          var _this10 = this;
 
           var closed = true;
           this.game.players.forEach(function (player) {
-            closed = closed && _this9.isFieldDoneForPlayer(player, fieldIndex);
+            closed = closed && _this10.isFieldDoneForPlayer(player, fieldIndex);
           }, this);
           return closed;
         }
       }, {
         key: "isFieldClosedForOthers",
         value: function isFieldClosedForOthers(player, fieldIndex) {
-          var _this10 = this;
+          var _this11 = this;
 
           var closed = true;
           this.game.players.forEach(function (p) {
             if (p.id !== player.id) {
-              closed = closed && _this10.isFieldDoneForPlayer(p, fieldIndex);
+              closed = closed && _this11.isFieldDoneForPlayer(p, fieldIndex);
             }
           }, this);
           return closed;
@@ -1904,11 +1910,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isPlayerDone",
         value: function isPlayerDone(player) {
-          var _this11 = this;
+          var _this12 = this;
 
           var done = true;
           this.settings.fields.forEach(function (fieldIndex) {
-            done = done && _this11.isFieldDoneForPlayer(player, fieldIndex);
+            done = done && _this12.isFieldDoneForPlayer(player, fieldIndex);
           });
           return done;
         }
@@ -2219,14 +2225,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setAllowedField",
         value: function setAllowedField(fields) {
-          var _this12 = this;
+          var _this13 = this;
 
           for (var i = 0; i < this.numbs.length; i++) {
             this.numbs[i] = false;
           }
 
           fields.forEach(function (f) {
-            return _this12.numbs[f - 1] = true;
+            return _this13.numbs[f - 1] = true;
           });
           this.initFields();
         }
@@ -2270,15 +2276,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(CricketState, _models_playground_st2);
 
       function CricketState() {
-        var _this13;
+        var _this14;
 
         _classCallCheck(this, CricketState);
 
-        _this13 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
-        _this13.fieldCount = [];
-        _this13.punishCount = [];
-        _this13.actFieldIndex = 0;
-        return _this13;
+        _this14 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
+        _this14.fieldCount = [];
+        _this14.punishCount = [];
+        _this14.actFieldIndex = 0;
+        return _this14;
       }
 
       _createClass(CricketState, [{
@@ -2566,7 +2572,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r120.getBoarding(player_r117));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r120.getPlayerState(player_r117).boarding);
       }
     }
 
@@ -2618,11 +2624,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r119.getLife(player_r117), " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r119.getPlayerState(player_r117).life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r119.isKiller(player_r117));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r119.getPlayerState(player_r117).killer);
       }
     }
 
@@ -2645,7 +2651,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate3"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r116.isInactive(player_r117) ? "inactive" : "", " ", ctx_r116.isKiller(player_r117) ? "highlighted2" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate3"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r116.isInactive(player_r117) ? "inactive" : "", " ", ctx_r116.getPlayerState(player_r117).killer ? "highlighted2" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -2687,46 +2693,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
+    var DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
+
     var KillerComponent =
     /*#__PURE__*/
     function (_models_playground_mo3) {
       _inherits(KillerComponent, _models_playground_mo3);
 
       function KillerComponent(application, game, route, dialogService) {
-        var _this14;
+        var _this15;
 
         _classCallCheck(this, KillerComponent);
 
-        _this14 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
-        _this14.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        _this14.nextEnabled = false;
-        _this14.zeroEnabled = false;
-        _this14.multiEnabled = false;
-        return _this14;
+        _this15 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
+        _this15.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this15.nextEnabled = false;
+        _this15.zeroEnabled = false;
+        _this15.multiEnabled = false;
+        return _this15;
       }
 
       _createClass(KillerComponent, [{
-        key: "customReset",
-        value: function customReset() {
-          var _this15 = this;
-
-          this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this15.settings.numberOfLives, _this15.settings.boardingLimit);
-          });
-        }
-      }, {
-        key: "customNext",
-        value: function customNext() {
-          while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
-            this.game.nextPlayer();
-          }
-        }
-      }, {
-        key: "customSettingsValidation",
-        value: function customSettingsValidation() {
-          return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
-        }
-      }, {
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
           var _this16 = this;
@@ -2796,8 +2783,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
-        key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldIndex) {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex) {
           if (this.game.round === 0) {
             return fieldIndex !== 20 && !this.getAllEnabledFields().some(function (f) {
               return f === fieldIndex;
@@ -2809,23 +2796,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
-        key: "isHighlighted",
-        value: function isHighlighted(fieldIndex) {
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
           if (this.game.round === 0) {
-            return this.isFieldEnabledToThrow(fieldIndex);
+            return this.isFieldEnabled(fieldIndex);
           }
 
           var state = this.getPlayerState(this.game.getActualPlayer());
 
           if (state.killer) {
-            return this.isFieldEnabledToThrow(fieldIndex) && !this.isSecondHighlighted(fieldIndex);
+            return this.isFieldEnabled(fieldIndex) && !this.isSecondaryField(fieldIndex);
           }
 
           return state.actField === fieldIndex;
         }
       }, {
-        key: "isSecondHighlighted",
-        value: function isSecondHighlighted(fieldIndex) {
+        key: "isSecondaryField",
+        value: function isSecondaryField(fieldIndex) {
           var state = this.getPlayerState(this.game.getActualPlayer());
 
           if (state.killer) {
@@ -2844,13 +2831,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
-            return 'sentiment_very_dissatisfied';
-          } else if (this.game.players.some(function (p) {
-            var state = _this18.getPlayerState(p);
-
-            return state.isInactive() && state.actField === fieldIndex;
-          })) {
-            return 'highlight_off';
+            return DANGER_ZONE_ICON;
           }
 
           return '';
@@ -2870,34 +2851,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return fieldIndex === 20 ? 'B' : fieldIndex + 1 + '';
         }
       }, {
-        key: "getLife",
-        value: function getLife(player) {
-          return this.getPlayerState(player).life;
-        }
-      }, {
-        key: "getBoarding",
-        value: function getBoarding(player) {
-          return this.getPlayerState(player).boarding;
-        }
-      }, {
-        key: "isKiller",
-        value: function isKiller(player) {
-          return this.getPlayerState(player).killer;
-        }
-      }, {
         key: "isInactive",
         value: function isInactive(player) {
           return this.getPlayerState(player).isInactive();
         }
       }, {
-        key: "getAllEnabledFields",
-        value: function getAllEnabledFields() {
+        key: "customReset",
+        value: function customReset() {
           var _this19 = this;
 
+          this.game.players.forEach(function (player) {
+            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this19.settings.numberOfLives, _this19.settings.boardingLimit);
+          });
+        }
+      }, {
+        key: "customNext",
+        value: function customNext() {
+          while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+            this.game.nextPlayer();
+          }
+        }
+      }, {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
+          return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
+        }
+      }, {
+        key: "getAllEnabledFields",
+        value: function getAllEnabledFields() {
+          var _this20 = this;
+
           return this.game.players.filter(function (p) {
-            return !_this19.getPlayerState(p).isInactive();
+            return !_this20.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this19.getPlayerState(p).actField;
+            return _this20.getPlayerState(p).actField;
           });
         }
       }]);
@@ -3132,19 +3119,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KillerState, _models_playground_st3);
 
       function KillerState() {
-        var _this20;
+        var _this21;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this20 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
-        _this20.life = life;
-        _this20.boarding = boarding;
-        _this20.actField = -1;
-        _this20.killer = false;
-        return _this20;
+        _this21 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
+        _this21.life = life;
+        _this21.boarding = boarding;
+        _this21.actField = -1;
+        _this21.killer = false;
+        return _this21;
       }
 
       _createClass(KillerState, [{
@@ -3465,14 +3452,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(ShanghaiState, _models_playground_st4);
 
       function ShanghaiState() {
-        var _this21;
+        var _this22;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this21 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
-        _this21.fieldCount = [];
-        _this21.fieldScore = [];
-        return _this21;
+        _this22 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
+        _this22.fieldCount = [];
+        _this22.fieldScore = [];
+        return _this22;
       }
 
       _createClass(ShanghaiState, [{
@@ -3863,28 +3850,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(ShanghaiComponent, _models_playground_mo4);
 
       function ShanghaiComponent(application, game, route, dialogService) {
-        var _this22;
+        var _this23;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this22 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
-        _this22.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        return _this22;
+        _this23 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
+        _this23.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        return _this23;
       }
 
       _createClass(ShanghaiComponent, [{
-        key: "customReset",
-        value: function customReset() {
-          this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ShanghaiState"]();
-          });
-        }
-      }, {
-        key: "customSettingsValidation",
-        value: function customSettingsValidation() {
-          return this.settings.fields.length > 0;
-        }
-      }, {
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
           var state = this.getPlayerState(player);
@@ -3903,7 +3878,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this23 = this;
+          var _this24 = this;
 
           // Shanghai rule
           if (this.game.actualThrow === 3) {
@@ -3933,7 +3908,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this23.game.isTheBestPlayer(p));
+              return p.setWin(_this24.game.isTheBestPlayer(p));
             });
           } else if (this.game.actualThrow === 3) {
             this.game.nextPlayer();
@@ -3961,6 +3936,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
+        key: "customReset",
+        value: function customReset() {
+          this.game.players.forEach(function (player) {
+            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ShanghaiState"]();
+          });
+        }
+      }, {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
+          return this.settings.fields.length > 0;
+        }
+      }, {
         key: "isActiveField",
         value: function isActiveField(fieldIndex) {
           return this.settings.fields[this.game.round] === fieldIndex;
@@ -3971,14 +3958,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.settings.fields.indexOf(fieldIndex) < this.game.round;
         }
       }, {
-        key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldIndex) {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex) {
           return this.settings.fields.indexOf(fieldIndex) === this.game.round;
         }
       }, {
-        key: "isHighlighted",
-        value: function isHighlighted(fieldIndex) {
-          return this.isFieldEnabledToThrow(fieldIndex);
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
+          return this.isFieldEnabled(fieldIndex);
         }
       }, {
         key: "getTheFinalResult",
@@ -4805,9 +4792,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getNumberColor",
         value: function getNumberColor(fieldIndex) {
-          if (this.playground.isHighlighted(fieldIndex)) {
+          if (this.playground.isPrimaryField(fieldIndex)) {
             return 'primary';
-          } else if (this.playground.isSecondHighlighted(fieldIndex)) {
+          } else if (this.playground.isSecondaryField(fieldIndex)) {
             return 'accent';
           }
 
@@ -4816,12 +4803,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isNumberDisabled",
         value: function isNumberDisabled(fieldIndex) {
-          return !this.playground.isFieldEnabledToThrow(fieldIndex) && !this.getNumberColor(fieldIndex);
+          return !this.playground.isFieldEnabled(fieldIndex) && !this.getNumberColor(fieldIndex);
         }
       }, {
         key: "throwNumber",
         value: function throwNumber(fieldIndex) {
-          this.playground.throwNumber(this.playground.isFieldEnabledToThrow(fieldIndex) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex) : 0);
+          this.playground.throwNumber(this.playground.isFieldEnabled(fieldIndex) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex) : 0);
         }
       }]);
 
@@ -5324,10 +5311,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this24 = this;
+          var _this25 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this24.playground.game.players.map(function (p) {
+            return _this25.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -5931,7 +5918,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "throwNumber",
         value: function throwNumber(score) {
           if (this.throwEnabled) {
-            this.save();
+            this.saveGameInHistory();
             this.throwEnabled = false;
 
             if (score === 25 && this.multiplier === 3) {
@@ -5973,22 +5960,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
-        key: "newGame",
-        value: function newGame() {
-          var rotate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-          this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
-
-          if (!this.playerSettingsValidation()) {
-            this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
-          } else if (this.settingsOpen) {
-            this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
-          }
-
-          this.reset();
-
-          if (rotate) {
-            this.game.rotatePlayers();
-          }
+        key: "getPlayerState",
+        value: function getPlayerState(player) {
+          return player.state;
         }
       }, {
         key: "canAddPlayer",
@@ -6015,6 +5989,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "newGame",
+        value: function newGame() {
+          var rotate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+          this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+
+          if (!this.playerSettingsValidation()) {
+            this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
+          } else if (this.settingsOpen) {
+            this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
+          }
+
+          this.reset();
+
+          if (rotate) {
+            this.game.rotatePlayers();
+          }
+        }
+      }, {
         key: "triplePoint",
         value: function triplePoint() {
           this.multiplier = this.multiplier === 3 ? 1 : 3;
@@ -6023,15 +6015,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "doublePoint",
         value: function doublePoint() {
           this.multiplier = this.multiplier === 2 ? 1 : 2;
-        }
-      }, {
-        key: "reset",
-        value: function reset() {
-          this.gameHistory = [];
-          this.game.resetScore();
-          this.multiplier = 1;
-          this.extraEndingMsg = '';
-          this.customReset();
         }
       }, {
         key: "undo",
@@ -6051,12 +6034,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
-        key: "quit",
-        value: function quit() {
-          this.route.navigate(['/']);
+        key: "reset",
+        value: function reset() {
+          this.gameHistory = [];
           this.game.resetScore();
           this.multiplier = 1;
           this.extraEndingMsg = '';
+          this.customReset();
+        }
+      }, {
+        key: "quit",
+        value: function quit() {
+          this.reset();
+          this.route.navigate(['/']);
         }
       }, {
         key: "customNext",
@@ -6069,13 +6059,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return true;
         }
       }, {
-        key: "isHighlighted",
-        value: function isHighlighted(fieldIndex) {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex) {
+          return true;
+        }
+      }, {
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
           return false;
         }
       }, {
-        key: "isSecondHighlighted",
-        value: function isSecondHighlighted(fieldIndex) {
+        key: "isSecondaryField",
+        value: function isSecondaryField(fieldIndex) {
           return false;
         }
       }, {
@@ -6087,16 +6082,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
           return '';
-        }
-      }, {
-        key: "isFieldEnabledToThrow",
-        value: function isFieldEnabledToThrow(fieldIndex) {
-          return true;
-        }
-      }, {
-        key: "getPlayerState",
-        value: function getPlayerState(player) {
-          return player.state;
         }
       }, {
         key: "getTheFinalResult",
@@ -6138,8 +6123,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return players.length >= this.minimumNumberOfPlayers;
         }
       }, {
-        key: "save",
-        value: function save() {
+        key: "saveGameInHistory",
+        value: function saveGameInHistory() {
           this.gameHistory.push(this.game.clone());
         }
       }], [{
@@ -7308,22 +7293,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(X01Component, _models_playground_mo5);
 
       function X01Component(application, game, route, dialogService) {
-        var _this25;
+        var _this26;
 
         _classCallCheck(this, X01Component);
 
-        _this25 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this25.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this25;
+        _this26 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
+        _this26.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this26;
       }
 
       _createClass(X01Component, [{
         key: "customReset",
         value: function customReset() {
-          var _this26 = this;
+          var _this27 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this26.settings.startValue;
+            return player.score = _this27.settings.startValue;
           });
         }
       }, {

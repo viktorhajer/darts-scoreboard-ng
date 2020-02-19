@@ -17,7 +17,7 @@
   <div class="side-left">
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
     <ng-container *ngIf="!settingsOpen">
-      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isInactive(player) ? 'inactive' : ''}} {{isKiller(player) ? 'highlighted2' : ''}}"
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isInactive(player) ? 'inactive' : ''}} {{getPlayerState(player).killer ? 'highlighted2' : ''}}"
           *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player" [scoreDisplayed]="false">
           <ng-container *ngIf="getPlayerField(player) !== '0'">
@@ -25,8 +25,8 @@
             <div class="clear"></div>
             <div class="line"></div>
             <div class="score">
-              <label>Life: </label>{{getLife(player)}}
-              <ng-container *ngIf="!isKiller(player)"><label>Boarding: </label>{{getBoarding(player)}}</ng-container>
+              <label>Life: </label>{{getPlayerState(player).life}}
+              <ng-container *ngIf="!getPlayerState(player).killer"><label>Boarding: </label>{{getPlayerState(player).boarding}}</ng-container>
             </div>
           </ng-container>
         </app-player-score>

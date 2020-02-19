@@ -22,10 +22,6 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     this.settings = new Settings();
   }
 
-  customReset() {
-    this.game.players.forEach(player => player.state = new AroundClockState());
-  }
-
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state: AroundClockState = this.getPlayerState(player);
     if (state.getActFieldIndex() === fieldIndex) {
@@ -59,25 +55,28 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     }
   }
 
-  isFieldEnabledToThrow(fieldIndex: number): boolean {
+  isFieldEnabled(fieldIndex: number): boolean {
     return fieldIndex === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
   }
 
-  isHighlighted(fieldIndex: number): boolean {
-    return this.isFieldEnabledToThrow(fieldIndex);
+  isPrimaryField(fieldIndex: number): boolean {
+    return this.isFieldEnabled(fieldIndex);
   }
 
-  isSecondHighlighted(fieldIndex: number): boolean {
-    let ret = false;
-    if (!this.isFieldEnabledToThrow(fieldIndex)) {
-      ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
+  isSecondaryField(fieldIndex: number): boolean {
+    if (!this.isFieldEnabled(fieldIndex)) {
+      return this.game.players.filter(p => p !== this.game.getActualPlayer())
         .some(p => fieldIndex === this.getPlayerState(p).getActFieldIndex());
     }
-    return ret;
+    return false;
   }
 
   getFieldNote(fieldIndex: number): string {
     const owners = this.game.players.filter(p => (p.state as AroundClockState).actFieldIndex === fieldIndex).map(p => p.name);
     return !!owners.length ? owners.join(' ') : '';
+  }
+
+  customReset() {
+    this.game.players.forEach(player => player.state = new AroundClockState());
   }
 }

@@ -302,9 +302,6 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
         super(application, game, route, dialogService);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
     }
-    customReset() {
-        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"]());
-    }
     calculatePoints(player, fieldIndex, score) {
         const state = this.getPlayerState(player);
         if (state.getActFieldIndex() === fieldIndex) {
@@ -337,23 +334,25 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
             this.game.nextPlayer();
         }
     }
-    isFieldEnabledToThrow(fieldIndex) {
+    isFieldEnabled(fieldIndex) {
         return fieldIndex === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
     }
-    isHighlighted(fieldIndex) {
-        return this.isFieldEnabledToThrow(fieldIndex);
+    isPrimaryField(fieldIndex) {
+        return this.isFieldEnabled(fieldIndex);
     }
-    isSecondHighlighted(fieldIndex) {
-        let ret = false;
-        if (!this.isFieldEnabledToThrow(fieldIndex)) {
-            ret = this.game.players.filter(p => p !== this.game.getActualPlayer())
+    isSecondaryField(fieldIndex) {
+        if (!this.isFieldEnabled(fieldIndex)) {
+            return this.game.players.filter(p => p !== this.game.getActualPlayer())
                 .some(p => fieldIndex === this.getPlayerState(p).getActFieldIndex());
         }
-        return ret;
+        return false;
     }
     getFieldNote(fieldIndex) {
         const owners = this.game.players.filter(p => p.state.actFieldIndex === fieldIndex).map(p => p.name);
         return !!owners.length ? owners.join(' ') : '';
+    }
+    customReset() {
+        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"]());
     }
 }
 AroundClockComponent.ɵfac = function AroundClockComponent_Factory(t) { return new (t || AroundClockComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"])); };
@@ -765,12 +764,6 @@ class CricketComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE
         super(application, game, route, dialogService);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
     }
-    customReset() {
-        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["CricketState"]());
-    }
-    customSettingsValidation() {
-        return this.settings.fields.length > 0;
-    }
     calculatePoints(player, fieldIndex, score) {
         if (this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex)) {
             const playerFieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
@@ -838,26 +831,36 @@ class CricketComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE
     isFieldDoneForPlayer(player, fieldIndex) {
         return this.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
     }
-    isFieldEnabledToThrow(fieldIndex) {
+    isFieldEnabled(fieldIndex) {
         if (this.settings.isNoScoreGame()) {
             return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
         }
         return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex);
     }
-    isHighlighted(fieldIndex) {
-        return this.isFieldEnabledToThrow(fieldIndex) &&
+    isPrimaryField(fieldIndex) {
+        return this.isFieldEnabled(fieldIndex) &&
             !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
     }
-    isSecondHighlighted(fieldIndex) {
-        return this.isFieldEnabledToThrow(fieldIndex) &&
+    isSecondaryField(fieldIndex) {
+        return this.isFieldEnabled(fieldIndex) &&
             this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
     }
     getFieldNote(fieldIndex) {
-        if (this.isHighlighted(fieldIndex)) {
+        if (this.isPrimaryField(fieldIndex)) {
             const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
             return ''.padStart(3 - playerFieldCount, '●');
         }
+        else if (this.isSecondaryField(fieldIndex)) {
+            return this.game.players.filter(p => !this.isFieldDoneForPlayer(p, fieldIndex))
+                .map(p => p.name.substr(0, 1)).join(',');
+        }
         return '';
+    }
+    customReset() {
+        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["CricketState"]());
+    }
+    customSettingsValidation() {
+        return this.settings.fields.length > 0;
     }
     getPlayerTotal(player) {
         let total = 0;
@@ -1241,7 +1244,7 @@ function KillerComponent_ng_container_4_div_1_ng_container_2_ng_container_11_Tem
     const player_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
     const ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r120.getBoarding(player_r117));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r120.getPlayerState(player_r117).boarding);
 } }
 function KillerComponent_ng_container_4_div_1_ng_container_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
@@ -1267,9 +1270,9 @@ function KillerComponent_ng_container_4_div_1_ng_container_2_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r119.getPlayerField(player_r117));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r119.getLife(player_r117), " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r119.getPlayerState(player_r117).life, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r119.isKiller(player_r117));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r119.getPlayerState(player_r117).killer);
 } }
 function KillerComponent_ng_container_4_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
@@ -1281,7 +1284,7 @@ function KillerComponent_ng_container_4_div_1_Template(rf, ctx) { if (rf & 1) {
     const player_r117 = ctx.$implicit;
     const i_r118 = ctx.index;
     const ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate3"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r116.isInactive(player_r117) ? "inactive" : "", " ", ctx_r116.isKiller(player_r117) ? "highlighted2" : "", "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate3"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r116.isInactive(player_r117) ? "inactive" : "", " ", ctx_r116.getPlayerState(player_r117).killer ? "highlighted2" : "", "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r117)("scoreDisplayed", false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -1302,6 +1305,7 @@ function KillerComponent_app_number_plate_5_Template(rf, ctx) { if (rf & 1) {
     const ctx_r112 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r112.playground);
 } }
+const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"] {
     constructor(application, game, route, dialogService) {
         super(application, game, route, dialogService, 2);
@@ -1309,17 +1313,6 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
         this.nextEnabled = false;
         this.zeroEnabled = false;
         this.multiEnabled = false;
-    }
-    customReset() {
-        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](this.settings.numberOfLives, this.settings.boardingLimit));
-    }
-    customNext() {
-        while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
-            this.game.nextPlayer();
-        }
-    }
-    customSettingsValidation() {
-        return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
     }
     calculatePoints(player, fieldIndex, score) {
         const state = this.getPlayerState(player);
@@ -1372,23 +1365,23 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
             this.game.nextPlayer();
         }
     }
-    isFieldEnabledToThrow(fieldIndex) {
+    isFieldEnabled(fieldIndex) {
         if (this.game.round === 0) {
             return fieldIndex !== 20 && !this.getAllEnabledFields().some(f => f === fieldIndex);
         }
         return this.getAllEnabledFields().some(f => f === fieldIndex);
     }
-    isHighlighted(fieldIndex) {
+    isPrimaryField(fieldIndex) {
         if (this.game.round === 0) {
-            return this.isFieldEnabledToThrow(fieldIndex);
+            return this.isFieldEnabled(fieldIndex);
         }
         const state = this.getPlayerState(this.game.getActualPlayer());
         if (state.killer) {
-            return this.isFieldEnabledToThrow(fieldIndex) && !this.isSecondHighlighted(fieldIndex);
+            return this.isFieldEnabled(fieldIndex) && !this.isSecondaryField(fieldIndex);
         }
         return state.actField === fieldIndex;
     }
-    isSecondHighlighted(fieldIndex) {
+    isSecondaryField(fieldIndex) {
         const state = this.getPlayerState(this.game.getActualPlayer());
         if (state.killer) {
             return state.actField === fieldIndex;
@@ -1400,13 +1393,7 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
             const state = this.getPlayerState(p);
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
         })) {
-            return 'sentiment_very_dissatisfied';
-        }
-        else if (this.game.players.some(p => {
-            const state = this.getPlayerState(p);
-            return state.isInactive() && state.actField === fieldIndex;
-        })) {
-            return 'highlight_off';
+            return DANGER_ZONE_ICON;
         }
         return '';
     }
@@ -1418,17 +1405,19 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
         const fieldIndex = this.getPlayerState(player).actField;
         return fieldIndex === 20 ? 'B' : (fieldIndex + 1) + '';
     }
-    getLife(player) {
-        return this.getPlayerState(player).life;
-    }
-    getBoarding(player) {
-        return this.getPlayerState(player).boarding;
-    }
-    isKiller(player) {
-        return this.getPlayerState(player).killer;
-    }
     isInactive(player) {
         return this.getPlayerState(player).isInactive();
+    }
+    customReset() {
+        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](this.settings.numberOfLives, this.settings.boardingLimit));
+    }
+    customNext() {
+        while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+            this.game.nextPlayer();
+        }
+    }
+    customSettingsValidation() {
+        return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
     }
     getAllEnabledFields() {
         return this.game.players.filter(p => !this.getPlayerState(p).isInactive())
@@ -1933,12 +1922,6 @@ class ShanghaiComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
         super(application, game, route, dialogService);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
     }
-    customReset() {
-        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ShanghaiState"]());
-    }
-    customSettingsValidation() {
-        return this.settings.fields.length > 0;
-    }
     calculatePoints(player, fieldIndex, score) {
         const state = this.getPlayerState(player);
         if (this.isActiveField(fieldIndex)) {
@@ -1996,17 +1979,23 @@ class ShanghaiComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
             return str;
         }
     }
+    customReset() {
+        this.game.players.forEach(player => player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ShanghaiState"]());
+    }
+    customSettingsValidation() {
+        return this.settings.fields.length > 0;
+    }
     isActiveField(fieldIndex) {
         return this.settings.fields[this.game.round] === fieldIndex;
     }
     isFieldDoneForPlayer(fieldIndex) {
         return this.settings.fields.indexOf(fieldIndex) < this.game.round;
     }
-    isFieldEnabledToThrow(fieldIndex) {
+    isFieldEnabled(fieldIndex) {
         return this.settings.fields.indexOf(fieldIndex) === this.game.round;
     }
-    isHighlighted(fieldIndex) {
-        return this.isFieldEnabledToThrow(fieldIndex);
+    isPrimaryField(fieldIndex) {
+        return this.isFieldEnabled(fieldIndex);
     }
     getTheFinalResult() {
         let winners = this.game.players.filter(p => p.win);
@@ -2389,19 +2378,19 @@ class NumberPlateComponent {
         return numbers;
     }
     getNumberColor(fieldIndex) {
-        if (this.playground.isHighlighted(fieldIndex)) {
+        if (this.playground.isPrimaryField(fieldIndex)) {
             return 'primary';
         }
-        else if (this.playground.isSecondHighlighted(fieldIndex)) {
+        else if (this.playground.isSecondaryField(fieldIndex)) {
             return 'accent';
         }
         return '';
     }
     isNumberDisabled(fieldIndex) {
-        return !this.playground.isFieldEnabledToThrow(fieldIndex) && !this.getNumberColor(fieldIndex);
+        return !this.playground.isFieldEnabled(fieldIndex) && !this.getNumberColor(fieldIndex);
     }
     throwNumber(fieldIndex) {
-        this.playground.throwNumber(this.playground.isFieldEnabledToThrow(fieldIndex) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex) : 0);
+        this.playground.throwNumber(this.playground.isFieldEnabled(fieldIndex) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex) : 0);
     }
 }
 NumberPlateComponent.ɵfac = function NumberPlateComponent_Factory(t) { return new (t || NumberPlateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_2__["GameService"])); };
@@ -2930,7 +2919,7 @@ class Playground {
     }
     throwNumber(score) {
         if (this.throwEnabled) {
-            this.save();
+            this.saveGameInHistory();
             this.throwEnabled = false;
             if (score === 25 && this.multiplier === 3) {
                 this.multiplier = 1;
@@ -2965,18 +2954,8 @@ class Playground {
             this.throwEnabled = true;
         }
     }
-    newGame(rotate = false) {
-        this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
-        if (!this.playerSettingsValidation()) {
-            this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
-        }
-        else if (this.settingsOpen) {
-            this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
-        }
-        this.reset();
-        if (rotate) {
-            this.game.rotatePlayers();
-        }
+    getPlayerState(player) {
+        return player.state;
     }
     canAddPlayer() {
         return this.game.players.length < MAXIMUM_NUMBER_OF_PLAYERS;
@@ -2991,18 +2970,24 @@ class Playground {
     removePlayer(player) {
         this.game.players = this.game.players.filter(p => p !== player);
     }
+    newGame(rotate = false) {
+        this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+        if (!this.playerSettingsValidation()) {
+            this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
+        }
+        else if (this.settingsOpen) {
+            this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
+        }
+        this.reset();
+        if (rotate) {
+            this.game.rotatePlayers();
+        }
+    }
     triplePoint() {
         this.multiplier = this.multiplier === 3 ? 1 : 3;
     }
     doublePoint() {
         this.multiplier = this.multiplier === 2 ? 1 : 2;
-    }
-    reset() {
-        this.gameHistory = [];
-        this.game.resetScore();
-        this.multiplier = 1;
-        this.extraEndingMsg = '';
-        this.customReset();
     }
     undo() {
         if (this.gameHistory.length > 0) {
@@ -3016,11 +3001,16 @@ class Playground {
             this.skip();
         }
     }
-    quit() {
-        this.route.navigate(['/']);
+    reset() {
+        this.gameHistory = [];
         this.game.resetScore();
         this.multiplier = 1;
         this.extraEndingMsg = '';
+        this.customReset();
+    }
+    quit() {
+        this.reset();
+        this.route.navigate(['/']);
     }
     customNext() {
         return;
@@ -3028,10 +3018,13 @@ class Playground {
     customSettingsValidation() {
         return true;
     }
-    isHighlighted(fieldIndex) {
+    isFieldEnabled(fieldIndex) {
+        return true;
+    }
+    isPrimaryField(fieldIndex) {
         return false;
     }
-    isSecondHighlighted(fieldIndex) {
+    isSecondaryField(fieldIndex) {
         return false;
     }
     getFieldIcon(fieldIndex) {
@@ -3039,12 +3032,6 @@ class Playground {
     }
     getFieldNote(fieldIndex) {
         return '';
-    }
-    isFieldEnabledToThrow(fieldIndex) {
-        return true;
-    }
-    getPlayerState(player) {
-        return player.state;
     }
     getTheFinalResult() {
         let winners = this.game.players.filter(p => p.win);
@@ -3071,7 +3058,7 @@ class Playground {
         this.game.players = players;
         return players.length >= this.minimumNumberOfPlayers;
     }
-    save() {
+    saveGameInHistory() {
         this.gameHistory.push(this.game.clone());
     }
 }

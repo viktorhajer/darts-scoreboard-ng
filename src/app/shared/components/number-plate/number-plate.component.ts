@@ -23,20 +23,20 @@ export class NumberPlateComponent {
   }
 
   getNumberColor(fieldIndex: number): string {
-    if (this.playground.isHighlighted(fieldIndex)) {
+    if (this.playground.isPrimaryField(fieldIndex)) {
       return 'primary';
-    } else if (this.playground.isSecondHighlighted(fieldIndex)) {
+    } else if (this.playground.isSecondaryField(fieldIndex)) {
       return 'accent';
     }
     return '';
   }
 
   isNumberDisabled(fieldIndex: number): boolean {
-    return !this.playground.isFieldEnabledToThrow(fieldIndex) && !this.getNumberColor(fieldIndex);
+    return !this.playground.isFieldEnabled(fieldIndex) && !this.getNumberColor(fieldIndex);
   }
 
   throwNumber(fieldIndex: number) {
-    this.playground.throwNumber(this.playground.isFieldEnabledToThrow(fieldIndex) ? Playground.getFieldValueFromIndex(fieldIndex) : 0);
+    this.playground.throwNumber(this.playground.isFieldEnabled(fieldIndex) ? Playground.getFieldValueFromIndex(fieldIndex) : 0);
   }
 }
 

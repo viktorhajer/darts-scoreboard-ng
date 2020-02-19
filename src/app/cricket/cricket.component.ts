@@ -22,14 +22,6 @@ export class CricketComponent extends Playground<CricketState> {
     this.settings = new Settings();
   }
 
-  customReset() {
-    this.game.players.forEach(player => player.state = new CricketState());
-  }
-
-  customSettingsValidation(): boolean {
-    return this.settings.fields.length > 0;
-  }
-
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     if (this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex)) {
       const playerFieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
@@ -103,29 +95,40 @@ export class CricketComponent extends Playground<CricketState> {
     return this.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
   }
 
-  isFieldEnabledToThrow(fieldIndex: number): boolean {
+  isFieldEnabled(fieldIndex: number): boolean {
     if (this.settings.isNoScoreGame()) {
       return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
     }
     return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex);
   }
 
-  isHighlighted(fieldIndex: number): boolean {
-    return this.isFieldEnabledToThrow(fieldIndex) &&
+  isPrimaryField(fieldIndex: number): boolean {
+    return this.isFieldEnabled(fieldIndex) &&
       !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
   }
 
-  isSecondHighlighted(fieldIndex: number): boolean {
-    return this.isFieldEnabledToThrow(fieldIndex) &&
+  isSecondaryField(fieldIndex: number): boolean {
+    return this.isFieldEnabled(fieldIndex) &&
       this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
   }
 
   getFieldNote(fieldIndex: number): string {
-    if (this.isHighlighted(fieldIndex)) {
+    if (this.isPrimaryField(fieldIndex)) {
       const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
       return ''.padStart(3 - playerFieldCount, '●');
+    } else if (this.isSecondaryField(fieldIndex)) {
+      return this.game.players.filter(p => !this.isFieldDoneForPlayer(p, fieldIndex))
+        .map(p => p.name.substr(0,1)).join(',');
     }
     return '';
+  }
+
+  customReset() {
+    this.game.players.forEach(player => player.state = new CricketState());
+  }
+
+  customSettingsValidation(): boolean {
+    return this.settings.fields.length > 0;
   }
 
   private getPlayerTotal(player: Player) {

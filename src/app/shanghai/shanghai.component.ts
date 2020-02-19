@@ -22,14 +22,6 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     this.settings = new Settings();
   }
 
-  customReset() {
-    this.game.players.forEach(player => player.state = new ShanghaiState());
-  }
-
-  customSettingsValidation(): boolean {
-    return this.settings.fields.length > 0;
-  }
-
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state = this.getPlayerState(player);
     if (this.isActiveField(fieldIndex)) {
@@ -88,6 +80,14 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     }
   }
 
+  customReset() {
+    this.game.players.forEach(player => player.state = new ShanghaiState());
+  }
+
+  customSettingsValidation(): boolean {
+    return this.settings.fields.length > 0;
+  }
+
   isActiveField(fieldIndex: number): boolean {
     return this.settings.fields[this.game.round] === fieldIndex;
   }
@@ -96,12 +96,12 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return this.settings.fields.indexOf(fieldIndex) < this.game.round;
   }
 
-  isFieldEnabledToThrow(fieldIndex: number): boolean {
+  isFieldEnabled(fieldIndex: number): boolean {
     return this.settings.fields.indexOf(fieldIndex) === this.game.round;
   }
 
-  isHighlighted(fieldIndex: number): boolean {
-    return this.isFieldEnabledToThrow(fieldIndex);
+  isPrimaryField(fieldIndex: number): boolean {
+    return this.isFieldEnabled(fieldIndex);
   }
 
   getTheFinalResult(): Player[] {
