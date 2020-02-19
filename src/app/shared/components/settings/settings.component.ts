@@ -11,4 +11,5 @@ import {PlaygroundState} from '~models/playground-state.model';
 export class SettingsComponent {
   @Input() playground: Playground<PlaygroundState>;
   @Input() title: string;
+  @Input() rules: string;
 }

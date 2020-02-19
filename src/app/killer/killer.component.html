@@ -12,6 +12,9 @@
         <input [(ngModel)]="settings.boardingLimit" type="number" matInput>
       </mat-form-field>
     </div>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" [color]="settings.suicide?'primary':''"
+            (click)="settings.toggleSuicide()">Suicide</button>
   </app-settings>
 
   <div class="side-left">

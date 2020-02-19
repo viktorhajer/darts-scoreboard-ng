@@ -35,12 +35,24 @@ export class Settings {
     this.setAllowedField([10, 15, 2, 17, 3, 19, 7, 16, 8, 21]);
   }
 
+  left() {
+    this.setAllowedField([12, 9, 14, 11, 8, 16, 7, 5, 19, 21]);
+  }
+
+  right() {
+    this.setAllowedField([1, 18, 4, 13, 6, 10, 15, 2, 17, 21]);
+  }
+
   odd() {
     this.setAllowedField([1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]);
   }
 
   even() {
     this.setAllowedField([2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 21]);
+  }
+
+  prime() {
+    this.setAllowedField([2, 3, 5, 7, 11, 13, 17, 19]);
   }
 
   getNumbers(): number[] {

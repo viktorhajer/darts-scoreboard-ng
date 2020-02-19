@@ -10,6 +10,10 @@ $basic: mat-palette($mat-grey);
   $primary: map-get($theme, primary);
   $warn: map-get($theme, warn);
 
+  .version {
+    color: mat-color($accent, 400);
+  }
+
   .toolbar {
     .round-info {
       color: mat-color($primary, 50);
@@ -35,6 +39,10 @@ $basic: mat-palette($mat-grey);
   $accent: map-get($theme, accent);
 
   .settings {
+    #rules details p {
+      background: mat-color(map-get($theme, primary), 500);
+      color: mat-color($basic, 50);
+    }
     .player-row {
       background: mat-color(map-get($theme, primary), 500);
       color: mat-color($basic, 50);

@@ -39,7 +39,10 @@ export class KillerComponent extends Playground<KillerState> {
       }
     } else {
       if (state.killer) {
-        if (fieldIndex === state.actField) {
+        if (this.settings.suicide && fieldIndex === state.actField && this.multiplier > 1) {
+          state.life = 0;
+          this.extraEndingMsg = 'SUICIDE!!!';
+        } else if (fieldIndex === state.actField) {
           state.life = Number(state.life) + Number(this.multiplier);
           if (state.life > this.settings.numberOfLives) {
             state.life = this.settings.numberOfLives;
@@ -67,8 +70,8 @@ export class KillerComponent extends Playground<KillerState> {
 
   checkPlayerState(player: Player) {
     if (this.game.round !== 0) {
-      player.setWin(!this.game.players.some(p =>
-        p.id !== player.id && !this.getPlayerState(p).isInactive()));
+      const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+      this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !this.getPlayerState(p).isInactive()));
     }
     if (this.game.round === 0 || this.game.actualThrow === 3) {
       this.game.nextPlayer();

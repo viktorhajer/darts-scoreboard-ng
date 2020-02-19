@@ -1,6 +1,13 @@
 <div class="settings">
   <h1>{{title}} Settings</h1>
 
+  <div id="rules" *ngIf="rules">
+    <details>
+      <summary>Click here for rules</summary>
+      <p>{{rules}}</p>
+    </details>
+  </div>
+
   <h2>Players</h2>
   <app-player-settings [playground]="playground"></app-player-settings>
   <mat-divider></mat-divider>

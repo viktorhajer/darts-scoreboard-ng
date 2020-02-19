@@ -1,17 +1,23 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [title]="'Ultimate Cricket'" [playground]="playground">
+  <app-settings *ngIf="settingsOpen" [title]="'Ultimate Cricket'" [playground]="playground"
+                [rules]="'The objective shall be to \'own\' or \'close\' certain numbers on the board, and to achieve ' +
+                'the highest point score. The player or team to do so first, shall be the winner.'">
+
     <h2>Fields</h2>
     <button mat-raised-button class="button" [color]="settings.isFieldAllowed(i)?'primary':''"
             *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
       {{numb === 21 ? 'B' : numb}}
     </button>
     <mat-divider></mat-divider>
-
     <button mat-raised-button class="button shortmedium" (click)="settings.upper()">Upper</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.left()">Left</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.right()">Right</button>
+    <mat-divider></mat-divider>
     <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.prime()">Prime</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.randomize()">Random</button>
     <mat-divider></mat-divider>
 
@@ -28,9 +34,9 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''"
             (click)="settings.setStyle(4)">Black Out
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">
-      Victory First
-    </button>
+<!--    <button mat-raised-button class="button shortmedium" [color]="game.victoryFirst?'primary':''" (click)="game.toggleVictoryFirst()">-->
+<!--      Victory First-->
+<!--    </button>-->
   </app-settings>
 
   <div class="side-left">
