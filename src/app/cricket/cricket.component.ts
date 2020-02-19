@@ -115,10 +115,12 @@ export class CricketComponent extends Playground<CricketState> {
   getFieldNote(fieldIndex: number): string {
     if (this.isPrimaryField(fieldIndex)) {
       const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
-      return ''.padStart(3 - playerFieldCount, '●');
+      const remaining = ''.padStart(3 - playerFieldCount, '●');
+      return remaining + '\n' + this.game.players.filter(p => this.isFieldDoneForPlayer(p, fieldIndex))
+        .map(p => p.name.substr(0,1)).join(',').toUpperCase();
     } else if (this.isSecondaryField(fieldIndex)) {
       return this.game.players.filter(p => !this.isFieldDoneForPlayer(p, fieldIndex))
-        .map(p => p.name.substr(0,1)).join(',');
+        .map(p => p.name.substr(0,1)).join(',').toUpperCase();
     }
     return '';
   }

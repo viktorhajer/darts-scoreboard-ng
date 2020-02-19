@@ -11,4 +11,5 @@ export class PlayerScoreComponent {
   @Input() player: Player;
   @Input() hasContent = true;
   @Input() scoreDisplayed = true;
+  @Input() highlighted = false;
 }

@@ -1,5 +1,5 @@
 <div class="player_info">
-  <div class="name">{{player.name}}</div>
+  <div class="name"><mat-icon *ngIf="highlighted">offline_bolt</mat-icon>{{player.name}}</div>
   <div class="shoots">
     <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>
     <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>

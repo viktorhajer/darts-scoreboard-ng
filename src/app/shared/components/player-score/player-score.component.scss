@@ -12,6 +12,12 @@
 
   .name {
     font-size: calc(5px + 1vw);
+    display: flex;
+    align-items: center;
+    mat-icon {
+      margin-right: 10px;
+      font-size: calc(20px + 1vw);
+    }
   }
 
   .shoots {
