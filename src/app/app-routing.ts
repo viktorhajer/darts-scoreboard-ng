@@ -5,6 +5,8 @@ import {CricketModule} from './cricket/cricket.module';
 import {AroundClockModule} from './aroundclock/around-clock.module';
 import {ShanghaiModule} from './shanghai/shanghai.module';
 import {KillerModule} from './killer/killer.module';
+import {FivesModule} from './fives/fives.module';
+import {HareAndHoundModule} from './hare-and-hound/hare-and-hound.module';
 
 export const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -27,6 +29,16 @@ export const routes: Routes = [
     path: 'shanghai',
     data: {name: 'Shanghai / Halve It'},
     loadChildren: () => ShanghaiModule
+  },
+  {
+    path: 'fives',
+    data: {name: 'Fives'},
+    loadChildren: () => FivesModule
+  },
+  {
+    path: 'hare-and-hound',
+    data: {name: 'Hare and Hound'},
+    loadChildren: () => HareAndHoundModule
   },
   {
     path: 'killer',

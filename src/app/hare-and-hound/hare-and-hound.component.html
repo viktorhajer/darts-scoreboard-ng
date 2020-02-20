@@ -1,0 +1,27 @@
+<div id="playgroundContent">
+
+  <app-settings *ngIf="settingsOpen" [title]="'Hare and Hound'" [playground]="playground"
+                [rules]="'The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel ' +
+                 'clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches ' +
+                  'up with him. The hound usually starts from either 12 or 5, depending on the preference of the ' +
+                   'players. The hound wins by overtaking the hare.'">
+
+    <h2>Hound start position</h2>
+    <button mat-raised-button class="button" [color]="(settings.houndStartIndex+1) === start?'primary':''"
+            *ngFor="let start of settings.getSelectableHoundStart()"
+            (click)="settings.setHoundStart(start - 1)">{{start}}</button>
+    <mat-divider></mat-divider>
+
+  </app-settings>
+
+  <div class="side-left">
+    <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
+    <ng-container *ngIf="!settingsOpen">
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
+           *ngFor="let player of game.players; let i = index">
+        <app-player-score [player]="player" [hasContent]="false"></app-player-score>
+      </div>
+    </ng-container>
+  </div>
+  <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
+</div>

@@ -19,6 +19,14 @@ const routes: Routes = [
     data: {name: 'Shanghai / Halve It'}
   },
   {
+    path: 'fives',
+    data: {name: 'Fives'}
+  },
+  // {
+  //   path: 'hare-and-hound',
+  //   data: {name: 'Hare and Hound'}
+  // },
+  {
     path: 'killer',
     data: {name: 'Killer'}
   }

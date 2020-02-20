@@ -27,7 +27,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
                         public game: GameService,
                         public route: Router,
                         public dialogService: DialogService,
-                        public minimumNumberOfPlayers = 1) {
+                        public minimumNumberOfPlayers = 1,
+                        public maximumNumberOfPlayers?: number) {
   }
 
   static getFieldValueFromIndex(fieldIndex: number): number {
@@ -199,7 +200,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       }
     });
     this.game.players = players;
-    return players.length >= this.minimumNumberOfPlayers;
+    return players.length >= this.minimumNumberOfPlayers &&
+      (!this.maximumNumberOfPlayers || players.length <= this.maximumNumberOfPlayers);
   }
 
   private saveGameInHistory() {

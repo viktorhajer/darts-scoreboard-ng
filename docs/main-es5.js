@@ -108,6 +108,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _killer_killer_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./killer/killer.module */
     "./src/app/killer/killer.module.ts");
+    /* harmony import */
+
+
+    var _fives_fives_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./fives/fives.module */
+    "./src/app/fives/fives.module.ts");
+    /* harmony import */
+
+
+    var _hare_and_hound_hare_and_hound_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ./hare-and-hound/hare-and-hound.module */
+    "./src/app/hare-and-hound/hare-and-hound.module.ts");
 
     var routes = [{
       path: '',
@@ -143,6 +155,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       loadChildren: function loadChildren() {
         return _shanghai_shanghai_module__WEBPACK_IMPORTED_MODULE_4__["ShanghaiModule"];
+      }
+    }, {
+      path: 'fives',
+      data: {
+        name: 'Fives'
+      },
+      loadChildren: function loadChildren() {
+        return _fives_fives_module__WEBPACK_IMPORTED_MODULE_6__["FivesModule"];
+      }
+    }, {
+      path: 'hare-and-hound',
+      data: {
+        name: 'Hare and Hound'
+      },
+      loadChildren: function loadChildren() {
+        return _hare_and_hound_hare_and_hound_module__WEBPACK_IMPORTED_MODULE_7__["HareAndHoundModule"];
       }
     }, {
       path: 'killer',
@@ -1120,6 +1148,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         name: 'Shanghai / Halve It'
       }
     }, {
+      path: 'fives',
+      data: {
+        name: 'Fives'
+      }
+    }, // {
+    //   path: 'hare-and-hound',
+    //   data: {name: 'Hare and Hound'}
+    // },
+    {
       path: 'killer',
       data: {
         name: 'Killer'
@@ -2373,6 +2410,1080 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/fives/fives.component.ts":
+  /*!******************************************!*\
+    !*** ./src/app/fives/fives.component.ts ***!
+    \******************************************/
+
+  /*! exports provided: FivesComponent */
+
+  /***/
+  function srcAppFivesFivesComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FivesComponent", function () {
+      return FivesComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./models/settings.model */
+    "./src/app/fives/models/settings.model.ts");
+    /* harmony import */
+
+
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ~models/playground.model */
+    "./src/app/shared/models/playground.model.ts");
+    /* harmony import */
+
+
+    var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../route-animation */
+    "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ~services/application-state.service */
+    "./src/app/shared/services/application-state.service.ts");
+    /* harmony import */
+
+
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ~services/game.service */
+    "./src/app/shared/services/game.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ~services/dialog.service */
+    "./src/app/shared/services/dialog.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ~components/settings/settings.component */
+    "./src/app/shared/components/settings/settings.component.ts");
+    /* harmony import */
+
+
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/material/divider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+    /* harmony import */
+
+
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ~components/game-toolbar/game-toolbar.component */
+    "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
+    /* harmony import */
+
+
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! ~components/player-score/player-score.component */
+    "./src/app/shared/components/player-score/player-score.component.ts");
+    /* harmony import */
+
+
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ~components/number-plate/number-plate.component */
+    "./src/app/shared/components/number-plate/number-plate.component.ts");
+
+    function FivesComponent_app_settings_1_button_3_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r134 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FivesComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r134);
+
+          var divider_r132 = ctx.$implicit;
+
+          var ctx_r133 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          return ctx_r133.settings.setDivider(divider_r132);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var divider_r132 = ctx.$implicit;
+
+        var ctx_r130 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r130.settings.divider === divider_r132 ? "primary" : "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](divider_r132);
+      }
+    }
+
+    function FivesComponent_app_settings_1_button_7_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r137 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FivesComponent_app_settings_1_button_7_Template_button_click_0_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r137);
+
+          var limit_r135 = ctx.$implicit;
+
+          var ctx_r136 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          return ctx_r136.settings.setLimit(limit_r135);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var limit_r135 = ctx.$implicit;
+
+        var ctx_r131 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r131.settings.limit === limit_r135 ? "primary" : "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](limit_r135);
+      }
+    }
+
+    function FivesComponent_app_settings_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, FivesComponent_app_settings_1_button_3_Template, 2, 2, "button", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Limit");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, FivesComponent_app_settings_1_button_7_Template, 2, 2, "button", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r126 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Fives")("playground", ctx_r126.playground)("rules", "The idea of the game to throw three darts into the board, in turn, to score a number that " + "is divisible by five. The higher the number you score, the more points you can score. For every five " + "scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r126.settings.getSelectableDividers());
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r126.settings.getSelectableLimits());
+      }
+    }
+
+    function FivesComponent_app_game_toolbar_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 8);
+      }
+
+      if (rf & 2) {
+        var ctx_r127 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r127.playground);
+      }
+    }
+
+    function FivesComponent_ng_container_4_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var player_r139 = ctx.$implicit;
+        var i_r140 = ctx.index;
+
+        var ctx_r138 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r140 === ctx_r138.game.actualPlayerIndex ? "highlighted" : "", "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r139)("hasContent", false);
+      }
+    }
+
+    function FivesComponent_ng_container_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, FivesComponent_ng_container_4_div_1_Template, 2, 5, "div", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r128 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r128.game.players);
+      }
+    }
+
+    function FivesComponent_app_number_plate_5_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 8);
+      }
+
+      if (rf & 2) {
+        var ctx_r129 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r129.playground);
+      }
+    }
+
+    var FivesComponent =
+    /*#__PURE__*/
+    function (_models_playground_mo3) {
+      _inherits(FivesComponent, _models_playground_mo3);
+
+      function FivesComponent(application, game, route, dialogService) {
+        var _this15;
+
+        _classCallCheck(this, FivesComponent);
+
+        _this15 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
+        _this15.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this15;
+      }
+
+      _createClass(FivesComponent, [{
+        key: "customReset",
+        value: function customReset() {
+          var _this16 = this;
+
+          this.game.players.forEach(function (player) {
+            return player.score = _this16.settings.limit;
+          });
+        }
+      }, {
+        key: "calculatePoints",
+        value: function calculatePoints(player, fieldIndex, score) {
+          if (this.game.actualThrow === 3) {
+            var sum = 0;
+
+            for (var i = 0; i < 3; i++) {
+              var t = player.throwsHistory[player.throwsHistory.length - i - 1];
+              sum += t.score * t.multi;
+            }
+
+            if (sum % this.settings.divider === 0) {
+              player.score -= sum / this.settings.divider;
+            }
+          }
+        }
+      }, {
+        key: "checkPlayerState",
+        value: function checkPlayerState(player) {
+          this.game.players.forEach(function (p) {
+            return p.setWin(p.score <= 0);
+          });
+
+          if (this.game.actualThrow === 3) {
+            this.game.nextPlayer();
+          }
+        }
+      }]);
+
+      return FivesComponent;
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
+
+    FivesComponent.ɵfac = function FivesComponent_Factory(t) {
+      return new (t || FivesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]));
+    };
+
+    FivesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: FivesComponent,
+      selectors: [["ng-component"]],
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
+      decls: 6,
+      vars: 4,
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent"]],
+      template: function FivesComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, FivesComponent_app_settings_1_Template, 9, 5, "app-settings", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, FivesComponent_app_game_toolbar_3_Template, 1, 1, "app-game-toolbar", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, FivesComponent_ng_container_4_Template, 2, 1, "ng-container", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, FivesComponent_app_number_plate_5_Template, 1, 1, "app-number-plate", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
+      encapsulation: 2,
+      data: {
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+      }
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FivesComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          templateUrl: './fives.component.html',
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+        }]
+      }], function () {
+        return [{
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]
+        }, {
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+        }, {
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/fives/fives.module.ts":
+  /*!***************************************!*\
+    !*** ./src/app/fives/fives.module.ts ***!
+    \***************************************/
+
+  /*! exports provided: FivesModule */
+
+  /***/
+  function srcAppFivesFivesModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FivesModule", function () {
+      return FivesModule;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _fives_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./fives.component */
+    "./src/app/fives/fives.component.ts");
+    /* harmony import */
+
+
+    var _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../shared/shared.module */
+    "./src/app/shared/shared.module.ts");
+
+    var FivesModule = function FivesModule() {
+      _classCallCheck(this, FivesModule);
+    };
+
+    FivesModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      type: FivesModule
+    });
+    FivesModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      factory: function FivesModule_Factory(t) {
+        return new (t || FivesModule)();
+      },
+      imports: [[_shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+        path: '',
+        component: _fives_component__WEBPACK_IMPORTED_MODULE_2__["FivesComponent"]
+      }])]]
+    });
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](FivesModule, {
+        declarations: [_fives_component__WEBPACK_IMPORTED_MODULE_2__["FivesComponent"]],
+        imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FivesModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+          imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+            path: '',
+            component: _fives_component__WEBPACK_IMPORTED_MODULE_2__["FivesComponent"]
+          }])],
+          declarations: [_fives_component__WEBPACK_IMPORTED_MODULE_2__["FivesComponent"]]
+        }]
+      }], null, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/fives/models/settings.model.ts":
+  /*!************************************************!*\
+    !*** ./src/app/fives/models/settings.model.ts ***!
+    \************************************************/
+
+  /*! exports provided: Settings */
+
+  /***/
+  function srcAppFivesModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Settings", function () {
+      return Settings;
+    });
+
+    var Settings =
+    /*#__PURE__*/
+    function () {
+      function Settings() {
+        _classCallCheck(this, Settings);
+
+        this.divider = 5;
+        this.limit = 30;
+      }
+
+      _createClass(Settings, [{
+        key: "getSelectableDividers",
+        value: function getSelectableDividers() {
+          return [3, 4, 5, 6, 7, 8, 10];
+        }
+      }, {
+        key: "getSelectableLimits",
+        value: function getSelectableLimits() {
+          return [30, 50, 100];
+        }
+      }, {
+        key: "setDivider",
+        value: function setDivider(value) {
+          this.divider = value;
+        }
+      }, {
+        key: "setLimit",
+        value: function setLimit(value) {
+          this.limit = value;
+        }
+      }]);
+
+      return Settings;
+    }();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/hare-and-hound/hare-and-hound.component.ts":
+  /*!************************************************************!*\
+    !*** ./src/app/hare-and-hound/hare-and-hound.component.ts ***!
+    \************************************************************/
+
+  /*! exports provided: HareAndHoundComponent */
+
+  /***/
+  function srcAppHareAndHoundHareAndHoundComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "HareAndHoundComponent", function () {
+      return HareAndHoundComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ./models/settings.model */
+    "./src/app/hare-and-hound/models/settings.model.ts");
+    /* harmony import */
+
+
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ~models/playground.model */
+    "./src/app/shared/models/playground.model.ts");
+    /* harmony import */
+
+
+    var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../route-animation */
+    "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ~services/application-state.service */
+    "./src/app/shared/services/application-state.service.ts");
+    /* harmony import */
+
+
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ~services/game.service */
+    "./src/app/shared/services/game.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ~services/dialog.service */
+    "./src/app/shared/services/dialog.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ~components/settings/settings.component */
+    "./src/app/shared/components/settings/settings.component.ts");
+    /* harmony import */
+
+
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/material/divider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+    /* harmony import */
+
+
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ~components/game-toolbar/game-toolbar.component */
+    "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
+    /* harmony import */
+
+
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! ~components/player-score/player-score.component */
+    "./src/app/shared/components/player-score/player-score.component.ts");
+    /* harmony import */
+
+
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ~components/number-plate/number-plate.component */
+    "./src/app/shared/components/number-plate/number-plate.component.ts");
+
+    function HareAndHoundComponent_app_settings_1_button_3_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r148 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HareAndHoundComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r148);
+
+          var start_r146 = ctx.$implicit;
+
+          var ctx_r147 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          return ctx_r147.settings.setHoundStart(start_r146 - 1);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var start_r146 = ctx.$implicit;
+
+        var ctx_r145 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r145.settings.houndStartIndex + 1 === start_r146 ? "primary" : "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](start_r146);
+      }
+    }
+
+    function HareAndHoundComponent_app_settings_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Hound start position");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HareAndHoundComponent_app_settings_1_button_3_Template, 2, 2, "button", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r141 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Hare and Hound")("playground", ctx_r141.playground)("rules", "The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel " + "clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches " + "up with him. The hound usually starts from either 12 or 5, depending on the preference of the " + "players. The hound wins by overtaking the hare.");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r141.settings.getSelectableHoundStart());
+      }
+    }
+
+    function HareAndHoundComponent_app_game_toolbar_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 8);
+      }
+
+      if (rf & 2) {
+        var ctx_r142 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r142.playground);
+      }
+    }
+
+    function HareAndHoundComponent_ng_container_4_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var player_r150 = ctx.$implicit;
+        var i_r151 = ctx.index;
+
+        var ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r151 === ctx_r149.game.actualPlayerIndex ? "highlighted" : "", "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r150)("hasContent", false);
+      }
+    }
+
+    function HareAndHoundComponent_ng_container_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HareAndHoundComponent_ng_container_4_div_1_Template, 2, 5, "div", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r143 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r143.game.players);
+      }
+    }
+
+    function HareAndHoundComponent_app_number_plate_5_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 8);
+      }
+
+      if (rf & 2) {
+        var ctx_r144 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r144.playground);
+      }
+    }
+
+    var HareAndHoundComponent =
+    /*#__PURE__*/
+    function (_models_playground_mo4) {
+      _inherits(HareAndHoundComponent, _models_playground_mo4);
+
+      function HareAndHoundComponent(application, game, route, dialogService) {
+        var _this17;
+
+        _classCallCheck(this, HareAndHoundComponent);
+
+        _this17 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
+        _this17.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this17;
+      }
+
+      _createClass(HareAndHoundComponent, [{
+        key: "customReset",
+        value: function customReset() {// this.game.players.forEach(player => player.score = this.settings.limit);
+        }
+      }, {
+        key: "calculatePoints",
+        value: function calculatePoints(player, fieldIndex, score) {
+          console.log(this.settings.getFields());
+
+          if (this.game.actualThrow === 3) {
+            var sum = 0;
+
+            for (var i = 0; i < 3; i++) {
+              var t = player.throwsHistory[player.throwsHistory.length - i - 1];
+              sum += t.score * t.multi;
+            }
+          }
+        }
+      }, {
+        key: "checkPlayerState",
+        value: function checkPlayerState(player) {
+          this.game.players.forEach(function (p) {
+            return p.setWin(p.score <= 0);
+          });
+
+          if (this.game.actualThrow === 3) {
+            this.game.nextPlayer();
+          }
+        }
+      }]);
+
+      return HareAndHoundComponent;
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
+
+    HareAndHoundComponent.ɵfac = function HareAndHoundComponent_Factory(t) {
+      return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]));
+    };
+
+    HareAndHoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: HareAndHoundComponent,
+      selectors: [["ng-component"]],
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
+      decls: 6,
+      vars: 4,
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent"]],
+      template: function HareAndHoundComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HareAndHoundComponent_app_settings_1_Template, 5, 4, "app-settings", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HareAndHoundComponent_app_game_toolbar_3_Template, 1, 1, "app-game-toolbar", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HareAndHoundComponent_ng_container_4_Template, 2, 1, "ng-container", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HareAndHoundComponent_app_number_plate_5_Template, 1, 1, "app-number-plate", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
+      encapsulation: 2,
+      data: {
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+      }
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HareAndHoundComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          templateUrl: './hare-and-hound.component.html',
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+        }]
+      }], function () {
+        return [{
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]
+        }, {
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+        }, {
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/hare-and-hound/hare-and-hound.module.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/hare-and-hound/hare-and-hound.module.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: HareAndHoundModule */
+
+  /***/
+  function srcAppHareAndHoundHareAndHoundModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "HareAndHoundModule", function () {
+      return HareAndHoundModule;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../shared/shared.module */
+    "./src/app/shared/shared.module.ts");
+    /* harmony import */
+
+
+    var _hare_and_hound_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./hare-and-hound.component */
+    "./src/app/hare-and-hound/hare-and-hound.component.ts");
+
+    var HareAndHoundModule = function HareAndHoundModule() {
+      _classCallCheck(this, HareAndHoundModule);
+    };
+
+    HareAndHoundModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      type: HareAndHoundModule
+    });
+    HareAndHoundModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      factory: function HareAndHoundModule_Factory(t) {
+        return new (t || HareAndHoundModule)();
+      },
+      imports: [[_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+        path: '',
+        component: _hare_and_hound_component__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundComponent"]
+      }])]]
+    });
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](HareAndHoundModule, {
+        declarations: [_hare_and_hound_component__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundComponent"]],
+        imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HareAndHoundModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+          imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+            path: '',
+            component: _hare_and_hound_component__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundComponent"]
+          }])],
+          declarations: [_hare_and_hound_component__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundComponent"]]
+        }]
+      }], null, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/hare-and-hound/models/settings.model.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/hare-and-hound/models/settings.model.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: Settings */
+
+  /***/
+  function srcAppHareAndHoundModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "Settings", function () {
+      return Settings;
+    });
+
+    var Settings =
+    /*#__PURE__*/
+    function () {
+      function Settings() {
+        _classCallCheck(this, Settings);
+
+        this.houndStartIndex = 11;
+        this.hareStartIndex = 19;
+      }
+
+      _createClass(Settings, [{
+        key: "getSelectableHoundStart",
+        value: function getSelectableHoundStart() {
+          return [14, 9, 12, 5, 20];
+        }
+      }, {
+        key: "setHoundStart",
+        value: function setHoundStart(value) {
+          this.houndStartIndex = value;
+        }
+      }, {
+        key: "getFields",
+        value: function getFields() {
+          var index = this.getBaseFields().indexOf(this.houndStartIndex);
+          return [].concat(_toConsumableArray(this.getBaseFields().slice(index)), _toConsumableArray(this.getBaseFields().slice(0, index)));
+        }
+      }, {
+        key: "getBaseFields",
+        value: function getBaseFields() {
+          return [19, 0, 17, 3, 12, 5, 9, 14, 1, 16, 2, 18, 6, 15, 7, 10, 13, 8, 11, 4];
+        }
+      }]);
+
+      return Settings;
+    }();
+    /***/
+
+  },
+
+  /***/
   "./src/app/killer/killer.component.ts":
   /*!********************************************!*\
     !*** ./src/app/killer/killer.component.ts ***!
@@ -2763,26 +3874,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var KillerComponent =
     /*#__PURE__*/
-    function (_models_playground_mo3) {
-      _inherits(KillerComponent, _models_playground_mo3);
+    function (_models_playground_mo5) {
+      _inherits(KillerComponent, _models_playground_mo5);
 
       function KillerComponent(application, game, route, dialogService) {
-        var _this15;
+        var _this18;
 
         _classCallCheck(this, KillerComponent);
 
-        _this15 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
-        _this15.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        _this15.nextEnabled = false;
-        _this15.zeroEnabled = false;
-        _this15.multiEnabled = false;
-        return _this15;
+        _this18 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
+        _this18.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this18.nextEnabled = false;
+        _this18.zeroEnabled = false;
+        _this18.multiEnabled = false;
+        return _this18;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this16 = this;
+          var _this19 = this;
 
           var state = this.getPlayerState(player);
 
@@ -2808,12 +3919,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this16.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !_this19.getPlayerState(p).isInactive();
                 }).forEach(function (p) {
-                  var s = _this16.getPlayerState(p);
+                  var s = _this19.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this16.multiplier;
+                    s.life -= _this19.multiplier;
 
                     if (s.life < 0) {
                       s.life = 0;
@@ -2835,14 +3946,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this17 = this;
+          var _this20 = this;
 
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this17.getPlayerState(p).isInactive();
+              return !_this20.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this17.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this20.getPlayerState(p).isInactive());
             });
           }
 
@@ -2896,10 +4007,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this18 = this;
+          var _this21 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this18.getPlayerState(p);
+            var state = _this21.getPlayerState(p);
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -2930,10 +4041,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this19 = this;
+          var _this22 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this19.settings.numberOfLives, _this19.settings.boardingLimit);
+            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this22.settings.numberOfLives, _this22.settings.boardingLimit);
           });
         }
       }, {
@@ -2951,12 +4062,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this20 = this;
+          var _this23 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this20.getPlayerState(p).isInactive();
+            return !_this23.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this20.getPlayerState(p).actField;
+            return _this23.getPlayerState(p).actField;
           });
         }
       }]);
@@ -3205,19 +4316,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KillerState, _models_playground_st3);
 
       function KillerState() {
-        var _this21;
+        var _this24;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this21 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
-        _this21.life = life;
-        _this21.boarding = boarding;
-        _this21.actField = -1;
-        _this21.killer = false;
-        return _this21;
+        _this24 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
+        _this24.life = life;
+        _this24.boarding = boarding;
+        _this24.actField = -1;
+        _this24.killer = false;
+        return _this24;
       }
 
       _createClass(KillerState, [{
@@ -3538,14 +4649,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(ShanghaiState, _models_playground_st4);
 
       function ShanghaiState() {
-        var _this22;
+        var _this25;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this22 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
-        _this22.fieldCount = [];
-        _this22.fieldScore = [];
-        return _this22;
+        _this25 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
+        _this25.fieldCount = [];
+        _this25.fieldScore = [];
+        return _this25;
       }
 
       _createClass(ShanghaiState, [{
@@ -3932,17 +5043,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var ShanghaiComponent =
     /*#__PURE__*/
-    function (_models_playground_mo4) {
-      _inherits(ShanghaiComponent, _models_playground_mo4);
+    function (_models_playground_mo6) {
+      _inherits(ShanghaiComponent, _models_playground_mo6);
 
       function ShanghaiComponent(application, game, route, dialogService) {
-        var _this23;
+        var _this26;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this23 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
-        _this23.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        return _this23;
+        _this26 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
+        _this26.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        return _this26;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -3964,7 +5075,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this24 = this;
+          var _this27 = this;
 
           // Shanghai rule
           if (this.game.actualThrow === 3) {
@@ -3994,7 +5105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this24.game.isTheBestPlayer(p));
+              return p.setWin(_this27.game.isTheBestPlayer(p));
             });
           } else if (this.game.actualThrow === 3) {
             this.game.nextPlayer();
@@ -5424,10 +6535,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this25 = this;
+          var _this28 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this25.playground.game.players.map(function (p) {
+            return _this28.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -6053,6 +7164,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function () {
       function Playground(application, game, route, dialogService) {
         var minimumNumberOfPlayers = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+        var maximumNumberOfPlayers = arguments.length > 5 ? arguments[5] : undefined;
 
         _classCallCheck(this, Playground);
 
@@ -6061,6 +7173,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.route = route;
         this.dialogService = dialogService;
         this.minimumNumberOfPlayers = minimumNumberOfPlayers;
+        this.maximumNumberOfPlayers = maximumNumberOfPlayers;
         this.throwEnabled = true;
         this.settingsOpen = true;
         this.nextEnabled = true;
@@ -6281,7 +7394,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           });
           this.game.players = players;
-          return players.length >= this.minimumNumberOfPlayers;
+          return players.length >= this.minimumNumberOfPlayers && (!this.maximumNumberOfPlayers || players.length <= this.maximumNumberOfPlayers);
         }
       }, {
         key: "saveGameInHistory",
@@ -7432,26 +8545,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var X01Component =
     /*#__PURE__*/
-    function (_models_playground_mo5) {
-      _inherits(X01Component, _models_playground_mo5);
+    function (_models_playground_mo7) {
+      _inherits(X01Component, _models_playground_mo7);
 
       function X01Component(application, game, route, dialogService) {
-        var _this26;
+        var _this29;
 
         _classCallCheck(this, X01Component);
 
-        _this26 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this26.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this26;
+        _this29 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
+        _this29.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this29;
       }
 
       _createClass(X01Component, [{
         key: "customReset",
         value: function customReset() {
-          var _this27 = this;
+          var _this30 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this27.settings.startValue;
+            return player.score = _this30.settings.startValue;
           });
         }
       }, {
