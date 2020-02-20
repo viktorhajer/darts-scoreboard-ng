@@ -1,6 +1,13 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [title]="'Killer'" [playground]="playground">
+  <app-settings *ngIf="settingsOpen" [title]="'Killer'" [playground]="playground"
+                [rules]="'Firstly each player draws lots i.e. a number between 1 - 20. Each player is then given ' +
+                 'between 3 & 5 lives. The objective of this game is for each thrower to first hit their own number ' +
+                  'three times to gain status of KILLER. Once they have achieved this they then can throw for their ' +
+                  'opponents number in any order they wish. Every time a KILLER status player hits an opponents ' +
+                  'number the opponent loses a life. KILLERS can also commit SUICIDE by hitting their own number\'s ' +
+                  'triple. The winner of this game is the player that remains alive.'">
+
     <h2>Games</h2>
     <div class="field-set">
       <mat-form-field appearance="outline" class="big">
