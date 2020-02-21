@@ -9,7 +9,7 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <button mat-icon-button (click)="playground.addPlayer(playerNameInput)" [disabled]="!playground.canAddPlayer()"><mat-icon>add_circle</mat-icon></button>
+  <button mat-icon-button (click)="addPlayer(playerNameInput)" [disabled]="!playground.canAddPlayer()"><mat-icon>add_circle</mat-icon></button>
 </div>
 <div class="player-table">
   <div class="player-row" *ngFor="let player of playground.game.players; let i = index">

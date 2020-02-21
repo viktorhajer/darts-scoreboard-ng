@@ -22,8 +22,14 @@ export class PlayerSettingsComponent {
       .map(p => p.name).indexOf(o) === -1);
   }
 
+  addPlayer(playerNameInput: any) {
+    this.playground.addPlayer(playerNameInput);
+    this.storedPlayers = this.application.getStoredPlayers();
+  }
+
   playerSelected(event: MatAutocompleteSelectedEvent, playerNameInput: HTMLInputElement) {
     this.playground.addPlayer(event.option);
+    this.storedPlayers = this.application.getStoredPlayers();
     playerNameInput.value = '';
     playerNameInput.blur();
   }

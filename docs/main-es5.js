@@ -6701,9 +6701,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "addPlayer",
+        value: function addPlayer(playerNameInput) {
+          this.playground.addPlayer(playerNameInput);
+          this.storedPlayers = this.application.getStoredPlayers();
+        }
+      }, {
         key: "playerSelected",
         value: function playerSelected(event, playerNameInput) {
           this.playground.addPlayer(event.option);
+          this.storedPlayers = this.application.getStoredPlayers();
           playerNameInput.value = '';
           playerNameInput.blur();
         }
@@ -6764,7 +6771,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             var _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](5);
 
-            return ctx.playground.addPlayer(_r18);
+            return ctx.addPlayer(_r18);
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "mat-icon");
