@@ -39,7 +39,7 @@ export class CricketState extends PlaygroundState {
   }
 
   clone(): CricketState {
-    const state: CricketState = new CricketState();
+    const state = new CricketState();
     state.actFieldIndex = this.actFieldIndex;
     this.fieldCount.forEach(fv => state.fieldCount.push(fv.clone()));
     this.punishCount.forEach(fv => state.punishCount.push(fv.clone()));

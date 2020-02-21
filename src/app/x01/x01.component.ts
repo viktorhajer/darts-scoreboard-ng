@@ -22,10 +22,6 @@ export class X01Component extends Playground<PlaygroundState> {
     this.settings = new Settings();
   }
 
-  customReset() {
-    this.game.players.forEach(player => player.score = this.settings.startValue);
-  }
-
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     const validStart = !player.first || this.settings.isNormalStart()
       || (player.first
@@ -56,5 +52,9 @@ export class X01Component extends Playground<PlaygroundState> {
     if (this.game.actualThrow === 3 || next) {
       this.game.nextPlayer();
     }
+  }
+
+  customReset() {
+    this.game.players.forEach(player => player.score = this.settings.startValue);
   }
 }

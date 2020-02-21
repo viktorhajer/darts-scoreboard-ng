@@ -25,7 +25,7 @@ export class AroundClockState extends PlaygroundState {
   }
 
   clone(): AroundClockState {
-    const state: AroundClockState = new AroundClockState();
+    const state = new AroundClockState();
     state.actFieldIndex = this.actFieldIndex;
     return state;
   }

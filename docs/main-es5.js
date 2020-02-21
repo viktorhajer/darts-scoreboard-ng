@@ -752,8 +752,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
+          var _this3 = this;
+
           var owners = this.game.players.filter(function (p) {
-            return p.state.actFieldIndex === fieldIndex;
+            return _this3.getPlayerState(p).actFieldIndex === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -1016,13 +1018,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(AroundClockState, _models_playground_st);
 
       function AroundClockState() {
-        var _this3;
+        var _this4;
 
         _classCallCheck(this, AroundClockState);
 
-        _this3 = _possibleConstructorReturn(this, _getPrototypeOf(AroundClockState).call(this));
-        _this3.actFieldIndex = 0;
-        return _this3;
+        _this4 = _possibleConstructorReturn(this, _getPrototypeOf(AroundClockState).call(this));
+        _this4.actFieldIndex = 0;
+        return _this4;
       }
 
       _createClass(AroundClockState, [{
@@ -1152,11 +1154,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       data: {
         name: 'Fives'
       }
-    }, // {
-    //   path: 'hare-and-hound',
-    //   data: {name: 'Hare and Hound'}
-    // },
-    {
+    }, {
+      path: 'hare-and-hound',
+      data: {
+        name: 'Hare and Hound'
+      }
+    }, {
       path: 'killer',
       data: {
         name: 'Killer'
@@ -1729,13 +1732,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(CricketComponent, _models_playground_mo2);
 
       function CricketComponent(application, game, route, dialogService) {
-        var _this4;
+        var _this5;
 
         _classCallCheck(this, CricketComponent);
 
-        _this4 = _possibleConstructorReturn(this, _getPrototypeOf(CricketComponent).call(this, application, game, route, dialogService));
-        _this4.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        return _this4;
+        _this5 = _possibleConstructorReturn(this, _getPrototypeOf(CricketComponent).call(this, application, game, route, dialogService));
+        _this5.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        return _this5;
       }
 
       _createClass(CricketComponent, [{
@@ -1773,14 +1776,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this5 = this;
+          var _this6 = this;
 
           this.game.players.forEach(function (p) {
-            return p.score = _this5.getPlayerTotal(p);
+            return p.score = _this6.getPlayerTotal(p);
           });
           var punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
           this.game.players.forEach(function (p) {
-            return p.setWin(_this5.isPlayerDone(p) && (!punishStyle && _this5.game.isTheBestPlayer(p) || punishStyle && _this5.game.isTheWorstPlayer(p)));
+            return p.setWin(_this6.isPlayerDone(p) && (!punishStyle && _this6.game.isTheBestPlayer(p) || punishStyle && _this6.game.isTheWorstPlayer(p)));
           });
 
           if (this.game.actualThrow === 3) {
@@ -1845,19 +1848,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this6 = this;
+          var _this7 = this;
 
           if (this.isPrimaryField(fieldIndex)) {
             var playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
             var remaining = ''.padStart(3 - playerFieldCount, '●');
             return remaining + '\n' + this.game.players.filter(function (p) {
-              return _this6.isFieldDoneForPlayer(p, fieldIndex);
+              return _this7.isFieldDoneForPlayer(p, fieldIndex);
             }).map(function (p) {
               return p.name.substr(0, 1);
             }).join(',').toUpperCase();
           } else if (this.isSecondaryField(fieldIndex)) {
             return this.game.players.filter(function (p) {
-              return !_this6.isFieldDoneForPlayer(p, fieldIndex);
+              return !_this7.isFieldDoneForPlayer(p, fieldIndex);
             }).map(function (p) {
               return p.name.substr(0, 1);
             }).join(',').toUpperCase();
@@ -1893,12 +1896,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForScoreGame",
         value: function getPlayerTotalForScoreGame(player) {
-          var _this7 = this;
+          var _this8 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            if (_this7.isFieldDoneForPlayer(player, fieldIndex)) {
-              total += (_this7.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            if (_this8.isFieldDoneForPlayer(player, fieldIndex)) {
+              total += (_this8.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -1906,22 +1909,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForPunishGame",
         value: function getPlayerTotalForPunishGame(player) {
-          var _this8 = this;
+          var _this9 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            total += _this8.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            total += _this9.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
       }, {
         key: "punishPlayers",
         value: function punishPlayers(fieldIndex) {
-          var _this9 = this;
+          var _this10 = this;
 
           this.game.players.forEach(function (player) {
-            if (!_this9.isFieldDoneForPlayer(player, fieldIndex)) {
-              _this9.getPlayerState(player).setPunishCount(fieldIndex, _this9.getPlayerState(player).getPunishCount(fieldIndex) + _this9.multiplier);
+            if (!_this10.isFieldDoneForPlayer(player, fieldIndex)) {
+              _this10.getPlayerState(player).setPunishCount(fieldIndex, _this10.getPlayerState(player).getPunishCount(fieldIndex) + _this10.multiplier);
             }
           }, this);
         }
@@ -1942,23 +1945,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isFieldClosed",
         value: function isFieldClosed(fieldIndex) {
-          var _this10 = this;
+          var _this11 = this;
 
           var closed = true;
           this.game.players.forEach(function (player) {
-            closed = closed && _this10.isFieldDoneForPlayer(player, fieldIndex);
+            closed = closed && _this11.isFieldDoneForPlayer(player, fieldIndex);
           }, this);
           return closed;
         }
       }, {
         key: "isFieldClosedForOthers",
         value: function isFieldClosedForOthers(player, fieldIndex) {
-          var _this11 = this;
+          var _this12 = this;
 
           var closed = true;
           this.game.players.forEach(function (p) {
             if (p.id !== player.id) {
-              closed = closed && _this11.isFieldDoneForPlayer(p, fieldIndex);
+              closed = closed && _this12.isFieldDoneForPlayer(p, fieldIndex);
             }
           }, this);
           return closed;
@@ -1966,11 +1969,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isPlayerDone",
         value: function isPlayerDone(player) {
-          var _this12 = this;
+          var _this13 = this;
 
           var done = true;
           this.settings.fields.forEach(function (fieldIndex) {
-            done = done && _this12.isFieldDoneForPlayer(player, fieldIndex);
+            done = done && _this13.isFieldDoneForPlayer(player, fieldIndex);
           });
           return done;
         }
@@ -2296,14 +2299,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setAllowedField",
         value: function setAllowedField(fields) {
-          var _this13 = this;
+          var _this14 = this;
 
           for (var i = 0; i < this.numbs.length; i++) {
             this.numbs[i] = false;
           }
 
           fields.forEach(function (f) {
-            return _this13.numbs[f - 1] = true;
+            return _this14.numbs[f - 1] = true;
           });
           this.initFields();
         }
@@ -2347,15 +2350,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(CricketState, _models_playground_st2);
 
       function CricketState() {
-        var _this14;
+        var _this15;
 
         _classCallCheck(this, CricketState);
 
-        _this14 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
-        _this14.fieldCount = [];
-        _this14.punishCount = [];
-        _this14.actFieldIndex = 0;
-        return _this14;
+        _this15 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
+        _this15.fieldCount = [];
+        _this15.punishCount = [];
+        _this15.actFieldIndex = 0;
+        return _this15;
       }
 
       _createClass(CricketState, [{
@@ -2700,22 +2703,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(FivesComponent, _models_playground_mo3);
 
       function FivesComponent(application, game, route, dialogService) {
-        var _this15;
+        var _this16;
 
         _classCallCheck(this, FivesComponent);
 
-        _this15 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
-        _this15.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this15;
+        _this16 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
+        _this16.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this16;
       }
 
       _createClass(FivesComponent, [{
         key: "customReset",
         value: function customReset() {
-          var _this16 = this;
+          var _this17 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this16.settings.limit;
+            return player.score = _this17.settings.limit;
           });
         }
       }, {
@@ -3019,45 +3022,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _models_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/state.model */
+    "./src/app/hare-and-hound/models/state.model.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ~services/application-state.service */
     "./src/app/shared/services/application-state.service.ts");
     /* harmony import */
 
 
-    var _services_game_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ~services/game.service */
     "./src/app/shared/services/game.service.ts");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
     /* harmony import */
 
 
-    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ~services/dialog.service */
     "./src/app/shared/services/dialog.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
-    /* harmony import */
-
-
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-    /*! @angular/material/divider */
-    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
@@ -3128,8 +3131,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HareAndHoundComponent_app_settings_1_button_3_Template, 2, 2, "button", 6);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "mat-divider");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -3216,43 +3217,121 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(HareAndHoundComponent, _models_playground_mo4);
 
       function HareAndHoundComponent(application, game, route, dialogService) {
-        var _this17;
+        var _this18;
 
         _classCallCheck(this, HareAndHoundComponent);
 
-        _this17 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
-        _this17.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this17;
+        _this18 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
+        _this18.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this18;
       }
 
       _createClass(HareAndHoundComponent, [{
-        key: "customReset",
-        value: function customReset() {// this.game.players.forEach(player => player.score = this.settings.limit);
-        }
-      }, {
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          console.log(this.settings.getFields());
+          var state = this.getPlayerState(player);
 
-          if (this.game.actualThrow === 3) {
-            var sum = 0;
+          if (this.isFieldEnabled(fieldIndex, state.actFieldIndex)) {
+            state.increaseActFieldIndex(this.multiplier);
 
-            for (var i = 0; i < 3; i++) {
-              var t = player.throwsHistory[player.throwsHistory.length - i - 1];
-              sum += t.score * t.multi;
+            if (state.actFieldIndex >= _models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1) {
+              state.actFieldIndex = state.actFieldIndex - (_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1);
             }
+
+            player.score -= this.multiplier;
           }
         }
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          this.game.players.forEach(function (p) {
-            return p.setWin(p.score <= 0);
-          });
+          var _this19 = this;
 
-          if (this.game.actualThrow === 3) {
+          player.setWin(this.isHare() && player.score <= 0 || !this.isHare() && player.score + this.settings.getHareStartIndex() <= this.game.players.find(function (p) {
+            return _this19.isHare(p);
+          }).score);
+
+          if (!player.win && this.game.actualThrow === 3) {
             this.game.nextPlayer();
           }
+        }
+      }, {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex, actFieldIndex) {
+          if (!actFieldIndex) {
+            actFieldIndex = this.getPlayerState(this.game.getActualPlayer()).actFieldIndex;
+          }
+
+          return fieldIndex === this.getFieldIndex(actFieldIndex);
+        }
+      }, {
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
+          return this.isFieldEnabled(fieldIndex);
+        }
+      }, {
+        key: "isSecondaryField",
+        value: function isSecondaryField(fieldIndex) {
+          var _this20 = this;
+
+          if (!this.isFieldEnabled(fieldIndex)) {
+            return this.game.players.some(function (p) {
+              return fieldIndex === _this20.getFieldIndex(_this20.getPlayerState(p).actFieldIndex);
+            });
+          }
+
+          return false;
+        }
+      }, {
+        key: "getFieldNote",
+        value: function getFieldNote(fieldIndex) {
+          var _this21 = this;
+
+          var owners = this.game.players.filter(function (p) {
+            return _this21.getFieldIndex(_this21.getPlayerState(p).actFieldIndex) === fieldIndex;
+          }).map(function (p) {
+            return p.name;
+          });
+          return !!owners.length ? owners.join(' ') : '';
+        }
+      }, {
+        key: "getFieldIcon",
+        value: function getFieldIcon(fieldIndex) {
+          if (!this.isPrimaryField(fieldIndex) && !this.isSecondaryField(fieldIndex)) {
+            return '';
+          }
+
+          return this.isHare() && this.isPrimaryField(fieldIndex) || this.isSecondaryField(fieldIndex) && !this.isHare() ? 'favorite' : 'directions_run';
+        }
+      }, {
+        key: "customReset",
+        value: function customReset() {
+          var _this22 = this;
+
+          this.game.players.forEach(function (player, index) {
+            player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1;
+
+            if (index === 0) {
+              player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this22.settings.getHareStartIndex());
+            } else {
+              player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
+            }
+          });
+        }
+      }, {
+        key: "getFieldIndex",
+        value: function getFieldIndex(index) {
+          return this.settings.getFields()[index];
+        }
+      }, {
+        key: "isHare",
+        value: function isHare(player) {
+          if (!player) {
+            player = this.game.getActualPlayer();
+          }
+
+          return this.game.players.map(function (p) {
+            return p.id;
+          }).indexOf(player.id) === 0;
         }
       }]);
 
@@ -3260,7 +3339,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
 
     HareAndHoundComponent.ɵfac = function HareAndHoundComponent_Factory(t) {
-      return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]));
+      return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
     };
 
     HareAndHoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -3274,7 +3353,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HareAndHoundComponent_app_settings_1_Template, 5, 4, "app-settings", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HareAndHoundComponent_app_settings_1_Template, 4, 4, "app-settings", 1);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
 
@@ -3307,7 +3386,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
@@ -3324,13 +3403,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], function () {
         return [{
-          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]
         }, {
-          type: _services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
         }, {
-          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]
         }];
       }, null);
     })();
@@ -3471,6 +3550,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return [].concat(_toConsumableArray(this.getBaseFields().slice(index)), _toConsumableArray(this.getBaseFields().slice(0, index)));
         }
       }, {
+        key: "getHareStartIndex",
+        value: function getHareStartIndex() {
+          return this.getFields().indexOf(this.hareStartIndex);
+        }
+      }, {
         key: "getBaseFields",
         value: function getBaseFields() {
           return [19, 0, 17, 3, 12, 5, 9, 14, 1, 16, 2, 18, 6, 15, 7, 10, 13, 8, 11, 4];
@@ -3479,6 +3563,79 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return Settings;
     }();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/hare-and-hound/models/state.model.ts":
+  /*!******************************************************!*\
+    !*** ./src/app/hare-and-hound/models/state.model.ts ***!
+    \******************************************************/
+
+  /*! exports provided: HareAndHoundState */
+
+  /***/
+  function srcAppHareAndHoundModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "HareAndHoundState", function () {
+      return HareAndHoundState;
+    });
+    /* harmony import */
+
+
+    var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ~models/playground-state.model */
+    "./src/app/shared/models/playground-state.model.ts");
+
+    var HareAndHoundState =
+    /*#__PURE__*/
+    function (_models_playground_st3) {
+      _inherits(HareAndHoundState, _models_playground_st3);
+
+      function HareAndHoundState(actFieldIndex) {
+        var _this23;
+
+        _classCallCheck(this, HareAndHoundState);
+
+        _this23 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundState).call(this));
+        _this23.actFieldIndex = actFieldIndex;
+        return _this23;
+      }
+
+      _createClass(HareAndHoundState, [{
+        key: "getActFieldIndex",
+        value: function getActFieldIndex() {
+          return this.actFieldIndex;
+        }
+      }, {
+        key: "increaseActFieldIndex",
+        value: function increaseActFieldIndex(value) {
+          this.actFieldIndex += value ? value : 1;
+        }
+      }, {
+        key: "decreaseActFieldIndex",
+        value: function decreaseActFieldIndex() {
+          this.actFieldIndex--;
+
+          if (this.actFieldIndex < 0) {
+            this.actFieldIndex = 0;
+          }
+        }
+      }, {
+        key: "clone",
+        value: function clone() {
+          return new HareAndHoundState(this.actFieldIndex);
+        }
+      }]);
+
+      return HareAndHoundState;
+    }(_models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"]);
     /***/
 
   },
@@ -3878,22 +4035,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KillerComponent, _models_playground_mo5);
 
       function KillerComponent(application, game, route, dialogService) {
-        var _this18;
+        var _this24;
 
         _classCallCheck(this, KillerComponent);
 
-        _this18 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
-        _this18.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        _this18.nextEnabled = false;
-        _this18.zeroEnabled = false;
-        _this18.multiEnabled = false;
-        return _this18;
+        _this24 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
+        _this24.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this24.nextEnabled = false;
+        _this24.zeroEnabled = false;
+        _this24.multiEnabled = false;
+        return _this24;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this19 = this;
+          var _this25 = this;
 
           var state = this.getPlayerState(player);
 
@@ -3919,12 +4076,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this19.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !_this25.getPlayerState(p).isInactive();
                 }).forEach(function (p) {
-                  var s = _this19.getPlayerState(p);
+                  var s = _this25.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this19.multiplier;
+                    s.life -= _this25.multiplier;
 
                     if (s.life < 0) {
                       s.life = 0;
@@ -3946,14 +4103,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this20 = this;
+          var _this26 = this;
 
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this20.getPlayerState(p).isInactive();
+              return !_this26.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this20.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this26.getPlayerState(p).isInactive());
             });
           }
 
@@ -4007,10 +4164,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this21 = this;
+          var _this27 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this21.getPlayerState(p);
+            var state = _this27.getPlayerState(p);
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -4041,10 +4198,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this22 = this;
+          var _this28 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this22.settings.numberOfLives, _this22.settings.boardingLimit);
+            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this28.settings.numberOfLives, _this28.settings.boardingLimit);
           });
         }
       }, {
@@ -4062,12 +4219,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this23 = this;
+          var _this29 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this23.getPlayerState(p).isInactive();
+            return !_this29.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this23.getPlayerState(p).actField;
+            return _this29.getPlayerState(p).actField;
           });
         }
       }]);
@@ -4312,23 +4469,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var KillerState =
     /*#__PURE__*/
-    function (_models_playground_st3) {
-      _inherits(KillerState, _models_playground_st3);
+    function (_models_playground_st4) {
+      _inherits(KillerState, _models_playground_st4);
 
       function KillerState() {
-        var _this24;
+        var _this30;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this24 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
-        _this24.life = life;
-        _this24.boarding = boarding;
-        _this24.actField = -1;
-        _this24.killer = false;
-        return _this24;
+        _this30 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
+        _this30.life = life;
+        _this30.boarding = boarding;
+        _this30.actField = -1;
+        _this30.killer = false;
+        return _this30;
       }
 
       _createClass(KillerState, [{
@@ -4645,18 +4802,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var ShanghaiState =
     /*#__PURE__*/
-    function (_models_playground_st4) {
-      _inherits(ShanghaiState, _models_playground_st4);
+    function (_models_playground_st5) {
+      _inherits(ShanghaiState, _models_playground_st5);
 
       function ShanghaiState() {
-        var _this25;
+        var _this31;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this25 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
-        _this25.fieldCount = [];
-        _this25.fieldScore = [];
-        return _this25;
+        _this31 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
+        _this31.fieldCount = [];
+        _this31.fieldScore = [];
+        return _this31;
       }
 
       _createClass(ShanghaiState, [{
@@ -5047,13 +5204,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(ShanghaiComponent, _models_playground_mo6);
 
       function ShanghaiComponent(application, game, route, dialogService) {
-        var _this26;
+        var _this32;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this26 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
-        _this26.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
-        return _this26;
+        _this32 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
+        _this32.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        return _this32;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -5075,7 +5232,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this27 = this;
+          var _this33 = this;
 
           // Shanghai rule
           if (this.game.actualThrow === 3) {
@@ -5105,7 +5262,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this27.game.isTheBestPlayer(p));
+              return p.setWin(_this33.game.isTheBestPlayer(p));
             });
           } else if (this.game.actualThrow === 3) {
             this.game.nextPlayer();
@@ -6535,10 +6692,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this28 = this;
+          var _this34 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this28.playground.game.players.map(function (p) {
+            return _this34.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -7274,11 +7431,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
           }
 
-          this.reset();
-
           if (rotate) {
             this.game.rotatePlayers();
           }
+
+          this.reset();
         }
       }, {
         key: "triplePoint",
@@ -8549,25 +8706,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(X01Component, _models_playground_mo7);
 
       function X01Component(application, game, route, dialogService) {
-        var _this29;
+        var _this35;
 
         _classCallCheck(this, X01Component);
 
-        _this29 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this29.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
-        return _this29;
+        _this35 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
+        _this35.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        return _this35;
       }
 
       _createClass(X01Component, [{
-        key: "customReset",
-        value: function customReset() {
-          var _this30 = this;
-
-          this.game.players.forEach(function (player) {
-            return player.score = _this30.settings.startValue;
-          });
-        }
-      }, {
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
           var validStart = !player.first || this.settings.isNormalStart() || player.first && (this.settings.isDoubleStart() && this.multiplier === 2 || this.settings.isTripleStart() && this.multiplier === 3);
@@ -8597,6 +8745,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.game.actualThrow === 3 || next) {
             this.game.nextPlayer();
           }
+        }
+      }, {
+        key: "customReset",
+        value: function customReset() {
+          var _this36 = this;
+
+          this.game.players.forEach(function (player) {
+            return player.score = _this36.settings.startValue;
+          });
         }
       }]);
 

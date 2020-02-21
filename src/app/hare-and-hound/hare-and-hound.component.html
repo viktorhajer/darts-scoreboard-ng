@@ -10,7 +10,6 @@
     <button mat-raised-button class="button" [color]="(settings.houndStartIndex+1) === start?'primary':''"
             *ngFor="let start of settings.getSelectableHoundStart()"
             (click)="settings.setHoundStart(start - 1)">{{start}}</button>
-    <mat-divider></mat-divider>
 
   </app-settings>
 

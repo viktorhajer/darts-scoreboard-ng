@@ -107,10 +107,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     } else if (this.settingsOpen) {
       this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
     }
-    this.reset();
     if (rotate) {
       this.game.rotatePlayers();
     }
+    this.reset();
   }
 
   triplePoint() {

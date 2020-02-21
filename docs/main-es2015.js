@@ -356,7 +356,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
         return false;
     }
     getFieldNote(fieldIndex) {
-        const owners = this.game.players.filter(p => p.state.actFieldIndex === fieldIndex).map(p => p.name);
+        const owners = this.game.players.filter(p => this.getPlayerState(p).actFieldIndex === fieldIndex).map(p => p.name);
         return !!owners.length ? owners.join(' ') : '';
     }
     customReset() {
@@ -556,10 +556,10 @@ const routes = [
         path: 'fives',
         data: { name: 'Fives' }
     },
-    // {
-    //   path: 'hare-and-hound',
-    //   data: {name: 'Hare and Hound'}
-    // },
+    {
+        path: 'hare-and-hound',
+        data: { name: 'Hare and Hound' }
+    },
     {
         path: 'killer',
         data: { name: 'Killer' }
@@ -1457,13 +1457,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./models/settings.model */ "./src/app/hare-and-hound/models/settings.model.ts");
 /* harmony import */ var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ~models/playground.model */ "./src/app/shared/models/playground.model.ts");
 /* harmony import */ var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../route-animation */ "./src/app/route-animation.ts");
-/* harmony import */ var _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ~services/application-state.service */ "./src/app/shared/services/application-state.service.ts");
-/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ~services/game.service */ "./src/app/shared/services/game.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-/* harmony import */ var _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ~services/dialog.service */ "./src/app/shared/services/dialog.service.ts");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ~components/settings/settings.component */ "./src/app/shared/components/settings/settings.component.ts");
-/* harmony import */ var _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/divider */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
+/* harmony import */ var _models_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./models/state.model */ "./src/app/hare-and-hound/models/state.model.ts");
+/* harmony import */ var _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ~services/application-state.service */ "./src/app/shared/services/application-state.service.ts");
+/* harmony import */ var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ~services/game.service */ "./src/app/shared/services/game.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+/* harmony import */ var _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ~services/dialog.service */ "./src/app/shared/services/dialog.service.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ~components/settings/settings.component */ "./src/app/shared/components/settings/settings.component.ts");
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/material/button */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
 /* harmony import */ var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ~components/game-toolbar/game-toolbar.component */ "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
 /* harmony import */ var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ~components/player-score/player-score.component */ "./src/app/shared/components/player-score/player-score.component.ts");
@@ -1503,7 +1503,6 @@ function HareAndHoundComponent_app_settings_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Hound start position");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HareAndHoundComponent_app_settings_1_button_3_Template, 2, 2, "button", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "mat-divider");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r141 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -1549,30 +1548,76 @@ class HareAndHoundComponent extends _models_playground_model__WEBPACK_IMPORTED_M
         super(application, game, route, dialogService, 2, 2);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
     }
-    customReset() {
-        // this.game.players.forEach(player => player.score = this.settings.limit);
-    }
     calculatePoints(player, fieldIndex, score) {
-        console.log(this.settings.getFields());
-        if (this.game.actualThrow === 3) {
-            let sum = 0;
-            for (let i = 0; i < 3; i++) {
-                const t = player.throwsHistory[player.throwsHistory.length - i - 1];
-                sum += t.score * t.multi;
+        const state = this.getPlayerState(player);
+        if (this.isFieldEnabled(fieldIndex, state.actFieldIndex)) {
+            state.increaseActFieldIndex(this.multiplier);
+            if (state.actFieldIndex >= (_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1)) {
+                state.actFieldIndex = state.actFieldIndex - (_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1);
             }
+            player.score -= this.multiplier;
         }
     }
     checkPlayerState(player) {
-        this.game.players.forEach(p => p.setWin(p.score <= 0));
-        if (this.game.actualThrow === 3) {
+        player.setWin((this.isHare() && player.score <= 0) ||
+            (!this.isHare() &&
+                (player.score + this.settings.getHareStartIndex()) <= this.game.players.find(p => this.isHare(p)).score));
+        if (!player.win && this.game.actualThrow === 3) {
             this.game.nextPlayer();
         }
     }
+    isFieldEnabled(fieldIndex, actFieldIndex) {
+        if (!actFieldIndex) {
+            actFieldIndex = this.getPlayerState(this.game.getActualPlayer()).actFieldIndex;
+        }
+        return fieldIndex === this.getFieldIndex(actFieldIndex);
+    }
+    isPrimaryField(fieldIndex) {
+        return this.isFieldEnabled(fieldIndex);
+    }
+    isSecondaryField(fieldIndex) {
+        if (!this.isFieldEnabled(fieldIndex)) {
+            return this.game.players.some(p => fieldIndex === this.getFieldIndex(this.getPlayerState(p).actFieldIndex));
+        }
+        return false;
+    }
+    getFieldNote(fieldIndex) {
+        const owners = this.game.players
+            .filter(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex)
+            .map(p => p.name);
+        return !!owners.length ? owners.join(' ') : '';
+    }
+    getFieldIcon(fieldIndex) {
+        if (!this.isPrimaryField(fieldIndex) && !this.isSecondaryField(fieldIndex)) {
+            return '';
+        }
+        return (this.isHare() && this.isPrimaryField(fieldIndex) || (this.isSecondaryField(fieldIndex) && !this.isHare())) ? 'favorite' : 'directions_run';
+    }
+    customReset() {
+        this.game.players.forEach((player, index) => {
+            player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1;
+            if (index === 0) {
+                player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](this.settings.getHareStartIndex());
+            }
+            else {
+                player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
+            }
+        });
+    }
+    getFieldIndex(index) {
+        return this.settings.getFields()[index];
+    }
+    isHare(player) {
+        if (!player) {
+            player = this.game.getActualPlayer();
+        }
+        return this.game.players.map(p => p.id).indexOf(player.id) === 0;
+    }
 }
-HareAndHoundComponent.ɵfac = function HareAndHoundComponent_Factory(t) { return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"])); };
+HareAndHoundComponent.ɵfac = function HareAndHoundComponent_Factory(t) { return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"])); };
 HareAndHoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HareAndHoundComponent, selectors: [["ng-component"]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent"]], template: function HareAndHoundComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HareAndHoundComponent_app_settings_1_Template, 5, 4, "app-settings", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, HareAndHoundComponent_app_settings_1_Template, 4, 4, "app-settings", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HareAndHoundComponent_app_game_toolbar_3_Template, 1, 1, "app-game-toolbar", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HareAndHoundComponent_ng_container_4_Template, 2, 1, "ng-container", 4);
@@ -1588,14 +1633,14 @@ HareAndHoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]], encapsulation: 2, data: { animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]] } });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]], encapsulation: 2, data: { animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]] } });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HareAndHoundComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 templateUrl: './hare-and-hound.component.html',
                 animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
             }]
-    }], function () { return [{ type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"] }, { type: _services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] }, { type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"] }]; }, null); })();
+    }], function () { return [{ type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"] }, { type: _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] }, { type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"] }]; }, null); })();
 
 
 /***/ }),
@@ -1671,8 +1716,48 @@ class Settings {
         const index = this.getBaseFields().indexOf(this.houndStartIndex);
         return [...this.getBaseFields().slice(index), ...this.getBaseFields().slice(0, index)];
     }
+    getHareStartIndex() {
+        return this.getFields().indexOf(this.hareStartIndex);
+    }
     getBaseFields() {
         return [19, 0, 17, 3, 12, 5, 9, 14, 1, 16, 2, 18, 6, 15, 7, 10, 13, 8, 11, 4];
+    }
+}
+
+
+/***/ }),
+
+/***/ "./src/app/hare-and-hound/models/state.model.ts":
+/*!******************************************************!*\
+  !*** ./src/app/hare-and-hound/models/state.model.ts ***!
+  \******************************************************/
+/*! exports provided: HareAndHoundState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HareAndHoundState", function() { return HareAndHoundState; });
+/* harmony import */ var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~models/playground-state.model */ "./src/app/shared/models/playground-state.model.ts");
+
+class HareAndHoundState extends _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"] {
+    constructor(actFieldIndex) {
+        super();
+        this.actFieldIndex = actFieldIndex;
+    }
+    getActFieldIndex() {
+        return this.actFieldIndex;
+    }
+    increaseActFieldIndex(value) {
+        this.actFieldIndex += value ? value : 1;
+    }
+    decreaseActFieldIndex() {
+        this.actFieldIndex--;
+        if (this.actFieldIndex < 0) {
+            this.actFieldIndex = 0;
+        }
+    }
+    clone() {
+        return new HareAndHoundState(this.actFieldIndex);
     }
 }
 
@@ -3565,10 +3650,10 @@ class Playground {
         else if (this.settingsOpen) {
             this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
         }
-        this.reset();
         if (rotate) {
             this.game.rotatePlayers();
         }
+        this.reset();
     }
     triplePoint() {
         this.multiplier = this.multiplier === 3 ? 1 : 3;
@@ -4189,9 +4274,6 @@ class X01Component extends _models_playground_model__WEBPACK_IMPORTED_MODULE_2__
         super(application, game, route, dialogService);
         this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
     }
-    customReset() {
-        this.game.players.forEach(player => player.score = this.settings.startValue);
-    }
     calculatePoints(player, fieldIndex, score) {
         const validStart = !player.first || this.settings.isNormalStart()
             || (player.first
@@ -4222,6 +4304,9 @@ class X01Component extends _models_playground_model__WEBPACK_IMPORTED_MODULE_2__
         if (this.game.actualThrow === 3 || next) {
             this.game.nextPlayer();
         }
+    }
+    customReset() {
+        this.game.players.forEach(player => player.score = this.settings.startValue);
     }
 }
 X01Component.ɵfac = function X01Component_Factory(t) { return new (t || X01Component)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"])); };

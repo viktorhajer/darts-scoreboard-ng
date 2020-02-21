@@ -22,10 +22,10 @@ const routes: Routes = [
     path: 'fives',
     data: {name: 'Fives'}
   },
-  // {
-  //   path: 'hare-and-hound',
-  //   data: {name: 'Hare and Hound'}
-  // },
+  {
+    path: 'hare-and-hound',
+    data: {name: 'Hare and Hound'}
+  },
   {
     path: 'killer',
     data: {name: 'Killer'}

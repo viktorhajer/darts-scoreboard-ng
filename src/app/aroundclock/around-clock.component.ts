@@ -23,7 +23,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
-    const state: AroundClockState = this.getPlayerState(player);
+    const state = this.getPlayerState(player);
     if (state.getActFieldIndex() === fieldIndex) {
       // last throw
       if (state.actFieldIndex >= FIELDS_COUNT - this.multiplier) {
@@ -72,7 +72,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   getFieldNote(fieldIndex: number): string {
-    const owners = this.game.players.filter(p => (p.state as AroundClockState).actFieldIndex === fieldIndex).map(p => p.name);
+    const owners = this.game.players.filter(p => this.getPlayerState(p).actFieldIndex === fieldIndex).map(p => p.name);
     return !!owners.length ? owners.join(' ') : '';
   }
 

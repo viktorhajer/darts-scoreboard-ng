@@ -1,12 +1,9 @@
 import {PlaygroundState} from '~models/playground-state.model';
 
-export class AroundClockState extends PlaygroundState {
+export class HareAndHoundState extends PlaygroundState {
 
-  actFieldIndex: number;
-
-  constructor() {
+  constructor(public actFieldIndex: number) {
     super();
-    this.actFieldIndex = 0;
   }
 
   getActFieldIndex(): number {
@@ -24,9 +21,7 @@ export class AroundClockState extends PlaygroundState {
     }
   }
 
-  clone(): AroundClockState {
-    const state: AroundClockState = new AroundClockState();
-    state.actFieldIndex = this.actFieldIndex;
-    return state;
+  clone(): HareAndHoundState {
+    return new HareAndHoundState(this.actFieldIndex);
   }
 }
