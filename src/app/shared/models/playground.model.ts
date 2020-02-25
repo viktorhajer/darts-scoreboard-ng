@@ -64,7 +64,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       this.multiplier = 1;
       const winners = this.game.players.filter(p => p.win);
       if (winners.length > 0) {
-        if (this.game.victoryFirst || this.game.players.length - winners.length <= 1) {
+        if (this.game.victoryFirst || this.game.getNumberOfPlayers() - winners.length <= 1) {
           this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
           this.newGame(true);
         } else if (this.game.victoryFirst) {
@@ -85,7 +85,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   }
 
   canAddPlayer(): boolean {
-    return this.game.players.length < MAXIMUM_NUMBER_OF_PLAYERS;
+    return this.game.getNumberOfPlayers() < MAXIMUM_NUMBER_OF_PLAYERS;
   }
 
   addPlayer(name: any) {
@@ -146,10 +146,6 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   quit() {
     this.reset();
     this.route.navigate(['/']);
-  }
-
-  customNext() {
-    return;
   }
 
   customSettingsValidation(): boolean {

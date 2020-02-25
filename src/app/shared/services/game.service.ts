@@ -13,10 +13,6 @@ export class GameService {
     this.victoryFirst = !this.victoryFirst;
   }
 
-  isTheFirstThrow(): boolean {
-    return this.actualThrow === 1;
-  }
-
   isTheLastThrow(): boolean {
     return this.actualThrow === 3;
   }
@@ -67,11 +63,6 @@ export class GameService {
       max = player.score > max ? player.score : max;
     });
     return actPlayer.score === max;
-    // let bestPlayer = true;
-    // this.players.filter(p => !p.win).forEach(player => {
-    //   bestPlayer = bestPlayer && actPlayer.score >= player.score;
-    // });
-    // return bestPlayer;
   }
 
   isTheWorstPlayer(actPlayer: Player): boolean {
@@ -80,11 +71,6 @@ export class GameService {
       min = player.score < min ? player.score : min;
     });
     return actPlayer.score === min;
-    // let lastPlayer = true;
-    // this.players.filter(p => !p.win).forEach(player => {
-    //   lastPlayer = lastPlayer && actPlayer.score <= player.score;
-    // });
-    // return lastPlayer;
   }
 
   nextRound(): void {

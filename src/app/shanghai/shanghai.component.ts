@@ -37,7 +37,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
 
   checkPlayerState(player: Player) {
     // Shanghai rule
-    if (this.game.actualThrow === 3) {
+    if (this.game.isTheLastThrow()) {
       let multi = 1;
       const fieldIndex = this.settings.fields[this.game.round];
       for (let i = 0; i < 3; i++) {
@@ -59,7 +59,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       && this.game.isActualPlayerTheLast() && this.game.isTheLastThrow();
     if (gameEnded) {
       this.game.players.forEach(p => p.setWin(this.game.isTheBestPlayer(p)));
-    } else if (this.game.actualThrow === 3) {
+    } else if (this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
   }

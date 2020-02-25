@@ -73,7 +73,7 @@ export class KillerComponent extends Playground<KillerState> {
       const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
       this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !this.getPlayerState(p).isInactive()));
     }
-    if (this.game.round === 0 || this.game.actualThrow === 3) {
+    if (this.game.round === 0 || this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
     while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
@@ -134,12 +134,6 @@ export class KillerComponent extends Playground<KillerState> {
   customReset() {
     this.game.players.forEach(player =>
       player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
-  }
-
-  customNext() {
-    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
-      this.game.nextPlayer();
-    }
   }
 
   customSettingsValidation(): boolean {

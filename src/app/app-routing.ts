@@ -7,6 +7,7 @@ import {ShanghaiModule} from './shanghai/shanghai.module';
 import {KillerModule} from './killer/killer.module';
 import {FivesModule} from './fives/fives.module';
 import {HareAndHoundModule} from './hare-and-hound/hare-and-hound.module';
+import {KnockoutModule} from './knockout/knockout.module';
 
 export const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -39,6 +40,11 @@ export const routes: Routes = [
     path: 'hare-and-hound',
     data: {name: 'Hare and Hound'},
     loadChildren: () => HareAndHoundModule
+  },
+  {
+    path: 'knockout',
+    data: {name: 'Knockout'},
+    loadChildren: () => KnockoutModule
   },
   {
     path: 'killer',

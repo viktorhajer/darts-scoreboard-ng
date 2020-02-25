@@ -58,7 +58,7 @@ export class CricketComponent extends Playground<CricketState> {
     this.game.players.forEach(p => p.setWin(
       this.isPlayerDone(p) &&
       ((!punishStyle && this.game.isTheBestPlayer(p)) || (punishStyle && this.game.isTheWorstPlayer(p)))));
-    if (this.game.actualThrow === 3) {
+    if (this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
   }

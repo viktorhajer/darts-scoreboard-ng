@@ -27,6 +27,10 @@ const routes: Routes = [
     data: {name: 'Hare and Hound'}
   },
   {
+    path: 'knockout',
+    data: {name: 'Knockout'}
+  },
+  {
     path: 'killer',
     data: {name: 'Killer'}
   }

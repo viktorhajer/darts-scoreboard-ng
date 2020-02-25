@@ -15,8 +15,6 @@
     <button mat-raised-button class="button" [color]="settings.limit === limit?'primary':''"
             *ngFor="let limit of settings.getSelectableLimits()"
             (click)="settings.setLimit(limit)">{{limit}}</button>
-    <mat-divider></mat-divider>
-
   </app-settings>
 
   <div class="side-left">

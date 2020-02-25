@@ -1,0 +1,33 @@
+<div id="playgroundContent">
+
+  <app-settings *ngIf="settingsOpen" [title]="'Knockout'" [playground]="playground"
+                [rules]="'The player selected to throw first must throw as many points as possible. The player next in ' +
+                 'line then must throw a higher score than the player throwing before him, if he fails to throw a ' +
+                  'higher score a ring is put around their score, once you have 3 rings next to your name, you drop ' +
+                   'out of the game.'">
+    <h2>Games</h2>
+    <div class="field-set">
+      <mat-form-field appearance="outline" class="big">
+        <mat-label>Life limit</mat-label>
+        <input [(ngModel)]="settings.numberOfLives" type="number" matInput>
+      </mat-form-field>
+    </div>
+  </app-settings>
+
+  <div class="side-left">
+    <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
+    <ng-container *ngIf="!settingsOpen">
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isInactive(player) ? 'inactive' : ''}}"
+           *ngFor="let player of game.players; let i = index">
+        <app-player-score [player]="player" [scoreDisplayed]="false">
+          <div class="clear"></div>
+          <div class="score">
+            <label>Life: </label>{{getPlayerState(player).life}}
+            <label>Boarding: </label>{{player.score}}
+          </div>
+        </app-player-score>
+      </div>
+    </ng-container>
+  </div>
+  <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
+</div>

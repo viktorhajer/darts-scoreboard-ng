@@ -49,7 +49,7 @@ export class X01Component extends Playground<PlaygroundState> {
       next = true;
       this.dialogService.openErrorDialog(`${this.game.getActualPlayer().name} busted!`);
     }
-    if (this.game.actualThrow === 3 || next) {
+    if (this.game.isTheLastThrow() || next) {
       this.game.nextPlayer();
     }
   }

@@ -27,7 +27,7 @@ export class FivesComponent extends Playground<PlaygroundState> {
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
-    if (this.game.actualThrow === 3) {
+    if (this.game.isTheLastThrow()) {
       let sum = 0;
       for (let i = 0; i < 3; i++) {
         const t = player.throwsHistory[player.throwsHistory.length - i - 1];
@@ -41,7 +41,7 @@ export class FivesComponent extends Playground<PlaygroundState> {
 
   checkPlayerState(player: Player) {
     this.game.players.forEach(p => p.setWin(p.score <= 0));
-    if (this.game.actualThrow === 3) {
+    if (this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
   }

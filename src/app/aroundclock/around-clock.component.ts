@@ -40,7 +40,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   checkPlayerState(player: Player) {
     if ((FIELDS_COUNT - 1) < this.getPlayerState(player).getActFieldIndex()) {
       player.setWin();
-    } else if (this.game.actualThrow === 3) {
+    } else if (this.game.isTheLastThrow()) {
       if (this.settings.punishment) {
         let multi = 0;
         for (let i = 0; i < 3; i++) {

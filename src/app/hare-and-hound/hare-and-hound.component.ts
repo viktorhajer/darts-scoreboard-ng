@@ -38,7 +38,7 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
       (!this.isHare() &&
         (player.score + this.settings.getHareStartIndex()) <= this.game.players.find(p => this.isHare(p)).score));
 
-    if (!player.win && this.game.actualThrow === 3) {
+    if (!player.win && this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
   }
