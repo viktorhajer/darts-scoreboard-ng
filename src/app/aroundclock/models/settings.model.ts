@@ -10,7 +10,7 @@ export class Settings {
     this.style = 0;
     this.jump = true;
     this.punishment = false;
-    this.fields = this.getClockFields();
+    this.fields = this.getBaseFields();
   }
 
   setStyle(style: number) {

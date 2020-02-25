@@ -499,7 +499,7 @@ class Settings {
         this.style = 0;
         this.jump = true;
         this.punishment = false;
-        this.fields = this.getClockFields();
+        this.fields = this.getBaseFields();
     }
     setStyle(style) {
         this.style = style;
@@ -662,7 +662,7 @@ MenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MenuComponent_button_3_Template, 2, 4, "button", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "v1.0");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "v1.1");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
@@ -2350,7 +2350,7 @@ function KnockoutComponent_ng_container_4_div_1_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Boarding: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Score: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3965,11 +3965,10 @@ class Playground {
             this.multiplier = 1;
             const winners = this.game.players.filter(p => p.win);
             if (winners.length > 0) {
-                if (this.game.victoryFirst || this.game.getNumberOfPlayers() - winners.length <= 1) {
-                    this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
-                    this.newGame(true);
-                }
-                else if (this.game.victoryFirst) {
+                if ((this.game.victoryFirst || this.game.getNumberOfPlayers() - winners.length <= 1) || !this.game.victoryFirst) {
+                    if (!this.extraEndingMsg) {
+                        this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
+                    }
                     this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
                     this.newGame(true);
                 }

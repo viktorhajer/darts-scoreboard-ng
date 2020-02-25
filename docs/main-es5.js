@@ -1080,7 +1080,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.style = 0;
         this.jump = true;
         this.punishment = false;
-        this.fields = this.getClockFields();
+        this.fields = this.getBaseFields();
       }
 
       _createClass(Settings, [{
@@ -1378,7 +1378,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "v1.0");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "v1.1");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -4870,7 +4870,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "label");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Boarding: ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Score: ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8132,10 +8132,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
 
             if (winners.length > 0) {
-              if (this.game.victoryFirst || this.game.getNumberOfPlayers() - winners.length <= 1) {
-                this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
-                this.newGame(true);
-              } else if (this.game.victoryFirst) {
+              if (this.game.victoryFirst || this.game.getNumberOfPlayers() - winners.length <= 1 || !this.game.victoryFirst) {
+                if (!this.extraEndingMsg) {
+                  this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
+                }
+
                 this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
                 this.newGame(true);
               } else {
