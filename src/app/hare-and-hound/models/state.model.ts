@@ -6,10 +6,6 @@ export class HareAndHoundState extends PlaygroundState {
     super();
   }
 
-  getActFieldIndex(): number {
-    return this.actFieldIndex;
-  }
-
   increaseActFieldIndex(value?: number) {
     this.actFieldIndex += value ? value : 1;
   }

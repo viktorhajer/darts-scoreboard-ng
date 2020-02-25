@@ -12,6 +12,23 @@
     <button mat-raised-button class="button medium" [color]="settings.punishment?'primary':''" (click)="settings.togglePunishment()">
       Enable Punishment
     </button>
+    <mat-divider></mat-divider>
+
+    <h2>Field's order</h2>
+    <button mat-raised-button class="button medium" [color]="settings.style==0?'primary':''" (click)="settings.setStyle(0)">
+      Numerical Order
+    </button>
+    <button mat-raised-button class="button medium" [color]="settings.style==1?'primary':''" (click)="settings.setStyle(1)">
+      Clockwise
+    </button>
+    <button mat-raised-button class="button medium" [color]="settings.style==2?'primary':''" (click)="settings.setStyle(2)">
+      Anticlockwise
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button medium" [color]="settings.style==3?'primary':''" (click)="settings.setStyle(3)">
+      Random
+    </button>
+
   </app-settings>
 
   <div class="side-left">

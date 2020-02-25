@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {AroundClockState} from './models/state.model';
 import {Settings} from './models/settings.model';
-import {FIELDS_COUNT, Playground} from '~models/playground.model';
+import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
@@ -24,21 +24,21 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state = this.getPlayerState(player);
-    if (state.getActFieldIndex() === fieldIndex) {
+    if (this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
       // last throw
-      if (state.actFieldIndex >= FIELDS_COUNT - this.multiplier) {
-        this.multiplier = this.multiplier === 1 ? 1 : FIELDS_COUNT - (state.actFieldIndex + 1);
+      if (state.actFieldIndex >= this.settings.fields.length - this.multiplier) {
+        this.multiplier = this.multiplier === 1 ? 1 : this.settings.fields.length - (state.actFieldIndex + 1);
       }
       state.increaseActFieldIndex(this.settings.jump ? this.multiplier : 1);
-      if (state.actFieldIndex >= FIELDS_COUNT) {
-        state.actFieldIndex = FIELDS_COUNT;
+      if (state.actFieldIndex >= this.settings.fields.length) {
+        state.actFieldIndex = this.settings.fields.length;
       }
     }
     player.score++;
   }
 
   checkPlayerState(player: Player) {
-    if ((FIELDS_COUNT - 1) < this.getPlayerState(player).getActFieldIndex()) {
+    if ((this.settings.fields.length - 1) < this.getPlayerState(player).actFieldIndex) {
       player.setWin();
     } else if (this.game.isTheLastThrow()) {
       if (this.settings.punishment) {
@@ -56,7 +56,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   isFieldEnabled(fieldIndex: number): boolean {
-    return fieldIndex === this.getPlayerState(this.game.getActualPlayer()).getActFieldIndex();
+    return fieldIndex === this.getFieldIndex(this.getPlayerState(this.game.getActualPlayer()).actFieldIndex);
   }
 
   isPrimaryField(fieldIndex: number): boolean {
@@ -66,17 +66,22 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   isSecondaryField(fieldIndex: number): boolean {
     if (!this.isFieldEnabled(fieldIndex)) {
       return this.game.players.filter(p => p !== this.game.getActualPlayer())
-        .some(p => fieldIndex === this.getPlayerState(p).getActFieldIndex());
+        .some(p => fieldIndex === this.getFieldIndex(this.getPlayerState(p).actFieldIndex));
     }
     return false;
   }
 
   getFieldNote(fieldIndex: number): string {
-    const owners = this.game.players.filter(p => this.getPlayerState(p).actFieldIndex === fieldIndex).map(p => p.name);
+    const owners = this.game.players
+      .filter(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex).map(p => p.name);
     return !!owners.length ? owners.join(' ') : '';
   }
 
   customReset() {
     this.game.players.forEach(player => player.state = new AroundClockState());
+  }
+
+  private getFieldIndex(index: number) {
+    return this.settings.fields[index];
   }
 }
