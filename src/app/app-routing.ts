@@ -23,7 +23,7 @@ export const routes: Routes = [
   },
   {
     path: 'around-clock',
-    data: {name: 'Around The Clock'},
+    data: {name: 'Around The Clock / Nine Lives'},
     loadChildren: () => AroundClockModule
   },
   {

@@ -4,13 +4,18 @@
                 [rules]="'The object of this popular game is to be the first player to hit every number on the board ' +
                  'from 1-20. The numbers must be hit in order, and players alternate after three throws. The player ' +
                   'must hit each number in turn and cannot proceed until to the next number until the number is hit. ' +
-                   'The winner is the player who hist all the numbers in order first.'">
+                   'The winner is the player who hist all the numbers in order first.\n\nNine Lives: Each player gets three ' +
+                   'lives. I do not know why the game is called 9 lives but you only get 3. Maybe it is because if you ' +
+                    'miss with three darts you lose a life and 3 x 3 = 9'">
     <h2>Games</h2>
     <button mat-raised-button class="button medium" [color]="settings.jump?'primary':''" (click)="settings.toggleJump()">
       Enable Jump
     </button>
     <button mat-raised-button class="button medium" [color]="settings.punishment?'primary':''" (click)="settings.togglePunishment()">
-      Enable Punishment
+      Punishment
+    </button>
+    <button mat-raised-button class="button medium" [color]="settings.nineLives?'primary':''" (click)="settings.toggleNineLives()">
+      Nine Lives
     </button>
     <mat-divider></mat-divider>
 
@@ -36,7 +41,11 @@
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="false"></app-player-score>
+        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.nineLives">
+          <ng-container *ngIf="settings.nineLives">
+            <div class="score"><label>Life: </label>{{getPlayerState(player).life}}</div>
+          </ng-container>
+        </app-player-score>
       </div>
     </ng-container>
   </div>

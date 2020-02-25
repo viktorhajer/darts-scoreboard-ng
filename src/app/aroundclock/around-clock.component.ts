@@ -41,17 +41,26 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     if ((this.settings.fields.length - 1) < this.getPlayerState(player).actFieldIndex) {
       player.setWin();
     } else if (this.game.isTheLastThrow()) {
-      if (this.settings.punishment) {
+      if (this.settings.punishment || this.settings.nineLives) {
         let multi = 0;
         for (let i = 0; i < 3; i++) {
           const t = player.throwsHistory[player.throwsHistory.length - i - 1];
           multi += t.score;
         }
         if (multi === 0) {
-          this.getPlayerState(player).decreaseActFieldIndex();
+          if (this.settings.punishment) {
+            this.getPlayerState(player).decreaseActFieldIndex();
+          } else {
+            this.getPlayerState(player).life--;
+          }
         }
       }
       this.game.nextPlayer();
+    }
+    if (this.settings.nineLives) {
+      while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+        this.game.nextPlayer();
+      }
     }
   }
 
@@ -79,6 +88,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   customReset() {
     this.game.players.forEach(player => player.state = new AroundClockState());
+  }
+
+  customSettingsValidation(): boolean {
+    return !this.settings.nineLives || this.game.getNumberOfPlayers() >= 2;
   }
 
   private getFieldIndex(index: number) {

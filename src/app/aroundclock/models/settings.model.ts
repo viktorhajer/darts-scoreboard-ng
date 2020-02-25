@@ -3,6 +3,7 @@ import {FIELDS_COUNT} from '~models/playground.model';
 export class Settings {
   jump: boolean;
   punishment: boolean;
+  nineLives: boolean;
   style: number;
   fields: number[];
 
@@ -10,6 +11,7 @@ export class Settings {
     this.style = 0;
     this.jump = true;
     this.punishment = false;
+    this.nineLives = false;
     this.fields = this.getBaseFields();
   }
 
@@ -36,6 +38,16 @@ export class Settings {
 
   togglePunishment() {
     this.punishment = !this.punishment;
+    if (this.punishment) {
+      this.nineLives = false;
+    }
+  }
+
+  toggleNineLives() {
+    this.nineLives = !this.nineLives;
+    if (this.nineLives) {
+      this.punishment = false;
+    }
   }
 
   private getBaseFields(): number[] {

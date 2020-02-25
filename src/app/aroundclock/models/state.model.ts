@@ -4,7 +4,7 @@ export class AroundClockState extends PlaygroundState {
 
   actFieldIndex: number;
 
-  constructor() {
+  constructor(public life = 3) {
     super();
     this.actFieldIndex = 0;
   }
@@ -20,8 +20,12 @@ export class AroundClockState extends PlaygroundState {
     }
   }
 
+  isInactive(): boolean {
+    return this.life <= 0;
+  }
+
   clone(): AroundClockState {
-    const state = new AroundClockState();
+    const state = new AroundClockState(this.life);
     state.actFieldIndex = this.actFieldIndex;
     return state;
   }

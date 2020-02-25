@@ -16,10 +16,8 @@ export class KillerState extends PlaygroundState {
   }
 
   clone(): KillerState {
-    const state = new KillerState();
+    const state = new KillerState(this.life, this.boarding);
     state.actField = this.actField;
-    state.life = this.life;
-    state.boarding = this.boarding;
     state.killer = this.killer;
     return state;
   }

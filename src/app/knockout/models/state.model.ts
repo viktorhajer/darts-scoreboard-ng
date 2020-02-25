@@ -11,8 +11,6 @@ export class KnockoutState extends PlaygroundState {
   }
 
   clone(): KnockoutState {
-    const state = new KnockoutState();
-    state.life = this.life;
-    return state;
+    return new KnockoutState(this.life);
   }
 }
