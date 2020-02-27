@@ -1,15 +1,43 @@
+#menu_title {
+  margin: 50px;
+  text-align: center;
+}
 #menu {
   width: 100vw;
   display: flex;
-  flex-flow: column;
+  flex-flow: row wrap;
   align-items: center;
-  padding-top: 10vh;
+  justify-content: center;
 
   .gameSelectBox {
-    margin: 0.2vh 0;
-    height: 8vh;
-    font-size: calc(10px + 1vw);
-    width: 80vw;
+    margin: 1px;
+    height: 200px;
+    // flex: 1 0 25%;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+
+    mat-icon {
+      font-size: 60px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .title {
+      font-size: 16px;
+      white-space: pre;
+      text-align: left;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: 25px;
+      letter-spacing: 1px;
+      font-weight: normal;
+      background: rgba(0, 0, 0, 0.1);
+      width: calc(100% - 20px);
+    }
   }
 }
 .version {

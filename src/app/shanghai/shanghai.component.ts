@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {ShanghaiState} from './models/state.model';
-import {Settings} from './models/settings.model';
 import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
@@ -8,6 +6,8 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
+import {ShanghaiSettings} from './models/shanghai.settings.model';
+import {ShanghaiState} from './models/shanghai.state.model';
 
 @Component({
   templateUrl: './shanghai.component.html',
@@ -15,11 +15,11 @@ import {ApplicationStateService} from '~services/application-state.service';
 })
 export class ShanghaiComponent extends Playground<ShanghaiState> {
 
-  settings: Settings;
+  settings: ShanghaiSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService);
-    this.settings = new Settings();
+    this.settings = new ShanghaiSettings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
@@ -114,7 +114,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       max = p.score > max ? p.score : max;
     });
     winners = winners.filter(p => p.score === max).map(p => p.clone());
-    const losers  = this.game.players.filter(p => !winners.some(w => w.id === p.id)).map(p => {
+    const losers = this.game.players.filter(p => !winners.some(w => w.id === p.id)).map(p => {
       const c = p.clone();
       c.win = false;
       return c;

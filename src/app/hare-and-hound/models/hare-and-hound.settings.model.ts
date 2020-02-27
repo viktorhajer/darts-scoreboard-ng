@@ -1,4 +1,4 @@
-export class Settings {
+export class HareAndHoundSettings {
   houndStartIndex: number;
   hareStartIndex: number;
 
@@ -16,15 +16,15 @@ export class Settings {
   }
 
   getFields(): number[] {
-    const index = this.getBaseFields().indexOf(this.houndStartIndex);
-    return [...this.getBaseFields().slice(index), ...this.getBaseFields().slice(0, index)];
+    const index = HareAndHoundSettings.getBaseFields().indexOf(this.houndStartIndex);
+    return [...HareAndHoundSettings.getBaseFields().slice(index), ...HareAndHoundSettings.getBaseFields().slice(0, index)];
   }
 
   getHareStartIndex(): number {
     return this.getFields().indexOf(this.hareStartIndex);
   }
 
-  private getBaseFields(): number[] {
+  private static getBaseFields(): number[] {
     return [19, 0, 17, 3, 12, 5, 9, 14, 1, 16, 2, 18, 6, 15, 7, 10, 13, 8, 11, 4];
   }
 }

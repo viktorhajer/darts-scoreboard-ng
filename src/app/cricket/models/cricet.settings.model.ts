@@ -1,4 +1,4 @@
-export class Settings {
+export class CricketSettings {
 
   fields: number[] = [14, 15, 16, 17, 18, 19, 20];
   numbs: boolean[] = [];

@@ -1,4 +1,4 @@
-export class Settings {
+export class ShanghaiSettings {
 
   fields: number[];
   numbs: boolean[] = [];

@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {KillerState} from './models/state.model';
-import {Settings} from './models/settings.model';
 import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
@@ -8,6 +6,8 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
+import {KillerState} from './models/killer.state.model';
+import {KillerSettings} from './models/killer.settings.model';
 
 const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 
@@ -17,18 +17,18 @@ const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 })
 export class KillerComponent extends Playground<KillerState> {
 
-  settings: Settings;
+  settings: KillerSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService, 2);
-    this.settings = new Settings();
+    this.settings = new KillerSettings();
     this.nextEnabled = false;
     this.zeroEnabled = false;
     this.multiEnabled = false;
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
-    const state: KillerState = this.getPlayerState(player);
+    const state = this.getPlayerState(player);
     if (this.game.round === 0) {
       state.actField = fieldIndex;
       player.score = score;

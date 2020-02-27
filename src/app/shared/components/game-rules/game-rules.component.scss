@@ -1,0 +1,32 @@
+#rules {
+  margin: 10px 0;
+
+  details {
+    transition: all 400ms ease-in-out;
+    overflow: hidden;
+    padding: 5px;
+
+    :visited, :focus {
+      border: none;
+      outline: none;
+    }
+
+    ::-webkit-details-marker {
+      display:none;
+    }
+
+    p {
+      white-space: pre-line;
+      word-break: break-word;
+      padding: 12px;
+    }
+  }
+
+  details:not([open]) {
+    height: 1.25em;
+  }
+
+  details[open] {
+    height: 11em;
+  }
+}

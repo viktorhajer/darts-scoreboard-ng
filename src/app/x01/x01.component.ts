@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Settings} from './models/settings.model';
 import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
@@ -8,6 +7,7 @@ import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
+import {X01Settings} from './models/x01.settings.model';
 
 @Component({
   templateUrl: './x01.component.html',
@@ -15,11 +15,11 @@ import {ApplicationStateService} from '~services/application-state.service';
 })
 export class X01Component extends Playground<PlaygroundState> {
 
-  settings: Settings;
+  settings: X01Settings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService);
-    this.settings = new Settings();
+    this.settings = new X01Settings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {

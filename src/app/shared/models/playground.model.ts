@@ -1,12 +1,12 @@
 import {OnInit} from '@angular/core';
 import {v4 as uuid} from 'uuid';
-import {GameService} from '../services/game.service';
 import {Player} from './player.model';
 import {Throw} from './throw.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
+import {GameService} from '~services/game.service';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;

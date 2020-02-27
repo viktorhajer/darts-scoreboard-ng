@@ -8,8 +8,9 @@ import {NumberPlateComponent} from '~components/number-plate/number-plate.compon
 import {PlayerSettingsComponent} from '~components/player-settings/player-settings.component';
 import {SettingsComponent} from '~components/settings/settings.component';
 import {PlayerScoreComponent} from '~components/player-score/player-score.component';
+import {GameRulesComponent} from '~components/game-rules/game-rules.component';
 
-const components = [NumberPlateComponent, GameToolbarComponent,
+const components = [NumberPlateComponent, GameToolbarComponent, GameRulesComponent,
   DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent];
 
 @NgModule({

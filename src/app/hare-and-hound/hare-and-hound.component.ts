@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Settings} from './models/settings.model';
 import {FIELDS_COUNT, Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
@@ -7,7 +6,8 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
-import {HareAndHoundState} from './models/state.model';
+import {HareAndHoundSettings} from './models/hare-and-hound.settings.model';
+import {HareAndHoundState} from './models/hare-and-hound.state.model';
 
 @Component({
   templateUrl: './hare-and-hound.component.html',
@@ -15,11 +15,11 @@ import {HareAndHoundState} from './models/state.model';
 })
 export class HareAndHoundComponent extends Playground<HareAndHoundState> {
 
-  settings: Settings;
+  settings: HareAndHoundSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService, 2, 2);
-    this.settings = new Settings();
+    this.settings = new HareAndHoundSettings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {

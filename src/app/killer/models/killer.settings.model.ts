@@ -1,4 +1,4 @@
-export class Settings {
+export class KillerSettings {
   numberOfLives: number;
   boardingLimit: number;
   suicide: boolean;

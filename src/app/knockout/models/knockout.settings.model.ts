@@ -1,4 +1,4 @@
-export class Settings {
+export class KnockoutSettings {
   numberOfLives: number;
 
   constructor() {

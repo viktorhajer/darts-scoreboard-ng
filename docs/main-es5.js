@@ -476,27 +476,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_state_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/state.model */
-    "./src/app/aroundclock/models/state.model.ts");
-    /* harmony import */
-
-
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/aroundclock/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/around-clock.state.model */
+    "./src/app/aroundclock/models/around-clock.state.model.ts");
+    /* harmony import */
+
+
+    var _models_around_clock_settings_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/around-clock.settings.model */
+    "./src/app/aroundclock/models/around-clock.settings.model.ts");
     /* harmony import */
 
 
@@ -566,7 +566,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AroundClockComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r87 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r86 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -579,11 +579,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_3_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r86.settings.toggleJump();
+          return ctx_r85.settings.toggleJump();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Enable Jump ");
@@ -593,11 +593,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r88 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r87 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r88.settings.togglePunishment();
+          return ctx_r87.settings.togglePunishment();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Punishment ");
@@ -607,11 +607,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r89 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r88 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r89.settings.toggleNineLives();
+          return ctx_r88.settings.toggleNineLives();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " Nine Lives ");
@@ -629,11 +629,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_12_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r90 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r89 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r90.settings.setStyle(0);
+          return ctx_r89.settings.setStyle(0);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Numerical Order ");
@@ -643,11 +643,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_14_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r91 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r90 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r91.settings.setStyle(1);
+          return ctx_r90.settings.setStyle(1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, " Clockwise ");
@@ -657,11 +657,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_16_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r92 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r91 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r92.settings.setStyle(2);
+          return ctx_r91.settings.setStyle(2);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " Anticlockwise ");
@@ -673,11 +673,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_19_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r87);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r86);
 
-          var ctx_r93 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r92 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r93.settings.setStyle(3);
+          return ctx_r92.settings.setStyle(3);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, " Random ");
@@ -688,37 +688,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r82 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Around The Clock")("playground", ctx_r82.playground)("rules", "The object of this popular game is to be the first player to hit every number on the board " + "from 1-20. The numbers must be hit in order, and players alternate after three throws. The player " + "must hit each number in turn and cannot proceed until to the next number until the number is hit. " + "The winner is the player who hist all the numbers in order first.\n\nNine Lives: Each player gets three " + "lives. I do not know why the game is called 9 lives but you only get 3. Maybe it is because if you " + "miss with three darts you lose a life and 3 x 3 = 9");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Around The Clock")("playground", ctx_r81.playground)("rules", "The object of this popular game is to be the first player to hit every number on the board " + "from 1-20. The numbers must be hit in order, and players alternate after three throws. The player " + "must hit each number in turn and cannot proceed until to the next number until the number is hit. " + "The winner is the player who hist all the numbers in order first.\n\nNine Lives: Each player gets three " + "lives. I do not know why the game is called 9 lives but you only get 3. Maybe it is because if you " + "miss with three darts you lose a life and 3 x 3 = 9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.jump ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.jump ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.punishment ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.punishment ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.nineLives ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.nineLives ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.style == 0 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.style == 0 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.style == 1 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.style == 1 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.style == 2 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.style == 2 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r82.settings.style == 3 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r81.settings.style == 3 ? "primary" : "");
       }
     }
 
@@ -728,9 +728,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r82 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r83.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r82.playground);
       }
     }
 
@@ -754,13 +754,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r95 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r94 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r97 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r97.getPlayerState(player_r95).life);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r96.getPlayerState(player_r94).life);
       }
     }
 
@@ -778,20 +778,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r95 = ctx.$implicit;
-        var i_r96 = ctx.index;
+        var player_r94 = ctx.$implicit;
+        var i_r95 = ctx.index;
 
-        var ctx_r94 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r93 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r96 === ctx_r94.game.actualPlayerIndex ? "highlighted" : "", "");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r95)("scoreDisplayed", false)("hasContent", ctx_r94.settings.nineLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r95 === ctx_r93.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r94.settings.nineLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r94)("scoreDisplayed", false)("hasContent", ctx_r93.settings.nineLives);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r93.settings.nineLives);
       }
     }
 
@@ -805,11 +805,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r84.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r83.game.players);
       }
     }
 
@@ -819,9 +819,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r85.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r84.playground);
       }
     }
 
@@ -836,7 +836,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, AroundClockComponent);
 
         _this = _possibleConstructorReturn(this, _getPrototypeOf(AroundClockComponent).call(this, application, game, route, dialogService));
-        _this.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this.settings = new _models_around_clock_settings_model__WEBPACK_IMPORTED_MODULE_4__["AroundClockSettings"]();
         return _this;
       }
 
@@ -933,7 +933,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "customReset",
         value: function customReset() {
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["AroundClockState"]();
+            return player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"]();
           });
         }
       }, {
@@ -949,7 +949,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return AroundClockComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     AroundClockComponent.ɵfac = function AroundClockComponent_Factory(t) {
       return new (t || AroundClockComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
@@ -1002,7 +1002,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_12__["MatDivider"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_13__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_14__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_15__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -1012,7 +1012,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './around-clock.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -1117,23 +1117,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/aroundclock/models/settings.model.ts":
-  /*!******************************************************!*\
-    !*** ./src/app/aroundclock/models/settings.model.ts ***!
-    \******************************************************/
+  "./src/app/aroundclock/models/around-clock.settings.model.ts":
+  /*!*******************************************************************!*\
+    !*** ./src/app/aroundclock/models/around-clock.settings.model.ts ***!
+    \*******************************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: AroundClockSettings */
 
   /***/
-  function srcAppAroundclockModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppAroundclockModelsAroundClockSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "AroundClockSettings", function () {
+      return AroundClockSettings;
     });
     /* harmony import */
 
@@ -1142,39 +1142,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
 
-    var Settings =
+    var AroundClockSettings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function AroundClockSettings() {
+        _classCallCheck(this, AroundClockSettings);
 
         this.style = 0;
         this.jump = true;
         this.punishment = false;
         this.nineLives = false;
-        this.fields = this.getBaseFields();
+        this.fields = AroundClockSettings.getBaseFields();
       }
 
-      _createClass(Settings, [{
+      _createClass(AroundClockSettings, [{
         key: "setStyle",
         value: function setStyle(style) {
           this.style = style;
 
           switch (this.style) {
             case 1:
-              this.fields = this.getClockFields();
+              this.fields = AroundClockSettings.getClockFields();
               break;
 
             case 2:
-              this.fields = this.getAnciclockFields();
+              this.fields = AroundClockSettings.getAnticlockFields();
               break;
 
             case 3:
-              this.fields = this.getRandom();
+              this.fields = AroundClockSettings.getRandom();
               break;
 
             default:
-              this.fields = this.getBaseFields();
+              this.fields = AroundClockSettings.getBaseFields();
           }
         }
       }, {
@@ -1200,7 +1200,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.punishment = false;
           }
         }
-      }, {
+      }], [{
         key: "getBaseFields",
         value: function getBaseFields() {
           return _toConsumableArray(Array(_models_playground_model__WEBPACK_IMPORTED_MODULE_0__["FIELDS_COUNT"]).keys());
@@ -1211,14 +1211,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return [0, 17, 3, 12, 5, 9, 14, 1, 16, 2, 18, 6, 15, 7, 10, 13, 8, 11, 4, 19, 20];
         }
       }, {
-        key: "getAnciclockFields",
-        value: function getAnciclockFields() {
-          return [19, 4, 11, 8, 13, 10, 7, 15, 6, 18, 2, 16, 1, 14, 9, 5, 12, 3, 17, 0, 20];
+        key: "getAnticlockFields",
+        value: function getAnticlockFields() {
+          return [4, 11, 8, 13, 10, 7, 15, 6, 18, 2, 16, 1, 14, 9, 5, 12, 3, 17, 0, 19, 20];
         }
       }, {
         key: "getRandom",
         value: function getRandom() {
-          var fields = this.getBaseFields();
+          var fields = AroundClockSettings.getBaseFields();
           var size = fields.length;
           var randomFields = [];
 
@@ -1232,22 +1232,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }]);
 
-      return Settings;
+      return AroundClockSettings;
     }();
     /***/
 
   },
 
   /***/
-  "./src/app/aroundclock/models/state.model.ts":
-  /*!***************************************************!*\
-    !*** ./src/app/aroundclock/models/state.model.ts ***!
-    \***************************************************/
+  "./src/app/aroundclock/models/around-clock.state.model.ts":
+  /*!****************************************************************!*\
+    !*** ./src/app/aroundclock/models/around-clock.state.model.ts ***!
+    \****************************************************************/
 
   /*! exports provided: AroundClockState */
 
   /***/
-  function srcAppAroundclockModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppAroundclockModelsAroundClockStateModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -1359,16 +1359,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material/icon */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
 
     var _c0 = function _c0(a0) {
       return [a0];
     };
 
-    function MenuComponent_button_3_Template(rf, ctx) {
+    function MenuComponent_button_4_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -1376,53 +1392,75 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 2) {
         var g_r2 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + g_r2.path));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("background-color", g_r2.data.color);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](5, _c0, "/" + g_r2.path));
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", g_r2.data.name, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](g_r2.data.icon);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](g_r2.data.name);
       }
     }
 
     var routes = [{
       path: 'x01',
       data: {
-        name: 'Classic X01'
+        name: 'Classic X01',
+        color: '#009688',
+        icon: 'emoji_food_beverage'
       }
     }, {
       path: 'cricket',
       data: {
-        name: 'Ultimate Cricket'
+        name: 'Ultimate Cricket',
+        color: '#0a756b',
+        icon: 'sports_cricket'
       }
     }, {
       path: 'around-clock',
       data: {
-        name: 'Around The Clock / Nine Lives'
+        name: 'Around The Clock',
+        color: '#0f5851',
+        icon: 'cached'
       }
     }, {
       path: 'shanghai',
       data: {
-        name: 'Shanghai / Halve It'
+        name: 'Shanghai, Halve It',
+        color: '#0f5851',
+        icon: 'emoji_symbols'
       }
     }, {
       path: 'fives',
       data: {
-        name: 'Fives'
+        name: 'Fives',
+        color: '#009688',
+        icon: 'add_box'
       }
     }, {
       path: 'hare-and-hound',
       data: {
-        name: 'Hare and Hound'
+        name: 'Hare and Hound',
+        color: '#0a756b',
+        icon: 'accessible_forward'
       }
     }, {
       path: 'knockout',
       data: {
-        name: 'Knockout'
+        name: 'Knockout',
+        color: '#009688',
+        icon: 'sports_mma'
       }
     }, {
       path: 'killer',
       data: {
-        name: 'Killer'
+        name: 'Killer',
+        color: '#0a756b',
+        icon: 'gps_fixed'
       }
     }];
 
@@ -1452,9 +1490,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     MenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: MenuComponent,
       selectors: [["ng-component"]],
-      decls: 6,
+      decls: 7,
       vars: 1,
-      consts: [["id", "menu"], ["mat-raised-button", "", "class", "gameSelectBox", 3, "routerLink", 4, "ngFor", "ngForOf"], [1, "version"], ["mat-raised-button", "", 1, "gameSelectBox", 3, "routerLink"]],
+      consts: [["id", "menu_title"], ["id", "menu"], ["mat-raised-button", "", "class", "gameSelectBox", 3, "routerLink", "backgroundColor", 4, "ngFor", "ngForOf"], [1, "version"], ["mat-raised-button", "", 1, "gameSelectBox", 3, "routerLink"], [1, "title"]],
       template: function MenuComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1465,25 +1503,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MenuComponent_button_3_Template, 2, 4, "button", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MenuComponent_button_4_Template, 5, 7, "button", 2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "v1.1");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.2");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.getGameList());
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_2__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"]],
-      styles: ["#menu[_ngcontent-%COMP%] {\n  width: 100vw;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-flow: column;\n  -webkit-box-align: center;\n          align-items: center;\n  padding-top: 10vh;\n}\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%] {\n  margin: 0.2vh 0;\n  height: 8vh;\n  font-size: calc(10px + 1vw);\n  width: 80vw;\n}\n.version[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  right: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZW51L0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcY29tcG9uZW50c1xcbWVudVxcbWVudS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLGlCQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLGlCQUFBO0FDQ0Y7QURDRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsMkJBQUE7RUFDQSxXQUFBO0FDQ0o7QURFQTtFQUNFLGVBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWVudSB7XG4gIHdpZHRoOiAxMDB2dztcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1mbG93OiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHBhZGRpbmctdG9wOiAxMHZoO1xuXG4gIC5nYW1lU2VsZWN0Qm94IHtcbiAgICBtYXJnaW46IDAuMnZoIDA7XG4gICAgaGVpZ2h0OiA4dmg7XG4gICAgZm9udC1zaXplOiBjYWxjKDEwcHggKyAxdncpO1xuICAgIHdpZHRoOiA4MHZ3O1xuICB9XG59XG4udmVyc2lvbiB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwO1xuICByaWdodDogNXB4O1xufVxuIiwiI21lbnUge1xuICB3aWR0aDogMTAwdnc7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogY29sdW1uO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBwYWRkaW5nLXRvcDogMTB2aDtcbn1cbiNtZW51IC5nYW1lU2VsZWN0Qm94IHtcbiAgbWFyZ2luOiAwLjJ2aCAwO1xuICBoZWlnaHQ6IDh2aDtcbiAgZm9udC1zaXplOiBjYWxjKDEwcHggKyAxdncpO1xuICB3aWR0aDogODB2dztcbn1cblxuLnZlcnNpb24ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMDtcbiAgcmlnaHQ6IDVweDtcbn0iXX0= */"]
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_2__["MatButton"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLink"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_4__["MatIcon"]],
+      styles: ["#menu_title[_ngcontent-%COMP%] {\n  margin: 50px;\n  text-align: center;\n}\n\n#menu[_ngcontent-%COMP%] {\n  width: 100vw;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-flow: row wrap;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%] {\n  margin: 1px;\n  height: 200px;\n  width: 200px;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: #ffffff;\n}\n\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%]   mat-icon[_ngcontent-%COMP%] {\n  font-size: 60px;\n  width: 60px;\n  height: 60px;\n}\n\n#menu[_ngcontent-%COMP%]   .gameSelectBox[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%] {\n  font-size: 16px;\n  white-space: pre;\n  text-align: left;\n  padding: 10px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  line-height: 25px;\n  letter-spacing: 1px;\n  font-weight: normal;\n  background: rgba(0, 0, 0, 0.1);\n  width: calc(100% - 20px);\n}\n\n.version[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  right: 5px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9tZW51L0Q6XFxEZXZlbG9wbWVudFxcZGFydHMtc2NvcmVib2FyZC1uZy9zcmNcXGFwcFxcY29tcG9uZW50c1xcbWVudVxcbWVudS5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxZQUFBO0VBQ0Esa0JBQUE7QUNDRjs7QURDQTtFQUNFLFlBQUE7RUFDQSxvQkFBQTtFQUFBLGFBQUE7RUFDQSw4QkFBQTtFQUFBLDZCQUFBO1VBQUEsbUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Esd0JBQUE7VUFBQSx1QkFBQTtBQ0VGOztBREFFO0VBQ0UsV0FBQTtFQUNBLGFBQUE7RUFFQSxZQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0Esd0JBQUE7VUFBQSx1QkFBQTtFQUNBLGNBQUE7QUNDSjs7QURDSTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQ0NOOztBREVJO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLDhCQUFBO0VBQ0Esd0JBQUE7QUNBTjs7QURJQTtFQUNFLGVBQUE7RUFDQSxTQUFBO0VBQ0EsVUFBQTtBQ0RGIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9tZW51L21lbnUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjbWVudV90aXRsZSB7XG4gIG1hcmdpbjogNTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuI21lbnUge1xuICB3aWR0aDogMTAwdnc7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogcm93IHdyYXA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuXG4gIC5nYW1lU2VsZWN0Qm94IHtcbiAgICBtYXJnaW46IDFweDtcbiAgICBoZWlnaHQ6IDIwMHB4O1xuICAgIC8vIGZsZXg6IDEgMCAyNSU7XG4gICAgd2lkdGg6IDIwMHB4O1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgY29sb3I6ICNmZmZmZmY7XG5cbiAgICBtYXQtaWNvbiB7XG4gICAgICBmb250LXNpemU6IDYwcHg7XG4gICAgICB3aWR0aDogNjBweDtcbiAgICAgIGhlaWdodDogNjBweDtcbiAgICB9XG5cbiAgICAudGl0bGUge1xuICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgd2hpdGUtc3BhY2U6IHByZTtcbiAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICBwYWRkaW5nOiAxMHB4O1xuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgdG9wOiAwO1xuICAgICAgbGVmdDogMDtcbiAgICAgIGxpbmUtaGVpZ2h0OiAyNXB4O1xuICAgICAgbGV0dGVyLXNwYWNpbmc6IDFweDtcbiAgICAgIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gICAgICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gICAgICB3aWR0aDogY2FsYygxMDAlIC0gMjBweCk7XG4gICAgfVxuICB9XG59XG4udmVyc2lvbiB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwO1xuICByaWdodDogNXB4O1xufVxuIiwiI21lbnVfdGl0bGUge1xuICBtYXJnaW46IDUwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuI21lbnUge1xuICB3aWR0aDogMTAwdnc7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZmxvdzogcm93IHdyYXA7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuI21lbnUgLmdhbWVTZWxlY3RCb3gge1xuICBtYXJnaW46IDFweDtcbiAgaGVpZ2h0OiAyMDBweDtcbiAgd2lkdGg6IDIwMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgY29sb3I6ICNmZmZmZmY7XG59XG4jbWVudSAuZ2FtZVNlbGVjdEJveCBtYXQtaWNvbiB7XG4gIGZvbnQtc2l6ZTogNjBweDtcbiAgd2lkdGg6IDYwcHg7XG4gIGhlaWdodDogNjBweDtcbn1cbiNtZW51IC5nYW1lU2VsZWN0Qm94IC50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgd2hpdGUtc3BhY2U6IHByZTtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgcGFkZGluZzogMTBweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIGxpbmUtaGVpZ2h0OiAyNXB4O1xuICBsZXR0ZXItc3BhY2luZzogMXB4O1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICBiYWNrZ3JvdW5kOiByZ2JhKDAsIDAsIDAsIDAuMSk7XG4gIHdpZHRoOiBjYWxjKDEwMCUgLSAyMHB4KTtcbn1cblxuLnZlcnNpb24ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIGJvdHRvbTogMDtcbiAgcmlnaHQ6IDVweDtcbn0iXX0= */"]
     });
     /*@__PURE__*/
 
@@ -1528,27 +1570,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_state_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/state.model */
-    "./src/app/cricket/models/state.model.ts");
-    /* harmony import */
-
-
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/cricket/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/cricet.settings.model */
+    "./src/app/cricket/models/cricet.settings.model.ts");
+    /* harmony import */
+
+
+    var _models_cricet_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/cricet.state.model */
+    "./src/app/cricket/models/cricet.state.model.ts");
     /* harmony import */
 
 
@@ -1618,18 +1660,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function CricketComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r61 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r62);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r61);
 
-          var i_r60 = ctx.index;
+          var i_r59 = ctx.index;
 
-          var ctx_r61 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r60 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r61.settings.setNumber(i_r60);
+          return ctx_r60.settings.setNumber(i_r59);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -1638,22 +1680,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var numb_r59 = ctx.$implicit;
-        var i_r60 = ctx.index;
+        var numb_r58 = ctx.$implicit;
+        var i_r59 = ctx.index;
 
-        var ctx_r58 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r58.settings.isFieldAllowed(i_r60) ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r57.settings.isFieldAllowed(i_r59) ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r59 === 21 ? "B" : numb_r59, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r58 === 21 ? "B" : numb_r58, " ");
       }
     }
 
     function CricketComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r64 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r63 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -1670,11 +1712,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r63 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r63.settings.upper();
+          return ctx_r62.settings.upper();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Upper");
@@ -1684,11 +1726,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r65 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r64 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r65.settings.lower();
+          return ctx_r64.settings.lower();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Lower");
@@ -1698,11 +1740,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r66 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r65 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r66.settings.left();
+          return ctx_r65.settings.left();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Left");
@@ -1712,11 +1754,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_11_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r67 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r66 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r67.settings.right();
+          return ctx_r66.settings.right();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Right");
@@ -1728,11 +1770,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_14_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r68 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r67 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r68.settings.odd();
+          return ctx_r67.settings.odd();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Odd");
@@ -1742,11 +1784,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_16_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r69 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r68 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r69.settings.even();
+          return ctx_r68.settings.even();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Even");
@@ -1756,11 +1798,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_18_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r70 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r69 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r70.settings.prime();
+          return ctx_r69.settings.prime();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Prime");
@@ -1770,11 +1812,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_20_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r70 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r71.settings.randomize();
+          return ctx_r70.settings.randomize();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Random");
@@ -1792,11 +1834,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_25_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r72 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r71 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r72.settings.setStyle(1);
+          return ctx_r71.settings.setStyle(1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Classic ");
@@ -1806,11 +1848,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_27_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r73 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r72 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r73.settings.setStyle(2);
+          return ctx_r72.settings.setStyle(2);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Cut-Throat ");
@@ -1820,11 +1862,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_29_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r74 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r73 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r74.settings.setStyle(3);
+          return ctx_r73.settings.setStyle(3);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "No Score ");
@@ -1834,11 +1876,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_app_settings_1_Template_button_click_31_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r64);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r63);
 
-          var ctx_r75 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r74 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r75.settings.setStyle(4);
+          return ctx_r74.settings.setStyle(4);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Black Out ");
@@ -1849,29 +1891,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Ultimate Cricket")("playground", ctx_r54.playground)("rules", "The objective shall be to 'own' or 'close' certain numbers on the board, and to achieve " + "the highest point score. The player or team to do so first, shall be the winner.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Ultimate Cricket")("playground", ctx_r53.playground)("rules", "The objective shall be to 'own' or 'close' certain numbers on the board, and to achieve " + "the highest point score. The player or team to do so first, shall be the winner.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r54.settings.getNumbers());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r53.settings.getNumbers());
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](22);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r54.settings.style == 1 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r53.settings.style == 1 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r54.settings.style == 2 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r53.settings.style == 2 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r54.settings.style == 3 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r53.settings.style == 3 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r54.settings.style == 4 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r53.settings.style == 4 ? "primary" : "");
       }
     }
 
@@ -1881,9 +1923,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r55.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r54.playground);
       }
     }
 
@@ -1903,21 +1945,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var field_r80 = ctx.$implicit;
+        var field_r79 = ctx.$implicit;
 
-        var player_r77 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r76 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r79 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r78 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r79.isActiveField(player_r77, field_r80) && ctx_r79.settings.isBlackOutGame() ? "active" : "", " ", !ctx_r79.isFieldDoneForPlayer(player_r77, field_r80) ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r78.isActiveField(player_r76, field_r79) && ctx_r78.settings.isBlackOutGame() ? "active" : "", " ", !ctx_r78.isFieldDoneForPlayer(player_r76, field_r79) ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r80 === 20 ? "B" : field_r80 + 1, ": ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r79 === 20 ? "B" : field_r79 + 1, ": ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r79.getFieldValue(player_r77, field_r80));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r78.getFieldValue(player_r76, field_r79));
       }
     }
 
@@ -1939,20 +1981,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r77 = ctx.$implicit;
-        var i_r78 = ctx.index;
+        var player_r76 = ctx.$implicit;
+        var i_r77 = ctx.index;
 
-        var ctx_r76 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r75 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r78 === ctx_r76.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r77 === ctx_r75.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r77);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r76);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r76.settings.fields);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r75.settings.fields);
       }
     }
 
@@ -1966,11 +2008,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r55 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r56.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r55.game.players);
       }
     }
 
@@ -1980,9 +2022,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r57.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r56.playground);
       }
     }
 
@@ -1997,7 +2039,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, CricketComponent);
 
         _this5 = _possibleConstructorReturn(this, _getPrototypeOf(CricketComponent).call(this, application, game, route, dialogService));
-        _this5.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this5.settings = new _models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_3__["CricketSettings"]();
         return _this5;
       }
 
@@ -2011,7 +2053,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (this.isFieldClosedForOthers(player, fieldIndex) && playerFieldCount + this.multiplier > 3) {
                 this.getPlayerState(player).setFieldCount(fieldIndex, 3);
               } else {
-                var multiplier = this.multiplier + 0;
+                var multiplier = this.multiplier;
 
                 if (playerFieldCount < 3 && playerFieldCount + this.multiplier >= 3) {
                   multiplier = (playerFieldCount + this.multiplier) % 3;
@@ -2132,7 +2174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "customReset",
         value: function customReset() {
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["CricketState"]();
+            return player.state = new _models_cricet_state_model__WEBPACK_IMPORTED_MODULE_4__["CricketState"]();
           });
         }
       }, {
@@ -2161,7 +2203,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
             if (_this8.isFieldDoneForPlayer(player, fieldIndex)) {
-              total += (_this8.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+              total += (_this8.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -2173,7 +2215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            total += _this9.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            total += _this9.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
@@ -2192,7 +2234,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getFieldScore",
         value: function getFieldScore(player, fieldIndex) {
           if (this.isFieldDoneForPlayer(player, fieldIndex)) {
-            return (this.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            return (this.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
           }
 
           return 0;
@@ -2200,7 +2242,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPunishScore",
         value: function getPunishScore(player, fieldIndex) {
-          return this.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+          return this.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
         }
       }, {
         key: "isFieldClosed",
@@ -2240,7 +2282,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return CricketComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     CricketComponent.ɵfac = function CricketComponent_Factory(t) {
       return new (t || CricketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
@@ -2293,7 +2335,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_13__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_14__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_15__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -2303,7 +2345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './cricket.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -2408,30 +2450,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/cricket/models/settings.model.ts":
-  /*!**************************************************!*\
-    !*** ./src/app/cricket/models/settings.model.ts ***!
-    \**************************************************/
+  "./src/app/cricket/models/cricet.settings.model.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/cricket/models/cricet.settings.model.ts ***!
+    \*********************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: CricketSettings */
 
   /***/
-  function srcAppCricketModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppCricketModelsCricetSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "CricketSettings", function () {
+      return CricketSettings;
     });
 
-    var Settings =
+    var CricketSettings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function CricketSettings() {
+        _classCallCheck(this, CricketSettings);
 
         this.fields = [14, 15, 16, 17, 18, 19, 20];
         this.numbs = [];
@@ -2449,7 +2491,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.initFields();
       }
 
-      _createClass(Settings, [{
+      _createClass(CricketSettings, [{
         key: "randomize",
         value: function randomize() {
           for (var i = 0; i < this.numbs.length; i++) {
@@ -2572,22 +2614,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }]);
 
-      return Settings;
+      return CricketSettings;
     }();
     /***/
 
   },
 
   /***/
-  "./src/app/cricket/models/state.model.ts":
-  /*!***********************************************!*\
-    !*** ./src/app/cricket/models/state.model.ts ***!
-    \***********************************************/
+  "./src/app/cricket/models/cricet.state.model.ts":
+  /*!******************************************************!*\
+    !*** ./src/app/cricket/models/cricet.state.model.ts ***!
+    \******************************************************/
 
   /*! exports provided: CricketState */
 
   /***/
-  function srcAppCricketModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppCricketModelsCricetStateModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -2700,21 +2742,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/fives/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/fives.settings.model */
+    "./src/app/fives/models/fives.settings.model.ts");
     /* harmony import */
 
 
@@ -2784,18 +2826,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function FivesComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r141 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r140 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FivesComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r141);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r140);
 
-          var divider_r139 = ctx.$implicit;
+          var divider_r138 = ctx.$implicit;
 
-          var ctx_r140 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r139 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r140.settings.setDivider(divider_r139);
+          return ctx_r139.settings.setDivider(divider_r138);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -2804,32 +2846,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var divider_r139 = ctx.$implicit;
+        var divider_r138 = ctx.$implicit;
 
-        var ctx_r137 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r136 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r137.settings.divider === divider_r139 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r136.settings.divider === divider_r138 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](divider_r139);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](divider_r138);
       }
     }
 
     function FivesComponent_app_settings_1_button_7_Template(rf, ctx) {
       if (rf & 1) {
-        var _r144 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r143 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FivesComponent_app_settings_1_button_7_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r144);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r143);
 
-          var limit_r142 = ctx.$implicit;
+          var limit_r141 = ctx.$implicit;
 
-          var ctx_r143 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r142 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r143.settings.setLimit(limit_r142);
+          return ctx_r142.settings.setLimit(limit_r141);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -2838,15 +2880,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var limit_r142 = ctx.$implicit;
+        var limit_r141 = ctx.$implicit;
 
-        var ctx_r138 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r137 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r138.settings.limit === limit_r142 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r137.settings.limit === limit_r141 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](limit_r142);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](limit_r141);
       }
     }
 
@@ -2876,17 +2918,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r133 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r132 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Fives")("playground", ctx_r133.playground)("rules", "The idea of the game to throw three darts into the board, in turn, to score a number that " + "is divisible by five. The higher the number you score, the more points you can score. For every five " + "scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Fives")("playground", ctx_r132.playground)("rules", "The idea of the game to throw three darts into the board, in turn, to score a number that " + "is divisible by five. The higher the number you score, the more points you can score. For every five " + "scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r133.settings.getSelectableDividers());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r132.settings.getSelectableDividers());
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r133.settings.getSelectableLimits());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r132.settings.getSelectableLimits());
       }
     }
 
@@ -2896,9 +2938,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r134 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r133 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r134.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r133.playground);
       }
     }
 
@@ -2912,16 +2954,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r146 = ctx.$implicit;
-        var i_r147 = ctx.index;
+        var player_r145 = ctx.$implicit;
+        var i_r146 = ctx.index;
 
-        var ctx_r145 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r144 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r147 === ctx_r145.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r146 === ctx_r144.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r146)("hasContent", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r145)("hasContent", false);
       }
     }
 
@@ -2935,11 +2977,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r135 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r134 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r135.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r134.game.players);
       }
     }
 
@@ -2949,9 +2991,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r136 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r135 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r136.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r135.playground);
       }
     }
 
@@ -2966,7 +3008,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, FivesComponent);
 
         _this16 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
-        _this16.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        _this16.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
         return _this16;
       }
 
@@ -3009,7 +3051,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return FivesComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     FivesComponent.ɵfac = function FivesComponent_Factory(t) {
       return new (t || FivesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]));
@@ -3062,7 +3104,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_10__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -3072,7 +3114,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './fives.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -3177,36 +3219,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/fives/models/settings.model.ts":
-  /*!************************************************!*\
-    !*** ./src/app/fives/models/settings.model.ts ***!
-    \************************************************/
+  "./src/app/fives/models/fives.settings.model.ts":
+  /*!******************************************************!*\
+    !*** ./src/app/fives/models/fives.settings.model.ts ***!
+    \******************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: FivesSettings */
 
   /***/
-  function srcAppFivesModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppFivesModelsFivesSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "FivesSettings", function () {
+      return FivesSettings;
     });
 
-    var Settings =
+    var FivesSettings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function FivesSettings() {
+        _classCallCheck(this, FivesSettings);
 
         this.divider = 5;
         this.limit = 30;
       }
 
-      _createClass(Settings, [{
+      _createClass(FivesSettings, [{
         key: "getSelectableDividers",
         value: function getSelectableDividers() {
           return [3, 4, 5, 6, 7, 8, 10];
@@ -3228,7 +3270,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }]);
 
-      return Settings;
+      return FivesSettings;
     }();
     /***/
 
@@ -3262,27 +3304,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/hare-and-hound/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
     /* harmony import */
 
 
-    var _models_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./models/state.model */
-    "./src/app/hare-and-hound/models/state.model.ts");
+    var _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/hare-and-hound.settings.model */
+    "./src/app/hare-and-hound/models/hare-and-hound.settings.model.ts");
+    /* harmony import */
+
+
+    var _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/hare-and-hound.state.model */
+    "./src/app/hare-and-hound/models/hare-and-hound.state.model.ts");
     /* harmony import */
 
 
@@ -3346,18 +3388,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function HareAndHoundComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r155 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r154 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HareAndHoundComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r155);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r154);
 
-          var start_r153 = ctx.$implicit;
+          var start_r152 = ctx.$implicit;
 
-          var ctx_r154 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r153 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r154.settings.setHoundStart(start_r153 - 1);
+          return ctx_r153.settings.setHoundStart(start_r152 - 1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -3366,15 +3408,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var start_r153 = ctx.$implicit;
+        var start_r152 = ctx.$implicit;
 
-        var ctx_r152 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r152.settings.houndStartIndex + 1 === start_r153 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r151.settings.houndStartIndex + 1 === start_r152 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](start_r153);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](start_r152);
       }
     }
 
@@ -3394,13 +3436,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r148 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r147 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Hare and Hound")("playground", ctx_r148.playground)("rules", "The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel " + "clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches " + "up with him. The hound usually starts from either 12 or 5, depending on the preference of the " + "players. The hound wins by overtaking the hare.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Hare and Hound")("playground", ctx_r147.playground)("rules", "The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel " + "clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches " + "up with him. The hound usually starts from either 12 or 5, depending on the preference of the " + "players. The hound wins by overtaking the hare.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r148.settings.getSelectableHoundStart());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r147.settings.getSelectableHoundStart());
       }
     }
 
@@ -3410,9 +3452,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r148 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r149.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r148.playground);
       }
     }
 
@@ -3426,16 +3468,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r157 = ctx.$implicit;
-        var i_r158 = ctx.index;
+        var player_r156 = ctx.$implicit;
+        var i_r157 = ctx.index;
 
-        var ctx_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r155 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r158 === ctx_r156.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r157 === ctx_r155.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r157)("hasContent", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r156)("hasContent", false);
       }
     }
 
@@ -3449,11 +3491,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r150 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r150.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r149.game.players);
       }
     }
 
@@ -3463,9 +3505,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r150 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r151.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r150.playground);
       }
     }
 
@@ -3480,7 +3522,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, HareAndHoundComponent);
 
         _this18 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
-        _this18.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        _this18.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
         return _this18;
       }
 
@@ -3492,8 +3534,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.isFieldEnabled(fieldIndex, state.actFieldIndex)) {
             state.increaseActFieldIndex(this.multiplier);
 
-            if (state.actFieldIndex >= _models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1) {
-              state.actFieldIndex = state.actFieldIndex - (_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1);
+            if (state.actFieldIndex >= _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1) {
+              state.actFieldIndex = state.actFieldIndex - (_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1);
             }
 
             player.score -= this.multiplier;
@@ -3566,12 +3608,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this22 = this;
 
           this.game.players.forEach(function (player, index) {
-            player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_2__["FIELDS_COUNT"] - 1;
+            player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1;
 
             if (index === 0) {
-              player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this22.settings.getHareStartIndex());
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this22.settings.getHareStartIndex());
             } else {
-              player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
             }
           });
         }
@@ -3594,7 +3636,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return HareAndHoundComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     HareAndHoundComponent.ɵfac = function HareAndHoundComponent_Factory(t) {
       return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
@@ -3647,7 +3689,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -3657,7 +3699,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './hare-and-hound.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -3762,36 +3804,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/hare-and-hound/models/settings.model.ts":
-  /*!*********************************************************!*\
-    !*** ./src/app/hare-and-hound/models/settings.model.ts ***!
-    \*********************************************************/
+  "./src/app/hare-and-hound/models/hare-and-hound.settings.model.ts":
+  /*!************************************************************************!*\
+    !*** ./src/app/hare-and-hound/models/hare-and-hound.settings.model.ts ***!
+    \************************************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: HareAndHoundSettings */
 
   /***/
-  function srcAppHareAndHoundModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppHareAndHoundModelsHareAndHoundSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "HareAndHoundSettings", function () {
+      return HareAndHoundSettings;
     });
 
-    var Settings =
+    var HareAndHoundSettings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function HareAndHoundSettings() {
+        _classCallCheck(this, HareAndHoundSettings);
 
         this.houndStartIndex = 11;
         this.hareStartIndex = 19;
       }
 
-      _createClass(Settings, [{
+      _createClass(HareAndHoundSettings, [{
         key: "getSelectableHoundStart",
         value: function getSelectableHoundStart() {
           return [14, 9, 12, 5, 20];
@@ -3804,37 +3846,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFields",
         value: function getFields() {
-          var index = this.getBaseFields().indexOf(this.houndStartIndex);
-          return [].concat(_toConsumableArray(this.getBaseFields().slice(index)), _toConsumableArray(this.getBaseFields().slice(0, index)));
+          var index = HareAndHoundSettings.getBaseFields().indexOf(this.houndStartIndex);
+          return [].concat(_toConsumableArray(HareAndHoundSettings.getBaseFields().slice(index)), _toConsumableArray(HareAndHoundSettings.getBaseFields().slice(0, index)));
         }
       }, {
         key: "getHareStartIndex",
         value: function getHareStartIndex() {
           return this.getFields().indexOf(this.hareStartIndex);
         }
-      }, {
+      }], [{
         key: "getBaseFields",
         value: function getBaseFields() {
           return [19, 0, 17, 3, 12, 5, 9, 14, 1, 16, 2, 18, 6, 15, 7, 10, 13, 8, 11, 4];
         }
       }]);
 
-      return Settings;
+      return HareAndHoundSettings;
     }();
     /***/
 
   },
 
   /***/
-  "./src/app/hare-and-hound/models/state.model.ts":
-  /*!******************************************************!*\
-    !*** ./src/app/hare-and-hound/models/state.model.ts ***!
-    \******************************************************/
+  "./src/app/hare-and-hound/models/hare-and-hound.state.model.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/hare-and-hound/models/hare-and-hound.state.model.ts ***!
+    \*********************************************************************/
 
   /*! exports provided: HareAndHoundState */
 
   /***/
-  function srcAppHareAndHoundModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppHareAndHoundModelsHareAndHoundStateModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3921,27 +3963,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_state_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/state.model */
-    "./src/app/killer/models/state.model.ts");
-    /* harmony import */
-
-
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/killer/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/killer.state.model */
+    "./src/app/killer/models/killer.state.model.ts");
+    /* harmony import */
+
+
+    var _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/killer.settings.model */
+    "./src/app/killer/models/killer.settings.model.ts");
     /* harmony import */
 
 
@@ -4029,7 +4071,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function KillerComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r123 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r122 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -4052,11 +4094,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_app_settings_1_Template_input_ngModelChange_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r123);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r122);
 
-          var ctx_r122 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r122.settings.numberOfLives = $event;
+          return ctx_r121.settings.numberOfLives = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4074,11 +4116,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_app_settings_1_Template_input_ngModelChange_11_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r123);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r122);
 
-          var ctx_r124 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r123 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r124.settings.boardingLimit = $event;
+          return ctx_r123.settings.boardingLimit = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4092,11 +4134,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_app_settings_1_Template_button_click_13_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r123);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r122);
 
-          var ctx_r125 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r124 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r125.settings.toggleSuicide();
+          return ctx_r124.settings.toggleSuicide();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Suicide");
@@ -4107,21 +4149,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Killer")("playground", ctx_r118.playground)("rules", "Firstly each player draws lots i.e. a number between 1 - 20. Each player is then given " + "between 3 & 5 lives. The objective of this game is for each thrower to first hit their own number " + "three times to gain status of KILLER. Once they have achieved this they then can throw for their " + "opponents number in any order they wish. Every time a KILLER status player hits an opponents " + "number the opponent loses a life. KILLERS can also commit SUICIDE by hitting their own number's " + "triple. The winner of this game is the player that remains alive.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Killer")("playground", ctx_r117.playground)("rules", "Firstly each player draws lots i.e. a number between 1 - 20. Each player is then given " + "between 3 & 5 lives. The objective of this game is for each thrower to first hit their own number " + "three times to gain status of KILLER. Once they have achieved this they then can throw for their " + "opponents number in any order they wish. Every time a KILLER status player hits an opponents " + "number the opponent loses a life. KILLERS can also commit SUICIDE by hitting their own number's " + "triple. The winner of this game is the player that remains alive.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r118.settings.numberOfLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r117.settings.numberOfLives);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r118.settings.boardingLimit);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r117.settings.boardingLimit);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r118.settings.suicide ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r117.settings.suicide ? "primary" : "");
       }
     }
 
@@ -4131,9 +4173,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r119.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r118.playground);
       }
     }
 
@@ -4153,13 +4195,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r127 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+        var player_r126 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
-        var ctx_r130 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r129 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r130.getPlayerState(player_r127).boarding);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r129.getPlayerState(player_r126).boarding);
       }
     }
 
@@ -4201,21 +4243,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r127 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r126 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r129 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r128 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r129.getPlayerField(player_r127));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r128.getPlayerField(player_r126));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r129.getPlayerState(player_r127).life, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r128.getPlayerState(player_r126).life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r129.getPlayerState(player_r127).killer);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r128.getPlayerState(player_r126).killer);
       }
     }
 
@@ -4233,20 +4275,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r127 = ctx.$implicit;
-        var i_r128 = ctx.index;
+        var player_r126 = ctx.$implicit;
+        var i_r127 = ctx.index;
 
-        var ctx_r126 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r125 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r128 === ctx_r126.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r126.isInactive(player_r127) ? "inactive" : "", "");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r127)("scoreDisplayed", false)("highlighted", ctx_r126.getPlayerState(player_r127).killer);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r127 === ctx_r125.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r125.isInactive(player_r126) ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r126.getPlayerField(player_r127) !== "0");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r126)("scoreDisplayed", false)("highlighted", ctx_r125.getPlayerState(player_r126).killer);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r125.getPlayerField(player_r126) !== "0");
       }
     }
 
@@ -4260,11 +4302,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r120.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r119.game.players);
       }
     }
 
@@ -4274,9 +4316,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r121.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r120.playground);
       }
     }
 
@@ -4293,7 +4335,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, KillerComponent);
 
         _this24 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
-        _this24.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this24.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
         _this24.nextEnabled = false;
         _this24.zeroEnabled = false;
         _this24.multiEnabled = false;
@@ -4454,7 +4496,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this28 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["KillerState"](_this28.settings.numberOfLives, _this28.settings.boardingLimit);
+            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this28.settings.numberOfLives, _this28.settings.boardingLimit);
           });
         }
       }, {
@@ -4476,7 +4518,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return KillerComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     KillerComponent.ɵfac = function KillerComponent_Factory(t) {
       return new (t || KillerComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
@@ -4529,7 +4571,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_11__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_11__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_13__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["NgModel"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_15__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -4539,7 +4581,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './killer.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -4644,59 +4686,59 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/killer/models/settings.model.ts":
-  /*!*************************************************!*\
-    !*** ./src/app/killer/models/settings.model.ts ***!
-    \*************************************************/
+  "./src/app/killer/models/killer.settings.model.ts":
+  /*!********************************************************!*\
+    !*** ./src/app/killer/models/killer.settings.model.ts ***!
+    \********************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: KillerSettings */
 
   /***/
-  function srcAppKillerModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppKillerModelsKillerSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "KillerSettings", function () {
+      return KillerSettings;
     });
 
-    var Settings =
+    var KillerSettings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function KillerSettings() {
+        _classCallCheck(this, KillerSettings);
 
         this.suicide = false;
         this.numberOfLives = 7;
         this.boardingLimit = 3;
       }
 
-      _createClass(Settings, [{
+      _createClass(KillerSettings, [{
         key: "toggleSuicide",
         value: function toggleSuicide() {
           this.suicide = !this.suicide;
         }
       }]);
 
-      return Settings;
+      return KillerSettings;
     }();
     /***/
 
   },
 
   /***/
-  "./src/app/killer/models/state.model.ts":
-  /*!**********************************************!*\
-    !*** ./src/app/killer/models/state.model.ts ***!
-    \**********************************************/
+  "./src/app/killer/models/killer.state.model.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/killer/models/killer.state.model.ts ***!
+    \*****************************************************/
 
   /*! exports provided: KillerState */
 
   /***/
-  function srcAppKillerModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppKillerModelsKillerStateModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -4783,27 +4825,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/knockout/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
     /* harmony import */
 
 
-    var _models_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./models/state.model */
-    "./src/app/knockout/models/state.model.ts");
+    var _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/knockout.settings.model */
+    "./src/app/knockout/models/knockout.settings.model.ts");
+    /* harmony import */
+
+
+    var _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/knockout.state.model */
+    "./src/app/knockout/models/knockout.state.model.ts");
     /* harmony import */
 
 
@@ -4879,7 +4921,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function KnockoutComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r164 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r163 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -4902,11 +4944,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KnockoutComponent_app_settings_1_Template_input_ngModelChange_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r164);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r163);
 
-          var ctx_r163 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r162 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r163.settings.numberOfLives = $event;
+          return ctx_r162.settings.numberOfLives = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4919,13 +4961,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r159 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r158 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Knockout")("playground", ctx_r159.playground)("rules", "The player selected to throw first must throw as many points as possible. The player next in " + "line then must throw a higher score than the player throwing before him, if he fails to throw a " + "higher score a ring is put around their score, once you have 3 rings next to your name, you drop " + "out of the game.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Knockout")("playground", ctx_r158.playground)("rules", "The player selected to throw first must throw as many points as possible. The player next in " + "line then must throw a higher score than the player throwing before him, if he fails to throw a " + "higher score a ring is put around their score, once you have 3 rings next to your name, you drop " + "out of the game.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r159.settings.numberOfLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r158.settings.numberOfLives);
       }
     }
 
@@ -4935,9 +4977,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r160 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r159 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r160.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r159.playground);
       }
     }
 
@@ -4975,24 +5017,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r166 = ctx.$implicit;
-        var i_r167 = ctx.index;
+        var player_r165 = ctx.$implicit;
+        var i_r166 = ctx.index;
 
-        var ctx_r165 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r164 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r167 === ctx_r165.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r165.isInactive(player_r166) ? "inactive" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r166 === ctx_r164.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r164.isInactive(player_r165) ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r166)("scoreDisplayed", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r165)("scoreDisplayed", false);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r165.getPlayerState(player_r166).life, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r164.getPlayerState(player_r165).life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r166.score, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r165.score, " ");
       }
     }
 
@@ -5006,11 +5048,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r161 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r160 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r161.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r160.game.players);
       }
     }
 
@@ -5020,9 +5062,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r162 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r161 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r162.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r161.playground);
       }
     }
 
@@ -5038,7 +5080,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _this31 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutComponent).call(this, application, game, route, dialogService, 2));
         _this31.score = 0;
-        _this31.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        _this31.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
         return _this31;
       }
 
@@ -5082,7 +5124,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this33 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this33.settings.numberOfLives);
+            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this33.settings.numberOfLives);
           });
           this.score = 0;
         }
@@ -5094,7 +5136,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return KnockoutComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     KnockoutComponent.ɵfac = function KnockoutComponent_Factory(t) {
       return new (t || KnockoutComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
@@ -5147,7 +5189,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_11__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_11__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_13__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_12__["NgModel"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -5157,7 +5199,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './knockout.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -5262,27 +5304,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/knockout/models/settings.model.ts":
-  /*!***************************************************!*\
-    !*** ./src/app/knockout/models/settings.model.ts ***!
-    \***************************************************/
+  "./src/app/knockout/models/knockout.settings.model.ts":
+  /*!************************************************************!*\
+    !*** ./src/app/knockout/models/knockout.settings.model.ts ***!
+    \************************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: KnockoutSettings */
 
   /***/
-  function srcAppKnockoutModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppKnockoutModelsKnockoutSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "KnockoutSettings", function () {
+      return KnockoutSettings;
     });
 
-    var Settings = function Settings() {
-      _classCallCheck(this, Settings);
+    var KnockoutSettings = function KnockoutSettings() {
+      _classCallCheck(this, KnockoutSettings);
 
       this.numberOfLives = 5;
     };
@@ -5291,15 +5333,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/knockout/models/state.model.ts":
-  /*!************************************************!*\
-    !*** ./src/app/knockout/models/state.model.ts ***!
-    \************************************************/
+  "./src/app/knockout/models/knockout.state.model.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/knockout/models/knockout.state.model.ts ***!
+    \*********************************************************/
 
   /*! exports provided: KnockoutState */
 
   /***/
-  function srcAppKnockoutModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppKnockoutModelsKnockoutStateModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -5507,30 +5549,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/shanghai/models/settings.model.ts":
-  /*!***************************************************!*\
-    !*** ./src/app/shanghai/models/settings.model.ts ***!
-    \***************************************************/
+  "./src/app/shanghai/models/shanghai.settings.model.ts":
+  /*!************************************************************!*\
+    !*** ./src/app/shanghai/models/shanghai.settings.model.ts ***!
+    \************************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: ShanghaiSettings */
 
   /***/
-  function srcAppShanghaiModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppShanghaiModelsShanghaiSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "ShanghaiSettings", function () {
+      return ShanghaiSettings;
     });
 
-    var Settings =
+    var ShanghaiSettings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function ShanghaiSettings() {
+        _classCallCheck(this, ShanghaiSettings);
 
         this.numbs = [];
         this.fields = [];
@@ -5549,7 +5591,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.initFields();
       }
 
-      _createClass(Settings, [{
+      _createClass(ShanghaiSettings, [{
         key: "randomize",
         value: function randomize() {
           for (var i = 0; i < this.numbs.length; i++) {
@@ -5608,22 +5650,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }]);
 
-      return Settings;
+      return ShanghaiSettings;
     }();
     /***/
 
   },
 
   /***/
-  "./src/app/shanghai/models/state.model.ts":
-  /*!************************************************!*\
-    !*** ./src/app/shanghai/models/state.model.ts ***!
-    \************************************************/
+  "./src/app/shanghai/models/shanghai.state.model.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/shanghai/models/shanghai.state.model.ts ***!
+    \*********************************************************/
 
   /*! exports provided: ShanghaiState */
 
   /***/
-  function srcAppShanghaiModelsStateModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppShanghaiModelsShanghaiStateModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -5724,27 +5766,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_state_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/state.model */
-    "./src/app/shanghai/models/state.model.ts");
-    /* harmony import */
-
-
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/shanghai/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/shanghai.settings.model */
+    "./src/app/shanghai/models/shanghai.settings.model.ts");
+    /* harmony import */
+
+
+    var _models_shanghai_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/shanghai.state.model */
+    "./src/app/shanghai/models/shanghai.state.model.ts");
     /* harmony import */
 
 
@@ -5814,18 +5856,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ShanghaiComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r107 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r106 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r107);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r106);
 
-          var i_r105 = ctx.index;
+          var i_r104 = ctx.index;
 
-          var ctx_r106 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r105 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r106.settings.setNumber(i_r105);
+          return ctx_r105.settings.setNumber(i_r104);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -5834,22 +5876,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var numb_r104 = ctx.$implicit;
-        var i_r105 = ctx.index;
+        var numb_r103 = ctx.$implicit;
+        var i_r104 = ctx.index;
 
-        var ctx_r103 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r102 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r103.settings.numbs[i_r105] ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r102.settings.numbs[i_r104] ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r104 === 21 ? "B" : numb_r104, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r103 === 21 ? "B" : numb_r103, " ");
       }
     }
 
     function ShanghaiComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r109 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r108 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -5866,11 +5908,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r109);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r108);
 
-          var ctx_r108 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r107 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r108.settings.randomize();
+          return ctx_r107.settings.randomize();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Randomize");
@@ -5880,11 +5922,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_Template_button_click_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r109);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r108);
 
-          var ctx_r110 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r109 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r110.settings.toggleNoScore();
+          return ctx_r109.settings.toggleNoScore();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "No score ");
@@ -5894,11 +5936,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_Template_button_click_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r109);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r108);
 
-          var ctx_r111 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r110 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r111.settings.toggleHalveIt();
+          return ctx_r110.settings.toggleHalveIt();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Halve It ");
@@ -5909,21 +5951,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r99 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r98 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Shanghai / Halve It")("playground", ctx_r99.playground)("rules", " Players start by throwing at the number 1 on the board. The object is to hit a single," + "treble and double (in any order). This first player to hit a single, treble and double wins. If no" + "player achieves this on number 1, the play moves to number 2 and so on until someone wins.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Shanghai / Halve It")("playground", ctx_r98.playground)("rules", " Players start by throwing at the number 1 on the board. The object is to hit a single," + "treble and double (in any order). This first player to hit a single, treble and double wins. If no" + "player achieves this on number 1, the play moves to number 2 and so on until someone wins.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r99.settings.getNumbers());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r98.settings.getNumbers());
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r99.settings.noScore ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r98.settings.noScore ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r99.settings.halveIt ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r98.settings.halveIt ? "primary" : "");
       }
     }
 
@@ -5933,9 +5975,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r99 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r100.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r99.playground);
       }
     }
 
@@ -5955,21 +5997,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var field_r116 = ctx.$implicit;
+        var field_r115 = ctx.$implicit;
 
-        var player_r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r112 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r115 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r114 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r115.isActiveField(field_r116) ? "active" : "", " ", ctx_r115.isFieldDoneForPlayer(field_r116) ? "" : "highlighted", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r114.isActiveField(field_r115) ? "active" : "", " ", ctx_r114.isFieldDoneForPlayer(field_r115) ? "" : "highlighted", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r116 === 20 ? "B" : field_r116 + 1, ": ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r115 === 20 ? "B" : field_r115 + 1, ": ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r115.getFieldValue(player_r113, field_r116));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r114.getFieldValue(player_r112, field_r115));
       }
     }
 
@@ -5991,20 +6033,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r113 = ctx.$implicit;
-        var i_r114 = ctx.index;
+        var player_r112 = ctx.$implicit;
+        var i_r113 = ctx.index;
 
-        var ctx_r112 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r111 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r114 === ctx_r112.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r113 === ctx_r111.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r113);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r112);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r112.settings.fields);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r111.settings.fields);
       }
     }
 
@@ -6018,11 +6060,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r101.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r100.game.players);
       }
     }
 
@@ -6032,9 +6074,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r102 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r102.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r101.playground);
       }
     }
 
@@ -6049,7 +6091,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, ShanghaiComponent);
 
         _this36 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
-        _this36.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_2__["Settings"]();
+        _this36.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
         return _this36;
       }
 
@@ -6082,7 +6124,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             for (var i = 0; i < 3; i++) {
               var t = player.throwsHistory[player.throwsHistory.length - i - 1];
 
-              if (t.score === _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex)) {
+              if (t.score === _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex)) {
                 multi *= t.multi + 1;
               }
             }
@@ -6116,7 +6158,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (fieldCount === 0) {
             return '○○○';
           } else {
-            var str = '' + this.getPlayerState(player).getFieldScore(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"].getFieldValueFromIndex(fieldIndex);
+            var str = '' + this.getPlayerState(player).getFieldScore(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
 
             for (var i = 0; i < fieldCount; i++) {
               str += '●';
@@ -6133,7 +6175,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "customReset",
         value: function customReset() {
           this.game.players.forEach(function (player) {
-            return player.state = new _models_state_model__WEBPACK_IMPORTED_MODULE_1__["ShanghaiState"]();
+            return player.state = new _models_shanghai_state_model__WEBPACK_IMPORTED_MODULE_4__["ShanghaiState"]();
           });
         }
       }, {
@@ -6195,7 +6237,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return ShanghaiComponent;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_3__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     ShanghaiComponent.ɵfac = function ShanghaiComponent_Factory(t) {
       return new (t || ShanghaiComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
@@ -6248,7 +6290,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_13__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_14__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_15__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -6258,7 +6300,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './shanghai.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_4__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{
@@ -6587,6 +6629,92 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }]
         }];
       }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/shared/components/game-rules/game-rules.component.ts":
+  /*!**********************************************************************!*\
+    !*** ./src/app/shared/components/game-rules/game-rules.component.ts ***!
+    \**********************************************************************/
+
+  /*! exports provided: GameRulesComponent */
+
+  /***/
+  function srcAppSharedComponentsGameRulesGameRulesComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "GameRulesComponent", function () {
+      return GameRulesComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+    var _c0 = ["*"];
+
+    var GameRulesComponent = function GameRulesComponent() {
+      _classCallCheck(this, GameRulesComponent);
+    };
+
+    GameRulesComponent.ɵfac = function GameRulesComponent_Factory(t) {
+      return new (t || GameRulesComponent)();
+    };
+
+    GameRulesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: GameRulesComponent,
+      selectors: [["app-game-rules"]],
+      ngContentSelectors: _c0,
+      decls: 6,
+      vars: 0,
+      consts: [["id", "rules"]],
+      template: function GameRulesComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "details");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "summary");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Click here for rules");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+      },
+      styles: ["#rules[_ngcontent-%COMP%] {\n  margin: 10px 0;\n}\n#rules[_ngcontent-%COMP%]   details[_ngcontent-%COMP%] {\n  -webkit-transition: all 400ms ease-in-out;\n  transition: all 400ms ease-in-out;\n  overflow: hidden;\n  padding: 5px;\n}\n#rules[_ngcontent-%COMP%]   details[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:visited, #rules[_ngcontent-%COMP%]   details[_ngcontent-%COMP%]   [_ngcontent-%COMP%]:focus {\n  border: none;\n  outline: none;\n}\n#rules[_ngcontent-%COMP%]   details[_ngcontent-%COMP%]   [_ngcontent-%COMP%]::-webkit-details-marker {\n  display: none;\n}\n#rules[_ngcontent-%COMP%]   details[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  white-space: pre-line;\n  word-break: break-word;\n  padding: 12px;\n}\n#rules[_ngcontent-%COMP%]   details[_ngcontent-%COMP%]:not([open]) {\n  height: 1.25em;\n}\n#rules[_ngcontent-%COMP%]   details[open][_ngcontent-%COMP%] {\n  height: 11em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvZ2FtZS1ydWxlcy9EOlxcRGV2ZWxvcG1lbnRcXGRhcnRzLXNjb3JlYm9hcmQtbmcvc3JjXFxhcHBcXHNoYXJlZFxcY29tcG9uZW50c1xcZ2FtZS1ydWxlc1xcZ2FtZS1ydWxlcy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvZ2FtZS1ydWxlcy9nYW1lLXJ1bGVzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtBQ0NGO0FEQ0U7RUFDRSx5Q0FBQTtFQUFBLGlDQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0FDQ0o7QURDSTtFQUNFLFlBQUE7RUFDQSxhQUFBO0FDQ047QURFSTtFQUNFLGFBQUE7QUNBTjtBREdJO0VBQ0UscUJBQUE7RUFDQSxzQkFBQTtFQUNBLGFBQUE7QUNETjtBREtFO0VBQ0UsY0FBQTtBQ0hKO0FETUU7RUFDRSxZQUFBO0FDSkoiLCJmaWxlIjoic3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9nYW1lLXJ1bGVzL2dhbWUtcnVsZXMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjcnVsZXMge1xyXG4gIG1hcmdpbjogMTBweCAwO1xyXG5cclxuICBkZXRhaWxzIHtcclxuICAgIHRyYW5zaXRpb246IGFsbCA0MDBtcyBlYXNlLWluLW91dDtcclxuICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcblxyXG4gICAgOnZpc2l0ZWQsIDpmb2N1cyB7XHJcbiAgICAgIGJvcmRlcjogbm9uZTtcclxuICAgICAgb3V0bGluZTogbm9uZTtcclxuICAgIH1cclxuXHJcbiAgICA6Oi13ZWJraXQtZGV0YWlscy1tYXJrZXIge1xyXG4gICAgICBkaXNwbGF5Om5vbmU7XHJcbiAgICB9XHJcblxyXG4gICAgcCB7XHJcbiAgICAgIHdoaXRlLXNwYWNlOiBwcmUtbGluZTtcclxuICAgICAgd29yZC1icmVhazogYnJlYWstd29yZDtcclxuICAgICAgcGFkZGluZzogMTJweDtcclxuICAgIH1cclxuICB9XHJcblxyXG4gIGRldGFpbHM6bm90KFtvcGVuXSkge1xyXG4gICAgaGVpZ2h0OiAxLjI1ZW07XHJcbiAgfVxyXG5cclxuICBkZXRhaWxzW29wZW5dIHtcclxuICAgIGhlaWdodDogMTFlbTtcclxuICB9XHJcbn1cclxuIiwiI3J1bGVzIHtcbiAgbWFyZ2luOiAxMHB4IDA7XG59XG4jcnVsZXMgZGV0YWlscyB7XG4gIHRyYW5zaXRpb246IGFsbCA0MDBtcyBlYXNlLWluLW91dDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogNXB4O1xufVxuI3J1bGVzIGRldGFpbHMgOnZpc2l0ZWQsICNydWxlcyBkZXRhaWxzIDpmb2N1cyB7XG4gIGJvcmRlcjogbm9uZTtcbiAgb3V0bGluZTogbm9uZTtcbn1cbiNydWxlcyBkZXRhaWxzIDo6LXdlYmtpdC1kZXRhaWxzLW1hcmtlciB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG4jcnVsZXMgZGV0YWlscyBwIHtcbiAgd2hpdGUtc3BhY2U6IHByZS1saW5lO1xuICB3b3JkLWJyZWFrOiBicmVhay13b3JkO1xuICBwYWRkaW5nOiAxMnB4O1xufVxuI3J1bGVzIGRldGFpbHM6bm90KFtvcGVuXSkge1xuICBoZWlnaHQ6IDEuMjVlbTtcbn1cbiNydWxlcyBkZXRhaWxzW29wZW5dIHtcbiAgaGVpZ2h0OiAxMWVtO1xufSJdfQ== */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GameRulesComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-game-rules',
+          templateUrl: './game-rules.component.html',
+          styleUrls: ['./game-rules.component.scss']
+        }]
+      }], null, null);
     })();
     /***/
 
@@ -7216,11 +7344,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r32.player.score);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r31.player.score);
       }
     }
 
@@ -7706,9 +7834,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/common */
-    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    var _components_game_rules_game_rules_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ~components/game-rules/game-rules.component */
+    "./src/app/shared/components/game-rules/game-rules.component.ts");
     /* harmony import */
 
 
@@ -7727,38 +7855,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_material_button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
-
-    function SettingsComponent_div_3_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "details");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "summary");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Click here for rules");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-
-      if (rf & 2) {
-        var ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r28.rules);
-      }
-    }
 
     var _c0 = ["*"];
 
@@ -7779,9 +7875,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         rules: "rules"
       },
       ngContentSelectors: _c0,
-      decls: 14,
+      decls: 15,
       vars: 3,
-      consts: [[1, "settings"], ["id", "rules", 4, "ngIf"], [3, "playground"], ["mat-raised-button", "", 1, "button", "big", 3, "click"], ["id", "rules"]],
+      consts: [[1, "settings"], [3, "playground"], ["mat-raised-button", "", 1, "button", "big", 3, "click"]],
       template: function SettingsComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
@@ -7794,39 +7890,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, SettingsComponent_div_3_Template, 6, 1, "div", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "app-game-rules");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h2");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Players");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "app-player-settings", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h2");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "mat-divider");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Players");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "mat-divider");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "app-player-settings", 1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "mat-divider");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SettingsComponent_Template_button_click_10_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "mat-divider");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SettingsComponent_Template_button_click_11_listener($event) {
             return ctx.playground.newGame();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Start");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Start");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SettingsComponent_Template_button_click_12_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SettingsComponent_Template_button_click_13_listener($event) {
             return ctx.playground.quit();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Cancel");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Cancel");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -7838,17 +7938,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx.title, " Settings");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.rules);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.rules);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx.playground);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_2__["PlayerSettingsComponent"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_3__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_4__["MatButton"]],
-      styles: [".settings {\n  padding: 2vh 2vw;\n}\n.settings #rules {\n  margin: 10px 0;\n}\n.settings #rules details {\n  -webkit-transition: all 400ms ease-in-out;\n  transition: all 400ms ease-in-out;\n  overflow: hidden;\n}\n.settings #rules details :visited, .settings #rules details :focus {\n  border: none;\n  outline: none;\n}\n.settings #rules details ::-webkit-details-marker {\n  display: none;\n}\n.settings #rules details p {\n  white-space: pre-line;\n  word-break: break-word;\n  padding: 10px;\n}\n.settings #rules details:not([open]) {\n  height: 1.25em;\n}\n.settings #rules details[open] {\n  height: 11em;\n}\n.settings h2 {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.settings mat-divider {\n  clear: both;\n  margin: 5px 0;\n}\n.settings .field-set {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.settings .button, .settings mat-form-field {\n  margin: 3px;\n  height: 45px;\n}\n.settings .button.big, .settings mat-form-field.big {\n  width: 30.4vw;\n}\n.settings .button.medium, .settings mat-form-field.medium {\n  width: 20.2vw;\n}\n.settings .button.shortmedium, .settings mat-form-field.shortmedium {\n  width: 15vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2V0dGluZ3MvRDpcXERldmVsb3BtZW50XFxkYXJ0cy1zY29yZWJvYXJkLW5nL3NyY1xcYXBwXFxzaGFyZWRcXGNvbXBvbmVudHNcXHNldHRpbmdzXFxzZXR0aW5ncy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2V0dGluZ3Mvc2V0dGluZ3MuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBQTtBQ0NGO0FEQ0U7RUFDRSxjQUFBO0FDQ0o7QURDSTtFQUNFLHlDQUFBO0VBQUEsaUNBQUE7RUFDQSxnQkFBQTtBQ0NOO0FEQ007RUFDRSxZQUFBO0VBQ0EsYUFBQTtBQ0NSO0FERU07RUFDRSxhQUFBO0FDQVI7QURHTTtFQUNFLHFCQUFBO0VBQ0Esc0JBQUE7RUFDQSxhQUFBO0FDRFI7QURLSTtFQUNFLGNBQUE7QUNITjtBRE1JO0VBQ0UsWUFBQTtBQ0pOO0FEUUU7RUFDRSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDTko7QURTRTtFQUNFLFdBQUE7RUFDQSxhQUFBO0FDUEo7QURVRTtFQUNFLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsOEJBQUE7QUNSSjtBRFdFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7QUNUSjtBRFdJO0VBQ0UsYUFBQTtBQ1ROO0FEWUk7RUFDRSxhQUFBO0FDVk47QURhSTtFQUNFLFdBQUE7QUNYTiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL3NldHRpbmdzL3NldHRpbmdzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNldHRpbmdzIHtcclxuICBwYWRkaW5nOiAydmggMnZ3O1xyXG5cclxuICAjcnVsZXMge1xyXG4gICAgbWFyZ2luOiAxMHB4IDA7XHJcblxyXG4gICAgZGV0YWlscyB7XHJcbiAgICAgIHRyYW5zaXRpb246IGFsbCA0MDBtcyBlYXNlLWluLW91dDtcclxuICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuXHJcbiAgICAgIDp2aXNpdGVkLCA6Zm9jdXMge1xyXG4gICAgICAgIGJvcmRlcjogbm9uZTtcclxuICAgICAgICBvdXRsaW5lOiBub25lO1xyXG4gICAgICB9XHJcblxyXG4gICAgICA6Oi13ZWJraXQtZGV0YWlscy1tYXJrZXIge1xyXG4gICAgICAgIGRpc3BsYXk6bm9uZTtcclxuICAgICAgfVxyXG5cclxuICAgICAgcCB7XHJcbiAgICAgICAgd2hpdGUtc3BhY2U6IHByZS1saW5lO1xyXG4gICAgICAgIHdvcmQtYnJlYWs6IGJyZWFrLXdvcmQ7XHJcbiAgICAgICAgcGFkZGluZzogMTBweDtcclxuICAgICAgfVxyXG4gICAgfVxyXG5cclxuICAgIGRldGFpbHM6bm90KFtvcGVuXSkge1xyXG4gICAgICBoZWlnaHQ6IDEuMjVlbTtcclxuICAgIH1cclxuXHJcbiAgICBkZXRhaWxzW29wZW5dIHtcclxuICAgICAgaGVpZ2h0OiAxMWVtO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgaDIge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICBtYXQtZGl2aWRlciB7XHJcbiAgICBjbGVhcjogYm90aDtcclxuICAgIG1hcmdpbjogNXB4IDA7XHJcbiAgfVxyXG5cclxuICAuZmllbGQtc2V0IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XHJcbiAgfVxyXG5cclxuICAuYnV0dG9uLCBtYXQtZm9ybS1maWVsZCB7XHJcbiAgICBtYXJnaW46IDNweDtcclxuICAgIGhlaWdodDogNDVweDtcclxuXHJcbiAgICAmLmJpZyB7XHJcbiAgICAgIHdpZHRoOiAzMC40dnc7XHJcbiAgICB9XHJcblxyXG4gICAgJi5tZWRpdW0ge1xyXG4gICAgICB3aWR0aDogMjAuMnZ3O1xyXG4gICAgfVxyXG5cclxuICAgICYuc2hvcnRtZWRpdW0ge1xyXG4gICAgICB3aWR0aDogMTV2dztcclxuICAgIH1cclxuICB9XHJcbn1cclxuIiwiLnNldHRpbmdzIHtcbiAgcGFkZGluZzogMnZoIDJ2dztcbn1cbi5zZXR0aW5ncyAjcnVsZXMge1xuICBtYXJnaW46IDEwcHggMDtcbn1cbi5zZXR0aW5ncyAjcnVsZXMgZGV0YWlscyB7XG4gIHRyYW5zaXRpb246IGFsbCA0MDBtcyBlYXNlLWluLW91dDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbi5zZXR0aW5ncyAjcnVsZXMgZGV0YWlscyA6dmlzaXRlZCwgLnNldHRpbmdzICNydWxlcyBkZXRhaWxzIDpmb2N1cyB7XG4gIGJvcmRlcjogbm9uZTtcbiAgb3V0bGluZTogbm9uZTtcbn1cbi5zZXR0aW5ncyAjcnVsZXMgZGV0YWlscyA6Oi13ZWJraXQtZGV0YWlscy1tYXJrZXIge1xuICBkaXNwbGF5OiBub25lO1xufVxuLnNldHRpbmdzICNydWxlcyBkZXRhaWxzIHAge1xuICB3aGl0ZS1zcGFjZTogcHJlLWxpbmU7XG4gIHdvcmQtYnJlYWs6IGJyZWFrLXdvcmQ7XG4gIHBhZGRpbmc6IDEwcHg7XG59XG4uc2V0dGluZ3MgI3J1bGVzIGRldGFpbHM6bm90KFtvcGVuXSkge1xuICBoZWlnaHQ6IDEuMjVlbTtcbn1cbi5zZXR0aW5ncyAjcnVsZXMgZGV0YWlsc1tvcGVuXSB7XG4gIGhlaWdodDogMTFlbTtcbn1cbi5zZXR0aW5ncyBoMiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4uc2V0dGluZ3MgbWF0LWRpdmlkZXIge1xuICBjbGVhcjogYm90aDtcbiAgbWFyZ2luOiA1cHggMDtcbn1cbi5zZXR0aW5ncyAuZmllbGQtc2V0IHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuLnNldHRpbmdzIC5idXR0b24sIC5zZXR0aW5ncyBtYXQtZm9ybS1maWVsZCB7XG4gIG1hcmdpbjogM3B4O1xuICBoZWlnaHQ6IDQ1cHg7XG59XG4uc2V0dGluZ3MgLmJ1dHRvbi5iaWcsIC5zZXR0aW5ncyBtYXQtZm9ybS1maWVsZC5iaWcge1xuICB3aWR0aDogMzAuNHZ3O1xufVxuLnNldHRpbmdzIC5idXR0b24ubWVkaXVtLCAuc2V0dGluZ3MgbWF0LWZvcm0tZmllbGQubWVkaXVtIHtcbiAgd2lkdGg6IDIwLjJ2dztcbn1cbi5zZXR0aW5ncyAuYnV0dG9uLnNob3J0bWVkaXVtLCAuc2V0dGluZ3MgbWF0LWZvcm0tZmllbGQuc2hvcnRtZWRpdW0ge1xuICB3aWR0aDogMTV2dztcbn0iXX0= */"],
+      directives: [_components_game_rules_game_rules_component__WEBPACK_IMPORTED_MODULE_1__["GameRulesComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_2__["PlayerSettingsComponent"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_3__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_4__["MatButton"]],
+      styles: [".settings {\n  padding: 2vh 2vw;\n}\n.settings h2 {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.settings mat-divider {\n  clear: both;\n  margin: 5px 0;\n}\n.settings .field-set {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.settings .button, .settings mat-form-field {\n  margin: 3px;\n  height: 45px;\n}\n.settings .button.big, .settings mat-form-field.big {\n  width: 30.4vw;\n}\n.settings .button.medium, .settings mat-form-field.medium {\n  width: 20.2vw;\n}\n.settings .button.shortmedium, .settings mat-form-field.shortmedium {\n  width: 15vw;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2V0dGluZ3MvRDpcXERldmVsb3BtZW50XFxkYXJ0cy1zY29yZWJvYXJkLW5nL3NyY1xcYXBwXFxzaGFyZWRcXGNvbXBvbmVudHNcXHNldHRpbmdzXFxzZXR0aW5ncy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvc2V0dGluZ3Mvc2V0dGluZ3MuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxnQkFBQTtBQ0NGO0FEQ0U7RUFDRSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0FDQ0o7QURFRTtFQUNFLFdBQUE7RUFDQSxhQUFBO0FDQUo7QURHRTtFQUNFLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsOEJBQUE7QUNESjtBRElFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7QUNGSjtBRElJO0VBQ0UsYUFBQTtBQ0ZOO0FES0k7RUFDRSxhQUFBO0FDSE47QURNSTtFQUNFLFdBQUE7QUNKTiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL3NldHRpbmdzL3NldHRpbmdzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNldHRpbmdzIHtcclxuICBwYWRkaW5nOiAydmggMnZ3O1xyXG5cclxuICBoMiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICB9XHJcblxyXG4gIG1hdC1kaXZpZGVyIHtcclxuICAgIGNsZWFyOiBib3RoO1xyXG4gICAgbWFyZ2luOiA1cHggMDtcclxuICB9XHJcblxyXG4gIC5maWVsZC1zZXQge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcclxuICB9XHJcblxyXG4gIC5idXR0b24sIG1hdC1mb3JtLWZpZWxkIHtcclxuICAgIG1hcmdpbjogM3B4O1xyXG4gICAgaGVpZ2h0OiA0NXB4O1xyXG5cclxuICAgICYuYmlnIHtcclxuICAgICAgd2lkdGg6IDMwLjR2dztcclxuICAgIH1cclxuXHJcbiAgICAmLm1lZGl1bSB7XHJcbiAgICAgIHdpZHRoOiAyMC4ydnc7XHJcbiAgICB9XHJcblxyXG4gICAgJi5zaG9ydG1lZGl1bSB7XHJcbiAgICAgIHdpZHRoOiAxNXZ3O1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG4iLCIuc2V0dGluZ3Mge1xuICBwYWRkaW5nOiAydmggMnZ3O1xufVxuLnNldHRpbmdzIGgyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cbi5zZXR0aW5ncyBtYXQtZGl2aWRlciB7XG4gIGNsZWFyOiBib3RoO1xuICBtYXJnaW46IDVweCAwO1xufVxuLnNldHRpbmdzIC5maWVsZC1zZXQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59XG4uc2V0dGluZ3MgLmJ1dHRvbiwgLnNldHRpbmdzIG1hdC1mb3JtLWZpZWxkIHtcbiAgbWFyZ2luOiAzcHg7XG4gIGhlaWdodDogNDVweDtcbn1cbi5zZXR0aW5ncyAuYnV0dG9uLmJpZywgLnNldHRpbmdzIG1hdC1mb3JtLWZpZWxkLmJpZyB7XG4gIHdpZHRoOiAzMC40dnc7XG59XG4uc2V0dGluZ3MgLmJ1dHRvbi5tZWRpdW0sIC5zZXR0aW5ncyBtYXQtZm9ybS1maWVsZC5tZWRpdW0ge1xuICB3aWR0aDogMjAuMnZ3O1xufVxuLnNldHRpbmdzIC5idXR0b24uc2hvcnRtZWRpdW0sIC5zZXR0aW5ncyBtYXQtZm9ybS1maWVsZC5zaG9ydG1lZGl1bSB7XG4gIHdpZHRoOiAxNXZ3O1xufSJdfQ== */"],
       encapsulation: 2
     });
     /*@__PURE__*/
@@ -8950,8 +9050,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
+    /* harmony import */
 
-    var components = [_components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_6__["NumberPlateComponent"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_5__["GameToolbarComponent"], _components_dialog_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DialogComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_7__["PlayerSettingsComponent"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_8__["SettingsComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__["PlayerScoreComponent"]];
+
+    var _components_game_rules_game_rules_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~components/game-rules/game-rules.component */
+    "./src/app/shared/components/game-rules/game-rules.component.ts");
+
+    var components = [_components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_6__["NumberPlateComponent"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_5__["GameToolbarComponent"], _components_game_rules_game_rules_component__WEBPACK_IMPORTED_MODULE_10__["GameRulesComponent"], _components_dialog_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DialogComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_7__["PlayerSettingsComponent"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_8__["SettingsComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__["PlayerScoreComponent"]];
 
     var SharedModule = function SharedModule() {
       _classCallCheck(this, SharedModule);
@@ -8969,9 +9075,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](SharedModule, {
-        declarations: [_components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_6__["NumberPlateComponent"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_5__["GameToolbarComponent"], _components_dialog_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DialogComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_7__["PlayerSettingsComponent"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_8__["SettingsComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__["PlayerScoreComponent"]],
+        declarations: [_components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_6__["NumberPlateComponent"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_5__["GameToolbarComponent"], _components_game_rules_game_rules_component__WEBPACK_IMPORTED_MODULE_10__["GameRulesComponent"], _components_dialog_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DialogComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_7__["PlayerSettingsComponent"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_8__["SettingsComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__["PlayerScoreComponent"]],
         imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"]],
-        exports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_6__["NumberPlateComponent"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_5__["GameToolbarComponent"], _components_dialog_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DialogComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_7__["PlayerSettingsComponent"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_8__["SettingsComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__["PlayerScoreComponent"]]
+        exports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormsModule"], _material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_6__["NumberPlateComponent"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_5__["GameToolbarComponent"], _components_game_rules_game_rules_component__WEBPACK_IMPORTED_MODULE_10__["GameRulesComponent"], _components_dialog_dialog_component__WEBPACK_IMPORTED_MODULE_4__["DialogComponent"], _components_player_settings_player_settings_component__WEBPACK_IMPORTED_MODULE_7__["PlayerSettingsComponent"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_8__["SettingsComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_9__["PlayerScoreComponent"]]
       });
     })();
     /*@__PURE__*/
@@ -8993,37 +9099,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/x01/models/settings.model.ts":
-  /*!**********************************************!*\
-    !*** ./src/app/x01/models/settings.model.ts ***!
-    \**********************************************/
+  "./src/app/x01/models/x01.settings.model.ts":
+  /*!**************************************************!*\
+    !*** ./src/app/x01/models/x01.settings.model.ts ***!
+    \**************************************************/
 
-  /*! exports provided: Settings */
+  /*! exports provided: X01Settings */
 
   /***/
-  function srcAppX01ModelsSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppX01ModelsX01SettingsModelTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "Settings", function () {
-      return Settings;
+    __webpack_require__.d(__webpack_exports__, "X01Settings", function () {
+      return X01Settings;
     });
 
-    var Settings =
+    var X01Settings =
     /*#__PURE__*/
     function () {
-      function Settings() {
-        _classCallCheck(this, Settings);
+      function X01Settings() {
+        _classCallCheck(this, X01Settings);
 
         this.startValue = 301;
         this.start = 1;
         this.checkout = 1;
       }
 
-      _createClass(Settings, [{
+      _createClass(X01Settings, [{
         key: "isNormalStart",
         value: function isNormalStart() {
           return this.start === 1;
@@ -9075,7 +9181,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }]);
 
-      return Settings;
+      return X01Settings;
     }();
     /***/
 
@@ -9109,21 +9215,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _models_settings_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! ./models/settings.model */
-    "./src/app/x01/models/settings.model.ts");
-    /* harmony import */
-
-
-    var _models_playground_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ~models/playground.model */
     "./src/app/shared/models/playground.model.ts");
     /* harmony import */
 
 
-    var _route_animation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ../route-animation */
     "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/x01.settings.model */
+    "./src/app/x01/models/x01.settings.model.ts");
     /* harmony import */
 
 
@@ -9193,7 +9299,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function X01Component_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -9206,11 +9312,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_3_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r37.settings.setStartValue(101);
+          return ctx_r36.settings.setStartValue(101);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "101 ");
@@ -9220,11 +9326,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r39.settings.setStartValue(201);
+          return ctx_r38.settings.setStartValue(201);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "201 ");
@@ -9234,11 +9340,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r40.settings.setStartValue(301);
+          return ctx_r39.settings.setStartValue(301);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "301 ");
@@ -9248,11 +9354,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r41.settings.setStartValue(501);
+          return ctx_r40.settings.setStartValue(501);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "501 ");
@@ -9262,11 +9368,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_11_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r42.settings.setStartValue(701);
+          return ctx_r41.settings.setStartValue(701);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "701 ");
@@ -9276,11 +9382,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_13_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r43.settings.setStartValue(901);
+          return ctx_r42.settings.setStartValue(901);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "901 ");
@@ -9298,11 +9404,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_18_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r44.settings.setStart(1);
+          return ctx_r43.settings.setStart(1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Single ");
@@ -9312,11 +9418,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_20_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r45.settings.setStart(2);
+          return ctx_r44.settings.setStart(2);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Double ");
@@ -9326,11 +9432,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_22_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r46.settings.setStart(3);
+          return ctx_r45.settings.setStart(3);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Triple ");
@@ -9348,11 +9454,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_27_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r47.settings.setCheckout(1);
+          return ctx_r46.settings.setCheckout(1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Single ");
@@ -9362,11 +9468,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_29_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r48.settings.setCheckout(2);
+          return ctx_r47.settings.setCheckout(2);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Double ");
@@ -9376,11 +9482,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_31_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r49.settings.setCheckout(3);
+          return ctx_r48.settings.setCheckout(3);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Triple ");
@@ -9390,11 +9496,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function X01Component_app_settings_1_Template_button_click_33_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37);
 
-          var ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r50.settings.setCheckout(4);
+          return ctx_r49.settings.setCheckout(4);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "None ");
@@ -9405,61 +9511,61 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "X01")("playground", ctx_r33.playground)("rules", "All players start with 301/501 points and attempt to reach zero. If a player scores more " + "than the total required to reach zero, the player \u201Cbusts\u201D and the score returns to the score that " + "was existing at the start of the turn.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "X01")("playground", ctx_r32.playground)("rules", "All players start with 301/501 points and attempt to reach zero. If a player scores more " + "than the total required to reach zero, the player \u201Cbusts\u201D and the score returns to the score that " + "was existing at the start of the turn.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.startValue === 101 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.startValue === 101 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.startValue === 201 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.startValue === 201 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.startValue === 301 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.startValue === 301 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.startValue === 501 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.startValue === 501 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.startValue === 701 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.startValue === 701 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.startValue === 901 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.startValue === 901 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.start === 1 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.start === 1 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.start === 2 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.start === 2 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.start === 3 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.start === 3 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.checkout === 1 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.checkout === 1 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.checkout === 2 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.checkout === 2 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.checkout === 3 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.checkout === 3 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r33.settings.checkout === 4 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r32.settings.checkout === 4 ? "primary" : "");
       }
     }
 
@@ -9469,9 +9575,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r34.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r33.playground);
       }
     }
 
@@ -9485,16 +9591,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r52 = ctx.$implicit;
-        var i_r53 = ctx.index;
+        var player_r51 = ctx.$implicit;
+        var i_r52 = ctx.index;
 
-        var ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r53 === ctx_r51.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r52 === ctx_r50.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r52)("hasContent", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r51)("hasContent", false);
       }
     }
 
@@ -9508,11 +9614,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r35.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r34.game.players);
       }
     }
 
@@ -9522,9 +9628,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r36.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r35.playground);
       }
     }
 
@@ -9539,7 +9645,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, X01Component);
 
         _this39 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this39.settings = new _models_settings_model__WEBPACK_IMPORTED_MODULE_1__["Settings"]();
+        _this39.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
         return _this39;
       }
 
@@ -9586,7 +9692,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }]);
 
       return X01Component;
-    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_2__["Playground"]);
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     X01Component.ɵfac = function X01Component_Factory(t) {
       return new (t || X01Component)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]));
@@ -9639,7 +9745,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_9__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_10__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__["MatDivider"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_12__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_13__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_14__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
-        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
       }
     });
     /*@__PURE__*/
@@ -9649,7 +9755,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           templateUrl: './x01.component.html',
-          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_3__["slideInAnimation"]]
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
         }]
       }], function () {
         return [{

@@ -1,4 +1,4 @@
-export class Settings {
+export class X01Settings {
 
   startValue = 301;
   start = 1;

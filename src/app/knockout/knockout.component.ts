@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {Settings} from './models/settings.model';
 import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
@@ -7,7 +6,8 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
-import {KnockoutState} from './models/state.model';
+import {KnockoutSettings} from './models/knockout.settings.model';
+import {KnockoutState} from './models/knockout.state.model';
 
 @Component({
   templateUrl: './knockout.component.html',
@@ -15,12 +15,12 @@ import {KnockoutState} from './models/state.model';
 })
 export class KnockoutComponent extends Playground<KnockoutState> {
 
-  settings: Settings;
+  settings: KnockoutSettings;
   score = 0;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService, 2);
-    this.settings = new Settings();
+    this.settings = new KnockoutSettings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {

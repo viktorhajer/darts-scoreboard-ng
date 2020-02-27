@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import {CricketState} from './models/state.model';
-import {Settings} from './models/settings.model';
 import {Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
@@ -8,6 +6,8 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
+import {CricketSettings} from './models/cricet.settings.model';
+import {CricketState} from './models/cricet.state.model';
 
 @Component({
   templateUrl: './cricket.component.html',
@@ -15,11 +15,11 @@ import {ApplicationStateService} from '~services/application-state.service';
 })
 export class CricketComponent extends Playground<CricketState> {
 
-  settings: Settings;
+  settings: CricketSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService);
-    this.settings = new Settings();
+    this.settings = new CricketSettings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
@@ -32,7 +32,7 @@ export class CricketComponent extends Playground<CricketState> {
         if (this.isFieldClosedForOthers(player, fieldIndex) && (playerFieldCount + this.multiplier) > 3) {
           this.getPlayerState(player).setFieldCount(fieldIndex, 3);
         } else {
-          let multiplier = this.multiplier + 0;
+          let multiplier = this.multiplier;
           if (playerFieldCount < 3 && (playerFieldCount + this.multiplier) >= 3) {
             multiplier = (playerFieldCount + this.multiplier) % 3;
           }
@@ -117,10 +117,10 @@ export class CricketComponent extends Playground<CricketState> {
       const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
       const remaining = ''.padStart(3 - playerFieldCount, '●');
       return remaining + '\n' + this.game.players.filter(p => this.isFieldDoneForPlayer(p, fieldIndex))
-        .map(p => p.name.substr(0,1)).join(',').toUpperCase();
+        .map(p => p.name.substr(0, 1)).join(',').toUpperCase();
     } else if (this.isSecondaryField(fieldIndex)) {
       return this.game.players.filter(p => !this.isFieldDoneForPlayer(p, fieldIndex))
-        .map(p => p.name.substr(0,1)).join(',').toUpperCase();
+        .map(p => p.name.substr(0, 1)).join(',').toUpperCase();
     }
     return '';
   }
