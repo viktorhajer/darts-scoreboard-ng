@@ -566,7 +566,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AroundClockComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r89 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r88 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -579,11 +579,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_3_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r88 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r87 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r88.settings.toggleJump();
+          return ctx_r87.settings.toggleJump();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Enable Jump ");
@@ -593,11 +593,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r90 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r89 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r90.settings.togglePunishment();
+          return ctx_r89.settings.togglePunishment();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Punishment ");
@@ -607,11 +607,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r91 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r90 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r91.settings.toggleNineLives();
+          return ctx_r90.settings.toggleNineLives();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " Nine Lives ");
@@ -629,11 +629,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_12_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r92 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r91 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r92.settings.setStyle(0);
+          return ctx_r91.settings.setStyle(0);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Numerical Order ");
@@ -643,11 +643,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_14_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r93 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r92 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r93.settings.setStyle(1);
+          return ctx_r92.settings.setStyle(1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, " Clockwise ");
@@ -657,11 +657,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_16_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r94 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r93 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r94.settings.setStyle(2);
+          return ctx_r93.settings.setStyle(2);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " Anticlockwise ");
@@ -673,11 +673,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "button", 6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_app_settings_1_Template_button_click_19_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r89);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
 
-          var ctx_r95 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r94 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r95.settings.setStyle(3);
+          return ctx_r94.settings.setStyle(3);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, " Random ");
@@ -688,37 +688,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Around The Clock")("playground", ctx_r84.playground)("rules", "The object of this popular game is to be the first player to hit every number on the board " + "from 1-20. The numbers must be hit in order, and players alternate after three throws. The player " + "must hit each number in turn and cannot proceed until to the next number until the number is hit. " + "The winner is the player who hist all the numbers in order first.\n\nNine Lives: Each player gets three " + "lives. I do not know why the game is called 9 lives but you only get 3. Maybe it is because if you " + "miss with three darts you lose a life and 3 x 3 = 9");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Around The Clock")("playground", ctx_r83.playground)("rules", "The object of this popular game is to be the first player to hit every number on the board " + "from 1-20. The numbers must be hit in order, and players alternate after three throws. The player " + "must hit each number in turn and cannot proceed until to the next number until the number is hit. " + "The winner is the player who hist all the numbers in order first.\n\nNine Lives: Each player gets three " + "lives. I do not know why the game is called 9 lives but you only get 3. Maybe it is because if you " + "miss with three darts you lose a life and 3 x 3 = 9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.jump ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.jump ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.punishment ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.punishment ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.nineLives ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.nineLives ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.style == 0 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.style == 0 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.style == 1 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.style == 1 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.style == 2 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.style == 2 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r84.settings.style == 3 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r83.settings.style == 3 ? "primary" : "");
       }
     }
 
@@ -728,9 +728,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r85.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r84.playground);
       }
     }
 
@@ -754,13 +754,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r97 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r99 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r98 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r99.getPlayerState(player_r97).life);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r98.getPlayerState(player_r96).life);
       }
     }
 
@@ -778,20 +778,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r97 = ctx.$implicit;
-        var i_r98 = ctx.index;
+        var player_r96 = ctx.$implicit;
+        var i_r97 = ctx.index;
 
-        var ctx_r96 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r95 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r98 === ctx_r96.game.actualPlayerIndex ? "highlighted" : "", "");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r97)("scoreDisplayed", false)("hasContent", ctx_r96.settings.nineLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r97 === ctx_r95.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r96.settings.nineLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r96)("scoreDisplayed", false)("hasContent", ctx_r95.settings.nineLives);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r95.settings.nineLives);
       }
     }
 
@@ -805,11 +805,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r86.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r85.game.players);
       }
     }
 
@@ -819,9 +819,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r87 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r86 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r87.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r86.playground);
       }
     }
 
@@ -1513,7 +1513,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.3");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.2");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -1969,7 +1969,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mousedown", function CricketComponent_ng_container_4_div_1_Template_div_mousedown_0_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CricketComponent_ng_container_4_div_1_Template_div_click_0_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r82);
 
           var player_r76 = ctx.$implicit;
@@ -1977,12 +1977,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
           return ctx_r81.changePlayerToDisplay(player_r76);
-        })("mouseup", function CricketComponent_ng_container_4_div_1_Template_div_mouseup_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r82);
-
-          var ctx_r83 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
-          return ctx_r83.changePlayerToDisplay(null);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "app-player-score", 13);
@@ -2203,7 +2197,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changePlayerToDisplay",
         value: function changePlayerToDisplay(player) {
+          var _this8 = this;
+
           this.playerToDisplay = player;
+          setTimeout(function () {
+            return _this8.playerToDisplay = null;
+          }, 1500);
         }
       }, {
         key: "getPlayerToDisplay",
@@ -2226,12 +2225,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForScoreGame",
         value: function getPlayerTotalForScoreGame(player) {
-          var _this8 = this;
+          var _this9 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            if (_this8.isFieldDoneForPlayer(player, fieldIndex)) {
-              total += (_this8.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
+            if (_this9.isFieldDoneForPlayer(player, fieldIndex)) {
+              total += (_this9.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -2239,22 +2238,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForPunishGame",
         value: function getPlayerTotalForPunishGame(player) {
-          var _this9 = this;
+          var _this10 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            total += _this9.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
+            total += _this10.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
       }, {
         key: "punishPlayers",
         value: function punishPlayers(fieldIndex) {
-          var _this10 = this;
+          var _this11 = this;
 
           this.game.players.forEach(function (player) {
-            if (!_this10.isFieldDoneForPlayer(player, fieldIndex)) {
-              _this10.getPlayerState(player).setPunishCount(fieldIndex, _this10.getPlayerState(player).getPunishCount(fieldIndex) + _this10.multiplier);
+            if (!_this11.isFieldDoneForPlayer(player, fieldIndex)) {
+              _this11.getPlayerState(player).setPunishCount(fieldIndex, _this11.getPlayerState(player).getPunishCount(fieldIndex) + _this11.multiplier);
             }
           }, this);
         }
@@ -2275,23 +2274,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isFieldClosed",
         value: function isFieldClosed(fieldIndex) {
-          var _this11 = this;
+          var _this12 = this;
 
           var closed = true;
           this.game.players.forEach(function (player) {
-            closed = closed && _this11.isFieldDoneForPlayer(player, fieldIndex);
+            closed = closed && _this12.isFieldDoneForPlayer(player, fieldIndex);
           }, this);
           return closed;
         }
       }, {
         key: "isFieldClosedForOthers",
         value: function isFieldClosedForOthers(player, fieldIndex) {
-          var _this12 = this;
+          var _this13 = this;
 
           var closed = true;
           this.game.players.forEach(function (p) {
             if (p.id !== player.id) {
-              closed = closed && _this12.isFieldDoneForPlayer(p, fieldIndex);
+              closed = closed && _this13.isFieldDoneForPlayer(p, fieldIndex);
             }
           }, this);
           return closed;
@@ -2299,11 +2298,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isPlayerDone",
         value: function isPlayerDone(player) {
-          var _this13 = this;
+          var _this14 = this;
 
           var done = true;
           this.settings.fields.forEach(function (fieldIndex) {
-            done = done && _this13.isFieldDoneForPlayer(player, fieldIndex);
+            done = done && _this14.isFieldDoneForPlayer(player, fieldIndex);
           });
           return done;
         }
@@ -2322,7 +2321,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", "mousedown", "mouseup", 4, "ngFor", "ngForOf"], [3, "mousedown", "mouseup"], [3, "player"], [1, "field-set"], [3, "class", 4, "ngFor", "ngForOf"], [1, "small"]],
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", "click", 4, "ngFor", "ngForOf"], [3, "click"], [3, "player"], [1, "field-set"], [3, "class", 4, "ngFor", "ngForOf"], [1, "small"]],
       template: function CricketComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -2629,14 +2628,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setAllowedField",
         value: function setAllowedField(fields) {
-          var _this14 = this;
+          var _this15 = this;
 
           for (var i = 0; i < this.numbs.length; i++) {
             this.numbs[i] = false;
           }
 
           fields.forEach(function (f) {
-            return _this14.numbs[f - 1] = true;
+            return _this15.numbs[f - 1] = true;
           });
           this.initFields();
         }
@@ -2680,15 +2679,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(CricketState, _models_playground_st2);
 
       function CricketState() {
-        var _this15;
+        var _this16;
 
         _classCallCheck(this, CricketState);
 
-        _this15 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
-        _this15.fieldCount = [];
-        _this15.punishCount = [];
-        _this15.actFieldIndex = 0;
-        return _this15;
+        _this16 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
+        _this16.fieldCount = [];
+        _this16.punishCount = [];
+        _this16.actFieldIndex = 0;
+        return _this16;
       }
 
       _createClass(CricketState, [{
@@ -2854,18 +2853,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function FivesComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r143 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r142 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FivesComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r143);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r142);
 
-          var divider_r141 = ctx.$implicit;
+          var divider_r140 = ctx.$implicit;
 
-          var ctx_r142 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r141 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r142.settings.setDivider(divider_r141);
+          return ctx_r141.settings.setDivider(divider_r140);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -2874,32 +2873,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var divider_r141 = ctx.$implicit;
+        var divider_r140 = ctx.$implicit;
 
-        var ctx_r139 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r138 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r139.settings.divider === divider_r141 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r138.settings.divider === divider_r140 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](divider_r141);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](divider_r140);
       }
     }
 
     function FivesComponent_app_settings_1_button_7_Template(rf, ctx) {
       if (rf & 1) {
-        var _r146 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r145 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FivesComponent_app_settings_1_button_7_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r146);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r145);
 
-          var limit_r144 = ctx.$implicit;
+          var limit_r143 = ctx.$implicit;
 
-          var ctx_r145 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r144 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r145.settings.setLimit(limit_r144);
+          return ctx_r144.settings.setLimit(limit_r143);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -2908,15 +2907,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var limit_r144 = ctx.$implicit;
+        var limit_r143 = ctx.$implicit;
 
-        var ctx_r140 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r139 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r140.settings.limit === limit_r144 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r139.settings.limit === limit_r143 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](limit_r144);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](limit_r143);
       }
     }
 
@@ -2946,17 +2945,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r135 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r134 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Fives")("playground", ctx_r135.playground)("rules", "The idea of the game to throw three darts into the board, in turn, to score a number that " + "is divisible by five. The higher the number you score, the more points you can score. For every five " + "scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Fives")("playground", ctx_r134.playground)("rules", "The idea of the game to throw three darts into the board, in turn, to score a number that " + "is divisible by five. The higher the number you score, the more points you can score. For every five " + "scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r135.settings.getSelectableDividers());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r134.settings.getSelectableDividers());
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r135.settings.getSelectableLimits());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r134.settings.getSelectableLimits());
       }
     }
 
@@ -2966,9 +2965,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r136 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r135 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r136.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r135.playground);
       }
     }
 
@@ -2982,16 +2981,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r148 = ctx.$implicit;
-        var i_r149 = ctx.index;
+        var player_r147 = ctx.$implicit;
+        var i_r148 = ctx.index;
 
-        var ctx_r147 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r146 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r149 === ctx_r147.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r148 === ctx_r146.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r148)("hasContent", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r147)("hasContent", false);
       }
     }
 
@@ -3005,11 +3004,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r137 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r136 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r137.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r136.game.players);
       }
     }
 
@@ -3019,9 +3018,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r138 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r137 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r138.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r137.playground);
       }
     }
 
@@ -3031,22 +3030,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(FivesComponent, _models_playground_mo3);
 
       function FivesComponent(application, game, route, dialogService) {
-        var _this16;
+        var _this17;
 
         _classCallCheck(this, FivesComponent);
 
-        _this16 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
-        _this16.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
-        return _this16;
+        _this17 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
+        _this17.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
+        return _this17;
       }
 
       _createClass(FivesComponent, [{
         key: "customReset",
         value: function customReset() {
-          var _this17 = this;
+          var _this18 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this17.settings.limit;
+            return player.score = _this18.settings.limit;
           });
         }
       }, {
@@ -3416,18 +3415,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function HareAndHoundComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r157 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HareAndHoundComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r157);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r156);
 
-          var start_r155 = ctx.$implicit;
+          var start_r154 = ctx.$implicit;
 
-          var ctx_r156 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r155 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r156.settings.setHoundStart(start_r155 - 1);
+          return ctx_r155.settings.setHoundStart(start_r154 - 1);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -3436,15 +3435,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var start_r155 = ctx.$implicit;
+        var start_r154 = ctx.$implicit;
 
-        var ctx_r154 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r153 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r154.settings.houndStartIndex + 1 === start_r155 ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r153.settings.houndStartIndex + 1 === start_r154 ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](start_r155);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](start_r154);
       }
     }
 
@@ -3464,13 +3463,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r150 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r149 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Hare and Hound")("playground", ctx_r150.playground)("rules", "The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel " + "clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches " + "up with him. The hound usually starts from either 12 or 5, depending on the preference of the " + "players. The hound wins by overtaking the hare.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Hare and Hound")("playground", ctx_r149.playground)("rules", "The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel " + "clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches " + "up with him. The hound usually starts from either 12 or 5, depending on the preference of the " + "players. The hound wins by overtaking the hare.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r150.settings.getSelectableHoundStart());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r149.settings.getSelectableHoundStart());
       }
     }
 
@@ -3480,9 +3479,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r150 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r151.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r150.playground);
       }
     }
 
@@ -3496,16 +3495,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r159 = ctx.$implicit;
-        var i_r160 = ctx.index;
+        var player_r158 = ctx.$implicit;
+        var i_r159 = ctx.index;
 
-        var ctx_r158 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r157 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r160 === ctx_r158.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r159 === ctx_r157.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r159)("hasContent", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r158)("hasContent", false);
       }
     }
 
@@ -3519,11 +3518,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r152 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r152.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r151.game.players);
       }
     }
 
@@ -3533,9 +3532,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r153 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r152 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r153.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r152.playground);
       }
     }
 
@@ -3545,13 +3544,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(HareAndHoundComponent, _models_playground_mo4);
 
       function HareAndHoundComponent(application, game, route, dialogService) {
-        var _this18;
+        var _this19;
 
         _classCallCheck(this, HareAndHoundComponent);
 
-        _this18 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
-        _this18.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
-        return _this18;
+        _this19 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
+        _this19.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
+        return _this19;
       }
 
       _createClass(HareAndHoundComponent, [{
@@ -3572,10 +3571,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this19 = this;
+          var _this20 = this;
 
           player.setWin(this.isHare() && player.score <= 0 || !this.isHare() && player.score + this.settings.getHareStartIndex() <= this.game.players.find(function (p) {
-            return _this19.isHare(p);
+            return _this20.isHare(p);
           }).score);
 
           if (!player.win && this.game.isTheLastThrow()) {
@@ -3599,11 +3598,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this20 = this;
+          var _this21 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.some(function (p) {
-              return fieldIndex === _this20.getFieldIndex(_this20.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this21.getFieldIndex(_this21.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -3612,10 +3611,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this21 = this;
+          var _this22 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this21.getFieldIndex(_this21.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this22.getFieldIndex(_this22.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -3633,13 +3632,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this22 = this;
+          var _this23 = this;
 
           this.game.players.forEach(function (player, index) {
             player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1;
 
             if (index === 0) {
-              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this22.settings.getHareStartIndex());
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this23.settings.getHareStartIndex());
             } else {
               player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
             }
@@ -3927,13 +3926,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(HareAndHoundState, _models_playground_st3);
 
       function HareAndHoundState(actFieldIndex) {
-        var _this23;
+        var _this24;
 
         _classCallCheck(this, HareAndHoundState);
 
-        _this23 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundState).call(this));
-        _this23.actFieldIndex = actFieldIndex;
-        return _this23;
+        _this24 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundState).call(this));
+        _this24.actFieldIndex = actFieldIndex;
+        return _this24;
       }
 
       _createClass(HareAndHoundState, [{
@@ -4099,7 +4098,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function KillerComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r125 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r124 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -4122,11 +4121,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_app_settings_1_Template_input_ngModelChange_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r125);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r124);
 
-          var ctx_r124 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r123 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r124.settings.numberOfLives = $event;
+          return ctx_r123.settings.numberOfLives = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4144,11 +4143,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KillerComponent_app_settings_1_Template_input_ngModelChange_11_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r125);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r124);
 
-          var ctx_r126 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r125 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r126.settings.boardingLimit = $event;
+          return ctx_r125.settings.boardingLimit = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4162,11 +4161,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KillerComponent_app_settings_1_Template_button_click_13_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r125);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r124);
 
-          var ctx_r127 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r126 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r127.settings.toggleSuicide();
+          return ctx_r126.settings.toggleSuicide();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Suicide");
@@ -4177,21 +4176,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r119 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Killer")("playground", ctx_r120.playground)("rules", "Firstly each player draws lots i.e. a number between 1 - 20. Each player is then given " + "between 3 & 5 lives. The objective of this game is for each thrower to first hit their own number " + "three times to gain status of KILLER. Once they have achieved this they then can throw for their " + "opponents number in any order they wish. Every time a KILLER status player hits an opponents " + "number the opponent loses a life. KILLERS can also commit SUICIDE by hitting their own number's " + "triple. The winner of this game is the player that remains alive.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Killer")("playground", ctx_r119.playground)("rules", "Firstly each player draws lots i.e. a number between 1 - 20. Each player is then given " + "between 3 & 5 lives. The objective of this game is for each thrower to first hit their own number " + "three times to gain status of KILLER. Once they have achieved this they then can throw for their " + "opponents number in any order they wish. Every time a KILLER status player hits an opponents " + "number the opponent loses a life. KILLERS can also commit SUICIDE by hitting their own number's " + "triple. The winner of this game is the player that remains alive.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r120.settings.numberOfLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r119.settings.numberOfLives);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r120.settings.boardingLimit);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r119.settings.boardingLimit);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r120.settings.suicide ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r119.settings.suicide ? "primary" : "");
       }
     }
 
@@ -4201,9 +4200,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r121.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r120.playground);
       }
     }
 
@@ -4223,13 +4222,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r129 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+        var player_r128 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
 
-        var ctx_r132 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r131 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r132.getPlayerState(player_r129).boarding);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r131.getPlayerState(player_r128).boarding);
       }
     }
 
@@ -4271,21 +4270,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r129 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r128 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r131 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r130 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r131.getPlayerField(player_r129));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r130.getPlayerField(player_r128));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r131.getPlayerState(player_r129).life, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r130.getPlayerState(player_r128).life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r131.getPlayerState(player_r129).killer);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r130.getPlayerState(player_r128).killer);
       }
     }
 
@@ -4303,20 +4302,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r129 = ctx.$implicit;
-        var i_r130 = ctx.index;
+        var player_r128 = ctx.$implicit;
+        var i_r129 = ctx.index;
 
-        var ctx_r128 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r127 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r130 === ctx_r128.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r128.isInactive(player_r129) ? "inactive" : "", "");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r129)("scoreDisplayed", false)("highlighted", ctx_r128.getPlayerState(player_r129).killer);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r129 === ctx_r127.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r127.isInactive(player_r128) ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r128.getPlayerField(player_r129) !== "0");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r128)("scoreDisplayed", false)("highlighted", ctx_r127.getPlayerState(player_r128).killer);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r127.getPlayerField(player_r128) !== "0");
       }
     }
 
@@ -4330,11 +4329,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r122 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r122.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r121.game.players);
       }
     }
 
@@ -4344,9 +4343,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r123 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r122 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r123.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r122.playground);
       }
     }
 
@@ -4358,22 +4357,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KillerComponent, _models_playground_mo5);
 
       function KillerComponent(application, game, route, dialogService) {
-        var _this24;
+        var _this25;
 
         _classCallCheck(this, KillerComponent);
 
-        _this24 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
-        _this24.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
-        _this24.nextEnabled = false;
-        _this24.zeroEnabled = false;
-        _this24.multiEnabled = false;
-        return _this24;
+        _this25 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
+        _this25.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
+        _this25.nextEnabled = false;
+        _this25.zeroEnabled = false;
+        _this25.multiEnabled = false;
+        return _this25;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this25 = this;
+          var _this26 = this;
 
           var state = this.getPlayerState(player);
 
@@ -4399,12 +4398,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this25.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !_this26.getPlayerState(p).isInactive();
                 }).forEach(function (p) {
-                  var s = _this25.getPlayerState(p);
+                  var s = _this26.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this25.multiplier;
+                    s.life -= _this26.multiplier;
 
                     if (s.life < 0) {
                       s.life = 0;
@@ -4426,14 +4425,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this26 = this;
+          var _this27 = this;
 
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this26.getPlayerState(p).isInactive();
+              return !_this27.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this26.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this27.getPlayerState(p).isInactive());
             });
           }
 
@@ -4487,10 +4486,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this27 = this;
+          var _this28 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this27.getPlayerState(p);
+            var state = _this28.getPlayerState(p);
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -4521,10 +4520,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this28 = this;
+          var _this29 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this28.settings.numberOfLives, _this28.settings.boardingLimit);
+            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this29.settings.numberOfLives, _this29.settings.boardingLimit);
           });
         }
       }, {
@@ -4535,12 +4534,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this29 = this;
+          var _this30 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this29.getPlayerState(p).isInactive();
+            return !_this30.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this29.getPlayerState(p).actField;
+            return _this30.getPlayerState(p).actField;
           });
         }
       }]);
@@ -4789,19 +4788,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KillerState, _models_playground_st4);
 
       function KillerState() {
-        var _this30;
+        var _this31;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this30 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
-        _this30.life = life;
-        _this30.boarding = boarding;
-        _this30.actField = -1;
-        _this30.killer = false;
-        return _this30;
+        _this31 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
+        _this31.life = life;
+        _this31.boarding = boarding;
+        _this31.actField = -1;
+        _this31.killer = false;
+        return _this31;
       }
 
       _createClass(KillerState, [{
@@ -4949,7 +4948,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function KnockoutComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r166 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r165 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -4972,11 +4971,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function KnockoutComponent_app_settings_1_Template_input_ngModelChange_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r166);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r165);
 
-          var ctx_r165 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r164 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r165.settings.numberOfLives = $event;
+          return ctx_r164.settings.numberOfLives = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4989,13 +4988,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r161 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r160 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Knockout")("playground", ctx_r161.playground)("rules", "The player selected to throw first must throw as many points as possible. The player next in " + "line then must throw a higher score than the player throwing before him, if he fails to throw a " + "higher score a ring is put around their score, once you have 3 rings next to your name, you drop " + "out of the game.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Knockout")("playground", ctx_r160.playground)("rules", "The player selected to throw first must throw as many points as possible. The player next in " + "line then must throw a higher score than the player throwing before him, if he fails to throw a " + "higher score a ring is put around their score, once you have 3 rings next to your name, you drop " + "out of the game.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r161.settings.numberOfLives);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r160.settings.numberOfLives);
       }
     }
 
@@ -5005,9 +5004,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r162 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r161 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r162.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r161.playground);
       }
     }
 
@@ -5045,24 +5044,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r168 = ctx.$implicit;
-        var i_r169 = ctx.index;
+        var player_r167 = ctx.$implicit;
+        var i_r168 = ctx.index;
 
-        var ctx_r167 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r166 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r169 === ctx_r167.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r167.isInactive(player_r168) ? "inactive" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r168 === ctx_r166.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r166.isInactive(player_r167) ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r168)("scoreDisplayed", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r167)("scoreDisplayed", false);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r167.getPlayerState(player_r168).life, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r166.getPlayerState(player_r167).life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r168.score, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r167.score, " ");
       }
     }
 
@@ -5076,11 +5075,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r163 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r162 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r163.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r162.game.players);
       }
     }
 
@@ -5090,9 +5089,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r164 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r163 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r164.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r163.playground);
       }
     }
 
@@ -5102,14 +5101,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KnockoutComponent, _models_playground_mo6);
 
       function KnockoutComponent(application, game, route, dialogService) {
-        var _this31;
+        var _this32;
 
         _classCallCheck(this, KnockoutComponent);
 
-        _this31 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutComponent).call(this, application, game, route, dialogService, 2));
-        _this31.score = 0;
-        _this31.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
-        return _this31;
+        _this32 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutComponent).call(this, application, game, route, dialogService, 2));
+        _this32.score = 0;
+        _this32.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
+        return _this32;
       }
 
       _createClass(KnockoutComponent, [{
@@ -5120,7 +5119,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this32 = this;
+          var _this33 = this;
 
           if (this.game.isTheLastThrow()) {
             if (this.score > player.getThrowsTotal()) {
@@ -5129,10 +5128,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             this.score = player.getThrowsTotal();
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this32.getPlayerState(p).isInactive();
+              return !_this33.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this32.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this33.getPlayerState(p).isInactive());
             });
             this.game.nextPlayer();
           }
@@ -5149,10 +5148,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this33 = this;
+          var _this34 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this33.settings.numberOfLives);
+            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this34.settings.numberOfLives);
           });
           this.score = 0;
         }
@@ -5392,15 +5391,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(KnockoutState, _models_playground_st5);
 
       function KnockoutState() {
-        var _this34;
+        var _this35;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
 
         _classCallCheck(this, KnockoutState);
 
-        _this34 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutState).call(this));
-        _this34.life = life;
-        return _this34;
+        _this35 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutState).call(this));
+        _this35.life = life;
+        return _this35;
       }
 
       _createClass(KnockoutState, [{
@@ -5716,14 +5715,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(ShanghaiState, _models_playground_st6);
 
       function ShanghaiState() {
-        var _this35;
+        var _this36;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this35 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
-        _this35.fieldCount = [];
-        _this35.fieldScore = [];
-        return _this35;
+        _this36 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
+        _this36.fieldCount = [];
+        _this36.fieldScore = [];
+        return _this36;
       }
 
       _createClass(ShanghaiState, [{
@@ -5884,18 +5883,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ShanghaiComponent_app_settings_1_button_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r109 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r108 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r109);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r108);
 
-          var i_r107 = ctx.index;
+          var i_r106 = ctx.index;
 
-          var ctx_r108 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+          var ctx_r107 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-          return ctx_r108.settings.setNumber(i_r107);
+          return ctx_r107.settings.setNumber(i_r106);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
@@ -5904,22 +5903,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var numb_r106 = ctx.$implicit;
-        var i_r107 = ctx.index;
+        var numb_r105 = ctx.$implicit;
+        var i_r106 = ctx.index;
 
-        var ctx_r105 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r104 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r105.settings.numbs[i_r107] ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r104.settings.numbs[i_r106] ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r106 === 21 ? "B" : numb_r106, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r105 === 21 ? "B" : numb_r105, " ");
       }
     }
 
     function ShanghaiComponent_app_settings_1_Template(rf, ctx) {
       if (rf & 1) {
-        var _r111 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r110 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
 
@@ -5936,11 +5935,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_Template_button_click_5_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r111);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r110);
 
-          var ctx_r110 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r109 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r110.settings.randomize();
+          return ctx_r109.settings.randomize();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Randomize");
@@ -5950,11 +5949,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_Template_button_click_7_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r111);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r110);
 
-          var ctx_r112 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r111 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r112.settings.toggleNoScore();
+          return ctx_r111.settings.toggleNoScore();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "No score ");
@@ -5964,11 +5963,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ShanghaiComponent_app_settings_1_Template_button_click_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r111);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r110);
 
-          var ctx_r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r112 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r113.settings.toggleHalveIt();
+          return ctx_r112.settings.toggleHalveIt();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Halve It ");
@@ -5979,21 +5978,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Shanghai / Halve It")("playground", ctx_r101.playground)("rules", " Players start by throwing at the number 1 on the board. The object is to hit a single," + "treble and double (in any order). This first player to hit a single, treble and double wins. If no" + "player achieves this on number 1, the play moves to number 2 and so on until someone wins.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Shanghai / Halve It")("playground", ctx_r100.playground)("rules", " Players start by throwing at the number 1 on the board. The object is to hit a single," + "treble and double (in any order). This first player to hit a single, treble and double wins. If no" + "player achieves this on number 1, the play moves to number 2 and so on until someone wins.");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r101.settings.getNumbers());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r100.settings.getNumbers());
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r101.settings.noScore ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r100.settings.noScore ? "primary" : "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r101.settings.halveIt ? "primary" : "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r100.settings.halveIt ? "primary" : "");
       }
     }
 
@@ -6003,9 +6002,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r102 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r101 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r102.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r101.playground);
       }
     }
 
@@ -6025,21 +6024,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var field_r118 = ctx.$implicit;
+        var field_r117 = ctx.$implicit;
 
-        var player_r115 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var player_r114 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r117.isActiveField(field_r118) ? "active" : "", " ", ctx_r117.isFieldDoneForPlayer(field_r118) ? "" : "highlighted", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("field ", ctx_r116.isActiveField(field_r117) ? "active" : "", " ", ctx_r116.isFieldDoneForPlayer(field_r117) ? "" : "highlighted", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r118 === 20 ? "B" : field_r118 + 1, ": ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r117 === 20 ? "B" : field_r117 + 1, ": ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r117.getFieldValue(player_r115, field_r118));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r116.getFieldValue(player_r114, field_r117));
       }
     }
 
@@ -6061,20 +6060,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var player_r115 = ctx.$implicit;
-        var i_r116 = ctx.index;
+        var player_r114 = ctx.$implicit;
+        var i_r115 = ctx.index;
 
-        var ctx_r114 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r113 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r116 === ctx_r114.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r115 === ctx_r113.game.actualPlayerIndex ? "highlighted" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r115);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r114);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r114.settings.fields);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r113.settings.fields);
       }
     }
 
@@ -6088,11 +6087,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r103 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r102 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r103.game.players);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r102.game.players);
       }
     }
 
@@ -6102,9 +6101,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r104 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r103 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r104.playground);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r103.playground);
       }
     }
 
@@ -6114,13 +6113,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(ShanghaiComponent, _models_playground_mo7);
 
       function ShanghaiComponent(application, game, route, dialogService) {
-        var _this36;
+        var _this37;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this36 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
-        _this36.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this36;
+        _this37 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
+        _this37.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this37;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -6142,7 +6141,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this37 = this;
+          var _this38 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -6172,7 +6171,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this37.game.isTheBestPlayer(p));
+              return p.setWin(_this38.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -7688,10 +7687,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this38 = this;
+          var _this39 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this38.playground.game.players.map(function (p) {
+            return _this39.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -9668,13 +9667,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _inherits(X01Component, _models_playground_mo8);
 
       function X01Component(application, game, route, dialogService) {
-        var _this39;
+        var _this40;
 
         _classCallCheck(this, X01Component);
 
-        _this39 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this39.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this39;
+        _this40 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
+        _this40.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this40;
       }
 
       _createClass(X01Component, [{
@@ -9711,10 +9710,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this40 = this;
+          var _this41 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this40.settings.startValue;
+            return player.score = _this41.settings.startValue;
           });
         }
       }]);

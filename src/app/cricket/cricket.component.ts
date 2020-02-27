@@ -136,6 +136,7 @@ export class CricketComponent extends Playground<CricketState> {
 
   changePlayerToDisplay(player?: Player) {
     this.playerToDisplay = player;
+    setTimeout(() => this.playerToDisplay = null, 1500);
   }
 
   private getPlayerToDisplay(): Player {
