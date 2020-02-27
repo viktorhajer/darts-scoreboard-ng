@@ -42,6 +42,7 @@
 
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
+           (mousedown)="changePlayerToDisplay(player)"  (mouseup)="changePlayerToDisplay(null)"
            *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player">
           <div class="field-set">

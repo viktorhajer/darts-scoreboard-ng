@@ -16,6 +16,7 @@ import {CricketState} from './models/cricet.state.model';
 export class CricketComponent extends Playground<CricketState> {
 
   settings: CricketSettings;
+  playerToDisplay: Player;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService);
@@ -97,24 +98,24 @@ export class CricketComponent extends Playground<CricketState> {
 
   isFieldEnabled(fieldIndex: number): boolean {
     if (this.settings.isNoScoreGame()) {
-      return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
+      return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.getPlayerToDisplay(), fieldIndex);
     }
     return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex);
   }
 
   isPrimaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex) &&
-      !this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
+      !this.isFieldDoneForPlayer(this.getPlayerToDisplay(), fieldIndex);
   }
 
   isSecondaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex) &&
-      this.isFieldDoneForPlayer(this.game.getActualPlayer(), fieldIndex);
+      this.isFieldDoneForPlayer(this.getPlayerToDisplay(), fieldIndex);
   }
 
   getFieldNote(fieldIndex: number): string {
     if (this.isPrimaryField(fieldIndex)) {
-      const playerFieldCount = this.getPlayerState(this.game.getActualPlayer()).getFieldCount(fieldIndex);
+      const playerFieldCount = this.getPlayerState(this.getPlayerToDisplay()).getFieldCount(fieldIndex);
       const remaining = ''.padStart(3 - playerFieldCount, '●');
       return remaining + '\n' + this.game.players.filter(p => this.isFieldDoneForPlayer(p, fieldIndex))
         .map(p => p.name.substr(0, 1)).join(',').toUpperCase();
@@ -131,6 +132,14 @@ export class CricketComponent extends Playground<CricketState> {
 
   customSettingsValidation(): boolean {
     return this.settings.fields.length > 0;
+  }
+
+  changePlayerToDisplay(player?: Player) {
+    this.playerToDisplay = player;
+  }
+
+  private getPlayerToDisplay(): Player {
+    return !!this.playerToDisplay ? this.playerToDisplay : this.game.getActualPlayer();
   }
 
   private getPlayerTotal(player: Player) {
