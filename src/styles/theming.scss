@@ -1,7 +1,7 @@
 @import "~@angular/material/theming";
 @include mat-core();
 
-$app-theme: mat-light-theme(mat-palette($mat-teal), mat-palette($mat-grey));
+$light-theme: mat-light-theme(mat-palette($mat-teal), mat-palette($mat-grey));
 $dark-theme: mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-gray));
 $basic: mat-palette($mat-grey);
 
@@ -31,6 +31,28 @@ $basic: mat-palette($mat-grey);
         background: rgba(mat-color($accent, 400), 0.5);
       }
     }
+  }
+}
+
+@mixin menu-theme($theme) {
+  #menu {
+    $primary: map-get($theme, primary);
+    .gameSelectBox {
+      color: mat-color($basic, 50);
+      .title {
+        background: rgba(0, 0, 0, 0.1);
+      }
+    }
+    .menu-button-0 { background: mat-color($primary, 500) }
+    .menu-button-1 { background: mat-color($primary, 800) }
+    .menu-button-2 { background: mat-color($primary, 700) }
+    .menu-button-3 { background: mat-color($primary, 700) }
+    .menu-button-4 { background: mat-color($primary, 500) }
+    .menu-button-5 { background: mat-color($primary, 800) }
+    .menu-button-6 { background: mat-color($primary, 500) }
+    .menu-button-7 { background: mat-color($primary, 800) }
+    .menu-button-8 { background: mat-color($primary, 500) }
+    .menu-button-9 { background: mat-color($primary, 700) }
   }
 }
 
@@ -105,20 +127,19 @@ $basic: mat-palette($mat-grey);
   }
 }
 
-@include angular-material-theme($app-theme);
-@include shared-module-theme($app-theme);
-@include feature-module-theme($app-theme);
-.dark-theme {
-  @include angular-material-theme($dark-theme);
-  @include shared-module-theme($dark-theme);
-  @include feature-module-theme($dark-theme);
-}
-
 body {
   background: linear-gradient(to top, mat-color($basic, 200), #efefef);
-  color: mat-color(map-get($app-theme, accent), 900);
+  color: mat-color(map-get($light-theme, accent), 900);
+  @include angular-material-theme($light-theme);
+  @include shared-module-theme($light-theme);
+  @include feature-module-theme($light-theme);
+  @include menu-theme($light-theme);
   &.dark-theme {
     background: linear-gradient(to top, mat-color($basic, 800), #000000);
     color: mat-color(map-get($dark-theme, primary), 200);
+    @include angular-material-theme($dark-theme);
+    @include shared-module-theme($dark-theme);
+    @include feature-module-theme($dark-theme);
+    @include menu-theme($dark-theme);
   }
 }

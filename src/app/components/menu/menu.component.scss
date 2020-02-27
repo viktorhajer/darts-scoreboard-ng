@@ -12,11 +12,9 @@
   .gameSelectBox {
     margin: 1px;
     height: 200px;
-    // flex: 1 0 25%;
     width: 200px;
     display: flex;
     justify-content: center;
-    color: #ffffff;
 
     mat-icon {
       font-size: 60px;
@@ -35,7 +33,6 @@
       line-height: 25px;
       letter-spacing: 1px;
       font-weight: normal;
-      background: rgba(0, 0, 0, 0.1);
       width: calc(100% - 20px);
     }
   }
