@@ -1,0 +1,6 @@
+<div class="dialog-container darts-table-container">
+  <mat-dialog-content class="body-2" (click)="close()">
+    <img src="assets/darts_table.jpg">
+    <div *ngFor="let f of data.fieldIndexes" class="clip darts-table-field-{{f}}"></div>
+  </mat-dialog-content>
+</div>

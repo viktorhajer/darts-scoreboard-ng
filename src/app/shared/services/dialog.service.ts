@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogComponent} from '~components/dialog/dialog.component';
 import {Player} from '~models/player.model';
+import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
@@ -20,6 +21,12 @@ export class DialogService {
     return this.dialog.open(DialogComponent, {
       panelClass: 'error-dialog',
       data: {title, content, players: []},
+    });
+  }
+
+  openDartsTable(fieldIndexes: number[]){
+    return this.dialog.open(DartsTableDialogComponent, {
+      data: {fieldIndexes}
     });
   }
 }

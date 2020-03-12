@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Playground} from '~models/playground.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
+import {DialogService} from '~services/dialog.service';
 
 @Component({
   selector: 'app-game-toolbar',
@@ -12,7 +13,7 @@ export class GameToolbarComponent {
 
   @Input() playground: Playground<PlaygroundState>;
 
-  constructor(public route: Router) {
+  constructor(public route: Router, private dialogService: DialogService) {
   }
 
   quit() {
@@ -25,5 +26,15 @@ export class GameToolbarComponent {
   showSettings() {
     this.playground.reset();
     this.playground.settingsOpen = true;
+  }
+
+  showTable() {
+    const enabledFields: number[] = [];
+    for (let i = 0; i <= 20; i++) {
+      if (this.playground.isFieldEnabled(i)){
+        enabledFields.push(i);
+      }
+    }
+    this.dialogService.openDartsTable(enabledFields);
   }
 }

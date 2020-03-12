@@ -9,15 +9,16 @@ import {PlayerSettingsComponent} from '~components/player-settings/player-settin
 import {SettingsComponent} from '~components/settings/settings.component';
 import {PlayerScoreComponent} from '~components/player-score/player-score.component';
 import {GameRulesComponent} from '~components/game-rules/game-rules.component';
+import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 
-const components = [NumberPlateComponent, GameToolbarComponent, GameRulesComponent,
+const components = [NumberPlateComponent, GameToolbarComponent, GameRulesComponent, DartsTableDialogComponent,
   DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent];
 
 @NgModule({
   imports: [CommonModule, MaterialModule],
   declarations: components,
   exports: [CommonModule, FormsModule, MaterialModule, ...components],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent, DartsTableDialogComponent]
 })
 export class SharedModule {
 }

@@ -1,0 +1,102 @@
+.darts-table-container {
+  img, .clip {
+    width: calc(100vw - 100px);
+    height: calc(100vw - 100px);
+    position: absolute;
+    top: 50px;
+    left: 50px;
+  }
+
+  img {
+    filter: grayscale(100%);
+  }
+
+  .clip {
+    background: #f0280f;
+    opacity: 0.6;
+  }
+
+  .darts-table-field-2 {
+    clip-path: polygon(50% 53%, 44% 88%, 56% 88%);
+  }
+
+  .darts-table-field-16 {
+    clip-path: polygon(50% 51%, 56% 87%, 68% 84%);
+  }
+
+  .darts-table-field-1 {
+    clip-path: polygon(50% 51%, 67% 84%, 77% 76%);
+  }
+
+  .darts-table-field-14 {
+    clip-path: polygon(50% 51%, 77% 77%, 84% 67%);
+  }
+
+  .darts-table-field-9 {
+    clip-path: polygon(50% 51%, 83% 67%, 87% 55%);
+  }
+
+  .darts-table-field-5 {
+    clip-path: polygon(51% 50%, 87% 56%, 86% 44%);
+  }
+
+  .darts-table-field-12 {
+    clip-path: polygon(51% 50%, 87% 44%, 83% 32%);
+  }
+
+  .darts-table-field-3 {
+    clip-path: polygon(51% 49%, 83% 33%, 76% 23%);
+  }
+
+  .darts-table-field-17 {
+    clip-path: polygon(51% 49%, 76% 23%, 66% 16%);
+  }
+
+  .darts-table-field-0 {
+    clip-path: polygon(50% 49%, 67% 16%, 55% 13%);
+  }
+
+  .darts-table-field-19 {
+    clip-path: polygon(50% 48%, 56% 13%, 43% 13%);
+  }
+
+  .darts-table-field-4 {
+    clip-path: polygon(32% 17%, 50% 51%, 44% 13%);
+  }
+
+  .darts-table-field-11 {
+    clip-path: polygon(22% 24%, 50% 51%, 33% 16%);
+  }
+
+  .darts-table-field-8 {
+    clip-path: polygon(15% 33%, 50% 51%, 23% 23%);
+  }
+
+  .darts-table-field-13 {
+    clip-path: polygon(12% 45%, 50% 51%, 16% 32%);
+  }
+
+  .darts-table-field-10 {
+    clip-path: polygon(13% 57%, 50% 51%, 13% 45%);
+  }
+
+  .darts-table-field-7 {
+    clip-path: polygon(16% 68%, 50% 51%, 12% 56%);
+  }
+
+  .darts-table-field-15 {
+    clip-path: polygon(23% 77%, 50% 51%, 16% 67%);
+  }
+
+  .darts-table-field-6 {
+    clip-path: polygon(33% 84%, 50% 51%, 23% 77%);
+  }
+
+  .darts-table-field-18 {
+    clip-path: polygon(44% 88%, 50% 51%, 32% 84%);
+  }
+
+  .darts-table-field-20 {
+    clip-path: circle(3.7% at 50% 50%);
+  }
+}
