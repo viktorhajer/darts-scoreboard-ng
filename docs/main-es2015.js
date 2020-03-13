@@ -3182,7 +3182,7 @@ class DartsTableDialogComponent {
     }
 }
 DartsTableDialogComponent.ɵfac = function DartsTableDialogComponent_Factory(t) { return new (t || DartsTableDialogComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])); };
-DartsTableDialogComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DartsTableDialogComponent, selectors: [["ng-component"]], decls: 4, vars: 1, consts: [[1, "dialog-container", "darts-table-container"], [1, "body-2", 3, "click"], ["src", "assets/darts_table.jpg"], [3, "class", 4, "ngFor", "ngForOf"]], template: function DartsTableDialogComponent_Template(rf, ctx) { if (rf & 1) {
+DartsTableDialogComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: DartsTableDialogComponent, selectors: [["ng-component"]], decls: 4, vars: 1, consts: [[1, "dialog-container", "darts-table-container"], [1, "body-2", 3, "click"], ["src", "assets/darts_table.png"], [3, "class", 4, "ngFor", "ngForOf"]], template: function DartsTableDialogComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-dialog-content", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DartsTableDialogComponent_Template_mat_dialog_content_click_1_listener($event) { return ctx.close(); });

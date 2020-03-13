@@ -6511,7 +6511,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["ng-component"]],
       decls: 4,
       vars: 1,
-      consts: [[1, "dialog-container", "darts-table-container"], [1, "body-2", 3, "click"], ["src", "assets/darts_table.jpg"], [3, "class", 4, "ngFor", "ngForOf"]],
+      consts: [[1, "dialog-container", "darts-table-container"], [1, "body-2", 3, "click"], ["src", "assets/darts_table.png"], [3, "class", 4, "ngFor", "ngForOf"]],
       template: function DartsTableDialogComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
