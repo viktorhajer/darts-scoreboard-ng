@@ -10,5 +10,9 @@ export abstract class PlaygroundState {
     return list.filter(f => f.field === fieldIndex)[0];
   }
 
+  isInactive(): boolean {
+    return false;
+  }
+
   abstract clone(): PlaygroundState;
 }

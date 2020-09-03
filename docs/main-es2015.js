@@ -410,8 +410,11 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
             this.game.nextPlayer();
         }
         if (this.settings.nineLives) {
-            while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
-                this.game.nextPlayer();
+            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+            if (!!activePlayers.length) {
+                while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+                    this.game.nextPlayer();
+                }
             }
         }
     }
@@ -4096,6 +4099,9 @@ class PlaygroundState {
         }
         return list.filter(f => f.field === fieldIndex)[0];
     }
+    isInactive() {
+        return false;
+    }
 }
 
 
@@ -4178,6 +4184,14 @@ class Playground {
                     }
                 }
             }
+            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+            if (!activePlayers.length) {
+                if (!this.extraEndingMsg) {
+                    this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
+                }
+                this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+                this.newGame(true);
+            }
             this.throwEnabled = true;
         }
     }
@@ -4259,9 +4273,6 @@ class Playground {
     }
     getTheFinalResult() {
         let winners = this.game.players.filter(p => p.win);
-        if (!winners.length) {
-            return [];
-        }
         winners = winners.sort((p1, p2) => p1.winDateTime < p2.winDateTime ? -1 : 1)
             .slice(0, 1).map(p => p.clone());
         const losers = this.game.players.filter(p => !winners.some(w => w.id === p.id))

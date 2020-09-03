@@ -58,8 +58,11 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       this.game.nextPlayer();
     }
     if (this.settings.nineLives) {
-      while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
-        this.game.nextPlayer();
+      const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+      if (!!activePlayers.length) {
+        while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+          this.game.nextPlayer();
+        }
       }
     }
   }

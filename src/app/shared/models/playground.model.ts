@@ -76,6 +76,16 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
           }
         }
       }
+
+      const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+      if (!activePlayers.length) {
+        if (!this.extraEndingMsg) {
+          this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
+        }
+        this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+        this.newGame(true);
+      }
+
       this.throwEnabled = true;
     }
   }
@@ -174,9 +184,6 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   getTheFinalResult(): Player[] {
     let winners = this.game.players.filter(p => p.win);
-    if (!winners.length) {
-      return [];
-    }
     winners = winners.sort((p1, p2) => p1.winDateTime < p2.winDateTime ? -1 : 1)
       .slice(0, 1).map(p => p.clone());
     const losers = this.game.players.filter(p => !winners.some(w => w.id === p.id))
