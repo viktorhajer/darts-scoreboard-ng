@@ -20,6 +20,11 @@
     <button mat-raised-button class="button shortmedium" (click)="settings.prime()">Prime</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.randomize()">Random</button>
     <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" (click)="settings.all()">All</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.small()">Small</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.high()">High</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.star()">Star</button>
+    <mat-divider></mat-divider>
 
     <h2>Style</h2>
     <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''"

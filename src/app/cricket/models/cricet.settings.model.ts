@@ -27,6 +27,22 @@ export class CricketSettings {
     this.initFields();
   }
 
+  all() {
+    this.setAllowedField([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+  }
+
+  small() {
+    this.setAllowedField([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 21]);
+  }
+
+  high() {
+    this.setAllowedField([11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
+  }
+
+  star() {
+    this.setAllowedField([20, 9, 14, 13, 4, 16, 7, 2, 15, 21]);
+  }
+
   upper() {
     this.setAllowedField([14, 9, 12, 5, 20, 1, 18, 4, 13, 21]);
   }
