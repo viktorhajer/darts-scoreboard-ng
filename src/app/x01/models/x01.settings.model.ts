@@ -1,8 +1,8 @@
 export class X01Settings {
 
-  startValue = 301;
+  startValue = 201;
   start = 1;
-  checkout = 1;
+  checkout = 2;
 
   isNormalStart(): boolean {
     return this.start === 1;

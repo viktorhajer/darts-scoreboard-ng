@@ -91,6 +91,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   customReset() {
     this.game.players.forEach(player => player.state = new AroundClockState());
+    this.settings.setStyle();
   }
 
   customSettingsValidation(): boolean {
