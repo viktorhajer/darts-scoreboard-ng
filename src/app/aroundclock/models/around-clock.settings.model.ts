@@ -15,8 +15,10 @@ export class AroundClockSettings {
     this.fields = AroundClockSettings.getBaseFields();
   }
 
-  setStyle(style: number) {
-    this.style = style;
+  setStyle(style?: number) {
+    if (style) {
+      this.style = style;
+    }
     switch (this.style) {
       case 1:
         this.fields = AroundClockSettings.getClockFields();

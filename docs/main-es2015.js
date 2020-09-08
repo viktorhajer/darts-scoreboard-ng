@@ -438,6 +438,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
     }
     customReset() {
         this.game.players.forEach(player => player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"]());
+        this.settings.setStyle();
     }
     customSettingsValidation() {
         return !this.settings.nineLives || this.game.getNumberOfPlayers() >= 2;
@@ -544,7 +545,9 @@ class AroundClockSettings {
         this.fields = AroundClockSettings.getBaseFields();
     }
     setStyle(style) {
-        this.style = style;
+        if (style) {
+            this.style = style;
+        }
         switch (this.style) {
             case 1:
                 this.fields = AroundClockSettings.getClockFields();
@@ -4619,9 +4622,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X01Settings", function() { return X01Settings; });
 class X01Settings {
     constructor() {
-        this.startValue = 301;
+        this.startValue = 201;
         this.start = 1;
-        this.checkout = 1;
+        this.checkout = 2;
     }
     isNormalStart() {
         return this.start === 1;

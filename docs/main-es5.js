@@ -943,6 +943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.game.players.forEach(function (player) {
             return player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"]();
           });
+          this.settings.setStyle();
         }
       }, {
         key: "customSettingsValidation",
@@ -1166,7 +1167,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(AroundClockSettings, [{
         key: "setStyle",
         value: function setStyle(style) {
-          this.style = style;
+          if (style) {
+            this.style = style;
+          }
 
           switch (this.style) {
             case 1:
@@ -9433,9 +9436,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function X01Settings() {
         _classCallCheck(this, X01Settings);
 
-        this.startValue = 301;
+        this.startValue = 201;
         this.start = 1;
-        this.checkout = 1;
+        this.checkout = 2;
       }
 
       _createClass(X01Settings, [{
