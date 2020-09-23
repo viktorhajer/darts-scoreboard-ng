@@ -16,11 +16,11 @@ export class CricketSettings {
     this.initFields();
   }
 
-  randomize() {
+  randomize(maxField: number) {
     for (let i = 0; i < this.numbs.length; i++) {
       this.numbs[i] = false;
     }
-    for (let i = 0; i < 7; i++) {
+    while(this.numbs.filter(n => !!n).length !== maxField) {
       this.numbs[Math.floor(Math.random() * 21)] = true;
     }
     this.numbs[this.numbs.length - 1] = true;
@@ -41,6 +41,10 @@ export class CricketSettings {
 
   star() {
     this.setAllowedField([20, 9, 14, 13, 4, 16, 7, 2, 15, 21]);
+  }
+
+  cross() {
+    this.setAllowedField([20, 3, 11, 6, 21]);
   }
 
   upper() {
@@ -68,7 +72,11 @@ export class CricketSettings {
   }
 
   prime() {
-    this.setAllowedField([2, 3, 5, 7, 11, 13, 17, 19]);
+    this.setAllowedField([2, 3, 5, 7, 11, 13, 17, 19, 21]);
+  }
+
+  notPrime() {
+    this.setAllowedField([1, 4, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21]);
   }
 
   getNumbers(): number[] {

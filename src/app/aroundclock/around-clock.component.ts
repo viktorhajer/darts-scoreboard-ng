@@ -50,7 +50,8 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         if (multi === 0) {
           if (this.settings.punishment) {
             this.getPlayerState(player).decreaseActFieldIndex();
-          } else {
+          }
+          if (this.settings.nineLives) {
             this.getPlayerState(player).life--;
           }
         }
@@ -65,6 +66,16 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         }
       }
     }
+  }
+
+  getDistanceFromRandom(): string {
+    if (this.settings.style === 3) {
+      const bullPos = this.settings.fields.findIndex(f => f === 20);
+      const playerPos = this.getPlayerState(this.game.getActualPlayer()).actFieldIndex;
+      const diff = bullPos - playerPos;
+      return diff >= 0 ? diff + '' : '';
+    }
+    return '';
   }
 
   isFieldEnabled(fieldIndex: number): boolean {

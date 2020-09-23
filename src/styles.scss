@@ -39,6 +39,13 @@ button {
   }
 }
 
+.hidden-info {
+  opacity: 0.3;
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+}
+
 mat-card {
   margin: 3px;
 }

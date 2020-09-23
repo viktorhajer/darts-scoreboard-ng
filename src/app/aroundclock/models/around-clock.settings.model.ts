@@ -10,13 +10,13 @@ export class AroundClockSettings {
   constructor() {
     this.style = 0;
     this.jump = true;
-    this.punishment = false;
+    this.punishment = true;
     this.nineLives = false;
     this.fields = AroundClockSettings.getBaseFields();
   }
 
   setStyle(style?: number) {
-    if (style) {
+    if (!!style || style === 0) {
       this.style = style;
     }
     switch (this.style) {
@@ -40,16 +40,10 @@ export class AroundClockSettings {
 
   togglePunishment() {
     this.punishment = !this.punishment;
-    if (this.punishment) {
-      this.nineLives = false;
-    }
   }
 
   toggleNineLives() {
     this.nineLives = !this.nineLives;
-    if (this.nineLives) {
-      this.punishment = false;
-    }
   }
 
   private static getBaseFields(): number[] {
