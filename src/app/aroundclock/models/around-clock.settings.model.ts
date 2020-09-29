@@ -4,6 +4,7 @@ export class AroundClockSettings {
   jump: boolean;
   punishment: boolean;
   nineLives: boolean;
+  saboteur: boolean;
   style: number;
   fields: number[];
 
@@ -12,6 +13,7 @@ export class AroundClockSettings {
     this.jump = true;
     this.punishment = true;
     this.nineLives = false;
+    this.saboteur = false;
     this.fields = AroundClockSettings.getBaseFields();
   }
 
@@ -44,6 +46,10 @@ export class AroundClockSettings {
 
   toggleNineLives() {
     this.nineLives = !this.nineLives;
+  }
+
+  toggleSaboteur() {
+    this.saboteur = !this.saboteur;
   }
 
   private static getBaseFields(): number[] {

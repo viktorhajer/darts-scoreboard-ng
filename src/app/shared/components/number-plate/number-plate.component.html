@@ -19,5 +19,5 @@
           (click)="playground.triplePoint()" [disabled]="!playground.multiEnabled">Triple</button>
 
   <button mat-raised-button class="number" (click)="playground.skip()" [disabled]="!playground.nextEnabled">Next</button>
-  <button mat-raised-button class="number" (click)="playground.throwNumber(0)" [disabled]="!playground.zeroEnabled">0</button>
+  <button mat-raised-button class="number" (click)="playground.throwNumber([0,0])" [disabled]="!playground.zeroEnabled">0</button>
 </div>

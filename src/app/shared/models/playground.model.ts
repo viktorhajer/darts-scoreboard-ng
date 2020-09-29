@@ -40,7 +40,9 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.extraEndingMsg = '';
   }
 
-  throwNumber(score: number) {
+  throwNumber(args: number[]) {
+    const score = args[0];
+    const scoreReal = args[1];
     if (this.throwEnabled) {
       this.saveGameInHistory();
       this.throwEnabled = false;
@@ -58,7 +60,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       actualPlayer.throws[this.game.actualThrow] = score * this.multiplier;
       this.game.actualThrow++;
 
-      this.calculatePoints(actualPlayer, fieldIndex, score);
+      this.calculatePoints(actualPlayer, fieldIndex, score, scoreReal);
       this.checkPlayerState(actualPlayer);
 
       this.multiplier = 1;
@@ -139,7 +141,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   skip() {
     const actThrow = this.game.actualThrow;
-    this.throwNumber(0);
+    this.throwNumber([0, 0]);
     if (actThrow !== 2) {
       this.skip();
     }
@@ -213,7 +215,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   abstract customReset(): void;
 
-  abstract calculatePoints(player: Player, fieldIndex: number, score: number);
+  abstract calculatePoints(player: Player, fieldIndex: number, score: number, scoreReal?: number);
 
   abstract checkPlayerState(player: Player);
 }

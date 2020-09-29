@@ -16,13 +16,14 @@ import {AroundClockSettings} from './models/around-clock.settings.model';
 export class AroundClockComponent extends Playground<AroundClockState> {
 
   settings: AroundClockSettings;
+  hiddenInfo = true;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
     super(application, game, route, dialogService);
     this.settings = new AroundClockSettings();
   }
 
-  calculatePoints(player: Player, fieldIndex: number, score: number) {
+  calculatePoints(player: Player, fieldIndex: number, score: number, scoreReal: number) {
     const state = this.getPlayerState(player);
     if (this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
       // last throw
@@ -35,10 +36,21 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       }
     }
     player.score++;
+
+    if (this.settings.saboteur) {
+      const realFieldIndex = scoreReal === 25 ? 20 : scoreReal - 1;
+      this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
+        const otherPlayerState = this.getPlayerState(otherPlayer);
+        if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && score === 0) {
+          otherPlayerState.decreaseActFieldIndex();
+        }
+      });
+    }
   }
 
   checkPlayerState(player: Player) {
-    if ((this.settings.fields.length - 1) < this.getPlayerState(player).actFieldIndex) {
+    const state = this.getPlayerState(player);
+    if ((this.settings.fields.length - 1) < state.actFieldIndex) {
       player.setWin();
     } else if (this.game.isTheLastThrow()) {
       if (this.settings.punishment || this.settings.nineLives) {
@@ -49,10 +61,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         }
         if (multi === 0) {
           if (this.settings.punishment) {
-            this.getPlayerState(player).decreaseActFieldIndex();
+            state.decreaseActFieldIndex();
           }
           if (this.settings.nineLives) {
-            this.getPlayerState(player).life--;
+            state.life--;
           }
         }
       }
@@ -76,6 +88,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       return diff >= 0 ? diff + '' : '';
     }
     return '';
+  }
+
+  toggleHiddenInfo() {
+    this.hiddenInfo = !this.hiddenInfo;
   }
 
   isFieldEnabled(fieldIndex: number): boolean {
