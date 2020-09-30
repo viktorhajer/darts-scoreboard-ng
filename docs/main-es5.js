@@ -889,6 +889,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this2 = this;
 
           var state = this.getPlayerState(player);
+          var originalMulti = this.multiplier;
 
           if (this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
             // last throw
@@ -913,7 +914,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var otherPlayerState = _this2.getPlayerState(otherPlayer);
 
               if (_this2.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && score === 0) {
-                otherPlayerState.decreaseActFieldIndex();
+                otherPlayerState.decreaseActFieldIndex(_this2.settings.jump ? originalMulti : 1);
               }
             });
           }
@@ -1379,8 +1380,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "decreaseActFieldIndex",
-        value: function decreaseActFieldIndex() {
-          this.actFieldIndex--;
+        value: function decreaseActFieldIndex(value) {
+          this.actFieldIndex -= value;
 
           if (this.actFieldIndex < 0) {
             this.actFieldIndex = 0;

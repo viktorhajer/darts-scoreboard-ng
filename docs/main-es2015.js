@@ -391,6 +391,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
     }
     calculatePoints(player, fieldIndex, score, scoreReal) {
         const state = this.getPlayerState(player);
+        const originalMulti = this.multiplier;
         if (this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
             // last throw
             if (state.actFieldIndex >= this.settings.fields.length - this.multiplier) {
@@ -407,7 +408,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
             this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
                 const otherPlayerState = this.getPlayerState(otherPlayer);
                 if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && score === 0) {
-                    otherPlayerState.decreaseActFieldIndex();
+                    otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
                 }
             });
         }
@@ -659,8 +660,8 @@ class AroundClockState extends _models_playground_state_model__WEBPACK_IMPORTED_
     increaseActFieldIndex(value) {
         this.actFieldIndex += value ? value : 1;
     }
-    decreaseActFieldIndex() {
-        this.actFieldIndex--;
+    decreaseActFieldIndex(value) {
+        this.actFieldIndex -= value;
         if (this.actFieldIndex < 0) {
             this.actFieldIndex = 0;
         }

@@ -25,6 +25,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   calculatePoints(player: Player, fieldIndex: number, score: number, scoreReal: number) {
     const state = this.getPlayerState(player);
+    const originalMulti = this.multiplier;
     if (this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
       // last throw
       if (state.actFieldIndex >= this.settings.fields.length - this.multiplier) {
@@ -42,7 +43,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
         const otherPlayerState = this.getPlayerState(otherPlayer);
         if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && score === 0) {
-          otherPlayerState.decreaseActFieldIndex();
+          otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
         }
       });
     }
