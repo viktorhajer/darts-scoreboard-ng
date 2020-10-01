@@ -906,7 +906,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           player.score++;
 
-          if (this.settings.saboteur) {
+          if (this.settings.saboteur && scoreReal !== 0) {
             var realFieldIndex = scoreReal === 25 ? 20 : scoreReal - 1;
             this.game.players.filter(function (p) {
               return p.id !== player.id;
@@ -956,7 +956,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               return !_this3.getPlayerState(p).isInactive();
             });
 
-            if (!!activePlayers.length) {
+            if (activePlayers.length === 1) {
+              activePlayers[0].setWin(true);
+            } else if (!!activePlayers.length) {
               while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
                 this.game.nextPlayer();
               }
@@ -1380,7 +1382,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "decreaseActFieldIndex",
-        value: function decreaseActFieldIndex(value) {
+        value: function decreaseActFieldIndex() {
+          var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
           this.actFieldIndex -= value;
 
           if (this.actFieldIndex < 0) {

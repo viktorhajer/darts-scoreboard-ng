@@ -38,7 +38,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     }
     player.score++;
 
-    if (this.settings.saboteur) {
+    if (this.settings.saboteur && scoreReal !== 0) {
       const realFieldIndex = scoreReal === 25 ? 20 : scoreReal - 1;
       this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
         const otherPlayerState = this.getPlayerState(otherPlayer);
@@ -73,7 +73,9 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     }
     if (this.settings.nineLives) {
       const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
-      if (!!activePlayers.length) {
+      if (activePlayers.length === 1) {
+        activePlayers[0].setWin(true);
+      } else if (!!activePlayers.length) {
         while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
           this.game.nextPlayer();
         }

@@ -13,7 +13,7 @@ export class AroundClockState extends PlaygroundState {
     this.actFieldIndex += value ? value : 1;
   }
 
-  decreaseActFieldIndex(value?: number) {
+  decreaseActFieldIndex(value = 1) {
     this.actFieldIndex -= value;
     if (this.actFieldIndex < 0) {
       this.actFieldIndex = 0;
