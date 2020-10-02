@@ -23,20 +23,31 @@
     <mat-divider></mat-divider>
 
     <h2>Field's order</h2>
-    <button mat-raised-button class="button medium" [color]="settings.style==0?'primary':''" (click)="settings.setStyle(0)">
-      Numerical Order
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==0?'primary':''" (click)="settings.setStyle(0)">
+      Ascending Order
     </button>
-    <button mat-raised-button class="button medium" [color]="settings.style==1?'primary':''" (click)="settings.setStyle(1)">
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''" (click)="settings.setStyle(4)">
+      Descending Order
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''" (click)="settings.setStyle(1)">
       Clockwise
     </button>
-    <button mat-raised-button class="button medium" [color]="settings.style==2?'primary':''" (click)="settings.setStyle(2)">
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==2?'primary':''" (click)="settings.setStyle(2)">
       Anticlockwise
     </button>
     <mat-divider></mat-divider>
-    <button mat-raised-button class="button medium" [color]="settings.style==3?'primary':''" (click)="settings.setStyle(3)">
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''" (click)="settings.setStyle(3)">
       Random
     </button>
-
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==6?'primary':''" (click)="settings.setStyle(6)">
+      Random11
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==5?'primary':''" (click)="settings.setStyle(5)">
+      Recurrence
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==7?'primary':''" (click)="settings.setStyle(7)">
+      Pirate
+    </button>
   </app-settings>
 
   <div class="side-left">

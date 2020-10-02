@@ -31,6 +31,18 @@ export class AroundClockSettings {
       case 3:
         this.fields = AroundClockSettings.getRandom();
         break;
+      case 4:
+        this.fields = [...AroundClockSettings.getBaseFields().reverse().slice(1), 20];
+        break;
+      case 5:
+        this.fields = AroundClockSettings.getRecurrence();
+        break;
+      case 6:
+        this.fields = AroundClockSettings.getRandom(11);
+        break;
+      case 7:
+        this.fields = AroundClockSettings.getPirate();
+        break;
       default:
         this.fields = AroundClockSettings.getBaseFields();
     }
@@ -64,14 +76,39 @@ export class AroundClockSettings {
     return [4, 11, 8, 13, 10, 7, 15, 6, 18, 2, 16, 1, 14, 9, 5, 12, 3, 17, 0, 19, 20];
   }
 
-  private static getRandom(): number[] {
+  private static getRandom(size?: number): number[] {
     let fields = AroundClockSettings.getBaseFields();
-    const size = fields.length;
+    if (!size) {
+      size = fields.length;
+    }
     const randomFields = [];
     for (let i = (size - 1); i >= 0; i--) {
       const random = Math.floor(Math.random() * fields.length);
       randomFields.push(fields[random]);
       fields = [...fields.slice(0, random), ...fields.slice(random + 1)];
+    }
+    return randomFields;
+  }
+
+  private static getPirate(): number[] {
+    let fields = AroundClockSettings.getRandom();
+    for (let i = 0; i < 4; i++) {
+      const random = Math.floor(Math.random() * fields.length);
+      if (fields[random] === 20) {
+        i--;
+      } else {
+        fields[random] = 20;
+      }
+    }
+    return fields;
+  }
+
+  private static getRecurrence(): number[] {
+    let fields = AroundClockSettings.getBaseFields();
+    const randomFields = [];
+    for (let i = (fields.length - 1); i >= 0; i--) {
+      const random = Math.floor(Math.random() * fields.length);
+      randomFields.push(fields[random]);
     }
     return randomFields;
   }

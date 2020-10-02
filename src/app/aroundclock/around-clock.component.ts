@@ -71,7 +71,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       }
       this.game.nextPlayer();
     }
-    if (this.settings.nineLives) {
+    if (this.settings.nineLives && this.game.players.length > 1) {
       const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
       if (activePlayers.length === 1) {
         activePlayers[0].setWin(true);
@@ -122,10 +122,6 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   customReset() {
     this.game.players.forEach(player => player.state = new AroundClockState());
     this.settings.setStyle();
-  }
-
-  customSettingsValidation(): boolean {
-    return !this.settings.nineLives || this.game.getNumberOfPlayers() >= 2;
   }
 
   private getFieldIndex(index: number) {
