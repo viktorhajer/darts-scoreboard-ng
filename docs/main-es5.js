@@ -8892,7 +8892,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this42.getPlayerState(p).isInactive();
+              return !_this42.getPlayerState(p) || !_this42.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {

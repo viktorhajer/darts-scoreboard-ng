@@ -4310,7 +4310,7 @@ class Playground {
                     }
                 }
             }
-            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p) || !this.getPlayerState(p).isInactive());
             if (!activePlayers.length) {
                 if (!this.extraEndingMsg) {
                     this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
