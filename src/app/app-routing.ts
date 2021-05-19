@@ -8,6 +8,7 @@ import {KillerModule} from './killer/killer.module';
 import {FivesModule} from './fives/fives.module';
 import {HareAndHoundModule} from './hare-and-hound/hare-and-hound.module';
 import {KnockoutModule} from './knockout/knockout.module';
+import {ConquerorModule} from './conqueror/conqueror.module';
 
 export const routes: Routes = [
   {path: '', component: MenuComponent},
@@ -50,6 +51,11 @@ export const routes: Routes = [
     path: 'killer',
     data: {name: 'Killer'},
     loadChildren: () => KillerModule
+  },
+  {
+    path: 'conqueror',
+    data: {name: 'Conqueror'},
+    loadChildren: () => ConquerorModule
   },
   {
     path: '**', redirectTo: ''

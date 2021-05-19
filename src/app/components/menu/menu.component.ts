@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'killer',
     data: {name: 'Killer', color: '#0a756b', icon: 'gps_fixed'}
+  },
+  {
+    path: 'conqueror',
+    data: {name: 'Conqueror', color: '#0a756b', icon: 'flag'}
   }
 ];
 

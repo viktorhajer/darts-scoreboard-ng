@@ -126,6 +126,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _knockout_knockout_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./knockout/knockout.module */
     "./src/app/knockout/knockout.module.ts");
+    /* harmony import */
+
+
+    var _conqueror_conqueror_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ./conqueror/conqueror.module */
+    "./src/app/conqueror/conqueror.module.ts");
 
     var routes = [{
       path: '',
@@ -193,6 +199,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       loadChildren: function loadChildren() {
         return _killer_killer_module__WEBPACK_IMPORTED_MODULE_5__["KillerModule"];
+      }
+    }, {
+      path: 'conqueror',
+      data: {
+        name: 'Conqueror'
+      },
+      loadChildren: function loadChildren() {
+        return _conqueror_conqueror_module__WEBPACK_IMPORTED_MODULE_9__["ConquerorModule"];
       }
     }, {
       path: '**',
@@ -1674,6 +1688,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         color: '#0a756b',
         icon: 'gps_fixed'
       }
+    }, {
+      path: 'conqueror',
+      data: {
+        name: 'Conqueror',
+        color: '#0a756b',
+        icon: 'flag'
+      }
     }];
 
     var MenuComponent =
@@ -1750,6 +1771,814 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], null, null);
     })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/conqueror/conqueror.component.ts":
+  /*!**************************************************!*\
+    !*** ./src/app/conqueror/conqueror.component.ts ***!
+    \**************************************************/
+
+  /*! exports provided: ConquerorComponent */
+
+  /***/
+  function srcAppConquerorConquerorComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ConquerorComponent", function () {
+      return ConquerorComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ~models/playground.model */
+    "./src/app/shared/models/playground.model.ts");
+    /* harmony import */
+
+
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../route-animation */
+    "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_conqueror_state_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/conqueror.state.model */
+    "./src/app/conqueror/models/conqueror.state.model.ts");
+    /* harmony import */
+
+
+    var _models_conqueror_settings_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/conqueror.settings.model */
+    "./src/app/conqueror/models/conqueror.settings.model.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ~services/application-state.service */
+    "./src/app/shared/services/application-state.service.ts");
+    /* harmony import */
+
+
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ~services/game.service */
+    "./src/app/shared/services/game.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ~services/dialog.service */
+    "./src/app/shared/services/dialog.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~components/settings/settings.component */
+    "./src/app/shared/components/settings/settings.component.ts");
+    /* harmony import */
+
+
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @angular/material/divider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+    /* harmony import */
+
+
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! ~components/game-toolbar/game-toolbar.component */
+    "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
+    /* harmony import */
+
+
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ~components/player-score/player-score.component */
+    "./src/app/shared/components/player-score/player-score.component.ts");
+    /* harmony import */
+
+
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! ~components/number-plate/number-plate.component */
+    "./src/app/shared/components/number-plate/number-plate.component.ts");
+
+    function ConquerorComponent_app_settings_1_button_3_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r195 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ConquerorComponent_app_settings_1_button_3_Template_button_click_0_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r195);
+
+          var i_r193 = ctx.index;
+
+          var ctx_r194 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          return ctx_r194.settings.setNumber(i_r193);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var numb_r192 = ctx.$implicit;
+        var i_r193 = ctx.index;
+
+        var ctx_r191 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r191.settings.numbs[i_r193] ? "primary" : "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r192 === 21 ? "B" : numb_r192, " ");
+      }
+    }
+
+    function ConquerorComponent_app_settings_1_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r197 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Fields");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ConquerorComponent_app_settings_1_button_3_Template, 2, 2, "button", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "button", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ConquerorComponent_app_settings_1_Template_button_click_5_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r197);
+
+          var ctx_r196 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r196.settings.randomize();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Randomize");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ConquerorComponent_app_settings_1_Template_button_click_7_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r197);
+
+          var ctx_r198 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r198.settings.toggleNoScore();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "No score ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r187 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Conqueror")("playground", ctx_r187.playground)("rules", "...");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r187.settings.getNumbers());
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r187.settings.noScore ? "primary" : "");
+      }
+    }
+
+    function ConquerorComponent_app_game_toolbar_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 10);
+      }
+
+      if (rf & 2) {
+        var ctx_r188 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r188.playground);
+      }
+    }
+
+    function ConquerorComponent_ng_container_4_div_1_div_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 14);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var field_r203 = ctx.$implicit;
+
+        var player_r200 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        var ctx_r202 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("field ", ctx_r202.isActiveField(field_r203) ? "highlighted" : "", "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", field_r203 === 20 ? "B" : field_r203 + 1, ": ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r202.getFieldValue(player_r200, field_r203));
+      }
+    }
+
+    function ConquerorComponent_ng_container_4_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "app-player-score", 12);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 13);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ConquerorComponent_ng_container_4_div_1_div_3_Template, 4, 5, "div", 11);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var player_r200 = ctx.$implicit;
+        var i_r201 = ctx.index;
+
+        var ctx_r199 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r201 === ctx_r199.game.actualPlayerIndex ? "highlighted" : "", "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r200);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r199.settings.fields);
+      }
+    }
+
+    function ConquerorComponent_ng_container_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ConquerorComponent_ng_container_4_div_1_Template, 4, 5, "div", 11);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r189 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r189.game.players);
+      }
+    }
+
+    function ConquerorComponent_app_number_plate_5_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 10);
+      }
+
+      if (rf & 2) {
+        var ctx_r190 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r190.playground);
+      }
+    }
+
+    var ConquerorComponent =
+    /*#__PURE__*/
+    function (_models_playground_mo2) {
+      _inherits(ConquerorComponent, _models_playground_mo2);
+
+      function ConquerorComponent(application, game, route, dialogService) {
+        var _this7;
+
+        _classCallCheck(this, ConquerorComponent);
+
+        _this7 = _possibleConstructorReturn(this, _getPrototypeOf(ConquerorComponent).call(this, application, game, route, dialogService));
+        _this7.settings = new _models_conqueror_settings_model__WEBPACK_IMPORTED_MODULE_4__["ConquerorSettings"]();
+        return _this7;
+      }
+
+      _createClass(ConquerorComponent, [{
+        key: "calculatePoints",
+        value: function calculatePoints(player, fieldIndex, score) {
+          var state = this.getPlayerState(player);
+
+          if (this.isActiveField(fieldIndex)) {
+            state.increaseFieldCount(fieldIndex, this.multiplier);
+
+            if (state.getFieldCount(fieldIndex) >= 3) {
+              player.score += this.settings.noScore ? 1 : score;
+              this.game.actualFieldIndex++;
+            }
+          }
+        }
+      }, {
+        key: "checkPlayerState",
+        value: function checkPlayerState(player) {
+          var _this8 = this;
+
+          if (this.game.actualFieldIndex === this.settings.fields.length) {
+            this.game.players.forEach(function (p) {
+              return p.setWin(_this8.game.isTheBestPlayer(p));
+            });
+          } else if (this.game.isTheLastThrow()) {
+            this.game.nextPlayer();
+          }
+        }
+      }, {
+        key: "getFieldValue",
+        value: function getFieldValue(player, fieldIndex) {
+          var fieldCount = this.getPlayerState(player).getFieldCount(fieldIndex);
+
+          if (fieldCount === 0) {
+            return '○○○';
+          } else {
+            var str = '';
+
+            for (var i = 0; i < Math.min(fieldCount, 3); i++) {
+              str += '●';
+            }
+
+            for (var _i = fieldCount; _i < 3; _i++) {
+              str += '○';
+            }
+
+            return str;
+          }
+        }
+      }, {
+        key: "customReset",
+        value: function customReset() {
+          this.game.actualFieldIndex = 0;
+          this.game.players.forEach(function (player) {
+            return player.state = new _models_conqueror_state_model__WEBPACK_IMPORTED_MODULE_3__["ConquerorState"]();
+          });
+        }
+      }, {
+        key: "customSettingsValidation",
+        value: function customSettingsValidation() {
+          return this.settings.fields.length > 0;
+        }
+      }, {
+        key: "isActiveField",
+        value: function isActiveField(fieldIndex) {
+          return this.settings.fields[this.game.actualFieldIndex] === fieldIndex;
+        }
+      }, {
+        key: "isFieldEnabled",
+        value: function isFieldEnabled(fieldIndex) {
+          return this.settings.fields.indexOf(fieldIndex) === this.game.actualFieldIndex;
+        }
+      }, {
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
+          return this.isFieldEnabled(fieldIndex);
+        }
+      }, {
+        key: "getFieldNote",
+        value: function getFieldNote(fieldIndex) {
+          var _this9 = this;
+
+          var player = this.game.players.find(function (player) {
+            return _this9.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
+          });
+          return player ? player.name : '';
+        }
+      }, {
+        key: "getTheFinalResult",
+        value: function getTheFinalResult() {
+          var winners = this.game.players.filter(function (p) {
+            return p.win;
+          });
+
+          if (!winners.length) {
+            return [];
+          }
+
+          var max = winners[0].score;
+          winners.forEach(function (p) {
+            max = p.score > max ? p.score : max;
+          });
+          winners = winners.filter(function (p) {
+            return p.score === max;
+          }).map(function (p) {
+            return p.clone();
+          });
+          var losers = this.game.players.filter(function (p) {
+            return !winners.some(function (w) {
+              return w.id === p.id;
+            });
+          }).map(function (p) {
+            var c = p.clone();
+            c.win = false;
+            return c;
+          });
+          return [].concat(_toConsumableArray(winners), _toConsumableArray(losers));
+        }
+      }]);
+
+      return ConquerorComponent;
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
+
+    ConquerorComponent.ɵfac = function ConquerorComponent_Factory(t) {
+      return new (t || ConquerorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]));
+    };
+
+    ConquerorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: ConquerorComponent,
+      selectors: [["ng-component"]],
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
+      decls: 6,
+      vars: 4,
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "big", "capitalize", 3, "click"], ["mat-raised-button", "", 1, "button", "big", 3, "color", "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player"], [1, "field-set"], [1, "small"]],
+      template: function ConquerorComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ConquerorComponent_app_settings_1_Template, 9, 5, "app-settings", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, ConquerorComponent_app_game_toolbar_3_Template, 1, 1, "app-game-toolbar", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, ConquerorComponent_ng_container_4_Template, 2, 1, "ng-container", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, ConquerorComponent_app_number_plate_5_Template, 1, 1, "app-number-plate", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_10__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_11__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_13__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_14__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_15__["NumberPlateComponent"]],
+      encapsulation: 2,
+      data: {
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
+      }
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ConquerorComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          templateUrl: './conqueror.component.html',
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
+        }]
+      }], function () {
+        return [{
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]
+        }, {
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
+        }, {
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/conqueror/conqueror.module.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/conqueror/conqueror.module.ts ***!
+    \***********************************************/
+
+  /*! exports provided: ConquerorModule */
+
+  /***/
+  function srcAppConquerorConquerorModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ConquerorModule", function () {
+      return ConquerorModule;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _shared_shared_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../shared/shared.module */
+    "./src/app/shared/shared.module.ts");
+    /* harmony import */
+
+
+    var _conqueror_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./conqueror.component */
+    "./src/app/conqueror/conqueror.component.ts");
+
+    var ConquerorModule = function ConquerorModule() {
+      _classCallCheck(this, ConquerorModule);
+    };
+
+    ConquerorModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      type: ConquerorModule
+    });
+    ConquerorModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      factory: function ConquerorModule_Factory(t) {
+        return new (t || ConquerorModule)();
+      },
+      imports: [[_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+        path: '',
+        component: _conqueror_component__WEBPACK_IMPORTED_MODULE_3__["ConquerorComponent"]
+      }])]]
+    });
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](ConquerorModule, {
+        declarations: [_conqueror_component__WEBPACK_IMPORTED_MODULE_3__["ConquerorComponent"]],
+        imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ConquerorModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+          imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_2__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+            path: '',
+            component: _conqueror_component__WEBPACK_IMPORTED_MODULE_3__["ConquerorComponent"]
+          }])],
+          declarations: [_conqueror_component__WEBPACK_IMPORTED_MODULE_3__["ConquerorComponent"]]
+        }]
+      }], null, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/conqueror/models/conqueror.settings.model.ts":
+  /*!**************************************************************!*\
+    !*** ./src/app/conqueror/models/conqueror.settings.model.ts ***!
+    \**************************************************************/
+
+  /*! exports provided: ConquerorSettings */
+
+  /***/
+  function srcAppConquerorModelsConquerorSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ConquerorSettings", function () {
+      return ConquerorSettings;
+    });
+
+    var ConquerorSettings =
+    /*#__PURE__*/
+    function () {
+      function ConquerorSettings() {
+        _classCallCheck(this, ConquerorSettings);
+
+        this.numbs = [];
+        this.fields = [];
+        this.noScore = false;
+        var defaultSet = true;
+
+        for (var i = 0; i < 21; i++) {
+          this.numbs[i] = defaultSet;
+
+          if (i === 19) {
+            defaultSet = false;
+          }
+        }
+
+        this.initFields();
+      }
+
+      _createClass(ConquerorSettings, [{
+        key: "randomize",
+        value: function randomize() {
+          for (var i = 0; i < this.numbs.length; i++) {
+            this.numbs[i] = false;
+          }
+
+          for (var _i2 = 0; _i2 < 8; _i2++) {
+            var rand = Math.floor(Math.random() * 21);
+
+            while (this.numbs[rand]) {
+              rand = Math.floor(Math.random() * 21);
+            }
+
+            this.numbs[rand] = true;
+          }
+
+          this.initFields();
+        }
+      }, {
+        key: "toggleNoScore",
+        value: function toggleNoScore() {
+          this.noScore = !this.noScore;
+        }
+      }, {
+        key: "getNumbers",
+        value: function getNumbers() {
+          var numbers = [];
+
+          for (var i = 0; i < 21; i++) {
+            numbers[i] = i + 1;
+          }
+
+          return numbers;
+        }
+      }, {
+        key: "setNumber",
+        value: function setNumber(i) {
+          this.numbs[i] = !this.numbs[i];
+          this.initFields();
+        }
+      }, {
+        key: "initFields",
+        value: function initFields() {
+          this.fields = [];
+
+          for (var i = 0; i < 21; i++) {
+            if (this.numbs[i]) {
+              this.fields.push(i);
+            }
+          }
+        }
+      }]);
+
+      return ConquerorSettings;
+    }();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/conqueror/models/conqueror.state.model.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/conqueror/models/conqueror.state.model.ts ***!
+    \***********************************************************/
+
+  /*! exports provided: ConquerorState */
+
+  /***/
+  function srcAppConquerorModelsConquerorStateModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ConquerorState", function () {
+      return ConquerorState;
+    });
+    /* harmony import */
+
+
+    var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ~models/playground-state.model */
+    "./src/app/shared/models/playground-state.model.ts");
+
+    var ConquerorState =
+    /*#__PURE__*/
+    function (_models_playground_st2) {
+      _inherits(ConquerorState, _models_playground_st2);
+
+      function ConquerorState() {
+        var _this10;
+
+        _classCallCheck(this, ConquerorState);
+
+        _this10 = _possibleConstructorReturn(this, _getPrototypeOf(ConquerorState).call(this));
+        _this10.fieldCount = [];
+        _this10.actFieldIndex = 0;
+        return _this10;
+      }
+
+      _createClass(ConquerorState, [{
+        key: "getFieldCount",
+        value: function getFieldCount(field) {
+          return this.getFieldValue(this.fieldCount, field).value;
+        }
+      }, {
+        key: "increaseFieldCount",
+        value: function increaseFieldCount(field, value) {
+          this.getFieldValue(this.fieldCount, field).value += value;
+        }
+      }, {
+        key: "getActFieldIndex",
+        value: function getActFieldIndex() {
+          return this.actFieldIndex;
+        }
+      }, {
+        key: "increaseActFieldIndex",
+        value: function increaseActFieldIndex() {
+          this.actFieldIndex++;
+        }
+      }, {
+        key: "clone",
+        value: function clone() {
+          var state = new ConquerorState();
+          state.actFieldIndex = this.actFieldIndex;
+          this.fieldCount.forEach(function (fv) {
+            return state.fieldCount.push(fv.clone());
+          });
+          return state;
+        }
+      }]);
+
+      return ConquerorState;
+    }(_models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"]);
     /***/
 
   },
@@ -2370,17 +3199,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var CricketComponent =
     /*#__PURE__*/
-    function (_models_playground_mo2) {
-      _inherits(CricketComponent, _models_playground_mo2);
+    function (_models_playground_mo3) {
+      _inherits(CricketComponent, _models_playground_mo3);
 
       function CricketComponent(application, game, route, dialogService) {
-        var _this7;
+        var _this11;
 
         _classCallCheck(this, CricketComponent);
 
-        _this7 = _possibleConstructorReturn(this, _getPrototypeOf(CricketComponent).call(this, application, game, route, dialogService));
-        _this7.settings = new _models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_3__["CricketSettings"]();
-        return _this7;
+        _this11 = _possibleConstructorReturn(this, _getPrototypeOf(CricketComponent).call(this, application, game, route, dialogService));
+        _this11.settings = new _models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_3__["CricketSettings"]();
+        return _this11;
       }
 
       _createClass(CricketComponent, [{
@@ -2418,14 +3247,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this8 = this;
+          var _this12 = this;
 
           this.game.players.forEach(function (p) {
-            return p.score = _this8.getPlayerTotal(p);
+            return p.score = _this12.getPlayerTotal(p);
           });
           var punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
           this.game.players.forEach(function (p) {
-            return p.setWin(_this8.isPlayerDone(p) && (!punishStyle && _this8.game.isTheBestPlayer(p) || punishStyle && _this8.game.isTheWorstPlayer(p)));
+            return p.setWin(_this12.isPlayerDone(p) && (!punishStyle && _this12.game.isTheBestPlayer(p) || punishStyle && _this12.game.isTheWorstPlayer(p)));
           });
 
           if (this.game.isTheLastThrow()) {
@@ -2490,19 +3319,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this9 = this;
+          var _this13 = this;
 
           if (this.isPrimaryField(fieldIndex)) {
             var playerFieldCount = this.getPlayerState(this.getPlayerToDisplay()).getFieldCount(fieldIndex);
             var remaining = ''.padStart(3 - playerFieldCount, '●');
             return remaining + '\n' + this.game.players.filter(function (p) {
-              return _this9.isFieldDoneForPlayer(p, fieldIndex);
+              return _this13.isFieldDoneForPlayer(p, fieldIndex);
             }).map(function (p) {
               return p.name.substr(0, 1);
             }).join(',').toUpperCase();
           } else if (this.isSecondaryField(fieldIndex)) {
             return this.game.players.filter(function (p) {
-              return !_this9.isFieldDoneForPlayer(p, fieldIndex);
+              return !_this13.isFieldDoneForPlayer(p, fieldIndex);
             }).map(function (p) {
               return p.name.substr(0, 1);
             }).join(',').toUpperCase();
@@ -2525,11 +3354,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "changePlayerToDisplay",
         value: function changePlayerToDisplay(player) {
-          var _this10 = this;
+          var _this14 = this;
 
           this.playerToDisplay = player;
           setTimeout(function () {
-            return _this10.playerToDisplay = null;
+            return _this14.playerToDisplay = null;
           }, 1500);
         }
       }, {
@@ -2553,12 +3382,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForScoreGame",
         value: function getPlayerTotalForScoreGame(player) {
-          var _this11 = this;
+          var _this15 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            if (_this11.isFieldDoneForPlayer(player, fieldIndex)) {
-              total += (_this11.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
+            if (_this15.isFieldDoneForPlayer(player, fieldIndex)) {
+              total += (_this15.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -2566,22 +3395,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPlayerTotalForPunishGame",
         value: function getPlayerTotalForPunishGame(player) {
-          var _this12 = this;
+          var _this16 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            total += _this12.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
+            total += _this16.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
       }, {
         key: "punishPlayers",
         value: function punishPlayers(fieldIndex) {
-          var _this13 = this;
+          var _this17 = this;
 
           this.game.players.forEach(function (player) {
-            if (!_this13.isFieldDoneForPlayer(player, fieldIndex)) {
-              _this13.getPlayerState(player).setPunishCount(fieldIndex, _this13.getPlayerState(player).getPunishCount(fieldIndex) + _this13.multiplier);
+            if (!_this17.isFieldDoneForPlayer(player, fieldIndex)) {
+              _this17.getPlayerState(player).setPunishCount(fieldIndex, _this17.getPlayerState(player).getPunishCount(fieldIndex) + _this17.multiplier);
             }
           }, this);
         }
@@ -2602,23 +3431,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isFieldClosed",
         value: function isFieldClosed(fieldIndex) {
-          var _this14 = this;
+          var _this18 = this;
 
           var closed = true;
           this.game.players.forEach(function (player) {
-            closed = closed && _this14.isFieldDoneForPlayer(player, fieldIndex);
+            closed = closed && _this18.isFieldDoneForPlayer(player, fieldIndex);
           }, this);
           return closed;
         }
       }, {
         key: "isFieldClosedForOthers",
         value: function isFieldClosedForOthers(player, fieldIndex) {
-          var _this15 = this;
+          var _this19 = this;
 
           var closed = true;
           this.game.players.forEach(function (p) {
             if (p.id !== player.id) {
-              closed = closed && _this15.isFieldDoneForPlayer(p, fieldIndex);
+              closed = closed && _this19.isFieldDoneForPlayer(p, fieldIndex);
             }
           }, this);
           return closed;
@@ -2626,11 +3455,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isPlayerDone",
         value: function isPlayerDone(player) {
-          var _this16 = this;
+          var _this20 = this;
 
           var done = true;
           this.settings.fields.forEach(function (fieldIndex) {
-            done = done && _this16.isFieldDoneForPlayer(player, fieldIndex);
+            done = done && _this20.isFieldDoneForPlayer(player, fieldIndex);
           });
           return done;
         }
@@ -2988,14 +3817,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setAllowedField",
         value: function setAllowedField(fields) {
-          var _this17 = this;
+          var _this21 = this;
 
           for (var i = 0; i < this.numbs.length; i++) {
             this.numbs[i] = false;
           }
 
           fields.forEach(function (f) {
-            return _this17.numbs[f - 1] = true;
+            return _this21.numbs[f - 1] = true;
           });
           this.initFields();
         }
@@ -3035,19 +3864,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var CricketState =
     /*#__PURE__*/
-    function (_models_playground_st2) {
-      _inherits(CricketState, _models_playground_st2);
+    function (_models_playground_st3) {
+      _inherits(CricketState, _models_playground_st3);
 
       function CricketState() {
-        var _this18;
+        var _this22;
 
         _classCallCheck(this, CricketState);
 
-        _this18 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
-        _this18.fieldCount = [];
-        _this18.punishCount = [];
-        _this18.actFieldIndex = 0;
-        return _this18;
+        _this22 = _possibleConstructorReturn(this, _getPrototypeOf(CricketState).call(this));
+        _this22.fieldCount = [];
+        _this22.punishCount = [];
+        _this22.actFieldIndex = 0;
+        return _this22;
       }
 
       _createClass(CricketState, [{
@@ -3386,26 +4215,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var FivesComponent =
     /*#__PURE__*/
-    function (_models_playground_mo3) {
-      _inherits(FivesComponent, _models_playground_mo3);
+    function (_models_playground_mo4) {
+      _inherits(FivesComponent, _models_playground_mo4);
 
       function FivesComponent(application, game, route, dialogService) {
-        var _this19;
+        var _this23;
 
         _classCallCheck(this, FivesComponent);
 
-        _this19 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
-        _this19.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
-        return _this19;
+        _this23 = _possibleConstructorReturn(this, _getPrototypeOf(FivesComponent).call(this, application, game, route, dialogService));
+        _this23.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
+        return _this23;
       }
 
       _createClass(FivesComponent, [{
         key: "customReset",
         value: function customReset() {
-          var _this20 = this;
+          var _this24 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this20.settings.limit;
+            return player.score = _this24.settings.limit;
           });
         }
       }, {
@@ -3900,17 +4729,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var HareAndHoundComponent =
     /*#__PURE__*/
-    function (_models_playground_mo4) {
-      _inherits(HareAndHoundComponent, _models_playground_mo4);
+    function (_models_playground_mo5) {
+      _inherits(HareAndHoundComponent, _models_playground_mo5);
 
       function HareAndHoundComponent(application, game, route, dialogService) {
-        var _this21;
+        var _this25;
 
         _classCallCheck(this, HareAndHoundComponent);
 
-        _this21 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
-        _this21.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
-        return _this21;
+        _this25 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundComponent).call(this, application, game, route, dialogService, 2, 2));
+        _this25.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
+        return _this25;
       }
 
       _createClass(HareAndHoundComponent, [{
@@ -3931,10 +4760,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this22 = this;
+          var _this26 = this;
 
           player.setWin(this.isHare() && player.score <= 0 || !this.isHare() && player.score + this.settings.getHareStartIndex() <= this.game.players.find(function (p) {
-            return _this22.isHare(p);
+            return _this26.isHare(p);
           }).score);
 
           if (!player.win && this.game.isTheLastThrow()) {
@@ -3958,11 +4787,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this23 = this;
+          var _this27 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.some(function (p) {
-              return fieldIndex === _this23.getFieldIndex(_this23.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this27.getFieldIndex(_this27.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -3971,10 +4800,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this24 = this;
+          var _this28 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this24.getFieldIndex(_this24.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this28.getFieldIndex(_this28.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -3992,13 +4821,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this25 = this;
+          var _this29 = this;
 
           this.game.players.forEach(function (player, index) {
             player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1;
 
             if (index === 0) {
-              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this25.settings.getHareStartIndex());
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this29.settings.getHareStartIndex());
             } else {
               player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
             }
@@ -4282,17 +5111,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var HareAndHoundState =
     /*#__PURE__*/
-    function (_models_playground_st3) {
-      _inherits(HareAndHoundState, _models_playground_st3);
+    function (_models_playground_st4) {
+      _inherits(HareAndHoundState, _models_playground_st4);
 
       function HareAndHoundState(actFieldIndex) {
-        var _this26;
+        var _this30;
 
         _classCallCheck(this, HareAndHoundState);
 
-        _this26 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundState).call(this));
-        _this26.actFieldIndex = actFieldIndex;
-        return _this26;
+        _this30 = _possibleConstructorReturn(this, _getPrototypeOf(HareAndHoundState).call(this));
+        _this30.actFieldIndex = actFieldIndex;
+        return _this30;
       }
 
       _createClass(HareAndHoundState, [{
@@ -4713,26 +5542,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var KillerComponent =
     /*#__PURE__*/
-    function (_models_playground_mo5) {
-      _inherits(KillerComponent, _models_playground_mo5);
+    function (_models_playground_mo6) {
+      _inherits(KillerComponent, _models_playground_mo6);
 
       function KillerComponent(application, game, route, dialogService) {
-        var _this27;
+        var _this31;
 
         _classCallCheck(this, KillerComponent);
 
-        _this27 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
-        _this27.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
-        _this27.nextEnabled = false;
-        _this27.zeroEnabled = false;
-        _this27.multiEnabled = false;
-        return _this27;
+        _this31 = _possibleConstructorReturn(this, _getPrototypeOf(KillerComponent).call(this, application, game, route, dialogService, 2));
+        _this31.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
+        _this31.nextEnabled = false;
+        _this31.zeroEnabled = false;
+        _this31.multiEnabled = false;
+        return _this31;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this28 = this;
+          var _this32 = this;
 
           var state = this.getPlayerState(player);
 
@@ -4758,12 +5587,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this28.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !_this32.getPlayerState(p).isInactive();
                 }).forEach(function (p) {
-                  var s = _this28.getPlayerState(p);
+                  var s = _this32.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this28.multiplier;
+                    s.life -= _this32.multiplier;
 
                     if (s.life < 0) {
                       s.life = 0;
@@ -4785,14 +5614,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this29 = this;
+          var _this33 = this;
 
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this29.getPlayerState(p).isInactive();
+              return !_this33.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this29.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this33.getPlayerState(p).isInactive());
             });
           }
 
@@ -4846,10 +5675,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this30 = this;
+          var _this34 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this30.getPlayerState(p);
+            var state = _this34.getPlayerState(p);
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -4880,10 +5709,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this31 = this;
+          var _this35 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this31.settings.numberOfLives, _this31.settings.boardingLimit);
+            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this35.settings.numberOfLives, _this35.settings.boardingLimit);
           });
         }
       }, {
@@ -4894,12 +5723,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this32 = this;
+          var _this36 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this32.getPlayerState(p).isInactive();
+            return !_this36.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this32.getPlayerState(p).actField;
+            return _this36.getPlayerState(p).actField;
           });
         }
       }]);
@@ -5144,23 +5973,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var KillerState =
     /*#__PURE__*/
-    function (_models_playground_st4) {
-      _inherits(KillerState, _models_playground_st4);
+    function (_models_playground_st5) {
+      _inherits(KillerState, _models_playground_st5);
 
       function KillerState() {
-        var _this33;
+        var _this37;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this33 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
-        _this33.life = life;
-        _this33.boarding = boarding;
-        _this33.actField = -1;
-        _this33.killer = false;
-        return _this33;
+        _this37 = _possibleConstructorReturn(this, _getPrototypeOf(KillerState).call(this));
+        _this37.life = life;
+        _this37.boarding = boarding;
+        _this37.actField = -1;
+        _this37.killer = false;
+        return _this37;
       }
 
       _createClass(KillerState, [{
@@ -5457,18 +6286,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var KnockoutComponent =
     /*#__PURE__*/
-    function (_models_playground_mo6) {
-      _inherits(KnockoutComponent, _models_playground_mo6);
+    function (_models_playground_mo7) {
+      _inherits(KnockoutComponent, _models_playground_mo7);
 
       function KnockoutComponent(application, game, route, dialogService) {
-        var _this34;
+        var _this38;
 
         _classCallCheck(this, KnockoutComponent);
 
-        _this34 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutComponent).call(this, application, game, route, dialogService, 2));
-        _this34.score = 0;
-        _this34.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
-        return _this34;
+        _this38 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutComponent).call(this, application, game, route, dialogService, 2));
+        _this38.score = 0;
+        _this38.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
+        return _this38;
       }
 
       _createClass(KnockoutComponent, [{
@@ -5479,7 +6308,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this35 = this;
+          var _this39 = this;
 
           if (this.game.isTheLastThrow()) {
             if (this.score > player.getThrowsTotal()) {
@@ -5488,10 +6317,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             this.score = player.getThrowsTotal();
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this35.getPlayerState(p).isInactive();
+              return !_this39.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this35.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this39.getPlayerState(p).isInactive());
             });
             this.game.nextPlayer();
           }
@@ -5508,10 +6337,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this36 = this;
+          var _this40 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this36.settings.numberOfLives);
+            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this40.settings.numberOfLives);
           });
           this.score = 0;
         }
@@ -5747,19 +6576,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var KnockoutState =
     /*#__PURE__*/
-    function (_models_playground_st5) {
-      _inherits(KnockoutState, _models_playground_st5);
+    function (_models_playground_st6) {
+      _inherits(KnockoutState, _models_playground_st6);
 
       function KnockoutState() {
-        var _this37;
+        var _this41;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
 
         _classCallCheck(this, KnockoutState);
 
-        _this37 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutState).call(this));
-        _this37.life = life;
-        return _this37;
+        _this41 = _possibleConstructorReturn(this, _getPrototypeOf(KnockoutState).call(this));
+        _this41.life = life;
+        return _this41;
       }
 
       _createClass(KnockoutState, [{
@@ -5985,7 +6814,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.numbs[i] = false;
           }
 
-          for (var _i = 0; _i < 8; _i++) {
+          for (var _i3 = 0; _i3 < 8; _i3++) {
             var rand = Math.floor(Math.random() * 21);
 
             while (this.numbs[rand]) {
@@ -6071,18 +6900,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var ShanghaiState =
     /*#__PURE__*/
-    function (_models_playground_st6) {
-      _inherits(ShanghaiState, _models_playground_st6);
+    function (_models_playground_st7) {
+      _inherits(ShanghaiState, _models_playground_st7);
 
       function ShanghaiState() {
-        var _this38;
+        var _this42;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this38 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
-        _this38.fieldCount = [];
-        _this38.fieldScore = [];
-        return _this38;
+        _this42 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiState).call(this));
+        _this42.fieldCount = [];
+        _this42.fieldScore = [];
+        return _this42;
       }
 
       _createClass(ShanghaiState, [{
@@ -6469,17 +7298,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var ShanghaiComponent =
     /*#__PURE__*/
-    function (_models_playground_mo7) {
-      _inherits(ShanghaiComponent, _models_playground_mo7);
+    function (_models_playground_mo8) {
+      _inherits(ShanghaiComponent, _models_playground_mo8);
 
       function ShanghaiComponent(application, game, route, dialogService) {
-        var _this39;
+        var _this43;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this39 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
-        _this39.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this39;
+        _this43 = _possibleConstructorReturn(this, _getPrototypeOf(ShanghaiComponent).call(this, application, game, route, dialogService));
+        _this43.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this43;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -6501,7 +7330,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this40 = this;
+          var _this44 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -6531,7 +7360,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this40.game.isTheBestPlayer(p));
+              return p.setWin(_this44.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -6551,7 +7380,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               str += '●';
             }
 
-            for (var _i2 = fieldCount; _i2 < 3; _i2++) {
+            for (var _i4 = fieldCount; _i4 < 3; _i4++) {
               str += '○';
             }
 
@@ -8206,10 +9035,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this41 = this;
+          var _this45 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this41.playground.game.players.map(function (p) {
+            return _this45.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -8846,7 +9675,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this42 = this;
+          var _this46 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -8892,7 +9721,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this42.getPlayerState(p) || !_this42.getPlayerState(p).isInactive();
+              return !_this46.getPlayerState(p) || !_this46.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -8988,6 +9817,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.game.resetScore();
           this.multiplier = 1;
           this.extraEndingMsg = '';
+          this.game.actualFieldIndex = 0;
           this.customReset();
         }
       }, {
@@ -9407,6 +10237,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, GameService);
 
         this.players = [];
+        this.actualFieldIndex = 0;
         this.victoryFirst = true;
       }
 
@@ -9514,6 +10345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var game = new GameService();
           game.actualPlayerIndex = this.actualPlayerIndex;
           game.actualThrow = this.actualThrow;
+          game.actualFieldIndex = this.actualFieldIndex;
           game.round = this.round;
           var players = [];
           this.players.forEach(function (player) {
@@ -10221,17 +11053,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var X01Component =
     /*#__PURE__*/
-    function (_models_playground_mo8) {
-      _inherits(X01Component, _models_playground_mo8);
+    function (_models_playground_mo9) {
+      _inherits(X01Component, _models_playground_mo9);
 
       function X01Component(application, game, route, dialogService) {
-        var _this43;
+        var _this47;
 
         _classCallCheck(this, X01Component);
 
-        _this43 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
-        _this43.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this43;
+        _this47 = _possibleConstructorReturn(this, _getPrototypeOf(X01Component).call(this, application, game, route, dialogService));
+        _this47.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this47;
       }
 
       _createClass(X01Component, [{
@@ -10268,10 +11100,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this44 = this;
+          var _this48 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this44.settings.startValue;
+            return player.score = _this48.settings.startValue;
           });
         }
       }]);

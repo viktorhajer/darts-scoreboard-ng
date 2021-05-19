@@ -6,6 +6,7 @@ export class GameService {
   players: Player[] = [];
   actualPlayerIndex: number;
   actualThrow: number;
+  actualFieldIndex = 0;
   round: number;
   victoryFirst = true;
 
@@ -92,6 +93,7 @@ export class GameService {
     const game = new GameService();
     game.actualPlayerIndex = this.actualPlayerIndex;
     game.actualThrow = this.actualThrow;
+    game.actualFieldIndex = this.actualFieldIndex;
     game.round = this.round;
     const players: Player[] = [];
     this.players.forEach(player => {

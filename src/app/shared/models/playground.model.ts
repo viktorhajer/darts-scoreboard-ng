@@ -152,6 +152,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.game.resetScore();
     this.multiplier = 1;
     this.extraEndingMsg = '';
+    this.game.actualFieldIndex = 0;
     this.customReset();
   }
 
