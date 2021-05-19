@@ -17,6 +17,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Docker
+
+The included Dockefile allows you to build a Docker image for a test/development server with `docker build -t darts-scoreboard-ng . `. It can then be run using `docker run -p 80:4200 --name scoreboard darts-scoreboard-ng`.
+
 ## Game types
 
 | Games              | Description         | 
