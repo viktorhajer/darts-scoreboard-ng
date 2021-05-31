@@ -30,6 +30,10 @@ export class ConquerorComponent extends Playground<ConquerorState> {
         player.score += this.settings.noScore ? 1 : score;
         this.game.actualFieldIndex++;
       }
+    } else if (fieldIndex === 20 && this.multiplier === 2) {
+      state.increaseFieldCount(this.settings.fields[this.game.actualFieldIndex], 3);
+      player.score += this.settings.noScore ? 1 : this.settings.fields[this.game.actualFieldIndex] + 1;
+      this.game.actualFieldIndex++;
     }
   }
 
@@ -71,7 +75,7 @@ export class ConquerorComponent extends Playground<ConquerorState> {
   }
 
   isFieldEnabled(fieldIndex: number): boolean {
-    return this.settings.fields.indexOf(fieldIndex) === this.game.actualFieldIndex;
+    return fieldIndex === 20 || this.settings.fields.indexOf(fieldIndex) === this.game.actualFieldIndex;
   }
 
   isPrimaryField(fieldIndex: number): boolean {

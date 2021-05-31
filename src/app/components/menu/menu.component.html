@@ -2,10 +2,12 @@
   <h1>Select Game!</h1>
 </div>
 <div id="menu">
-  <button mat-raised-button *ngFor="let g of getGameList(); let i = index"
-          [routerLink]="['/' + g.path]" class="gameSelectBox {{'menu-button-'+i}}">
-    <mat-icon>{{g.data.icon}}</mat-icon>
-    <div class="title">{{g.data.name}}</div>
-  </button>
+  <div class="button-line" *ngFor="let k of [0,1,2]">
+    <button mat-raised-button *ngFor="let g of getGameList().slice(k*3,k*3 + 3); let i = index"
+                     [routerLink]="['/' + g.path]" class="gameSelectBox {{'menu-button-' + k + '' + i}}">
+      <mat-icon>{{g.data.icon}}</mat-icon>
+      <div class="title">{{g.data.name}}</div>
+    </button>
+  </div>
 </div>
 <div class="version">v1.1</div>

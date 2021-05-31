@@ -3,14 +3,13 @@ import {FIELDS_COUNT} from '~models/playground.model';
 export class ConquerorSettings {
 
   fields: number[];
-  style = 1;
+  style: number;
   noScore = false;
 
   constructor() {
     this.fields = [];
     this.noScore = false;
-    this.style = 1;
-    this.randomCountry();
+    this.randomCity();
   }
 
   randomCity() {
@@ -54,6 +53,6 @@ export class ConquerorSettings {
         fields = [...fields.slice(0, random), ...fields.slice(random + 1)];
       }
     }
-    return randomFields;
+    return randomFields.sort((a, b) => Number(a) - Number(b));
   }
 }

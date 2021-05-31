@@ -1,15 +1,22 @@
 <div id="playgroundContent">
 
   <app-settings *ngIf="settingsOpen" [title]="'Capture the Flag'" [playground]="playground"
-                [rules]="'...'">
+                [rules]="'Növekvő sorrendben jönnek a mezők, a játékosoknak el kell foglalni őket. Ez történhet úgy,' +
+                 ' hogy háromszor eltalálja a játékos vagy dob egyetlen dupla bullt. Ha a játékos elfoglalta a mezőt, ' +
+                  'akkor No score esetén 1 pontot kap, egyébként megkapja a mező értékét és megnyílik a következő mező.' +
+                   'A játék a bull mező elfoglalásáig tart. A végén az nyer, akinek a legtöbb pontja van. Döntetlen ' +
+                    'lehetséges.'">
 
 
     <button mat-raised-button class="button shortmedium" [color]="settings.style === 0 ? 'primary' : ''"
-            (click)="settings.randomCity()">City</button>
+            (click)="settings.randomCity()">City (5)
+    </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.style === 1 ? 'primary' : ''"
-            (click)="settings.randomCountry()">Country</button>
+            (click)="settings.randomCountry()">Country (10)
+    </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.style === 2 ? 'primary' : ''"
-            (click)="settings.randomContinent()">Continent</button>
+            (click)="settings.randomContinent()">Continent (20)
+    </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.noScore?'primary':''"
             (click)="settings.toggleNoScore()">No score
     </button>

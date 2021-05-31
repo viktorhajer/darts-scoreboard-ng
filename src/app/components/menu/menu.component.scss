@@ -4,10 +4,13 @@
 }
 #menu {
   width: 100vw;
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: center;
+
+  .button-line {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+  }
 
   .gameSelectBox {
     margin: 1px;
