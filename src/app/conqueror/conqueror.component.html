@@ -1,17 +1,16 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [title]="'Conqueror'" [playground]="playground"
+  <app-settings *ngIf="settingsOpen" [title]="'Capture the Flag'" [playground]="playground"
                 [rules]="'...'">
 
-    <h2>Fields</h2>
-    <button mat-raised-button class="button" [color]="settings.numbs[i]?'primary':''"
-            *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
-      {{numb === 21 ? 'B' : numb}}
-    </button>
-    <mat-divider></mat-divider>
 
-    <button mat-raised-button class="button big capitalize" (click)="settings.randomize()">Randomize</button>
-    <button mat-raised-button class="button big"  [color]="settings.noScore?'primary':''"
+    <button mat-raised-button class="button shortmedium" [color]="settings.style === 0 ? 'primary' : ''"
+            (click)="settings.randomCity()">City</button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style === 1 ? 'primary' : ''"
+            (click)="settings.randomCountry()">Country</button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style === 2 ? 'primary' : ''"
+            (click)="settings.randomContinent()">Continent</button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.noScore?'primary':''"
             (click)="settings.toggleNoScore()">No score
     </button>
   </app-settings>
