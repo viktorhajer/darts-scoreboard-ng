@@ -8,6 +8,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {KillerState} from './models/killer.state.model';
 import {KillerSettings} from './models/killer.settings.model';
+import {SoundService} from '~services/sound.service';
 
 const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 
@@ -19,8 +20,9 @@ export class KillerComponent extends Playground<KillerState> {
 
   settings: KillerSettings;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService, 2);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService, 2);
     this.settings = new KillerSettings();
     this.nextEnabled = false;
     this.zeroEnabled = false;

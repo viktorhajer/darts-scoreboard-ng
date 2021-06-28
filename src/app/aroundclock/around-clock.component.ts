@@ -8,6 +8,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {Player} from '~models/player.model';
 import {AroundClockState} from './models/around-clock.state.model';
 import {AroundClockSettings} from './models/around-clock.settings.model';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   templateUrl: './around-clock.component.html',
@@ -18,8 +19,9 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   settings: AroundClockSettings;
   hiddenInfo = true;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService);
     this.settings = new AroundClockSettings();
   }
 
@@ -54,7 +56,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     if ((this.settings.fields.length - 1) < state.actFieldIndex) {
       player.setWin();
     } else if (this.game.isTheLastThrow()) {
-      if (this.settings.punishment || this.settings.nineLives) {
+      if (this.settings.punishment || this.settings.nineLives || this.settings.fiveLives) {
         let multi = 0;
         for (let i = 0; i < 3; i++) {
           const t = player.throwsHistory[player.throwsHistory.length - i - 1];
@@ -64,14 +66,14 @@ export class AroundClockComponent extends Playground<AroundClockState> {
           if (this.settings.punishment) {
             state.decreaseActFieldIndex();
           }
-          if (this.settings.nineLives) {
+          if (this.settings.nineLives || this.settings.fiveLives) {
             state.life--;
           }
         }
       }
       this.game.nextPlayer();
     }
-    if (this.settings.nineLives && this.game.players.length > 1) {
+    if ((this.settings.nineLives || this.settings.fiveLives) && this.game.players.length > 1) {
       const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
       if (activePlayers.length === 1) {
         activePlayers[0].setWin(true);
@@ -120,7 +122,8 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   customReset() {
-    this.game.players.forEach(player => player.state = new AroundClockState());
+    const life = this.settings.nineLives ? 3 : 5;
+    this.game.players.forEach(player => player.state = new AroundClockState(life));
     this.settings.setStyle();
   }
 

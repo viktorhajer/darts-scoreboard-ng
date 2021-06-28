@@ -17,6 +17,9 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.nineLives?'primary':''" (click)="settings.toggleNineLives()">
       Nine Lives
     </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.fiveLives?'primary':''" (click)="settings.toggleFiveLives()">
+      Five Lives
+    </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.saboteur?'primary':''" (click)="settings.toggleSaboteur()">
       Saboteur
     </button>
@@ -56,8 +59,8 @@
       <div class="hidden-info" [class.hidden]="hiddenInfo" (click)="toggleHiddenInfo()">{{getDistanceFromRandom()}}</div>
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.nineLives">
-          <ng-container *ngIf="settings.nineLives">
+        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.nineLives || settings.fiveLives">
+          <ng-container *ngIf="settings.nineLives || settings.fiveLives">
             <div class="score"><label>Life: </label>{{getPlayerState(player).life}}</div>
           </ng-container>
         </app-player-score>

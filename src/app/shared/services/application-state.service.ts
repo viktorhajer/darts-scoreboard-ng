@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ApplicationSettings} from '~models/application-settings.model';
+import {SoundService} from '~services/sound.service';
 
 const APPLICATION_KEY = 'ApplicationSettings';
 const PLAYER_KEY = 'Players';
@@ -9,7 +10,7 @@ export class ApplicationStateService {
 
   settings = new ApplicationSettings();
 
-  constructor() {
+  constructor(private soundService: SoundService) {
     const data = localStorage.getItem(APPLICATION_KEY);
     if (data) {
       this.settings = JSON.parse(data);
@@ -18,7 +19,8 @@ export class ApplicationStateService {
   }
 
   toggleDarkTheme() {
-    this.settings.darkTheme = !this.settings.darkTheme;
+    this.soundService.fart();
+    this.settings.darkTheme = (this.settings.darkTheme + 1) % 3;
     this.setTheme();
     this.saveSettings();
   }
@@ -37,10 +39,12 @@ export class ApplicationStateService {
   }
 
   private setTheme() {
-    if (this.settings.darkTheme) {
+    document.body.className = document.body.className.replace('dark-theme', '');
+    document.body.className = document.body.className.replace('dark-red', '');
+    if (this.settings.darkTheme === 1) {
       document.body.classList.add('dark-theme');
-    } else {
-      document.body.className = document.body.className.replace('dark-theme', '');
+    } else if (this.settings.darkTheme === 2) {
+      document.body.classList.add('dark-red');
     }
   }
 

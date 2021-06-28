@@ -7,6 +7,7 @@ import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
 import {GameService} from '~services/game.service';
+import {SoundService} from '~services/sound.service';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
@@ -27,6 +28,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
                         public game: GameService,
                         public route: Router,
                         public dialogService: DialogService,
+                        public soundService: SoundService,
                         public minimumNumberOfPlayers = 1,
                         public maximumNumberOfPlayers?: number) {
   }

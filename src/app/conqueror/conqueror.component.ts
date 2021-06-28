@@ -8,6 +8,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {ConquerorState} from './models/conqueror.state.model';
 import {ConquerorSettings} from './models/conqueror.settings.model';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   templateUrl: './conqueror.component.html',
@@ -17,8 +18,9 @@ export class ConquerorComponent extends Playground<ConquerorState> {
 
   settings: ConquerorSettings;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService);
     this.settings = new ConquerorSettings();
   }
 
@@ -28,11 +30,13 @@ export class ConquerorComponent extends Playground<ConquerorState> {
       state.increaseFieldCount(fieldIndex, this.multiplier);
       if (state.getFieldCount(fieldIndex) >= 3) {
         player.score += this.settings.noScore ? 1 : score;
+        this.checkWinner(player);
         this.game.actualFieldIndex++;
       }
-    } else if (fieldIndex === 20 && this.multiplier === 2) {
+    } else if (fieldIndex === 20) {
       state.increaseFieldCount(this.settings.fields[this.game.actualFieldIndex], 3);
       player.score += this.settings.noScore ? 1 : this.settings.fields[this.game.actualFieldIndex] + 1;
+      this.checkWinner(player);
       this.game.actualFieldIndex++;
     }
   }
@@ -64,6 +68,7 @@ export class ConquerorComponent extends Playground<ConquerorState> {
   customReset() {
     this.game.actualFieldIndex = 0;
     this.game.players.forEach(player => player.state = new ConquerorState());
+    this.settings.randomCity();
   }
 
   customSettingsValidation(): boolean {
@@ -103,5 +108,16 @@ export class ConquerorComponent extends Playground<ConquerorState> {
       return c;
     });
     return [...winners, ...losers];
+  }
+
+  private checkWinner(player: Player) {
+    let total = this.settings.fields.length;
+    const sum = player.score;
+    if (!this.settings.noScore) {
+      total = this.settings.fields.reduce((a, b) => a + b, 0);
+    }
+    if (sum > Math.floor(total / 2)) {
+      player.setWin(true);
+    }
   }
 }

@@ -3,6 +3,7 @@
 
 $light-theme: mat-light-theme(mat-palette($mat-teal), mat-palette($mat-grey));
 $dark-theme: mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-gray));
+$dark-red: mat-dark-theme(mat-palette($mat-red), mat-palette($mat-gray));
 $basic: mat-palette($mat-grey);
 
 @mixin shared-module-theme($theme) {
@@ -141,5 +142,13 @@ body {
     @include shared-module-theme($dark-theme);
     @include feature-module-theme($dark-theme);
     @include menu-theme($dark-theme);
+  }
+  &.dark-red {
+    background: linear-gradient(to top, mat-color($basic, 800), #000000);
+    color: mat-color(map-get($dark-red, primary), 200);
+    @include angular-material-theme($dark-red);
+    @include shared-module-theme($dark-red);
+    @include feature-module-theme($dark-red);
+    @include menu-theme($dark-red);
   }
 }

@@ -8,6 +8,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {CricketSettings} from './models/cricet.settings.model';
 import {CricketState} from './models/cricet.state.model';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   templateUrl: './cricket.component.html',
@@ -18,8 +19,9 @@ export class CricketComponent extends Playground<CricketState> {
   settings: CricketSettings;
   playerToDisplay: Player;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService);
     this.settings = new CricketSettings();
   }
 

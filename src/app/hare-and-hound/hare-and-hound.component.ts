@@ -8,6 +8,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {HareAndHoundSettings} from './models/hare-and-hound.settings.model';
 import {HareAndHoundState} from './models/hare-and-hound.state.model';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   templateUrl: './hare-and-hound.component.html',
@@ -17,8 +18,9 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
 
   settings: HareAndHoundSettings;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService, 2, 2);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService, 2, 2);
     this.settings = new HareAndHoundSettings();
   }
 

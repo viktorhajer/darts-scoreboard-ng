@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {slideInAnimation} from './route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,18 @@ import {ApplicationStateService} from '~services/application-state.service';
   styleUrls: ['./app.component.scss'],
   animations: [slideInAnimation]
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
 
-  constructor(public applicationStateService: ApplicationStateService) {
+  @ViewChild('audioElement') audioElementRef: ElementRef;
+
+  constructor(public applicationStateService: ApplicationStateService,
+              private soundService: SoundService) {
     document.addEventListener('touchmove',  (event: any) => {
       if (event.scale !== 1) { event.preventDefault(); }
     }, { passive: false });
+  }
+
+  ngAfterViewInit() {
+    this.soundService.audioElement = this.audioElementRef.nativeElement;
   }
 }

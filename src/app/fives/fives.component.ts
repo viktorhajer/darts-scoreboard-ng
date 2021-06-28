@@ -8,6 +8,7 @@ import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {FivesSettings} from './models/fives.settings.model';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   templateUrl: './fives.component.html',
@@ -17,8 +18,9 @@ export class FivesComponent extends Playground<PlaygroundState> {
 
   settings: FivesSettings;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService);
     this.settings = new FivesSettings();
   }
 

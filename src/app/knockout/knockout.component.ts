@@ -8,6 +8,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {KnockoutSettings} from './models/knockout.settings.model';
 import {KnockoutState} from './models/knockout.state.model';
+import {SoundService} from '~services/sound.service';
 
 @Component({
   templateUrl: './knockout.component.html',
@@ -18,8 +19,9 @@ export class KnockoutComponent extends Playground<KnockoutState> {
   settings: KnockoutSettings;
   score = 0;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService) {
-    super(application, game, route, dialogService, 2);
+  constructor(application: ApplicationStateService, game: GameService, route: Router,
+              dialogService: DialogService, soundService: SoundService) {
+    super(application, game, route, dialogService, soundService, 2);
     this.settings = new KnockoutSettings();
   }
 

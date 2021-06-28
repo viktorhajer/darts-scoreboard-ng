@@ -3,12 +3,12 @@ export class HareAndHoundSettings {
   hareStartIndex: number;
 
   constructor() {
-    this.houndStartIndex = 11;
+    this.houndStartIndex = 13;
     this.hareStartIndex = 19;
   }
 
   getSelectableHoundStart(): number[] {
-    return [14, 9, 12, 5, 20];
+    return [7, 16, 8, 11, 14, 9, 12, 5, 20];
   }
 
   setHoundStart(value: number) {
