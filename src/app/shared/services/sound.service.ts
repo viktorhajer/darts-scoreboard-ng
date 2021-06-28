@@ -10,7 +10,7 @@ export class SoundService {
   }
 
   private play(soundFileName: string) {
-    this.audioElement.src = `/assets/sounds/${soundFileName}`;
+    this.audioElement.src = `assets/sounds/${soundFileName}`;
     this.audioElement.play();
   }
 }

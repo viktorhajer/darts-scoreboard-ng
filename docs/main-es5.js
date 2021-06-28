@@ -10613,7 +10613,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "play",
         value: function play(soundFileName) {
-          this.audioElement.src = "/assets/sounds/".concat(soundFileName);
+          this.audioElement.src = "assets/sounds/".concat(soundFileName);
           this.audioElement.play();
         }
       }]);

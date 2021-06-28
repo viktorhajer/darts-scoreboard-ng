@@ -5180,7 +5180,7 @@ class SoundService {
         this.play('perfect-fart.mp3');
     }
     play(soundFileName) {
-        this.audioElement.src = `/assets/sounds/${soundFileName}`;
+        this.audioElement.src = `assets/sounds/${soundFileName}`;
         this.audioElement.play();
     }
 }
