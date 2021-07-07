@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Routes} from '@angular/router';
+import {Router, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
@@ -45,6 +45,14 @@ const routes: Routes = [
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
+
+  constructor(private readonly router: Router) {
+  }
+
+  randomGame() {
+    const random = Math.floor(Math.random() * routes.length);
+    this.router.navigate(['/' + routes[random].path]);
+  }
 
   getGameList(): Routes {
     return routes.filter(r => !!r.data);

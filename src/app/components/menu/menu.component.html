@@ -1,5 +1,5 @@
 <div id="menu_title">
-  <h1>Select Game!</h1>
+  <h1 (click)="randomGame()">Select Game!</h1>
 </div>
 <div id="menu">
   <div class="button-line" *ngFor="let k of [0,1,2]">
@@ -10,4 +10,4 @@
     </button>
   </div>
 </div>
-<div class="version">v1.1</div>
+<div class="version">v1.2</div>
