@@ -50,6 +50,9 @@ export class FivesComponent extends Playground<PlaygroundState> {
         sum += t.score * t.multi;
       }
       if (sum % this.settings.divider === 0) {
+        if(this.settings.noCheat && player.throwsHistory[player.throwsHistory.length - 1].score === 0 && sum !== 0) {
+          sum = 0;
+        }
         player.score -= (sum / this.settings.divider);
       }
     }

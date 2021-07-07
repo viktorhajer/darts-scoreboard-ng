@@ -5,6 +5,12 @@
                  'is divisible by five. The higher the number you score, the more points you can score. For every five ' +
                   'scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.'">
 
+    <h2>Games</h2>
+    <button mat-raised-button class="button" [color]="settings.noCheat?'primary':''" (click)="settings.toggleNoCheat()">
+      No Cheat
+    </button>
+    <mat-divider></mat-divider>
+
     <h2>Divider</h2>
     <button mat-raised-button class="button" [color]="settings.divider === divider?'primary':''"
             *ngFor="let divider of settings.getSelectableDividers()"

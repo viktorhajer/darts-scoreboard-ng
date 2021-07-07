@@ -1,10 +1,12 @@
 export class FivesSettings {
   divider: number;
   limit: number;
+  noCheat: boolean;
 
   constructor() {
     this.divider = 5;
-    this.limit = 30;
+    this.limit = 20;
+    this.noCheat = true;
   }
 
   getSelectableDividers(): number[] {
@@ -12,7 +14,7 @@ export class FivesSettings {
   }
 
   getSelectableLimits(): number[] {
-    return [30, 50, 100];
+    return [10, 20, 30, 50, 100];
   }
 
   setDivider(value: number) {
@@ -21,5 +23,9 @@ export class FivesSettings {
 
   setLimit(value: number) {
     this.limit = value;
+  }
+
+  toggleNoCheat() {
+    this.noCheat = !this.noCheat;
   }
 }
