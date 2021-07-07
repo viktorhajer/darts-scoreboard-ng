@@ -24,6 +24,20 @@ export class FivesComponent extends Playground<PlaygroundState> {
     this.settings = new FivesSettings();
   }
 
+  isPrimaryField(fieldIndex: number): boolean {
+    if (this.game.actualThrow === 2) {
+      const mod = this.settings.divider - (this.game.getActualPlayer().getThrowsTotal() % this.settings.divider);
+      let max = mod + this.settings.divider;
+      const all = [mod];
+      while(max <= 20) {
+        all.push(max);
+        max += this.settings.divider;
+      }
+      return all.some(f => f === fieldIndex+1);
+    }
+    return false;
+  }
+
   customReset() {
     this.game.players.forEach(player => player.score = this.settings.limit);
   }

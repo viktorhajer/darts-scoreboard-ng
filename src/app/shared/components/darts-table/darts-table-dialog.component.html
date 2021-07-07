@@ -1,6 +1,6 @@
 <div class="dialog-container darts-table-container">
   <mat-dialog-content class="body-2" (click)="close()">
     <img src="assets/darts_table.png">
-    <div *ngFor="let f of data.fieldIndexes" class="clip darts-table-field-{{f}}"></div>
+    <div *ngFor="let f of data.field" class="clip darts-table-field-{{f}}" [class.primary]="isPrimary(f)"></div>
   </mat-dialog-content>
 </div>

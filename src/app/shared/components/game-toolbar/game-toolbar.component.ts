@@ -30,11 +30,15 @@ export class GameToolbarComponent {
 
   showTable() {
     const enabledFields: number[] = [];
+    const primaryFields: number[] = [];
     for (let i = 0; i <= 20; i++) {
       if (this.playground.isFieldEnabled(i)){
         enabledFields.push(i);
       }
+      if (this.playground.isPrimaryField(i)){
+        primaryFields.push(i);
+      }
     }
-    this.dialogService.openDartsTable(enabledFields);
+    this.dialogService.openDartsTable(enabledFields, primaryFields);
   }
 }

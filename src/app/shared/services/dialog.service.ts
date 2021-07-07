@@ -24,9 +24,9 @@ export class DialogService {
     });
   }
 
-  openDartsTable(fieldIndexes: number[]){
+  openDartsTable(fieldIndexes: number[], primaryFieldIndexes: number[]){
     return this.dialog.open(DartsTableDialogComponent, {
-      data: {fieldIndexes}
+      data: {field: fieldIndexes, primary: primaryFieldIndexes}
     });
   }
 }
