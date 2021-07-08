@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'conqueror',
     data: {name: 'Capture the Flag', color: '#0a756b', icon: 'flag'}
+  },
+  {
+    path: 'imitator',
+    data: {name: 'Imitator', color: '#0a756b', icon: 'group'}
   }
 ];
 

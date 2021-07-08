@@ -1,3 +1,9 @@
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1621,13 +1627,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-iteration */
     "./node_modules/core-js/internals/array-iteration.js").forEach;
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js"); // `Array.prototype.forEach` method implementation
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
+
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var STRICT_METHOD = arrayMethodIsStrict('forEach');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('forEach'); // `Array.prototype.forEach` method implementation
     // https://tc39.github.io/ecma262/#sec-array.prototype.foreach
 
-
-    module.exports = sloppyArrayMethod('forEach') ? function forEach(callbackfn
+    module.exports = !STRICT_METHOD || !USES_TO_LENGTH ? function forEach(callbackfn
     /* , thisArg */
     ) {
       return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
@@ -1648,8 +1660,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "use strict";
 
     var bind = __webpack_require__(
-    /*! ../internals/bind-context */
-    "./node_modules/core-js/internals/bind-context.js");
+    /*! ../internals/function-bind-context */
+    "./node_modules/core-js/internals/function-bind-context.js");
 
     var toObject = __webpack_require__(
     /*! ../internals/to-object */
@@ -1685,9 +1697,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var argumentsLength = arguments.length;
       var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
       var mapping = mapfn !== undefined;
-      var index = 0;
       var iteratorMethod = getIteratorMethod(O);
-      var length, result, step, iterator, next;
+      var index = 0;
+      var length, result, step, iterator, next, value;
       if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2); // if the target is not iterable or it's an array with the default iterator - use a simple case
 
       if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
@@ -1696,14 +1708,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         result = new C();
 
         for (; !(step = next.call(iterator)).done; index++) {
-          createProperty(result, index, mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value);
+          value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
+          createProperty(result, index, value);
         }
       } else {
         length = toLength(O.length);
         result = new C(length);
 
         for (; length > index; index++) {
-          createProperty(result, index, mapping ? mapfn(O[index], index) : O[index]);
+          value = mapping ? mapfn(O[index], index) : O[index];
+          createProperty(result, index, value);
         }
       }
 
@@ -1778,8 +1792,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function node_modulesCoreJsInternalsArrayIterationJs(module, exports, __webpack_require__) {
     var bind = __webpack_require__(
-    /*! ../internals/bind-context */
-    "./node_modules/core-js/internals/bind-context.js");
+    /*! ../internals/function-bind-context */
+    "./node_modules/core-js/internals/function-bind-context.js");
 
     var IndexedObject = __webpack_require__(
     /*! ../internals/indexed-object */
@@ -1898,17 +1912,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/to-length */
     "./node_modules/core-js/internals/to-length.js");
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js");
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
+
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
 
     var min = Math.min;
     var nativeLastIndexOf = [].lastIndexOf;
     var NEGATIVE_ZERO = !!nativeLastIndexOf && 1 / [1].lastIndexOf(1, -0) < 0;
-    var SLOPPY_METHOD = sloppyArrayMethod('lastIndexOf'); // `Array.prototype.lastIndexOf` method implementation
+    var STRICT_METHOD = arrayMethodIsStrict('lastIndexOf'); // For preventing possible almost infinite loop in non-standard implementations, test the forward version of the method
+
+    var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', {
+      ACCESSORS: true,
+      1: 0
+    });
+    var FORCED = NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH; // `Array.prototype.lastIndexOf` method implementation
     // https://tc39.github.io/ecma262/#sec-array.prototype.lastindexof
 
-    module.exports = NEGATIVE_ZERO || SLOPPY_METHOD ? function lastIndexOf(searchElement
+    module.exports = FORCED ? function lastIndexOf(searchElement
     /* , fromIndex = @[*-1] */
     ) {
       // convert -0 to +0
@@ -1947,8 +1971,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/well-known-symbol.js");
 
     var V8_VERSION = __webpack_require__(
-    /*! ../internals/v8-version */
-    "./node_modules/core-js/internals/v8-version.js");
+    /*! ../internals/engine-v8-version */
+    "./node_modules/core-js/internals/engine-v8-version.js");
 
     var SPECIES = wellKnownSymbol('species');
 
@@ -1967,6 +1991,87 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         };
 
         return array[METHOD_NAME](Boolean).foo !== 1;
+      });
+    };
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/core-js/internals/array-method-is-strict.js":
+  /*!******************************************************************!*\
+    !*** ./node_modules/core-js/internals/array-method-is-strict.js ***!
+    \******************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsArrayMethodIsStrictJs(module, exports, __webpack_require__) {
+    "use strict";
+
+    var fails = __webpack_require__(
+    /*! ../internals/fails */
+    "./node_modules/core-js/internals/fails.js");
+
+    module.exports = function (METHOD_NAME, argument) {
+      var method = [][METHOD_NAME];
+      return !!method && fails(function () {
+        // eslint-disable-next-line no-useless-call,no-throw-literal
+        method.call(null, argument || function () {
+          throw 1;
+        }, 1);
+      });
+    };
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/core-js/internals/array-method-uses-to-length.js":
+  /*!***********************************************************************!*\
+    !*** ./node_modules/core-js/internals/array-method-uses-to-length.js ***!
+    \***********************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsArrayMethodUsesToLengthJs(module, exports, __webpack_require__) {
+    var DESCRIPTORS = __webpack_require__(
+    /*! ../internals/descriptors */
+    "./node_modules/core-js/internals/descriptors.js");
+
+    var fails = __webpack_require__(
+    /*! ../internals/fails */
+    "./node_modules/core-js/internals/fails.js");
+
+    var has = __webpack_require__(
+    /*! ../internals/has */
+    "./node_modules/core-js/internals/has.js");
+
+    var defineProperty = Object.defineProperty;
+    var cache = {};
+
+    var thrower = function thrower(it) {
+      throw it;
+    };
+
+    module.exports = function (METHOD_NAME, options) {
+      if (has(cache, METHOD_NAME)) return cache[METHOD_NAME];
+      if (!options) options = {};
+      var method = [][METHOD_NAME];
+      var ACCESSORS = has(options, 'ACCESSORS') ? options.ACCESSORS : false;
+      var argument0 = has(options, 0) ? options[0] : thrower;
+      var argument1 = has(options, 1) ? options[1] : undefined;
+      return cache[METHOD_NAME] = !!method && !fails(function () {
+        if (ACCESSORS && !DESCRIPTORS) return true;
+        var O = {
+          length: -1
+        };
+        if (ACCESSORS) defineProperty(O, 1, {
+          enumerable: true,
+          get: thrower
+        });else O[1] = 1;
+        method.call(O, argument0, argument1);
       });
     };
     /***/
@@ -2081,57 +2186,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
-    };
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/core-js/internals/bind-context.js":
-  /*!********************************************************!*\
-    !*** ./node_modules/core-js/internals/bind-context.js ***!
-    \********************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsBindContextJs(module, exports, __webpack_require__) {
-    var aFunction = __webpack_require__(
-    /*! ../internals/a-function */
-    "./node_modules/core-js/internals/a-function.js"); // optional / simple context binding
-
-
-    module.exports = function (fn, that, length) {
-      aFunction(fn);
-      if (that === undefined) return fn;
-
-      switch (length) {
-        case 0:
-          return function () {
-            return fn.call(that);
-          };
-
-        case 1:
-          return function (a) {
-            return fn.call(that, a);
-          };
-
-        case 2:
-          return function (a, b) {
-            return fn.call(that, a, b);
-          };
-
-        case 3:
-          return function (a, b, c) {
-            return fn.call(that, a, b, c);
-          };
-      }
-
-      return function ()
-      /* ...args */
-      {
-        return fn.apply(that, arguments);
-      };
     };
     /***/
 
@@ -2326,8 +2380,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/redefine-all.js");
 
     var bind = __webpack_require__(
-    /*! ../internals/bind-context */
-    "./node_modules/core-js/internals/bind-context.js");
+    /*! ../internals/function-bind-context */
+    "./node_modules/core-js/internals/function-bind-context.js");
 
     var anInstance = __webpack_require__(
     /*! ../internals/an-instance */
@@ -3377,8 +3431,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/has.js");
 
     var wrappedWellKnownSymbolModule = __webpack_require__(
-    /*! ../internals/wrapped-well-known-symbol */
-    "./node_modules/core-js/internals/wrapped-well-known-symbol.js");
+    /*! ../internals/well-known-symbol-wrapped */
+    "./node_modules/core-js/internals/well-known-symbol-wrapped.js");
 
     var defineProperty = __webpack_require__(
     /*! ../internals/object-define-property */
@@ -3410,11 +3464,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     module.exports = !fails(function () {
-      return Object.defineProperty({}, 'a', {
+      return Object.defineProperty({}, 1, {
         get: function get() {
           return 7;
         }
-      }).a != 7;
+      })[1] != 7;
     });
     /***/
   },
@@ -3493,6 +3547,81 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       TextTrackList: 0,
       TouchList: 0
     };
+    /***/
+  },
+
+  /***/
+  "./node_modules/core-js/internals/engine-is-ios.js":
+  /*!*********************************************************!*\
+    !*** ./node_modules/core-js/internals/engine-is-ios.js ***!
+    \*********************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsEngineIsIosJs(module, exports, __webpack_require__) {
+    var userAgent = __webpack_require__(
+    /*! ../internals/engine-user-agent */
+    "./node_modules/core-js/internals/engine-user-agent.js");
+
+    module.exports = /(iphone|ipod|ipad).*applewebkit/i.test(userAgent);
+    /***/
+  },
+
+  /***/
+  "./node_modules/core-js/internals/engine-user-agent.js":
+  /*!*************************************************************!*\
+    !*** ./node_modules/core-js/internals/engine-user-agent.js ***!
+    \*************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsEngineUserAgentJs(module, exports, __webpack_require__) {
+    var getBuiltIn = __webpack_require__(
+    /*! ../internals/get-built-in */
+    "./node_modules/core-js/internals/get-built-in.js");
+
+    module.exports = getBuiltIn('navigator', 'userAgent') || '';
+    /***/
+  },
+
+  /***/
+  "./node_modules/core-js/internals/engine-v8-version.js":
+  /*!*************************************************************!*\
+    !*** ./node_modules/core-js/internals/engine-v8-version.js ***!
+    \*************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsEngineV8VersionJs(module, exports, __webpack_require__) {
+    var global = __webpack_require__(
+    /*! ../internals/global */
+    "./node_modules/core-js/internals/global.js");
+
+    var userAgent = __webpack_require__(
+    /*! ../internals/engine-user-agent */
+    "./node_modules/core-js/internals/engine-user-agent.js");
+
+    var process = global.process;
+    var versions = process && process.versions;
+    var v8 = versions && versions.v8;
+    var match, version;
+
+    if (v8) {
+      match = v8.split('.');
+      version = match[0] + match[1];
+    } else if (userAgent) {
+      match = userAgent.match(/Edge\/(\d+)/);
+
+      if (!match || match[1] >= 74) {
+        match = userAgent.match(/Chrome\/(\d+)/);
+        if (match) version = match[1];
+      }
+    }
+
+    module.exports = version && +version;
     /***/
   },
 
@@ -3637,7 +3766,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
   /***/
   function node_modulesCoreJsInternalsFixRegexpWellKnownSymbolLogicJs(module, exports, __webpack_require__) {
-    "use strict";
+    "use strict"; // TODO: Remove from `core-js@4` since it's moved to entry points
+
+    __webpack_require__(
+    /*! ../modules/es.regexp.exec */
+    "./node_modules/core-js/modules/es.regexp.exec.js");
 
     var redefine = __webpack_require__(
     /*! ../internals/redefine */
@@ -3680,6 +3813,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var REPLACE_KEEPS_$0 = function () {
       return 'a'.replace(/./, '$0') === '$0';
+    }();
+
+    var REPLACE = wellKnownSymbol('replace'); // Safari <= 13.0.3(?) substitutes nth capture where n>m with an empty string
+
+    var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = function () {
+      if (/./[REPLACE]) {
+        return /./[REPLACE]('a', '$0') === '';
+      }
+
+      return false;
     }(); // Chrome 51 has a buggy "split" implementation when RegExp#exec !== nativeExec
     // Weex JS has frozen built-in prototypes, so use try / catch wrapper
 
@@ -3739,7 +3882,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         return !execCalled;
       });
 
-      if (!DELEGATES_TO_SYMBOL || !DELEGATES_TO_EXEC || KEY === 'replace' && !(REPLACE_SUPPORTS_NAMED_GROUPS && REPLACE_KEEPS_$0) || KEY === 'split' && !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC) {
+      if (!DELEGATES_TO_SYMBOL || !DELEGATES_TO_EXEC || KEY === 'replace' && !(REPLACE_SUPPORTS_NAMED_GROUPS && REPLACE_KEEPS_$0 && !REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE) || KEY === 'split' && !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC) {
         var nativeRegExpMethod = /./[SYMBOL];
         var methods = exec(SYMBOL, ''[KEY], function (nativeMethod, regexp, str, arg2, forceStringMethod) {
           if (regexp.exec === regexpExec) {
@@ -3763,7 +3906,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             done: false
           };
         }, {
-          REPLACE_KEEPS_$0: REPLACE_KEEPS_$0
+          REPLACE_KEEPS_$0: REPLACE_KEEPS_$0,
+          REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE: REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE
         });
         var stringMethod = methods[0];
         var regexMethod = methods[1];
@@ -3780,62 +3924,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       if (sham) createNonEnumerableProperty(RegExp.prototype[SYMBOL], 'sham', true);
-    };
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/core-js/internals/forced-string-html-method.js":
-  /*!*********************************************************************!*\
-    !*** ./node_modules/core-js/internals/forced-string-html-method.js ***!
-    \*********************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsForcedStringHtmlMethodJs(module, exports, __webpack_require__) {
-    var fails = __webpack_require__(
-    /*! ../internals/fails */
-    "./node_modules/core-js/internals/fails.js"); // check the existence of a method, lowercase
-    // of a tag and escaping quotes in arguments
-
-
-    module.exports = function (METHOD_NAME) {
-      return fails(function () {
-        var test = ''[METHOD_NAME]('"');
-        return test !== test.toLowerCase() || test.split('"').length > 3;
-      });
-    };
-    /***/
-
-  },
-
-  /***/
-  "./node_modules/core-js/internals/forced-string-trim-method.js":
-  /*!*********************************************************************!*\
-    !*** ./node_modules/core-js/internals/forced-string-trim-method.js ***!
-    \*********************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsForcedStringTrimMethodJs(module, exports, __webpack_require__) {
-    var fails = __webpack_require__(
-    /*! ../internals/fails */
-    "./node_modules/core-js/internals/fails.js");
-
-    var whitespaces = __webpack_require__(
-    /*! ../internals/whitespaces */
-    "./node_modules/core-js/internals/whitespaces.js");
-
-    var non = "\u200B\x85\u180E"; // check that a method works with the correct list
-    // of whitespaces and has a correct name
-
-    module.exports = function (METHOD_NAME) {
-      return fails(function () {
-        return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
-      });
     };
     /***/
 
@@ -3859,6 +3947,57 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return Object.isExtensible(Object.preventExtensions({}));
     });
     /***/
+  },
+
+  /***/
+  "./node_modules/core-js/internals/function-bind-context.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/core-js/internals/function-bind-context.js ***!
+    \*****************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsFunctionBindContextJs(module, exports, __webpack_require__) {
+    var aFunction = __webpack_require__(
+    /*! ../internals/a-function */
+    "./node_modules/core-js/internals/a-function.js"); // optional / simple context binding
+
+
+    module.exports = function (fn, that, length) {
+      aFunction(fn);
+      if (that === undefined) return fn;
+
+      switch (length) {
+        case 0:
+          return function () {
+            return fn.call(that);
+          };
+
+        case 1:
+          return function (a) {
+            return fn.call(that, a);
+          };
+
+        case 2:
+          return function (a, b) {
+            return fn.call(that, a, b);
+          };
+
+        case 3:
+          return function (a, b, c) {
+            return fn.call(that, a, b, c);
+          };
+      }
+
+      return function ()
+      /* ...args */
+      {
+        return fn.apply(that, arguments);
+      };
+    };
+    /***/
+
   },
 
   /***/
@@ -4503,24 +4642,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./node_modules/core-js/internals/is-ios.js":
-  /*!**************************************************!*\
-    !*** ./node_modules/core-js/internals/is-ios.js ***!
-    \**************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsIsIosJs(module, exports, __webpack_require__) {
-    var userAgent = __webpack_require__(
-    /*! ../internals/user-agent */
-    "./node_modules/core-js/internals/user-agent.js");
-
-    module.exports = /(iphone|ipod|ipad).*applewebkit/i.test(userAgent);
-    /***/
-  },
-
-  /***/
   "./node_modules/core-js/internals/is-object.js":
   /*!*****************************************************!*\
     !*** ./node_modules/core-js/internals/is-object.js ***!
@@ -4607,8 +4728,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/to-length.js");
 
     var bind = __webpack_require__(
-    /*! ../internals/bind-context */
-    "./node_modules/core-js/internals/bind-context.js");
+    /*! ../internals/function-bind-context */
+    "./node_modules/core-js/internals/function-bind-context.js");
 
     var getIteratorMethod = __webpack_require__(
     /*! ../internals/get-iterator-method */
@@ -4872,8 +4993,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/task.js").set;
 
     var IS_IOS = __webpack_require__(
-    /*! ../internals/is-ios */
-    "./node_modules/core-js/internals/is-ios.js");
+    /*! ../internals/engine-is-ios */
+    "./node_modules/core-js/internals/engine-is-ios.js");
 
     var MutationObserver = global.MutationObserver || global.WebKitMutationObserver;
     var process = global.process;
@@ -5107,6 +5228,74 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
     /***/
 
+  },
+
+  /***/
+  "./node_modules/core-js/internals/number-parse-float.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/core-js/internals/number-parse-float.js ***!
+    \**************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsNumberParseFloatJs(module, exports, __webpack_require__) {
+    var global = __webpack_require__(
+    /*! ../internals/global */
+    "./node_modules/core-js/internals/global.js");
+
+    var trim = __webpack_require__(
+    /*! ../internals/string-trim */
+    "./node_modules/core-js/internals/string-trim.js").trim;
+
+    var whitespaces = __webpack_require__(
+    /*! ../internals/whitespaces */
+    "./node_modules/core-js/internals/whitespaces.js");
+
+    var $parseFloat = global.parseFloat;
+    var FORCED = 1 / $parseFloat(whitespaces + '-0') !== -Infinity; // `parseFloat` method
+    // https://tc39.github.io/ecma262/#sec-parsefloat-string
+
+    module.exports = FORCED ? function parseFloat(string) {
+      var trimmedString = trim(String(string));
+      var result = $parseFloat(trimmedString);
+      return result === 0 && trimmedString.charAt(0) == '-' ? -0 : result;
+    } : $parseFloat;
+    /***/
+  },
+
+  /***/
+  "./node_modules/core-js/internals/number-parse-int.js":
+  /*!************************************************************!*\
+    !*** ./node_modules/core-js/internals/number-parse-int.js ***!
+    \************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsNumberParseIntJs(module, exports, __webpack_require__) {
+    var global = __webpack_require__(
+    /*! ../internals/global */
+    "./node_modules/core-js/internals/global.js");
+
+    var trim = __webpack_require__(
+    /*! ../internals/string-trim */
+    "./node_modules/core-js/internals/string-trim.js").trim;
+
+    var whitespaces = __webpack_require__(
+    /*! ../internals/whitespaces */
+    "./node_modules/core-js/internals/whitespaces.js");
+
+    var $parseInt = global.parseInt;
+    var hex = /^[+-]?0[Xx]/;
+    var FORCED = $parseInt(whitespaces + '08') !== 8 || $parseInt(whitespaces + '0x16') !== 22; // `parseInt` method
+    // https://tc39.github.io/ecma262/#sec-parseint-string-radix
+
+    module.exports = FORCED ? function parseInt(string, radix) {
+      var S = trim(String(string));
+      return $parseInt(S, radix >>> 0 || (hex.test(S) ? 16 : 10));
+    } : $parseInt;
+    /***/
   },
 
   /***/
@@ -5808,74 +5997,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./node_modules/core-js/internals/parse-float.js":
-  /*!*******************************************************!*\
-    !*** ./node_modules/core-js/internals/parse-float.js ***!
-    \*******************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsParseFloatJs(module, exports, __webpack_require__) {
-    var global = __webpack_require__(
-    /*! ../internals/global */
-    "./node_modules/core-js/internals/global.js");
-
-    var trim = __webpack_require__(
-    /*! ../internals/string-trim */
-    "./node_modules/core-js/internals/string-trim.js").trim;
-
-    var whitespaces = __webpack_require__(
-    /*! ../internals/whitespaces */
-    "./node_modules/core-js/internals/whitespaces.js");
-
-    var nativeParseFloat = global.parseFloat;
-    var FORCED = 1 / nativeParseFloat(whitespaces + '-0') !== -Infinity; // `parseFloat` method
-    // https://tc39.github.io/ecma262/#sec-parsefloat-string
-
-    module.exports = FORCED ? function parseFloat(string) {
-      var trimmedString = trim(String(string));
-      var result = nativeParseFloat(trimmedString);
-      return result === 0 && trimmedString.charAt(0) == '-' ? -0 : result;
-    } : nativeParseFloat;
-    /***/
-  },
-
-  /***/
-  "./node_modules/core-js/internals/parse-int.js":
-  /*!*****************************************************!*\
-    !*** ./node_modules/core-js/internals/parse-int.js ***!
-    \*****************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsParseIntJs(module, exports, __webpack_require__) {
-    var global = __webpack_require__(
-    /*! ../internals/global */
-    "./node_modules/core-js/internals/global.js");
-
-    var trim = __webpack_require__(
-    /*! ../internals/string-trim */
-    "./node_modules/core-js/internals/string-trim.js").trim;
-
-    var whitespaces = __webpack_require__(
-    /*! ../internals/whitespaces */
-    "./node_modules/core-js/internals/whitespaces.js");
-
-    var nativeParseInt = global.parseInt;
-    var hex = /^[+-]?0[Xx]/;
-    var FORCED = nativeParseInt(whitespaces + '08') !== 8 || nativeParseInt(whitespaces + '0x16') !== 22; // `parseInt` method
-    // https://tc39.github.io/ecma262/#sec-parseint-string-radix
-
-    module.exports = FORCED ? function parseInt(string, radix) {
-      var S = trim(String(string));
-      return nativeParseInt(S, radix >>> 0 || (hex.test(S) ? 16 : 10));
-    } : nativeParseInt;
-    /***/
-  },
-
-  /***/
   "./node_modules/core-js/internals/path.js":
   /*!************************************************!*\
     !*** ./node_modules/core-js/internals/path.js ***!
@@ -6487,40 +6608,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     (module.exports = function (key, value) {
       return store[key] || (store[key] = value !== undefined ? value : {});
     })('versions', []).push({
-      version: '3.6.0',
+      version: '3.6.4',
       mode: IS_PURE ? 'pure' : 'global',
-      copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+      copyright: '© 2020 Denis Pushkarev (zloirock.ru)'
     });
     /***/
-  },
-
-  /***/
-  "./node_modules/core-js/internals/sloppy-array-method.js":
-  /*!***************************************************************!*\
-    !*** ./node_modules/core-js/internals/sloppy-array-method.js ***!
-    \***************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsSloppyArrayMethodJs(module, exports, __webpack_require__) {
-    "use strict";
-
-    var fails = __webpack_require__(
-    /*! ../internals/fails */
-    "./node_modules/core-js/internals/fails.js");
-
-    module.exports = function (METHOD_NAME, argument) {
-      var method = [][METHOD_NAME];
-      return !method || !fails(function () {
-        // eslint-disable-next-line no-useless-call,no-throw-literal
-        method.call(null, argument || function () {
-          throw 1;
-        }, 1);
-      });
-    };
-    /***/
-
   },
 
   /***/
@@ -6552,6 +6644,32 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var C = anObject(O).constructor;
       var S;
       return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aFunction(S);
+    };
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/core-js/internals/string-html-forced.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/core-js/internals/string-html-forced.js ***!
+    \**************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsStringHtmlForcedJs(module, exports, __webpack_require__) {
+    var fails = __webpack_require__(
+    /*! ../internals/fails */
+    "./node_modules/core-js/internals/fails.js"); // check the existence of a method, lowercase
+    // of a tag and escaping quotes in arguments
+
+
+    module.exports = function (METHOD_NAME) {
+      return fails(function () {
+        var test = ''[METHOD_NAME]('"');
+        return test !== test.toLowerCase() || test.split('"').length > 3;
+      });
     };
     /***/
 
@@ -6689,6 +6807,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./node_modules/core-js/internals/string-trim-forced.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/core-js/internals/string-trim-forced.js ***!
+    \**************************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsInternalsStringTrimForcedJs(module, exports, __webpack_require__) {
+    var fails = __webpack_require__(
+    /*! ../internals/fails */
+    "./node_modules/core-js/internals/fails.js");
+
+    var whitespaces = __webpack_require__(
+    /*! ../internals/whitespaces */
+    "./node_modules/core-js/internals/whitespaces.js");
+
+    var non = "\u200B\x85\u180E"; // check that a method works with the correct list
+    // of whitespaces and has a correct name
+
+    module.exports = function (METHOD_NAME) {
+      return fails(function () {
+        return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
+      });
+    };
+    /***/
+
+  },
+
+  /***/
   "./node_modules/core-js/internals/string-trim.js":
   /*!*******************************************************!*\
     !*** ./node_modules/core-js/internals/string-trim.js ***!
@@ -6756,8 +6904,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/classof-raw.js");
 
     var bind = __webpack_require__(
-    /*! ../internals/bind-context */
-    "./node_modules/core-js/internals/bind-context.js");
+    /*! ../internals/function-bind-context */
+    "./node_modules/core-js/internals/function-bind-context.js");
 
     var html = __webpack_require__(
     /*! ../internals/html */
@@ -6768,8 +6916,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/document-create-element.js");
 
     var IS_IOS = __webpack_require__(
-    /*! ../internals/is-ios */
-    "./node_modules/core-js/internals/is-ios.js");
+    /*! ../internals/engine-is-ios */
+    "./node_modules/core-js/internals/engine-is-ios.js");
 
     var location = global.location;
     var set = global.setImmediate;
@@ -7107,64 +7255,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     module.exports = NATIVE_SYMBOL // eslint-disable-next-line no-undef
     && !Symbol.sham // eslint-disable-next-line no-undef
-    && typeof Symbol() == 'symbol';
+    && typeof Symbol.iterator == 'symbol';
     /***/
   },
 
   /***/
-  "./node_modules/core-js/internals/user-agent.js":
-  /*!******************************************************!*\
-    !*** ./node_modules/core-js/internals/user-agent.js ***!
-    \******************************************************/
+  "./node_modules/core-js/internals/well-known-symbol-wrapped.js":
+  /*!*********************************************************************!*\
+    !*** ./node_modules/core-js/internals/well-known-symbol-wrapped.js ***!
+    \*********************************************************************/
 
   /*! no static exports found */
 
   /***/
-  function node_modulesCoreJsInternalsUserAgentJs(module, exports, __webpack_require__) {
-    var getBuiltIn = __webpack_require__(
-    /*! ../internals/get-built-in */
-    "./node_modules/core-js/internals/get-built-in.js");
+  function node_modulesCoreJsInternalsWellKnownSymbolWrappedJs(module, exports, __webpack_require__) {
+    var wellKnownSymbol = __webpack_require__(
+    /*! ../internals/well-known-symbol */
+    "./node_modules/core-js/internals/well-known-symbol.js");
 
-    module.exports = getBuiltIn('navigator', 'userAgent') || '';
-    /***/
-  },
-
-  /***/
-  "./node_modules/core-js/internals/v8-version.js":
-  /*!******************************************************!*\
-    !*** ./node_modules/core-js/internals/v8-version.js ***!
-    \******************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsV8VersionJs(module, exports, __webpack_require__) {
-    var global = __webpack_require__(
-    /*! ../internals/global */
-    "./node_modules/core-js/internals/global.js");
-
-    var userAgent = __webpack_require__(
-    /*! ../internals/user-agent */
-    "./node_modules/core-js/internals/user-agent.js");
-
-    var process = global.process;
-    var versions = process && process.versions;
-    var v8 = versions && versions.v8;
-    var match, version;
-
-    if (v8) {
-      match = v8.split('.');
-      version = match[0] + match[1];
-    } else if (userAgent) {
-      match = userAgent.match(/Edge\/(\d+)/);
-
-      if (!match || match[1] >= 74) {
-        match = userAgent.match(/Chrome\/(\d+)/);
-        if (match) version = match[1];
-      }
-    }
-
-    module.exports = version && +version;
+    exports.f = wellKnownSymbol;
     /***/
   },
 
@@ -7204,7 +7313,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var WellKnownSymbolsStore = shared('wks');
     var Symbol = global.Symbol;
-    var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : uid;
+    var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
 
     module.exports = function (name) {
       if (!has(WellKnownSymbolsStore, name)) {
@@ -7230,24 +7339,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     // a string of all valid unicode whitespaces
     // eslint-disable-next-line max-len
     module.exports = "\t\n\x0B\f\r \xA0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF";
-    /***/
-  },
-
-  /***/
-  "./node_modules/core-js/internals/wrapped-well-known-symbol.js":
-  /*!*********************************************************************!*\
-    !*** ./node_modules/core-js/internals/wrapped-well-known-symbol.js ***!
-    \*********************************************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function node_modulesCoreJsInternalsWrappedWellKnownSymbolJs(module, exports, __webpack_require__) {
-    var wellKnownSymbol = __webpack_require__(
-    /*! ../internals/well-known-symbol */
-    "./node_modules/core-js/internals/well-known-symbol.js");
-
-    exports.f = wellKnownSymbol;
     /***/
   },
 
@@ -7304,8 +7395,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/well-known-symbol.js");
 
     var V8_VERSION = __webpack_require__(
-    /*! ../internals/v8-version */
-    "./node_modules/core-js/internals/v8-version.js");
+    /*! ../internals/engine-v8-version */
+    "./node_modules/core-js/internals/engine-v8-version.js");
 
     var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
     var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
@@ -7420,16 +7511,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-iteration */
     "./node_modules/core-js/internals/array-iteration.js").every;
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js"); // `Array.prototype.every` method
-    // https://tc39.github.io/ecma262/#sec-array.prototype.every
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var STRICT_METHOD = arrayMethodIsStrict('every');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('every'); // `Array.prototype.every` method
+    // https://tc39.github.io/ecma262/#sec-array.prototype.every
 
     $({
       target: 'Array',
       proto: true,
-      forced: sloppyArrayMethod('every')
+      forced: !STRICT_METHOD || !USES_TO_LENGTH
     }, {
       every: function every(callbackfn
       /* , thisArg */
@@ -7495,24 +7592,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-iteration */
     "./node_modules/core-js/internals/array-iteration.js").filter;
 
-    var fails = __webpack_require__(
-    /*! ../internals/fails */
-    "./node_modules/core-js/internals/fails.js");
-
     var arrayMethodHasSpeciesSupport = __webpack_require__(
     /*! ../internals/array-method-has-species-support */
     "./node_modules/core-js/internals/array-method-has-species-support.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
     var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter'); // Edge 14- issue
 
-    var USES_TO_LENGTH = HAS_SPECIES_SUPPORT && !fails(function () {
-      [].filter.call({
-        length: -1,
-        0: 1
-      }, function (it) {
-        throw it;
-      });
-    }); // `Array.prototype.filter` method
+    var USES_TO_LENGTH = arrayMethodUsesToLength('filter'); // `Array.prototype.filter` method
     // https://tc39.github.io/ecma262/#sec-array.prototype.filter
     // with adding support of @@species
 
@@ -7554,8 +7644,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/add-to-unscopables */
     "./node_modules/core-js/internals/add-to-unscopables.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
     var FIND_INDEX = 'findIndex';
-    var SKIPS_HOLES = true; // Shouldn't skip holes
+    var SKIPS_HOLES = true;
+    var USES_TO_LENGTH = arrayMethodUsesToLength(FIND_INDEX); // Shouldn't skip holes
 
     if (FIND_INDEX in []) Array(1)[FIND_INDEX](function () {
       SKIPS_HOLES = false;
@@ -7565,7 +7660,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     $({
       target: 'Array',
       proto: true,
-      forced: SKIPS_HOLES
+      forced: SKIPS_HOLES || !USES_TO_LENGTH
     }, {
       findIndex: function findIndex(callbackfn
       /* , that = undefined */
@@ -7602,8 +7697,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/add-to-unscopables */
     "./node_modules/core-js/internals/add-to-unscopables.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
     var FIND = 'find';
-    var SKIPS_HOLES = true; // Shouldn't skip holes
+    var SKIPS_HOLES = true;
+    var USES_TO_LENGTH = arrayMethodUsesToLength(FIND); // Shouldn't skip holes
 
     if (FIND in []) Array(1)[FIND](function () {
       SKIPS_HOLES = false;
@@ -7613,7 +7713,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     $({
       target: 'Array',
       proto: true,
-      forced: SKIPS_HOLES
+      forced: SKIPS_HOLES || !USES_TO_LENGTH
     }, {
       find: function find(callbackfn
       /* , that = undefined */
@@ -7715,19 +7815,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-includes */
     "./node_modules/core-js/internals/array-includes.js").indexOf;
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js");
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
+
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
 
     var nativeIndexOf = [].indexOf;
     var NEGATIVE_ZERO = !!nativeIndexOf && 1 / [1].indexOf(1, -0) < 0;
-    var SLOPPY_METHOD = sloppyArrayMethod('indexOf'); // `Array.prototype.indexOf` method
+    var STRICT_METHOD = arrayMethodIsStrict('indexOf');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', {
+      ACCESSORS: true,
+      1: 0
+    }); // `Array.prototype.indexOf` method
     // https://tc39.github.io/ecma262/#sec-array.prototype.indexof
 
     $({
       target: 'Array',
       proto: true,
-      forced: NEGATIVE_ZERO || SLOPPY_METHOD
+      forced: NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH
     }, {
       indexOf: function indexOf(searchElement
       /* , fromIndex = 0 */
@@ -7886,19 +7994,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/to-indexed-object */
     "./node_modules/core-js/internals/to-indexed-object.js");
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js");
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
 
     var nativeJoin = [].join;
     var ES3_STRINGS = IndexedObject != Object;
-    var SLOPPY_METHOD = sloppyArrayMethod('join', ','); // `Array.prototype.join` method
+    var STRICT_METHOD = arrayMethodIsStrict('join', ','); // `Array.prototype.join` method
     // https://tc39.github.io/ecma262/#sec-array.prototype.join
 
     $({
       target: 'Array',
       proto: true,
-      forced: ES3_STRINGS || SLOPPY_METHOD
+      forced: ES3_STRINGS || !STRICT_METHOD
     }, {
       join: function join(separator) {
         return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
@@ -7957,24 +8065,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-iteration */
     "./node_modules/core-js/internals/array-iteration.js").map;
 
-    var fails = __webpack_require__(
-    /*! ../internals/fails */
-    "./node_modules/core-js/internals/fails.js");
-
     var arrayMethodHasSpeciesSupport = __webpack_require__(
     /*! ../internals/array-method-has-species-support */
     "./node_modules/core-js/internals/array-method-has-species-support.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
     var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map'); // FF49- issue
 
-    var USES_TO_LENGTH = HAS_SPECIES_SUPPORT && !fails(function () {
-      [].map.call({
-        length: -1,
-        0: 1
-      }, function (it) {
-        throw it;
-      });
-    }); // `Array.prototype.map` method
+    var USES_TO_LENGTH = arrayMethodUsesToLength('map'); // `Array.prototype.map` method
     // https://tc39.github.io/ecma262/#sec-array.prototype.map
     // with adding support of @@species
 
@@ -8069,16 +8170,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-reduce */
     "./node_modules/core-js/internals/array-reduce.js").right;
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js"); // `Array.prototype.reduceRight` method
-    // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var STRICT_METHOD = arrayMethodIsStrict('reduceRight'); // For preventing possible almost infinite loop in non-standard implementations, test the forward version of the method
+
+    var USES_TO_LENGTH = arrayMethodUsesToLength('reduce', {
+      1: 0
+    }); // `Array.prototype.reduceRight` method
+    // https://tc39.github.io/ecma262/#sec-array.prototype.reduceright
 
     $({
       target: 'Array',
       proto: true,
-      forced: sloppyArrayMethod('reduceRight')
+      forced: !STRICT_METHOD || !USES_TO_LENGTH
     }, {
       reduceRight: function reduceRight(callbackfn
       /* , initialValue */
@@ -8109,16 +8219,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-reduce */
     "./node_modules/core-js/internals/array-reduce.js").left;
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js"); // `Array.prototype.reduce` method
-    // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var STRICT_METHOD = arrayMethodIsStrict('reduce');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('reduce', {
+      1: 0
+    }); // `Array.prototype.reduce` method
+    // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
 
     $({
       target: 'Array',
       proto: true,
-      forced: sloppyArrayMethod('reduce')
+      forced: !STRICT_METHOD || !USES_TO_LENGTH
     }, {
       reduce: function reduce(callbackfn
       /* , initialValue */
@@ -8169,14 +8287,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/create-property */
     "./node_modules/core-js/internals/create-property.js");
 
-    var arrayMethodHasSpeciesSupport = __webpack_require__(
-    /*! ../internals/array-method-has-species-support */
-    "./node_modules/core-js/internals/array-method-has-species-support.js");
-
     var wellKnownSymbol = __webpack_require__(
     /*! ../internals/well-known-symbol */
     "./node_modules/core-js/internals/well-known-symbol.js");
 
+    var arrayMethodHasSpeciesSupport = __webpack_require__(
+    /*! ../internals/array-method-has-species-support */
+    "./node_modules/core-js/internals/array-method-has-species-support.js");
+
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('slice', {
+      ACCESSORS: true,
+      0: 0,
+      1: 2
+    });
     var SPECIES = wellKnownSymbol('species');
     var nativeSlice = [].slice;
     var max = Math.max; // `Array.prototype.slice` method
@@ -8186,7 +8314,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     $({
       target: 'Array',
       proto: true,
-      forced: !arrayMethodHasSpeciesSupport('slice')
+      forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH
     }, {
       slice: function slice(start, end) {
         var O = toIndexedObject(this);
@@ -8244,16 +8372,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-iteration */
     "./node_modules/core-js/internals/array-iteration.js").some;
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js"); // `Array.prototype.some` method
-    // https://tc39.github.io/ecma262/#sec-array.prototype.some
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var STRICT_METHOD = arrayMethodIsStrict('some');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('some'); // `Array.prototype.some` method
+    // https://tc39.github.io/ecma262/#sec-array.prototype.some
 
     $({
       target: 'Array',
       proto: true,
-      forced: sloppyArrayMethod('some')
+      forced: !STRICT_METHOD || !USES_TO_LENGTH
     }, {
       some: function some(callbackfn
       /* , thisArg */
@@ -8292,9 +8426,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/fails */
     "./node_modules/core-js/internals/fails.js");
 
-    var sloppyArrayMethod = __webpack_require__(
-    /*! ../internals/sloppy-array-method */
-    "./node_modules/core-js/internals/sloppy-array-method.js");
+    var arrayMethodIsStrict = __webpack_require__(
+    /*! ../internals/array-method-is-strict */
+    "./node_modules/core-js/internals/array-method-is-strict.js");
 
     var test = [];
     var nativeSort = test.sort; // IE8-
@@ -8307,8 +8441,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       test.sort(null);
     }); // Old WebKit
 
-    var SLOPPY_METHOD = sloppyArrayMethod('sort');
-    var FORCED = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || SLOPPY_METHOD; // `Array.prototype.sort` method
+    var STRICT_METHOD = arrayMethodIsStrict('sort');
+    var FORCED = FAILS_ON_UNDEFINED || !FAILS_ON_NULL || !STRICT_METHOD; // `Array.prototype.sort` method
     // https://tc39.github.io/ecma262/#sec-array.prototype.sort
 
     $({
@@ -8367,6 +8501,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../internals/array-method-has-species-support */
     "./node_modules/core-js/internals/array-method-has-species-support.js");
 
+    var arrayMethodUsesToLength = __webpack_require__(
+    /*! ../internals/array-method-uses-to-length */
+    "./node_modules/core-js/internals/array-method-uses-to-length.js");
+
+    var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
+    var USES_TO_LENGTH = arrayMethodUsesToLength('splice', {
+      ACCESSORS: true,
+      0: 0,
+      1: 2
+    });
     var max = Math.max;
     var min = Math.min;
     var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
@@ -8377,7 +8521,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     $({
       target: 'Array',
       proto: true,
-      forced: !arrayMethodHasSpeciesSupport('splice')
+      forced: !HAS_SPECIES_SUPPORT || !USES_TO_LENGTH
     }, {
       splice: function splice(start, deleteCount
       /* , ...items */
@@ -9748,8 +9892,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/export.js");
 
     var parseFloat = __webpack_require__(
-    /*! ../internals/parse-float */
-    "./node_modules/core-js/internals/parse-float.js"); // `Number.parseFloat` method
+    /*! ../internals/number-parse-float */
+    "./node_modules/core-js/internals/number-parse-float.js"); // `Number.parseFloat` method
     // https://tc39.github.io/ecma262/#sec-number.parseFloat
 
 
@@ -9778,8 +9922,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/export.js");
 
     var parseInt = __webpack_require__(
-    /*! ../internals/parse-int */
-    "./node_modules/core-js/internals/parse-int.js"); // `Number.parseInt` method
+    /*! ../internals/number-parse-int */
+    "./node_modules/core-js/internals/number-parse-int.js"); // `Number.parseInt` method
     // https://tc39.github.io/ecma262/#sec-number.parseint
 
 
@@ -10692,8 +10836,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/export.js");
 
     var parseFloatImplementation = __webpack_require__(
-    /*! ../internals/parse-float */
-    "./node_modules/core-js/internals/parse-float.js"); // `parseFloat` method
+    /*! ../internals/number-parse-float */
+    "./node_modules/core-js/internals/number-parse-float.js"); // `parseFloat` method
     // https://tc39.github.io/ecma262/#sec-parsefloat-string
 
 
@@ -10721,8 +10865,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/export.js");
 
     var parseIntImplementation = __webpack_require__(
-    /*! ../internals/parse-int */
-    "./node_modules/core-js/internals/parse-int.js"); // `parseInt` method
+    /*! ../internals/number-parse-int */
+    "./node_modules/core-js/internals/number-parse-int.js"); // `parseInt` method
     // https://tc39.github.io/ecma262/#sec-parseint-string-radix
 
 
@@ -10852,8 +10996,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/well-known-symbol.js");
 
     var V8_VERSION = __webpack_require__(
-    /*! ../internals/v8-version */
-    "./node_modules/core-js/internals/v8-version.js");
+    /*! ../internals/engine-v8-version */
+    "./node_modules/core-js/internals/engine-v8-version.js");
 
     var SPECIES = wellKnownSymbol('species');
     var PROMISE = 'Promise';
@@ -11390,6 +11534,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./node_modules/core-js/modules/es.regexp.exec.js":
+  /*!********************************************************!*\
+    !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
+    \********************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function node_modulesCoreJsModulesEsRegexpExecJs(module, exports, __webpack_require__) {
+    "use strict";
+
+    var $ = __webpack_require__(
+    /*! ../internals/export */
+    "./node_modules/core-js/internals/export.js");
+
+    var exec = __webpack_require__(
+    /*! ../internals/regexp-exec */
+    "./node_modules/core-js/internals/regexp-exec.js");
+
+    $({
+      target: 'RegExp',
+      proto: true,
+      forced: /./.exec !== exec
+    }, {
+      exec: exec
+    });
+    /***/
+  },
+
+  /***/
   "./node_modules/core-js/modules/es.regexp.flags.js":
   /*!*********************************************************!*\
     !*** ./node_modules/core-js/modules/es.regexp.flags.js ***!
@@ -11534,8 +11708,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.anchor` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.anchor` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.anchor
 
 
@@ -11572,8 +11746,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.big` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.big` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.big
 
 
@@ -11610,8 +11784,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.blink` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.blink` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.blink
 
 
@@ -11648,8 +11822,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.bold` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.bold` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.bold
 
 
@@ -11789,8 +11963,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.fixed` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.fixed` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.fixed
 
 
@@ -11827,8 +12001,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.fontcolor` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.fontcolor` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.fontcolor
 
 
@@ -11865,8 +12039,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.fontsize` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.fontsize` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.fontsize
 
 
@@ -11995,8 +12169,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.italics` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.italics` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.italics
 
 
@@ -12088,8 +12262,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.link` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.link` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.link
 
 
@@ -12307,6 +12481,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
     fixRegExpWellKnownSymbolLogic('replace', 2, function (REPLACE, nativeReplace, maybeCallNative, reason) {
+      var REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE = reason.REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE;
+      var REPLACE_KEEPS_$0 = reason.REPLACE_KEEPS_$0;
+      var UNSAFE_SUBSTITUTE = REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE ? '$' : '$0';
       return [// `String.prototype.replace` method
       // https://tc39.github.io/ecma262/#sec-string.prototype.replace
       function replace(searchValue, replaceValue) {
@@ -12316,7 +12493,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, // `RegExp.prototype[@@replace]` method
       // https://tc39.github.io/ecma262/#sec-regexp.prototype-@@replace
       function (regexp, replaceValue) {
-        if (reason.REPLACE_KEEPS_$0 || typeof replaceValue === 'string' && replaceValue.indexOf('$0') === -1) {
+        if (!REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE && REPLACE_KEEPS_$0 || typeof replaceValue === 'string' && replaceValue.indexOf(UNSAFE_SUBSTITUTE) === -1) {
           var res = maybeCallNative(nativeReplace, regexp, this, replaceValue);
           if (res.done) return res.value;
         }
@@ -12509,8 +12686,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.small` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.small` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.small
 
 
@@ -12780,8 +12957,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.strike` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.strike` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.strike
 
 
@@ -12818,8 +12995,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.sub` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.sub` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.sub
 
 
@@ -12856,8 +13033,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/create-html.js");
 
     var forcedStringHTMLMethod = __webpack_require__(
-    /*! ../internals/forced-string-html-method */
-    "./node_modules/core-js/internals/forced-string-html-method.js"); // `String.prototype.sup` method
+    /*! ../internals/string-html-forced */
+    "./node_modules/core-js/internals/string-html-forced.js"); // `String.prototype.sup` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.sup
 
 
@@ -12894,8 +13071,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/string-trim.js").trim;
 
     var forcedStringTrimMethod = __webpack_require__(
-    /*! ../internals/forced-string-trim-method */
-    "./node_modules/core-js/internals/forced-string-trim-method.js"); // `String.prototype.trim` method
+    /*! ../internals/string-trim-forced */
+    "./node_modules/core-js/internals/string-trim-forced.js"); // `String.prototype.trim` method
     // https://tc39.github.io/ecma262/#sec-string.prototype.trim
 
 
@@ -12990,7 +13167,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var symbolPrototype = SymbolWrapper.prototype = NativeSymbol.prototype;
       symbolPrototype.constructor = SymbolWrapper;
       var symbolToString = symbolPrototype.toString;
-      var native = String(NativeSymbol('test')) == 'Symbol(test)';
+
+      var _native = String(NativeSymbol('test')) == 'Symbol(test)';
+
       var regexp = /^Symbol\((.*)\)[^)]+$/;
       defineProperty(symbolPrototype, 'description', {
         configurable: true,
@@ -12998,7 +13177,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var symbol = isObject(this) ? this.valueOf() : this;
           var string = symbolToString.call(symbol);
           if (has(EmptyStringDescriptionStore, symbol)) return '';
-          var desc = native ? string.slice(7, -1) : string.replace(regexp, '$1');
+          var desc = _native ? string.slice(7, -1) : string.replace(regexp, '$1');
           return desc === '' ? undefined : desc;
         }
       });
@@ -13210,8 +13389,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/core-js/internals/well-known-symbol.js");
 
     var wrappedWellKnownSymbolModule = __webpack_require__(
-    /*! ../internals/wrapped-well-known-symbol */
-    "./node_modules/core-js/internals/wrapped-well-known-symbol.js");
+    /*! ../internals/well-known-symbol-wrapped */
+    "./node_modules/core-js/internals/well-known-symbol-wrapped.js");
 
     var defineWellKnownSymbol = __webpack_require__(
     /*! ../internals/define-well-known-symbol */
@@ -13280,7 +13459,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return symbol;
     };
 
-    var isSymbol = NATIVE_SYMBOL && typeof $Symbol.iterator == 'symbol' ? function (it) {
+    var isSymbol = USE_SYMBOL_AS_UID ? function (it) {
       return typeof it == 'symbol';
     } : function (it) {
       return Object(it) instanceof $Symbol;
@@ -13388,11 +13567,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       redefine($Symbol[PROTOTYPE], 'toString', function toString() {
         return getInternalState(this).tag;
       });
+      redefine($Symbol, 'withoutSetter', function (description) {
+        return wrap(uid(description), description);
+      });
       propertyIsEnumerableModule.f = $propertyIsEnumerable;
       definePropertyModule.f = $defineProperty;
       getOwnPropertyDescriptorModule.f = $getOwnPropertyDescriptor;
       getOwnPropertyNamesModule.f = getOwnPropertyNamesExternal.f = $getOwnPropertyNames;
       getOwnPropertySymbolsModule.f = $getOwnPropertySymbols;
+
+      wrappedWellKnownSymbolModule.f = function (name) {
+        return wrap(wellKnownSymbol(name), name);
+      };
 
       if (DESCRIPTORS) {
         // https://github.com/tc39/proposal-Symbol-description
@@ -13409,12 +13595,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           });
         }
       }
-    }
-
-    if (!USE_SYMBOL_AS_UID) {
-      wrappedWellKnownSymbolModule.f = function (name) {
-        return wrap(wellKnownSymbol(name), name);
-      };
     }
 
     $({
@@ -14678,8 +14858,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   function node_modulesZoneJsDistZoneEvergreenJs(module, exports, __webpack_require__) {
     var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
     /**
-    * @license Angular v0.10.2
-    * (c) 2010-2019 Google LLC. https://angular.io/
+    * @license Angular v9.1.0-next.4+61.sha-e552591.with-local-changes
+    * (c) 2010-2020 Google LLC. https://angular.io/
     * License: MIT
     */
 
@@ -14749,6 +14929,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           _createClass(Zone, [{
+            key: "parent",
+            get: function get() {
+              return this._parent;
+            }
+          }, {
+            key: "name",
+            get: function get() {
+              return this._name;
+            }
+          }, {
             key: "get",
             value: function get(key) {
               var zone = this.getZoneWith(key);
@@ -14981,36 +15171,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 zoneDelegates[i]._updateTaskCount(task.type, count);
               }
             }
-          }, {
-            key: "parent",
-            get: function get() {
-              return this._parent;
-            }
-          }, {
-            key: "name",
-            get: function get() {
-              return this._name;
-            }
           }], [{
             key: "assertZonePatched",
             value: function assertZonePatched() {
               if (global['Promise'] !== patches['ZoneAwarePromise']) {
                 throw new Error('Zone.js has detected that ZoneAwarePromise `(window|global).Promise` ' + 'has been overwritten.\n' + 'Most likely cause is that a Promise polyfill has been loaded ' + 'after Zone.js (Polyfilling Promise api is not necessary when zone.js is loaded. ' + 'If you must load one, do so before loading zone.js.)');
-              }
-            }
-          }, {
-            key: "__load_patch",
-            // tslint:disable-next-line:require-internal-with-underscore
-            value: function __load_patch(name, fn) {
-              if (patches.hasOwnProperty(name)) {
-                if (checkDuplicate) {
-                  throw Error('Already loaded patch: ' + name);
-                }
-              } else if (!global['__Zone_disable_' + name]) {
-                var perfName = 'Zone:' + name;
-                mark(perfName);
-                patches[name] = fn(global, Zone, _api);
-                performanceMeasure(perfName, perfName);
               }
             }
           }, {
@@ -15033,6 +15198,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             key: "currentTask",
             get: function get() {
               return _currentTask;
+            } // tslint:disable-next-line:require-internal-with-underscore
+
+          }, {
+            key: "__load_patch",
+            value: function __load_patch(name, fn) {
+              if (patches.hasOwnProperty(name)) {
+                if (checkDuplicate) {
+                  throw Error('Already loaded patch: ' + name);
+                }
+              } else if (!global['__Zone_disable_' + name]) {
+                var perfName = 'Zone:' + name;
+                mark(perfName);
+                patches[name] = fn(global, Zone, _api);
+                performanceMeasure(perfName, perfName);
+              }
             }
           }]);
 
@@ -15268,6 +15448,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           _createClass(ZoneTask, [{
+            key: "zone",
+            get: function get() {
+              return this._zone;
+            }
+          }, {
+            key: "state",
+            get: function get() {
+              return this._state;
+            }
+          }, {
             key: "cancelScheduleRequest",
             value: function cancelScheduleRequest() {
               this._transitionTo(notScheduled, scheduling);
@@ -15307,16 +15497,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 zone: this.zone.name,
                 runCount: this.runCount
               };
-            }
-          }, {
-            key: "zone",
-            get: function get() {
-              return this._zone;
-            }
-          }, {
-            key: "state",
-            get: function get() {
-              return this._state;
             }
           }], [{
             key: "invokeTask",
@@ -15541,6 +15721,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var __symbol__ = api.symbol;
         var _uncaughtPromiseErrors = [];
+        var isDisableWrappingUncaughtPromiseRejection = global[__symbol__('DISABLE_WRAPPING_UNCAUGHT_PROMISE_REJECTION')] === true;
 
         var symbolPromise = __symbol__('Promise');
 
@@ -15561,22 +15742,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         };
 
         api.microtaskDrainDone = function () {
-          while (_uncaughtPromiseErrors.length) {
-            var _loop = function _loop() {
-              var uncaughtPromiseError = _uncaughtPromiseErrors.shift();
+          var _loop = function _loop() {
+            var uncaughtPromiseError = _uncaughtPromiseErrors.shift();
 
-              try {
-                uncaughtPromiseError.zone.runGuarded(function () {
-                  throw uncaughtPromiseError;
-                });
-              } catch (error) {
-                handleUnhandledRejection(error);
-              }
-            };
-
-            while (_uncaughtPromiseErrors.length) {
-              _loop();
+            try {
+              uncaughtPromiseError.zone.runGuarded(function () {
+                throw uncaughtPromiseError;
+              });
+            } catch (error) {
+              handleUnhandledRejection(error);
             }
+          };
+
+          while (_uncaughtPromiseErrors.length) {
+            _loop();
           }
         };
 
@@ -15588,7 +15767,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           try {
             var handler = Zone[UNHANDLED_PROMISE_REJECTION_HANDLER_SYMBOL];
 
-            if (handler && typeof handler === 'function') {
+            if (typeof handler === 'function') {
               handler.call(this, e);
             }
           } catch (err) {}
@@ -15724,21 +15903,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
               if (queue.length == 0 && state == REJECTED) {
                 promise[symbolState] = REJECTED_NO_CATCH;
+                var uncaughtPromiseError = value;
 
-                try {
-                  // try to print more readable error log
-                  throw new Error('Uncaught (in promise): ' + readableObjectToString(value) + (value && value.stack ? '\n' + value.stack : ''));
-                } catch (err) {
-                  var error = err;
-                  error.rejection = value;
-                  error.promise = promise;
-                  error.zone = Zone.current;
-                  error.task = Zone.currentTask;
-
-                  _uncaughtPromiseErrors.push(error);
-
-                  api.scheduleMicroTask(); // to make sure that it is running
+                if (!isDisableWrappingUncaughtPromiseRejection) {
+                  // If disable wrapping uncaught promise reject
+                  // and the rejected value is an Error object,
+                  // use the value instead of wrapping it.
+                  try {
+                    // Here we throws a new Error to print more readable error log
+                    // and if the value is not an error, zone.js builds an `Error`
+                    // Object here to attach the stack information.
+                    throw new Error('Uncaught (in promise): ' + readableObjectToString(value) + (value && value.stack ? '\n' + value.stack : ''));
+                  } catch (err) {
+                    uncaughtPromiseError = err;
+                  }
                 }
+
+                uncaughtPromiseError.rejection = value;
+                uncaughtPromiseError.promise = promise;
+                uncaughtPromiseError.zone = Zone.current;
+                uncaughtPromiseError.task = Zone.currentTask;
+
+                _uncaughtPromiseErrors.push(uncaughtPromiseError);
+
+                api.scheduleMicroTask(); // to make sure that it is running
               }
             }
           } // Resolving an already resolved promise is a noop.
@@ -15804,6 +15992,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var ZONE_AWARE_PROMISE_TO_STRING = 'function ZoneAwarePromise() { [native code] }';
 
+        var noop = function noop() {};
+
         var ZoneAwarePromise =
         /*#__PURE__*/
         function () {
@@ -15827,9 +16017,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           _createClass(ZoneAwarePromise, [{
+            key: Symbol.toStringTag,
+            get: function get() {
+              return 'Promise';
+            }
+          }, {
+            key: Symbol.species,
+            get: function get() {
+              return ZoneAwarePromise;
+            }
+          }, {
             key: "then",
             value: function then(onFulfilled, onRejected) {
-              var chainPromise = new this.constructor(null);
+              var C = this.constructor[Symbol.species];
+
+              if (!C || typeof C !== 'function') {
+                C = this.constructor || ZoneAwarePromise;
+              }
+
+              var chainPromise = new C(noop);
               var zone = Zone.current;
 
               if (this[symbolState] == UNRESOLVED) {
@@ -15848,7 +16054,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }, {
             key: "finally",
             value: function _finally(onFinally) {
-              var chainPromise = new this.constructor(null);
+              var C = this.constructor[Symbol.species];
+
+              if (!C || typeof C !== 'function') {
+                C = ZoneAwarePromise;
+              }
+
+              var chainPromise = new C(noop);
               chainPromise[symbolFinally] = symbolFinally;
               var zone = Zone.current;
 
@@ -15859,11 +16071,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               }
 
               return chainPromise;
-            }
-          }, {
-            key: Symbol.toStringTag,
-            get: function get() {
-              return 'Promise';
             }
           }], [{
             key: "toString",
@@ -15898,12 +16105,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 reject(error);
               }
 
-              var _iteratorNormalCompletion = true;
-              var _didIteratorError = false;
-              var _iteratorError = undefined;
+              var _iterator = _createForOfIteratorHelper(values),
+                  _step;
 
               try {
-                for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                for (_iterator.s(); !(_step = _iterator.n()).done;) {
                   var value = _step.value;
 
                   if (!isThenable(value)) {
@@ -15913,18 +16119,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   value.then(onResolve, onReject);
                 }
               } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
+                _iterator.e(err);
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion && _iterator.return != null) {
-                    _iterator.return();
-                  }
-                } finally {
-                  if (_didIteratorError) {
-                    throw _iteratorError;
-                  }
-                }
+                _iterator.f();
               }
 
               return promise;
@@ -15968,9 +16165,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               var unresolvedCount = 2;
               var valueIndex = 0;
               var resolvedValues = [];
-              var _iteratorNormalCompletion2 = true;
-              var _didIteratorError2 = false;
-              var _iteratorError2 = undefined;
+
+              var _iterator2 = _createForOfIteratorHelper(values),
+                  _step2;
 
               try {
                 var _loop2 = function _loop2() {
@@ -16010,23 +16207,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   valueIndex++;
                 };
 
-                for (var _iterator2 = values[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
                   _loop2();
                 } // Make the unresolvedCount zero-based again.
 
               } catch (err) {
-                _didIteratorError2 = true;
-                _iteratorError2 = err;
+                _iterator2.e(err);
               } finally {
-                try {
-                  if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                    _iterator2.return();
-                  }
-                } finally {
-                  if (_didIteratorError2) {
-                    throw _iteratorError2;
-                  }
-                }
+                _iterator2.f();
               }
 
               unresolvedCount -= 2;
@@ -16791,6 +16979,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var EVENT_NAME_SYMBOL_REGX = new RegExp('^' + ZONE_SYMBOL_PREFIX + '(\\w+)(true|false)$');
       var IMMEDIATE_PROPAGATION_SYMBOL = zoneSymbol('propagationStopped');
 
+      function prepareEventNames(eventName, eventNameToString) {
+        var falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
+        var trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
+        var symbol = ZONE_SYMBOL_PREFIX + falseEventName;
+        var symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
+        zoneSymbolEventNames$1[eventName] = {};
+        zoneSymbolEventNames$1[eventName][FALSE_STR] = symbol;
+        zoneSymbolEventNames$1[eventName][TRUE_STR] = symbolCapture;
+      }
+
       function patchEventTarget(_global, apis, patchOptions) {
         var ADD_EVENT_LISTENER = patchOptions && patchOptions.add || ADD_EVENT_LISTENER_STR;
         var REMOVE_EVENT_LISTENER = patchOptions && patchOptions.rm || REMOVE_EVENT_LISTENER_STR;
@@ -16963,16 +17161,44 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (patchOptions && patchOptions.prepend) {
             nativePrependEventListener = proto[zoneSymbol(patchOptions.prepend)] = proto[patchOptions.prepend];
           }
+          /**
+           * This util function will build an option object with passive option
+           * to handle all possible input from the user.
+           */
 
-          function checkIsPassive(task) {
-            if (!passiveSupported && typeof taskData.options !== 'boolean' && typeof taskData.options !== 'undefined' && taskData.options !== null) {
-              // options is a non-null non-undefined object
-              // passive is not supported
-              // don't pass options as object
-              // just pass capture as a boolean
-              task.options = !!taskData.options.capture;
-              taskData.options = task.options;
+
+          function buildEventListenerOptions(options, passive) {
+            if (!passiveSupported && typeof options === 'object' && options) {
+              // doesn't support passive but user want to pass an object as options.
+              // this will not work on some old browser, so we just pass a boolean
+              // as useCapture parameter
+              return !!options.capture;
             }
+
+            if (!passiveSupported || !passive) {
+              return options;
+            }
+
+            if (typeof options === 'boolean') {
+              return {
+                capture: options,
+                passive: true
+              };
+            }
+
+            if (!options) {
+              return {
+                passive: true
+              };
+            }
+
+            if (typeof options === 'object' && options.passive !== false) {
+              return Object.assign(Object.assign({}, options), {
+                passive: true
+              });
+            }
+
+            return options;
           }
 
           var customScheduleGlobal = function customScheduleGlobal(task) {
@@ -16982,7 +17208,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               return;
             }
 
-            checkIsPassive(task);
             return nativeAddEventListener.call(taskData.target, taskData.eventName, taskData.capture ? globalZoneAwareCaptureCallback : globalZoneAwareCallback, taskData.options);
           };
 
@@ -17033,7 +17258,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
 
           var customScheduleNonGlobal = function customScheduleNonGlobal(task) {
-            checkIsPassive(task);
             return nativeAddEventListener.call(taskData.target, taskData.eventName, task.invoke, taskData.options);
           };
 
@@ -17055,6 +17279,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var compare = patchOptions && patchOptions.diff ? patchOptions.diff : compareTaskCallbackVsDelegate;
           var blackListedEvents = Zone[zoneSymbol('BLACK_LISTED_EVENTS')];
+
+          var passiveEvents = _global[zoneSymbol('PASSIVE_EVENTS')];
 
           var makeAddListener = function makeAddListener(nativeListener, addSource, customScheduleFn, customCancelFn) {
             var returnTarget = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
@@ -17095,49 +17321,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 return;
               }
 
-              var options = arguments[2];
+              var passive = passiveSupported && !!passiveEvents && passiveEvents.indexOf(eventName) !== -1;
+              var options = buildEventListenerOptions(arguments[2], passive);
 
               if (blackListedEvents) {
                 // check black list
                 for (var i = 0; i < blackListedEvents.length; i++) {
                   if (eventName === blackListedEvents[i]) {
-                    return nativeListener.apply(this, arguments);
+                    if (passive) {
+                      return nativeListener.call(target, eventName, delegate, options);
+                    } else {
+                      return nativeListener.apply(this, arguments);
+                    }
                   }
                 }
               }
 
-              var capture;
-              var once = false;
-
-              if (options === undefined) {
-                capture = false;
-              } else if (options === true) {
-                capture = true;
-              } else if (options === false) {
-                capture = false;
-              } else {
-                capture = options ? !!options.capture : false;
-                once = options ? !!options.once : false;
-              }
-
+              var capture = !options ? false : typeof options === 'boolean' ? true : options.capture;
+              var once = options && typeof options === 'object' ? options.once : false;
               var zone = Zone.current;
               var symbolEventNames = zoneSymbolEventNames$1[eventName];
-              var symbolEventName;
 
               if (!symbolEventNames) {
-                // the code is duplicate, but I just want to get some better performance
-                var falseEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + FALSE_STR;
-                var trueEventName = (eventNameToString ? eventNameToString(eventName) : eventName) + TRUE_STR;
-                var symbol = ZONE_SYMBOL_PREFIX + falseEventName;
-                var symbolCapture = ZONE_SYMBOL_PREFIX + trueEventName;
-                zoneSymbolEventNames$1[eventName] = {};
-                zoneSymbolEventNames$1[eventName][FALSE_STR] = symbol;
-                zoneSymbolEventNames$1[eventName][TRUE_STR] = symbolCapture;
-                symbolEventName = capture ? symbolCapture : symbol;
-              } else {
-                symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
+                prepareEventNames(eventName, eventNameToString);
+                symbolEventNames = zoneSymbolEventNames$1[eventName];
               }
 
+              var symbolEventName = symbolEventNames[capture ? TRUE_STR : FALSE_STR];
               var existingTasks = target[symbolEventName];
               var isExisting = false;
 
@@ -17247,18 +17457,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var options = arguments[2];
-            var capture;
-
-            if (options === undefined) {
-              capture = false;
-            } else if (options === true) {
-              capture = true;
-            } else if (options === false) {
-              capture = false;
-            } else {
-              capture = options ? !!options.capture : false;
-            }
-
+            var capture = !options ? false : typeof options === 'boolean' ? true : options.capture;
             var delegate = arguments[1];
 
             if (!delegate) {
@@ -17428,24 +17627,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       function findEventTasks(target, eventName) {
-        var foundTasks = [];
+        if (!eventName) {
+          var foundTasks = [];
 
-        for (var prop in target) {
-          var match = EVENT_NAME_SYMBOL_REGX.exec(prop);
-          var evtName = match && match[1];
+          for (var prop in target) {
+            var match = EVENT_NAME_SYMBOL_REGX.exec(prop);
+            var evtName = match && match[1];
 
-          if (evtName && (!eventName || evtName === eventName)) {
-            var tasks = target[prop];
+            if (evtName && (!eventName || evtName === eventName)) {
+              var tasks = target[prop];
 
-            if (tasks) {
-              for (var i = 0; i < tasks.length; i++) {
-                foundTasks.push(tasks[i]);
+              if (tasks) {
+                for (var i = 0; i < tasks.length; i++) {
+                  foundTasks.push(tasks[i]);
+                }
               }
             }
           }
+
+          return foundTasks;
         }
 
-        return foundTasks;
+        var symbolEventName = zoneSymbolEventNames$1[eventName];
+
+        if (!symbolEventName) {
+          prepareEventNames(eventName);
+          symbolEventName = zoneSymbolEventNames$1[eventName];
+        }
+
+        var captureFalseTasks = target[symbolEventName[FALSE_STR]];
+        var captureTrueTasks = target[symbolEventName[TRUE_STR]];
+
+        if (!captureFalseTasks) {
+          return captureTrueTasks ? captureTrueTasks.slice() : [];
+        } else {
+          return captureTrueTasks ? captureFalseTasks.concat(captureTrueTasks) : captureFalseTasks.slice();
+        }
       }
 
       function patchEventPrototype(global, api) {
@@ -17519,7 +17736,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var globalEventHandlersEventNames = ['abort', 'animationcancel', 'animationend', 'animationiteration', 'auxclick', 'beforeinput', 'blur', 'cancel', 'canplay', 'canplaythrough', 'change', 'compositionstart', 'compositionupdate', 'compositionend', 'cuechange', 'click', 'close', 'contextmenu', 'curechange', 'dblclick', 'drag', 'dragend', 'dragenter', 'dragexit', 'dragleave', 'dragover', 'drop', 'durationchange', 'emptied', 'ended', 'error', 'focus', 'focusin', 'focusout', 'gotpointercapture', 'input', 'invalid', 'keydown', 'keypress', 'keyup', 'load', 'loadstart', 'loadeddata', 'loadedmetadata', 'lostpointercapture', 'mousedown', 'mouseenter', 'mouseleave', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'mousewheel', 'orientationchange', 'pause', 'play', 'playing', 'pointercancel', 'pointerdown', 'pointerenter', 'pointerleave', 'pointerlockchange', 'mozpointerlockchange', 'webkitpointerlockerchange', 'pointerlockerror', 'mozpointerlockerror', 'webkitpointerlockerror', 'pointermove', 'pointout', 'pointerover', 'pointerup', 'progress', 'ratechange', 'reset', 'resize', 'scroll', 'seeked', 'seeking', 'select', 'selectionchange', 'selectstart', 'show', 'sort', 'stalled', 'submit', 'suspend', 'timeupdate', 'volumechange', 'touchcancel', 'touchmove', 'touchstart', 'touchend', 'transitioncancel', 'transitionend', 'waiting', 'wheel'];
       var documentEventNames = ['afterscriptexecute', 'beforescriptexecute', 'DOMContentLoaded', 'freeze', 'fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'fullscreenerror', 'mozfullscreenerror', 'webkitfullscreenerror', 'msfullscreenerror', 'readystatechange', 'visibilitychange', 'resume'];
-      var windowEventNames = ['absolutedeviceorientation', 'afterinput', 'afterprint', 'appinstalled', 'beforeinstallprompt', 'beforeprint', 'beforeunload', 'devicelight', 'devicemotion', 'deviceorientation', 'deviceorientationabsolute', 'deviceproximity', 'hashchange', 'languagechange', 'message', 'mozbeforepaint', 'offline', 'online', 'paint', 'pageshow', 'pagehide', 'popstate', 'rejectionhandled', 'storage', 'unhandledrejection', 'unload', 'userproximity', 'vrdisplyconnected', 'vrdisplaydisconnected', 'vrdisplaypresentchange'];
+      var windowEventNames = ['absolutedeviceorientation', 'afterinput', 'afterprint', 'appinstalled', 'beforeinstallprompt', 'beforeprint', 'beforeunload', 'devicelight', 'devicemotion', 'deviceorientation', 'deviceorientationabsolute', 'deviceproximity', 'hashchange', 'languagechange', 'message', 'mozbeforepaint', 'offline', 'online', 'paint', 'pageshow', 'pagehide', 'popstate', 'rejectionhandled', 'storage', 'unhandledrejection', 'unload', 'userproximity', 'vrdisplayconnected', 'vrdisplaydisconnected', 'vrdisplaypresentchange'];
       var htmlElementEventNames = ['beforecopy', 'beforecut', 'beforepaste', 'copy', 'cut', 'paste', 'dragstart', 'loadend', 'animationstart', 'search', 'transitionrun', 'transitionstart', 'webkitanimationend', 'webkitanimationiteration', 'webkitanimationstart', 'webkittransitionend'];
       var mediaElementEventNames = ['encrypted', 'waitingforkey', 'msneedkey', 'mozinterruptbegin', 'mozinterruptend'];
       var ieElementEventNames = ['activate', 'afterupdate', 'ariarequest', 'beforeactivate', 'beforedeactivate', 'beforeeditfocus', 'beforeupdate', 'cellchange', 'controlselect', 'dataavailable', 'datasetchanged', 'datasetcomplete', 'errorupdate', 'filterchange', 'layoutcomplete', 'losecapture', 'move', 'moveend', 'movestart', 'propertychange', 'resizeend', 'resizestart', 'rowenter', 'rowexit', 'rowsdelete', 'rowsinserted', 'command', 'compassneedscalibration', 'deactivate', 'help', 'mscontentzoom', 'msmanipulationstatechanged', 'msgesturechange', 'msgesturedoubletap', 'msgestureend', 'msgesturehold', 'msgesturestart', 'msgesturetap', 'msgotpointercapture', 'msinertiastart', 'mslostpointercapture', 'mspointercancel', 'mspointerdown', 'mspointerenter', 'mspointerhover', 'mspointerleave', 'mspointermove', 'mspointerout', 'mspointerover', 'mspointerup', 'pointerout', 'mssitemodejumplistitemremoved', 'msthumbnailclick', 'stop', 'storagecommit'];
@@ -17701,14 +17918,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
         };
       });
-      /**
-       * @license
-       * Copyright Google Inc. All Rights Reserved.
-       *
-       * Use of this source code is governed by an MIT-style license that can be
-       * found in the LICENSE file at https://angular.io/license
-       */
-
       /**
        * @license
        * Copyright Google Inc. All Rights Reserved.
@@ -18195,14 +18404,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           Zone[zoneSymbol('rejectionHandledHandler')] = findPromiseRejectionHandler('rejectionhandled');
         }
       });
-      /**
-       * @license
-       * Copyright Google Inc. All Rights Reserved.
-       *
-       * Use of this source code is governed by an MIT-style license that can be
-       * found in the LICENSE file at https://angular.io/license
-       */
-
     });
     /***/
 
@@ -18220,8 +18421,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   function node_modulesZoneJsDistZoneLegacyJs(module, exports, __webpack_require__) {
     var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
     /**
-    * @license Angular v0.10.2
-    * (c) 2010-2019 Google LLC. https://angular.io/
+    * @license Angular v9.1.0-next.4+61.sha-e552591.with-local-changes
+    * (c) 2010-2020 Google LLC. https://angular.io/
     * License: MIT
     */
 

@@ -9,9 +9,13 @@ import {FivesModule} from './fives/fives.module';
 import {HareAndHoundModule} from './hare-and-hound/hare-and-hound.module';
 import {KnockoutModule} from './knockout/knockout.module';
 import {ConquerorModule} from './conqueror/conqueror.module';
+import {ImitatorModule} from './imitator/imitator.module';
 
 export const routes: Routes = [
-  {path: '', component: MenuComponent},
+  {
+    path: '',
+    component: MenuComponent
+  },
   {
     path: 'x01',
     data: {name: 'Classic X01'},
@@ -56,6 +60,11 @@ export const routes: Routes = [
     path: 'conqueror',
     data: {name: 'Conqueror'},
     loadChildren: () => ConquerorModule
+  },
+  {
+    path: 'imitator',
+    data: {name: 'Imitator'},
+    loadChildren: () => ImitatorModule
   },
   {
     path: '**', redirectTo: ''
