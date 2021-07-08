@@ -22,8 +22,6 @@ export class ImitatorComponent extends Playground<ImitatorState> {
               dialogService: DialogService, soundService: SoundService) {
     super(application, game, route, dialogService, soundService);
     this.nextEnabled = false;
-    this.zeroEnabled = false;
-    this.multiEnabled = false;
     this.settings = new ImitatorSettings();
   }
 
@@ -31,15 +29,13 @@ export class ImitatorComponent extends Playground<ImitatorState> {
     const state = this.getPlayerState(player);
     if (this.game.actualThrow === 1) {
       state.punished = fieldIndex !== state.actFieldIndex;
-      this.multiEnabled = true;
-      this.zeroEnabled = true;
     } else if (this.game.actualThrow === 2) {
-      player.score += (state.punished ? score * -1 : score) * this.multiplier;
-      this.multiEnabled = false;
-      this.zeroEnabled = false;
+      const newScore = state.punished && score === 0 ? 25 : score;
+      player.score += (state.punished ? newScore * -1 : newScore) * this.multiplier;
     } else {
       this.game.nextPlayer();
-      this.getPlayerState(this.game.getActualPlayer()).actFieldIndex = fieldIndex;
+      const newFieldIndex = score === 0 ? Math.floor(Math.random() * 20) : fieldIndex;
+      this.getPlayerState(this.game.getActualPlayer()).actFieldIndex = newFieldIndex;
     }
   }
 

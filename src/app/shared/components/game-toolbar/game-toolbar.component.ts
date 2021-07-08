@@ -12,6 +12,7 @@ import {DialogService} from '~services/dialog.service';
 export class GameToolbarComponent {
 
   @Input() playground: Playground<PlaygroundState>;
+  @Input() reversRound: number;
 
   constructor(public route: Router, private dialogService: DialogService) {
   }
@@ -40,5 +41,10 @@ export class GameToolbarComponent {
       }
     }
     this.dialogService.openDartsTable(enabledFields, primaryFields);
+  }
+
+  getRound(): number {
+    const round = this.playground.game.round;
+    return this.reversRound ? (this.reversRound - round) : (round + 1);
   }
 }

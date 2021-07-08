@@ -1,6 +1,6 @@
 export class ImitatorSettings {
 
-  round = 10;
+  round = 5;
 
   setRound(r: number) {
     this.round = r;
