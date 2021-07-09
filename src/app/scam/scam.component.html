@@ -36,6 +36,9 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
             (click)="settings.setStyle(3)">No Score
     </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.stopper?'primary':''"
+            (click)="settings.toggleStopper()">Stopper
+    </button>
   </app-settings>
 
   <div class="side-left">
@@ -43,7 +46,10 @@
     <ng-container *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player" [hasContent]="false"></app-player-score>
+        <app-player-score [player]="player" [hasContent]="false"
+          [highlighted]="settings.stopper && game.isTheFirstPlayer(player)"
+          [scoreDisplayed]="!settings.stopper || !game.isTheFirstPlayer(player)">
+        </app-player-score>
       </div>
     </ng-container>
   </div>

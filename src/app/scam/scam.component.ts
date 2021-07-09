@@ -20,14 +20,20 @@ export class ScamComponent extends Playground<PlaygroundState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+    super(application, game, route, dialogService, soundService, 2);
     this.settings = new ScamSettings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     if (this.isFieldEnabled(fieldIndex)) {
-      player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
-      this.settings.numbs[fieldIndex] = false;
+      if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
+        this.settings.numbs[fieldIndex] = false;
+      } else if(this.settings.stopper) {
+        player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
+      } else {
+        player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
+        this.settings.numbs[fieldIndex] = false;
+      }
     }
   }
 
