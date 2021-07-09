@@ -9,6 +9,7 @@ export class GameService {
   actualFieldIndex = 0;
   round: number;
   victoryFirst = true;
+  numbs: number[] = [];
 
   toggleVictoryFirst() {
     this.victoryFirst = !this.victoryFirst;
@@ -95,6 +96,7 @@ export class GameService {
     game.actualThrow = this.actualThrow;
     game.actualFieldIndex = this.actualFieldIndex;
     game.round = this.round;
+    game.numbs = this.numbs.map(n => n);
     const players: Player[] = [];
     this.players.forEach(player => {
       players.push(player.clone());

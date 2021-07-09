@@ -8323,12 +8323,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function calculatePoints(player, fieldIndex, score) {
           if (this.isFieldEnabled(fieldIndex)) {
             if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
-              this.settings.numbs[fieldIndex] = false;
+              this.game.numbs[fieldIndex] = 0;
             } else if (this.settings.stopper) {
               player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
             } else {
               player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
-              this.settings.numbs[fieldIndex] = false;
+              this.game.numbs[fieldIndex] = 0;
             }
           }
         }
@@ -8337,7 +8337,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function checkPlayerState(player) {
           var _this47 = this;
 
-          if (!this.settings.numbs.find(function (n) {
+          if (!this.game.numbs.find(function (n) {
             return n;
           })) {
             this.game.players.forEach(function (p) {
@@ -8352,13 +8352,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isFieldEnabled",
         value: function isFieldEnabled(fieldIndex) {
-          return this.settings.numbs[fieldIndex];
+          return !!this.game.numbs[fieldIndex];
         }
       }, {
         key: "customReset",
         value: function customReset() {
           var _this48 = this;
 
+          this.game.numbs = this.settings.numbs.map(function (i) {
+            return i ? 1 : 0;
+          });
           this.settings.fields.forEach(function (f) {
             return _this48.settings.numbs[f] = true;
           });
@@ -12063,6 +12066,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.players = [];
         this.actualFieldIndex = 0;
         this.victoryFirst = true;
+        this.numbs = [];
       }
 
       _createClass(GameService, [{
@@ -12171,6 +12175,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           game.actualThrow = this.actualThrow;
           game.actualFieldIndex = this.actualFieldIndex;
           game.round = this.round;
+          game.numbs = this.numbs.map(function (n) {
+            return n;
+          });
           var players = [];
           this.players.forEach(function (player) {
             players.push(player.clone());

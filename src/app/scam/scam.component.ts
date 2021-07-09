@@ -27,18 +27,18 @@ export class ScamComponent extends Playground<PlaygroundState> {
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     if (this.isFieldEnabled(fieldIndex)) {
       if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
-        this.settings.numbs[fieldIndex] = false;
+        this.game.numbs[fieldIndex] = 0;
       } else if(this.settings.stopper) {
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
       } else {
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
-        this.settings.numbs[fieldIndex] = false;
+        this.game.numbs[fieldIndex] = 0;
       }
     }
   }
 
   checkPlayerState(player: Player) {
-    if(!this.settings.numbs.find(n => n)) {
+    if(!this.game.numbs.find(n => n)) {
       this.game.players.forEach(p => p.setWin(this.game.isTheBestPlayer(p)));
     }
     if (this.game.isTheLastThrow()) {
@@ -47,10 +47,11 @@ export class ScamComponent extends Playground<PlaygroundState> {
   }
 
   isFieldEnabled(fieldIndex: number): boolean {
-    return this.settings.numbs[fieldIndex];
+    return !!this.game.numbs[fieldIndex];
   }
 
   customReset() {
+    this.game.numbs = this.settings.numbs.map(i => i ? 1 : 0);
     this.settings.fields.forEach(f => this.settings.numbs[f] = true);
   }
 }

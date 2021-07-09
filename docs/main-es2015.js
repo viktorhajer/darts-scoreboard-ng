@@ -3921,19 +3921,19 @@ class ScamComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_1_
     calculatePoints(player, fieldIndex, score) {
         if (this.isFieldEnabled(fieldIndex)) {
             if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
-                this.settings.numbs[fieldIndex] = false;
+                this.game.numbs[fieldIndex] = 0;
             }
             else if (this.settings.stopper) {
                 player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
             }
             else {
                 player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
-                this.settings.numbs[fieldIndex] = false;
+                this.game.numbs[fieldIndex] = 0;
             }
         }
     }
     checkPlayerState(player) {
-        if (!this.settings.numbs.find(n => n)) {
+        if (!this.game.numbs.find(n => n)) {
             this.game.players.forEach(p => p.setWin(this.game.isTheBestPlayer(p)));
         }
         if (this.game.isTheLastThrow()) {
@@ -3941,9 +3941,10 @@ class ScamComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_1_
         }
     }
     isFieldEnabled(fieldIndex) {
-        return this.settings.numbs[fieldIndex];
+        return !!this.game.numbs[fieldIndex];
     }
     customReset() {
+        this.game.numbs = this.settings.numbs.map(i => i ? 1 : 0);
         this.settings.fields.forEach(f => this.settings.numbs[f] = true);
     }
 }
@@ -5762,6 +5763,7 @@ class GameService {
         this.players = [];
         this.actualFieldIndex = 0;
         this.victoryFirst = true;
+        this.numbs = [];
     }
     toggleVictoryFirst() {
         this.victoryFirst = !this.victoryFirst;
@@ -5832,6 +5834,7 @@ class GameService {
         game.actualThrow = this.actualThrow;
         game.actualFieldIndex = this.actualFieldIndex;
         game.round = this.round;
+        game.numbs = this.numbs.map(n => n);
         const players = [];
         this.players.forEach(player => {
             players.push(player.clone());
