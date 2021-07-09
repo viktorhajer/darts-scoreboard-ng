@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'hare-and-hound',
-    data: {name: 'Hare and Hound', color: '#0a756b', icon: 'accessible_forward'}
+    data: {name: 'Hare and Hound', color: '#0a756b', icon: 'cruelty_free'}
   },
   {
     path: 'knockout',
@@ -41,6 +41,10 @@ const routes: Routes = [
   {
     path: 'imitator',
     data: {name: 'Imitator', color: '#0a756b', icon: 'group'}
+  },
+  {
+    path: 'scam',
+    data: {name: 'Scam', color: '#0a756b', icon: 'group_work'}
   }
 ];
 

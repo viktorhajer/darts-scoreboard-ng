@@ -1,0 +1,51 @@
+<div id="playgroundContent">
+
+  <app-settings *ngIf="settingsOpen" [title]="'Scam'" [playground]="playground"
+                [rules]="'...'">
+    <h2>Fields</h2>
+    <button mat-raised-button class="button" [color]="settings.isFieldAllowed(i)?'primary':''"
+            *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
+      {{numb === 21 ? 'B' : numb}}
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" (click)="settings.upper()">Upper</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.left()">Left</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.right()">Right</button>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.prime()">Prime</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.notPrime()">Not prime</button>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" (click)="settings.randomize(5)">Random 05</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.randomize(10)">Random 10</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.randomize(15)">Random 15</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.all()">All</button>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" (click)="settings.small()">Small</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.high()">High</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.star()">Star</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.cross()">Cross</button>
+    <mat-divider></mat-divider>
+
+    <h2>Style</h2>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''"
+            (click)="settings.setStyle(1)">Classic
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
+            (click)="settings.setStyle(3)">No Score
+    </button>
+  </app-settings>
+
+  <div class="side-left">
+    <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
+    <ng-container *ngIf="!settingsOpen">
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
+           *ngFor="let player of game.players; let i = index">
+        <app-player-score [player]="player" [hasContent]="false"></app-player-score>
+      </div>
+    </ng-container>
+  </div>
+  <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
+</div>

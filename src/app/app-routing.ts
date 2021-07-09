@@ -10,6 +10,7 @@ import {HareAndHoundModule} from './hare-and-hound/hare-and-hound.module';
 import {KnockoutModule} from './knockout/knockout.module';
 import {ConquerorModule} from './conqueror/conqueror.module';
 import {ImitatorModule} from './imitator/imitator.module';
+import {ScamModule} from './scam/scam.module';
 
 export const routes: Routes = [
   {
@@ -65,6 +66,11 @@ export const routes: Routes = [
     path: 'imitator',
     data: {name: 'Imitator'},
     loadChildren: () => ImitatorModule
+  },
+  {
+    path: 'scam',
+    data: {name: 'Scam'},
+    loadChildren: () => ScamModule
   },
   {
     path: '**', redirectTo: ''
