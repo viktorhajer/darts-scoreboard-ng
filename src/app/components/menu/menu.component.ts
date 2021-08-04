@@ -39,6 +39,10 @@ const routes: Routes = [
     data: {name: 'Capture the Flag', color: '#0a756b', icon: 'flag'}
   },
   {
+    path: 'duel',
+    data: {name: 'Duel', color: '#0a756b', icon: 'emoji_events'}
+  },
+  {
     path: 'imitator',
     data: {name: 'Imitator', color: '#0a756b', icon: 'group'}
   },

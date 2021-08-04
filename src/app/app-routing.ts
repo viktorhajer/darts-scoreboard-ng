@@ -11,6 +11,7 @@ import {KnockoutModule} from './knockout/knockout.module';
 import {ConquerorModule} from './conqueror/conqueror.module';
 import {ImitatorModule} from './imitator/imitator.module';
 import {ScamModule} from './scam/scam.module';
+import {DuelModule} from './duel/duel.module';
 
 export const routes: Routes = [
   {
@@ -61,6 +62,11 @@ export const routes: Routes = [
     path: 'conqueror',
     data: {name: 'Conqueror'},
     loadChildren: () => ConquerorModule
+  },
+  {
+    path: 'duel',
+    data: {name: 'Duel'},
+    loadChildren: () => DuelModule
   },
   {
     path: 'imitator',

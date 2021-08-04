@@ -152,6 +152,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _scam_scam_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ./scam/scam.module */
     "./src/app/scam/scam.module.ts");
+    /* harmony import */
+
+
+    var _duel_duel_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ./duel/duel.module */
+    "./src/app/duel/duel.module.ts");
 
     var routes = [{
       path: '',
@@ -227,6 +233,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       },
       loadChildren: function loadChildren() {
         return _conqueror_conqueror_module__WEBPACK_IMPORTED_MODULE_9__["ConquerorModule"];
+      }
+    }, {
+      path: 'duel',
+      data: {
+        name: 'Duel'
+      },
+      loadChildren: function loadChildren() {
+        return _duel_duel_module__WEBPACK_IMPORTED_MODULE_12__["DuelModule"];
       }
     }, {
       path: 'imitator',
@@ -1853,6 +1867,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         icon: 'flag'
       }
     }, {
+      path: 'duel',
+      data: {
+        name: 'Duel',
+        color: '#0a756b',
+        icon: 'emoji_events'
+      }
+    }, {
       path: 'imitator',
       data: {
         name: 'Imitator',
@@ -1929,7 +1950,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.51");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.52");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -4151,6 +4172,946 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
+  "./src/app/duel/duel.component.ts":
+  /*!****************************************!*\
+    !*** ./src/app/duel/duel.component.ts ***!
+    \****************************************/
+
+  /*! exports provided: DuelComponent */
+
+  /***/
+  function srcAppDuelDuelComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DuelComponent", function () {
+      return DuelComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _models_playground_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! ~models/playground.model */
+    "./src/app/shared/models/playground.model.ts");
+    /* harmony import */
+
+
+    var _route_animation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../route-animation */
+    "./src/app/route-animation.ts");
+    /* harmony import */
+
+
+    var _models_duel_settings_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./models/duel.settings.model */
+    "./src/app/duel/models/duel.settings.model.ts");
+    /* harmony import */
+
+
+    var _models_duel_state_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./models/duel.state.model */
+    "./src/app/duel/models/duel.state.model.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ~services/application-state.service */
+    "./src/app/shared/services/application-state.service.ts");
+    /* harmony import */
+
+
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ~services/game.service */
+    "./src/app/shared/services/game.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ~services/dialog.service */
+    "./src/app/shared/services/dialog.service.ts");
+    /* harmony import */
+
+
+    var _services_sound_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ~services/sound.service */
+    "./src/app/shared/services/sound.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ~components/settings/settings.component */
+    "./src/app/shared/components/settings/settings.component.ts");
+    /* harmony import */
+
+
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @angular/material/form-field */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! @angular/material/input */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/input.js");
+    /* harmony import */
+
+
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @angular/material/divider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
+    /* harmony import */
+
+
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+    /* harmony import */
+
+
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! ~components/game-toolbar/game-toolbar.component */
+    "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
+    /* harmony import */
+
+
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! ~components/player-score/player-score.component */
+    "./src/app/shared/components/player-score/player-score.component.ts");
+    /* harmony import */
+
+
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! ~components/number-plate/number-plate.component */
+    "./src/app/shared/components/number-plate/number-plate.component.ts");
+
+    function DuelComponent_app_settings_1_button_16_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r262 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 11);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_button_16_Template_button_click_0_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r262);
+
+          var i_r260 = ctx.index;
+
+          var ctx_r261 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+          return ctx_r261.settings.setNumber(i_r260);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var numb_r259 = ctx.$implicit;
+        var i_r260 = ctx.index;
+
+        var ctx_r258 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r258.settings.isFieldAllowed(i_r260) ? "primary" : "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", numb_r259 === 21 ? "B" : numb_r259, " ");
+      }
+    }
+
+    function DuelComponent_app_settings_1_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r264 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-settings", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Games");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "mat-form-field", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "mat-label");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Life limit");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function DuelComponent_app_settings_1_Template_input_ngModelChange_7_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r263 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r263.settings.startPoint = $event;
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "mat-form-field", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "mat-label");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Boarding");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function DuelComponent_app_settings_1_Template_input_ngModelChange_11_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r265 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r265.settings.targetPoint = $event;
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "br");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Fields");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, DuelComponent_app_settings_1_button_16_Template, 2, 2, "button", 9);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_18_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r266 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r266.settings.upper();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Upper");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_20_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r267 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r267.settings.lower();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Lower");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_22_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r268 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r268.settings.left();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Left");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_24_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r269 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r269.settings.right();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Right");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](26, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_27_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r270 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r270.settings.odd();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Odd");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_29_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r271 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r271.settings.even();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Even");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_31_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r272 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r272.settings.prime();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Prime");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_33_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r273 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r273.settings.notPrime();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Not prime");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_36_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r274 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r274.settings.randomize(5);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Random 05");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_38_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r275 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r275.settings.randomize(10);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Random 10");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_40_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r276 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r276.settings.randomize(15);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "Random 15");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_42_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r277 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r277.settings.all();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](43, "All");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_45_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r278 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r278.settings.small();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "Small");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_47_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r279 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r279.settings.high();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "High");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_49_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r280 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r280.settings.star();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "Star");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_51_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r281 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r281.settings.cross();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Cross");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r254 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("title", "Duel")("playground", ctx_r254.playground)("rules", "....");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r254.settings.startPoint);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r254.settings.targetPoint);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r254.settings.getNumbers());
+      }
+    }
+
+    function DuelComponent_app_game_toolbar_3_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 12);
+      }
+
+      if (rf & 2) {
+        var ctx_r255 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r255.playground);
+      }
+    }
+
+    function DuelComponent_ng_container_4_div_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 14);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var player_r283 = ctx.$implicit;
+        var i_r284 = ctx.index;
+
+        var ctx_r282 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r284 === ctx_r282.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r282.isInactive(player_r283) ? "inactive" : "", "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r283)("hasContent", false);
+      }
+    }
+
+    function DuelComponent_ng_container_4_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DuelComponent_ng_container_4_div_1_Template, 2, 6, "div", 13);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r256 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r256.game.players);
+      }
+    }
+
+    function DuelComponent_app_number_plate_5_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 12);
+      }
+
+      if (rf & 2) {
+        var ctx_r257 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("playground", ctx_r257.playground);
+      }
+    }
+
+    var DuelComponent =
+    /*#__PURE__*/
+    function (_models_playground_mo4) {
+      _inherits(DuelComponent, _models_playground_mo4);
+
+      var _super7 = _createSuper(DuelComponent);
+
+      function DuelComponent(application, game, route, dialogService, soundService) {
+        var _this23;
+
+        _classCallCheck(this, DuelComponent);
+
+        _this23 = _super7.call(this, application, game, route, dialogService, soundService, 2);
+        _this23.settings = new _models_duel_settings_model__WEBPACK_IMPORTED_MODULE_3__["DuelSettings"]();
+        return _this23;
+      }
+
+      _createClass(DuelComponent, [{
+        key: "calculatePoints",
+        value: function calculatePoints(player, fieldIndex, score) {
+          var state = this.getPlayerState(player);
+          var actualScore = score * this.multiplier;
+
+          if (state.ownFields.some(function (i) {
+            return i === fieldIndex;
+          })) {
+            player.score += actualScore;
+          } else if (this.isSecondaryField(fieldIndex)) {
+            player.score -= actualScore;
+          } else {
+            state.ownFields.push(fieldIndex);
+          }
+        }
+      }, {
+        key: "checkPlayerState",
+        value: function checkPlayerState(player) {
+          var _this24 = this;
+
+          this.game.players.forEach(function (p) {
+            return p.setWin(p.score >= _this24.settings.targetPoint);
+          });
+          var activePlayers = this.game.players.filter(function (p) {
+            return !_this24.isInactive(p);
+          }).length;
+
+          if (!activePlayers) {
+            player.setWin(true);
+          } else {
+            if (this.game.isTheLastThrow()) {
+              this.game.nextPlayer();
+            }
+
+            while (this.isInactive(this.game.getActualPlayer())) {
+              this.game.nextPlayer();
+            }
+          }
+        }
+      }, {
+        key: "isInactive",
+        value: function isInactive(player) {
+          return player.score <= 0;
+        }
+      }, {
+        key: "isPrimaryField",
+        value: function isPrimaryField(fieldIndex) {
+          var state = this.getPlayerState(this.game.getActualPlayer());
+          return state.ownFields.some(function (i) {
+            return i === fieldIndex;
+          });
+        }
+      }, {
+        key: "isSecondaryField",
+        value: function isSecondaryField(fieldIndex) {
+          var _this25 = this;
+
+          return !this.settings.isFieldAllowed(fieldIndex) || this.game.players.some(function (p) {
+            return p != _this25.game.getActualPlayer() && _this25.getPlayerState(p).ownFields.some(function (i) {
+              return i === fieldIndex;
+            });
+          });
+        }
+      }, {
+        key: "customReset",
+        value: function customReset() {
+          var _this26 = this;
+
+          this.game.players.forEach(function (player) {
+            player.state = new _models_duel_state_model__WEBPACK_IMPORTED_MODULE_4__["DuelState"]();
+            player.score = _this26.settings.startPoint;
+          });
+        }
+      }]);
+
+      return DuelComponent;
+    }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
+
+    DuelComponent.ɵfac = function DuelComponent_Factory(t) {
+      return new (t || DuelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]));
+    };
+
+    DuelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: DuelComponent,
+      selectors: [["ng-component"]],
+      features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
+      decls: 6,
+      vars: 4,
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], [1, "field-set"], ["appearance", "outline", 1, "big"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent"]],
+      template: function DuelComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DuelComponent_app_settings_1_Template, 53, 6, "app-settings", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, DuelComponent_app_game_toolbar_3_Template, 1, 1, "app-game-toolbar", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, DuelComponent_ng_container_4_Template, 2, 1, "ng-container", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, DuelComponent_app_number_plate_5_Template, 1, 1, "app-number-plate", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
+        }
+      },
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_14__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NgModel"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_15__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_16__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_17__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_18__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_19__["NumberPlateComponent"]],
+      encapsulation: 2,
+      data: {
+        animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
+      }
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DuelComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          templateUrl: './duel.component.html',
+          animations: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
+        }]
+      }], function () {
+        return [{
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]
+        }, {
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
+        }, {
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]
+        }, {
+          type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/duel/duel.module.ts":
+  /*!*************************************!*\
+    !*** ./src/app/duel/duel.module.ts ***!
+    \*************************************/
+
+  /*! exports provided: DuelModule */
+
+  /***/
+  function srcAppDuelDuelModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DuelModule", function () {
+      return DuelModule;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _duel_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./duel.component */
+    "./src/app/duel/duel.component.ts");
+    /* harmony import */
+
+
+    var _shared_shared_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../shared/shared.module */
+    "./src/app/shared/shared.module.ts");
+
+    var DuelModule = function DuelModule() {
+      _classCallCheck(this, DuelModule);
+    };
+
+    DuelModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
+      type: DuelModule
+    });
+    DuelModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({
+      factory: function DuelModule_Factory(t) {
+        return new (t || DuelModule)();
+      },
+      imports: [[_shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+        path: '',
+        component: _duel_component__WEBPACK_IMPORTED_MODULE_2__["DuelComponent"]
+      }])]]
+    });
+
+    (function () {
+      (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](DuelModule, {
+        declarations: [_duel_component__WEBPACK_IMPORTED_MODULE_2__["DuelComponent"]],
+        imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
+      });
+    })();
+    /*@__PURE__*/
+
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DuelModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+          imports: [_shared_shared_module__WEBPACK_IMPORTED_MODULE_3__["SharedModule"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forChild([{
+            path: '',
+            component: _duel_component__WEBPACK_IMPORTED_MODULE_2__["DuelComponent"]
+          }])],
+          declarations: [_duel_component__WEBPACK_IMPORTED_MODULE_2__["DuelComponent"]]
+        }]
+      }], null, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/duel/models/duel.settings.model.ts":
+  /*!****************************************************!*\
+    !*** ./src/app/duel/models/duel.settings.model.ts ***!
+    \****************************************************/
+
+  /*! exports provided: DuelSettings */
+
+  /***/
+  function srcAppDuelModelsDuelSettingsModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DuelSettings", function () {
+      return DuelSettings;
+    });
+    /* harmony import */
+
+
+    var _cricket_models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ../../cricket/models/cricet.settings.model */
+    "./src/app/cricket/models/cricet.settings.model.ts");
+
+    var DuelSettings =
+    /*#__PURE__*/
+    function (_cricket_models_crice) {
+      _inherits(DuelSettings, _cricket_models_crice);
+
+      var _super8 = _createSuper(DuelSettings);
+
+      function DuelSettings() {
+        var _this27;
+
+        _classCallCheck(this, DuelSettings);
+
+        _this27 = _super8.call(this);
+
+        _this27.high();
+
+        _this27.startPoint = 100;
+        _this27.targetPoint = 200;
+        return _this27;
+      }
+
+      return DuelSettings;
+    }(_cricket_models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_0__["CricketSettings"]);
+    /***/
+
+  },
+
+  /***/
+  "./src/app/duel/models/duel.state.model.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/duel/models/duel.state.model.ts ***!
+    \*************************************************/
+
+  /*! exports provided: DuelState */
+
+  /***/
+  function srcAppDuelModelsDuelStateModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "DuelState", function () {
+      return DuelState;
+    });
+    /* harmony import */
+
+
+    var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ~models/playground-state.model */
+    "./src/app/shared/models/playground-state.model.ts");
+
+    var DuelState =
+    /*#__PURE__*/
+    function (_models_playground_st4) {
+      _inherits(DuelState, _models_playground_st4);
+
+      var _super9 = _createSuper(DuelState);
+
+      function DuelState() {
+        var _this28;
+
+        _classCallCheck(this, DuelState);
+
+        _this28 = _super9.call(this);
+        _this28.ownFields = [];
+        return _this28;
+      }
+
+      _createClass(DuelState, [{
+        key: "clone",
+        value: function clone() {
+          var state = new DuelState();
+          state.ownFields = _toConsumableArray(this.ownFields);
+          return state;
+        }
+      }]);
+
+      return DuelState;
+    }(_models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"]);
+    /***/
+
+  },
+
+  /***/
   "./src/app/fives/fives.component.ts":
   /*!******************************************!*\
     !*** ./src/app/fives/fives.component.ts ***!
@@ -4469,19 +5430,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var FivesComponent =
     /*#__PURE__*/
-    function (_models_playground_mo4) {
-      _inherits(FivesComponent, _models_playground_mo4);
+    function (_models_playground_mo5) {
+      _inherits(FivesComponent, _models_playground_mo5);
 
-      var _super7 = _createSuper(FivesComponent);
+      var _super10 = _createSuper(FivesComponent);
 
       function FivesComponent(application, game, route, dialogService, soundService) {
-        var _this23;
+        var _this29;
 
         _classCallCheck(this, FivesComponent);
 
-        _this23 = _super7.call(this, application, game, route, dialogService, soundService);
-        _this23.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
-        return _this23;
+        _this29 = _super10.call(this, application, game, route, dialogService, soundService);
+        _this29.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
+        return _this29;
       }
 
       _createClass(FivesComponent, [{
@@ -4507,10 +5468,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this24 = this;
+          var _this30 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this24.settings.limit;
+            return player.score = _this30.settings.limit;
           });
         }
       }, {
@@ -5023,19 +5984,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HareAndHoundComponent =
     /*#__PURE__*/
-    function (_models_playground_mo5) {
-      _inherits(HareAndHoundComponent, _models_playground_mo5);
+    function (_models_playground_mo6) {
+      _inherits(HareAndHoundComponent, _models_playground_mo6);
 
-      var _super8 = _createSuper(HareAndHoundComponent);
+      var _super11 = _createSuper(HareAndHoundComponent);
 
       function HareAndHoundComponent(application, game, route, dialogService, soundService) {
-        var _this25;
+        var _this31;
 
         _classCallCheck(this, HareAndHoundComponent);
 
-        _this25 = _super8.call(this, application, game, route, dialogService, soundService, 2, 2);
-        _this25.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
-        return _this25;
+        _this31 = _super11.call(this, application, game, route, dialogService, soundService, 2, 2);
+        _this31.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
+        return _this31;
       }
 
       _createClass(HareAndHoundComponent, [{
@@ -5056,10 +6017,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this26 = this;
+          var _this32 = this;
 
           player.setWin(this.isHare() && player.score <= 0 || !this.isHare() && player.score + this.settings.getHareStartIndex() <= this.game.players.find(function (p) {
-            return _this26.isHare(p);
+            return _this32.isHare(p);
           }).score);
 
           if (!player.win && this.game.isTheLastThrow()) {
@@ -5083,11 +6044,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this27 = this;
+          var _this33 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.some(function (p) {
-              return fieldIndex === _this27.getFieldIndex(_this27.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this33.getFieldIndex(_this33.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -5096,10 +6057,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this28 = this;
+          var _this34 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this28.getFieldIndex(_this28.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this34.getFieldIndex(_this34.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -5117,13 +6078,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this29 = this;
+          var _this35 = this;
 
           this.game.players.forEach(function (player, index) {
             player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1;
 
             if (index === 0) {
-              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this29.settings.getHareStartIndex());
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this35.settings.getHareStartIndex());
             } else {
               player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
             }
@@ -5409,19 +6370,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var HareAndHoundState =
     /*#__PURE__*/
-    function (_models_playground_st4) {
-      _inherits(HareAndHoundState, _models_playground_st4);
+    function (_models_playground_st5) {
+      _inherits(HareAndHoundState, _models_playground_st5);
 
-      var _super9 = _createSuper(HareAndHoundState);
+      var _super12 = _createSuper(HareAndHoundState);
 
       function HareAndHoundState(actFieldIndex) {
-        var _this30;
+        var _this36;
 
         _classCallCheck(this, HareAndHoundState);
 
-        _this30 = _super9.call(this);
-        _this30.actFieldIndex = actFieldIndex;
-        return _this30;
+        _this36 = _super12.call(this);
+        _this36.actFieldIndex = actFieldIndex;
+        return _this36;
       }
 
       _createClass(HareAndHoundState, [{
@@ -5746,20 +6707,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ImitatorComponent =
     /*#__PURE__*/
-    function (_models_playground_mo6) {
-      _inherits(ImitatorComponent, _models_playground_mo6);
+    function (_models_playground_mo7) {
+      _inherits(ImitatorComponent, _models_playground_mo7);
 
-      var _super10 = _createSuper(ImitatorComponent);
+      var _super13 = _createSuper(ImitatorComponent);
 
       function ImitatorComponent(application, game, route, dialogService, soundService) {
-        var _this31;
+        var _this37;
 
         _classCallCheck(this, ImitatorComponent);
 
-        _this31 = _super10.call(this, application, game, route, dialogService, soundService);
-        _this31.nextEnabled = false;
-        _this31.settings = new _models_imitator_settings_model__WEBPACK_IMPORTED_MODULE_3__["ImitatorSettings"]();
-        return _this31;
+        _this37 = _super13.call(this, application, game, route, dialogService, soundService);
+        _this37.nextEnabled = false;
+        _this37.settings = new _models_imitator_settings_model__WEBPACK_IMPORTED_MODULE_3__["ImitatorSettings"]();
+        return _this37;
       }
 
       _createClass(ImitatorComponent, [{
@@ -5786,11 +6747,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this32 = this;
+          var _this38 = this;
 
           if (this.game.isTheLastPlayer(player) && this.game.round + 1 === this.settings.round && this.game.actualThrow === 2) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this32.game.isTheBestPlayer(p));
+              return p.setWin(_this38.game.isTheBestPlayer(p));
             });
           }
         }
@@ -6043,20 +7004,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ImitatorState =
     /*#__PURE__*/
-    function (_models_playground_st5) {
-      _inherits(ImitatorState, _models_playground_st5);
+    function (_models_playground_st6) {
+      _inherits(ImitatorState, _models_playground_st6);
 
-      var _super11 = _createSuper(ImitatorState);
+      var _super14 = _createSuper(ImitatorState);
 
       function ImitatorState() {
-        var _this33;
+        var _this39;
 
         _classCallCheck(this, ImitatorState);
 
-        _this33 = _super11.call(this);
-        _this33.actFieldIndex = Math.floor(Math.random() * 20);
-        _this33.punished = false;
-        return _this33;
+        _this39 = _super14.call(this);
+        _this39.actFieldIndex = Math.floor(Math.random() * 20);
+        _this39.punished = false;
+        return _this39;
       }
 
       _createClass(ImitatorState, [{
@@ -6472,28 +7433,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var KillerComponent =
     /*#__PURE__*/
-    function (_models_playground_mo7) {
-      _inherits(KillerComponent, _models_playground_mo7);
+    function (_models_playground_mo8) {
+      _inherits(KillerComponent, _models_playground_mo8);
 
-      var _super12 = _createSuper(KillerComponent);
+      var _super15 = _createSuper(KillerComponent);
 
       function KillerComponent(application, game, route, dialogService, soundService) {
-        var _this34;
+        var _this40;
 
         _classCallCheck(this, KillerComponent);
 
-        _this34 = _super12.call(this, application, game, route, dialogService, soundService, 2);
-        _this34.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
-        _this34.nextEnabled = false;
-        _this34.zeroEnabled = false;
-        _this34.multiEnabled = false;
-        return _this34;
+        _this40 = _super15.call(this, application, game, route, dialogService, soundService, 2);
+        _this40.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
+        _this40.nextEnabled = false;
+        _this40.zeroEnabled = false;
+        _this40.multiEnabled = false;
+        return _this40;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this35 = this;
+          var _this41 = this;
 
           var state = this.getPlayerState(player);
 
@@ -6519,14 +7480,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this35.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !_this41.getPlayerState(p).isInactive();
                 }).forEach(function (p) {
-                  var s = _this35.getPlayerState(p);
+                  var s = _this41.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this35.multiplier;
+                    s.life -= _this41.multiplier;
 
-                    _this35.soundService.no();
+                    _this41.soundService.no();
 
                     if (s.life < 0) {
                       s.life = 0;
@@ -6548,14 +7509,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this36 = this;
+          var _this42 = this;
 
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this36.getPlayerState(p).isInactive();
+              return !_this42.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this36.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this42.getPlayerState(p).isInactive());
             });
           }
 
@@ -6609,10 +7570,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this37 = this;
+          var _this43 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this37.getPlayerState(p);
+            var state = _this43.getPlayerState(p);
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -6643,10 +7604,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this38 = this;
+          var _this44 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this38.settings.numberOfLives, _this38.settings.boardingLimit);
+            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this44.settings.numberOfLives, _this44.settings.boardingLimit);
           });
         }
       }, {
@@ -6657,12 +7618,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this39 = this;
+          var _this45 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this39.getPlayerState(p).isInactive();
+            return !_this45.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this39.getPlayerState(p).actField;
+            return _this45.getPlayerState(p).actField;
           });
         }
       }]);
@@ -6909,25 +7870,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var KillerState =
     /*#__PURE__*/
-    function (_models_playground_st6) {
-      _inherits(KillerState, _models_playground_st6);
+    function (_models_playground_st7) {
+      _inherits(KillerState, _models_playground_st7);
 
-      var _super13 = _createSuper(KillerState);
+      var _super16 = _createSuper(KillerState);
 
       function KillerState() {
-        var _this40;
+        var _this46;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this40 = _super13.call(this);
-        _this40.life = life;
-        _this40.boarding = boarding;
-        _this40.actField = -1;
-        _this40.killer = false;
-        return _this40;
+        _this46 = _super16.call(this);
+        _this46.life = life;
+        _this46.boarding = boarding;
+        _this46.actField = -1;
+        _this46.killer = false;
+        return _this46;
       }
 
       _createClass(KillerState, [{
@@ -7230,20 +8191,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var KnockoutComponent =
     /*#__PURE__*/
-    function (_models_playground_mo8) {
-      _inherits(KnockoutComponent, _models_playground_mo8);
+    function (_models_playground_mo9) {
+      _inherits(KnockoutComponent, _models_playground_mo9);
 
-      var _super14 = _createSuper(KnockoutComponent);
+      var _super17 = _createSuper(KnockoutComponent);
 
       function KnockoutComponent(application, game, route, dialogService, soundService) {
-        var _this41;
+        var _this47;
 
         _classCallCheck(this, KnockoutComponent);
 
-        _this41 = _super14.call(this, application, game, route, dialogService, soundService, 2);
-        _this41.score = 0;
-        _this41.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
-        return _this41;
+        _this47 = _super17.call(this, application, game, route, dialogService, soundService, 2);
+        _this47.score = 0;
+        _this47.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
+        return _this47;
       }
 
       _createClass(KnockoutComponent, [{
@@ -7254,7 +8215,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this42 = this;
+          var _this48 = this;
 
           if (this.game.isTheLastThrow()) {
             if (this.score > player.getThrowsTotal()) {
@@ -7264,10 +8225,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             this.score = player.getThrowsTotal();
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this42.getPlayerState(p).isInactive();
+              return !_this48.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this42.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this48.getPlayerState(p).isInactive());
             });
             this.game.nextPlayer();
           }
@@ -7284,10 +8245,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this43 = this;
+          var _this49 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this43.settings.numberOfLives);
+            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this49.settings.numberOfLives);
           });
           this.score = 0;
         }
@@ -7525,21 +8486,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var KnockoutState =
     /*#__PURE__*/
-    function (_models_playground_st7) {
-      _inherits(KnockoutState, _models_playground_st7);
+    function (_models_playground_st8) {
+      _inherits(KnockoutState, _models_playground_st8);
 
-      var _super15 = _createSuper(KnockoutState);
+      var _super18 = _createSuper(KnockoutState);
 
       function KnockoutState() {
-        var _this44;
+        var _this50;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
 
         _classCallCheck(this, KnockoutState);
 
-        _this44 = _super15.call(this);
-        _this44.life = life;
-        return _this44;
+        _this50 = _super18.call(this);
+        _this50.life = life;
+        return _this50;
       }
 
       _createClass(KnockoutState, [{
@@ -7743,23 +8704,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ScamSettings =
     /*#__PURE__*/
-    function (_cricket_models_crice) {
-      _inherits(ScamSettings, _cricket_models_crice);
+    function (_cricket_models_crice2) {
+      _inherits(ScamSettings, _cricket_models_crice2);
 
-      var _super16 = _createSuper(ScamSettings);
+      var _super19 = _createSuper(ScamSettings);
 
       function ScamSettings() {
-        var _this45;
+        var _this51;
 
         _classCallCheck(this, ScamSettings);
 
-        _this45 = _super16.call(this);
-        _this45.stopper = false;
-        _this45.style = 1;
+        _this51 = _super19.call(this);
+        _this51.stopper = false;
+        _this51.style = 1;
 
-        _this45.all();
+        _this51.all();
 
-        return _this45;
+        return _this51;
       }
 
       _createClass(ScamSettings, [{
@@ -8315,19 +9276,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ScamComponent =
     /*#__PURE__*/
-    function (_models_playground_mo9) {
-      _inherits(ScamComponent, _models_playground_mo9);
+    function (_models_playground_mo10) {
+      _inherits(ScamComponent, _models_playground_mo10);
 
-      var _super17 = _createSuper(ScamComponent);
+      var _super20 = _createSuper(ScamComponent);
 
       function ScamComponent(application, game, route, dialogService, soundService) {
-        var _this46;
+        var _this52;
 
         _classCallCheck(this, ScamComponent);
 
-        _this46 = _super17.call(this, application, game, route, dialogService, soundService, 2);
-        _this46.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
-        return _this46;
+        _this52 = _super20.call(this, application, game, route, dialogService, soundService, 2);
+        _this52.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
+        return _this52;
       }
 
       _createClass(ScamComponent, [{
@@ -8347,13 +9308,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this47 = this;
+          var _this53 = this;
 
           if (!this.game.numbs.find(function (n) {
             return n;
           })) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this47.game.isTheBestPlayer(p));
+              return p.setWin(_this53.game.isTheBestPlayer(p));
             });
           }
 
@@ -8369,13 +9330,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this48 = this;
+          var _this54 = this;
 
           this.game.numbs = this.settings.numbs.map(function (i) {
             return i ? 1 : 0;
           });
           this.settings.fields.forEach(function (f) {
-            return _this48.settings.numbs[f] = true;
+            return _this54.settings.numbs[f] = true;
           });
         }
       }]);
@@ -8686,20 +9647,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ShanghaiState =
     /*#__PURE__*/
-    function (_models_playground_st8) {
-      _inherits(ShanghaiState, _models_playground_st8);
+    function (_models_playground_st9) {
+      _inherits(ShanghaiState, _models_playground_st9);
 
-      var _super18 = _createSuper(ShanghaiState);
+      var _super21 = _createSuper(ShanghaiState);
 
       function ShanghaiState() {
-        var _this49;
+        var _this55;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this49 = _super18.call(this);
-        _this49.fieldCount = [];
-        _this49.fieldScore = [];
-        return _this49;
+        _this55 = _super21.call(this);
+        _this55.fieldCount = [];
+        _this55.fieldScore = [];
+        return _this55;
       }
 
       _createClass(ShanghaiState, [{
@@ -9092,19 +10053,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var ShanghaiComponent =
     /*#__PURE__*/
-    function (_models_playground_mo10) {
-      _inherits(ShanghaiComponent, _models_playground_mo10);
+    function (_models_playground_mo11) {
+      _inherits(ShanghaiComponent, _models_playground_mo11);
 
-      var _super19 = _createSuper(ShanghaiComponent);
+      var _super22 = _createSuper(ShanghaiComponent);
 
       function ShanghaiComponent(application, game, route, dialogService, soundService) {
-        var _this50;
+        var _this56;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this50 = _super19.call(this, application, game, route, dialogService, soundService);
-        _this50.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this50;
+        _this56 = _super22.call(this, application, game, route, dialogService, soundService);
+        _this56.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this56;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -9126,7 +10087,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this51 = this;
+          var _this57 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -9156,7 +10117,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this51.game.isTheBestPlayer(p));
+              return p.setWin(_this57.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -10859,10 +11820,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this52 = this;
+          var _this58 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this52.playground.game.players.map(function (p) {
+            return _this58.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -11500,7 +12461,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this53 = this;
+          var _this59 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -11546,7 +12507,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this53.getPlayerState(p) || !_this53.getPlayerState(p).isInactive();
+              return !_this59.getPlayerState(p) || !_this59.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -12979,19 +13940,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var X01Component =
     /*#__PURE__*/
-    function (_models_playground_mo11) {
-      _inherits(X01Component, _models_playground_mo11);
+    function (_models_playground_mo12) {
+      _inherits(X01Component, _models_playground_mo12);
 
-      var _super20 = _createSuper(X01Component);
+      var _super23 = _createSuper(X01Component);
 
       function X01Component(application, game, route, dialogService, soundService) {
-        var _this54;
+        var _this60;
 
         _classCallCheck(this, X01Component);
 
-        _this54 = _super20.call(this, application, game, route, dialogService, soundService);
-        _this54.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this54;
+        _this60 = _super23.call(this, application, game, route, dialogService, soundService);
+        _this60.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this60;
       }
 
       _createClass(X01Component, [{
@@ -13028,10 +13989,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this55 = this;
+          var _this61 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this55.settings.startValue;
+            return player.score = _this61.settings.startValue;
           });
         }
       }]);
