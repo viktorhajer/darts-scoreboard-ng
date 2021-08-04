@@ -33,6 +33,7 @@ export class KnockoutComponent extends Playground<KnockoutState> {
     if (this.game.isTheLastThrow()) {
       if (this.score > player.getThrowsTotal()) {
         this.getPlayerState(player).life--;
+        this.soundService.no();
       }
       this.score = player.getThrowsTotal();
       const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());

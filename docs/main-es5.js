@@ -991,7 +991,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r116.isInactive(player_r117) ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -1023,7 +1023,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AroundClockComponent_ng_container_4_div_3_Template, 3, 7, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AroundClockComponent_ng_container_4_div_3_Template, 3, 8, "div", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
@@ -1135,6 +1135,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
 
                 if (this.settings.nineLives || this.settings.fiveLives) {
+                  this.soundService.no();
                   state.life--;
                 }
               }
@@ -1221,6 +1222,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"](life);
           });
           this.settings.setStyle();
+        }
+      }, {
+        key: "isInactive",
+        value: function isInactive(player) {
+          return this.getPlayerState(player).isInactive();
         }
       }, {
         key: "getFieldIndex",
@@ -6520,6 +6526,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   if (fieldIndex === s.actField) {
                     s.life -= _this35.multiplier;
 
+                    _this35.soundService.no();
+
                     if (s.life < 0) {
                       s.life = 0;
                     }
@@ -7251,6 +7259,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           if (this.game.isTheLastThrow()) {
             if (this.score > player.getThrowsTotal()) {
               this.getPlayerState(player).life--;
+              this.soundService.no();
             }
 
             this.score = player.getThrowsTotal();
@@ -7745,8 +7754,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, ScamSettings);
 
         _this45 = _super16.call(this);
-        _this45.stopper = true;
+        _this45.stopper = false;
         _this45.style = 1;
+
+        _this45.all();
+
         return _this45;
       }
 
@@ -12250,6 +12262,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "fart",
         value: function fart() {
           this.play('perfect-fart.mp3');
+        }
+      }, {
+        key: "no",
+        value: function no() {
+          this.play('oh_no.mp3');
         }
       }, {
         key: "play",

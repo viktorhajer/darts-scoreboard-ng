@@ -54,6 +54,7 @@ export class KillerComponent extends Playground<KillerState> {
             const s = this.getPlayerState(p);
             if (fieldIndex === s.actField) {
               s.life -= this.multiplier;
+              this.soundService.no();
               if (s.life < 0) {
                 s.life = 0;
               }

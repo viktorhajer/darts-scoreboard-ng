@@ -426,7 +426,7 @@ function AroundClockComponent_ng_container_4_div_3_Template(rf, ctx) { if (rf & 
     const player_r117 = ctx.$implicit;
     const i_r118 = ctx.index;
     const ctx_r116 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate1"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r118 === ctx_r116.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r116.isInactive(player_r117) ? "inactive" : "", "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r117)("scoreDisplayed", false)("hasContent", ctx_r116.settings.nineLives || ctx_r116.settings.fiveLives);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -439,7 +439,7 @@ function AroundClockComponent_ng_container_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AroundClockComponent_ng_container_4_Template_div_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r122); const ctx_r121 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r121.toggleHiddenInfo(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AroundClockComponent_ng_container_4_div_3_Template, 3, 7, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AroundClockComponent_ng_container_4_div_3_Template, 3, 8, "div", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
     const ctx_r100 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -503,6 +503,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
                         state.decreaseActFieldIndex();
                     }
                     if (this.settings.nineLives || this.settings.fiveLives) {
+                        this.soundService.no();
                         state.life--;
                     }
                 }
@@ -555,6 +556,9 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
         const life = this.settings.nineLives ? 3 : 5;
         this.game.players.forEach(player => player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"](life));
         this.settings.setStyle();
+    }
+    isInactive(player) {
+        return this.getPlayerState(player).isInactive();
     }
     getFieldIndex(index) {
         return this.settings.fields[index];
@@ -3092,6 +3096,7 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
                         const s = this.getPlayerState(p);
                         if (fieldIndex === s.actField) {
                             s.life -= this.multiplier;
+                            this.soundService.no();
                             if (s.life < 0) {
                                 s.life = 0;
                             }
@@ -3441,6 +3446,7 @@ class KnockoutComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
         if (this.game.isTheLastThrow()) {
             if (this.score > player.getThrowsTotal()) {
                 this.getPlayerState(player).life--;
+                this.soundService.no();
             }
             this.score = player.getThrowsTotal();
             const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
@@ -3708,8 +3714,9 @@ __webpack_require__.r(__webpack_exports__);
 class ScamSettings extends _cricket_models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_0__["CricketSettings"] {
     constructor() {
         super();
-        this.stopper = true;
+        this.stopper = false;
         this.style = 1;
+        this.all();
     }
     toggleStopper() {
         this.stopper = !this.stopper;
@@ -5869,6 +5876,9 @@ __webpack_require__.r(__webpack_exports__);
 class SoundService {
     fart() {
         this.play('perfect-fart.mp3');
+    }
+    no() {
+        this.play('oh_no.mp3');
     }
     play(soundFileName) {
         this.audioElement.src = `assets/sounds/${soundFileName}`;

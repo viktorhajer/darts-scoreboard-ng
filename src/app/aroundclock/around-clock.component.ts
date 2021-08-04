@@ -67,6 +67,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
             state.decreaseActFieldIndex();
           }
           if (this.settings.nineLives || this.settings.fiveLives) {
+            this.soundService.no();
             state.life--;
           }
         }
@@ -125,6 +126,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     const life = this.settings.nineLives ? 3 : 5;
     this.game.players.forEach(player => player.state = new AroundClockState(life));
     this.settings.setStyle();
+  }
+
+  isInactive(player: Player): boolean {
+    return this.getPlayerState(player).isInactive();
   }
 
   private getFieldIndex(index: number) {
