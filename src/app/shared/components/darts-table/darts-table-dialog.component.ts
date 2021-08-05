@@ -8,11 +8,15 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export class DartsTableDialogComponent {
 
   constructor(protected dialogRef: MatDialogRef<DartsTableDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { field: [], primary: [] }) {
+              @Inject(MAT_DIALOG_DATA) public data: { field: [], primary: [], secondary: [] }) {
   }
 
   isPrimary(index: number): boolean {
     return this.data.primary.some(p => p === index);
+  }
+
+  isSecondary(index: number): boolean {
+    return this.data.secondary.some(p => p === index);
   }
 
   close(): void {

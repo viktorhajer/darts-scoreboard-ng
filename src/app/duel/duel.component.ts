@@ -38,7 +38,10 @@ export class DuelComponent extends Playground<DuelState> {
 
   checkPlayerState(player: Player) {
     this.game.players.forEach(p => p.setWin(p.score >= this.settings.targetPoint));
-    const activePlayers = this.game.players.filter(p => !this.isInactive(p)).length;
+    const activePlayers = this.game.players.filter(p => !this.isInactive(p));
+    if (activePlayers.length === 1) {
+      activePlayers[0].setWin(true);
+    }
     if (!activePlayers) {
       player.setWin(true);
     } else {

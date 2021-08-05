@@ -125,7 +125,7 @@ export class CricketSettings {
     return this.style === 4;
   }
 
-  private setAllowedField(fields: number[]) {
+  setAllowedField(fields: number[]) {
     for (let i = 0; i < this.numbs.length; i++) {
       this.numbs[i] = false;
     }
