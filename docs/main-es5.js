@@ -4283,15 +4283,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
-    /*! @angular/material/divider */
-    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @angular/material/button */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
-    /*! @angular/material/button */
-    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @angular/material/divider */
+    "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
@@ -4311,13 +4311,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
-    function DuelComponent_app_settings_1_button_16_Template(rf, ctx) {
+    function DuelComponent_app_settings_1_button_18_Template(rf, ctx) {
       if (rf & 1) {
         var _r262 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_button_16_Template_button_click_0_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_button_18_Template_button_click_0_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r262);
 
           var i_r260 = ctx.index;
@@ -4404,249 +4404,263 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 9);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "br");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "mat-divider");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "h2");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Fields");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, DuelComponent_app_settings_1_button_16_Template, 2, 2, "button", 9);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "mat-divider");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "button", 10);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_18_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_12_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r266 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r266.settings.upper();
+          return ctx_r266.settings.toggleHandOver();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Upper");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Hand Over");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "br");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "h2");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Fields");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](18, DuelComponent_app_settings_1_button_18_Template, 2, 2, "button", 10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_20_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r267 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r267.settings.lower();
+          return ctx_r267.settings.upper();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Lower");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Upper");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_22_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r268 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r268.settings.left();
+          return ctx_r268.settings.lower();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Left");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Lower");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_24_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r269 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r269.settings.right();
+          return ctx_r269.settings.left();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Right");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Left");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](26, "mat-divider");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "button", 11);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 10);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_27_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_26_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r270 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r270.settings.odd();
+          return ctx_r270.settings.right();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Odd");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, "Right");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_29_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r271 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r271.settings.even();
+          return ctx_r271.settings.odd();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Even");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "Odd");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_31_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r272 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r272.settings.prime();
+          return ctx_r272.settings.even();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Prime");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Even");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_33_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r273 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r273.settings.notPrime();
+          return ctx_r273.settings.prime();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Not prime");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Prime");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "mat-divider");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "button", 11);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "button", 10);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_36_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_35_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r274 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r274.settings.randomize(5);
+          return ctx_r274.settings.notPrime();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Random 05");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Not prime");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_38_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r275 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r275.settings.randomize(10);
+          return ctx_r275.settings.randomize(5);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Random 10");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Random 05");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_40_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r276 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r276.settings.randomize(15);
+          return ctx_r276.settings.randomize(10);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "Random 15");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "Random 10");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_42_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r277 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r277.settings.all();
+          return ctx_r277.settings.randomize(15);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](43, "All");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](43, "Random 15");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "mat-divider");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "button", 11);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "button", 10);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_45_listener() {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_44_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r278 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r278.settings.small();
+          return ctx_r278.settings.all();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](46, "Small");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, "All");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](46, "mat-divider");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_47_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r279 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r279.settings.high();
+          return ctx_r279.settings.small();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "High");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "Small");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_49_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r280 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r280.settings.star();
+          return ctx_r280.settings.high();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "Star");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "High");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "button", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "button", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_51_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
 
           var ctx_r281 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r281.settings.cross();
+          return ctx_r281.settings.star();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Cross");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Star");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "button", 11);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DuelComponent_app_settings_1_Template_button_click_53_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r264);
+
+          var ctx_r282 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r282.settings.cross();
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "Cross");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4666,7 +4680,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r254.settings.targetPoint);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("color", ctx_r254.settings.handover ? "primary" : "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r254.settings.getNumbers());
       }
@@ -4674,7 +4692,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function DuelComponent_app_game_toolbar_3_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 13);
       }
 
       if (rf & 2) {
@@ -4688,22 +4706,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 15);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var player_r283 = ctx.$implicit;
-        var i_r284 = ctx.index;
+        var player_r284 = ctx.$implicit;
+        var i_r285 = ctx.index;
 
-        var ctx_r282 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r283 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r284 === ctx_r282.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r282.isInactive(player_r283) ? "inactive" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r285 === ctx_r283.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r283.isInactive(player_r284) ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r283)("hasContent", false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r284)("hasContent", false);
       }
     }
 
@@ -4711,7 +4729,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DuelComponent_ng_container_4_div_1_Template, 2, 6, "div", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DuelComponent_ng_container_4_div_1_Template, 2, 6, "div", 14);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
@@ -4727,7 +4745,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function DuelComponent_app_number_plate_5_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 13);
       }
 
       if (rf & 2) {
@@ -4757,6 +4775,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(DuelComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
+          var _this24 = this;
+
           var state = this.getPlayerState(player);
           var actualScore = score * this.multiplier;
 
@@ -4766,6 +4786,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             player.score += actualScore;
           } else if (this.isSecondaryField(fieldIndex)) {
             player.score -= actualScore;
+
+            if (this.settings.handover) {
+              var _player = this.game.players.find(function (p) {
+                return p != _this24.game.getActualPlayer() && _this24.getPlayerState(p).ownFields.some(function (i) {
+                  return i === fieldIndex;
+                });
+              });
+
+              if (_player) {
+                _player.score += actualScore;
+              }
+            }
           } else {
             state.ownFields.push(fieldIndex);
           }
@@ -4773,13 +4805,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this24 = this;
+          var _this25 = this;
 
           this.game.players.forEach(function (p) {
-            return p.setWin(p.score >= _this24.settings.targetPoint);
+            return p.setWin(p.score >= _this25.settings.targetPoint);
           });
           var activePlayers = this.game.players.filter(function (p) {
-            return !_this24.isInactive(p);
+            return !_this25.isInactive(p);
           });
 
           if (activePlayers.length === 1) {
@@ -4814,10 +4846,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this25 = this;
+          var _this26 = this;
 
           return !this.settings.isFieldAllowed(fieldIndex) || this.game.players.some(function (p) {
-            return p != _this25.game.getActualPlayer() && _this25.getPlayerState(p).ownFields.some(function (i) {
+            return p != _this26.game.getActualPlayer() && _this26.getPlayerState(p).ownFields.some(function (i) {
               return i === fieldIndex;
             });
           });
@@ -4825,11 +4857,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this26 = this;
+          var _this27 = this;
 
           this.game.players.forEach(function (player) {
             player.state = new _models_duel_state_model__WEBPACK_IMPORTED_MODULE_4__["DuelState"]();
-            player.score = _this26.settings.startPoint;
+            player.score = _this27.settings.startPoint;
           });
         }
       }]);
@@ -4847,12 +4879,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 4,
-      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], [1, "field-set"], ["appearance", "outline", 1, "big"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent"]],
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], [1, "field-set"], ["appearance", "outline", 1, "big"], ["type", "number", "matInput", "", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent"]],
       template: function DuelComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DuelComponent_app_settings_1_Template, 53, 6, "app-settings", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DuelComponent_app_settings_1_Template, 55, 7, "app-settings", 1);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
 
@@ -4885,7 +4917,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_14__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NgModel"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_15__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_16__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_17__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_18__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_19__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_12__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_14__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_13__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_15__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_16__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgForOf"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_17__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_18__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_19__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -5038,17 +5070,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super8 = _createSuper(DuelSettings);
 
       function DuelSettings() {
-        var _this27;
+        var _this28;
 
         _classCallCheck(this, DuelSettings);
 
-        _this27 = _super8.call(this);
+        _this28 = _super8.call(this);
 
-        _this27.star();
+        _this28.star();
 
-        _this27.startPoint = 30;
-        _this27.targetPoint = 200;
-        return _this27;
+        _this28.startPoint = 30;
+        _this28.targetPoint = 200;
+        _this28.handover = true;
+        return _this28;
       }
 
       _createClass(DuelSettings, [{
@@ -5060,6 +5093,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "cross",
         value: function cross() {
           this.setAllowedField([5, 20, 18, 4, 6, 10, 2, 17, 7, 16, 11, 14]);
+        }
+      }, {
+        key: "toggleHandOver",
+        value: function toggleHandOver() {
+          this.handover = !this.handover;
         }
       }]);
 
@@ -5103,13 +5141,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super9 = _createSuper(DuelState);
 
       function DuelState() {
-        var _this28;
+        var _this29;
 
         _classCallCheck(this, DuelState);
 
-        _this28 = _super9.call(this);
-        _this28.ownFields = [];
-        return _this28;
+        _this29 = _super9.call(this);
+        _this29.ownFields = [];
+        return _this29;
       }
 
       _createClass(DuelState, [{
@@ -5452,13 +5490,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super10 = _createSuper(FivesComponent);
 
       function FivesComponent(application, game, route, dialogService, soundService) {
-        var _this29;
+        var _this30;
 
         _classCallCheck(this, FivesComponent);
 
-        _this29 = _super10.call(this, application, game, route, dialogService, soundService);
-        _this29.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
-        return _this29;
+        _this30 = _super10.call(this, application, game, route, dialogService, soundService);
+        _this30.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
+        return _this30;
       }
 
       _createClass(FivesComponent, [{
@@ -5484,10 +5522,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this30 = this;
+          var _this31 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this30.settings.limit;
+            return player.score = _this31.settings.limit;
           });
         }
       }, {
@@ -6006,13 +6044,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super11 = _createSuper(HareAndHoundComponent);
 
       function HareAndHoundComponent(application, game, route, dialogService, soundService) {
-        var _this31;
+        var _this32;
 
         _classCallCheck(this, HareAndHoundComponent);
 
-        _this31 = _super11.call(this, application, game, route, dialogService, soundService, 2, 2);
-        _this31.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
-        return _this31;
+        _this32 = _super11.call(this, application, game, route, dialogService, soundService, 2, 2);
+        _this32.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
+        return _this32;
       }
 
       _createClass(HareAndHoundComponent, [{
@@ -6033,10 +6071,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this32 = this;
+          var _this33 = this;
 
           player.setWin(this.isHare() && player.score <= 0 || !this.isHare() && player.score + this.settings.getHareStartIndex() <= this.game.players.find(function (p) {
-            return _this32.isHare(p);
+            return _this33.isHare(p);
           }).score);
 
           if (!player.win && this.game.isTheLastThrow()) {
@@ -6060,11 +6098,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this33 = this;
+          var _this34 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.some(function (p) {
-              return fieldIndex === _this33.getFieldIndex(_this33.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this34.getFieldIndex(_this34.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -6073,10 +6111,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this34 = this;
+          var _this35 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this34.getFieldIndex(_this34.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this35.getFieldIndex(_this35.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -6094,13 +6132,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this35 = this;
+          var _this36 = this;
 
           this.game.players.forEach(function (player, index) {
             player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1;
 
             if (index === 0) {
-              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this35.settings.getHareStartIndex());
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this36.settings.getHareStartIndex());
             } else {
               player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
             }
@@ -6392,13 +6430,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super12 = _createSuper(HareAndHoundState);
 
       function HareAndHoundState(actFieldIndex) {
-        var _this36;
+        var _this37;
 
         _classCallCheck(this, HareAndHoundState);
 
-        _this36 = _super12.call(this);
-        _this36.actFieldIndex = actFieldIndex;
-        return _this36;
+        _this37 = _super12.call(this);
+        _this37.actFieldIndex = actFieldIndex;
+        return _this37;
       }
 
       _createClass(HareAndHoundState, [{
@@ -6729,14 +6767,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super13 = _createSuper(ImitatorComponent);
 
       function ImitatorComponent(application, game, route, dialogService, soundService) {
-        var _this37;
+        var _this38;
 
         _classCallCheck(this, ImitatorComponent);
 
-        _this37 = _super13.call(this, application, game, route, dialogService, soundService);
-        _this37.nextEnabled = false;
-        _this37.settings = new _models_imitator_settings_model__WEBPACK_IMPORTED_MODULE_3__["ImitatorSettings"]();
-        return _this37;
+        _this38 = _super13.call(this, application, game, route, dialogService, soundService);
+        _this38.nextEnabled = false;
+        _this38.settings = new _models_imitator_settings_model__WEBPACK_IMPORTED_MODULE_3__["ImitatorSettings"]();
+        return _this38;
       }
 
       _createClass(ImitatorComponent, [{
@@ -6763,11 +6801,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this38 = this;
+          var _this39 = this;
 
           if (this.game.isTheLastPlayer(player) && this.game.round + 1 === this.settings.round && this.game.actualThrow === 2) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this38.game.isTheBestPlayer(p));
+              return p.setWin(_this39.game.isTheBestPlayer(p));
             });
           }
         }
@@ -7026,14 +7064,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super14 = _createSuper(ImitatorState);
 
       function ImitatorState() {
-        var _this39;
+        var _this40;
 
         _classCallCheck(this, ImitatorState);
 
-        _this39 = _super14.call(this);
-        _this39.actFieldIndex = Math.floor(Math.random() * 20);
-        _this39.punished = false;
-        return _this39;
+        _this40 = _super14.call(this);
+        _this40.actFieldIndex = Math.floor(Math.random() * 20);
+        _this40.punished = false;
+        return _this40;
       }
 
       _createClass(ImitatorState, [{
@@ -7455,22 +7493,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super15 = _createSuper(KillerComponent);
 
       function KillerComponent(application, game, route, dialogService, soundService) {
-        var _this40;
+        var _this41;
 
         _classCallCheck(this, KillerComponent);
 
-        _this40 = _super15.call(this, application, game, route, dialogService, soundService, 2);
-        _this40.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
-        _this40.nextEnabled = false;
-        _this40.zeroEnabled = false;
-        _this40.multiEnabled = false;
-        return _this40;
+        _this41 = _super15.call(this, application, game, route, dialogService, soundService, 2);
+        _this41.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
+        _this41.nextEnabled = false;
+        _this41.zeroEnabled = false;
+        _this41.multiEnabled = false;
+        return _this41;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this41 = this;
+          var _this42 = this;
 
           var state = this.getPlayerState(player);
 
@@ -7496,14 +7534,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this41.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !_this42.getPlayerState(p).isInactive();
                 }).forEach(function (p) {
-                  var s = _this41.getPlayerState(p);
+                  var s = _this42.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this41.multiplier;
+                    s.life -= _this42.multiplier;
 
-                    _this41.soundService.no();
+                    _this42.soundService.no();
 
                     if (s.life < 0) {
                       s.life = 0;
@@ -7525,14 +7563,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this42 = this;
+          var _this43 = this;
 
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this42.getPlayerState(p).isInactive();
+              return !_this43.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this42.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this43.getPlayerState(p).isInactive());
             });
           }
 
@@ -7586,10 +7624,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this43 = this;
+          var _this44 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this43.getPlayerState(p);
+            var state = _this44.getPlayerState(p);
 
             return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -7620,10 +7658,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this44 = this;
+          var _this45 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this44.settings.numberOfLives, _this44.settings.boardingLimit);
+            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this45.settings.numberOfLives, _this45.settings.boardingLimit);
           });
         }
       }, {
@@ -7634,12 +7672,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this45 = this;
+          var _this46 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this45.getPlayerState(p).isInactive();
+            return !_this46.getPlayerState(p).isInactive();
           }).map(function (p) {
-            return _this45.getPlayerState(p).actField;
+            return _this46.getPlayerState(p).actField;
           });
         }
       }]);
@@ -7892,19 +7930,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super16 = _createSuper(KillerState);
 
       function KillerState() {
-        var _this46;
+        var _this47;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
         var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this46 = _super16.call(this);
-        _this46.life = life;
-        _this46.boarding = boarding;
-        _this46.actField = -1;
-        _this46.killer = false;
-        return _this46;
+        _this47 = _super16.call(this);
+        _this47.life = life;
+        _this47.boarding = boarding;
+        _this47.actField = -1;
+        _this47.killer = false;
+        return _this47;
       }
 
       _createClass(KillerState, [{
@@ -8213,14 +8251,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super17 = _createSuper(KnockoutComponent);
 
       function KnockoutComponent(application, game, route, dialogService, soundService) {
-        var _this47;
+        var _this48;
 
         _classCallCheck(this, KnockoutComponent);
 
-        _this47 = _super17.call(this, application, game, route, dialogService, soundService, 2);
-        _this47.score = 0;
-        _this47.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
-        return _this47;
+        _this48 = _super17.call(this, application, game, route, dialogService, soundService, 2);
+        _this48.score = 0;
+        _this48.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
+        return _this48;
       }
 
       _createClass(KnockoutComponent, [{
@@ -8231,7 +8269,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this48 = this;
+          var _this49 = this;
 
           if (this.game.isTheLastThrow()) {
             if (this.score > player.getThrowsTotal()) {
@@ -8241,10 +8279,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             this.score = player.getThrowsTotal();
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this48.getPlayerState(p).isInactive();
+              return !_this49.getPlayerState(p).isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this48.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !_this49.getPlayerState(p).isInactive());
             });
             this.game.nextPlayer();
           }
@@ -8261,10 +8299,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this49 = this;
+          var _this50 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this49.settings.numberOfLives);
+            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this50.settings.numberOfLives);
           });
           this.score = 0;
         }
@@ -8508,15 +8546,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super18 = _createSuper(KnockoutState);
 
       function KnockoutState() {
-        var _this50;
+        var _this51;
 
         var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
 
         _classCallCheck(this, KnockoutState);
 
-        _this50 = _super18.call(this);
-        _this50.life = life;
-        return _this50;
+        _this51 = _super18.call(this);
+        _this51.life = life;
+        return _this51;
       }
 
       _createClass(KnockoutState, [{
@@ -8726,17 +8764,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super19 = _createSuper(ScamSettings);
 
       function ScamSettings() {
-        var _this51;
+        var _this52;
 
         _classCallCheck(this, ScamSettings);
 
-        _this51 = _super19.call(this);
-        _this51.stopper = false;
-        _this51.style = 1;
+        _this52 = _super19.call(this);
+        _this52.stopper = false;
+        _this52.style = 1;
 
-        _this51.all();
+        _this52.all();
 
-        return _this51;
+        return _this52;
       }
 
       _createClass(ScamSettings, [{
@@ -9298,13 +9336,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super20 = _createSuper(ScamComponent);
 
       function ScamComponent(application, game, route, dialogService, soundService) {
-        var _this52;
+        var _this53;
 
         _classCallCheck(this, ScamComponent);
 
-        _this52 = _super20.call(this, application, game, route, dialogService, soundService, 2);
-        _this52.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
-        return _this52;
+        _this53 = _super20.call(this, application, game, route, dialogService, soundService, 2);
+        _this53.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
+        return _this53;
       }
 
       _createClass(ScamComponent, [{
@@ -9324,13 +9362,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this53 = this;
+          var _this54 = this;
 
           if (!this.game.numbs.find(function (n) {
             return n;
           })) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this53.game.isTheBestPlayer(p));
+              return p.setWin(_this54.game.isTheBestPlayer(p));
             });
           }
 
@@ -9346,13 +9384,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this54 = this;
+          var _this55 = this;
 
           this.game.numbs = this.settings.numbs.map(function (i) {
             return i ? 1 : 0;
           });
           this.settings.fields.forEach(function (f) {
-            return _this54.settings.numbs[f] = true;
+            return _this55.settings.numbs[f] = true;
           });
         }
       }]);
@@ -9669,14 +9707,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super21 = _createSuper(ShanghaiState);
 
       function ShanghaiState() {
-        var _this55;
+        var _this56;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this55 = _super21.call(this);
-        _this55.fieldCount = [];
-        _this55.fieldScore = [];
-        return _this55;
+        _this56 = _super21.call(this);
+        _this56.fieldCount = [];
+        _this56.fieldScore = [];
+        return _this56;
       }
 
       _createClass(ShanghaiState, [{
@@ -10075,13 +10113,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super22 = _createSuper(ShanghaiComponent);
 
       function ShanghaiComponent(application, game, route, dialogService, soundService) {
-        var _this56;
+        var _this57;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this56 = _super22.call(this, application, game, route, dialogService, soundService);
-        _this56.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this56;
+        _this57 = _super22.call(this, application, game, route, dialogService, soundService);
+        _this57.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this57;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -10103,7 +10141,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this57 = this;
+          var _this58 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -10133,7 +10171,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this57.game.isTheBestPlayer(p));
+              return p.setWin(_this58.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -11848,10 +11886,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this58 = this;
+          var _this59 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this58.playground.game.players.map(function (p) {
+            return _this59.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -12489,7 +12527,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this59 = this;
+          var _this60 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -12535,7 +12573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this59.getPlayerState(p) || !_this59.getPlayerState(p).isInactive();
+              return !_this60.getPlayerState(p) || !_this60.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -13975,13 +14013,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super23 = _createSuper(X01Component);
 
       function X01Component(application, game, route, dialogService, soundService) {
-        var _this60;
+        var _this61;
 
         _classCallCheck(this, X01Component);
 
-        _this60 = _super23.call(this, application, game, route, dialogService, soundService);
-        _this60.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this60;
+        _this61 = _super23.call(this, application, game, route, dialogService, soundService);
+        _this61.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this61;
       }
 
       _createClass(X01Component, [{
@@ -14018,10 +14056,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this61 = this;
+          var _this62 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this61.settings.startValue;
+            return player.score = _this62.settings.startValue;
           });
         }
       }]);

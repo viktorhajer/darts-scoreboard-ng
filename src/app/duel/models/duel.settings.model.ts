@@ -3,12 +3,14 @@ import {CricketSettings} from '../../cricket/models/cricet.settings.model';
 export class DuelSettings extends CricketSettings {
   startPoint: number;
   targetPoint: number;
+  handover: boolean;
 
   constructor() {
     super();
     this.star();
     this.startPoint = 30;
     this.targetPoint = 200;
+    this.handover = true;
   }
 
   star() {
@@ -17,5 +19,9 @@ export class DuelSettings extends CricketSettings {
 
   cross() {
     this.setAllowedField([5, 20, 18, 4, 6, 10, 2, 17, 7, 16, 11, 14]);
+  }
+
+  toggleHandOver() {
+    this.handover = !this.handover;
   }
 }

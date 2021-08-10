@@ -31,6 +31,12 @@ export class DuelComponent extends Playground<DuelState> {
       player.score += actualScore;
     } else if (this.isSecondaryField(fieldIndex)) {
       player.score -= actualScore;
+      if (this.settings.handover) {
+        const player = this.game.players.find(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
+        if (player) {
+          player.score += actualScore;
+        }
+      }
     } else {
       state.ownFields.push(fieldIndex);
     }

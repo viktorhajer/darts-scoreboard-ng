@@ -13,6 +13,8 @@
         <mat-label>Boarding</mat-label>
         <input [(ngModel)]="settings.targetPoint" type="number" matInput>
       </mat-form-field>
+      <button mat-raised-button class="button shortmedium" [color]="settings.handover ? 'primary' : ''"
+              (click)="settings.toggleHandOver()">Hand Over</button>
     </div>
     <br/>
     <mat-divider></mat-divider>
