@@ -40,12 +40,19 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     }
     player.score++;
 
-    if (this.settings.saboteur && scoreReal !== 0) {
+    if ((this.settings.saboteur || this.settings.promoter) && scoreReal !== 0) {
       const realFieldIndex = scoreReal === 25 ? 20 : scoreReal - 1;
       this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
         const otherPlayerState = this.getPlayerState(otherPlayer);
         if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && score === 0) {
-          otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
+          if (this.settings.saboteur) {
+            otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
+          } else {
+            otherPlayerState.increaseActFieldIndex(this.settings.jump ? originalMulti : 1);
+            if (otherPlayerState.actFieldIndex >= this.settings.fields.length) {
+              otherPlayerState.actFieldIndex = this.settings.fields.length;
+            }
+          }
         }
       });
     }

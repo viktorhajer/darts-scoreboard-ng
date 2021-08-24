@@ -6,6 +6,7 @@ export class AroundClockSettings {
   nineLives: boolean;
   fiveLives: boolean;
   saboteur: boolean;
+  promoter: boolean;
   style: number;
   fields: number[];
 
@@ -74,6 +75,16 @@ export class AroundClockSettings {
 
   toggleSaboteur() {
     this.saboteur = !this.saboteur;
+    if (this.saboteur) {
+      this.promoter = false;
+    }
+  }
+
+  togglePromoter() {
+    this.promoter = !this.promoter;
+    if (this.promoter) {
+      this.saboteur = false;
+    }
   }
 
   private static getBaseFields(): number[] {
