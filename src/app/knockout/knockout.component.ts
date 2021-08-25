@@ -34,7 +34,7 @@ export class KnockoutComponent extends Playground<KnockoutState> {
       if (this.score > player.getThrowsTotal()) {
         this.getPlayerState(player).life--;
         this.soundService.no();
-      } else if (this.settings.killer && this.score === player.getThrowsTotal()){
+      } else if (this.settings.killer && this.score !== 0 && this.score === player.getThrowsTotal()){
         let previousIndex = this.game.actualPlayerIndex - 1 < 0 ? this.game.players.length - 1 : this.game.actualPlayerIndex - 1;
         while (this.getPlayerState(this.game.players[previousIndex]).isInactive()) {
           previousIndex = previousIndex - 1 < 0 ? this.game.players.length - 1 : previousIndex - 1;

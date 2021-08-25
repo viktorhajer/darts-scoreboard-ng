@@ -3825,7 +3825,7 @@ function KnockoutComponent_app_settings_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function KnockoutComponent_app_settings_1_Template_button_click_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r191); const ctx_r192 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r192.settings.toggleKiller(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, " Killer ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, " Below the belt ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3901,7 +3901,7 @@ class KnockoutComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
                 this.getPlayerState(player).life--;
                 this.soundService.no();
             }
-            else if (this.settings.killer && this.score === player.getThrowsTotal()) {
+            else if (this.settings.killer && this.score !== 0 && this.score === player.getThrowsTotal()) {
                 let previousIndex = this.game.actualPlayerIndex - 1 < 0 ? this.game.players.length - 1 : this.game.actualPlayerIndex - 1;
                 while (this.getPlayerState(this.game.players[previousIndex]).isInactive()) {
                     previousIndex = previousIndex - 1 < 0 ? this.game.players.length - 1 : previousIndex - 1;

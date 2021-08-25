@@ -8185,7 +8185,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r192.settings.toggleKiller();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, " Killer ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, " Below the belt ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8338,7 +8338,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (this.score > player.getThrowsTotal()) {
               this.getPlayerState(player).life--;
               this.soundService.no();
-            } else if (this.settings.killer && this.score === player.getThrowsTotal()) {
+            } else if (this.settings.killer && this.score !== 0 && this.score === player.getThrowsTotal()) {
               var previousIndex = this.game.actualPlayerIndex - 1 < 0 ? this.game.players.length - 1 : this.game.actualPlayerIndex - 1;
 
               while (this.getPlayerState(this.game.players[previousIndex]).isInactive()) {
