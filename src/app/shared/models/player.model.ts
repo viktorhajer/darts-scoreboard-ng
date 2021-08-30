@@ -9,6 +9,7 @@ export class Player {
   winDateTime = 0;
   first = true;
   state: PlaygroundState;
+  life = 1;
 
   constructor(public id: number, public name = '') {
   }
@@ -26,6 +27,10 @@ export class Player {
     this.throwsHistory.push(thr);
   }
 
+  isInactive(): boolean {
+    return this.life <= 0;
+  }
+
   reset() {
     this.score = 0;
     this.throws = [];
@@ -38,6 +43,7 @@ export class Player {
   clone(): Player {
     const player = new Player(this.id, this.name);
     player.score = this.score;
+    player.life = this.life;
     player.throws = [];
     this.throws.forEach(t => {
       player.throws.push(t);

@@ -21,12 +21,12 @@
   <div class="side-left">
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
     <ng-container *ngIf="!settingsOpen">
-      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isInactive(player) ? 'inactive' : ''}}"
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{player.isInactive() ? 'inactive' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player" [scoreDisplayed]="false">
           <div class="clear"></div>
           <div class="score">
-            <label>Life: </label>{{getPlayerState(player).life}}
+            <label>Life: </label>{{player.life}}
             <label>Score: </label>{{player.score}}
           </div>
         </app-player-score>

@@ -996,11 +996,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 2) {
         var player_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        var ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r120.getPlayerState(player_r118).life);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](player_r118.life);
       }
     }
 
@@ -1023,7 +1021,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var ctx_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r119 === ctx_r117.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r117.isInactive(player_r118) ? "inactive" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r119 === ctx_r117.game.actualPlayerIndex ? "highlighted" : "", " ", player_r118.isInactive() ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -1154,8 +1152,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this3 = this;
-
           var state = this.getPlayerState(player);
 
           if (this.settings.fields.length - 1 < state.actFieldIndex) {
@@ -1176,7 +1172,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
                 if (this.settings.nineLives || this.settings.fiveLives) {
                   this.soundService.no();
-                  state.life--;
+                  player.life--;
                 }
               }
             }
@@ -1186,13 +1182,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if ((this.settings.nineLives || this.settings.fiveLives) && this.game.players.length > 1) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this3.getPlayerState(p).isInactive();
+              return !p.isInactive();
             });
 
             if (activePlayers.length === 1) {
               activePlayers[0].setWin(true);
             } else if (!!activePlayers.length) {
-              while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+              while (this.game.getActualPlayer().isInactive()) {
                 this.game.nextPlayer();
               }
             }
@@ -1230,13 +1226,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this4 = this;
+          var _this3 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.filter(function (p) {
-              return p !== _this4.game.getActualPlayer();
+              return p !== _this3.game.getActualPlayer();
             }).some(function (p) {
-              return fieldIndex === _this4.getFieldIndex(_this4.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this3.getFieldIndex(_this3.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -1245,10 +1241,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this5 = this;
+          var _this4 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this5.getFieldIndex(_this5.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this4.getFieldIndex(_this4.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -1257,16 +1253,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var life = this.settings.nineLives ? 3 : 5;
+          var _this5 = this;
+
           this.game.players.forEach(function (player) {
-            return player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"](life);
+            player.life = _this5.settings.nineLives ? 3 : 5;
+            player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"]();
           });
           this.settings.setStyle();
-        }
-      }, {
-        key: "isInactive",
-        value: function isInactive(player) {
-          return this.getPlayerState(player).isInactive();
         }
       }, {
         key: "getFieldIndex",
@@ -1680,12 +1673,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function AroundClockState() {
         var _this6;
 
-        var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
-
         _classCallCheck(this, AroundClockState);
 
         _this6 = _super2.call(this);
-        _this6.life = life;
         _this6.actFieldIndex = 0;
         return _this6;
       }
@@ -1706,14 +1696,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         }
       }, {
-        key: "isInactive",
-        value: function isInactive() {
-          return this.life <= 0;
-        }
-      }, {
         key: "clone",
         value: function clone() {
-          var state = new AroundClockState(this.life);
+          var state = new AroundClockState();
           state.actFieldIndex = this.actFieldIndex;
           return state;
         }
@@ -1989,7 +1974,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.54");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.55");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -7453,7 +7438,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r154.getPlayerState(player_r152).life, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r152.life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -7480,7 +7465,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r153 === ctx_r151.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r151.isInactive(player_r152) ? "inactive" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r153 === ctx_r151.game.actualPlayerIndex ? "highlighted" : "", " ", player_r152.isInactive() ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -7563,27 +7548,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           } else {
             if (state.killer) {
               if (this.settings.suicide && fieldIndex === state.actField && this.multiplier > 1) {
-                state.life = 0;
+                player.life = 0;
                 this.extraEndingMsg = 'SUICIDE!!!';
               } else if (fieldIndex === state.actField) {
-                state.life = Number(state.life) + Number(this.multiplier);
+                player.life = Number(player.life) + Number(this.multiplier);
 
-                if (state.life > this.settings.numberOfLives) {
-                  state.life = this.settings.numberOfLives;
+                if (player.life > this.settings.numberOfLives) {
+                  player.life = this.settings.numberOfLives;
                 }
               } else {
                 this.game.players.filter(function (p) {
-                  return p.id !== player.id && !_this42.getPlayerState(p).isInactive();
+                  return p.id !== player.id && !p.isInactive();
                 }).forEach(function (p) {
                   var s = _this42.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    s.life -= _this42.multiplier;
+                    p.life -= _this42.multiplier;
 
                     _this42.soundService.no();
 
-                    if (s.life < 0) {
-                      s.life = 0;
+                    if (p.life < 0) {
+                      p.life = 0;
                     }
                   }
                 });
@@ -7602,14 +7587,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this43 = this;
-
           if (this.game.round !== 0) {
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this43.getPlayerState(p).isInactive();
+              return !p.isInactive();
             });
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this43.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !p.isInactive());
             });
           }
 
@@ -7617,7 +7600,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.game.nextPlayer();
           }
 
-          while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+          while (this.game.getActualPlayer().isInactive()) {
             this.game.nextPlayer();
           }
         }
@@ -7663,12 +7646,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this44 = this;
+          var _this43 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this44.getPlayerState(p);
+            var state = _this43.getPlayerState(p);
 
-            return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
+            return !p.isInactive() && p.life <= 3 && state.actField === fieldIndex;
           })) {
             return DANGER_ZONE_ICON;
           }
@@ -7681,7 +7664,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var owner = this.game.players.find(function (p) {
             return p.state.actField === fieldIndex;
           });
-          return owner ? "".concat(owner.name, "(").concat(owner.state.life, ")") : '';
+          return owner ? "".concat(owner.name, "(").concat(owner.life, ")") : '';
         }
       }, {
         key: "getPlayerField",
@@ -7690,17 +7673,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return fieldIndex === 20 ? 'B' : fieldIndex + 1 + '';
         }
       }, {
-        key: "isInactive",
-        value: function isInactive(player) {
-          return this.getPlayerState(player).isInactive();
-        }
-      }, {
         key: "customReset",
         value: function customReset() {
-          var _this45 = this;
+          var _this44 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this45.settings.numberOfLives, _this45.settings.boardingLimit);
+            player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this44.settings.boardingLimit);
+            player.life = _this44.settings.numberOfLives;
           });
         }
       }, {
@@ -7711,12 +7690,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this46 = this;
+          var _this45 = this;
 
           return this.game.players.filter(function (p) {
-            return !_this46.getPlayerState(p).isInactive();
+            return !p.isInactive();
           }).map(function (p) {
-            return _this46.getPlayerState(p).actField;
+            return _this45.getPlayerState(p).actField;
           });
         }
       }]);
@@ -7969,30 +7948,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super16 = _createSuper(KillerState);
 
       function KillerState() {
-        var _this47;
+        var _this46;
 
-        var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
-        var boarding = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
+        var boarding = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this47 = _super16.call(this);
-        _this47.life = life;
-        _this47.boarding = boarding;
-        _this47.actField = -1;
-        _this47.killer = false;
-        return _this47;
+        _this46 = _super16.call(this);
+        _this46.boarding = boarding;
+        _this46.actField = -1;
+        _this46.killer = false;
+        return _this46;
       }
 
       _createClass(KillerState, [{
-        key: "isInactive",
-        value: function isInactive() {
-          return this.life <= 0;
-        }
-      }, {
         key: "clone",
         value: function clone() {
-          var state = new KillerState(this.life, this.boarding);
+          var state = new KillerState(this.boarding);
           state.actField = this.actField;
           state.killer = this.killer;
           return state;
@@ -8260,7 +8232,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var ctx_r193 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r195 === ctx_r193.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r193.isInactive(player_r194) ? "inactive" : "", "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r195 === ctx_r193.game.actualPlayerIndex ? "highlighted" : "", " ", player_r194.isInactive() ? "inactive" : "", "");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -8268,7 +8240,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r193.getPlayerState(player_r194).life, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r194.life, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
@@ -8314,14 +8286,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super17 = _createSuper(KnockoutComponent);
 
       function KnockoutComponent(application, game, route, dialogService, soundService) {
-        var _this48;
+        var _this47;
 
         _classCallCheck(this, KnockoutComponent);
 
-        _this48 = _super17.call(this, application, game, route, dialogService, soundService, 2);
-        _this48.score = 0;
-        _this48.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
-        return _this48;
+        _this47 = _super17.call(this, application, game, route, dialogService, soundService, 2);
+        _this47.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
+        return _this47;
       }
 
       _createClass(KnockoutComponent, [{
@@ -8332,51 +8303,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this49 = this;
-
           if (this.game.isTheLastThrow()) {
-            if (this.score > player.getThrowsTotal()) {
-              this.getPlayerState(player).life--;
+            var score = this.getPlayerState(player).score;
+
+            if (score > player.getThrowsTotal()) {
+              player.life--;
               this.soundService.no();
-            } else if (this.settings.killer && this.score !== 0 && this.score === player.getThrowsTotal()) {
-              var previousIndex = this.game.actualPlayerIndex - 1 < 0 ? this.game.players.length - 1 : this.game.actualPlayerIndex - 1;
-
-              while (this.getPlayerState(this.game.players[previousIndex]).isInactive()) {
-                previousIndex = previousIndex - 1 < 0 ? this.game.players.length - 1 : previousIndex - 1;
-              }
-
-              this.getPlayerState(this.game.players[previousIndex]).life--;
+            } else if (this.settings.killer && score !== 0 && score === player.getThrowsTotal()) {
+              this.game.getPreviousPlayer().life--;
               this.soundService.no();
             }
 
-            this.score = player.getThrowsTotal();
-            var activePlayers = this.game.players.filter(function (p) {
-              return !_this49.getPlayerState(p).isInactive();
-            });
+            this.getPlayerState(this.game.getNextPlayer()).score = player.getThrowsTotal();
+            var activePlayers = this.game.getActivePlayers();
             this.game.players.forEach(function (p) {
-              return p.setWin(1 === activePlayers.length && !_this49.getPlayerState(p).isInactive());
+              return p.setWin(1 === activePlayers.length && !p.isInactive());
             });
             this.game.nextPlayer();
           }
 
-          while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+          while (this.game.getActualPlayer().isInactive()) {
             this.game.nextPlayer();
           }
-        }
-      }, {
-        key: "isInactive",
-        value: function isInactive(player) {
-          return this.getPlayerState(player).isInactive();
         }
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this50 = this;
+          var _this48 = this;
 
           this.game.players.forEach(function (player) {
-            return player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](_this50.settings.numberOfLives);
+            player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"]();
+            player.life = _this48.settings.numberOfLives;
           });
-          this.score = 0;
         }
       }, {
         key: "customSettingsValidation",
@@ -8632,26 +8590,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super18 = _createSuper(KnockoutState);
 
       function KnockoutState() {
-        var _this51;
+        var _this49;
 
-        var life = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+        var score = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
         _classCallCheck(this, KnockoutState);
 
-        _this51 = _super18.call(this);
-        _this51.life = life;
-        return _this51;
+        _this49 = _super18.call(this);
+        _this49.score = score;
+        return _this49;
       }
 
       _createClass(KnockoutState, [{
-        key: "isInactive",
-        value: function isInactive() {
-          return this.life <= 0;
-        }
-      }, {
         key: "clone",
         value: function clone() {
-          return new KnockoutState(this.life);
+          return new KnockoutState(this.score);
         }
       }]);
 
@@ -8850,17 +8803,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super19 = _createSuper(ScamSettings);
 
       function ScamSettings() {
-        var _this52;
+        var _this50;
 
         _classCallCheck(this, ScamSettings);
 
-        _this52 = _super19.call(this);
-        _this52.stopper = false;
-        _this52.style = 1;
+        _this50 = _super19.call(this);
+        _this50.stopper = false;
+        _this50.style = 1;
 
-        _this52.all();
+        _this50.all();
 
-        return _this52;
+        return _this50;
       }
 
       _createClass(ScamSettings, [{
@@ -9422,13 +9375,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super20 = _createSuper(ScamComponent);
 
       function ScamComponent(application, game, route, dialogService, soundService) {
-        var _this53;
+        var _this51;
 
         _classCallCheck(this, ScamComponent);
 
-        _this53 = _super20.call(this, application, game, route, dialogService, soundService, 2);
-        _this53.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
-        return _this53;
+        _this51 = _super20.call(this, application, game, route, dialogService, soundService, 2);
+        _this51.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
+        return _this51;
       }
 
       _createClass(ScamComponent, [{
@@ -9448,13 +9401,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this54 = this;
+          var _this52 = this;
 
           if (!this.game.numbs.find(function (n) {
             return n;
           })) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this54.game.isTheBestPlayer(p));
+              return p.setWin(_this52.game.isTheBestPlayer(p));
             });
           }
 
@@ -9470,13 +9423,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this55 = this;
+          var _this53 = this;
 
           this.game.numbs = this.settings.numbs.map(function (i) {
             return i ? 1 : 0;
           });
           this.settings.fields.forEach(function (f) {
-            return _this55.settings.numbs[f] = true;
+            return _this53.settings.numbs[f] = true;
           });
         }
       }]);
@@ -9793,14 +9746,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super21 = _createSuper(ShanghaiState);
 
       function ShanghaiState() {
-        var _this56;
+        var _this54;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this56 = _super21.call(this);
-        _this56.fieldCount = [];
-        _this56.fieldScore = [];
-        return _this56;
+        _this54 = _super21.call(this);
+        _this54.fieldCount = [];
+        _this54.fieldScore = [];
+        return _this54;
       }
 
       _createClass(ShanghaiState, [{
@@ -10199,13 +10152,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super22 = _createSuper(ShanghaiComponent);
 
       function ShanghaiComponent(application, game, route, dialogService, soundService) {
-        var _this57;
+        var _this55;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this57 = _super22.call(this, application, game, route, dialogService, soundService);
-        _this57.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this57;
+        _this55 = _super22.call(this, application, game, route, dialogService, soundService);
+        _this55.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this55;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -10227,7 +10180,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this58 = this;
+          var _this56 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -10257,7 +10210,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this58.game.isTheBestPlayer(p));
+              return p.setWin(_this56.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -11972,10 +11925,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this59 = this;
+          var _this57 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this59.playground.game.players.map(function (p) {
+            return _this57.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -12397,6 +12350,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.win = false;
         this.winDateTime = 0;
         this.first = true;
+        this.life = 1;
       }
 
       _createClass(Player, [{
@@ -12419,6 +12373,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.throwsHistory.push(thr);
         }
       }, {
+        key: "isInactive",
+        value: function isInactive() {
+          return this.life <= 0;
+        }
+      }, {
         key: "reset",
         value: function reset() {
           this.score = 0;
@@ -12433,6 +12392,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function clone() {
           var player = new Player(this.id, this.name);
           player.score = this.score;
+          player.life = this.life;
           player["throws"] = [];
           this["throws"].forEach(function (t) {
             player["throws"].push(t);
@@ -12613,7 +12573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this60 = this;
+          var _this58 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -12659,7 +12619,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this60.getPlayerState(p) || !_this60.getPlayerState(p).isInactive();
+              return !_this58.getPlayerState(p) || !_this58.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -13209,6 +13169,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "getActualPlayer",
         value: function getActualPlayer() {
           return this.players[this.actualPlayerIndex];
+        }
+      }, {
+        key: "getActivePlayers",
+        value: function getActivePlayers() {
+          return this.players.filter(function (p) {
+            return !p.isInactive();
+          });
+        }
+      }, {
+        key: "getNextPlayer",
+        value: function getNextPlayer() {
+          var index = this.actualPlayerIndex + 1 === this.players.length ? 0 : this.actualPlayerIndex + 1;
+
+          while (this.players[index].isInactive()) {
+            index = index + 1 === this.players.length ? 0 : index + 1;
+          }
+
+          return this.players[index];
+        }
+      }, {
+        key: "getPreviousPlayer",
+        value: function getPreviousPlayer() {
+          var index = this.actualPlayerIndex === 0 ? this.players.length - 1 : this.actualPlayerIndex - 1;
+
+          while (this.players[index].isInactive()) {
+            index = index === 0 ? this.players.length - 1 : index - 1;
+          }
+
+          return this.players[index];
         }
       }, {
         key: "nextPlayer",
@@ -14099,13 +14088,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super23 = _createSuper(X01Component);
 
       function X01Component(application, game, route, dialogService, soundService) {
-        var _this61;
+        var _this59;
 
         _classCallCheck(this, X01Component);
 
-        _this61 = _super23.call(this, application, game, route, dialogService, soundService);
-        _this61.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this61;
+        _this59 = _super23.call(this, application, game, route, dialogService, soundService);
+        _this59.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this59;
       }
 
       _createClass(X01Component, [{
@@ -14142,10 +14131,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this62 = this;
+          var _this60 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this62.settings.startValue;
+            return player.score = _this60.settings.startValue;
           });
         }
       }]);

@@ -42,21 +42,21 @@ export class KillerComponent extends Playground<KillerState> {
     } else {
       if (state.killer) {
         if (this.settings.suicide && fieldIndex === state.actField && this.multiplier > 1) {
-          state.life = 0;
+          player.life = 0;
           this.extraEndingMsg = 'SUICIDE!!!';
         } else if (fieldIndex === state.actField) {
-          state.life = Number(state.life) + Number(this.multiplier);
-          if (state.life > this.settings.numberOfLives) {
-            state.life = this.settings.numberOfLives;
+          player.life = Number(player.life) + Number(this.multiplier);
+          if (player.life > this.settings.numberOfLives) {
+            player.life = this.settings.numberOfLives;
           }
         } else {
-          this.game.players.filter(p => p.id !== player.id && !this.getPlayerState(p).isInactive()).forEach(p => {
+          this.game.players.filter(p => p.id !== player.id && !p.isInactive()).forEach(p => {
             const s = this.getPlayerState(p);
             if (fieldIndex === s.actField) {
-              s.life -= this.multiplier;
+              p.life -= this.multiplier;
               this.soundService.no();
-              if (s.life < 0) {
-                s.life = 0;
+              if (p.life < 0) {
+                p.life = 0;
               }
             }
           });
@@ -73,13 +73,13 @@ export class KillerComponent extends Playground<KillerState> {
 
   checkPlayerState(player: Player) {
     if (this.game.round !== 0) {
-      const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
-      this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !this.getPlayerState(p).isInactive()));
+      const activePlayers = this.game.players.filter(p => !p.isInactive());
+      this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !p.isInactive()));
     }
     if (this.game.round === 0 || this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
-    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+    while (this.game.getActualPlayer().isInactive()) {
       this.game.nextPlayer();
     }
   }
@@ -113,7 +113,7 @@ export class KillerComponent extends Playground<KillerState> {
   getFieldIcon(fieldIndex: number): string {
     if (this.game.players.some(p => {
       const state = this.getPlayerState(p);
-      return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
+      return !p.isInactive() && p.life <= 3 && state.actField === fieldIndex;
     })) {
       return DANGER_ZONE_ICON;
     }
@@ -122,7 +122,7 @@ export class KillerComponent extends Playground<KillerState> {
 
   getFieldNote(fieldIndex: number): string {
     const owner = this.game.players.find(p => (p.state as KillerState).actField === fieldIndex);
-    return owner ? `${owner.name}(${(owner.state as KillerState).life})` : '';
+    return owner ? `${owner.name}(${owner.life})` : '';
   }
 
   getPlayerField(player: Player): string {
@@ -130,13 +130,11 @@ export class KillerComponent extends Playground<KillerState> {
     return fieldIndex === 20 ? 'B' : (fieldIndex + 1) + '';
   }
 
-  isInactive(player: Player): boolean {
-    return this.getPlayerState(player).isInactive();
-  }
-
   customReset() {
-    this.game.players.forEach(player =>
-      player.state = new KillerState(this.settings.numberOfLives, this.settings.boardingLimit));
+    this.game.players.forEach(player => {
+      player.state = new KillerState(this.settings.boardingLimit);
+      player.life = this.settings.numberOfLives;
+    });
   }
 
   customSettingsValidation(): boolean {
@@ -144,7 +142,7 @@ export class KillerComponent extends Playground<KillerState> {
   }
 
   private getAllEnabledFields(): number[] {
-    return this.game.players.filter(p => !this.getPlayerState(p).isInactive())
+    return this.game.players.filter(p => !p.isInactive())
       .map(p => this.getPlayerState(p).actField);
   }
 }

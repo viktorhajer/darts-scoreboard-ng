@@ -23,6 +23,26 @@ export class GameService {
     return this.players[this.actualPlayerIndex];
   }
 
+  getActivePlayers(): Player[] {
+    return this.players.filter(p => !p.isInactive());
+  }
+
+  getNextPlayer(): Player {
+    let index = this.actualPlayerIndex + 1 === this.players.length ? 0 : this.actualPlayerIndex + 1;
+    while (this.players[index].isInactive()) {
+      index = index + 1 === this.players.length ? 0 : index + 1;
+    }
+    return this.players[index];
+  }
+
+  getPreviousPlayer(): Player {
+    let index = this.actualPlayerIndex === 0 ? this.players.length - 1 : this.actualPlayerIndex - 1;
+    while (this.players[index].isInactive()) {
+      index = index === 0 ? this.players.length - 1 : index - 1;
+    }
+    return this.players[index];
+  }
+
   nextPlayer(): void {
     if (this.isActualPlayerTheLast()) {
       this.nextRound();

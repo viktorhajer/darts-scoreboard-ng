@@ -75,18 +75,18 @@ export class AroundClockComponent extends Playground<AroundClockState> {
           }
           if (this.settings.nineLives || this.settings.fiveLives) {
             this.soundService.no();
-            state.life--;
+            player.life--;
           }
         }
       }
       this.game.nextPlayer();
     }
     if ((this.settings.nineLives || this.settings.fiveLives) && this.game.players.length > 1) {
-      const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+      const activePlayers = this.game.players.filter(p => !p.isInactive());
       if (activePlayers.length === 1) {
         activePlayers[0].setWin(true);
       } else if (!!activePlayers.length) {
-        while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+        while (this.game.getActualPlayer().isInactive()) {
           this.game.nextPlayer();
         }
       }
@@ -130,13 +130,11 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   customReset() {
-    const life = this.settings.nineLives ? 3 : 5;
-    this.game.players.forEach(player => player.state = new AroundClockState(life));
+    this.game.players.forEach(player => {
+      player.life = this.settings.nineLives ? 3 : 5;
+      player.state = new AroundClockState();
+    });
     this.settings.setStyle();
-  }
-
-  isInactive(player: Player): boolean {
-    return this.getPlayerState(player).isInactive();
   }
 
   private getFieldIndex(index: number) {

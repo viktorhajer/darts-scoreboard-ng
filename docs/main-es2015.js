@@ -425,9 +425,8 @@ function AroundClockComponent_ng_container_4_div_3_ng_container_2_Template(rf, c
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 } if (rf & 2) {
     const player_r118 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
-    const ctx_r120 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r120.getPlayerState(player_r118).life);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](player_r118.life);
 } }
 function AroundClockComponent_ng_container_4_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
@@ -439,7 +438,7 @@ function AroundClockComponent_ng_container_4_div_3_Template(rf, ctx) { if (rf & 
     const player_r118 = ctx.$implicit;
     const i_r119 = ctx.index;
     const ctx_r117 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r119 === ctx_r117.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r117.isInactive(player_r118) ? "inactive" : "", "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r119 === ctx_r117.game.actualPlayerIndex ? "highlighted" : "", " ", player_r118.isInactive() ? "inactive" : "", "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r118)("scoreDisplayed", false)("hasContent", ctx_r117.settings.nineLives || ctx_r117.settings.fiveLives);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -525,19 +524,19 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
                     }
                     if (this.settings.nineLives || this.settings.fiveLives) {
                         this.soundService.no();
-                        state.life--;
+                        player.life--;
                     }
                 }
             }
             this.game.nextPlayer();
         }
         if ((this.settings.nineLives || this.settings.fiveLives) && this.game.players.length > 1) {
-            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
+            const activePlayers = this.game.players.filter(p => !p.isInactive());
             if (activePlayers.length === 1) {
                 activePlayers[0].setWin(true);
             }
             else if (!!activePlayers.length) {
-                while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+                while (this.game.getActualPlayer().isInactive()) {
                     this.game.nextPlayer();
                 }
             }
@@ -574,12 +573,11 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
         return !!owners.length ? owners.join(' ') : '';
     }
     customReset() {
-        const life = this.settings.nineLives ? 3 : 5;
-        this.game.players.forEach(player => player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"](life));
+        this.game.players.forEach(player => {
+            player.life = this.settings.nineLives ? 3 : 5;
+            player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"]();
+        });
         this.settings.setStyle();
-    }
-    isInactive(player) {
-        return this.getPlayerState(player).isInactive();
     }
     getFieldIndex(index) {
         return this.settings.fields[index];
@@ -806,9 +804,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~models/playground-state.model */ "./src/app/shared/models/playground-state.model.ts");
 
 class AroundClockState extends _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"] {
-    constructor(life = 3) {
+    constructor() {
         super();
-        this.life = life;
         this.actFieldIndex = 0;
     }
     increaseActFieldIndex(value) {
@@ -820,11 +817,8 @@ class AroundClockState extends _models_playground_state_model__WEBPACK_IMPORTED_
             this.actFieldIndex = 0;
         }
     }
-    isInactive() {
-        return this.life <= 0;
-    }
     clone() {
-        const state = new AroundClockState(this.life);
+        const state = new AroundClockState();
         state.actFieldIndex = this.actFieldIndex;
         return state;
     }
@@ -960,7 +954,7 @@ MenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MenuComponent_div_4_Template, 2, 1, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.54");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.55");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -3469,7 +3463,7 @@ function KillerComponent_ng_container_4_div_1_ng_container_2_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r154.getPlayerField(player_r152));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r154.getPlayerState(player_r152).life, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r152.life, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r154.getPlayerState(player_r152).killer);
 } }
@@ -3483,7 +3477,7 @@ function KillerComponent_ng_container_4_div_1_Template(rf, ctx) { if (rf & 1) {
     const player_r152 = ctx.$implicit;
     const i_r153 = ctx.index;
     const ctx_r151 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r153 === ctx_r151.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r151.isInactive(player_r152) ? "inactive" : "", "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r153 === ctx_r151.game.actualPlayerIndex ? "highlighted" : "", " ", player_r152.isInactive() ? "inactive" : "", "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r152)("scoreDisplayed", false)("highlighted", ctx_r151.getPlayerState(player_r152).killer);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -3527,23 +3521,23 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
         else {
             if (state.killer) {
                 if (this.settings.suicide && fieldIndex === state.actField && this.multiplier > 1) {
-                    state.life = 0;
+                    player.life = 0;
                     this.extraEndingMsg = 'SUICIDE!!!';
                 }
                 else if (fieldIndex === state.actField) {
-                    state.life = Number(state.life) + Number(this.multiplier);
-                    if (state.life > this.settings.numberOfLives) {
-                        state.life = this.settings.numberOfLives;
+                    player.life = Number(player.life) + Number(this.multiplier);
+                    if (player.life > this.settings.numberOfLives) {
+                        player.life = this.settings.numberOfLives;
                     }
                 }
                 else {
-                    this.game.players.filter(p => p.id !== player.id && !this.getPlayerState(p).isInactive()).forEach(p => {
+                    this.game.players.filter(p => p.id !== player.id && !p.isInactive()).forEach(p => {
                         const s = this.getPlayerState(p);
                         if (fieldIndex === s.actField) {
-                            s.life -= this.multiplier;
+                            p.life -= this.multiplier;
                             this.soundService.no();
-                            if (s.life < 0) {
-                                s.life = 0;
+                            if (p.life < 0) {
+                                p.life = 0;
                             }
                         }
                     });
@@ -3560,13 +3554,13 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
     }
     checkPlayerState(player) {
         if (this.game.round !== 0) {
-            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
-            this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !this.getPlayerState(p).isInactive()));
+            const activePlayers = this.game.players.filter(p => !p.isInactive());
+            this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !p.isInactive()));
         }
         if (this.game.round === 0 || this.game.isTheLastThrow()) {
             this.game.nextPlayer();
         }
-        while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+        while (this.game.getActualPlayer().isInactive()) {
             this.game.nextPlayer();
         }
     }
@@ -3596,7 +3590,7 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
     getFieldIcon(fieldIndex) {
         if (this.game.players.some(p => {
             const state = this.getPlayerState(p);
-            return !state.isInactive() && state.life <= 3 && state.actField === fieldIndex;
+            return !p.isInactive() && p.life <= 3 && state.actField === fieldIndex;
         })) {
             return DANGER_ZONE_ICON;
         }
@@ -3604,23 +3598,23 @@ class KillerComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_
     }
     getFieldNote(fieldIndex) {
         const owner = this.game.players.find(p => p.state.actField === fieldIndex);
-        return owner ? `${owner.name}(${owner.state.life})` : '';
+        return owner ? `${owner.name}(${owner.life})` : '';
     }
     getPlayerField(player) {
         const fieldIndex = this.getPlayerState(player).actField;
         return fieldIndex === 20 ? 'B' : (fieldIndex + 1) + '';
     }
-    isInactive(player) {
-        return this.getPlayerState(player).isInactive();
-    }
     customReset() {
-        this.game.players.forEach(player => player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](this.settings.numberOfLives, this.settings.boardingLimit));
+        this.game.players.forEach(player => {
+            player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](this.settings.boardingLimit);
+            player.life = this.settings.numberOfLives;
+        });
     }
     customSettingsValidation() {
         return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
     }
     getAllEnabledFields() {
-        return this.game.players.filter(p => !this.getPlayerState(p).isInactive())
+        return this.game.players.filter(p => !p.isInactive())
             .map(p => this.getPlayerState(p).actField);
     }
 }
@@ -3738,18 +3732,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~models/playground-state.model */ "./src/app/shared/models/playground-state.model.ts");
 
 class KillerState extends _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"] {
-    constructor(life = 5, boarding = 3) {
+    constructor(boarding = 3) {
         super();
-        this.life = life;
         this.boarding = boarding;
         this.actField = -1;
         this.killer = false;
     }
-    isInactive() {
-        return this.life <= 0;
-    }
     clone() {
-        const state = new KillerState(this.life, this.boarding);
+        const state = new KillerState(this.boarding);
         state.actField = this.actField;
         state.killer = this.killer;
         return state;
@@ -3863,11 +3853,11 @@ function KnockoutComponent_ng_container_4_div_1_Template(rf, ctx) { if (rf & 1) 
     const player_r194 = ctx.$implicit;
     const i_r195 = ctx.index;
     const ctx_r193 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r195 === ctx_r193.game.actualPlayerIndex ? "highlighted" : "", " ", ctx_r193.isInactive(player_r194) ? "inactive" : "", "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassMapInterpolate2"]("player ", i_r195 === ctx_r193.game.actualPlayerIndex ? "highlighted" : "", " ", player_r194.isInactive() ? "inactive" : "", "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("player", player_r194)("scoreDisplayed", false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r193.getPlayerState(player_r194).life, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r194.life, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", player_r194.score, " ");
 } }
@@ -3889,7 +3879,6 @@ function KnockoutComponent_app_number_plate_5_Template(rf, ctx) { if (rf & 1) {
 class KnockoutComponent extends _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"] {
     constructor(application, game, route, dialogService, soundService) {
         super(application, game, route, dialogService, soundService, 2);
-        this.score = 0;
         this.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
     }
     calculatePoints(player, fieldIndex, score) {
@@ -3897,33 +3886,29 @@ class KnockoutComponent extends _models_playground_model__WEBPACK_IMPORTED_MODUL
     }
     checkPlayerState(player) {
         if (this.game.isTheLastThrow()) {
-            if (this.score > player.getThrowsTotal()) {
-                this.getPlayerState(player).life--;
+            const score = this.getPlayerState(player).score;
+            if (score > player.getThrowsTotal()) {
+                player.life--;
                 this.soundService.no();
             }
-            else if (this.settings.killer && this.score !== 0 && this.score === player.getThrowsTotal()) {
-                let previousIndex = this.game.actualPlayerIndex - 1 < 0 ? this.game.players.length - 1 : this.game.actualPlayerIndex - 1;
-                while (this.getPlayerState(this.game.players[previousIndex]).isInactive()) {
-                    previousIndex = previousIndex - 1 < 0 ? this.game.players.length - 1 : previousIndex - 1;
-                }
-                this.getPlayerState(this.game.players[previousIndex]).life--;
+            else if (this.settings.killer && score !== 0 && score === player.getThrowsTotal()) {
+                this.game.getPreviousPlayer().life--;
                 this.soundService.no();
             }
-            this.score = player.getThrowsTotal();
-            const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
-            this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !this.getPlayerState(p).isInactive()));
+            this.getPlayerState(this.game.getNextPlayer()).score = player.getThrowsTotal();
+            const activePlayers = this.game.getActivePlayers();
+            this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !p.isInactive()));
             this.game.nextPlayer();
         }
-        while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+        while (this.game.getActualPlayer().isInactive()) {
             this.game.nextPlayer();
         }
-    }
-    isInactive(player) {
-        return this.getPlayerState(player).isInactive();
     }
     customReset() {
-        this.game.players.forEach(player => player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"](this.settings.numberOfLives));
-        this.score = 0;
+        this.game.players.forEach(player => {
+            player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"]();
+            player.life = this.settings.numberOfLives;
+        });
     }
     customSettingsValidation() {
         return this.settings.numberOfLives > 0;
@@ -4042,15 +4027,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ~models/playground-state.model */ "./src/app/shared/models/playground-state.model.ts");
 
 class KnockoutState extends _models_playground_state_model__WEBPACK_IMPORTED_MODULE_0__["PlaygroundState"] {
-    constructor(life = 5) {
+    constructor(score = 0) {
         super();
-        this.life = life;
-    }
-    isInactive() {
-        return this.life <= 0;
+        this.score = score;
     }
     clone() {
-        return new KnockoutState(this.life);
+        return new KnockoutState(this.score);
     }
 }
 
@@ -5805,6 +5787,7 @@ class Player {
         this.win = false;
         this.winDateTime = 0;
         this.first = true;
+        this.life = 1;
     }
     setWin(win = true) {
         this.win = win;
@@ -5815,6 +5798,9 @@ class Player {
     }
     addThrowHistory(thr) {
         this.throwsHistory.push(thr);
+    }
+    isInactive() {
+        return this.life <= 0;
     }
     reset() {
         this.score = 0;
@@ -5827,6 +5813,7 @@ class Player {
     clone() {
         const player = new Player(this.id, this.name);
         player.score = this.score;
+        player.life = this.life;
         player.throws = [];
         this.throws.forEach(t => {
             player.throws.push(t);
@@ -6252,6 +6239,23 @@ class GameService {
     }
     getActualPlayer() {
         return this.players[this.actualPlayerIndex];
+    }
+    getActivePlayers() {
+        return this.players.filter(p => !p.isInactive());
+    }
+    getNextPlayer() {
+        let index = this.actualPlayerIndex + 1 === this.players.length ? 0 : this.actualPlayerIndex + 1;
+        while (this.players[index].isInactive()) {
+            index = index + 1 === this.players.length ? 0 : index + 1;
+        }
+        return this.players[index];
+    }
+    getPreviousPlayer() {
+        let index = this.actualPlayerIndex === 0 ? this.players.length - 1 : this.actualPlayerIndex - 1;
+        while (this.players[index].isInactive()) {
+            index = index === 0 ? this.players.length - 1 : index - 1;
+        }
+        return this.players[index];
     }
     nextPlayer() {
         if (this.isActualPlayerTheLast()) {

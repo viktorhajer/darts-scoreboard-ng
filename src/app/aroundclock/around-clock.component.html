@@ -60,11 +60,11 @@
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
     <ng-container *ngIf="!settingsOpen">
       <div class="hidden-info" [class.hidden]="hiddenInfo" (click)="toggleHiddenInfo()">{{getDistanceFromRandom()}}</div>
-      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{isInactive(player) ? 'inactive' : ''}}"
+      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{player.isInactive() ? 'inactive' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.nineLives || settings.fiveLives">
           <ng-container *ngIf="settings.nineLives || settings.fiveLives">
-            <div class="score"><label>Life: </label>{{getPlayerState(player).life}}</div>
+            <div class="score"><label>Life: </label>{{player.life}}</div>
           </ng-container>
         </app-player-score>
       </div>

@@ -17,7 +17,6 @@ import {SoundService} from '~services/sound.service';
 export class KnockoutComponent extends Playground<KnockoutState> {
 
   settings: KnockoutSettings;
-  score = 0;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService) {
@@ -31,35 +30,29 @@ export class KnockoutComponent extends Playground<KnockoutState> {
 
   checkPlayerState(player: Player) {
     if (this.game.isTheLastThrow()) {
-      if (this.score > player.getThrowsTotal()) {
-        this.getPlayerState(player).life--;
+      const score = this.getPlayerState(player).score;
+      if (score > player.getThrowsTotal()) {
+        player.life--;
         this.soundService.no();
-      } else if (this.settings.killer && this.score !== 0 && this.score === player.getThrowsTotal()){
-        let previousIndex = this.game.actualPlayerIndex - 1 < 0 ? this.game.players.length - 1 : this.game.actualPlayerIndex - 1;
-        while (this.getPlayerState(this.game.players[previousIndex]).isInactive()) {
-          previousIndex = previousIndex - 1 < 0 ? this.game.players.length - 1 : previousIndex - 1;
-        }
-        this.getPlayerState(this.game.players[previousIndex]).life--;
+      } else if (this.settings.killer && score !== 0 && score === player.getThrowsTotal()) {
+        this.game.getPreviousPlayer().life--;
         this.soundService.no();
       }
-      this.score = player.getThrowsTotal();
-      const activePlayers = this.game.players.filter(p => !this.getPlayerState(p).isInactive());
-      this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !this.getPlayerState(p).isInactive()));
+      this.getPlayerState(this.game.getNextPlayer()).score = player.getThrowsTotal();
+      const activePlayers = this.game.getActivePlayers();
+      this.game.players.forEach(p => p.setWin(1 === activePlayers.length && !p.isInactive()));
       this.game.nextPlayer();
     }
-    while (this.getPlayerState(this.game.getActualPlayer()).isInactive()) {
+    while (this.game.getActualPlayer().isInactive()) {
       this.game.nextPlayer();
     }
-  }
-
-  isInactive(player: Player): boolean {
-    return this.getPlayerState(player).isInactive();
   }
 
   customReset() {
-    this.game.players.forEach(player =>
-      player.state = new KnockoutState(this.settings.numberOfLives));
-    this.score = 0;
+    this.game.players.forEach(player => {
+      player.state = new KnockoutState();
+      player.life = this.settings.numberOfLives;
+    });
   }
 
   customSettingsValidation(): boolean {
