@@ -50,7 +50,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
           } else {
             otherPlayerState.increaseActFieldIndex(this.settings.jump ? originalMulti : 1);
             if (otherPlayerState.actFieldIndex >= this.settings.fields.length) {
-              otherPlayerState.actFieldIndex = this.settings.fields.length;
+              otherPlayerState.actFieldIndex = this.settings.fields.length - 1;
             }
           }
         }

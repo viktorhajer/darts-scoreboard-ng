@@ -1142,7 +1142,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                   otherPlayerState.increaseActFieldIndex(_this2.settings.jump ? originalMulti : 1);
 
                   if (otherPlayerState.actFieldIndex >= _this2.settings.fields.length) {
-                    otherPlayerState.actFieldIndex = _this2.settings.fields.length;
+                    otherPlayerState.actFieldIndex = _this2.settings.fields.length - 1;
                   }
                 }
               }

@@ -499,7 +499,7 @@ class AroundClockComponent extends _models_playground_model__WEBPACK_IMPORTED_MO
                     else {
                         otherPlayerState.increaseActFieldIndex(this.settings.jump ? originalMulti : 1);
                         if (otherPlayerState.actFieldIndex >= this.settings.fields.length) {
-                            otherPlayerState.actFieldIndex = this.settings.fields.length;
+                            otherPlayerState.actFieldIndex = this.settings.fields.length - 1;
                         }
                     }
                 }
