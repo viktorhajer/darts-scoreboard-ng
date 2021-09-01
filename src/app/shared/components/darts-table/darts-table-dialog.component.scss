@@ -1,14 +1,14 @@
 .darts-table-container {
-  img, .clip {
-    width: calc(100vw - 100px);
-    height: calc(100vw - 100px);
+  .clip, svg {
+    width: calc(100vw - 40px);
+    height: calc(100vw - 40px);
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 20px;
+    left: 20px;
   }
 
   img {
-    filter: grayscale(100%);
+    filter: grayscale(60%);
   }
 
   .clip {
@@ -25,83 +25,83 @@
   }
 
   .darts-table-field-2 {
-    clip-path: polygon(50% 53%, 44% 88%, 56% 88%);
+    clip-path: polygon(50% 53.5%, 44% 89%, 56% 89%);
   }
 
   .darts-table-field-16 {
-    clip-path: polygon(50% 51%, 56% 87%, 68% 84%);
+    clip-path: polygon(51.2% 53.7%, 56% 89%, 68% 85%);
   }
 
   .darts-table-field-1 {
-    clip-path: polygon(50% 51%, 67% 84%, 77% 76%);
+    clip-path: polygon(52.2% 53%, 68% 85%, 78% 78%);
   }
 
   .darts-table-field-14 {
-    clip-path: polygon(50% 51%, 77% 77%, 84% 67%);
+    clip-path: polygon(52.8% 52%, 78% 78%, 85% 68%);
   }
 
   .darts-table-field-9 {
-    clip-path: polygon(50% 51%, 83% 67%, 87% 55%);
+    clip-path: polygon(53% 51%, 85% 68%, 89% 56%);
   }
 
   .darts-table-field-5 {
-    clip-path: polygon(51% 50%, 87% 56%, 86% 44%);
+    clip-path: polygon(53% 50%, 89% 56%, 89% 44%);
   }
 
   .darts-table-field-12 {
-    clip-path: polygon(51% 50%, 87% 44%, 83% 32%);
+    clip-path: polygon(53% 49%, 89% 45%, 85% 32%);
   }
 
   .darts-table-field-3 {
-    clip-path: polygon(51% 49%, 83% 33%, 76% 23%);
+    clip-path: polygon(53% 47.9%, 86% 32%, 78% 22%);
   }
 
   .darts-table-field-17 {
-    clip-path: polygon(51% 49%, 76% 23%, 66% 16%);
+    clip-path: polygon(52.2% 47%, 78.3% 22.0%, 67.2% 15%);
   }
 
   .darts-table-field-0 {
-    clip-path: polygon(50% 49%, 67% 16%, 55% 13%);
+    clip-path: polygon(51% 47%, 68% 15%, 56% 11%);
   }
 
   .darts-table-field-19 {
-    clip-path: polygon(50% 48%, 56% 13%, 43% 13%);
+    clip-path: polygon(50% 47%, 56.5% 11%, 43.2% 11%);
   }
 
   .darts-table-field-4 {
-    clip-path: polygon(32% 17%, 50% 51%, 44% 13%);
+    clip-path: polygon(32% 15%, 49% 47%, 44% 11%);
   }
 
   .darts-table-field-11 {
-    clip-path: polygon(22% 24%, 50% 51%, 33% 16%);
+    clip-path: polygon(22% 22%, 47.8% 47%, 32% 15%);
   }
 
   .darts-table-field-8 {
-    clip-path: polygon(15% 33%, 50% 51%, 23% 23%);
+    clip-path: polygon(15% 32%, 47% 47.8%, 22% 22%);
   }
 
   .darts-table-field-13 {
-    clip-path: polygon(12% 45%, 50% 51%, 16% 32%);
+    clip-path: polygon(11% 44%, 46.2% 48.8%, 15% 32%);
   }
 
   .darts-table-field-10 {
-    clip-path: polygon(13% 57%, 50% 51%, 13% 45%);
+    clip-path: polygon(11% 56%, 47% 50%, 11% 44%);
   }
 
   .darts-table-field-7 {
-    clip-path: polygon(16% 68%, 50% 51%, 12% 56%);
+    clip-path: polygon(15% 68%, 47% 51%, 11% 55%);
   }
 
   .darts-table-field-15 {
-    clip-path: polygon(23% 77%, 50% 51%, 16% 67%);
+    clip-path: polygon(22% 78%, 47% 52.2%, 15% 68%);
   }
 
   .darts-table-field-6 {
-    clip-path: polygon(33% 84%, 50% 51%, 23% 77%);
+    clip-path: polygon(32% 85%, 47.8% 53%, 22% 78%);
   }
 
   .darts-table-field-18 {
-    clip-path: polygon(44% 88%, 50% 51%, 32% 84%);
+    clip-path: polygon(44% 89%, 49% 53%, 32% 85%);
   }
 
   .darts-table-field-20 {
