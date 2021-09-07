@@ -19,15 +19,38 @@ export class GameToolbarComponent {
   }
 
   quit() {
-    this.route.navigate(['/']);
-    this.playground.game.resetScore();
-    this.playground.multiplier = 1;
-    this.playground.extraEndingMsg = '';
+    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate away from this page?')
+      .afterClosed().subscribe(data => {
+      if (data) {
+        this.route.navigate(['/']);
+        this.playground.game.resetScore();
+        this.playground.multiplier = 1;
+        this.playground.extraEndingMsg = '';
+      }
+    });
+  }
+
+  newGame() {
+    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to start a new game?')
+      .afterClosed().subscribe(data => {
+      if (data) {
+        this.playground.newGame(true);
+      }
+    });
   }
 
   showSettings() {
-    this.playground.reset();
-    this.playground.settingsOpen = true;
+    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate to the settings page?')
+      .afterClosed().subscribe(data => {
+      if (data) {
+        this.playground.reset();
+        this.playground.settingsOpen = true;
+      }
+    });
+  }
+
+  undo() {
+    this.playground.undo();
   }
 
   showTable() {
@@ -35,13 +58,13 @@ export class GameToolbarComponent {
     const primaryFields: number[] = [];
     const secondaryFields: number[] = [];
     for (let i = 0; i <= 20; i++) {
-      if (this.playground.isFieldEnabled(i)){
+      if (this.playground.isFieldEnabled(i)) {
         enabledFields.push(i);
       }
-      if (this.playground.isPrimaryField(i)){
+      if (this.playground.isPrimaryField(i)) {
         primaryFields.push(i);
       }
-      if (this.playground.isSecondaryField(i)){
+      if (this.playground.isSecondaryField(i)) {
         secondaryFields.push(i);
       }
     }

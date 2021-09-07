@@ -1,0 +1,18 @@
+.dialog-container {
+  width: 50vw;
+  text-align: center;
+
+  .subtitle-1 {
+    line-height: 1em;
+    margin-bottom: 1rem;
+  }
+
+  mat-dialog-content {
+    margin-bottom: 1rem;
+  }
+
+  mat-dialog-actions {
+    justify-content: space-around;
+    margin-bottom: -0.5rem;
+  }
+}

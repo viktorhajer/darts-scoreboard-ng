@@ -1,0 +1,10 @@
+<div class="dialog-container">
+  <div mat-dialog-title class="subtitle-1"><p>{{ data.title }}</p></div>
+  <mat-dialog-content class="body-2" *ngIf="!!data.content">
+    <p>{{ data.content }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button [color]="'primary'" (click)="confirm()">OK</button>
+    <button mat-raised-button [color]="'secondary'" (click)="cancel()">Cancel</button>
+  </mat-dialog-actions>
+</div>
