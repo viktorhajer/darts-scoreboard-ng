@@ -15,37 +15,29 @@ export class GameToolbarComponent {
   @Input() reversRound: number;
   @Input() info: number;
 
-  constructor(public route: Router, private dialogService: DialogService) {
+  constructor(public route: Router,
+              private dialogService: DialogService) {
   }
 
   quit() {
-    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate away from this page?')
-      .afterClosed().subscribe(data => {
-      if (data) {
-        this.route.navigate(['/']);
-        this.playground.game.resetScore();
-        this.playground.multiplier = 1;
-        this.playground.extraEndingMsg = '';
-      }
+    this.showConfirmation('Are you sure you want to navigate away from this page?', () => {
+      this.route.navigate(['/']);
+      this.playground.game.resetScore();
+      this.playground.multiplier = 1;
+      this.playground.extraEndingMsg = '';
     });
   }
 
   newGame() {
-    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to start a new game?')
-      .afterClosed().subscribe(data => {
-      if (data) {
-        this.playground.newGame(true);
-      }
+    this.showConfirmation('Are you sure you want to start a new game?', () => {
+      this.playground.newGame(true);
     });
   }
 
   showSettings() {
-    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate to the settings page?')
-      .afterClosed().subscribe(data => {
-      if (data) {
-        this.playground.reset();
-        this.playground.settingsOpen = true;
-      }
+    this.showConfirmation('Are you sure you want to navigate to the settings page?', () => {
+      this.playground.reset();
+      this.playground.settingsOpen = true;
     });
   }
 
@@ -73,6 +65,19 @@ export class GameToolbarComponent {
 
   getInfo(): number {
     return this.info || this.info === 0 ? this.info : this.getRound();
+  }
+
+  private showConfirmation(content: string, callback: () => void) {
+    if (this.playground.gameHistory.length) {
+      this.dialogService.openConfirmDialog('Confirmation', content)
+        .afterClosed().subscribe(data => {
+        if (data) {
+          callback();
+        }
+      });
+    } else {
+      callback();
+    }
   }
 
   private getRound(): number {

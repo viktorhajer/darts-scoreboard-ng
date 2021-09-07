@@ -966,7 +966,7 @@ MenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MenuComponent_div_4_Template, 2, 1, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.57");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.58");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -5342,31 +5342,22 @@ class GameToolbarComponent {
         this.dialogService = dialogService;
     }
     quit() {
-        this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate away from this page?')
-            .afterClosed().subscribe(data => {
-            if (data) {
-                this.route.navigate(['/']);
-                this.playground.game.resetScore();
-                this.playground.multiplier = 1;
-                this.playground.extraEndingMsg = '';
-            }
+        this.showConfirmation('Are you sure you want to navigate away from this page?', () => {
+            this.route.navigate(['/']);
+            this.playground.game.resetScore();
+            this.playground.multiplier = 1;
+            this.playground.extraEndingMsg = '';
         });
     }
     newGame() {
-        this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to start a new game?')
-            .afterClosed().subscribe(data => {
-            if (data) {
-                this.playground.newGame(true);
-            }
+        this.showConfirmation('Are you sure you want to start a new game?', () => {
+            this.playground.newGame(true);
         });
     }
     showSettings() {
-        this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate to the settings page?')
-            .afterClosed().subscribe(data => {
-            if (data) {
-                this.playground.reset();
-                this.playground.settingsOpen = true;
-            }
+        this.showConfirmation('Are you sure you want to navigate to the settings page?', () => {
+            this.playground.reset();
+            this.playground.settingsOpen = true;
         });
     }
     undo() {
@@ -5391,6 +5382,19 @@ class GameToolbarComponent {
     }
     getInfo() {
         return this.info || this.info === 0 ? this.info : this.getRound();
+    }
+    showConfirmation(content, callback) {
+        if (this.playground.gameHistory.length) {
+            this.dialogService.openConfirmDialog('Confirmation', content)
+                .afterClosed().subscribe(data => {
+                if (data) {
+                    callback();
+                }
+            });
+        }
+        else {
+            callback();
+        }
     }
     getRound() {
         const round = this.playground.game.round;

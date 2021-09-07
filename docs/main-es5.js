@@ -2013,7 +2013,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.57");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "v1.58");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -11408,15 +11408,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function quit() {
           var _this57 = this;
 
-          this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate away from this page?').afterClosed().subscribe(function (data) {
-            if (data) {
-              _this57.route.navigate(['/']);
+          this.showConfirmation('Are you sure you want to navigate away from this page?', function () {
+            _this57.route.navigate(['/']);
 
-              _this57.playground.game.resetScore();
+            _this57.playground.game.resetScore();
 
-              _this57.playground.multiplier = 1;
-              _this57.playground.extraEndingMsg = '';
-            }
+            _this57.playground.multiplier = 1;
+            _this57.playground.extraEndingMsg = '';
           });
         }
       }, {
@@ -11424,10 +11422,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function newGame() {
           var _this58 = this;
 
-          this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to start a new game?').afterClosed().subscribe(function (data) {
-            if (data) {
-              _this58.playground.newGame(true);
-            }
+          this.showConfirmation('Are you sure you want to start a new game?', function () {
+            _this58.playground.newGame(true);
           });
         }
       }, {
@@ -11435,12 +11431,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function showSettings() {
           var _this59 = this;
 
-          this.dialogService.openConfirmDialog('Confirmation', 'Are you sure you want to navigate to the settings page?').afterClosed().subscribe(function (data) {
-            if (data) {
-              _this59.playground.reset();
+          this.showConfirmation('Are you sure you want to navigate to the settings page?', function () {
+            _this59.playground.reset();
 
-              _this59.playground.settingsOpen = true;
-            }
+            _this59.playground.settingsOpen = true;
           });
         }
       }, {
@@ -11475,6 +11469,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "getInfo",
         value: function getInfo() {
           return this.info || this.info === 0 ? this.info : this.getRound();
+        }
+      }, {
+        key: "showConfirmation",
+        value: function showConfirmation(content, callback) {
+          if (this.playground.gameHistory.length) {
+            this.dialogService.openConfirmDialog('Confirmation', content).afterClosed().subscribe(function (data) {
+              if (data) {
+                callback();
+              }
+            });
+          } else {
+            callback();
+          }
         }
       }, {
         key: "getRound",
