@@ -58,4 +58,10 @@ export class KnockoutComponent extends Playground<KnockoutState> {
   customSettingsValidation(): boolean {
     return this.settings.numberOfLives > 0;
   }
+
+  getInfo(): number {
+    const player = this.game.getActualPlayer();
+    const state = this.getPlayerState(player);
+    return (state.score ? state.score : 0) - (this.game.actualThrow === 0 ? 0 : player.score);
+  }
 }

@@ -14,17 +14,24 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.punishment?'primary':''" (click)="settings.togglePunishment()">
       Punishment
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.nineLives?'primary':''" (click)="settings.toggleNineLives()">
-      Nine Lives
-    </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.fiveLives?'primary':''" (click)="settings.toggleFiveLives()">
-      Five Lives
-    </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.saboteur?'primary':''" (click)="settings.toggleSaboteur()">
       Saboteur
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.promoter?'primary':''" (click)="settings.togglePromoter()">
       Promoter
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" [color]="settings.life === 3?'primary':''" (click)="settings.toggleNineLives()">
+      Nine Lives
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.life === 5?'primary':''" (click)="settings.toggleFiveLives()">
+      Five Lives
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.life === 7?'primary':''" (click)="settings.toggleSevenLives()">
+      Seven Lives
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.life === 10?'primary':''" (click)="settings.toggleTenLives()">
+      Ten Lives
     </button>
     <mat-divider></mat-divider>
 
@@ -60,10 +67,12 @@
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
     <ng-container *ngIf="!settingsOpen">
       <div class="hidden-info" [class.hidden]="hiddenInfo" (click)="toggleHiddenInfo()">{{getDistanceFromRandom()}}</div>
-      <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{player.isInactive() ? 'inactive' : ''}}"
+      <div class="player
+        {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}
+        {{settings.life !== 0 && player.isInactive() ? 'inactive' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.nineLives || settings.fiveLives">
-          <ng-container *ngIf="settings.nineLives || settings.fiveLives">
+        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.life !== 0">
+          <ng-container *ngIf="settings.life !== 0">
             <div class="score"><label>Life: </label>{{player.life}}</div>
           </ng-container>
         </app-player-score>

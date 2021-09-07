@@ -3,8 +3,7 @@ import {FIELDS_COUNT} from '~models/playground.model';
 export class AroundClockSettings {
   jump: boolean;
   punishment: boolean;
-  nineLives: boolean;
-  fiveLives: boolean;
+  life: number;
   saboteur: boolean;
   promoter: boolean;
   style: number;
@@ -14,8 +13,7 @@ export class AroundClockSettings {
     this.style = 0;
     this.jump = true;
     this.punishment = true;
-    this.nineLives = false;
-    this.fiveLives = false;
+    this.life = 0;
     this.saboteur = false;
     this.fields = AroundClockSettings.getBaseFields();
   }
@@ -60,17 +58,19 @@ export class AroundClockSettings {
   }
 
   toggleNineLives() {
-    this.nineLives = !this.nineLives;
-    if (this.nineLives) {
-      this.fiveLives = false;
-    }
+    this.life = this.life === 3 ? 0 : 3;
   }
 
   toggleFiveLives() {
-    this.fiveLives = !this.fiveLives;
-    if (this.fiveLives) {
-      this.nineLives = false;
-    }
+    this.life = this.life === 5 ? 0 : 5;
+  }
+
+  toggleSevenLives() {
+    this.life = this.life === 7 ? 0 : 7;
+  }
+
+  toggleTenLives() {
+    this.life = this.life === 10 ? 0 : 10;
   }
 
   toggleSaboteur() {

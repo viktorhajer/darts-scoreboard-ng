@@ -4,7 +4,7 @@ export class KnockoutSettings {
 
   constructor() {
     this.numberOfLives = 5;
-    this.killer = false;
+    this.killer = true;
   }
 
   toggleKiller() {
