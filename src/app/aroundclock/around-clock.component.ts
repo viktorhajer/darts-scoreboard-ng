@@ -9,6 +9,7 @@ import {Player} from '~models/player.model';
 import {AroundClockState} from './models/around-clock.state.model';
 import {AroundClockSettings} from './models/around-clock.settings.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './around-clock.component.html',
@@ -20,8 +21,8 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   hiddenInfo = true;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService, 2);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'around-clock', 2);
     this.settings = new AroundClockSettings();
   }
 
@@ -143,6 +144,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       player.state = new AroundClockState();
     });
     this.settings.setStyle();
+  }
+
+  decoratePlayerStat(player: Player): string {
+    return player.name;
   }
 
   private getTheBestPlayers(): Player[] {

@@ -9,6 +9,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {ShanghaiSettings} from './models/shanghai.settings.model';
 import {ShanghaiState} from './models/shanghai.state.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './shanghai.component.html',
@@ -19,8 +20,8 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   settings: ShanghaiSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'shanghai');
     this.settings = new ShanghaiSettings();
   }
 
@@ -122,5 +123,9 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       return c;
     });
     return [...winners, ...losers];
+  }
+
+  decoratePlayerStat(player: Player): string {
+    return player.name + '____' + player.score + (player.win && this.extraEndingMsg ? '_____s' : '');
   }
 }

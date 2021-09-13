@@ -9,6 +9,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {ScamSettings} from './models/scam.settings.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './scam.component.html',
@@ -19,8 +20,8 @@ export class ScamComponent extends Playground<PlaygroundState> {
   settings: ScamSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService, 2);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'scam', 2);
     this.settings = new ScamSettings();
   }
 

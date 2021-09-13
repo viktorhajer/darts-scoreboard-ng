@@ -9,6 +9,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {CaptureTheFlagState} from './models/capture-the-flag.state.model';
 import {CaptureTheFlagSettings} from './models/capture-the-flag.settings.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './capture-the-flag.component.html',
@@ -19,8 +20,8 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
   settings: CaptureTheFlagSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'ctf');
     this.settings = new CaptureTheFlagSettings();
   }
 

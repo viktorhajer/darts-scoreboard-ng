@@ -89,7 +89,8 @@ export class GameService {
   }
 
   isTheBestPlayer(actPlayer: Player): boolean {
-    return actPlayer.score === this.getTheBestPlayers()[0].score;
+    const best = this.getTheBestPlayers();
+    return actPlayer.score === ((best && best.length) ? best[0].score : 0);
   }
 
   isTheWorstPlayer(actPlayer: Player): boolean {

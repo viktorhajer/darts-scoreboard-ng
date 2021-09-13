@@ -9,6 +9,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {KnockoutSettings} from './models/knockout.settings.model';
 import {KnockoutState} from './models/knockout.state.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './knockout.component.html',
@@ -19,8 +20,8 @@ export class KnockoutComponent extends Playground<KnockoutState> {
   settings: KnockoutSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService, 2);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'knockout', 2);
     this.settings = new KnockoutSettings();
   }
 
@@ -63,5 +64,9 @@ export class KnockoutComponent extends Playground<KnockoutState> {
     const player = this.game.getActualPlayer();
     const state = this.getPlayerState(player);
     return (state.score ? state.score : 0) - (this.game.actualThrow === 0 ? 0 : player.score);
+  }
+
+  decoratePlayerStat(player: Player): string {
+    return player.name;
   }
 }

@@ -9,6 +9,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {FivesSettings} from './models/fives.settings.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './fives.component.html',
@@ -19,8 +20,8 @@ export class FivesComponent extends Playground<PlaygroundState> {
   settings: FivesSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'fives');
     this.settings = new FivesSettings();
   }
 
@@ -63,5 +64,9 @@ export class FivesComponent extends Playground<PlaygroundState> {
     if (this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
+  }
+
+  decoratePlayerStat(player: Player): string {
+    return player.name + `____${this.settings.divider}/${this.settings.limit}/${player.score}`;
   }
 }

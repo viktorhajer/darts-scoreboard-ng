@@ -8,6 +8,8 @@ import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
 import {GameService} from '~services/game.service';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
+import {GameStatisticsModel} from '~models/game-statistics.model';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
@@ -23,12 +25,15 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   playground = this;
   multiplier: number;
   extraEndingMsg: string;
+  gameStatistics: GameStatisticsModel;
 
   protected constructor(public application: ApplicationStateService,
                         public game: GameService,
                         public route: Router,
                         public dialogService: DialogService,
                         public soundService: SoundService,
+                        public statisticsService: StatisticsService,
+                        public gameName: string,
                         public minimumNumberOfPlayers = 1,
                         public maximumNumberOfPlayers?: number) {
   }
@@ -72,6 +77,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
           if (!this.extraEndingMsg) {
             this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
           }
+          this.finishStatistics();
           this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
           this.newGame(true);
         } else {
@@ -86,6 +92,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
         if (!this.extraEndingMsg) {
           this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
         }
+        this.finishStatistics();
         this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
         this.newGame(true);
       }
@@ -165,6 +172,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.extraEndingMsg = '';
     this.game.actualFieldIndex = 0;
     this.customReset();
+    this.startStatistics();
   }
 
   quit() {
@@ -200,6 +208,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     return '';
   }
 
+  decoratePlayerStat(player: Player): string {
+    return player.name + '____' + player.score;
+  }
+
   getTheFinalResult(): Player[] {
     let winners = this.game.players.filter(p => p.win);
     winners = winners.sort((p1, p2) => p1.winDateTime < p2.winDateTime ? -1 : 1)
@@ -211,6 +223,20 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
         return c;
       });
     return [...winners, ...losers];
+  }
+
+  private startStatistics() {
+    this.gameStatistics = new GameStatisticsModel();
+    this.gameStatistics.s = new Date().toISOString();
+    this.gameStatistics.g = this.gameName;
+  }
+
+  private finishStatistics() {
+    this.gameStatistics.f = new Date().toISOString();
+    this.gameStatistics.w = this.game.players.filter(p => p.win).map(p => this.decoratePlayerStat(p));
+    this.gameStatistics.l = this.game.players.filter(p => !p.win).map(p => this.decoratePlayerStat(p));
+    this.gameStatistics.r = this.game.round;
+    this.statisticsService.saveStatistics(this.gameStatistics);
   }
 
   private playerSettingsValidation(): boolean {

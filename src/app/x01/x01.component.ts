@@ -9,6 +9,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {X01Settings} from './models/x01.settings.model';
 import {SoundService} from '~services/sound.service';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './x01.component.html',
@@ -19,8 +20,8 @@ export class X01Component extends Playground<PlaygroundState> {
   settings: X01Settings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'x01');
     this.settings = new X01Settings();
   }
 

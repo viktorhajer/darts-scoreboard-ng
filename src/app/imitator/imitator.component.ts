@@ -9,6 +9,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {ImitatorSettings} from './models/imitator.settings.model';
 import {SoundService} from '~services/sound.service';
 import {ImitatorState} from './models/imitator.state.model';
+import {StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './imitator.component.html',
@@ -19,8 +20,8 @@ export class ImitatorComponent extends Playground<ImitatorState> {
   settings: ImitatorSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, statisticsService, 'imitator');
     this.nextEnabled = false;
     this.settings = new ImitatorSettings();
   }
