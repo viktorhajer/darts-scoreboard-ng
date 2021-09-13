@@ -1,6 +1,6 @@
 import {FIELDS_COUNT} from '~models/playground.model';
 
-export class ConquerorSettings {
+export class CaptureTheFlagSettings {
 
   fields: number[];
   style: number;
@@ -9,24 +9,24 @@ export class ConquerorSettings {
   constructor() {
     this.fields = [];
     this.noScore = false;
-    this.randomCity();
+    this.randomCountry();
   }
 
   randomCity() {
     this.style = 0;
-    this.fields = ConquerorSettings.getRandom(5);
+    this.fields = CaptureTheFlagSettings.getRandom(5);
     this.fields[this.fields.length] = 20;
   }
 
   randomCountry() {
     this.style = 1;
-    this.fields = ConquerorSettings.getRandom(10);
+    this.fields = CaptureTheFlagSettings.getRandom(10);
     this.fields[this.fields.length] = 20;
   }
 
   randomContinent() {
     this.style = 2;
-    this.fields = ConquerorSettings.getRandom(20);
+    this.fields = CaptureTheFlagSettings.getRandom(20);
     this.fields[this.fields.length] = 20;
   }
 
@@ -39,7 +39,7 @@ export class ConquerorSettings {
   }
 
   private static getRandom(size?: number): number[] {
-    let fields = ConquerorSettings.getBaseFields();
+    let fields = CaptureTheFlagSettings.getBaseFields();
     if (!size) {
       size = fields.length;
     }

@@ -6,22 +6,22 @@ import {Router} from '@angular/router';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
-import {ConquerorState} from './models/conqueror.state.model';
-import {ConquerorSettings} from './models/conqueror.settings.model';
+import {CaptureTheFlagState} from './models/capture-the-flag.state.model';
+import {CaptureTheFlagSettings} from './models/capture-the-flag.settings.model';
 import {SoundService} from '~services/sound.service';
 
 @Component({
-  templateUrl: './conqueror.component.html',
+  templateUrl: './capture-the-flag.component.html',
   animations: [slideInAnimation],
 })
-export class ConquerorComponent extends Playground<ConquerorState> {
+export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
 
-  settings: ConquerorSettings;
+  settings: CaptureTheFlagSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService) {
     super(application, game, route, dialogService, soundService);
-    this.settings = new ConquerorSettings();
+    this.settings = new CaptureTheFlagSettings();
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
@@ -67,7 +67,7 @@ export class ConquerorComponent extends Playground<ConquerorState> {
 
   customReset() {
     this.game.actualFieldIndex = 0;
-    this.game.players.forEach(player => player.state = new ConquerorState());
+    this.game.players.forEach(player => player.state = new CaptureTheFlagState());
     this.settings.randomCity();
   }
 

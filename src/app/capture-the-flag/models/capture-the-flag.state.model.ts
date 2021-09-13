@@ -1,7 +1,7 @@
 import {PlaygroundState} from '~models/playground-state.model';
 import {FieldValue} from '~models/field-value.model';
 
-export class ConquerorState extends PlaygroundState {
+export class CaptureTheFlagState extends PlaygroundState {
 
   actFieldIndex: number;
   fieldCount: FieldValue[];
@@ -28,8 +28,8 @@ export class ConquerorState extends PlaygroundState {
     this.actFieldIndex++;
   }
 
-  clone(): ConquerorState {
-    const state = new ConquerorState();
+  clone(): CaptureTheFlagState {
+    const state = new CaptureTheFlagState();
     state.actFieldIndex = this.actFieldIndex;
     this.fieldCount.forEach(fv => state.fieldCount.push(fv.clone()));
     return state;

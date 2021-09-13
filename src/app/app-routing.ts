@@ -8,7 +8,7 @@ import {KillerModule} from './killer/killer.module';
 import {FivesModule} from './fives/fives.module';
 import {HareAndHoundModule} from './hare-and-hound/hare-and-hound.module';
 import {KnockoutModule} from './knockout/knockout.module';
-import {ConquerorModule} from './conqueror/conqueror.module';
+import {CaptureTheFlagModule} from './capture-the-flag/capture-the-flag.module';
 import {ImitatorModule} from './imitator/imitator.module';
 import {ScamModule} from './scam/scam.module';
 import {DuelModule} from './duel/duel.module';
@@ -59,9 +59,9 @@ export const routes: Routes = [
     loadChildren: () => KillerModule
   },
   {
-    path: 'conqueror',
-    data: {name: 'Conqueror'},
-    loadChildren: () => ConquerorModule
+    path: 'capture-the-flag',
+    data: {name: 'Capture the Flag'},
+    loadChildren: () => CaptureTheFlagModule
   },
   {
     path: 'duel',

@@ -35,7 +35,7 @@ const routes: Routes = [
     data: {name: 'Killer', color: '#0a756b', icon: 'gps_fixed'}
   },
   {
-    path: 'conqueror',
+    path: 'capture-the-flag',
     data: {name: 'Capture the Flag', color: '#0a756b', icon: 'flag'}
   },
   {

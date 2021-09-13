@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {SharedModule} from '../shared/shared.module';
-import {ConquerorComponent} from './conqueror.component';
+import {CaptureTheFlagComponent} from './capture-the-flag.component';
 
 @NgModule({
   imports: [
     SharedModule,
     RouterModule.forChild([
-      {path: '', component: ConquerorComponent}
+      {path: '', component: CaptureTheFlagComponent}
     ])
   ],
-  declarations: [ConquerorComponent]
+  declarations: [CaptureTheFlagComponent]
 })
-export class ConquerorModule {
+export class CaptureTheFlagModule {
 }
