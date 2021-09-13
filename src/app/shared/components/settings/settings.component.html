@@ -1,7 +1,5 @@
 <div class="settings">
-  <h1>{{title}} Settings</h1>
-
-  <app-game-rules>{{rules}}</app-game-rules>
+  <h1 (click)="openRules()">{{title}} Settings</h1>
 
   <h2>Players</h2>
   <app-player-settings [playground]="playground"></app-player-settings>

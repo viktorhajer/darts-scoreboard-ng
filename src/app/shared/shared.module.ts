@@ -8,11 +8,10 @@ import {NumberPlateComponent} from '~components/number-plate/number-plate.compon
 import {PlayerSettingsComponent} from '~components/player-settings/player-settings.component';
 import {SettingsComponent} from '~components/settings/settings.component';
 import {PlayerScoreComponent} from '~components/player-score/player-score.component';
-import {GameRulesComponent} from '~components/game-rules/game-rules.component';
 import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 import {ConfirmDialogComponent} from '~components/confirm-dialog/confirm-dialog.component';
 
-const components = [NumberPlateComponent, GameToolbarComponent, GameRulesComponent, DartsTableDialogComponent,
+const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialogComponent,
   DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent];
 
 @NgModule({

@@ -1,31 +1,46 @@
-.number {
-  float: left;
-  margin: 0.1vw;
-  font-size: calc(10px + 0.8vw + 0.8vh);
-  height: 19.4vh;
-  width: 13.7vw;
+.side-right {
+  .number {
+    float: left;
+    margin: 0.1vw;
+    font-size: calc(11px + 0.8vw + 0.8vh);
+    height: 19.4vh;
+    width: 13.7vw;
 
-  mat-icon {
-    position: absolute;
-    top: 10px;
-    left: 5px;
-    font-size: 30px;
+    mat-icon {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      font-size: 30px;
+    }
+
+    .field-note {
+      position: absolute;
+      top: 10px;
+      right: 7px;
+      font-size: 12px;
+      width: 13vw;
+      overflow: hidden;
+      word-break: normal;
+      white-space: pre-line;
+      line-height: 16px;
+      text-align: right;
+    }
+
+    .field-note-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 7px;
+      font-size: 14px;
+      width: 13vw;
+      overflow: hidden;
+      word-break: normal;
+      white-space: pre-line;
+      line-height: 16px;
+      text-align: left;
+    }
   }
 
-  .field-note {
-    position: absolute;
-    top: 10px;
-    right: 7px;
-    font-size: 12px;
-    width: 48px;
-    overflow: hidden;
-    word-break: normal;
-    white-space: pre-line;
-    line-height: 16px;
-    text-align: right;
+  .number:disabled {
+    opacity: 0.5;
   }
-}
-
-.number:disabled {
-  opacity: 0.5;
 }

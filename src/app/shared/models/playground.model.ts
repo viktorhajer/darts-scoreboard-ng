@@ -117,7 +117,16 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   newGame(rotate = false) {
     this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
     if (!this.playerSettingsValidation()) {
-      this.dialogService.openErrorDialog('Error!', 'Number of players are incorrect.');
+      let msg = 'Number of players are incorrect.';
+      if(this.minimumNumberOfPlayers) {
+        msg += ` (minimum: ${this.minimumNumberOfPlayers}`;
+      }
+      if(this.maximumNumberOfPlayers) {
+        msg += (this.minimumNumberOfPlayers ? ', ' : ' (') + `maximum: ${this.maximumNumberOfPlayers}).`;
+      } else {
+        msg += this.minimumNumberOfPlayers ? ').' : '.';
+      }
+      this.dialogService.openErrorDialog('Error!', msg);
     } else if (this.settingsOpen) {
       this.dialogService.openErrorDialog('Error!', 'Settings is incorrect.');
     }
@@ -184,6 +193,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   }
 
   getFieldNote(fieldIndex: number): string {
+    return '';
+  }
+
+  getFieldNoteBottom(fieldIndex: number): string {
     return '';
   }
 

@@ -1,3 +1,3 @@
 export class ApplicationSettings {
-  darkTheme = 0;
+  theme = 0;
 }

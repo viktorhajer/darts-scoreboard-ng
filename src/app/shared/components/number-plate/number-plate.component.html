@@ -1,16 +1,21 @@
 <div class="side-right">
 
-  <button mat-raised-button *ngFor="let i of getNumbers()" class="number" [color]="getNumberColor(i-1)"
-          [disabled]="isNumberDisabled(i-1)" (click)="throwNumber(i-1)">
-    {{i}}
-    <mat-icon *ngIf="playground.getFieldIcon(i-1)">{{ playground.getFieldIcon(i-1)}}</mat-icon>
-    <p class="field-note" *ngIf="playground.getFieldNote(i-1)">{{ playground.getFieldNote(i-1)}}</p>
-  </button>
+  <ng-container *ngFor="let i of getNumbers()">
+    <button mat-raised-button class="number" [color]="getNumberColor(i-1)"
+            [disabled]="isNumberDisabled(i-1)" (click)="throwNumber(i-1)">
+      {{i}}
+      <mat-icon *ngIf="playground.getFieldIcon(i-1)">{{ playground.getFieldIcon(i-1)}}</mat-icon>
+      <p class="field-note" *ngIf="playground.getFieldNote(i-1)">{{ playground.getFieldNote(i-1)}}</p>
+      <p class="field-note-bottom" *ngIf="playground.getFieldNoteBottom(i-1)">{{ playground.getFieldNoteBottom(i-1)}}</p>
+    </button>
+  </ng-container>
+
   <button mat-raised-button class="number" [color]="getNumberColor(20)" [disabled]="isNumberDisabled(20)"
           (click)="throwNumber(20)">
     Bull
     <mat-icon *ngIf="playground.getFieldIcon(20)">{{ playground.getFieldIcon(20)}}</mat-icon>
     <p class="field-note" *ngIf="playground.getFieldNote(20)">{{ playground.getFieldNote(20)}}</p>
+    <p class="field-note-bottom" *ngIf="playground.getFieldNoteBottom(20)">{{ playground.getFieldNoteBottom(20)}}</p>
   </button>
 
   <button mat-raised-button class="number" [color]="playground.multiplier === 2 ? 'primary' : ''"

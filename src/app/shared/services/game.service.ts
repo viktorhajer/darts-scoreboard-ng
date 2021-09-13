@@ -79,12 +79,17 @@ export class GameService {
     return this.isTheLastPlayer(this.getActualPlayer());
   }
 
-  isTheBestPlayer(actPlayer: Player): boolean {
+  getTheBestPlayers(): Player[] {
     let max = this.players[0].score;
-    this.players.forEach(player => {
-      max = player.score > max ? player.score : max;
+    const activePlayers = this.getActivePlayers();
+    activePlayers.forEach(p => {
+      max = p.score > max ? p.score : max;
     });
-    return actPlayer.score === max;
+    return activePlayers.filter(p => p.score === max);
+  }
+
+  isTheBestPlayer(actPlayer: Player): boolean {
+    return actPlayer.score === this.getTheBestPlayers()[0].score;
   }
 
   isTheWorstPlayer(actPlayer: Player): boolean {

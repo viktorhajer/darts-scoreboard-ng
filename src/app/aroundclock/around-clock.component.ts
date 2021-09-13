@@ -21,7 +21,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService) {
-    super(application, game, route, dialogService, soundService);
+    super(application, game, route, dialogService, soundService, 2);
     this.settings = new AroundClockSettings();
   }
 
@@ -81,6 +81,14 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       }
       this.game.nextPlayer();
     }
+
+    if (this.settings.firstDeath) {
+      const activePlayers = this.game.players.filter(p => !p.isInactive());
+      if (activePlayers.length < this.game.players.length) {
+        this.getTheBestPlayers().forEach(p => p.setWin(true));
+      }
+    }
+
     if (this.settings.life !== 0 && this.game.players.length > 1) {
       const activePlayers = this.game.players.filter(p => !p.isInactive());
       if (activePlayers.length === 1) {
@@ -135,6 +143,16 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       player.state = new AroundClockState();
     });
     this.settings.setStyle();
+  }
+
+  private getTheBestPlayers(): Player[] {
+    const activePlayers = this.game.players.filter(p => !p.isInactive());
+    let max = 0;
+    activePlayers.forEach(p => {
+      const index = this.getPlayerState(p).actFieldIndex;
+      max = index > max ? index : max;
+    });
+    return activePlayers.filter(p => this.getPlayerState(p).actFieldIndex === max);
   }
 
   private getFieldIndex(index: number) {

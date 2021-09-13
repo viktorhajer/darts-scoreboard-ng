@@ -4,9 +4,7 @@
                 [rules]="'The object of this popular game is to be the first player to hit every number on the board ' +
                  'from 1-20. The numbers must be hit in order, and players alternate after three throws. The player ' +
                   'must hit each number in turn and cannot proceed until to the next number until the number is hit. ' +
-                   'The winner is the player who hist all the numbers in order first.\n\nNine Lives: Each player gets three ' +
-                   'lives. I do not know why the game is called 9 lives but you only get 3. Maybe it is because if you ' +
-                    'miss with three darts you lose a life and 3 x 3 = 9'">
+                   'The winner is the player who hist all the numbers in order first.'">
     <h2>Games</h2>
     <button mat-raised-button class="button shortmedium" [color]="settings.jump?'primary':''" (click)="settings.toggleJump()">
       Enable Jump
@@ -21,8 +19,8 @@
       Promoter
     </button>
     <mat-divider></mat-divider>
-    <button mat-raised-button class="button shortmedium" [color]="settings.life === 3?'primary':''" (click)="settings.toggleNineLives()">
-      Nine Lives
+    <button mat-raised-button class="button shortmedium" [color]="settings.life === 3?'primary':''" (click)="settings.toggleTreeLives()">
+      Tree Lives
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.life === 5?'primary':''" (click)="settings.toggleFiveLives()">
       Five Lives
@@ -32,6 +30,9 @@
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.life === 10?'primary':''" (click)="settings.toggleTenLives()">
       Ten Lives
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.firstDeath?'primary':''" (click)="settings.toggleFirstDeath()">
+      First Death
     </button>
     <mat-divider></mat-divider>
 

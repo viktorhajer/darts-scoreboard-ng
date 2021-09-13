@@ -18,9 +18,8 @@ export class ApplicationStateService {
     this.setTheme();
   }
 
-  toggleDarkTheme() {
-    this.soundService.fart();
-    this.settings.darkTheme = (this.settings.darkTheme + 1) % 3;
+  toggleColorTheme() {
+    this.settings.theme = (this.settings.theme + 1) % 3;
     this.setTheme();
     this.saveSettings();
   }
@@ -41,9 +40,9 @@ export class ApplicationStateService {
   private setTheme() {
     document.body.className = document.body.className.replace('dark-theme', '');
     document.body.className = document.body.className.replace('dark-red', '');
-    if (this.settings.darkTheme === 1) {
+    if (this.settings.theme === 1) {
       document.body.classList.add('dark-theme');
-    } else if (this.settings.darkTheme === 2) {
+    } else if (this.settings.theme === 2) {
       document.body.classList.add('dark-red');
     }
   }

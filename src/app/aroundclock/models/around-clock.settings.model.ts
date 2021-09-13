@@ -8,10 +8,12 @@ export class AroundClockSettings {
   promoter: boolean;
   style: number;
   fields: number[];
+  firstDeath: boolean;
 
   constructor() {
     this.style = 0;
     this.jump = true;
+    this.firstDeath = false;
     this.punishment = true;
     this.life = 0;
     this.saboteur = false;
@@ -49,6 +51,10 @@ export class AroundClockSettings {
     }
   }
 
+  toggleFirstDeath() {
+    this.firstDeath = !this.firstDeath;
+  }
+
   toggleJump() {
     this.jump = !this.jump;
   }
@@ -57,7 +63,7 @@ export class AroundClockSettings {
     this.punishment = !this.punishment;
   }
 
-  toggleNineLives() {
+  toggleTreeLives() {
     this.life = this.life === 3 ? 0 : 3;
   }
 
