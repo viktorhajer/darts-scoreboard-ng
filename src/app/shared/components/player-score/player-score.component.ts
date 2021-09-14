@@ -12,6 +12,7 @@ export class PlayerScoreComponent {
   @Input() player: Player;
   @Input() hasContent = true;
   @Input() scoreDisplayed = true;
+  @Input() lifeDisplayed = false;
   @Input() highlighted = false;
 
   constructor(public readonly application: ApplicationStateService) {

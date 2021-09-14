@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {GameService} from '~services/game.service';
 import {Playground} from '~models/playground.model';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   selector: 'app-number-plate',
@@ -11,7 +12,8 @@ export class NumberPlateComponent {
 
   @Input() playground: any;
 
-  constructor(public game: GameService) {
+  constructor(public game: GameService,
+              public application: ApplicationStateService) {
   }
 
   getNumbers(): number[] {

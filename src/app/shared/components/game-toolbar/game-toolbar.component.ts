@@ -3,6 +3,7 @@ import {Playground} from '~models/playground.model';
 import {Router} from '@angular/router';
 import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   selector: 'app-game-toolbar',
@@ -16,6 +17,7 @@ export class GameToolbarComponent {
   @Input() info: number;
 
   constructor(public route: Router,
+              public application: ApplicationStateService,
               private dialogService: DialogService) {
   }
 

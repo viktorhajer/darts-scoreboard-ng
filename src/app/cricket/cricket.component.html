@@ -46,7 +46,7 @@
     </button>
   </app-settings>
 
-  <div class="side-left">
+  <div class="side-left" [class.detailed]="application.settings.details">
 
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
 

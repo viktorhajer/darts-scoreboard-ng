@@ -30,12 +30,21 @@ button {
   display: flex;
 
   .side-left {
-    width: 30vw;
+    width: 22vw;
+
+    &.detailed {
+      width: 30vw;
+    }
+
   }
 
   .side-right {
-    width: 70vw;
+    width: 78vw;
     float: right;
+
+    &.detailed {
+      width: 70vw;
+    }
   }
 }
 

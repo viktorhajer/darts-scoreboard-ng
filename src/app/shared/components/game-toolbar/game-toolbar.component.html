@@ -1,18 +1,17 @@
 <div class="toolbar">
-  <div class="buttons">
-    <button mat-raised-button (click)="quit()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <button mat-raised-button (click)="newGame()">
-      <mat-icon>refresh</mat-icon>
-    </button>
-    <button mat-raised-button (click)="showSettings()">
-      <mat-icon>build</mat-icon>
-    </button>
-    <button mat-raised-button (click)="undo()">
-      <mat-icon>undo</mat-icon>
-    </button>
-  </div>
-  <div class="round-info" (click)="showTable()">{{getInfo()}}.</div>
+  <button mat-raised-button (click)="newGame()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <button mat-raised-button (click)="undo()">
+    <mat-icon>undo</mat-icon>
+  </button>
 </div>
-<div class="clear"></div>
+
+<div class="round-info" (click)="showTable()" [class.detailed]="application.settings.details">
+  {{getInfo()}}
+</div>
+
+<div class="theme-chooser">
+  <button mat-icon-button (click)="quit()" color="primary"><mat-icon>menu</mat-icon></button>
+  <button mat-icon-button (click)="showSettings()" color="primary"><mat-icon>build</mat-icon></button>
+</div>

@@ -1,4 +1,4 @@
-<div class="side-right">
+<div class="side-right" [class.detailed]="application.settings.details">
 
   <ng-container *ngFor="let i of getNumbers()">
     <button mat-raised-button class="number" [color]="getNumberColor(i-1)"

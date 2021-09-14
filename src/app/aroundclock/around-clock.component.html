@@ -64,7 +64,7 @@
     </button>
   </app-settings>
 
-  <div class="side-left">
+  <div class="side-left" [class.detailed]="application.settings.details">
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
     <ng-container *ngIf="!settingsOpen">
       <div class="hidden-info" [class.hidden]="hiddenInfo" (click)="toggleHiddenInfo()">{{getDistanceFromRandom()}}</div>
@@ -72,10 +72,7 @@
         {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}
         {{settings.life !== 0 && player.isInactive() ? 'inactive' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player" [scoreDisplayed]="false" [hasContent]="settings.life !== 0">
-          <ng-container *ngIf="settings.life !== 0">
-            <div class="score"><label>Life: </label>{{player.life}}</div>
-          </ng-container>
+        <app-player-score [player]="player" [scoreDisplayed]="false" [lifeDisplayed]="settings.life !== 0" [hasContent]="false">
         </app-player-score>
       </div>
     </ng-container>

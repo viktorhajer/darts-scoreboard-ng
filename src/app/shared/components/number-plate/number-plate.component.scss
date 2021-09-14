@@ -4,7 +4,7 @@
     margin: 0.1vw;
     font-size: calc(11px + 0.8vw + 0.8vh);
     height: 19.4vh;
-    width: 13.7vw;
+    width: 15.3vw;
 
     mat-icon {
       position: absolute;
@@ -42,5 +42,11 @@
 
   .number:disabled {
     opacity: 0.5;
+  }
+
+  &.detailed {
+    .number {
+      width: 13.7vw;
+    }
   }
 }

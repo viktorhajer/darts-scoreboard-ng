@@ -9,7 +9,12 @@
   <div class="clear"></div>
   <div class="line" *ngIf="hasContent && application.settings.details"></div>
   <ng-content *ngIf="application.settings.details"></ng-content>
-  <div class="line-space" *ngIf="scoreDisplayed"></div>
-  <div class="score" *ngIf="scoreDisplayed">{{player.score}}</div>
+  <div class="line-space" *ngIf="scoreDisplayed || lifeDisplayed"></div>
+  <div class="score" *ngIf="scoreDisplayed && !lifeDisplayed">{{player.score}}</div>
+  <div class="score" *ngIf="!scoreDisplayed && lifeDisplayed"><label>Life: </label>{{player.life}}</div>
+  <div class="score" *ngIf="scoreDisplayed && lifeDisplayed">
+    <label>Life: </label>{{player.life}}
+    <label>Score: </label>{{player.score}}
+  </div>
   <div class="clear"></div>
 </div>

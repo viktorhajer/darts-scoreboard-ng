@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {slideInAnimation} from './route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {SoundService} from '~services/sound.service';

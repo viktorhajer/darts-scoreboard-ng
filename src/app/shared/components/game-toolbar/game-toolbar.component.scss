@@ -1,27 +1,30 @@
 .toolbar {
   display: flex;
 
-  .buttons {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-  }
-
   button {
-    width: calc(50% - 10px);
-    height: calc(50% - 10px);
-    margin: 0;
-  }
-
-  .round-info {
-    font-size: 20px;
-    font-weight: bold;
-    width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90px;
-    border-radius: 8px;
-    margin: 5px 5px 5px 0;
+    margin: 2px 2px 0 2px;
+    flex: 1;
+    height: 60px;
   }
 }
+
+.round-info {
+  position: absolute;
+  bottom: 134px;
+  left: 0;
+  font-size: 10em;
+  opacity: 0.1;
+  width: 22vw;
+  text-align: center;
+
+  &.detailed {
+    width: 30vw;
+  }
+}
+
+.theme-chooser {
+  position: absolute;
+  bottom: 0;
+  left: 75px;
+}
+
