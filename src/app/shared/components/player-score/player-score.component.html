@@ -7,9 +7,9 @@
     <div class="shoot total">{{!player.getThrowsTotal() ? '0' : player.getThrowsTotal()}}</div>
   </div>
   <div class="clear"></div>
-  <div class="line" *ngIf="hasContent"></div>
-  <ng-content></ng-content>
-  <div class="line" *ngIf="scoreDisplayed"></div>
+  <div class="line" *ngIf="hasContent && application.settings.details"></div>
+  <ng-content *ngIf="application.settings.details"></ng-content>
+  <div class="line-space" *ngIf="scoreDisplayed"></div>
   <div class="score" *ngIf="scoreDisplayed">{{player.score}}</div>
   <div class="clear"></div>
 </div>

@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ApplicationSettings} from '~models/application-settings.model';
-import {SoundService} from '~services/sound.service';
 
 const APPLICATION_KEY = 'ApplicationSettings';
 const PLAYER_KEY = 'Players';
@@ -10,7 +9,7 @@ export class ApplicationStateService {
 
   settings = new ApplicationSettings();
 
-  constructor(private soundService: SoundService) {
+  constructor() {
     const data = localStorage.getItem(APPLICATION_KEY);
     if (data) {
       this.settings = JSON.parse(data);
@@ -21,6 +20,11 @@ export class ApplicationStateService {
   toggleColorTheme() {
     this.settings.theme = (this.settings.theme + 1) % 3;
     this.setTheme();
+    this.saveSettings();
+  }
+
+  toggleDetails() {
+    this.settings.details = (this.settings.details + 1) % 2;
     this.saveSettings();
   }
 
