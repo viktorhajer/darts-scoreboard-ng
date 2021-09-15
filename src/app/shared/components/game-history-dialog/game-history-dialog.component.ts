@@ -20,7 +20,10 @@ export class GameHistoryDialogComponent {
   getPlayers(players: string[]): string[] {
     return players.map(p => {
       const pna = p.split(STAT_NAME_SEPARATOR);
-      const result = pna[0];
+      let result = pna[0];
+      if (pna.length === 2) {
+        result += '(' + pna[1] + ')';
+      }
       return result;
     });
   }

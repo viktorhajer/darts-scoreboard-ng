@@ -75,11 +75,9 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       const winners = this.game.players.filter(p => p.win);
       if (winners.length > 0) {
         if ((this.game.victoryFirst || this.game.getNumberOfPlayers() - winners.length <= 1) || !this.game.victoryFirst) {
-          if (!this.extraEndingMsg) {
-            this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
-          }
+          const content = this.extraEndingMsg ? this.extraEndingMsg : 'Round: #' + (this.game.round + 1);
           this.finishStatistics();
-          this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+          this.dialogService.openDialog('Game Over!', content, this.getTheFinalResult());
           this.newGame(true);
         } else {
           while (this.game.getActualPlayer().win) {
@@ -90,11 +88,9 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
       const activePlayers = this.game.players.filter(p => !this.getPlayerState(p) || !this.getPlayerState(p).isInactive());
       if (!activePlayers.length) {
-        if (!this.extraEndingMsg) {
-          this.extraEndingMsg = 'Round: #' + (this.game.round + 1);
-        }
+        const content = this.extraEndingMsg ? this.extraEndingMsg : 'Round: #' + (this.game.round + 1);
         this.finishStatistics();
-        this.dialogService.openDialog('Game Over!', this.extraEndingMsg, this.getTheFinalResult());
+        this.dialogService.openDialog('Game Over!', content, this.getTheFinalResult());
         this.newGame(true);
       }
 

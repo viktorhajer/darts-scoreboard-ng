@@ -126,6 +126,6 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   }
 
   decoratePlayerStat(player: Player): string {
-    return player.name + STAT_NAME_SEPARATOR + player.score + (player.win && this.extraEndingMsg ? (STAT_NAME_SEPARATOR + 's') : '');
+    return player.name + STAT_NAME_SEPARATOR + player.score + ((player.win && this.extraEndingMsg) ? ('/s') : '');
   }
 }

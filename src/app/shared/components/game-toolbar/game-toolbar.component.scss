@@ -10,11 +10,12 @@
 
 .round-info {
   position: absolute;
-  bottom: 134px;
+  bottom: 50px;
   left: 0;
   font-size: 10em;
   opacity: 0.1;
   width: 22vw;
+  line-height: 150px;
   text-align: center;
 
   &.detailed {

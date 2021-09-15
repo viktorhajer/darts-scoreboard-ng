@@ -19,9 +19,9 @@
   </button>
 
   <button mat-raised-button class="number" [color]="playground.multiplier === 2 ? 'primary' : ''"
-          (click)="playground.doublePoint()" [disabled]="!playground.multiEnabled">Double</button>
+          (click)="playground.doublePoint()" [disabled]="!playground.multiEnabled">2x</button>
   <button mat-raised-button class="number" [color]="playground.multiplier === 3 ? 'primary' : ''"
-          (click)="playground.triplePoint()" [disabled]="!playground.multiEnabled">Triple</button>
+          (click)="playground.triplePoint()" [disabled]="!playground.multiEnabled">3x</button>
 
   <button mat-raised-button class="number" (click)="playground.skip()" [disabled]="!playground.nextEnabled">Next</button>
   <button mat-raised-button class="number" (click)="playground.throwNumber([0,0])" [disabled]="!playground.zeroEnabled">0</button>
