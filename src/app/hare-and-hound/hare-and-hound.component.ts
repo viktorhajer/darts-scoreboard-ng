@@ -9,7 +9,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {HareAndHoundSettings} from './models/hare-and-hound.settings.model';
 import {HareAndHoundState} from './models/hare-and-hound.state.model';
 import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './hare-and-hound.component.html',
@@ -90,7 +90,7 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
   }
 
   decoratePlayerStat(player: Player): string {
-    return player.name + `____${this.isHare(player) ? '0' : '1'}`;
+    return player.name + STAT_NAME_SEPARATOR + `${this.isHare(player) ? '0' : '1'}`;
   }
 
   private getFieldIndex(index: number) {

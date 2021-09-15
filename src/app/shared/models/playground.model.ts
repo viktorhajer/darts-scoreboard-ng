@@ -8,8 +8,9 @@ import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
 import {GameService} from '~services/game.service';
 import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {GameStatisticsModel} from '~models/game-statistics.model';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
+import {GameStatistics} from '~models/game-statistics.model';
+import {PlayerStatistics} from '~models/player-statistics.model';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
@@ -25,7 +26,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   playground = this;
   multiplier: number;
   extraEndingMsg: string;
-  gameStatistics: GameStatisticsModel;
+  gameStatistics: GameStatistics;
 
   protected constructor(public application: ApplicationStateService,
                         public game: GameService,
@@ -125,10 +126,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
     if (!this.playerSettingsValidation()) {
       let msg = 'Number of players are incorrect.';
-      if(this.minimumNumberOfPlayers) {
+      if (this.minimumNumberOfPlayers) {
         msg += ` (minimum: ${this.minimumNumberOfPlayers}`;
       }
-      if(this.maximumNumberOfPlayers) {
+      if (this.maximumNumberOfPlayers) {
         msg += (this.minimumNumberOfPlayers ? ', ' : ' (') + `maximum: ${this.maximumNumberOfPlayers}).`;
       } else {
         msg += this.minimumNumberOfPlayers ? ').' : '.';
@@ -209,7 +210,21 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   }
 
   decoratePlayerStat(player: Player): string {
-    return player.name + '____' + player.score;
+    return player.name + STAT_NAME_SEPARATOR + player.score;
+  }
+
+  getGameStatistics(): PlayerStatistics[] {
+    const statistics = this.statisticsService.getGameStatistics(this.playground.gameName);
+    const players: PlayerStatistics[] = [];
+    statistics.forEach(stat => {
+      this.parseStatistics(stat, 'l', players);
+      this.parseStatistics(stat, 'w', players);
+    });
+    return players;
+  }
+
+  getGameHistory(): GameStatistics[] {
+    return this.statisticsService.getGameStatistics(this.playground.gameName);
   }
 
   getTheFinalResult(): Player[] {
@@ -226,7 +241,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   }
 
   private startStatistics() {
-    this.gameStatistics = new GameStatisticsModel();
+    this.gameStatistics = new GameStatistics();
     this.gameStatistics.s = new Date().toISOString();
     this.gameStatistics.g = this.gameName;
   }
@@ -237,6 +252,18 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.gameStatistics.l = this.game.players.filter(p => !p.win).map(p => this.decoratePlayerStat(p));
     this.gameStatistics.r = this.game.round;
     this.statisticsService.saveStatistics(this.gameStatistics);
+  }
+
+  private parseStatistics(stat: GameStatistics, field: 'w' | 'l', players: PlayerStatistics[]) {
+    stat[field].forEach(p => {
+      const name = p.split(STAT_NAME_SEPARATOR)[0];
+      let player = players.find(pl => pl.n === name);
+      if (!player) {
+        player = {n: name, w: 0, l: 0};
+        players.push(player);
+      }
+      player[field]++;
+    });
   }
 
   private playerSettingsValidation(): boolean {

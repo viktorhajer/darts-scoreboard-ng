@@ -1,4 +1,4 @@
-export class GameStatisticsModel {
+export class GameStatistics {
   g: string;
   w: string[];
   l: string[];

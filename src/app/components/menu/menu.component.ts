@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Router, Routes} from '@angular/router';
+import {StatisticsService} from '~services/statistics.service';
+import {DialogService} from '~services/dialog.service';
 
 const routes: Routes = [
   {
@@ -58,7 +60,9 @@ const routes: Routes = [
 })
 export class MenuComponent {
 
-  constructor(private readonly router: Router) {
+  constructor(private readonly router: Router,
+              private readonly dialog: DialogService,
+              private readonly statisticsService: StatisticsService) {
   }
 
   randomGame() {
@@ -68,5 +72,10 @@ export class MenuComponent {
 
   getGameList(): Routes {
     return routes.filter(r => !!r.data);
+  }
+
+  openGameTypeStatistics() {
+    this.dialog.openGameTypeStatistics(this.statisticsService.getGameTypeStatistics());
+    // this.statisticsService.printStatistics();
   }
 }

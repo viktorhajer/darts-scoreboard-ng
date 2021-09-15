@@ -1,0 +1,24 @@
+<div class="dialog-container">
+  <div mat-dialog-title class="subtitle-1"><p>Statistics</p></div>
+  <mat-dialog-content class="body-2">
+    <table cellpadding="0" cellspacing="0" class="statistics-table">
+      <tr>
+        <th>Player</th>
+        <th>Wins</th>
+        <th>Loses</th>
+        <th>All</th>
+        <th>Rate</th>
+      </tr>
+      <tr *ngFor="let stat of data.statistics">
+        <td>{{ stat.n }}</td>
+        <td>{{ stat.w }}</td>
+        <td>{{ stat.l }}</td>
+        <td>{{ stat.l + stat.w }}</td>
+        <td>{{ getRatio(stat) }} %</td>
+      </tr>
+    </table>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button [mat-dialog-close]="true" [color]="'primary'">Ok</button>
+  </mat-dialog-actions>
+</div>

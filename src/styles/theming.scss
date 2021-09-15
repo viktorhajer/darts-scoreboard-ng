@@ -33,6 +33,14 @@ $basic: mat-palette($mat-grey);
       }
     }
   }
+  .statistics-table {
+    tr:first-child {
+      background: mat-color($primary, 500);
+    }
+    tr:nth-child(even) {
+      background: rgba(mat-color($basic, 400), 0.3);
+    }
+  }
 }
 
 @mixin menu-theme($theme) {

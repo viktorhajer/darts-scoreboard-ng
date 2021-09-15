@@ -20,4 +20,12 @@ export class SettingsComponent {
   openRules() {
     this.dialogService.openDialog(this.title, this.rules);
   }
+
+  openStatistics() {
+    this.dialogService.openGameStatisticsDialog(this.playground.getGameStatistics());
+  }
+
+  openHistory() {
+    this.dialogService.openGameHistory(this.playground.getGameHistory());
+  }
 }

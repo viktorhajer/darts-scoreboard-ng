@@ -1,7 +1,7 @@
 <div class="settings">
-  <h1 (click)="openRules()">{{title}} Settings</h1>
+  <h1 (click)="openHistory()">{{title}} Settings</h1>
 
-  <h2>Players</h2>
+  <h2 (click)="openStatistics()">Players</h2>
   <app-player-settings [playground]="playground"></app-player-settings>
   <mat-divider></mat-divider>
 
@@ -10,4 +10,5 @@
   <mat-divider></mat-divider>
   <button mat-raised-button class="button big" (click)="playground.newGame()">Start</button>
   <button mat-raised-button class="button big" (click)="playground.quit()">Cancel</button>
+
 </div>

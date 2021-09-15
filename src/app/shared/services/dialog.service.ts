@@ -4,6 +4,12 @@ import {DialogComponent} from '~components/dialog/dialog.component';
 import {Player} from '~models/player.model';
 import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 import {ConfirmDialogComponent} from '~components/confirm-dialog/confirm-dialog.component';
+import {PlayerStatistics} from '~models/player-statistics.model';
+import {GameStatisticsDialogComponent} from '~components/game-statistics-dialog/game-statistics-dialog.component';
+import {GameHistoryDialogComponent} from '~components/game-history-dialog/game-history-dialog.component';
+import {GameStatistics} from '~models/game-statistics.model';
+import {GameTypeStatistics} from '~models/game-type-statistics.model';
+import {GameTypeStatisticsDialogComponent} from '~components/game-type-statistics-dialog/game-type-statistics-dialog.component';
 
 @Injectable({providedIn: 'root'})
 export class DialogService {
@@ -15,6 +21,24 @@ export class DialogService {
     return this.dialog.open(DialogComponent, {
       panelClass: 'success-dialog',
       data: {title, content, players},
+    });
+  }
+
+  openGameStatisticsDialog(statistics: PlayerStatistics[]) {
+    return this.dialog.open(GameStatisticsDialogComponent, {
+      data: {statistics},
+    });
+  }
+
+  openGameHistory(statistics: GameStatistics[]) {
+    return this.dialog.open(GameHistoryDialogComponent, {
+      data: {statistics},
+    });
+  }
+
+  openGameTypeStatistics(statistics: GameTypeStatistics[]) {
+    return this.dialog.open(GameTypeStatisticsDialogComponent, {
+      data: {statistics},
     });
   }
 

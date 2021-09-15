@@ -9,7 +9,7 @@ import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
 import {FivesSettings} from './models/fives.settings.model';
 import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './fives.component.html',
@@ -67,6 +67,6 @@ export class FivesComponent extends Playground<PlaygroundState> {
   }
 
   decoratePlayerStat(player: Player): string {
-    return player.name + `____${this.settings.divider}/${this.settings.limit}/${player.score}`;
+    return player.name + STAT_NAME_SEPARATOR + `${this.settings.divider}/${this.settings.limit}/${player.score}`;
   }
 }

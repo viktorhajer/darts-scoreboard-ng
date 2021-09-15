@@ -9,7 +9,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {ShanghaiSettings} from './models/shanghai.settings.model';
 import {ShanghaiState} from './models/shanghai.state.model';
 import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
 
 @Component({
   templateUrl: './shanghai.component.html',
@@ -126,6 +126,6 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   }
 
   decoratePlayerStat(player: Player): string {
-    return player.name + '____' + player.score + (player.win && this.extraEndingMsg ? '_____s' : '');
+    return player.name + STAT_NAME_SEPARATOR + player.score + (player.win && this.extraEndingMsg ? (STAT_NAME_SEPARATOR + 's') : '');
   }
 }

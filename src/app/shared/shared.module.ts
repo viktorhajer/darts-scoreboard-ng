@@ -10,15 +10,20 @@ import {SettingsComponent} from '~components/settings/settings.component';
 import {PlayerScoreComponent} from '~components/player-score/player-score.component';
 import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 import {ConfirmDialogComponent} from '~components/confirm-dialog/confirm-dialog.component';
+import {GameStatisticsDialogComponent} from '~components/game-statistics-dialog/game-statistics-dialog.component';
+import {GameHistoryDialogComponent} from '~components/game-history-dialog/game-history-dialog.component';
+import {GameTypeStatisticsDialogComponent} from '~components/game-type-statistics-dialog/game-type-statistics-dialog.component';
 
-const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialogComponent,
-  DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent];
+const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
+  DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent,
+  GameHistoryDialogComponent, GameTypeStatisticsDialogComponent];
 
 @NgModule({
   imports: [CommonModule, MaterialModule],
   declarations: components,
   exports: [CommonModule, FormsModule, MaterialModule, ...components],
-  entryComponents: [DialogComponent, DartsTableDialogComponent]
+  entryComponents: [DialogComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
+    GameHistoryDialogComponent, GameTypeStatisticsDialogComponent]
 })
 export class SharedModule {
 }
