@@ -128,4 +128,8 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   decoratePlayerStat(player: Player): string {
     return player.name + STAT_NAME_SEPARATOR + player.score + ((player.win && this.extraEndingMsg) ? ('/s') : '');
   }
+
+  getGameConfig(): string {
+    return this.settings.fields.length + ',' + (this.settings.halveIt ? '1' : '0');
+  }
 }

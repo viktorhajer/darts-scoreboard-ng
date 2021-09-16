@@ -93,6 +93,10 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
     return player.name + STAT_NAME_SEPARATOR + `${this.isHare(player) ? '0' : '1'}`;
   }
 
+  getGameConfig(): string {
+    return (20 - HareAndHoundSettings.getBaseFields().indexOf(this.settings.houndStartIndex)) + '';
+  }
+
   private getFieldIndex(index: number) {
     return this.settings.getFields()[index];
   }

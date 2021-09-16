@@ -60,4 +60,8 @@ export class X01Component extends Playground<PlaygroundState> {
   customReset() {
     this.game.players.forEach(player => player.score = this.settings.startValue);
   }
+
+  getGameConfig(): string {
+    return this.settings.startValue + '';
+  }
 }

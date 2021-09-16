@@ -5,4 +5,5 @@ export class GameStatistics {
   r: number;
   s: string;
   f: string;
+  c?: string;
 }

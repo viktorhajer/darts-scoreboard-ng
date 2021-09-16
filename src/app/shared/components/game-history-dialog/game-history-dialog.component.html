@@ -5,6 +5,7 @@
       <tr>
         <th>Date</th>
         <th>Duration</th>
+        <th>Config</th>
         <th>Round</th>
         <th>Winner(s)</th>
         <th>Loser(s)</th>
@@ -12,6 +13,7 @@
       <tr *ngFor="let stat of data.statistics">
         <td>{{ stat.s | date:'medium' }}</td>
         <td>{{ getDuration(stat) | date: 'mm:ss' }}</td>
+        <td>{{ stat.c }}</td>
         <td>{{ stat.r + 1 }}</td>
         <td>{{ getPlayers(stat.w) }}</td>
         <td>{{ getPlayers(stat.l) }}</td>

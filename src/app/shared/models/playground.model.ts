@@ -209,6 +209,10 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     return player.name + STAT_NAME_SEPARATOR + player.score;
   }
 
+  getGameConfig(): string {
+    return '';
+  }
+
   getGameStatistics(): PlayerStatistics[] {
     const statistics = this.statisticsService.getGameStatistics(this.playground.gameName);
     const players: PlayerStatistics[] = [];
@@ -247,6 +251,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     this.gameStatistics.w = this.game.players.filter(p => p.win).map(p => this.decoratePlayerStat(p));
     this.gameStatistics.l = this.game.players.filter(p => !p.win).map(p => this.decoratePlayerStat(p));
     this.gameStatistics.r = this.game.round;
+    this.gameStatistics.c = this.getGameConfig();
     this.statisticsService.saveStatistics(this.gameStatistics);
   }
 

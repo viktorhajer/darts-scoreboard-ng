@@ -53,4 +53,8 @@ export class ImitatorComponent extends Playground<ImitatorState> {
   customReset() {
     this.game.players.forEach(player => player.state = new ImitatorState());
   }
+
+  getGameConfig(): string {
+    return this.settings.round + '';
+  }
 }

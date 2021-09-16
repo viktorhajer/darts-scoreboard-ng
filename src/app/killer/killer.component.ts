@@ -146,6 +146,10 @@ export class KillerComponent extends Playground<KillerState> {
     return player.name;
   }
 
+  getGameConfig(): string {
+    return this.settings.boardingLimit + ',' + this.settings.numberOfLives;
+  }
+
   private getAllEnabledFields(): number[] {
     return this.game.players.filter(p => !p.isInactive())
       .map(p => this.getPlayerState(p).actField);

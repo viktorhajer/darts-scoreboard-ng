@@ -81,4 +81,8 @@ export class DuelComponent extends Playground<DuelState> {
       player.score = this.settings.startPoint;
     });
   }
+
+  getGameConfig(): string {
+    return this.settings.fields.length+','+this.settings.targetPoint+','+this.settings.startPoint;
+  }
 }

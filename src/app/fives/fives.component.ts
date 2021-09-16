@@ -66,7 +66,7 @@ export class FivesComponent extends Playground<PlaygroundState> {
     }
   }
 
-  decoratePlayerStat(player: Player): string {
-    return player.name + STAT_NAME_SEPARATOR + `${this.settings.divider}/${this.settings.limit}/${player.score}`;
+  getGameConfig(): string {
+    return this.settings.divider+','+this.settings.limit;
   }
 }

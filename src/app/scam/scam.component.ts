@@ -55,4 +55,8 @@ export class ScamComponent extends Playground<PlaygroundState> {
     this.game.numbs = this.settings.numbs.map(i => i ? 1 : 0);
     this.settings.fields.forEach(f => this.settings.numbs[f] = true);
   }
+
+  getGameConfig(): string {
+    return this.settings.fields.length + '';
+  }
 }

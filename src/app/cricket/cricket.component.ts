@@ -146,6 +146,10 @@ export class CricketComponent extends Playground<CricketState> {
     return player.name;
   }
 
+  getGameConfig(): string {
+    return this.settings.fields.length+','+this.settings.style;
+  }
+
   private getPlayerToDisplay(): Player {
     return !!this.playerToDisplay ? this.playerToDisplay : this.game.getActualPlayer();
   }

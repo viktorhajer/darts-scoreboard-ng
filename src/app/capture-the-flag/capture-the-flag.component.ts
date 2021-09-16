@@ -69,7 +69,13 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
   customReset() {
     this.game.actualFieldIndex = 0;
     this.game.players.forEach(player => player.state = new CaptureTheFlagState());
-    this.settings.randomCity();
+    if (this.settings.style === 0) {
+      this.settings.randomCity();
+    } else if (this.settings.style === 1) {
+      this.settings.randomCountry();
+    } else {
+      this.settings.randomContinent();
+    }
   }
 
   customSettingsValidation(): boolean {
@@ -109,6 +115,10 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
       return c;
     });
     return [...winners, ...losers];
+  }
+
+  getGameConfig(): string {
+    return this.settings.fields.length+'';
   }
 
   private checkWinner(player: Player) {
