@@ -27,6 +27,15 @@ $basic: mat-palette($mat-grey);
     }
   }
   .dialog-container {
+
+    td:first-child {
+      white-space: nowrap;
+    }
+
+    td {
+      word-break: break-all;
+    }
+
     .score-line {
       &.winner {
         background: rgba(mat-color($accent, 400), 0.5);

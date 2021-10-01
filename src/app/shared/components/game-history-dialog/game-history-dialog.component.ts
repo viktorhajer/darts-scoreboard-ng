@@ -2,6 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
 import {GameStatistics} from '~models/game-statistics.model';
 import {STAT_NAME_SEPARATOR} from '~services/statistics.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   templateUrl: 'game-history-dialog.component.html',
@@ -30,5 +31,9 @@ export class GameHistoryDialogComponent {
 
   close(): void {
     this.dialogRef.close();
+  }
+
+  getAppVersion(): string {
+    return environment.appVersion ? environment.appVersion : '';
   }
 }

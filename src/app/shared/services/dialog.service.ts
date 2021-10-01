@@ -33,6 +33,10 @@ export class DialogService {
   openGameHistory(statistics: GameStatistics[]) {
     return this.dialog.open(GameHistoryDialogComponent, {
       data: {statistics},
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '100%',
+      width: '100%'
     });
   }
 

@@ -1,10 +1,14 @@
 <div class="dialog-container">
-  <div mat-dialog-title class="subtitle-1"><p>History</p></div>
+  <div mat-dialog-title class="subtitle-1">
+    <p>History</p>
+    <p>v{{ getAppVersion() }}</p>
+  </div>
   <mat-dialog-content class="body-2">
     <table cellpadding="0" cellspacing="0" class="statistics-table">
       <tr>
         <th>Date</th>
         <th>Duration</th>
+        <th>Type</th>
         <th>Config</th>
         <th>Round</th>
         <th>Winner(s)</th>
@@ -13,6 +17,7 @@
       <tr *ngFor="let stat of data.statistics">
         <td>{{ stat.s | date:'medium' }}</td>
         <td>{{ getDuration(stat) | date: 'mm:ss' }}</td>
+        <td>{{ stat.g }}</td>
         <td>{{ stat.c }}</td>
         <td>{{ stat.r + 1 }}</td>
         <td>{{ getPlayers(stat.w) }}</td>

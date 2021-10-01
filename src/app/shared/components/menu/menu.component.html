@@ -10,4 +10,11 @@
     </button>
   </div>
 </div>
-<div class="version" (click)="openGameTypeStatistics()">v2.02</div>
+<div class="version">
+  <button mat-icon-button (click)="openGameTypeStatistics()" [color]="'primary'">
+    <mat-icon>stars</mat-icon>
+  </button>
+  <button mat-icon-button (click)="openGameStatistics()" [color]="'primary'">
+    <mat-icon>history</mat-icon>
+  </button>
+</div>

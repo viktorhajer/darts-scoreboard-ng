@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {MenuComponent} from './components/menu/menu.component';
+import {MenuComponent} from './shared/components/menu/menu.component';
 import {X01Module} from './x01/x01.module';
 import {CricketModule} from './cricket/cricket.module';
 import {AroundClockModule} from './aroundclock/around-clock.module';
@@ -20,62 +20,50 @@ export const routes: Routes = [
   },
   {
     path: 'x01',
-    data: {name: 'Classic X01'},
     loadChildren: () => X01Module
   },
   {
     path: 'cricket',
-    data: {name: 'Ultimate Cricket'},
     loadChildren: () => CricketModule
   },
   {
     path: 'around-clock',
-    data: {name: 'Around The Clock / Nine Lives'},
     loadChildren: () => AroundClockModule
   },
   {
     path: 'shanghai',
-    data: {name: 'Shanghai / Halve It'},
     loadChildren: () => ShanghaiModule
   },
   {
     path: 'fives',
-    data: {name: 'Fives'},
     loadChildren: () => FivesModule
   },
   {
     path: 'hare-and-hound',
-    data: {name: 'Hare and Hound'},
     loadChildren: () => HareAndHoundModule
   },
   {
     path: 'knockout',
-    data: {name: 'Knockout'},
     loadChildren: () => KnockoutModule
   },
   {
     path: 'killer',
-    data: {name: 'Killer'},
     loadChildren: () => KillerModule
   },
   {
     path: 'capture-the-flag',
-    data: {name: 'Capture the Flag'},
     loadChildren: () => CaptureTheFlagModule
   },
   {
     path: 'duel',
-    data: {name: 'Duel'},
     loadChildren: () => DuelModule
   },
   {
     path: 'imitator',
-    data: {name: 'Imitator'},
     loadChildren: () => ImitatorModule
   },
   {
     path: 'scam',
-    data: {name: 'Scam'},
     loadChildren: () => ScamModule
   },
   {

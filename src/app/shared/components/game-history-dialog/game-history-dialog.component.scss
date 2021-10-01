@@ -1,9 +1,10 @@
 .dialog-container {
-  width: 73vw;
 
   .subtitle-1 {
     line-height: 1em;
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
   }
 
   mat-dialog-actions {
@@ -11,9 +12,12 @@
     margin-bottom: -0.5rem;
   }
 
-  mat-dialog-content {
+  .mat-dialog-content {
+    height: 85vh;
+    max-height: unset !important;
+  }
 
-    height: 64vh;
+  mat-dialog-content {
     overflow-y: scroll;
 
     table {

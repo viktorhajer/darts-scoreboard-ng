@@ -13,13 +13,15 @@ import {ConfirmDialogComponent} from '~components/confirm-dialog/confirm-dialog.
 import {GameStatisticsDialogComponent} from '~components/game-statistics-dialog/game-statistics-dialog.component';
 import {GameHistoryDialogComponent} from '~components/game-history-dialog/game-history-dialog.component';
 import {GameTypeStatisticsDialogComponent} from '~components/game-type-statistics-dialog/game-type-statistics-dialog.component';
+import {MenuComponent} from '~components/menu/menu.component';
+import {RouterModule} from '@angular/router';
 
 const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
   DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent,
-  GameHistoryDialogComponent, GameTypeStatisticsDialogComponent];
+  GameHistoryDialogComponent, GameTypeStatisticsDialogComponent, MenuComponent];
 
 @NgModule({
-  imports: [CommonModule, MaterialModule],
+  imports: [CommonModule, MaterialModule, RouterModule],
   declarations: components,
   exports: [CommonModule, FormsModule, MaterialModule, ...components],
   entryComponents: [DialogComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
