@@ -12,21 +12,18 @@
     <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.left()">Left</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.right()">Right</button>
-    <mat-divider></mat-divider>
     <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.prime()">Prime</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.notPrime()">Not prime</button>
-    <mat-divider></mat-divider>
     <button mat-raised-button class="button shortmedium" (click)="settings.randomize(5)">Random 05</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.randomize(10)">Random 10</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.randomize(15)">Random 15</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.all()">All</button>
-    <mat-divider></mat-divider>
     <button mat-raised-button class="button shortmedium" (click)="settings.small()">Small</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.high()">High</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.star()">Star</button>
     <button mat-raised-button class="button shortmedium" (click)="settings.cross()">Cross</button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.all()">All</button>
     <mat-divider></mat-divider>
 
     <h2>Style</h2>
@@ -38,6 +35,9 @@
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.stopper?'primary':''"
             (click)="settings.toggleStopper()">Stopper
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.punishment?'primary':''"
+            (click)="settings.togglePunishment()">Punishment
     </button>
   </app-settings>
 

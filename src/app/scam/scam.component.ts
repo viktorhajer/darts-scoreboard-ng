@@ -26,7 +26,7 @@ export class ScamComponent extends Playground<PlaygroundState> {
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
-    if (this.isFieldEnabled(fieldIndex)) {
+    if (!!this.game.numbs[fieldIndex]) {
       if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
         this.game.numbs[fieldIndex] = 0;
       } else if(this.settings.stopper) {
@@ -35,6 +35,8 @@ export class ScamComponent extends Playground<PlaygroundState> {
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
         this.game.numbs[fieldIndex] = 0;
       }
+    } else if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
+      player.score -= (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
     }
   }
 
@@ -47,8 +49,12 @@ export class ScamComponent extends Playground<PlaygroundState> {
     }
   }
 
+  isSecondaryField(fieldIndex: number): boolean {
+    return this.settings.punishment && !this.game.numbs[fieldIndex];
+  }
+
   isFieldEnabled(fieldIndex: number): boolean {
-    return !!this.game.numbs[fieldIndex];
+    return this.settings.punishment || !!this.game.numbs[fieldIndex];
   }
 
   customReset() {

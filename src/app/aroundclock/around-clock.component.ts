@@ -138,6 +138,17 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     return !!owners.length ? owners.join(' ') : '';
   }
 
+  getFieldNoteBottom(fieldIndex: number): string {
+    const owners = this.game.players
+      .filter(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex);
+    const actualOwn = owners.some(p => p.name === this.game.getActualPlayer().name);
+    if (actualOwn) {
+      const length = this.settings.fields.length - 1 - this.getPlayerState(this.game.getActualPlayer()).actFieldIndex;
+      return length + '';
+    }
+    return !actualOwn && !!owners.length && (this.settings.promoter || this.settings.saboteur) ? (this.settings.promoter ? '▲' : '▼') : '';
+  }
+
   customReset() {
     this.game.players.forEach(player => {
       player.life = this.settings.life;

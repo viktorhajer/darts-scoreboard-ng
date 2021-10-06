@@ -11,10 +11,11 @@
         <mat-label>Life limit</mat-label>
         <input [(ngModel)]="settings.numberOfLives" type="number" matInput>
       </mat-form-field>
-      <button mat-raised-button class="button medium" [color]="settings.killer ? 'primary' : ''" (click)="settings.toggleKiller()">
-        Below the belt
-      </button>
     </div>
+    <br/>
+    <button mat-raised-button class="button medium" [color]="settings.killer ? 'primary' : ''" (click)="settings.toggleKiller()">
+      Below the belt
+    </button>
 
   </app-settings>
 

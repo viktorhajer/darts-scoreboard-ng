@@ -28,7 +28,9 @@ export class DuelComponent extends Playground<DuelState> {
   calculatePoints(player: Player, fieldIndex: number, score: number) {
     const state = this.getPlayerState(player);
     const actualScore = score * this.multiplier;
-    if (state.ownFields.some(i => i === fieldIndex)) {
+    if (score === 0) {
+      player.score -= this.settings.punishment;
+    } else if (state.ownFields.some(i => i === fieldIndex)) {
       player.score += actualScore;
     } else if (this.isSecondaryField(fieldIndex)) {
       player.score -= actualScore;
@@ -73,6 +75,14 @@ export class DuelComponent extends Playground<DuelState> {
   isSecondaryField(fieldIndex: number): boolean {
     return !this.settings.isFieldAllowed(fieldIndex) ||
       this.game.players.some(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
+  }
+
+  getFieldNote(fieldIndex: number): string {
+    const player = this.game.players.find(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex))
+    if (player) {
+      return player.name.substr(0, 1).toUpperCase();
+    }
+    return '';
   }
 
   customReset() {

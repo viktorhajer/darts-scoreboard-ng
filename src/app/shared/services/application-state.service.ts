@@ -3,6 +3,7 @@ import {ApplicationSettings} from '~models/application-settings.model';
 
 const APPLICATION_KEY = 'ApplicationSettings';
 const PLAYER_KEY = 'Players';
+const THEMES = ['light-theme', 'light-theme-blue', 'dark-theme', 'dark-red'];
 
 @Injectable({providedIn: 'root'})
 export class ApplicationStateService {
@@ -18,7 +19,7 @@ export class ApplicationStateService {
   }
 
   toggleColorTheme() {
-    this.settings.theme = (this.settings.theme + 1) % 3;
+    this.settings.theme = (this.settings.theme + 1) % THEMES.length;
     this.setTheme();
     this.saveSettings();
   }
@@ -42,13 +43,10 @@ export class ApplicationStateService {
   }
 
   private setTheme() {
-    document.body.className = document.body.className.replace('dark-theme', '');
-    document.body.className = document.body.className.replace('dark-red', '');
-    if (this.settings.theme === 1) {
-      document.body.classList.add('dark-theme');
-    } else if (this.settings.theme === 2) {
-      document.body.classList.add('dark-red');
-    }
+    THEMES.forEach(theme => {
+      document.body.className = document.body.className.replace(theme, '');
+    });
+    document.body.classList.add(THEMES[this.settings.theme]);
   }
 
   private saveSettings() {

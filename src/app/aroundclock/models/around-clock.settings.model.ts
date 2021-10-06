@@ -13,10 +13,11 @@ export class AroundClockSettings {
   constructor() {
     this.style = 0;
     this.jump = true;
-    this.firstDeath = false;
+    this.firstDeath = true;
     this.punishment = true;
     this.life = 0;
-    this.saboteur = false;
+    this.promoter = false;
+    this.saboteur = true;
     this.fields = AroundClockSettings.getBaseFields();
   }
 
@@ -45,6 +46,12 @@ export class AroundClockSettings {
         break;
       case 7:
         this.fields = AroundClockSettings.getPirate();
+        break;
+      case 8:
+        this.fields = AroundClockSettings.getTripleClockFields();
+        break;
+      case 9:
+        this.fields = AroundClockSettings.getZoneClockFields();
         break;
       default:
         this.fields = AroundClockSettings.getBaseFields();
@@ -103,6 +110,14 @@ export class AroundClockSettings {
 
   private static getAnticlockFields(): number[] {
     return [4, 11, 8, 13, 10, 7, 15, 6, 18, 2, 16, 1, 14, 9, 5, 12, 3, 17, 0, 19, 20];
+  }
+
+  private static getTripleClockFields(): number[] {
+    return [0, 12, 14, 2, 15, 13, 4, 17, 5, 1, 18, 7, 8, 19, 3, 9, 16, 6, 10, 11, 20];
+  }
+
+  private static getZoneClockFields(): number[] {
+    return [0, 12, 17, 9, 3, 1, 5, 2, 14, 15, 16, 7, 18, 10, 6, 20, 13, 19, 8, 4, 11];
   }
 
   private static getRandom(size?: number): number[] {

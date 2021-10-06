@@ -2,6 +2,7 @@
 @include mat-core();
 
 $light-theme: mat-light-theme(mat-palette($mat-teal), mat-palette($mat-grey));
+$light-theme-blue: mat-light-theme(mat-palette($mat-light-blue), mat-palette($mat-blue-grey));
 $dark-theme: mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-gray));
 $dark-red: mat-dark-theme(mat-palette($mat-red), mat-palette($mat-gray));
 $basic: mat-palette($mat-grey);
@@ -92,7 +93,7 @@ $basic: mat-palette($mat-grey);
   }
 
   .player {
-    color: mat-color($accent, 300);
+    // color: mat-color($accent, 300);
     background: mat-color($accent, 600);
 
     .shoots {
@@ -169,5 +170,13 @@ body {
     @include shared-module-theme($dark-red);
     @include feature-module-theme($dark-red);
     @include menu-theme($dark-red);
+  }
+  &.light-theme-blue {
+    background: linear-gradient(to top, mat-color($basic, 200), #efefef);
+    color: mat-color(map-get($light-theme-blue, accent), 900);
+    @include angular-material-theme($light-theme-blue);
+    @include shared-module-theme($light-theme-blue);
+    @include feature-module-theme($light-theme-blue);
+    @include menu-theme($light-theme-blue);
   }
 }

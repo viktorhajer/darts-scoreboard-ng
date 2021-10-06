@@ -35,7 +35,8 @@ export class KnockoutComponent extends Playground<KnockoutState> {
       if (score > player.getThrowsTotal()) {
         player.life--;
         this.soundService.no();
-      } else if (this.settings.killer && score !== 0 && score === player.getThrowsTotal()) {
+      } else if (this.settings.killer && score !== 0 && score === player.getThrowsTotal()
+        && player.throwsHistory[player.throwsHistory.length - 1].score !== 0) {
         this.game.getPreviousPlayer().life--;
         this.soundService.no();
       }

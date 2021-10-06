@@ -31,6 +31,7 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.life === 10?'primary':''" (click)="settings.toggleTenLives()">
       Ten Lives
     </button>
+    <mat-divider></mat-divider>
     <button mat-raised-button class="button shortmedium" [color]="settings.firstDeath?'primary':''" (click)="settings.toggleFirstDeath()">
       First Death
     </button>
@@ -49,7 +50,12 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.style==2?'primary':''" (click)="settings.setStyle(2)">
       Anticlockwise
     </button>
-    <mat-divider></mat-divider>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==8?'primary':''" (click)="settings.setStyle(8)">
+      TripleClock
+    </button>
+    <button mat-raised-button class="button shortmedium" [color]="settings.style==9?'primary':''" (click)="settings.setStyle(9)">
+      ZoneClock
+    </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''" (click)="settings.setStyle(3)">
       Random
     </button>
