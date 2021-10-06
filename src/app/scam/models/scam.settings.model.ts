@@ -4,6 +4,7 @@ export class ScamSettings extends CricketSettings {
 
   stopper = false;
   punishment = false;
+  punishmentValue = 15;
 
   constructor() {
    super();

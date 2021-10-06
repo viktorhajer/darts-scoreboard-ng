@@ -31,9 +31,11 @@ button {
 
   .side-left {
     width: 22vw;
+    transition: all 100ms ease-in-out;
 
     &.detailed {
       width: 30vw;
+      transition: all 100ms ease-in-out;
     }
 
   }
@@ -41,9 +43,11 @@ button {
   .side-right {
     width: 78vw;
     float: right;
+    transition: all 100ms ease-in-out;
 
     &.detailed {
       width: 70vw;
+      transition: all 100ms ease-in-out;
     }
   }
 }

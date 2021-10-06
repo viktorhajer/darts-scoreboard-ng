@@ -36,13 +36,15 @@ export class ScamComponent extends Playground<PlaygroundState> {
         this.game.numbs[fieldIndex] = 0;
       }
     } else if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
-      player.score -= (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
+      const newScore = score === 0 ? this.settings.punishmentValue : score;
+      player.score -= (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
     }
   }
 
   checkPlayerState(player: Player) {
-    if(!this.game.numbs.find(n => n)) {
-      this.game.players.forEach(p => p.setWin(this.game.isTheBestPlayer(p)));
+    if(!this.game.numbs.some(n => n)) {
+      const bests = this.game.getTheBestPlayers();
+      this.game.players.forEach(p => p.setWin(bests.some(b => b.name === p.name)));
     }
     if (this.game.isTheLastThrow()) {
       this.game.nextPlayer();

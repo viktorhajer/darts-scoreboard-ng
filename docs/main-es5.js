@@ -71,7 +71,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
   /***/
   function packageJson(module) {
-    module.exports = JSON.parse("{\"name\":\"darts-scoreboard-ng\",\"version\":\"2.3.0\",\"license\":\"MIT\",\"author\":{\"name\":\"Viktor Hajer\",\"email\":\"viktor.hajer@gmail.com\"},\"description\":\"See Readme\",\"homepage\":\"https://github.com/viktorhajer/darts-scoreboard-ng#readme\",\"bugs\":{\"url\":\"https://github.com/viktorhajer/darts-scoreboard-ng/issues\"},\"scripts\":{\"ng\":\"ng\",\"start\":\"ng serve\",\"build\":\"ng build\",\"eslint\":\"eslint src/**/*.ts\"},\"private\":false,\"dependencies\":{\"@angular/animations\":\"~9.0.0\",\"@angular/cdk\":\"^9.0.0\",\"@angular/common\":\"~9.0.0\",\"@angular/compiler\":\"~9.0.0\",\"@angular/core\":\"~9.0.0\",\"@angular/forms\":\"~9.0.0\",\"@angular/material\":\"^9.0.0\",\"@angular/platform-browser\":\"~9.0.0\",\"@angular/platform-browser-dynamic\":\"~9.0.0\",\"@angular/router\":\"~9.0.0\",\"rxjs\":\"~6.5.4\",\"tslib\":\"^1.10.0\",\"zone.js\":\"~0.10.2\"},\"devDependencies\":{\"@angular-devkit/build-angular\":\"~0.900.1\",\"@angular/cli\":\"~9.0.1\",\"@angular/compiler-cli\":\"~9.0.0\",\"@angular/language-service\":\"~9.0.0\",\"@types/node\":\"12.12.47\",\"@typescript-eslint/eslint-plugin\":\"^2.19.2\",\"@typescript-eslint/eslint-plugin-tslint\":\"^2.19.2\",\"@typescript-eslint/parser\":\"^2.19.2\",\"eslint\":\"^6.8.0\",\"ts-node\":\"~8.3.0\",\"tslint\":\"~5.18.0\",\"typescript\":\"~3.7.5\"}}");
+    module.exports = JSON.parse("{\"name\":\"darts-scoreboard-ng\",\"version\":\"2.3.5\",\"license\":\"MIT\",\"author\":{\"name\":\"Viktor Hajer\",\"email\":\"viktor.hajer@gmail.com\"},\"description\":\"See Readme\",\"homepage\":\"https://github.com/viktorhajer/darts-scoreboard-ng#readme\",\"bugs\":{\"url\":\"https://github.com/viktorhajer/darts-scoreboard-ng/issues\"},\"scripts\":{\"ng\":\"ng\",\"start\":\"ng serve\",\"build\":\"ng build\",\"eslint\":\"eslint src/**/*.ts\"},\"private\":false,\"dependencies\":{\"@angular/animations\":\"~9.0.0\",\"@angular/cdk\":\"^9.0.0\",\"@angular/common\":\"~9.0.0\",\"@angular/compiler\":\"~9.0.0\",\"@angular/core\":\"~9.0.0\",\"@angular/forms\":\"~9.0.0\",\"@angular/material\":\"^9.0.0\",\"@angular/platform-browser\":\"~9.0.0\",\"@angular/platform-browser-dynamic\":\"~9.0.0\",\"@angular/router\":\"~9.0.0\",\"rxjs\":\"~6.5.4\",\"tslib\":\"^1.10.0\",\"zone.js\":\"~0.10.2\"},\"devDependencies\":{\"@angular-devkit/build-angular\":\"~0.900.1\",\"@angular/cli\":\"~9.0.1\",\"@angular/compiler-cli\":\"~9.0.0\",\"@angular/language-service\":\"~9.0.0\",\"@types/node\":\"12.12.47\",\"@typescript-eslint/eslint-plugin\":\"^2.19.2\",\"@typescript-eslint/eslint-plugin-tslint\":\"^2.19.2\",\"@typescript-eslint/parser\":\"^2.19.2\",\"eslint\":\"^6.8.0\",\"ts-node\":\"~8.3.0\",\"tslint\":\"~5.18.0\",\"typescript\":\"~3.7.5\"}}");
     /***/
   },
 
@@ -8930,6 +8930,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _this53 = _super19.call(this);
         _this53.stopper = false;
         _this53.punishment = false;
+        _this53.punishmentValue = 15;
         _this53.style = 1;
 
         _this53.all();
@@ -9081,7 +9082,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         var _r248 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 10);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ScamComponent_app_settings_1_button_3_Template_button_click_0_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r248);
@@ -9402,7 +9403,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "button", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "button", 9);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ScamComponent_app_settings_1_Template_button_click_46_listener() {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r250);
@@ -9412,7 +9413,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return ctx_r269.settings.togglePunishment();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47, "Punishment ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47, "Punishment (15) ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -9448,7 +9449,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function ScamComponent_app_game_toolbar_3_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-game-toolbar", 11);
       }
 
       if (rf & 2) {
@@ -9462,7 +9463,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-player-score", 13);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -9485,7 +9486,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ScamComponent_ng_container_4_div_1_Template, 2, 7, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ScamComponent_ng_container_4_div_1_Template, 2, 7, "div", 12);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
       }
@@ -9501,7 +9502,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     function ScamComponent_app_number_plate_5_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-number-plate", 11);
       }
 
       if (rf & 2) {
@@ -9541,19 +9542,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.game.numbs[fieldIndex] = 0;
             }
           } else if (this.settings.punishment && (this.settings.stopper && !this.game.isTheFirstPlayer(player) || !this.settings.stopper)) {
-            player.score -= (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
+            var newScore = score === 0 ? this.settings.punishmentValue : score;
+            player.score -= (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
           }
         }
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this55 = this;
-
-          if (!this.game.numbs.find(function (n) {
+          if (!this.game.numbs.some(function (n) {
             return n;
           })) {
+            var bests = this.game.getTheBestPlayers();
             this.game.players.forEach(function (p) {
-              return p.setWin(_this55.game.isTheBestPlayer(p));
+              return p.setWin(bests.some(function (b) {
+                return b.name === p.name;
+              }));
             });
           }
 
@@ -9574,13 +9577,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this56 = this;
+          var _this55 = this;
 
           this.game.numbs = this.settings.numbs.map(function (i) {
             return i ? 1 : 0;
           });
           this.settings.fields.forEach(function (f) {
-            return _this56.settings.numbs[f] = true;
+            return _this55.settings.numbs[f] = true;
           });
         }
       }, {
@@ -9603,7 +9606,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]],
       decls: 6,
       vars: 6,
-      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent", "highlighted", "scoreDisplayed"]],
+      consts: [["id", "playgroundContent"], [3, "title", "playground", "rules", 4, "ngIf"], [1, "side-left"], [3, "playground", 4, "ngIf"], [4, "ngIf"], [3, "title", "playground", "rules"], ["mat-raised-button", "", "class", "button", 3, "color", "click", 4, "ngFor", "ngForOf"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "click"], ["mat-raised-button", "", 1, "button", "shortmedium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", "medium", 3, "color", "click"], ["mat-raised-button", "", 1, "button", 3, "color", "click"], [3, "playground"], [3, "class", 4, "ngFor", "ngForOf"], [3, "player", "hasContent", "highlighted", "scoreDisplayed"]],
       template: function ScamComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -9908,14 +9911,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super21 = _createSuper(ShanghaiState);
 
       function ShanghaiState() {
-        var _this57;
+        var _this56;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this57 = _super21.call(this);
-        _this57.fieldCount = [];
-        _this57.fieldScore = [];
-        return _this57;
+        _this56 = _super21.call(this);
+        _this56.fieldCount = [];
+        _this56.fieldScore = [];
+        return _this56;
       }
 
       _createClass(ShanghaiState, [{
@@ -10320,13 +10323,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super22 = _createSuper(ShanghaiComponent);
 
       function ShanghaiComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this58;
+        var _this57;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this58 = _super22.call(this, application, game, route, dialogService, soundService, statisticsService, 'shanghai');
-        _this58.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this58;
+        _this57 = _super22.call(this, application, game, route, dialogService, soundService, statisticsService, 'shanghai');
+        _this57.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this57;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -10348,7 +10351,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this59 = this;
+          var _this58 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -10378,7 +10381,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this59.game.isTheBestPlayer(p));
+              return p.setWin(_this58.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -11840,14 +11843,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function GameStatisticsDialogComponent(dialogRef, data) {
-        var _this60 = this;
+        var _this59 = this;
 
         _classCallCheck(this, GameStatisticsDialogComponent);
 
         this.dialogRef = dialogRef;
         this.data = data;
         data.statistics.sort(function (a, b) {
-          return _this60.getRatio(b) - _this60.getRatio(a);
+          return _this59.getRatio(b) - _this59.getRatio(a);
         });
       }
 
@@ -12055,35 +12058,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(GameToolbarComponent, [{
         key: "quit",
         value: function quit() {
-          var _this61 = this;
+          var _this60 = this;
 
           this.showConfirmation('Are you sure you want to navigate away from this page?', function () {
-            _this61.route.navigate(['/']);
+            _this60.route.navigate(['/']);
 
-            _this61.playground.game.resetScore();
+            _this60.playground.game.resetScore();
 
-            _this61.playground.multiplier = 1;
-            _this61.playground.extraEndingMsg = '';
+            _this60.playground.multiplier = 1;
+            _this60.playground.extraEndingMsg = '';
           });
         }
       }, {
         key: "newGame",
         value: function newGame() {
-          var _this62 = this;
+          var _this61 = this;
 
           this.showConfirmation('Are you sure you want to start a new game?', function () {
-            _this62.playground.newGame(true);
+            _this61.playground.newGame(true);
           });
         }
       }, {
         key: "showSettings",
         value: function showSettings() {
-          var _this63 = this;
+          var _this62 = this;
 
           this.showConfirmation('Are you sure you want to navigate to the settings page?', function () {
-            _this63.playground.reset();
+            _this62.playground.reset();
 
-            _this63.playground.settingsOpen = true;
+            _this62.playground.settingsOpen = true;
           });
         }
       }, {
@@ -13673,10 +13676,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this64 = this;
+          var _this63 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this64.playground.game.players.map(function (p) {
+            return _this63.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -14418,7 +14421,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this65 = this;
+          var _this64 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -14462,7 +14465,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this65.getPlayerState(p) || !_this65.getPlayerState(p).isInactive();
+              return !_this64.getPlayerState(p) || !_this64.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -14627,14 +14630,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getGameStatistics",
         value: function getGameStatistics() {
-          var _this66 = this;
+          var _this65 = this;
 
           var statistics = this.statisticsService.getGameStatistics(this.playground.gameName);
           var players = [];
           statistics.forEach(function (stat) {
-            _this66.parseStatistics(stat, 'l', players);
+            _this65.parseStatistics(stat, 'l', players);
 
-            _this66.parseStatistics(stat, 'w', players);
+            _this65.parseStatistics(stat, 'w', players);
           });
           return players;
         }
@@ -14675,18 +14678,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "finishStatistics",
         value: function finishStatistics() {
-          var _this67 = this;
+          var _this66 = this;
 
           this.gameStatistics.f = new Date().toISOString();
           this.gameStatistics.w = this.game.players.filter(function (p) {
             return p.win;
           }).map(function (p) {
-            return _this67.decoratePlayerStat(p);
+            return _this66.decoratePlayerStat(p);
           });
           this.gameStatistics.l = this.game.players.filter(function (p) {
             return !p.win;
           }).map(function (p) {
-            return _this67.decoratePlayerStat(p);
+            return _this66.decoratePlayerStat(p);
           });
           this.gameStatistics.r = this.game.round;
           this.gameStatistics.c = this.getGameConfig();
@@ -15246,12 +15249,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getTheBestPlayers",
         value: function getTheBestPlayers() {
-          var max = this.players[0].score;
           var activePlayers = this.getActivePlayers();
-          activePlayers.forEach(function (p) {
+
+          if (activePlayers.length) {
+            var _max = activePlayers[0].score;
+            activePlayers.forEach(function (p) {
+              _max = p.score > _max ? p.score : _max;
+            });
+            return activePlayers.filter(function (p) {
+              return p.score === _max;
+            });
+          }
+
+          var max = this.players[0].score;
+          this.players.forEach(function (p) {
             max = p.score > max ? p.score : max;
           });
-          return activePlayers.filter(function (p) {
+          return this.players.filter(function (p) {
             return p.score === max;
           });
         }
@@ -16365,13 +16379,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super23 = _createSuper(X01Component);
 
       function X01Component(application, game, route, dialogService, soundService, statisticsService) {
-        var _this68;
+        var _this67;
 
         _classCallCheck(this, X01Component);
 
-        _this68 = _super23.call(this, application, game, route, dialogService, soundService, statisticsService, 'x01');
-        _this68.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this68;
+        _this67 = _super23.call(this, application, game, route, dialogService, soundService, statisticsService, 'x01');
+        _this67.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this67;
       }
 
       _createClass(X01Component, [{
@@ -16408,10 +16422,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this69 = this;
+          var _this68 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this69.settings.startValue;
+            return player.score = _this68.settings.startValue;
           });
         }
       }, {
