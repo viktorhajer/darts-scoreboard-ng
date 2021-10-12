@@ -9,6 +9,7 @@ export class AroundClockSettings {
   style: number;
   fields: number[];
   firstDeath: boolean;
+  palFirst: boolean;
 
   constructor() {
     this.style = 0;
@@ -18,6 +19,7 @@ export class AroundClockSettings {
     this.life = 0;
     this.promoter = false;
     this.saboteur = true;
+    this.palFirst = false;
     this.fields = AroundClockSettings.getBaseFields();
   }
 
@@ -60,6 +62,10 @@ export class AroundClockSettings {
 
   toggleFirstDeath() {
     this.firstDeath = !this.firstDeath;
+  }
+
+  togglePalFirst() {
+    this.palFirst = !this.palFirst;
   }
 
   toggleJump() {

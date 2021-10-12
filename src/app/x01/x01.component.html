@@ -28,7 +28,7 @@
 
     <h2>Check In</h2>
     <button mat-raised-button class="button shortmedium" [color]="settings.start===1?'primary':''"
-            (click)="settings.setStart(1)">Single
+            (click)="settings.setStart(1)">Normal
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.start===2?'primary':''"
             (click)="settings.setStart(2)">Double
@@ -49,7 +49,7 @@
             (click)="settings.setCheckout(3)">Triple
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.checkout===4?'primary':''"
-            (click)="settings.setCheckout(4)">None
+            (click)="settings.setCheckout(4)">High Score
     </button>
   </app-settings>
 

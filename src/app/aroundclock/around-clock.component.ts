@@ -29,7 +29,11 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   calculatePoints(player: Player, fieldIndex: number, score: number, scoreReal: number) {
     const state = this.getPlayerState(player);
     const originalMulti = this.multiplier;
-    if (this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
+    const hasChanges = this.handlePromoterSaboteur(player, fieldIndex, score, scoreReal, originalMulti);
+    if (hasChanges && score != 0) {
+      player.throwsHistory[player.throwsHistory.length - 1].score = 0;
+    }
+    if (!hasChanges && this.getFieldIndex(state.actFieldIndex) === fieldIndex) {
       // last throw
       if (state.actFieldIndex >= this.settings.fields.length - this.multiplier) {
         this.multiplier = this.multiplier === 1 ? 1 : this.settings.fields.length - (state.actFieldIndex + 1);
@@ -40,23 +44,6 @@ export class AroundClockComponent extends Playground<AroundClockState> {
       }
     }
     player.score++;
-
-    if ((this.settings.saboteur || this.settings.promoter) && scoreReal !== 0) {
-      const realFieldIndex = scoreReal === 25 ? 20 : scoreReal - 1;
-      this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
-        const otherPlayerState = this.getPlayerState(otherPlayer);
-        if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && score === 0) {
-          if (this.settings.saboteur) {
-            otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
-          } else {
-            otherPlayerState.increaseActFieldIndex(this.settings.jump ? originalMulti : 1);
-            if (otherPlayerState.actFieldIndex >= this.settings.fields.length) {
-              otherPlayerState.actFieldIndex = this.settings.fields.length - 1;
-            }
-          }
-        }
-      });
-    }
   }
 
   checkPlayerState(player: Player) {
@@ -173,5 +160,27 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   private getFieldIndex(index: number) {
     return this.settings.fields[index];
+  }
+
+  private handlePromoterSaboteur(player: Player, fieldIndex: number, score: number, scoreReal: number, originalMulti: number): boolean {
+    let hasChanges = false;
+    if ((this.settings.saboteur || this.settings.promoter) && scoreReal !== 0) {
+      const realFieldIndex = scoreReal === 25 ? 20 : scoreReal - 1;
+      this.game.players.filter(p => p.id !== player.id).forEach(otherPlayer => {
+        const otherPlayerState = this.getPlayerState(otherPlayer);
+        if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && (score === 0 || (this.settings.palFirst && fieldIndex != 0))) {
+          if (this.settings.saboteur) {
+            otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
+          } else {
+            otherPlayerState.increaseActFieldIndex(this.settings.jump ? originalMulti : 1);
+            if (otherPlayerState.actFieldIndex >= this.settings.fields.length) {
+              otherPlayerState.actFieldIndex = this.settings.fields.length - 1;
+            }
+          }
+          hasChanges = true;
+        }
+      });
+    }
+    return hasChanges;
   }
 }
