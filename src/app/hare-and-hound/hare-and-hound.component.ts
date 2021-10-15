@@ -10,6 +10,7 @@ import {HareAndHoundSettings} from './models/hare-and-hound.settings.model';
 import {HareAndHoundState} from './models/hare-and-hound.state.model';
 import {SoundService} from '~services/sound.service';
 import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
+import {BotService} from '~services/bot.service';
 
 @Component({
   templateUrl: './hare-and-hound.component.html',
@@ -20,8 +21,8 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
   settings: HareAndHoundSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, statisticsService, 'hare-hound', 2, 2);
+              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, botService, statisticsService, 'hare-hound', 2, 2);
     this.settings = new HareAndHoundSettings();
   }
 

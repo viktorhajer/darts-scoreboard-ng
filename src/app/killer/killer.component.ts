@@ -10,6 +10,7 @@ import {KillerState} from './models/killer.state.model';
 import {KillerSettings} from './models/killer.settings.model';
 import {SoundService} from '~services/sound.service';
 import {StatisticsService} from '~services/statistics.service';
+import {BotService} from '~services/bot.service';
 
 const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 
@@ -22,8 +23,8 @@ export class KillerComponent extends Playground<KillerState> {
   settings: KillerSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, statisticsService, 'killer', 2);
+              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, botService, statisticsService, 'killer', 2);
     this.settings = new KillerSettings();
     this.nextEnabled = false;
     this.zeroEnabled = false;

@@ -10,6 +10,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {X01Settings} from './models/x01.settings.model';
 import {SoundService} from '~services/sound.service';
 import {StatisticsService} from '~services/statistics.service';
+import {BotService, PLAYER_DELAY} from '~services/bot.service';
 
 @Component({
   templateUrl: './x01.component.html',
@@ -20,8 +21,8 @@ export class X01Component extends Playground<PlaygroundState> {
   settings: X01Settings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, statisticsService, 'x01');
+              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
     this.settings = new X01Settings();
   }
 
@@ -63,5 +64,41 @@ export class X01Component extends Playground<PlaygroundState> {
 
   getGameConfig(): string {
     return this.settings.startValue + '';
+  }
+
+  botThrow() {
+    let target = Math.floor(Math.random() * 10) + 10;
+
+    if (!this.settings.isHighScoreGame()) {
+      const player = this.game.getActualPlayer();
+      if (player.score <= 20) {
+        if (this.settings.isNormalCheckout()) {
+          target = player.score - 1;
+        } else if (this.settings.isDoubleCheckout() && (player.score % 2) === 0) {
+          target = player.score / 2 - 1;
+          this.doublePoint();
+        } else if (this.settings.isDoubleCheckout() && (player.score % 2) === 1) {
+          target = 0;
+        } else if (this.settings.isTripleCheckout() && (player.score % 3) === 0) {
+          target = player.score / 3 - 1;
+          this.triplePoint();
+        } else if (this.settings.isTripleCheckout() && (player.score % 3) === 1) {
+          target = 0;
+        } else if (this.settings.isTripleCheckout() && (player.score % 3) === 2) {
+          target = 1;
+        }
+      }
+    } else {
+      if (this.botService.isDoublePoint()) {
+        this.doublePoint();
+      } else if (this.botService.isTriplePoint()) {
+        this.triplePoint();
+      }
+    }
+    const index = this.botService.calculateTarget(target);
+    setTimeout(() => {
+      this.throwNumber([this.isFieldEnabled(index) ? Playground.getFieldValueFromIndex(index) : 0,
+        Playground.getFieldValueFromIndex(index)]);
+    }, PLAYER_DELAY);
   }
 }

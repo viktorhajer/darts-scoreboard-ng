@@ -10,6 +10,7 @@ import {SoundService} from '~services/sound.service';
 import {DuelSettings} from './models/duel.settings.model';
 import {DuelState} from './models/duel.state.model';
 import {StatisticsService} from '~services/statistics.service';
+import {BotService} from '~services/bot.service';
 
 @Component({
   templateUrl: './duel.component.html',
@@ -20,8 +21,8 @@ export class DuelComponent extends Playground<DuelState> {
   settings: DuelSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, statisticsService, 'duel', 2);
+              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, botService, statisticsService, 'duel', 2);
     this.settings = new DuelSettings();
   }
 

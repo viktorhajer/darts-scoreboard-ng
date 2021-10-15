@@ -11,6 +11,7 @@ import {SoundService} from '~services/sound.service';
 import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
 import {GameStatistics} from '~models/game-statistics.model';
 import {PlayerStatistics} from '~models/player-statistics.model';
+import {BotService, PLAYER_NAME} from '~services/bot.service';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
@@ -33,6 +34,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
                         public route: Router,
                         public dialogService: DialogService,
                         public soundService: SoundService,
+                        public botService: BotService,
                         public statisticsService: StatisticsService,
                         public gameName: string,
                         public minimumNumberOfPlayers = 1,
@@ -71,6 +73,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       this.calculatePoints(actualPlayer, fieldIndex, score, scoreReal);
       this.checkPlayerState(actualPlayer);
 
+      let gameEnded = false;
       this.multiplier = 1;
       const winners = this.game.players.filter(p => p.win);
       if (winners.length > 0) {
@@ -79,6 +82,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
           this.finishStatistics();
           this.dialogService.openDialog('Game Over!', content, this.getTheFinalResult());
           this.newGame(true);
+          gameEnded = true;
         } else {
           while (this.game.getActualPlayer().win) {
             this.game.nextPlayer();
@@ -92,9 +96,14 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
         this.finishStatistics();
         this.dialogService.openDialog('Game Over!', content, this.getTheFinalResult());
         this.newGame(true);
+        gameEnded = true;
       }
 
       this.throwEnabled = true;
+
+      if (!gameEnded && this.game.getActualPlayer().name.toLowerCase().indexOf(PLAYER_NAME) !== -1) {
+        this.botThrow();
+      }
     }
   }
 
@@ -211,6 +220,9 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   getGameConfig(): string {
     return '';
+  }
+
+  botThrow() {
   }
 
   getGameStatistics(): PlayerStatistics[] {

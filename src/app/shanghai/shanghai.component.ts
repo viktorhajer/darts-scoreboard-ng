@@ -10,6 +10,7 @@ import {ShanghaiSettings} from './models/shanghai.settings.model';
 import {ShanghaiState} from './models/shanghai.state.model';
 import {SoundService} from '~services/sound.service';
 import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
+import {BotService} from '~services/bot.service';
 
 @Component({
   templateUrl: './shanghai.component.html',
@@ -20,8 +21,8 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   settings: ShanghaiSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, statisticsService, 'shanghai');
+              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, botService, statisticsService, 'shanghai');
     this.settings = new ShanghaiSettings();
   }
 

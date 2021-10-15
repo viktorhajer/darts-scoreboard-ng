@@ -71,7 +71,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
   /***/
   function packageJson(module) {
-    module.exports = JSON.parse("{\"name\":\"darts-scoreboard-ng\",\"version\":\"2.3.6\",\"license\":\"MIT\",\"author\":{\"name\":\"Viktor Hajer\",\"email\":\"viktor.hajer@gmail.com\"},\"description\":\"See Readme\",\"homepage\":\"https://github.com/viktorhajer/darts-scoreboard-ng#readme\",\"bugs\":{\"url\":\"https://github.com/viktorhajer/darts-scoreboard-ng/issues\"},\"scripts\":{\"ng\":\"ng\",\"start\":\"ng serve\",\"build\":\"ng build\",\"eslint\":\"eslint src/**/*.ts\"},\"private\":false,\"dependencies\":{\"@angular/animations\":\"~9.0.0\",\"@angular/cdk\":\"^9.0.0\",\"@angular/common\":\"~9.0.0\",\"@angular/compiler\":\"~9.0.0\",\"@angular/core\":\"~9.0.0\",\"@angular/forms\":\"~9.0.0\",\"@angular/material\":\"^9.0.0\",\"@angular/platform-browser\":\"~9.0.0\",\"@angular/platform-browser-dynamic\":\"~9.0.0\",\"@angular/router\":\"~9.0.0\",\"rxjs\":\"~6.5.4\",\"tslib\":\"^1.10.0\",\"zone.js\":\"~0.10.2\"},\"devDependencies\":{\"@angular-devkit/build-angular\":\"~0.900.1\",\"@angular/cli\":\"~9.0.1\",\"@angular/compiler-cli\":\"~9.0.0\",\"@angular/language-service\":\"~9.0.0\",\"@types/node\":\"12.12.47\",\"@typescript-eslint/eslint-plugin\":\"^2.19.2\",\"@typescript-eslint/eslint-plugin-tslint\":\"^2.19.2\",\"@typescript-eslint/parser\":\"^2.19.2\",\"eslint\":\"^6.8.0\",\"ts-node\":\"~8.3.0\",\"tslint\":\"~5.18.0\",\"typescript\":\"~3.7.5\"}}");
+    module.exports = JSON.parse("{\"name\":\"darts-scoreboard-ng\",\"version\":\"2.3.7\",\"license\":\"MIT\",\"author\":{\"name\":\"Viktor Hajer\",\"email\":\"viktor.hajer@gmail.com\"},\"description\":\"See Readme\",\"homepage\":\"https://github.com/viktorhajer/darts-scoreboard-ng#readme\",\"bugs\":{\"url\":\"https://github.com/viktorhajer/darts-scoreboard-ng/issues\"},\"scripts\":{\"ng\":\"ng\",\"start\":\"ng serve\",\"build\":\"ng build\",\"eslint\":\"eslint src/**/*.ts\"},\"private\":false,\"dependencies\":{\"@angular/animations\":\"~9.0.0\",\"@angular/cdk\":\"^9.0.0\",\"@angular/common\":\"~9.0.0\",\"@angular/compiler\":\"~9.0.0\",\"@angular/core\":\"~9.0.0\",\"@angular/forms\":\"~9.0.0\",\"@angular/material\":\"^9.0.0\",\"@angular/platform-browser\":\"~9.0.0\",\"@angular/platform-browser-dynamic\":\"~9.0.0\",\"@angular/router\":\"~9.0.0\",\"rxjs\":\"~6.5.4\",\"tslib\":\"^1.10.0\",\"zone.js\":\"~0.10.2\"},\"devDependencies\":{\"@angular-devkit/build-angular\":\"~0.900.1\",\"@angular/cli\":\"~9.0.1\",\"@angular/compiler-cli\":\"~9.0.0\",\"@angular/language-service\":\"~9.0.0\",\"@types/node\":\"12.12.47\",\"@typescript-eslint/eslint-plugin\":\"^2.19.2\",\"@typescript-eslint/eslint-plugin-tslint\":\"^2.19.2\",\"@typescript-eslint/parser\":\"^2.19.2\",\"eslint\":\"^6.8.0\",\"ts-node\":\"~8.3.0\",\"tslint\":\"~5.18.0\",\"typescript\":\"~3.7.5\"}}");
     /***/
   },
 
@@ -706,79 +706,85 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ~services/application-state.service */
     "./src/app/shared/services/application-state.service.ts");
     /* harmony import */
 
 
-    var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ~services/game.service */
     "./src/app/shared/services/game.service.ts");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
     /* harmony import */
 
 
-    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ~services/dialog.service */
     "./src/app/shared/services/dialog.service.ts");
     /* harmony import */
 
 
-    var _services_sound_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _services_sound_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ~services/sound.service */
     "./src/app/shared/services/sound.service.ts");
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -1272,12 +1278,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super = _createSuper(AroundClockComponent);
 
-      function AroundClockComponent(application, game, route, dialogService, soundService, statisticsService) {
+      function AroundClockComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
         var _this;
 
         _classCallCheck(this, AroundClockComponent);
 
-        _this = _super.call(this, application, game, route, dialogService, soundService, statisticsService, 'around-clock', 2);
+        _this = _super.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'around-clock', 2);
         _this.hiddenInfo = true;
         _this.settings = new _models_around_clock_settings_model__WEBPACK_IMPORTED_MODULE_4__["AroundClockSettings"]();
         return _this;
@@ -1367,6 +1373,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
         }
       }, {
+        key: "botThrow",
+        value: function botThrow() {
+          var _this2 = this;
+
+          var state = this.getPlayerState(this.game.getActualPlayer());
+          var target = this.getFieldIndex(state.actFieldIndex);
+          var index = this.botService.calculateTarget(target);
+
+          if (target === index && this.botService.isDoublePoint()) {
+            this.doublePoint();
+          } else if (target === index && this.botService.isTriplePoint()) {
+            this.triplePoint();
+          }
+
+          setTimeout(function () {
+            _this2.throwNumber([_this2.isFieldEnabled(index) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index) : 0, _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index)]);
+          }, _services_bot_service__WEBPACK_IMPORTED_MODULE_5__["PLAYER_DELAY"]);
+        }
+      }, {
         key: "getDistanceFromRandom",
         value: function getDistanceFromRandom() {
           if (this.settings.style === 3) {
@@ -1398,13 +1423,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this2 = this;
+          var _this3 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.filter(function (p) {
-              return p !== _this2.game.getActualPlayer();
+              return p !== _this3.game.getActualPlayer();
             }).some(function (p) {
-              return fieldIndex === _this2.getFieldIndex(_this2.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this3.getFieldIndex(_this3.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -1413,10 +1438,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this3 = this;
+          var _this4 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this3.getFieldIndex(_this3.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this4.getFieldIndex(_this4.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -1425,13 +1450,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNoteBottom",
         value: function getFieldNoteBottom(fieldIndex) {
-          var _this4 = this;
+          var _this5 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this4.getFieldIndex(_this4.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this5.getFieldIndex(_this5.getPlayerState(p).actFieldIndex) === fieldIndex;
           });
           var actualOwn = owners.some(function (p) {
-            return p.name === _this4.game.getActualPlayer().name;
+            return p.name === _this5.game.getActualPlayer().name;
           });
 
           if (actualOwn) {
@@ -1444,10 +1469,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this5 = this;
+          var _this6 = this;
 
           this.game.players.forEach(function (player) {
-            player.life = _this5.settings.life;
+            player.life = _this6.settings.life;
             player.state = new _models_around_clock_state_model__WEBPACK_IMPORTED_MODULE_3__["AroundClockState"]();
           });
           this.settings.setStyle();
@@ -1460,19 +1485,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getTheBestPlayers",
         value: function getTheBestPlayers() {
-          var _this6 = this;
+          var _this7 = this;
 
           var activePlayers = this.game.players.filter(function (p) {
             return !p.isInactive();
           });
           var max = 0;
           activePlayers.forEach(function (p) {
-            var index = _this6.getPlayerState(p).actFieldIndex;
+            var index = _this7.getPlayerState(p).actFieldIndex;
 
             max = index > max ? index : max;
           });
           return activePlayers.filter(function (p) {
-            return _this6.getPlayerState(p).actFieldIndex === max;
+            return _this7.getPlayerState(p).actFieldIndex === max;
           });
         }
       }, {
@@ -1483,7 +1508,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "handlePromoterSaboteur",
         value: function handlePromoterSaboteur(player, fieldIndex, score, scoreReal, originalMulti) {
-          var _this7 = this;
+          var _this8 = this;
 
           var hasChanges = false;
 
@@ -1492,16 +1517,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.game.players.filter(function (p) {
               return p.id !== player.id;
             }).forEach(function (otherPlayer) {
-              var otherPlayerState = _this7.getPlayerState(otherPlayer);
+              var otherPlayerState = _this8.getPlayerState(otherPlayer);
 
-              if (_this7.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && (score === 0 || _this7.settings.palFirst && fieldIndex != 0)) {
-                if (_this7.settings.saboteur) {
-                  otherPlayerState.decreaseActFieldIndex(_this7.settings.jump ? originalMulti : 1);
+              if (_this8.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && (score === 0 || _this8.settings.palFirst && fieldIndex != 0)) {
+                if (_this8.settings.saboteur) {
+                  otherPlayerState.decreaseActFieldIndex(_this8.settings.jump ? originalMulti : 1);
                 } else {
-                  otherPlayerState.increaseActFieldIndex(_this7.settings.jump ? originalMulti : 1);
+                  otherPlayerState.increaseActFieldIndex(_this8.settings.jump ? originalMulti : 1);
 
-                  if (otherPlayerState.actFieldIndex >= _this7.settings.fields.length) {
-                    otherPlayerState.actFieldIndex = _this7.settings.fields.length - 1;
+                  if (otherPlayerState.actFieldIndex >= _this8.settings.fields.length) {
+                    otherPlayerState.actFieldIndex = _this8.settings.fields.length - 1;
                   }
                 }
 
@@ -1518,7 +1543,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     AroundClockComponent.ɵfac = function AroundClockComponent_Factory(t) {
-      return new (t || AroundClockComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || AroundClockComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_5__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     AroundClockComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -1569,7 +1594,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__["MatDivider"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_15__["MatDivider"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -1586,17 +1611,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]
         }, {
-          type: _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]
         }, {
-          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]
         }, {
-          type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
+          type: _services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_5__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -1955,13 +1982,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super2 = _createSuper(AroundClockState);
 
       function AroundClockState() {
-        var _this8;
+        var _this9;
 
         _classCallCheck(this, AroundClockState);
 
-        _this8 = _super2.call(this);
-        _this8.actFieldIndex = 0;
-        return _this8;
+        _this9 = _super2.call(this);
+        _this9.actFieldIndex = 0;
+        return _this9;
       }
 
       _createClass(AroundClockState, [{
@@ -2076,43 +2103,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -2322,14 +2355,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super3 = _createSuper(CaptureTheFlagComponent);
 
-      function CaptureTheFlagComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this9;
+      function CaptureTheFlagComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this10;
 
         _classCallCheck(this, CaptureTheFlagComponent);
 
-        _this9 = _super3.call(this, application, game, route, dialogService, soundService, statisticsService, 'ctf');
-        _this9.settings = new _models_capture_the_flag_settings_model__WEBPACK_IMPORTED_MODULE_4__["CaptureTheFlagSettings"]();
-        return _this9;
+        _this10 = _super3.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'ctf');
+        _this10.settings = new _models_capture_the_flag_settings_model__WEBPACK_IMPORTED_MODULE_4__["CaptureTheFlagSettings"]();
+        return _this10;
       }
 
       _createClass(CaptureTheFlagComponent, [{
@@ -2355,11 +2388,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this10 = this;
+          var _this11 = this;
 
           if (this.game.actualFieldIndex === this.settings.fields.length) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this10.game.isTheBestPlayer(p));
+              return p.setWin(_this11.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -2425,10 +2458,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this11 = this;
+          var _this12 = this;
 
           var player = this.game.players.find(function (player) {
-            return _this11.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
+            return _this12.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
           });
           return player ? player.name : '';
         }
@@ -2490,7 +2523,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     CaptureTheFlagComponent.ɵfac = function CaptureTheFlagComponent_Factory(t) {
-      return new (t || CaptureTheFlagComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || CaptureTheFlagComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     CaptureTheFlagComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -2541,7 +2574,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -2568,7 +2601,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -2799,14 +2834,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super4 = _createSuper(CaptureTheFlagState);
 
       function CaptureTheFlagState() {
-        var _this12;
+        var _this13;
 
         _classCallCheck(this, CaptureTheFlagState);
 
-        _this12 = _super4.call(this);
-        _this12.fieldCount = [];
-        _this12.actFieldIndex = 0;
-        return _this12;
+        _this13 = _super4.call(this);
+        _this13.fieldCount = [];
+        _this13.actFieldIndex = 0;
+        return _this13;
       }
 
       _createClass(CaptureTheFlagState, [{
@@ -2929,49 +2964,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -3474,14 +3515,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super5 = _createSuper(CricketComponent);
 
-      function CricketComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this13;
+      function CricketComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this14;
 
         _classCallCheck(this, CricketComponent);
 
-        _this13 = _super5.call(this, application, game, route, dialogService, soundService, statisticsService, 'cricket');
-        _this13.settings = new _models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_3__["CricketSettings"]();
-        return _this13;
+        _this14 = _super5.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'cricket');
+        _this14.settings = new _models_cricet_settings_model__WEBPACK_IMPORTED_MODULE_3__["CricketSettings"]();
+        return _this14;
       }
 
       _createClass(CricketComponent, [{
@@ -3519,14 +3560,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this14 = this;
+          var _this15 = this;
 
           this.game.players.forEach(function (p) {
-            return p.score = _this14.getPlayerTotal(p);
+            return p.score = _this15.getPlayerTotal(p);
           });
           var punishStyle = this.settings.isPunishGame() || this.settings.isBlackOutGame();
           this.game.players.forEach(function (p) {
-            return p.setWin(_this14.isPlayerDone(p) && (!punishStyle && _this14.game.isTheBestPlayer(p) || punishStyle && _this14.game.isTheWorstPlayer(p)));
+            return p.setWin(_this15.isPlayerDone(p) && (!punishStyle && _this15.game.isTheBestPlayer(p) || punishStyle && _this15.game.isTheWorstPlayer(p)));
           });
 
           if (this.game.isTheLastThrow()) {
@@ -3591,19 +3632,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this15 = this;
+          var _this16 = this;
 
           if (this.isPrimaryField(fieldIndex)) {
             var playerFieldCount = this.getPlayerState(this.getPlayerToDisplay()).getFieldCount(fieldIndex);
             var remaining = ''.padStart(3 - playerFieldCount, '●');
             return remaining + '\n' + this.game.players.filter(function (p) {
-              return _this15.isFieldDoneForPlayer(p, fieldIndex);
+              return _this16.isFieldDoneForPlayer(p, fieldIndex);
             }).map(function (p) {
               return p.name.substr(0, 1);
             }).join(',').toUpperCase();
           } else if (this.isSecondaryField(fieldIndex)) {
             return this.game.players.filter(function (p) {
-              return !_this15.isFieldDoneForPlayer(p, fieldIndex);
+              return !_this16.isFieldDoneForPlayer(p, fieldIndex);
             }).map(function (p) {
               return p.name.substr(0, 1);
             }).join(',').toUpperCase();
@@ -3626,11 +3667,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "changePlayerToDisplay",
         value: function changePlayerToDisplay(player) {
-          var _this16 = this;
+          var _this17 = this;
 
           this.playerToDisplay = player;
           setTimeout(function () {
-            return _this16.playerToDisplay = null;
+            return _this17.playerToDisplay = null;
           }, 1500);
         }
       }, {
@@ -3664,12 +3705,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getPlayerTotalForScoreGame",
         value: function getPlayerTotalForScoreGame(player) {
-          var _this17 = this;
+          var _this18 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            if (_this17.isFieldDoneForPlayer(player, fieldIndex)) {
-              total += (_this17.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
+            if (_this18.isFieldDoneForPlayer(player, fieldIndex)) {
+              total += (_this18.getPlayerState(player).getFieldCount(fieldIndex) - 3) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
             }
           }, this);
           return total;
@@ -3677,22 +3718,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getPlayerTotalForPunishGame",
         value: function getPlayerTotalForPunishGame(player) {
-          var _this18 = this;
+          var _this19 = this;
 
           var total = 0;
           this.settings.fields.forEach(function (fieldIndex) {
-            total += _this18.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
+            total += _this19.getPlayerState(player).getPunishCount(fieldIndex) * _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(fieldIndex);
           }, this);
           return total;
         }
       }, {
         key: "punishPlayers",
         value: function punishPlayers(fieldIndex) {
-          var _this19 = this;
+          var _this20 = this;
 
           this.game.players.forEach(function (player) {
-            if (!_this19.isFieldDoneForPlayer(player, fieldIndex)) {
-              _this19.getPlayerState(player).setPunishCount(fieldIndex, _this19.getPlayerState(player).getPunishCount(fieldIndex) + _this19.multiplier);
+            if (!_this20.isFieldDoneForPlayer(player, fieldIndex)) {
+              _this20.getPlayerState(player).setPunishCount(fieldIndex, _this20.getPlayerState(player).getPunishCount(fieldIndex) + _this20.multiplier);
             }
           }, this);
         }
@@ -3713,23 +3754,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isFieldClosed",
         value: function isFieldClosed(fieldIndex) {
-          var _this20 = this;
+          var _this21 = this;
 
           var closed = true;
           this.game.players.forEach(function (player) {
-            closed = closed && _this20.isFieldDoneForPlayer(player, fieldIndex);
+            closed = closed && _this21.isFieldDoneForPlayer(player, fieldIndex);
           }, this);
           return closed;
         }
       }, {
         key: "isFieldClosedForOthers",
         value: function isFieldClosedForOthers(player, fieldIndex) {
-          var _this21 = this;
+          var _this22 = this;
 
           var closed = true;
           this.game.players.forEach(function (p) {
             if (p.id !== player.id) {
-              closed = closed && _this21.isFieldDoneForPlayer(p, fieldIndex);
+              closed = closed && _this22.isFieldDoneForPlayer(p, fieldIndex);
             }
           }, this);
           return closed;
@@ -3737,11 +3778,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isPlayerDone",
         value: function isPlayerDone(player) {
-          var _this22 = this;
+          var _this23 = this;
 
           var done = true;
           this.settings.fields.forEach(function (fieldIndex) {
-            done = done && _this22.isFieldDoneForPlayer(player, fieldIndex);
+            done = done && _this23.isFieldDoneForPlayer(player, fieldIndex);
           });
           return done;
         }
@@ -3751,7 +3792,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     CricketComponent.ɵfac = function CricketComponent_Factory(t) {
-      return new (t || CricketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || CricketComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     CricketComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -3802,7 +3843,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_15__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -3829,7 +3870,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -4107,14 +4150,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "setAllowedField",
         value: function setAllowedField(fields) {
-          var _this23 = this;
+          var _this24 = this;
 
           for (var i = 0; i < this.numbs.length; i++) {
             this.numbs[i] = false;
           }
 
           fields.forEach(function (f) {
-            return _this23.numbs[f - 1] = true;
+            return _this24.numbs[f - 1] = true;
           });
           this.initFields();
         }
@@ -4160,15 +4203,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super6 = _createSuper(CricketState);
 
       function CricketState() {
-        var _this24;
+        var _this25;
 
         _classCallCheck(this, CricketState);
 
-        _this24 = _super6.call(this);
-        _this24.fieldCount = [];
-        _this24.punishCount = [];
-        _this24.actFieldIndex = 0;
-        return _this24;
+        _this25 = _super6.call(this);
+        _this25.fieldCount = [];
+        _this25.punishCount = [];
+        _this25.actFieldIndex = 0;
+        return _this25;
       }
 
       _createClass(CricketState, [{
@@ -4304,67 +4347,73 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/form-field */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
     /* harmony import */
 
 
-    var _angular_material_input__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! @angular/material/input */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/input.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -4841,20 +4890,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super7 = _createSuper(DuelComponent);
 
-      function DuelComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this25;
+      function DuelComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this26;
 
         _classCallCheck(this, DuelComponent);
 
-        _this25 = _super7.call(this, application, game, route, dialogService, soundService, statisticsService, 'duel', 2);
-        _this25.settings = new _models_duel_settings_model__WEBPACK_IMPORTED_MODULE_3__["DuelSettings"]();
-        return _this25;
+        _this26 = _super7.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'duel', 2);
+        _this26.settings = new _models_duel_settings_model__WEBPACK_IMPORTED_MODULE_3__["DuelSettings"]();
+        return _this26;
       }
 
       _createClass(DuelComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this26 = this;
+          var _this27 = this;
 
           var state = this.getPlayerState(player);
           var actualScore = score * this.multiplier;
@@ -4870,7 +4919,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
             if (this.settings.handover) {
               var _player = this.game.players.find(function (p) {
-                return p != _this26.game.getActualPlayer() && _this26.getPlayerState(p).ownFields.some(function (i) {
+                return p != _this27.game.getActualPlayer() && _this27.getPlayerState(p).ownFields.some(function (i) {
                   return i === fieldIndex;
                 });
               });
@@ -4886,13 +4935,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this27 = this;
+          var _this28 = this;
 
           this.game.players.forEach(function (p) {
-            return p.setWin(p.score >= _this27.settings.targetPoint);
+            return p.setWin(p.score >= _this28.settings.targetPoint);
           });
           var activePlayers = this.game.players.filter(function (p) {
-            return !_this27.isInactive(p);
+            return !_this28.isInactive(p);
           });
 
           if (activePlayers.length === 1) {
@@ -4927,10 +4976,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this28 = this;
+          var _this29 = this;
 
           return !this.settings.isFieldAllowed(fieldIndex) || this.game.players.some(function (p) {
-            return p != _this28.game.getActualPlayer() && _this28.getPlayerState(p).ownFields.some(function (i) {
+            return p != _this29.game.getActualPlayer() && _this29.getPlayerState(p).ownFields.some(function (i) {
               return i === fieldIndex;
             });
           });
@@ -4938,10 +4987,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this29 = this;
+          var _this30 = this;
 
           var player = this.game.players.find(function (p) {
-            return _this29.getPlayerState(p).ownFields.some(function (i) {
+            return _this30.getPlayerState(p).ownFields.some(function (i) {
               return i === fieldIndex;
             });
           });
@@ -4955,11 +5004,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this30 = this;
+          var _this31 = this;
 
           this.game.players.forEach(function (player) {
             player.state = new _models_duel_state_model__WEBPACK_IMPORTED_MODULE_4__["DuelState"]();
-            player.score = _this30.settings.startPoint;
+            player.score = _this31.settings.startPoint;
           });
         }
       }, {
@@ -4973,7 +5022,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     DuelComponent.ɵfac = function DuelComponent_Factory(t) {
-      return new (t || DuelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || DuelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     DuelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -5024,7 +5073,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_15__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_16__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_17__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_18__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_19__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_20__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_18__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_19__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_20__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_21__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -5051,7 +5100,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -5179,19 +5230,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super8 = _createSuper(DuelSettings);
 
       function DuelSettings() {
-        var _this31;
+        var _this32;
 
         _classCallCheck(this, DuelSettings);
 
-        _this31 = _super8.call(this);
+        _this32 = _super8.call(this);
 
-        _this31.star();
+        _this32.star();
 
-        _this31.startPoint = 30;
-        _this31.targetPoint = 200;
-        _this31.punishment = 10;
-        _this31.handover = true;
-        return _this31;
+        _this32.startPoint = 30;
+        _this32.targetPoint = 200;
+        _this32.punishment = 10;
+        _this32.handover = true;
+        return _this32;
       }
 
       _createClass(DuelSettings, [{
@@ -5251,13 +5302,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super9 = _createSuper(DuelState);
 
       function DuelState() {
-        var _this32;
+        var _this33;
 
         _classCallCheck(this, DuelState);
 
-        _this32 = _super9.call(this);
-        _this32.ownFields = [];
-        return _this32;
+        _this33 = _super9.call(this);
+        _this33.ownFields = [];
+        return _this33;
       }
 
       _createClass(DuelState, [{
@@ -5351,49 +5402,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -5605,14 +5662,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super10 = _createSuper(FivesComponent);
 
-      function FivesComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this33;
+      function FivesComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this34;
 
         _classCallCheck(this, FivesComponent);
 
-        _this33 = _super10.call(this, application, game, route, dialogService, soundService, statisticsService, 'fives');
-        _this33.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
-        return _this33;
+        _this34 = _super10.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'fives');
+        _this34.settings = new _models_fives_settings_model__WEBPACK_IMPORTED_MODULE_3__["FivesSettings"]();
+        return _this34;
       }
 
       _createClass(FivesComponent, [{
@@ -5669,10 +5726,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this34 = this;
+          var _this35 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this34.settings.limit;
+            return player.score = _this35.settings.limit;
           });
         }
       }, {
@@ -5686,7 +5743,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     FivesComponent.ɵfac = function FivesComponent_Factory(t) {
-      return new (t || FivesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_9__["StatisticsService"]));
+      return new (t || FivesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_9__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
     };
 
     FivesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -5737,7 +5794,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgForOf"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__["MatDivider"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -5764,7 +5821,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_9__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_9__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
         }];
       }, null);
     })();
@@ -6010,37 +6069,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -6176,14 +6241,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super11 = _createSuper(HareAndHoundComponent);
 
-      function HareAndHoundComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this35;
+      function HareAndHoundComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this36;
 
         _classCallCheck(this, HareAndHoundComponent);
 
-        _this35 = _super11.call(this, application, game, route, dialogService, soundService, statisticsService, 'hare-hound', 2, 2);
-        _this35.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
-        return _this35;
+        _this36 = _super11.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'hare-hound', 2, 2);
+        _this36.settings = new _models_hare_and_hound_settings_model__WEBPACK_IMPORTED_MODULE_3__["HareAndHoundSettings"]();
+        return _this36;
       }
 
       _createClass(HareAndHoundComponent, [{
@@ -6204,10 +6269,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this36 = this;
+          var _this37 = this;
 
           player.setWin(this.isHare() && player.score <= 0 || !this.isHare() && player.score + this.settings.getHareStartIndex() <= this.game.players.find(function (p) {
-            return _this36.isHare(p);
+            return _this37.isHare(p);
           }).score);
 
           if (!player.win && this.game.isTheLastThrow()) {
@@ -6231,11 +6296,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "isSecondaryField",
         value: function isSecondaryField(fieldIndex) {
-          var _this37 = this;
+          var _this38 = this;
 
           if (!this.isFieldEnabled(fieldIndex)) {
             return this.game.players.some(function (p) {
-              return fieldIndex === _this37.getFieldIndex(_this37.getPlayerState(p).actFieldIndex);
+              return fieldIndex === _this38.getFieldIndex(_this38.getPlayerState(p).actFieldIndex);
             });
           }
 
@@ -6244,10 +6309,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldNote",
         value: function getFieldNote(fieldIndex) {
-          var _this38 = this;
+          var _this39 = this;
 
           var owners = this.game.players.filter(function (p) {
-            return _this38.getFieldIndex(_this38.getPlayerState(p).actFieldIndex) === fieldIndex;
+            return _this39.getFieldIndex(_this39.getPlayerState(p).actFieldIndex) === fieldIndex;
           }).map(function (p) {
             return p.name;
           });
@@ -6265,13 +6330,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this39 = this;
+          var _this40 = this;
 
           this.game.players.forEach(function (player, index) {
             player.score = _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["FIELDS_COUNT"] - 1;
 
             if (index === 0) {
-              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this39.settings.getHareStartIndex());
+              player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](_this40.settings.getHareStartIndex());
             } else {
               player.state = new _models_hare_and_hound_state_model__WEBPACK_IMPORTED_MODULE_4__["HareAndHoundState"](0);
             }
@@ -6309,7 +6374,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     HareAndHoundComponent.ɵfac = function HareAndHoundComponent_Factory(t) {
-      return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_5__["StatisticsService"]));
+      return new (t || HareAndHoundComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_11__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_5__["StatisticsService"]));
     };
 
     HareAndHoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -6360,7 +6425,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -6386,6 +6451,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]
+        }, {
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_11__["BotService"]
         }, {
           type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_5__["StatisticsService"]
         }];
@@ -6579,13 +6646,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super12 = _createSuper(HareAndHoundState);
 
       function HareAndHoundState(actFieldIndex) {
-        var _this40;
+        var _this41;
 
         _classCallCheck(this, HareAndHoundState);
 
-        _this40 = _super12.call(this);
-        _this40.actFieldIndex = actFieldIndex;
-        return _this40;
+        _this41 = _super12.call(this);
+        _this41.actFieldIndex = actFieldIndex;
+        return _this41;
       }
 
       _createClass(HareAndHoundState, [{
@@ -6697,43 +6764,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -6921,15 +6994,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super13 = _createSuper(ImitatorComponent);
 
-      function ImitatorComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this41;
+      function ImitatorComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this42;
 
         _classCallCheck(this, ImitatorComponent);
 
-        _this41 = _super13.call(this, application, game, route, dialogService, soundService, statisticsService, 'imitator');
-        _this41.nextEnabled = false;
-        _this41.settings = new _models_imitator_settings_model__WEBPACK_IMPORTED_MODULE_3__["ImitatorSettings"]();
-        return _this41;
+        _this42 = _super13.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'imitator');
+        _this42.nextEnabled = false;
+        _this42.settings = new _models_imitator_settings_model__WEBPACK_IMPORTED_MODULE_3__["ImitatorSettings"]();
+        return _this42;
       }
 
       _createClass(ImitatorComponent, [{
@@ -6956,11 +7029,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this42 = this;
+          var _this43 = this;
 
           if (this.game.isTheLastPlayer(player) && this.game.round + 1 === this.settings.round && this.game.actualThrow === 2) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this42.game.isTheBestPlayer(p));
+              return p.setWin(_this43.game.isTheBestPlayer(p));
             });
           }
         }
@@ -6982,7 +7055,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     ImitatorComponent.ɵfac = function ImitatorComponent_Factory(t) {
-      return new (t || ImitatorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || ImitatorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     ImitatorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -7033,7 +7106,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -7060,7 +7133,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -7230,14 +7305,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super14 = _createSuper(ImitatorState);
 
       function ImitatorState() {
-        var _this43;
+        var _this44;
 
         _classCallCheck(this, ImitatorState);
 
-        _this43 = _super14.call(this);
-        _this43.actFieldIndex = Math.floor(Math.random() * 20);
-        _this43.punished = false;
-        return _this43;
+        _this44 = _super14.call(this);
+        _this44.actFieldIndex = Math.floor(Math.random() * 20);
+        _this44.punished = false;
+        return _this44;
       }
 
       _createClass(ImitatorState, [{
@@ -7338,67 +7413,73 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/form-field */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
     /* harmony import */
 
 
-    var _angular_material_input__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! @angular/material/input */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/input.js");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -7664,23 +7745,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super15 = _createSuper(KillerComponent);
 
-      function KillerComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this44;
+      function KillerComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this45;
 
         _classCallCheck(this, KillerComponent);
 
-        _this44 = _super15.call(this, application, game, route, dialogService, soundService, statisticsService, 'killer', 2);
-        _this44.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
-        _this44.nextEnabled = false;
-        _this44.zeroEnabled = false;
-        _this44.multiEnabled = false;
-        return _this44;
+        _this45 = _super15.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'killer', 2);
+        _this45.settings = new _models_killer_settings_model__WEBPACK_IMPORTED_MODULE_4__["KillerSettings"]();
+        _this45.nextEnabled = false;
+        _this45.zeroEnabled = false;
+        _this45.multiEnabled = false;
+        return _this45;
       }
 
       _createClass(KillerComponent, [{
         key: "calculatePoints",
         value: function calculatePoints(player, fieldIndex, score) {
-          var _this45 = this;
+          var _this46 = this;
 
           var state = this.getPlayerState(player);
 
@@ -7708,12 +7789,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 this.game.players.filter(function (p) {
                   return p.id !== player.id && !p.isInactive();
                 }).forEach(function (p) {
-                  var s = _this45.getPlayerState(p);
+                  var s = _this46.getPlayerState(p);
 
                   if (fieldIndex === s.actField) {
-                    p.life -= _this45.multiplier;
+                    p.life -= _this46.multiplier;
 
-                    _this45.soundService.no();
+                    _this46.soundService.no();
 
                     if (p.life < 0) {
                       p.life = 0;
@@ -7794,10 +7875,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getFieldIcon",
         value: function getFieldIcon(fieldIndex) {
-          var _this46 = this;
+          var _this47 = this;
 
           if (this.game.players.some(function (p) {
-            var state = _this46.getPlayerState(p);
+            var state = _this47.getPlayerState(p);
 
             return !p.isInactive() && p.life <= 3 && state.actField === fieldIndex;
           })) {
@@ -7823,11 +7904,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this47 = this;
+          var _this48 = this;
 
           this.game.players.forEach(function (player) {
-            player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this47.settings.boardingLimit);
-            player.life = _this47.settings.numberOfLives;
+            player.state = new _models_killer_state_model__WEBPACK_IMPORTED_MODULE_3__["KillerState"](_this48.settings.boardingLimit);
+            player.life = _this48.settings.numberOfLives;
           });
         }
       }, {
@@ -7848,12 +7929,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getAllEnabledFields",
         value: function getAllEnabledFields() {
-          var _this48 = this;
+          var _this49 = this;
 
           return this.game.players.filter(function (p) {
             return !p.isInactive();
           }).map(function (p) {
-            return _this48.getPlayerState(p).actField;
+            return _this49.getPlayerState(p).actField;
           });
         }
       }]);
@@ -7862,7 +7943,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     KillerComponent.ɵfac = function KillerComponent_Factory(t) {
-      return new (t || KillerComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || KillerComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     KillerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -7913,7 +7994,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_15__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NgModel"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_16__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_18__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_19__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_20__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NgModel"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_17__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_18__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_19__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_20__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_21__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -7940,7 +8021,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -8112,17 +8195,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super16 = _createSuper(KillerState);
 
       function KillerState() {
-        var _this49;
+        var _this50;
 
         var boarding = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3;
 
         _classCallCheck(this, KillerState);
 
-        _this49 = _super16.call(this);
-        _this49.boarding = boarding;
-        _this49.actField = -1;
-        _this49.killer = false;
-        return _this49;
+        _this50 = _super16.call(this);
+        _this50.boarding = boarding;
+        _this50.actField = -1;
+        _this50.killer = false;
+        return _this50;
       }
 
       _createClass(KillerState, [{
@@ -8223,61 +8306,67 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/form-field */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
     /* harmony import */
 
 
-    var _angular_material_input__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! @angular/material/input */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/input.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -8425,14 +8514,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super17 = _createSuper(KnockoutComponent);
 
-      function KnockoutComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this50;
+      function KnockoutComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this51;
 
         _classCallCheck(this, KnockoutComponent);
 
-        _this50 = _super17.call(this, application, game, route, dialogService, soundService, statisticsService, 'knockout', 2);
-        _this50.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
-        return _this50;
+        _this51 = _super17.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'knockout', 2);
+        _this51.settings = new _models_knockout_settings_model__WEBPACK_IMPORTED_MODULE_3__["KnockoutSettings"]();
+        return _this51;
       }
 
       _createClass(KnockoutComponent, [{
@@ -8469,11 +8558,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this51 = this;
+          var _this52 = this;
 
           this.game.players.forEach(function (player) {
             player.state = new _models_knockout_state_model__WEBPACK_IMPORTED_MODULE_4__["KnockoutState"]();
-            player.life = _this51.settings.numberOfLives;
+            player.life = _this52.settings.numberOfLives;
           });
         }
       }, {
@@ -8499,7 +8588,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     KnockoutComponent.ɵfac = function KnockoutComponent_Factory(t) {
-      return new (t || KnockoutComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
+      return new (t || KnockoutComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]));
     };
 
     KnockoutComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -8550,7 +8639,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_15__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_14__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_16__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_17__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_18__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_19__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_14__["MatLabel"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NumberValueAccessor"], _angular_material_input__WEBPACK_IMPORTED_MODULE_16__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_15__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_17__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_18__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_19__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_20__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -8577,7 +8666,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_10__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_11__["StatisticsService"]
         }];
       }, null);
     })();
@@ -8748,15 +8839,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super18 = _createSuper(KnockoutState);
 
       function KnockoutState() {
-        var _this52;
+        var _this53;
 
         var score = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
         _classCallCheck(this, KnockoutState);
 
-        _this52 = _super18.call(this);
-        _this52.score = score;
-        return _this52;
+        _this53 = _super18.call(this);
+        _this53.score = score;
+        return _this53;
       }
 
       _createClass(KnockoutState, [{
@@ -8961,19 +9052,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super19 = _createSuper(ScamSettings);
 
       function ScamSettings() {
-        var _this53;
+        var _this54;
 
         _classCallCheck(this, ScamSettings);
 
-        _this53 = _super19.call(this);
-        _this53.stopper = false;
-        _this53.punishment = false;
-        _this53.punishmentValue = 15;
-        _this53.style = 1;
+        _this54 = _super19.call(this);
+        _this54.stopper = false;
+        _this54.punishment = false;
+        _this54.punishmentValue = 15;
+        _this54.style = 1;
 
-        _this53.all();
+        _this54.all();
 
-        return _this53;
+        return _this54;
       }
 
       _createClass(ScamSettings, [{
@@ -9070,49 +9161,55 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -9557,14 +9654,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super20 = _createSuper(ScamComponent);
 
-      function ScamComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this54;
+      function ScamComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this55;
 
         _classCallCheck(this, ScamComponent);
 
-        _this54 = _super20.call(this, application, game, route, dialogService, soundService, statisticsService, 'scam', 2);
-        _this54.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
-        return _this54;
+        _this55 = _super20.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'scam', 2);
+        _this55.settings = new _models_scam_settings_model__WEBPACK_IMPORTED_MODULE_3__["ScamSettings"]();
+        return _this55;
       }
 
       _createClass(ScamComponent, [{
@@ -9615,13 +9712,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this55 = this;
+          var _this56 = this;
 
           this.game.numbs = this.settings.numbs.map(function (i) {
             return i ? 1 : 0;
           });
           this.settings.fields.forEach(function (f) {
-            return _this55.settings.numbs[f] = true;
+            return _this56.settings.numbs[f] = true;
           });
         }
       }, {
@@ -9635,7 +9732,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     ScamComponent.ɵfac = function ScamComponent_Factory(t) {
-      return new (t || ScamComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_9__["StatisticsService"]));
+      return new (t || ScamComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_9__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
     };
 
     ScamComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -9686,7 +9783,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_12__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -9713,7 +9810,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_9__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_9__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
         }];
       }, null);
     })();
@@ -9949,14 +10048,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super21 = _createSuper(ShanghaiState);
 
       function ShanghaiState() {
-        var _this56;
+        var _this57;
 
         _classCallCheck(this, ShanghaiState);
 
-        _this56 = _super21.call(this);
-        _this56.fieldCount = [];
-        _this56.fieldScore = [];
-        return _this56;
+        _this57 = _super21.call(this);
+        _this57.fieldCount = [];
+        _this57.fieldScore = [];
+        return _this57;
       }
 
       _createClass(ShanghaiState, [{
@@ -10087,43 +10186,49 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -10360,14 +10465,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super22 = _createSuper(ShanghaiComponent);
 
-      function ShanghaiComponent(application, game, route, dialogService, soundService, statisticsService) {
-        var _this57;
+      function ShanghaiComponent(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this58;
 
         _classCallCheck(this, ShanghaiComponent);
 
-        _this57 = _super22.call(this, application, game, route, dialogService, soundService, statisticsService, 'shanghai');
-        _this57.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
-        return _this57;
+        _this58 = _super22.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'shanghai');
+        _this58.settings = new _models_shanghai_settings_model__WEBPACK_IMPORTED_MODULE_3__["ShanghaiSettings"]();
+        return _this58;
       }
 
       _createClass(ShanghaiComponent, [{
@@ -10389,7 +10494,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "checkPlayerState",
         value: function checkPlayerState(player) {
-          var _this58 = this;
+          var _this59 = this;
 
           // Shanghai rule
           if (this.game.isTheLastThrow()) {
@@ -10419,7 +10524,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (gameEnded) {
             this.game.players.forEach(function (p) {
-              return p.setWin(_this58.game.isTheBestPlayer(p));
+              return p.setWin(_this59.game.isTheBestPlayer(p));
             });
           } else if (this.game.isTheLastThrow()) {
             this.game.nextPlayer();
@@ -10525,7 +10630,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     ShanghaiComponent.ɵfac = function ShanghaiComponent_Factory(t) {
-      return new (t || ShanghaiComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_5__["StatisticsService"]));
+      return new (t || ShanghaiComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_7__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_8__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_11__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_5__["StatisticsService"]));
     };
 
     ShanghaiComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -10576,7 +10681,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_14__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_13__["SettingsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__["MatDivider"], _angular_material_button__WEBPACK_IMPORTED_MODULE_15__["MatButton"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_16__["GameToolbarComponent"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_17__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_18__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -10602,6 +10707,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_9__["DialogService"]
         }, {
           type: _services_sound_service__WEBPACK_IMPORTED_MODULE_10__["SoundService"]
+        }, {
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_11__["BotService"]
         }, {
           type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_5__["StatisticsService"]
         }];
@@ -11881,14 +11988,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function GameStatisticsDialogComponent(dialogRef, data) {
-        var _this59 = this;
+        var _this60 = this;
 
         _classCallCheck(this, GameStatisticsDialogComponent);
 
         this.dialogRef = dialogRef;
         this.data = data;
         data.statistics.sort(function (a, b) {
-          return _this59.getRatio(b) - _this59.getRatio(a);
+          return _this60.getRatio(b) - _this60.getRatio(a);
         });
       }
 
@@ -12096,35 +12203,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(GameToolbarComponent, [{
         key: "quit",
         value: function quit() {
-          var _this60 = this;
+          var _this61 = this;
 
           this.showConfirmation('Are you sure you want to navigate away from this page?', function () {
-            _this60.route.navigate(['/']);
+            _this61.route.navigate(['/']);
 
-            _this60.playground.game.resetScore();
+            _this61.playground.game.resetScore();
 
-            _this60.playground.multiplier = 1;
-            _this60.playground.extraEndingMsg = '';
+            _this61.playground.multiplier = 1;
+            _this61.playground.extraEndingMsg = '';
           });
         }
       }, {
         key: "newGame",
         value: function newGame() {
-          var _this61 = this;
+          var _this62 = this;
 
           this.showConfirmation('Are you sure you want to start a new game?', function () {
-            _this61.playground.newGame(true);
+            _this62.playground.newGame(true);
           });
         }
       }, {
         key: "showSettings",
         value: function showSettings() {
-          var _this62 = this;
+          var _this63 = this;
 
           this.showConfirmation('Are you sure you want to navigate to the settings page?', function () {
-            _this62.playground.reset();
+            _this63.playground.reset();
 
-            _this62.playground.settingsOpen = true;
+            _this63.playground.settingsOpen = true;
           });
         }
       }, {
@@ -13714,10 +13821,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this63 = this;
+          var _this64 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this63.playground.game.players.map(function (p) {
+            return _this64.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -14417,7 +14524,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
@@ -14427,9 +14540,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var Playground =
     /*#__PURE__*/
     function () {
-      function Playground(application, game, route, dialogService, soundService, statisticsService, gameName) {
-        var minimumNumberOfPlayers = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 1;
-        var maximumNumberOfPlayers = arguments.length > 8 ? arguments[8] : undefined;
+      function Playground(application, game, route, dialogService, soundService, botService, statisticsService, gameName) {
+        var minimumNumberOfPlayers = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : 1;
+        var maximumNumberOfPlayers = arguments.length > 9 ? arguments[9] : undefined;
 
         _classCallCheck(this, Playground);
 
@@ -14438,6 +14551,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.route = route;
         this.dialogService = dialogService;
         this.soundService = soundService;
+        this.botService = botService;
         this.statisticsService = statisticsService;
         this.gameName = gameName;
         this.minimumNumberOfPlayers = minimumNumberOfPlayers;
@@ -14459,7 +14573,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this64 = this;
+          var _this65 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -14484,6 +14598,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.game.actualThrow++;
             this.calculatePoints(actualPlayer, fieldIndex, score, scoreReal);
             this.checkPlayerState(actualPlayer);
+            var gameEnded = false;
             this.multiplier = 1;
             var winners = this.game.players.filter(function (p) {
               return p.win;
@@ -14495,6 +14610,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                 this.finishStatistics();
                 this.dialogService.openDialog('Game Over!', content, this.getTheFinalResult());
                 this.newGame(true);
+                gameEnded = true;
               } else {
                 while (this.game.getActualPlayer().win) {
                   this.game.nextPlayer();
@@ -14503,7 +14619,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this64.getPlayerState(p) || !_this64.getPlayerState(p).isInactive();
+              return !_this65.getPlayerState(p) || !_this65.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -14512,9 +14628,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               this.finishStatistics();
               this.dialogService.openDialog('Game Over!', _content, this.getTheFinalResult());
               this.newGame(true);
+              gameEnded = true;
             }
 
             this.throwEnabled = true;
+
+            if (!gameEnded && this.game.getActualPlayer().name.toLowerCase().indexOf(_services_bot_service__WEBPACK_IMPORTED_MODULE_5__["PLAYER_NAME"]) !== -1) {
+              this.botThrow();
+            }
           }
         }
       }, {
@@ -14666,16 +14787,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return '';
         }
       }, {
+        key: "botThrow",
+        value: function botThrow() {}
+      }, {
         key: "getGameStatistics",
         value: function getGameStatistics() {
-          var _this65 = this;
+          var _this66 = this;
 
           var statistics = this.statisticsService.getGameStatistics(this.playground.gameName);
           var players = [];
           statistics.forEach(function (stat) {
-            _this65.parseStatistics(stat, 'l', players);
+            _this66.parseStatistics(stat, 'l', players);
 
-            _this65.parseStatistics(stat, 'w', players);
+            _this66.parseStatistics(stat, 'w', players);
           });
           return players;
         }
@@ -14716,18 +14840,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "finishStatistics",
         value: function finishStatistics() {
-          var _this66 = this;
+          var _this67 = this;
 
           this.gameStatistics.f = new Date().toISOString();
           this.gameStatistics.w = this.game.players.filter(function (p) {
             return p.win;
           }).map(function (p) {
-            return _this66.decoratePlayerStat(p);
+            return _this67.decoratePlayerStat(p);
           });
           this.gameStatistics.l = this.game.players.filter(function (p) {
             return !p.win;
           }).map(function (p) {
-            return _this66.decoratePlayerStat(p);
+            return _this67.decoratePlayerStat(p);
           });
           this.gameStatistics.r = this.game.round;
           this.gameStatistics.c = this.getGameConfig();
@@ -14782,10 +14906,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     Playground.ɵfac = function Playground_Factory(t) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵinvalidFactory"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinvalidFactory"]();
     };
 
-    Playground.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineDirective"]({
+    Playground.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineDirective"]({
       type: Playground
     });
     /***/
@@ -14961,6 +15085,118 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     })();
     /***/
 
+  },
+
+  /***/
+  "./src/app/shared/services/bot.service.ts":
+  /*!************************************************!*\
+    !*** ./src/app/shared/services/bot.service.ts ***!
+    \************************************************/
+
+  /*! exports provided: PLAYER_NAME, PLAYER_DELAY, BotService */
+
+  /***/
+  function srcAppSharedServicesBotServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PLAYER_NAME", function () {
+      return PLAYER_NAME;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PLAYER_DELAY", function () {
+      return PLAYER_DELAY;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "BotService", function () {
+      return BotService;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+    var PLAYER_NAME = 'phil';
+    var PLAYER_DELAY = 1000;
+    var MAX_LEVEL = 10;
+    var PLAYER_LEVEL = 5;
+
+    var BotService =
+    /*#__PURE__*/
+    function () {
+      function BotService() {
+        _classCallCheck(this, BotService);
+      }
+
+      _createClass(BotService, [{
+        key: "calculateMultiTarget",
+        value: function calculateMultiTarget(targets) {// TODO
+        }
+      }, {
+        key: "calculateTarget",
+        value: function calculateTarget(target) {
+          var actual = Math.floor(Math.random() * MAX_LEVEL) + 1;
+          actual = target === 20 ? actual + 3 : actual;
+
+          if (actual <= PLAYER_LEVEL) {
+            return target;
+          } else {
+            var upOrBottomLine = Math.floor(Math.random() * 3);
+            var mistakeLevel = (actual - PLAYER_LEVEL > 4 ? 4 : actual - PLAYER_LEVEL) - 1;
+
+            if (mistakeLevel === 3) {
+              return 0;
+            }
+
+            return TARGET_MATRIX[target][mistakeLevel][upOrBottomLine] - 1;
+          }
+        }
+      }, {
+        key: "isDoublePoint",
+        value: function isDoublePoint() {
+          return Math.floor(Math.random() * 100) < 15;
+        }
+      }, {
+        key: "isTriplePoint",
+        value: function isTriplePoint() {
+          return Math.floor(Math.random() * 100) < 5;
+        }
+      }]);
+
+      return BotService;
+    }();
+
+    BotService.ɵfac = function BotService_Factory(t) {
+      return new (t || BotService)();
+    };
+
+    BotService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
+      token: BotService,
+      factory: BotService.ɵfac,
+      providedIn: 'root'
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](BotService, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
+        args: [{
+          providedIn: 'root'
+        }]
+      }], null, null);
+    })();
+
+    var TARGET_MATRIX = [[[20, 18, 5], [5, 4, 12], [12, 13, 7]], [[15, 17, 10], [10, 3, 6], [6, 19, 9]], [[17, 19, 2], [2, 7, 15], [15, 16, 5]], [[18, 13, 1], [1, 6, 20], [20, 10, 8]], [[12, 20, 9], [9, 1, 14], [14, 18, 2]], [[13, 10, 4], [4, 15, 18], [18, 2, 8]], [[19, 16, 8], [3, 8, 17], [17, 11, 1]], [[16, 11, 7], [7, 14, 9], [19, 9, 6]], [[14, 12, 11], [11, 5, 20], [8, 20, 10]], [[6, 15, 13], [13, 2, 4], [4, 17, 11]], [[8, 14, 16], [16, 9, 12], [7, 12, 10]], [[9, 5, 14], [14, 20, 11], [11, 1, 15]], [[4, 6, 18], [18, 10, 15], [1, 15, 16]], [[11, 9, 16], [8, 12, 5], [16, 5, 15]], [[10, 2, 6], [6, 17, 13], [13, 3, 14]], [[7, 8, 11], [19, 11, 14], [3, 14, 13]], [[2, 3, 15], [15, 19, 7], [10, 7, 12]], [[1, 4, 20], [20, 13, 6], [5, 6, 19]], [[3, 7, 17], [17, 16, 8], [2, 8, 18]], [[5, 1, 12], [12, 18, 9], [9, 4, 19]], [[20, 3, 6], [1, 19, 11], [18, 7, 8]]];
+    /***/
   },
 
   /***/
@@ -15996,79 +16232,85 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _services_bot_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ~services/bot.service */
+    "./src/app/shared/services/bot.service.ts");
+    /* harmony import */
+
+
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ~services/application-state.service */
     "./src/app/shared/services/application-state.service.ts");
     /* harmony import */
 
 
-    var _services_game_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ~services/game.service */
     "./src/app/shared/services/game.service.ts");
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
     /* harmony import */
 
 
-    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ~services/dialog.service */
     "./src/app/shared/services/dialog.service.ts");
     /* harmony import */
 
 
-    var _services_sound_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _services_sound_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! ~services/sound.service */
     "./src/app/shared/services/sound.service.ts");
     /* harmony import */
 
 
-    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! ~services/statistics.service */
     "./src/app/shared/services/statistics.service.ts");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ~components/settings/settings.component */
     "./src/app/shared/components/settings/settings.component.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    var _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
     /*! @angular/material/divider */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/divider.js");
     /* harmony import */
 
 
-    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    var _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! ~components/game-toolbar/game-toolbar.component */
     "./src/app/shared/components/game-toolbar/game-toolbar.component.ts");
     /* harmony import */
 
 
-    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    var _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! ~components/player-score/player-score.component */
     "./src/app/shared/components/player-score/player-score.component.ts");
     /* harmony import */
 
 
-    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    var _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
     /*! ~components/number-plate/number-plate.component */
     "./src/app/shared/components/number-plate/number-plate.component.ts");
 
@@ -16416,14 +16658,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       var _super23 = _createSuper(X01Component);
 
-      function X01Component(application, game, route, dialogService, soundService, statisticsService) {
-        var _this67;
+      function X01Component(application, game, route, dialogService, soundService, botService, statisticsService) {
+        var _this68;
 
         _classCallCheck(this, X01Component);
 
-        _this67 = _super23.call(this, application, game, route, dialogService, soundService, statisticsService, 'x01');
-        _this67.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this67;
+        _this68 = _super23.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
+        _this68.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this68;
       }
 
       _createClass(X01Component, [{
@@ -16460,10 +16702,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this68 = this;
+          var _this69 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this68.settings.startValue;
+            return player.score = _this69.settings.startValue;
           });
         }
       }, {
@@ -16471,13 +16713,53 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function getGameConfig() {
           return this.settings.startValue + '';
         }
+      }, {
+        key: "botThrow",
+        value: function botThrow() {
+          var _this70 = this;
+
+          var target = Math.floor(Math.random() * 10) + 10;
+
+          if (!this.settings.isHighScoreGame()) {
+            var player = this.game.getActualPlayer();
+
+            if (player.score <= 20) {
+              if (this.settings.isNormalCheckout()) {
+                target = player.score - 1;
+              } else if (this.settings.isDoubleCheckout() && player.score % 2 === 0) {
+                target = player.score / 2 - 1;
+                this.doublePoint();
+              } else if (this.settings.isDoubleCheckout() && player.score % 2 === 1) {
+                target = 0;
+              } else if (this.settings.isTripleCheckout() && player.score % 3 === 0) {
+                target = player.score / 3 - 1;
+                this.triplePoint();
+              } else if (this.settings.isTripleCheckout() && player.score % 3 === 1) {
+                target = 0;
+              } else if (this.settings.isTripleCheckout() && player.score % 3 === 2) {
+                target = 1;
+              }
+            }
+          } else {
+            if (this.botService.isDoublePoint()) {
+              this.doublePoint();
+            } else if (this.botService.isTriplePoint()) {
+              this.triplePoint();
+            }
+          }
+
+          var index = this.botService.calculateTarget(target);
+          setTimeout(function () {
+            _this70.throwNumber([_this70.isFieldEnabled(index) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index) : 0, _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index)]);
+          }, _services_bot_service__WEBPACK_IMPORTED_MODULE_4__["PLAYER_DELAY"]);
+        }
       }]);
 
       return X01Component;
     }(_models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"]);
 
     X01Component.ɵfac = function X01Component_Factory(t) {
-      return new (t || X01Component)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_9__["StatisticsService"]));
+      return new (t || X01Component)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bot_service__WEBPACK_IMPORTED_MODULE_4__["BotService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]));
     };
 
     X01Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -16528,7 +16810,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.settingsOpen);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_10__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_11__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_12__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_13__["MatDivider"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_14__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_10__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_15__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_16__["NumberPlateComponent"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_11__["NgIf"], _components_settings_settings_component__WEBPACK_IMPORTED_MODULE_12__["SettingsComponent"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButton"], _angular_material_divider__WEBPACK_IMPORTED_MODULE_14__["MatDivider"], _components_game_toolbar_game_toolbar_component__WEBPACK_IMPORTED_MODULE_15__["GameToolbarComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_11__["NgForOf"], _components_player_score_player_score_component__WEBPACK_IMPORTED_MODULE_16__["PlayerScoreComponent"], _components_number_plate_number_plate_component__WEBPACK_IMPORTED_MODULE_17__["NumberPlateComponent"]],
       encapsulation: 2,
       data: {
         animation: [_route_animation__WEBPACK_IMPORTED_MODULE_2__["slideInAnimation"]]
@@ -16545,17 +16827,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_5__["ApplicationStateService"]
         }, {
-          type: _services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_6__["GameService"]
         }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
         }, {
-          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_7__["DialogService"]
+          type: _services_dialog_service__WEBPACK_IMPORTED_MODULE_8__["DialogService"]
         }, {
-          type: _services_sound_service__WEBPACK_IMPORTED_MODULE_8__["SoundService"]
+          type: _services_sound_service__WEBPACK_IMPORTED_MODULE_9__["SoundService"]
         }, {
-          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_9__["StatisticsService"]
+          type: _services_bot_service__WEBPACK_IMPORTED_MODULE_4__["BotService"]
+        }, {
+          type: _services_statistics_service__WEBPACK_IMPORTED_MODULE_10__["StatisticsService"]
         }];
       }, null);
     })();

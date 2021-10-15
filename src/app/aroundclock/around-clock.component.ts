@@ -10,6 +10,7 @@ import {AroundClockState} from './models/around-clock.state.model';
 import {AroundClockSettings} from './models/around-clock.settings.model';
 import {SoundService} from '~services/sound.service';
 import {StatisticsService} from '~services/statistics.service';
+import {BotService, PLAYER_DELAY} from '~services/bot.service';
 
 @Component({
   templateUrl: './around-clock.component.html',
@@ -21,8 +22,8 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   hiddenInfo = true;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, statisticsService, 'around-clock', 2);
+              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
+    super(application, game, route, dialogService, soundService, botService, statisticsService, 'around-clock', 2);
     this.settings = new AroundClockSettings();
   }
 
@@ -87,6 +88,23 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         }
       }
     }
+  }
+
+  botThrow() {
+    const state = this.getPlayerState(this.game.getActualPlayer());
+    const target = this.getFieldIndex(state.actFieldIndex);
+    const index = this.botService.calculateTarget(target);
+
+    if (target === index && this.botService.isDoublePoint()) {
+      this.doublePoint();
+    } else if (target === index && this.botService.isTriplePoint()) {
+      this.triplePoint();
+    }
+
+    setTimeout(() => {
+      this.throwNumber([this.isFieldEnabled(index) ? Playground.getFieldValueFromIndex(index) : 0,
+        Playground.getFieldValueFromIndex(index)]);
+    }, PLAYER_DELAY);
   }
 
   getDistanceFromRandom(): string {
