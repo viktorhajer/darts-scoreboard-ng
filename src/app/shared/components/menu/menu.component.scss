@@ -42,6 +42,14 @@
       width: calc(100% - 20px);
     }
   }
+
+  .hasBot:after {
+    content: 'B';
+    position: relative;
+    top: 66px;
+    right: -44px;
+    margin: -4px;
+  }
 }
 .version {
   position: fixed;

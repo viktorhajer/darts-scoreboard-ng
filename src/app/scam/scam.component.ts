@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
+import {FIELDS_COUNT, Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
@@ -10,7 +10,7 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {ScamSettings} from './models/scam.settings.model';
 import {SoundService} from '~services/sound.service';
 import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {BotService, PLAYER_DELAY_FAST} from '~services/bot.service';
 
 @Component({
   templateUrl: './scam.component.html',
@@ -30,7 +30,7 @@ export class ScamComponent extends Playground<PlaygroundState> {
     if (!!this.game.numbs[fieldIndex]) {
       if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
         this.game.numbs[fieldIndex] = 0;
-      } else if(this.settings.stopper) {
+      } else if (this.settings.stopper) {
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
       } else {
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
@@ -43,7 +43,7 @@ export class ScamComponent extends Playground<PlaygroundState> {
   }
 
   checkPlayerState(player: Player) {
-    if(!this.game.numbs.some(n => n)) {
+    if (!this.game.numbs.some(n => n)) {
       const bests = this.game.getTheBestPlayers();
       this.game.players.forEach(p => p.setWin(bests.some(b => b.name === p.name)));
     }
@@ -67,5 +67,19 @@ export class ScamComponent extends Playground<PlaygroundState> {
 
   getGameConfig(): string {
     return this.settings.fields.length + '';
+  }
+
+  botThrow() {
+    const fields = [...Array(FIELDS_COUNT).keys()].filter(index => this.game.numbs[index]).slice(-4).slice(0, 3);
+    const index = this.botService.calculateMultiTarget(fields);
+    if (this.botService.isDoublePoint()) {
+      this.doublePoint();
+    } else if (this.botService.isTriplePoint()) {
+      this.triplePoint();
+    }
+    setTimeout(() => {
+      this.throwNumber([this.isFieldEnabled(index) ? Playground.getFieldValueFromIndex(index) : 0,
+        Playground.getFieldValueFromIndex(index)]);
+    }, PLAYER_DELAY_FAST);
   }
 }

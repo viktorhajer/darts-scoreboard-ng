@@ -3,7 +3,7 @@ import {Routes} from '@angular/router';
 export const routes: Routes = [
   {
     path: 'x01',
-    data: {name: 'Classic X01', color: '#009688', icon: 'emoji_food_beverage'}
+    data: {name: 'Classic X01', color: '#009688', icon: 'emoji_food_beverage', bot: true}
   },
   {
     path: 'cricket',
@@ -11,7 +11,7 @@ export const routes: Routes = [
   },
   {
     path: 'around-clock',
-    data: {name: 'Around The Clock', color: '#0f5851', icon: 'cached'}
+    data: {name: 'Around The Clock', color: '#0f5851', icon: 'cached', bot: true}
   },
   {
     path: 'shanghai',
@@ -47,6 +47,6 @@ export const routes: Routes = [
   },
   {
     path: 'scam',
-    data: {name: 'Scam', color: '#0a756b', icon: 'group_work'}
+    data: {name: 'Scam', color: '#0a756b', icon: 'group_work', bot: true}
   }
 ];

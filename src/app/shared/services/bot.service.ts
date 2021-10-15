@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 
 export const PLAYER_NAME = 'phil';
 export const PLAYER_DELAY = 1000;
+export const PLAYER_DELAY_FAST = 500;
 const MAX_LEVEL = 10;
 const PLAYER_LEVEL = 5;
 
@@ -9,8 +10,9 @@ const PLAYER_LEVEL = 5;
 @Injectable({providedIn: 'root'})
 export class BotService {
 
-  calculateMultiTarget(targets: number[]) {
-    // TODO
+  calculateMultiTarget(targets: number[]): number  {
+    const random = Math.floor(Math.random() * targets.length);
+    return this.calculateTarget(targets[random]);
   }
 
   calculateTarget(target: number): number {
