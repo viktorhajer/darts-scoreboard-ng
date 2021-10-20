@@ -123,7 +123,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   }
 
   isFieldEnabled(fieldIndex: number): boolean {
-    return this.game.players.some(p => this.getPlayerState(p).actFieldIndex === fieldIndex);
+    return this.game.players.some(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex);
   }
 
   isPrimaryField(fieldIndex: number): boolean {
