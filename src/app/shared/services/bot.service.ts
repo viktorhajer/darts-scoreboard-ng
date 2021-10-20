@@ -4,7 +4,7 @@ export const PLAYER_NAME = 'phil';
 export const PLAYER_DELAY = 1000;
 export const PLAYER_DELAY_FAST = 500;
 const MAX_LEVEL = 20;
-const PLAYER_LEVEL = 8;
+const PLAYER_LEVEL = 9;
 
 
 @Injectable({providedIn: 'root'})
