@@ -4,7 +4,7 @@
     <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>
     <div class="shoot">{{!player.throws[1] ? '-' : player.throws[1]}}</div>
     <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
-    <div class="shoot total">{{!player.getThrowsTotal() ? '0' : player.getThrowsTotal()}}</div>
+    <div class="shoot total" *ngIf="scoreDisplayed">{{!player.getThrowsTotal() ? '0' : player.getThrowsTotal()}}</div>
   </div>
   <div class="clear"></div>
   <div class="line" *ngIf="hasContent && application.settings.details"></div>
