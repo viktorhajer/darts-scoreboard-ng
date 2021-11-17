@@ -37,7 +37,7 @@ export class ScamComponent extends Playground<PlaygroundState> {
         this.game.numbs[fieldIndex] = 0;
       }
     } else if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
-      const newScore = score === 0 ? this.settings.punishmentValue : score;
+      const newScore = score === 0 || this.settings.constant ? this.settings.punishmentValue : score;
       const scr = (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
       player.score -= scr * (this.settings.reverse ? -1 : 1);
     }
