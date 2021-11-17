@@ -40,7 +40,7 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
             (click)="settings.setStyle(3)">No Score
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''"
+    <button mat-raised-button class="button shortmedium" [color]="settings.constant?'primary':''"
             (click)="settings.toggleConstant()">Constant
     </button>
     <button mat-raised-button class="button shortmedium" [color]="settings.punishment?'primary':''"
