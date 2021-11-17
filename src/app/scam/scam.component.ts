@@ -38,13 +38,14 @@ export class ScamComponent extends Playground<PlaygroundState> {
       }
     } else if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
       const newScore = score === 0 ? this.settings.punishmentValue : score;
-      player.score -= (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
+      const scr = (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
+      player.score -= scr * (this.settings.reverse ? -1 : 1);
     }
   }
 
   checkPlayerState(player: Player) {
     if (!this.game.numbs.some(n => n)) {
-      const bests = this.game.getTheBestPlayers();
+      const bests = this.settings.reverse ? this.game.getTheWorstPlayers() : this.game.getTheBestPlayers();
       this.game.players.forEach(p => p.setWin(bests.some(b => b.name === p.name)));
     }
     if (this.game.isTheLastThrow()) {
@@ -70,7 +71,11 @@ export class ScamComponent extends Playground<PlaygroundState> {
   }
 
   botThrow() {
-    const fields = [...Array(FIELDS_COUNT).keys()].filter(index => this.game.numbs[index]).slice(-4).slice(0, 3);
+    let fields = [...Array(FIELDS_COUNT).keys()];
+    if (this.settings.reverse) {
+      fields.reverse();
+    }
+    fields = fields.filter(index => this.game.numbs[index]).slice(-4).slice(0, 3);
     const index = this.botService.calculateMultiTarget(fields);
     if (this.botService.isDoublePoint()) {
       this.doublePoint();
