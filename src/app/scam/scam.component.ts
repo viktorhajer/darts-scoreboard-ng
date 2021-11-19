@@ -31,21 +31,21 @@ export class ScamComponent extends Playground<PlaygroundState> {
       if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
         this.game.numbs[fieldIndex] = 0;
       } else if (this.settings.stopper) {
-        player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
+        player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier * (this.settings.reverse ? -1 : 1);
       } else {
-        player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier;
+        player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier * (this.settings.reverse ? -1 : 1);
         this.game.numbs[fieldIndex] = 0;
       }
     } else if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
-      const newScore = score === 0 || this.settings.constant ? this.settings.punishmentValue : score;
+      const newScore = score === 0 ? this.settings.punishmentValue : score;
       const scr = (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
-      player.score -= scr * (this.settings.reverse ? -1 : 1);
+      player.score -= scr;
     }
   }
 
   checkPlayerState(player: Player) {
     if (!this.game.numbs.some(n => n)) {
-      const bests = this.settings.reverse ? this.game.getTheWorstPlayers() : this.game.getTheBestPlayers();
+      const bests = this.game.getTheBestPlayers();
       this.game.players.forEach(p => p.setWin(bests.some(b => b.name === p.name)));
     }
     if (this.game.isTheLastThrow()) {

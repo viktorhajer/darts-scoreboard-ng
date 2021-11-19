@@ -6,7 +6,6 @@ export class ScamSettings extends CricketSettings {
   punishment = false;
   reverse = false;
   punishmentValue = 25;
-  constant = false;
 
   constructor() {
    super();
@@ -20,10 +19,6 @@ export class ScamSettings extends CricketSettings {
 
   toggleReverse() {
     this.reverse = !this.reverse;
-  }
-
-  toggleConstant() {
-    this.constant = !this.constant;
   }
 
   togglePunishment() {
