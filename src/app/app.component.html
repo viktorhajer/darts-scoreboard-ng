@@ -1,5 +1,5 @@
 <audio #audioElement></audio>
-<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute">
+<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute" [class.xmas]="applicationStateService.settings.theme === 3">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
 <div class="theme-chooser">
@@ -8,3 +8,4 @@
     <mat-icon>search</mat-icon>
   </button>
 </div>
+<div class="xmas-background" *ngIf="applicationStateService.settings.theme === 3"></div>

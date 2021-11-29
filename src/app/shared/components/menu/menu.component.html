@@ -1,5 +1,6 @@
 <div id="menu_title">
-  <h1 (click)="randomGame()">Select Game!</h1>
+  <h1 (click)="randomGame()" *ngIf="applicationStateService.settings.theme !== 3">Select Game!</h1>
+  <h1 (click)="randomGame()" *ngIf="applicationStateService.settings.theme === 3">Boldog Karácsonyt Donga!</h1>
 </div>
 <div id="menu">
   <div class="button-line" *ngFor="let k of [0,1,2,3]">

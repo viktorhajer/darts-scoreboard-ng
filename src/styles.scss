@@ -66,3 +66,24 @@ button {
 mat-card {
   margin: 3px;
 }
+
+.xmas {
+  h1 {
+    color: #ffffff;
+    font-size: 34px;
+    text-shadow: 4px 4px 4px #000000;
+  }
+
+  h2 {
+    color: #ffffff;
+    text-shadow: 4px 4px 4px #000000;
+  }
+
+  .player, .side-right .number {
+    opacity: 0.8;
+  }
+
+  .player_info {
+    color: #ffffff;
+  }
+}

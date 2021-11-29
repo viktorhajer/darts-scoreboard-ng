@@ -3,6 +3,7 @@ import {Router, Routes} from '@angular/router';
 import {StatisticsService} from '~services/statistics.service';
 import {DialogService} from '~services/dialog.service';
 import {routes} from '../../../app-game-types';
+import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
   templateUrl: './menu.component.html',
@@ -12,7 +13,8 @@ export class MenuComponent {
 
   constructor(private readonly router: Router,
               private readonly dialog: DialogService,
-              private readonly statisticsService: StatisticsService) {
+              private readonly statisticsService: StatisticsService,
+              public readonly applicationStateService: ApplicationStateService) {
   }
 
   randomGame() {
