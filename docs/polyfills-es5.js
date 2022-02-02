@@ -8,7 +8,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills-es5"], {
   /***/
@@ -1838,22 +1838,22 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             if (TYPE) {
               if (IS_MAP) target[index] = result; // map
               else if (result) switch (TYPE) {
-                  case 3:
-                    return true;
-                  // some
+                case 3:
+                  return true;
+                // some
 
-                  case 5:
-                    return value;
-                  // find
+                case 5:
+                  return value;
+                // find
 
-                  case 6:
-                    return index;
-                  // findIndex
+                case 6:
+                  return index;
+                // findIndex
 
-                  case 2:
-                    push.call(target, value);
-                  // filter
-                } else if (IS_EVERY) return false; // every
+                case 2:
+                  push.call(target, value);
+                // filter
+              } else if (IS_EVERY) return false; // every
             }
           }
         }
@@ -3990,9 +3990,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
       }
 
-      return function ()
-      /* ...args */
-      {
+      return function () {
         return fn.apply(that, arguments);
       };
     };
@@ -4044,9 +4042,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var fn = aFunction(this);
       var partArgs = slice.call(arguments, 1);
 
-      var boundFunction = function bound()
-      /* args... */
-      {
+      var boundFunction = function bound() {
         var args = partArgs.concat(slice.call(arguments));
         return this instanceof boundFunction ? construct(fn, args.length, args) : fn.apply(that, args);
       };
@@ -8132,9 +8128,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       stat: true,
       forced: ISNT_GENERIC
     }, {
-      of: function of()
-      /* ...args */
-      {
+      of: function of() {
         var index = 0;
         var argumentsLength = arguments.length;
         var result = new (typeof this == 'function' ? this : Array)(argumentsLength);
@@ -15996,7 +15990,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         var ZoneAwarePromise =
         /*#__PURE__*/
-        function () {
+        function (_Symbol$toStringTag, _Symbol$species) {
           function ZoneAwarePromise(executor) {
             _classCallCheck(this, ZoneAwarePromise);
 
@@ -16017,12 +16011,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           _createClass(ZoneAwarePromise, [{
-            key: Symbol.toStringTag,
+            key: _Symbol$toStringTag,
             get: function get() {
               return 'Promise';
             }
           }, {
-            key: Symbol.species,
+            key: _Symbol$species,
             get: function get() {
               return ZoneAwarePromise;
             }
@@ -16228,7 +16222,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }]);
 
           return ZoneAwarePromise;
-        }(); // Protect against aggressive optimizers dropping seemingly unused properties.
+        }(Symbol.toStringTag, Symbol.species); // Protect against aggressive optimizers dropping seemingly unused properties.
         // E.g. Closure Compiler in advanced mode.
 
 

@@ -106,6 +106,18 @@ export class AroundClockSettings {
     }
   }
 
+  setFavorite() {
+    this.style = 9;
+    this.jump = true;
+    this.firstDeath = true;
+    this.punishment = true;
+    this.life = 10;
+    this.promoter = false;
+    this.saboteur = true;
+    this.palFirst = true;
+    this.fields = AroundClockSettings.getZoneClockFields();
+  }
+
   private static getBaseFields(): number[] {
     return [...Array(FIELDS_COUNT).keys()];
   }

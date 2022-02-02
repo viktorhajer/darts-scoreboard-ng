@@ -38,6 +38,9 @@
     <button mat-raised-button class="button shortmedium" [color]="settings.palFirst?'primary':''" (click)="settings.togglePalFirst()">
       Pal First
     </button>
+    <button mat-raised-button class="button shortmedium" (click)="settings.setFavorite()">
+      <mat-icon>favorite</mat-icon>
+    </button>
     <mat-divider></mat-divider>
 
     <h2>Field's order</h2>

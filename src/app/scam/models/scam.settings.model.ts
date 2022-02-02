@@ -3,7 +3,7 @@ import {CricketSettings} from '../../cricket/models/cricet.settings.model';
 export class ScamSettings extends CricketSettings {
 
   stopper = false;
-  punishment = false;
+  punishment = true;
   reverse = false;
   punishmentValue = 25;
 
