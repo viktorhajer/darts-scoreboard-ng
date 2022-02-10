@@ -78,7 +78,7 @@
 
   <div class="side-left" [class.detailed]="application.settings.details">
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
-    <ng-container *ngIf="!settingsOpen">
+    <div class="player_container" *ngIf="!settingsOpen" [class.visual]="!application.settings.details">
       <div class="hidden-info" [class.hidden]="hiddenInfo" (click)="toggleHiddenInfo()">{{getDistanceFromRandom()}}</div>
       <div class="player
         {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}
@@ -87,8 +87,9 @@
         <app-player-score [player]="player" [scoreDisplayed]="false" [lifeDisplayed]="settings.life !== 0" [hasContent]="false">
         </app-player-score>
       </div>
-    </ng-container>
+    </div>
   </div>
-  <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
-
+  <app-number-plate-visual [playground]="playground" *ngIf="!settingsOpen && !application.settings.details">
+  </app-number-plate-visual>
+  <app-number-plate [playground]="playground" *ngIf="!settingsOpen && application.settings.details"></app-number-plate>
 </div>

@@ -14,8 +14,8 @@
   }
 
   .gameSelectBox {
-    height: 180px;
-    width: 180px;
+    height: 230px;
+    width: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +46,8 @@
   .hasBot:after {
     content: 'B';
     position: relative;
-    top: 66px;
-    right: -44px;
+    top: 80px;
+    right: -60px;
     margin: -4px;
   }
 }

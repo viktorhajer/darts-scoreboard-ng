@@ -8,7 +8,7 @@ export class ShanghaiSettings {
   constructor() {
     this.fields = [];
     this.noScore = false;
-    this.halveIt = false;
+    this.halveIt = true;
     let defaultSet = true;
     for (let i = 0; i < 21; i++) {
       this.numbs[i] = defaultSet;

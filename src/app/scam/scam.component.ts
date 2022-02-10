@@ -53,8 +53,8 @@ export class ScamComponent extends Playground<PlaygroundState> {
     }
   }
 
-  isSecondaryField(fieldIndex: number): boolean {
-    return this.settings.punishment && !this.game.numbs[fieldIndex];
+  isPrimaryField(fieldIndex: number): boolean {
+    return this.settings.punishment && !!this.game.numbs[fieldIndex];
   }
 
   isFieldEnabled(fieldIndex: number): boolean {

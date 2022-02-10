@@ -83,11 +83,11 @@ $basic: mat-palette($mat-grey);
 
   .settings {
     #rules details p {
-      background: mat-color(map-get($theme, primary), 500);
+      background: mat-color($primary, 500);
       color: mat-color($basic, 50);
     }
     .player-row {
-      background: mat-color(map-get($theme, primary), 500);
+      background: mat-color($primary, 500);
       color: mat-color($basic, 50);
     }
   }
@@ -146,6 +146,35 @@ $basic: mat-palette($mat-grey);
       }
     }
   }
+
+  #darts-table-plate {
+    .number-text {
+      fill: mat-color($accent, 400);
+    }
+    .field-inactive {
+      //fill: mat-color($basic, 200);
+      fill: none;
+    }
+    .field-color {
+      fill: mat-color($basic, 600);
+      &.primary {
+        fill: mat-color($primary, 700);
+      }
+      &.accent {
+        fill: mat-color($accent, 600);
+      }
+    }
+    .field-color-m {
+      fill: mat-color($basic, 700);
+      &.primary {
+        fill: mat-color($primary, 900);
+      }
+      &.accent {
+        fill: mat-color($accent, 700);
+      }
+    }
+  }
+
 }
 
 body {

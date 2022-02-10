@@ -1,0 +1,39 @@
+.side-right_visual {
+  width: 98vw;
+  top: 85px;
+  right: 0;
+  position: absolute;
+
+  #darts-table-plate {
+    width: 100%;
+  }
+
+  button {
+    margin-right: 15px;
+    width: 120px;
+    height: 100px;
+    position: absolute;
+    right: 0px;
+    top: -70px;
+  }
+
+  .number-text {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+
+    &.disabled {
+      opacity: 0.3;
+    }
+  }
+
+  path, text {
+    cursor: pointer;
+  }
+
+  .field-color, .field-color-m {
+    &.disabled {
+      opacity: 0.4;
+    }
+  }
+}

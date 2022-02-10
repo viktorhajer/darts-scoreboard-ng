@@ -15,12 +15,14 @@
 
   <div class="side-left" [class.detailed]="application.settings.details">
     <app-game-toolbar [playground]="playground" *ngIf="!settingsOpen"></app-game-toolbar>
-    <ng-container *ngIf="!settingsOpen">
+    <div class="player_container" *ngIf="!settingsOpen" [class.visual]="!application.settings.details">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player" [hasContent]="false"></app-player-score>
       </div>
-    </ng-container>
+    </div>
   </div>
-  <app-number-plate [playground]="playground" *ngIf="!settingsOpen"></app-number-plate>
+  <app-number-plate-visual [playground]="playground" *ngIf="!settingsOpen && !application.settings.details">
+  </app-number-plate-visual>
+  <app-number-plate [playground]="playground" *ngIf="!settingsOpen && application.settings.details"></app-number-plate>
 </div>

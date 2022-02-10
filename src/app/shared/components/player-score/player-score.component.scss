@@ -1,6 +1,25 @@
 .player_info {
   padding: 1vw;
 
+  &.player_info_visual {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .name {
+      margin-right: 10px;
+      width: 110px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .score {
+      margin-left: 20px;
+      width: 150px;
+      text-align: right;
+    }
+  }
+
   .line {
     margin: 1vw 0;
   }

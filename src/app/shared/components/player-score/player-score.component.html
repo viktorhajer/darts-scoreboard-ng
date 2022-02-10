@@ -1,4 +1,4 @@
-<div class="player_info">
+<div class="player_info" [class.player_info_visual]="!application.settings.details">
   <div class="name"><mat-icon *ngIf="highlighted">offline_bolt</mat-icon>{{player.name}}</div>
   <div class="shoots">
     <div class="shoot">{{!player.throws[0] ? '-' : player.throws[0]}}</div>

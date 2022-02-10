@@ -15,9 +15,10 @@ import {GameHistoryDialogComponent} from '~components/game-history-dialog/game-h
 import {GameTypeStatisticsDialogComponent} from '~components/game-type-statistics-dialog/game-type-statistics-dialog.component';
 import {MenuComponent} from '~components/menu/menu.component';
 import {RouterModule} from '@angular/router';
+import {NumberPlateVisualComponent} from '~components/number-plate-visual/number-plate-visual.component';
 
 const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
-  DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent,
+  DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent, NumberPlateVisualComponent,
   GameHistoryDialogComponent, GameTypeStatisticsDialogComponent, MenuComponent];
 
 @NgModule({
