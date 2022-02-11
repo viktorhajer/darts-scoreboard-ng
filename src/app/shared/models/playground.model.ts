@@ -12,6 +12,7 @@ import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.servi
 import {GameStatistics} from '~models/game-statistics.model';
 import {PlayerStatistics} from '~models/player-statistics.model';
 import {BotService, PLAYER_NAME} from '~services/bot.service';
+import {BehaviorSubject} from 'rxjs';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
@@ -28,6 +29,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   multiplier: number;
   extraEndingMsg: string;
   gameStatistics: GameStatistics;
+  hasChanges = new BehaviorSubject<number>(Date.now());
 
   protected constructor(public application: ApplicationStateService,
                         public game: GameService,
@@ -147,6 +149,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
       this.game.rotatePlayers();
     }
     this.reset();
+    this.hasChanges.next(Date.now());
   }
 
   triplePoint() {
@@ -160,6 +163,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   undo() {
     if (this.gameHistory.length > 0) {
       this.game = this.gameHistory.pop();
+      this.hasChanges.next(Date.now());
     }
   }
 

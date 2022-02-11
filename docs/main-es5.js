@@ -71,7 +71,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
   /***/
   function packageJson(module) {
-    module.exports = JSON.parse("{\"name\":\"darts-scoreboard-ng\",\"version\":\"2.4.1\",\"license\":\"MIT\",\"author\":{\"name\":\"Viktor Hajer\",\"email\":\"viktor.hajer@gmail.com\"},\"description\":\"See Readme\",\"homepage\":\"https://github.com/viktorhajer/darts-scoreboard-ng#readme\",\"bugs\":{\"url\":\"https://github.com/viktorhajer/darts-scoreboard-ng/issues\"},\"scripts\":{\"ng\":\"ng\",\"start\":\"ng serve\",\"build\":\"ng build\",\"eslint\":\"eslint src/**/*.ts\"},\"private\":false,\"dependencies\":{\"@angular/animations\":\"~9.0.0\",\"@angular/cdk\":\"^9.0.0\",\"@angular/common\":\"~9.0.0\",\"@angular/compiler\":\"~9.0.0\",\"@angular/core\":\"~9.0.0\",\"@angular/forms\":\"~9.0.0\",\"@angular/material\":\"^9.0.0\",\"@angular/platform-browser\":\"~9.0.0\",\"@angular/platform-browser-dynamic\":\"~9.0.0\",\"@angular/router\":\"~9.0.0\",\"@types/d3\":\"^7.1.0\",\"d3\":\"^7.3.0\",\"rxjs\":\"~6.5.4\",\"tslib\":\"^1.10.0\",\"zone.js\":\"~0.10.2\"},\"devDependencies\":{\"@angular-devkit/build-angular\":\"~0.900.1\",\"@angular/cli\":\"~9.0.1\",\"@angular/compiler-cli\":\"~9.0.0\",\"@angular/language-service\":\"~9.0.0\",\"@types/node\":\"12.12.47\",\"@typescript-eslint/eslint-plugin\":\"^2.19.2\",\"@typescript-eslint/eslint-plugin-tslint\":\"^2.19.2\",\"@typescript-eslint/parser\":\"^2.19.2\",\"eslint\":\"^6.8.0\",\"ts-node\":\"~8.3.0\",\"tslint\":\"~5.18.0\",\"typescript\":\"~3.7.5\"}}");
+    module.exports = JSON.parse("{\"name\":\"darts-scoreboard-ng\",\"version\":\"2.4.2\",\"license\":\"MIT\",\"author\":{\"name\":\"Viktor Hajer\",\"email\":\"viktor.hajer@gmail.com\"},\"description\":\"See Readme\",\"homepage\":\"https://github.com/viktorhajer/darts-scoreboard-ng#readme\",\"bugs\":{\"url\":\"https://github.com/viktorhajer/darts-scoreboard-ng/issues\"},\"scripts\":{\"ng\":\"ng\",\"start\":\"ng serve\",\"build\":\"ng build\",\"eslint\":\"eslint src/**/*.ts\"},\"private\":false,\"dependencies\":{\"@angular/animations\":\"~9.0.0\",\"@angular/cdk\":\"^9.0.0\",\"@angular/common\":\"~9.0.0\",\"@angular/compiler\":\"~9.0.0\",\"@angular/core\":\"~9.0.0\",\"@angular/forms\":\"~9.0.0\",\"@angular/material\":\"^9.0.0\",\"@angular/platform-browser\":\"~9.0.0\",\"@angular/platform-browser-dynamic\":\"~9.0.0\",\"@angular/router\":\"~9.0.0\",\"@types/d3\":\"^7.1.0\",\"d3\":\"^7.3.0\",\"rxjs\":\"~6.5.4\",\"tslib\":\"^1.10.0\",\"zone.js\":\"~0.10.2\"},\"devDependencies\":{\"@angular-devkit/build-angular\":\"~0.900.1\",\"@angular/cli\":\"~9.0.1\",\"@angular/compiler-cli\":\"~9.0.0\",\"@angular/language-service\":\"~9.0.0\",\"@types/node\":\"12.12.47\",\"@typescript-eslint/eslint-plugin\":\"^2.19.2\",\"@typescript-eslint/eslint-plugin-tslint\":\"^2.19.2\",\"@typescript-eslint/parser\":\"^2.19.2\",\"eslint\":\"^6.8.0\",\"ts-node\":\"~8.3.0\",\"tslint\":\"~5.18.0\",\"typescript\":\"~3.7.5\"}}");
     /***/
   },
 
@@ -13384,19 +13384,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _services_game_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! rxjs/operators */
+    "./node_modules/rxjs/_esm2015/operators/index.js");
+    /* harmony import */
+
+
+    var _services_game_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ~services/game.service */
     "./src/app/shared/services/game.service.ts");
     /* harmony import */
 
 
-    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _services_application_state_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ~services/application-state.service */
     "./src/app/shared/services/application-state.service.ts");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
 
@@ -13411,12 +13423,24 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.game = game;
         this.application = application;
         this.numbers = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
+        this.ngUnsubscribeHasChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
       }
 
       _createClass(NumberPlateVisualComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          var _this66 = this;
+
           this.drawTable();
+          this.playground.hasChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["takeUntil"])(this.ngUnsubscribeHasChange)).subscribe(function (flag) {
+            return _this66.drawTable();
+          });
+        }
+      }, {
+        key: "ngOnDestroy",
+        value: function ngOnDestroy() {
+          this.ngUnsubscribeHasChange.next();
+          this.ngUnsubscribeHasChange.complete();
         }
       }, {
         key: "next",
@@ -13445,15 +13469,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.drawArc(svg, 75, 89, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 3);
             this.drawArc(svg, 90, 129, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
             this.drawArc(svg, 130, 144, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 2);
-            this.drawText(svg, numbers[i], i * 18 - 2, 165, 3, numbers[i], fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
+            this.drawText(svg, numbers[i], i * 18 - 2, 170, 3, numbers[i], fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
 
             if (!!this.playground.getFieldNote(fieldIndex)) {
-              this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 165, 14, numbers[i], fieldIndex, 1, 'field-note');
+              this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 170, 14, numbers[i], fieldIndex, 1, 'field-note');
             }
           }
 
-          this.drawText(svg, 25, 0, 158.5, 137, 25, bullIndex, 1, 'number-text' + ' ' + this.getNumberColor(bullIndex));
-          this.drawText(svg, 50, 0, 158.5, 158.5, 25, bullIndex, 2, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+          this.drawText(svg, 25, 0, 165, 137, 25, bullIndex, 1, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+          this.drawText(svg, 50, 0, 165, 158.5, 25, bullIndex, 2, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+
+          if (!!this.playground.getFieldNote(bullIndex)) {
+            this.drawText(svg, 50, 0, 165, 158.5, 25, bullIndex, 2, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+            this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 183, 25, bullIndex, 1, 'field-note');
+          }
         }
       }, {
         key: "getNumberColor",
@@ -13493,19 +13522,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "drawText",
         value: function drawText(svg, text, rotate, x, y, field, fieldIndex, multi, className) {
-          var _this66 = this;
+          var _this67 = this;
 
-          svg.append('text').attr('x', x).attr('y', y).attr('dy', '1em').attr('transform', 'rotate(' + rotate + ', 165, 165)').attr('class', className).text(text).on('click', function () {
-            return _this66.throwNumber(fieldIndex, multi);
+          svg.append('text').attr('x', x).attr('y', y).attr('dy', '1em').attr('text-anchor', 'middle').attr('transform', 'rotate(' + rotate + ', 165, 165)').attr('class', className).text(text).on('click', function () {
+            return _this67.throwNumber(fieldIndex, multi);
           });
         }
       }, {
         key: "drawArc",
         value: function drawArc(svg, innerRadius, outerRadius, startAngle, endAngle, styleClass, field, fieldIndex, multi) {
-          var _this67 = this;
+          var _this68 = this;
 
           svg.append('path').attr('transform', 'translate(165, 165)').attr('d', d3__WEBPACK_IMPORTED_MODULE_2__["arc"]().innerRadius(innerRadius).outerRadius(outerRadius).startAngle(startAngle).endAngle(endAngle)).attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex)).on('click', function () {
-            return _this67.throwNumber(fieldIndex, multi);
+            return _this68.throwNumber(fieldIndex, multi);
           });
         }
       }, {
@@ -13519,7 +13548,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     NumberPlateVisualComponent.ɵfac = function NumberPlateVisualComponent_Factory(t) {
-      return new (t || NumberPlateVisualComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_3__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]));
+      return new (t || NumberPlateVisualComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]));
     };
 
     NumberPlateVisualComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -13556,7 +13585,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx.playground.nextEnabled);
         }
       },
-      directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_5__["MatButton"]],
+      directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_7__["MatButton"]],
       styles: [".side-right_visual {\n  width: 98vw;\n  top: 85px;\n  right: 0;\n  position: absolute;\n}\n.side-right_visual #darts-table-plate {\n  width: 100%;\n}\n.side-right_visual button {\n  margin-right: 15px;\n  width: 120px;\n  height: 100px;\n  position: absolute;\n  right: 0px;\n  top: -70px;\n}\n.side-right_visual .number-text, .side-right_visual .field-note {\n  font-family: sans-serif;\n  font-weight: bold;\n  font-size: 11px;\n}\n.side-right_visual .number-text.disabled, .side-right_visual .field-note.disabled {\n  opacity: 0.3;\n}\n.side-right_visual .field-note {\n  font-size: 6px;\n}\n.side-right_visual path, .side-right_visual text {\n  cursor: pointer;\n}\n.side-right_visual .field-color.disabled, .side-right_visual .field-color-m.disabled {\n  opacity: 0.4;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvbnVtYmVyLXBsYXRlLXZpc3VhbC9EOlxcRGV2ZWxvcG1lbnRcXGRhcnRzLXNjb3JlYm9hcmQtbmcvc3JjXFxhcHBcXHNoYXJlZFxcY29tcG9uZW50c1xcbnVtYmVyLXBsYXRlLXZpc3VhbFxcbnVtYmVyLXBsYXRlLXZpc3VhbC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvbnVtYmVyLXBsYXRlLXZpc3VhbC9udW1iZXItcGxhdGUtdmlzdWFsLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsV0FBQTtFQUNBLFNBQUE7RUFDQSxRQUFBO0VBQ0Esa0JBQUE7QUNDRjtBRENFO0VBQ0UsV0FBQTtBQ0NKO0FERUU7RUFDRSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsVUFBQTtBQ0FKO0FER0U7RUFDRSx1QkFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtBQ0RKO0FER0k7RUFDRSxZQUFBO0FDRE47QURLRTtFQUNFLGNBQUE7QUNISjtBRE1FO0VBQ0UsZUFBQTtBQ0pKO0FEUUk7RUFDRSxZQUFBO0FDTk4iLCJmaWxlIjoic3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9udW1iZXItcGxhdGUtdmlzdWFsL251bWJlci1wbGF0ZS12aXN1YWwuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc2lkZS1yaWdodF92aXN1YWwge1xyXG4gIHdpZHRoOiA5OHZ3O1xyXG4gIHRvcDogODVweDtcclxuICByaWdodDogMDtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcblxyXG4gICNkYXJ0cy10YWJsZS1wbGF0ZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICB9XHJcblxyXG4gIGJ1dHRvbiB7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDE1cHg7XHJcbiAgICB3aWR0aDogMTIwcHg7XHJcbiAgICBoZWlnaHQ6IDEwMHB4O1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgcmlnaHQ6IDBweDtcclxuICAgIHRvcDogLTcwcHg7XHJcbiAgfVxyXG5cclxuICAubnVtYmVyLXRleHQsIC5maWVsZC1ub3RlIHtcclxuICAgIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDExcHg7XHJcblxyXG4gICAgJi5kaXNhYmxlZCB7XHJcbiAgICAgIG9wYWNpdHk6IDAuMztcclxuICAgIH1cclxuICB9XHJcblxyXG4gIC5maWVsZC1ub3RlIHtcclxuICAgIGZvbnQtc2l6ZTogNnB4O1xyXG4gIH1cclxuXHJcbiAgcGF0aCwgdGV4dCB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgfVxyXG5cclxuICAuZmllbGQtY29sb3IsIC5maWVsZC1jb2xvci1tIHtcclxuICAgICYuZGlzYWJsZWQge1xyXG4gICAgICBvcGFjaXR5OiAwLjQ7XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcbiIsIi5zaWRlLXJpZ2h0X3Zpc3VhbCB7XG4gIHdpZHRoOiA5OHZ3O1xuICB0b3A6IDg1cHg7XG4gIHJpZ2h0OiAwO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG59XG4uc2lkZS1yaWdodF92aXN1YWwgI2RhcnRzLXRhYmxlLXBsYXRlIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uc2lkZS1yaWdodF92aXN1YWwgYnV0dG9uIHtcbiAgbWFyZ2luLXJpZ2h0OiAxNXB4O1xuICB3aWR0aDogMTIwcHg7XG4gIGhlaWdodDogMTAwcHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgcmlnaHQ6IDBweDtcbiAgdG9wOiAtNzBweDtcbn1cbi5zaWRlLXJpZ2h0X3Zpc3VhbCAubnVtYmVyLXRleHQsIC5zaWRlLXJpZ2h0X3Zpc3VhbCAuZmllbGQtbm90ZSB7XG4gIGZvbnQtZmFtaWx5OiBzYW5zLXNlcmlmO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuLnNpZGUtcmlnaHRfdmlzdWFsIC5udW1iZXItdGV4dC5kaXNhYmxlZCwgLnNpZGUtcmlnaHRfdmlzdWFsIC5maWVsZC1ub3RlLmRpc2FibGVkIHtcbiAgb3BhY2l0eTogMC4zO1xufVxuLnNpZGUtcmlnaHRfdmlzdWFsIC5maWVsZC1ub3RlIHtcbiAgZm9udC1zaXplOiA2cHg7XG59XG4uc2lkZS1yaWdodF92aXN1YWwgcGF0aCwgLnNpZGUtcmlnaHRfdmlzdWFsIHRleHQge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG4uc2lkZS1yaWdodF92aXN1YWwgLmZpZWxkLWNvbG9yLmRpc2FibGVkLCAuc2lkZS1yaWdodF92aXN1YWwgLmZpZWxkLWNvbG9yLW0uZGlzYWJsZWQge1xuICBvcGFjaXR5OiAwLjQ7XG59Il19 */"],
       encapsulation: 2
     });
@@ -13573,9 +13602,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }]
       }], function () {
         return [{
-          type: _services_game_service__WEBPACK_IMPORTED_MODULE_3__["GameService"]
+          type: _services_game_service__WEBPACK_IMPORTED_MODULE_5__["GameService"]
         }, {
-          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_4__["ApplicationStateService"]
+          type: _services_application_state_service__WEBPACK_IMPORTED_MODULE_6__["ApplicationStateService"]
         }];
       }, {
         playground: [{
@@ -14517,10 +14546,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this68 = this;
+          var _this69 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this68.playground.game.players.map(function (p) {
+            return _this69.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -15230,7 +15259,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 
@@ -15262,6 +15297,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.zeroEnabled = true;
         this.multiEnabled = true;
         this.playground = this;
+        this.hasChanges = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](Date.now());
       }
 
       _createClass(Playground, [{
@@ -15273,7 +15309,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this69 = this;
+          var _this70 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -15319,7 +15355,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this69.getPlayerState(p) || !_this69.getPlayerState(p).isInactive();
+              return !_this70.getPlayerState(p) || !_this70.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -15396,6 +15432,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           this.reset();
+          this.hasChanges.next(Date.now());
         }
       }, {
         key: "triplePoint",
@@ -15412,6 +15449,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function undo() {
           if (this.gameHistory.length > 0) {
             this.game = this.gameHistory.pop();
+            this.hasChanges.next(Date.now());
           }
         }
       }, {
@@ -15492,14 +15530,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getGameStatistics",
         value: function getGameStatistics() {
-          var _this70 = this;
+          var _this71 = this;
 
           var statistics = this.statisticsService.getGameStatistics(this.playground.gameName);
           var players = [];
           statistics.forEach(function (stat) {
-            _this70.parseStatistics(stat, 'l', players);
+            _this71.parseStatistics(stat, 'l', players);
 
-            _this70.parseStatistics(stat, 'w', players);
+            _this71.parseStatistics(stat, 'w', players);
           });
           return players;
         }
@@ -15540,18 +15578,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "finishStatistics",
         value: function finishStatistics() {
-          var _this71 = this;
+          var _this72 = this;
 
           this.gameStatistics.f = new Date().toISOString();
           this.gameStatistics.w = this.game.players.filter(function (p) {
             return p.win;
           }).map(function (p) {
-            return _this71.decoratePlayerStat(p);
+            return _this72.decoratePlayerStat(p);
           });
           this.gameStatistics.l = this.game.players.filter(function (p) {
             return !p.win;
           }).map(function (p) {
-            return _this71.decoratePlayerStat(p);
+            return _this72.decoratePlayerStat(p);
           });
           this.gameStatistics.r = this.game.round;
           this.gameStatistics.c = this.getGameConfig();
@@ -15606,10 +15644,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     Playground.ɵfac = function Playground_Factory(t) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵinvalidFactory"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵinvalidFactory"]();
     };
 
-    Playground.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵdefineDirective"]({
+    Playground.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineDirective"]({
       type: Playground
     });
     /***/
@@ -17399,13 +17437,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super23 = _createSuper(X01Component);
 
       function X01Component(application, game, route, dialogService, soundService, botService, statisticsService) {
-        var _this72;
+        var _this73;
 
         _classCallCheck(this, X01Component);
 
-        _this72 = _super23.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
-        _this72.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this72;
+        _this73 = _super23.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
+        _this73.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this73;
       }
 
       _createClass(X01Component, [{
@@ -17442,10 +17480,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this73 = this;
+          var _this74 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this73.settings.startValue;
+            return player.score = _this74.settings.startValue;
           });
         }
       }, {
@@ -17456,7 +17494,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "botThrow",
         value: function botThrow() {
-          var _this74 = this;
+          var _this75 = this;
 
           var target = Math.floor(Math.random() * 10) + 10;
 
@@ -17490,7 +17528,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var index = this.botService.calculateTarget(target);
           setTimeout(function () {
-            _this74.throwNumber([_this74.isFieldEnabled(index) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index) : 0, _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index)]);
+            _this75.throwNumber([_this75.isFieldEnabled(index) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index) : 0, _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index)]);
           }, _services_bot_service__WEBPACK_IMPORTED_MODULE_4__["PLAYER_DELAY"]);
         }
       }]);
