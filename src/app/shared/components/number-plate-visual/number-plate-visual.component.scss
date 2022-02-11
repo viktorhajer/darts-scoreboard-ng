@@ -17,7 +17,7 @@
     top: -70px;
   }
 
-  .number-text {
+  .number-text, .field-note {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 11px;
@@ -25,6 +25,10 @@
     &.disabled {
       opacity: 0.3;
     }
+  }
+
+  .field-note {
+    font-size: 6px;
   }
 
   path, text {

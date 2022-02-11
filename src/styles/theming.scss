@@ -148,7 +148,7 @@ $basic: mat-palette($mat-grey);
   }
 
   #darts-table-plate {
-    .number-text {
+    .number-text, .field-note {
       fill: mat-color($accent, 400);
     }
     .field-inactive {
@@ -156,7 +156,7 @@ $basic: mat-palette($mat-grey);
       fill: none;
     }
     .field-color {
-      fill: mat-color($basic, 600);
+      fill: mat-color($basic, 500);
       &.primary {
         fill: mat-color($primary, 700);
       }
@@ -165,7 +165,7 @@ $basic: mat-palette($mat-grey);
       }
     }
     .field-color-m {
-      fill: mat-color($basic, 700);
+      fill: mat-color($basic, 600);
       &.primary {
         fill: mat-color($primary, 900);
       }

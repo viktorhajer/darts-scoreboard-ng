@@ -68,8 +68,8 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
   getFieldNote(fieldIndex: number): string {
     const owners = this.game.players
       .filter(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex)
-      .map(p => p.name);
-    return !!owners.length ? owners.join(' ') : '';
+      .map(p => p.name.substr(0, 1));
+    return !!owners.length ? owners.join(',') : '';
   }
 
   getFieldIcon(fieldIndex: number): string {

@@ -124,7 +124,16 @@ export class KillerComponent extends Playground<KillerState> {
 
   getFieldNote(fieldIndex: number): string {
     const owner = this.game.players.find(p => (p.state as KillerState).actField === fieldIndex);
-    return owner ? `${owner.name}(${owner.life})` : '';
+
+    if (owner) {
+      const shortName = owner.name.substr(0, 1);
+      const boarding = (owner.state as KillerState).boarding;
+      if ((owner.state as KillerState).killer) {
+        return `${shortName}: ${owner.life}`;
+      }
+      return `${shortName}: ${boarding + ' - ' + owner.life}`;
+    }
+    return '';
   }
 
   getPlayerField(player: Player): string {
