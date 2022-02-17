@@ -4,8 +4,8 @@
 </div>
 <div class="theme-chooser">
   <button mat-icon-button (click)="applicationStateService.toggleColorTheme()" color="primary"><mat-icon>invert_colors</mat-icon></button>
-  <button mat-icon-button (click)="applicationStateService.toggleDetails()" [color]="applicationStateService.settings.details ? 'primary' : 'accent'">
-    <mat-icon>search</mat-icon>
+  <button mat-icon-button (click)="applicationStateService.toggleDetails()" [color]="applicationStateService.settings.details ? 'accent' : 'primary'">
+    <mat-icon>track_changes</mat-icon>
   </button>
 </div>
 <div class="xmas-background" *ngIf="applicationStateService.settings.theme === 100">

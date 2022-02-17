@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {GameService} from '~services/game.service';
 import {Playground} from '~models/playground.model';
 import {ApplicationStateService} from '~services/application-state.service';
@@ -61,20 +61,27 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
       this.drawArc(svg, 50, 84, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 3);
       this.drawArc(svg, 85, 119, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
       this.drawArc(svg, 120, 144, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 2);
-      this.drawText(svg, numbers[i], i * 18 - 2, 170, 3, numbers[i],
+      this.drawText(svg, numbers[i]+'', i * 18 - 2, 170, 3, numbers[i],
         fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
       if (!!this.playground.getFieldNote(fieldIndex)) {
         this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 170, 14,
           numbers[i], fieldIndex, 1, 'field-note');
       }
     }
-    this.drawText(svg, 25, 0, 165, 127, 25, bullIndex, 1,
+    this.drawText(svg, '25', 0, 165, 127, 25, bullIndex, 1,
       'number-text' + ' ' + this.getNumberColor(bullIndex));
-    this.drawText(svg, 50, 0, 165, 158.5, 25, bullIndex, 2,
+    this.drawText(svg, '50', 0, 165, 158.5, 25, bullIndex, 2,
       'number-text' + ' ' + this.getNumberColor(bullIndex));
     if (!!this.playground.getFieldNote(bullIndex)) {
       this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 193, 25, bullIndex, 1, 'field-note');
     }
+
+    this.drawText(svg, '2x', 0, 165, 28, 20, 19, 2,
+      'number-text smaller' + ' ' + this.getNumberColor(19));
+    this.drawText(svg, '1x', 0, 165, 58, 20, 19, 1,
+      'number-text smaller' + ' ' + this.getNumberColor(19));
+    this.drawText(svg, '3x', 0, 165, 92, 20, 19, 3,
+      'number-text smaller' + ' ' + this.getNumberColor(19));
   }
 
   private getNumberColor(fieldIndex: number): string {
@@ -106,7 +113,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     this.drawTable();
   }
 
-  private drawText(svg, text: number, rotate: number, x: number, y: number, field: number,
+  private drawText(svg, text: string, rotate: number, x: number, y: number, field: number,
                    fieldIndex: number, multi: number, className: string) {
     svg.append('text')
       .attr('x', x)

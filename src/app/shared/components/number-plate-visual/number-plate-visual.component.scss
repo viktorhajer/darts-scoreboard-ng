@@ -25,6 +25,10 @@
     &.disabled {
       opacity: 0.3;
     }
+
+    &.smaller {
+      font-size: 8px;
+    }
   }
 
   .field-note {
