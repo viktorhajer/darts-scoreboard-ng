@@ -1,0 +1,16 @@
+<div class="side-right">
+
+  <div class="numbers">
+    <div class="button-line" *ngFor="let k of [0,1,2]">
+      <button mat-raised-button *ngFor="let j of [1,2,3]" class="number" (click)="throwNumber(j + (k*3))">
+        {{ j + (k*3) }}
+      </button>
+    </div>
+    <div class="button-line">
+      <button mat-raised-button class="number next" (click)="next()">0</button>
+      <button mat-raised-button class="number" (click)="win()">
+        Shanghai
+      </button>
+    </div>
+  </div>
+</div>

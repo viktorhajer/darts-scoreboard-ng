@@ -15,8 +15,9 @@ import {GameTypeStatisticsDialogComponent} from '~components/game-type-statistic
 import {MenuComponent} from '~components/menu/menu.component';
 import {RouterModule} from '@angular/router';
 import {NumberPlateVisualComponent} from '~components/number-plate-visual/number-plate-visual.component';
+import {NumberPlateShanghaiComponent} from '~components/number-plate-shanghai/number-plate-shanghai.component';
 
-const components = [NumberPlateComponent, GameToolbarComponent, GameStatisticsDialogComponent,
+const components = [NumberPlateComponent, GameToolbarComponent, GameStatisticsDialogComponent, NumberPlateShanghaiComponent,
   DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent, NumberPlateVisualComponent,
   GameHistoryDialogComponent, GameTypeStatisticsDialogComponent, MenuComponent];
 

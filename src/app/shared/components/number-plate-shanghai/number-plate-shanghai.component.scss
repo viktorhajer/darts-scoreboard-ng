@@ -1,0 +1,26 @@
+.side-right {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  height: 90vh;
+
+  .number {
+    margin: 0.1vw;
+    font-size: calc(11px + 0.8vw + 0.8vh);
+    height: 20vw;
+    width: 20vw;
+
+    mat-icon {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+      font-size: 30px;
+    }
+
+    &.next {
+      width: 40vw;
+    }
+  }
+}

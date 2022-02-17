@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <app-number-plate-visual [playground]="playground" *ngIf="!settingsOpen && !application.settings.details">
-  </app-number-plate-visual>
   <app-number-plate [playground]="playground" *ngIf="!settingsOpen && application.settings.details"></app-number-plate>
+  <app-number-plate-shanghai [playground]="playground" [actualIndex]="getActualFieldIndex()"
+                             *ngIf="!settingsOpen && !application.settings.details"></app-number-plate-shanghai>
 </div>

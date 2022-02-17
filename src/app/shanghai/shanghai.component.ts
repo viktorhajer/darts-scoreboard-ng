@@ -104,6 +104,10 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return this.settings.fields.indexOf(fieldIndex) === this.game.round;
   }
 
+  getActualFieldIndex(): number {
+    return this.settings.fields[this.game.round];
+  }
+
   isPrimaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex);
   }
