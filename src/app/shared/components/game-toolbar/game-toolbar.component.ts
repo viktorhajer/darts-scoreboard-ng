@@ -47,24 +47,6 @@ export class GameToolbarComponent {
     this.playground.undo();
   }
 
-  showTable() {
-    const enabledFields: number[] = [];
-    const primaryFields: number[] = [];
-    const secondaryFields: number[] = [];
-    for (let i = 0; i <= 20; i++) {
-      if (this.playground.isFieldEnabled(i)) {
-        enabledFields.push(i);
-      }
-      if (this.playground.isPrimaryField(i)) {
-        primaryFields.push(i);
-      }
-      if (this.playground.isSecondaryField(i)) {
-        secondaryFields.push(i);
-      }
-    }
-    this.dialogService.openDartsTable(enabledFields, primaryFields, secondaryFields);
-  }
-
   getInfo(): number {
     return this.info || this.info === 0 ? this.info : this.getRound();
   }

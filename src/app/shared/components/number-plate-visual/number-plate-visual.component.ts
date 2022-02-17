@@ -49,18 +49,18 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     const bullIndex = this.getFieldIndex(25);
 
     this.drawArc(svg, 0, 165, 0, Math.PI * 4, 'field-inactive', 0, -1, 1);
-    this.drawArc(svg, 0, 14, 0, Math.PI * 4, 'field-color-m', 25, bullIndex, 1);
-    this.drawArc(svg, 15, 29, 0, Math.PI * 4, 'field-color', 25, bullIndex, 1);
+    this.drawArc(svg, 0, 19, 0, Math.PI * 4, 'field-color-m', 25, bullIndex, 1);
+    this.drawArc(svg, 20, 49, 0, Math.PI * 4, 'field-color', 25, bullIndex, 1);
     for (let i = 0; i < numbers.length; i++) {
       const fieldIndex = this.getFieldIndex(numbers[i]);
       const colorSlice = 'field-color';
       const colorSliceMulti = 'field-color-m';
       const startAngle = i * Math.PI / 10 - ARC_WIDTH / 2;
       const endAngle = startAngle + ARC_WIDTH;
-      this.drawArc(svg, 30, 74, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
-      this.drawArc(svg, 75, 89, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 3);
-      this.drawArc(svg, 90, 129, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
-      this.drawArc(svg, 130, 144, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 2);
+      // this.drawArc(svg, 30, 74, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
+      this.drawArc(svg, 50, 84, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 3);
+      this.drawArc(svg, 85, 119, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
+      this.drawArc(svg, 120, 144, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 2);
       this.drawText(svg, numbers[i], i * 18 - 2, 170, 3, numbers[i],
         fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
       if (!!this.playground.getFieldNote(fieldIndex)) {
@@ -68,14 +68,12 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
           numbers[i], fieldIndex, 1, 'field-note');
       }
     }
-    this.drawText(svg, 25, 0, 165, 137, 25, bullIndex, 1,
+    this.drawText(svg, 25, 0, 165, 127, 25, bullIndex, 1,
       'number-text' + ' ' + this.getNumberColor(bullIndex));
     this.drawText(svg, 50, 0, 165, 158.5, 25, bullIndex, 2,
       'number-text' + ' ' + this.getNumberColor(bullIndex));
     if (!!this.playground.getFieldNote(bullIndex)) {
-      this.drawText(svg, 50, 0, 165, 158.5, 25, bullIndex, 2,
-        'number-text' + ' ' + this.getNumberColor(bullIndex));
-      this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 183, 25, bullIndex, 1, 'field-note');
+      this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 193, 25, bullIndex, 1, 'field-note');
     }
   }
 

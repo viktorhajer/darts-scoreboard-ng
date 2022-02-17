@@ -101,4 +101,8 @@ export class X01Component extends Playground<PlaygroundState> {
         Playground.getFieldValueFromIndex(index)]);
     }, PLAYER_DELAY);
   }
+
+  getInfo(): number {
+    return  this.game.getActualPlayer().score;
+  }
 }

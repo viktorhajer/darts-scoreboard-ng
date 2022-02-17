@@ -8,7 +8,6 @@ import {NumberPlateComponent} from '~components/number-plate/number-plate.compon
 import {PlayerSettingsComponent} from '~components/player-settings/player-settings.component';
 import {SettingsComponent} from '~components/settings/settings.component';
 import {PlayerScoreComponent} from '~components/player-score/player-score.component';
-import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 import {ConfirmDialogComponent} from '~components/confirm-dialog/confirm-dialog.component';
 import {GameStatisticsDialogComponent} from '~components/game-statistics-dialog/game-statistics-dialog.component';
 import {GameHistoryDialogComponent} from '~components/game-history-dialog/game-history-dialog.component';
@@ -17,7 +16,7 @@ import {MenuComponent} from '~components/menu/menu.component';
 import {RouterModule} from '@angular/router';
 import {NumberPlateVisualComponent} from '~components/number-plate-visual/number-plate-visual.component';
 
-const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
+const components = [NumberPlateComponent, GameToolbarComponent, GameStatisticsDialogComponent,
   DialogComponent, PlayerSettingsComponent, SettingsComponent, PlayerScoreComponent, ConfirmDialogComponent, NumberPlateVisualComponent,
   GameHistoryDialogComponent, GameTypeStatisticsDialogComponent, MenuComponent];
 
@@ -25,7 +24,7 @@ const components = [NumberPlateComponent, GameToolbarComponent, DartsTableDialog
   imports: [CommonModule, MaterialModule, RouterModule],
   declarations: components,
   exports: [CommonModule, FormsModule, MaterialModule, ...components],
-  entryComponents: [DialogComponent, DartsTableDialogComponent, GameStatisticsDialogComponent,
+  entryComponents: [DialogComponent, GameStatisticsDialogComponent,
     GameHistoryDialogComponent, GameTypeStatisticsDialogComponent]
 })
 export class SharedModule {

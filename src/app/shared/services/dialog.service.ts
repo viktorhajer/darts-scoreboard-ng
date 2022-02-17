@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {DialogComponent} from '~components/dialog/dialog.component';
 import {Player} from '~models/player.model';
-import {DartsTableDialogComponent} from '~components/darts-table/darts-table-dialog.component';
 import {ConfirmDialogComponent} from '~components/confirm-dialog/confirm-dialog.component';
 import {PlayerStatistics} from '~models/player-statistics.model';
 import {GameStatisticsDialogComponent} from '~components/game-statistics-dialog/game-statistics-dialog.component';
@@ -57,12 +56,6 @@ export class DialogService {
     return this.dialog.open(ConfirmDialogComponent, {
       panelClass: 'confirm-dialog',
       data: {title, content, players: []},
-    });
-  }
-
-  openDartsTable(fieldIndexes: number[], primaryFieldIndexes: number[], secondaryFields: number[]) {
-    return this.dialog.open(DartsTableDialogComponent, {
-      data: {field: fieldIndexes, primary: primaryFieldIndexes, secondary: secondaryFields}
     });
   }
 }
