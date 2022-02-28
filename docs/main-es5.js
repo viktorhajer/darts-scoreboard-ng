@@ -13410,41 +13410,50 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "drawTable",
         value: function drawTable() {
+          var _this67 = this;
+
           d3__WEBPACK_IMPORTED_MODULE_2__["select"]('#darts-table-plate svg').remove();
           var svg = d3__WEBPACK_IMPORTED_MODULE_2__["select"]('#darts-table-plate').append('svg').attr('width', '100%').attr('height', '100%').attr('viewBox', '0 0 330 330');
           var numbers = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
           var bullIndex = this.getFieldIndex(25);
-          this.drawArc(svg, 0, 165, 0, Math.PI * 4, 'field-inactive', 0, -1, 1);
-          this.drawArc(svg, 0, 19, 0, Math.PI * 4, 'field-color-m', 25, bullIndex, 1);
-          this.drawArc(svg, 20, 49, 0, Math.PI * 4, 'field-color', 25, bullIndex, 1);
+
+          if (this.playground.zeroEnabled) {
+            this.drawArcPosition(svg, 20, 25, 30, 'field-color', -1);
+            this.drawText(svg, '0', 0, 25, 23, -1, 1, 'number-text' + ' ' + this.getNumberColor(0), function () {
+              return _this67.throwZero();
+            });
+          }
+
+          this.drawArc(svg, 0, 165, 0, Math.PI * 4, 'field-inactive', -1, 1);
+          this.drawArc(svg, 0, 19, 0, Math.PI * 4, 'field-color-m', bullIndex, 2);
+          this.drawArc(svg, 20, 49, 0, Math.PI * 4, 'field-color', bullIndex, 1);
 
           for (var i = 0; i < numbers.length; i++) {
             var fieldIndex = this.getFieldIndex(numbers[i]);
             var colorSlice = 'field-color';
             var colorSliceMulti = 'field-color-m';
             var startAngle = i * Math.PI / 10 - ARC_WIDTH / 2;
-            var endAngle = startAngle + ARC_WIDTH; // this.drawArc(svg, 30, 74, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
-
-            this.drawArc(svg, 50, 84, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 3);
-            this.drawArc(svg, 85, 119, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
-            this.drawArc(svg, 120, 144, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 2);
-            this.drawText(svg, numbers[i] + '', i * 18 - 2, 170, 3, numbers[i], fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
+            var endAngle = startAngle + ARC_WIDTH;
+            this.drawArc(svg, 50, 84, startAngle, endAngle, colorSliceMulti, fieldIndex, 3);
+            this.drawArc(svg, 85, 119, startAngle, endAngle, colorSlice, fieldIndex, 1);
+            this.drawArc(svg, 120, 144, startAngle, endAngle, colorSliceMulti, fieldIndex, 2);
+            this.drawText(svg, numbers[i] + '', i * 18 - 2, 170, 3, fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
 
             if (!!this.playground.getFieldNote(fieldIndex)) {
-              this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 170, 14, numbers[i], fieldIndex, 1, 'field-note');
+              this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 170, 14, fieldIndex, 1, 'field-note');
             }
           }
 
-          this.drawText(svg, '25', 0, 165, 127, 25, bullIndex, 1, 'number-text' + ' ' + this.getNumberColor(bullIndex));
-          this.drawText(svg, '50', 0, 165, 158.5, 25, bullIndex, 2, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+          this.drawText(svg, '25', 0, 165, 127, bullIndex, 1, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+          this.drawText(svg, '50', 0, 165, 158.5, bullIndex, 2, 'number-text' + ' ' + this.getNumberColor(bullIndex));
 
           if (!!this.playground.getFieldNote(bullIndex)) {
-            this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 193, 25, bullIndex, 1, 'field-note');
+            this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 193, bullIndex, 1, 'field-note');
           }
 
-          this.drawText(svg, '2x', 0, 165, 28, 20, 19, 2, 'number-text smaller' + ' ' + this.getNumberColor(19));
-          this.drawText(svg, '1x', 0, 165, 58, 20, 19, 1, 'number-text smaller' + ' ' + this.getNumberColor(19));
-          this.drawText(svg, '3x', 0, 165, 92, 20, 19, 3, 'number-text smaller' + ' ' + this.getNumberColor(19));
+          this.drawText(svg, '2x', 0, 165, 28, 19, 2, 'number-text smaller' + ' ' + this.getNumberColor(19));
+          this.drawText(svg, '1x', 0, 165, 58, 19, 1, 'number-text smaller' + ' ' + this.getNumberColor(19));
+          this.drawText(svg, '3x', 0, 165, 92, 19, 3, 'number-text smaller' + ' ' + this.getNumberColor(19));
         }
       }, {
         key: "getNumberColor",
@@ -13482,21 +13491,38 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.drawTable();
         }
       }, {
+        key: "throwZero",
+        value: function throwZero() {
+          if (this.playground.zeroEnabled) {
+            this.playground.throwNumber([0, 0]);
+            this.drawTable();
+          }
+        }
+      }, {
         key: "drawText",
-        value: function drawText(svg, text, rotate, x, y, field, fieldIndex, multi, className) {
-          var _this67 = this;
+        value: function drawText(svg, text, rotate, x, y, fieldIndex, multi, className, onclick) {
+          var _this68 = this;
 
           svg.append('text').attr('x', x).attr('y', y).attr('dy', '1em').attr('text-anchor', 'middle').attr('transform', 'rotate(' + rotate + ', 165, 165)').attr('class', className).text(text).on('click', function () {
-            return _this67.throwNumber(fieldIndex, multi);
+            return onclick ? onclick() : _this68.throwNumber(fieldIndex, multi);
           });
         }
       }, {
         key: "drawArc",
-        value: function drawArc(svg, innerRadius, outerRadius, startAngle, endAngle, styleClass, field, fieldIndex, multi) {
-          var _this68 = this;
+        value: function drawArc(svg, innerRadius, outerRadius, startAngle, endAngle, styleClass, fieldIndex, multi) {
+          var _this69 = this;
 
           svg.append('path').attr('transform', 'translate(165, 165)').attr('d', d3__WEBPACK_IMPORTED_MODULE_2__["arc"]().innerRadius(innerRadius).outerRadius(outerRadius).startAngle(startAngle).endAngle(endAngle)).attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex)).on('click', function () {
-            return _this68.throwNumber(fieldIndex, multi);
+            return _this69.throwNumber(fieldIndex, multi);
+          });
+        }
+      }, {
+        key: "drawArcPosition",
+        value: function drawArcPosition(svg, radius, x, y, styleClass, fieldIndex) {
+          var _this70 = this;
+
+          svg.append('path').attr('transform', 'translate(' + x + ', ' + y + ')').attr('d', d3__WEBPACK_IMPORTED_MODULE_2__["arc"]().innerRadius(0).outerRadius(radius).startAngle(0).endAngle(Math.PI * 4)).attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex)).on('click', function () {
+            return _this70.throwZero();
           });
         }
       }, {
@@ -14508,10 +14534,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(PlayerSettingsComponent, [{
         key: "getOptions",
         value: function getOptions() {
-          var _this69 = this;
+          var _this71 = this;
 
           return this.storedPlayers.filter(function (o) {
-            return _this69.playground.game.players.map(function (p) {
+            return _this71.playground.game.players.map(function (p) {
               return p.name;
             }).indexOf(o) === -1;
           });
@@ -15271,7 +15297,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "throwNumber",
         value: function throwNumber(args) {
-          var _this70 = this;
+          var _this72 = this;
 
           var score = args[0];
           var scoreReal = args[1];
@@ -15317,7 +15343,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }
 
             var activePlayers = this.game.players.filter(function (p) {
-              return !_this70.getPlayerState(p) || !_this70.getPlayerState(p).isInactive();
+              return !_this72.getPlayerState(p) || !_this72.getPlayerState(p).isInactive();
             });
 
             if (!activePlayers.length) {
@@ -15492,14 +15518,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getGameStatistics",
         value: function getGameStatistics() {
-          var _this71 = this;
+          var _this73 = this;
 
           var statistics = this.statisticsService.getGameStatistics(this.playground.gameName);
           var players = [];
           statistics.forEach(function (stat) {
-            _this71.parseStatistics(stat, 'l', players);
+            _this73.parseStatistics(stat, 'l', players);
 
-            _this71.parseStatistics(stat, 'w', players);
+            _this73.parseStatistics(stat, 'w', players);
           });
           return players;
         }
@@ -15540,18 +15566,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "finishStatistics",
         value: function finishStatistics() {
-          var _this72 = this;
+          var _this74 = this;
 
           this.gameStatistics.f = new Date().toISOString();
           this.gameStatistics.w = this.game.players.filter(function (p) {
             return p.win;
           }).map(function (p) {
-            return _this72.decoratePlayerStat(p);
+            return _this74.decoratePlayerStat(p);
           });
           this.gameStatistics.l = this.game.players.filter(function (p) {
             return !p.win;
           }).map(function (p) {
-            return _this72.decoratePlayerStat(p);
+            return _this74.decoratePlayerStat(p);
           });
           this.gameStatistics.r = this.game.round;
           this.gameStatistics.c = this.getGameConfig();
@@ -17382,13 +17408,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var _super23 = _createSuper(X01Component);
 
       function X01Component(application, game, route, dialogService, soundService, botService, statisticsService) {
-        var _this73;
+        var _this75;
 
         _classCallCheck(this, X01Component);
 
-        _this73 = _super23.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
-        _this73.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
-        return _this73;
+        _this75 = _super23.call(this, application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
+        _this75.settings = new _models_x01_settings_model__WEBPACK_IMPORTED_MODULE_3__["X01Settings"]();
+        return _this75;
       }
 
       _createClass(X01Component, [{
@@ -17425,10 +17451,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "customReset",
         value: function customReset() {
-          var _this74 = this;
+          var _this76 = this;
 
           this.game.players.forEach(function (player) {
-            return player.score = _this74.settings.startValue;
+            return player.score = _this76.settings.startValue;
           });
         }
       }, {
@@ -17439,7 +17465,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "botThrow",
         value: function botThrow() {
-          var _this75 = this;
+          var _this77 = this;
 
           var target = Math.floor(Math.random() * 10) + 10;
 
@@ -17473,7 +17499,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           var index = this.botService.calculateTarget(target);
           setTimeout(function () {
-            _this75.throwNumber([_this75.isFieldEnabled(index) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index) : 0, _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index)]);
+            _this77.throwNumber([_this77.isFieldEnabled(index) ? _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index) : 0, _models_playground_model__WEBPACK_IMPORTED_MODULE_1__["Playground"].getFieldValueFromIndex(index)]);
           }, _services_bot_service__WEBPACK_IMPORTED_MODULE_4__["PLAYER_DELAY"]);
         }
       }, {

@@ -48,40 +48,38 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     const numbers = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
     const bullIndex = this.getFieldIndex(25);
 
-    this.drawArc(svg, 0, 165, 0, Math.PI * 4, 'field-inactive', 0, -1, 1);
-    this.drawArc(svg, 0, 19, 0, Math.PI * 4, 'field-color-m', 25, bullIndex, 1);
-    this.drawArc(svg, 20, 49, 0, Math.PI * 4, 'field-color', 25, bullIndex, 1);
+    if (this.playground.zeroEnabled) {
+      this.drawArcPosition(svg, 20, 25, 30, 'field-color', -1);
+      this.drawText(svg, '0', 0, 25, 23, -1, 1,
+        'number-text' + ' ' + this.getNumberColor(0), () => this.throwZero());
+    }
+
+    this.drawArc(svg, 0, 165, 0, Math.PI * 4, 'field-inactive', -1, 1);
+    this.drawArc(svg, 0, 19, 0, Math.PI * 4, 'field-color-m', bullIndex, 2);
+    this.drawArc(svg, 20, 49, 0, Math.PI * 4, 'field-color', bullIndex, 1);
     for (let i = 0; i < numbers.length; i++) {
       const fieldIndex = this.getFieldIndex(numbers[i]);
       const colorSlice = 'field-color';
       const colorSliceMulti = 'field-color-m';
       const startAngle = i * Math.PI / 10 - ARC_WIDTH / 2;
       const endAngle = startAngle + ARC_WIDTH;
-      // this.drawArc(svg, 30, 74, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
-      this.drawArc(svg, 50, 84, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 3);
-      this.drawArc(svg, 85, 119, startAngle, endAngle, colorSlice, numbers[i], fieldIndex, 1);
-      this.drawArc(svg, 120, 144, startAngle, endAngle, colorSliceMulti, numbers[i], fieldIndex, 2);
-      this.drawText(svg, numbers[i]+'', i * 18 - 2, 170, 3, numbers[i],
-        fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
+      this.drawArc(svg, 50, 84, startAngle, endAngle, colorSliceMulti, fieldIndex, 3);
+      this.drawArc(svg, 85, 119, startAngle, endAngle, colorSlice, fieldIndex, 1);
+      this.drawArc(svg, 120, 144, startAngle, endAngle, colorSliceMulti, fieldIndex, 2);
+      this.drawText(svg, numbers[i] + '', i * 18 - 2, 170, 3, fieldIndex, 1, 'number-text' + ' ' + this.getNumberColor(fieldIndex));
       if (!!this.playground.getFieldNote(fieldIndex)) {
-        this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 170, 14,
-          numbers[i], fieldIndex, 1, 'field-note');
+        this.drawText(svg, this.playground.getFieldNote(fieldIndex), i * 18 - 2, 170, 14, fieldIndex, 1, 'field-note');
       }
     }
-    this.drawText(svg, '25', 0, 165, 127, 25, bullIndex, 1,
-      'number-text' + ' ' + this.getNumberColor(bullIndex));
-    this.drawText(svg, '50', 0, 165, 158.5, 25, bullIndex, 2,
-      'number-text' + ' ' + this.getNumberColor(bullIndex));
+    this.drawText(svg, '25', 0, 165, 127, bullIndex, 1, 'number-text' + ' ' + this.getNumberColor(bullIndex));
+    this.drawText(svg, '50', 0, 165, 158.5, bullIndex, 2, 'number-text' + ' ' + this.getNumberColor(bullIndex));
     if (!!this.playground.getFieldNote(bullIndex)) {
-      this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 193, 25, bullIndex, 1, 'field-note');
+      this.drawText(svg, this.playground.getFieldNote(bullIndex), 0, 165, 193, bullIndex, 1, 'field-note');
     }
 
-    this.drawText(svg, '2x', 0, 165, 28, 20, 19, 2,
-      'number-text smaller' + ' ' + this.getNumberColor(19));
-    this.drawText(svg, '1x', 0, 165, 58, 20, 19, 1,
-      'number-text smaller' + ' ' + this.getNumberColor(19));
-    this.drawText(svg, '3x', 0, 165, 92, 20, 19, 3,
-      'number-text smaller' + ' ' + this.getNumberColor(19));
+    this.drawText(svg, '2x', 0, 165, 28, 19, 2, 'number-text smaller' + ' ' + this.getNumberColor(19));
+    this.drawText(svg, '1x', 0, 165, 58, 19, 1, 'number-text smaller' + ' ' + this.getNumberColor(19));
+    this.drawText(svg, '3x', 0, 165, 92, 19, 3, 'number-text smaller' + ' ' + this.getNumberColor(19));
   }
 
   private getNumberColor(fieldIndex: number): string {
@@ -113,8 +111,15 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     this.drawTable();
   }
 
-  private drawText(svg, text: string, rotate: number, x: number, y: number, field: number,
-                   fieldIndex: number, multi: number, className: string) {
+  private throwZero() {
+    if (this.playground.zeroEnabled) {
+      this.playground.throwNumber([0,0]);
+      this.drawTable();
+    }
+  }
+
+  private drawText(svg, text: string, rotate: number, x: number, y: number, fieldIndex: number,
+                   multi: number, className: string, onclick?: () => void) {
     svg.append('text')
       .attr('x', x)
       .attr('y', y)
@@ -123,11 +128,11 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
       .attr('transform', 'rotate(' + rotate + ', 165, 165)')
       .attr('class', className)
       .text(text)
-      .on('click', () => this.throwNumber(fieldIndex, multi));
+      .on('click', () => onclick ? onclick() : this.throwNumber(fieldIndex, multi));
   }
 
   private drawArc(svg: any, innerRadius: number, outerRadius: number, startAngle: number, endAngle: number,
-                  styleClass: string, field: number, fieldIndex: number, multi: number) {
+                  styleClass: string, fieldIndex: number, multi: number) {
     svg
       .append('path')
       .attr('transform', 'translate(165, 165)')
@@ -139,6 +144,20 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
       )
       .attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex))
       .on('click', () => this.throwNumber(fieldIndex, multi));
+  }
+
+  private drawArcPosition(svg: any, radius: number, x: number, y: number, styleClass: string, fieldIndex: number) {
+    svg
+      .append('path')
+      .attr('transform', 'translate(' + x + ', ' + y + ')')
+      .attr('d', d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius)
+        .startAngle(0)
+        .endAngle(Math.PI * 4)
+      )
+      .attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex))
+      .on('click', () => this.throwZero());
   }
 
   private getFieldIndex(field: number): number {
