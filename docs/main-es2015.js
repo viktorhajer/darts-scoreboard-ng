@@ -7441,7 +7441,7 @@ class ApplicationStateService {
         if (data) {
             this.settings = JSON.parse(data);
         }
-        this.setTheme();
+        // this.setTheme();
     }
     toggleColorTheme() {
         this.settings.theme = (this.settings.theme + 1) % this.availableThemes.length;
@@ -7464,6 +7464,9 @@ class ApplicationStateService {
         localStorage.setItem(PLAYER_KEY, JSON.stringify(players));
     }
     setTheme() {
+        if (this.settings.theme >= this.availableThemes.length) {
+            this.settings.theme = 0;
+        }
         Object.keys(this.availableThemes[this.settings.theme].properties).forEach(property => {
             document.documentElement.style.setProperty(property, this.availableThemes[this.settings.theme].properties[property]);
         });

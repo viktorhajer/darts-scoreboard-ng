@@ -15547,9 +15547,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         if (data) {
           this.settings = JSON.parse(data);
-        }
+        } // this.setTheme();
 
-        this.setTheme();
       }
 
       _createClass(ApplicationStateService, [{
@@ -15588,6 +15587,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "setTheme",
         value: function setTheme() {
           var _this77 = this;
+
+          if (this.settings.theme >= this.availableThemes.length) {
+            this.settings.theme = 0;
+          }
 
           Object.keys(this.availableThemes[this.settings.theme].properties).forEach(function (property) {
             document.documentElement.style.setProperty(property, _this77.availableThemes[_this77.settings.theme].properties[property]);

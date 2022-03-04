@@ -17,7 +17,7 @@ export class ApplicationStateService {
     if (data) {
       this.settings = JSON.parse(data);
     }
-    this.setTheme();
+    // this.setTheme();
   }
 
   toggleColorTheme() {
@@ -45,6 +45,9 @@ export class ApplicationStateService {
   }
 
   private setTheme() {
+    if (this.settings.theme >= this.availableThemes.length) {
+      this.settings.theme = 0;
+    }
     Object.keys(this.availableThemes[this.settings.theme].properties).forEach(property => {
       document.documentElement.style.setProperty(
         property,
