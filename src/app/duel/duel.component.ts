@@ -33,7 +33,7 @@ export class DuelComponent extends Playground<DuelState> {
       player.score -= this.settings.punishment;
     } else if (state.ownFields.some(i => i === fieldIndex)) {
       player.score += actualScore;
-    } else if (this.isSecondaryField(fieldIndex)) {
+    } else if (this.isNotOwnField(fieldIndex)) {
       player.score -= actualScore;
       if (this.settings.handover) {
         const player = this.game.players.find(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
@@ -69,13 +69,16 @@ export class DuelComponent extends Playground<DuelState> {
   }
 
   isPrimaryField(fieldIndex: number): boolean {
-    const state = this.getPlayerState(this.game.getActualPlayer());
-    return state.ownFields.some(i => i === fieldIndex);
+    return this.getPlayerState(this.game.getActualPlayer()).ownFields.some(i => i === fieldIndex);
   }
 
   isSecondaryField(fieldIndex: number): boolean {
-    return !this.settings.isFieldAllowed(fieldIndex) ||
-      this.game.players.some(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
+    return this.settings.isFieldAllowed(fieldIndex) &&
+      !this.game.players.some(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
+  }
+
+  isAlertField(fieldIndex: number): boolean {
+    return this.game.players.some(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
   }
 
   getFieldNote(fieldIndex: number): string {
@@ -95,5 +98,10 @@ export class DuelComponent extends Playground<DuelState> {
 
   getGameConfig(): string {
     return this.settings.fields.length+','+this.settings.targetPoint+','+this.settings.startPoint;
+  }
+
+  private isNotOwnField(fieldIndex: number): boolean {
+    return !this.settings.isFieldAllowed(fieldIndex) ||
+      this.game.players.some(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
   }
 }

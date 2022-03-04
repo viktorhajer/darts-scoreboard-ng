@@ -8,16 +8,16 @@
                     'lehetséges.'">
 
 
-    <button mat-raised-button class="button shortmedium" [color]="settings.style === 0 ? 'primary' : ''"
+    <button class="button shortmedium" [class.primary]="settings.style === 0"
             (click)="settings.randomCity()">City (5)
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style === 1 ? 'primary' : ''"
+    <button class="button shortmedium" [class.primary]="settings.style === 1"
             (click)="settings.randomCountry()">Country (10)
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style === 2 ? 'primary' : ''"
-            (click)="settings.randomContinent()">Continent (20)
+    <button class="button shortmedium" [class.primary]="settings.style === 2"
+            (click)="settings.randomContinent()">Contin. (20)
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.noScore?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.noScore"
             (click)="settings.toggleNoScore()">No score
     </button>
   </app-settings>

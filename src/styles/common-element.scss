@@ -1,0 +1,79 @@
+.error-dialog {
+  .mat-dialog-title {
+    color: var(--warn);
+  }
+}
+
+.statistics-table {
+  tr:first-child {
+    background: var(--primary_1);
+  }
+
+  tr:nth-child(even) {
+    background: var(--basic_1);
+  }
+}
+
+.button, mat-form-field {
+  &.big {
+    width: 30.4vw;
+  }
+
+  &.medium {
+    width: 20.2vw;
+  }
+
+  &.shortmedium {
+    width: 15vw;
+  }
+}
+
+.button {
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 3px;
+  min-width: 64px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 4px;
+  overflow: visible;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  &.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.icon {
+    padding: 0;
+    min-width: 0;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    line-height: 40px;
+    border-radius: 50%;
+    box-shadow: none;
+
+    .mat-icon {
+      line-height: 24px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: var(--text_color);
+}
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--text_color);
+}

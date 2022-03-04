@@ -1,211 +1,125 @@
-@import "~@angular/material/theming";
-@include mat-core();
+body {
+  background: linear-gradient(to top, var(--background_1), var(--background_2));
+  color: var(--text_color_2);
+}
 
-$light-theme: mat-light-theme(mat-palette($mat-teal), mat-palette($mat-grey));
-$light-theme-blue: mat-light-theme(mat-palette($mat-light-blue), mat-palette($mat-blue-grey));
-$dark-theme: mat-dark-theme(mat-palette($mat-cyan), mat-palette($mat-gray));
-$dark-red: mat-dark-theme(mat-palette($mat-red), mat-palette($mat-gray));
-$basic: mat-palette($mat-grey);
-
-@mixin shared-module-theme($theme) {
-  $accent: map-get($theme, accent);
-  $primary: map-get($theme, primary);
-  $warn: map-get($theme, warn);
-
-  .version {
-    color: mat-color($accent, 400);
+.settings {
+  #rules details p {
+    background: var(--primary_1);
+    color: var(--text_color);
   }
 
-  .toolbar {
-    .round-info {
-      color: mat-color($primary, 50);
-      background: mat-color($primary, 500);
-    }
-  }
-  .error-dialog {
-    .mat-dialog-title {
-      color: mat-color($warn, 500);
-    }
-  }
-  .dialog-container {
-
-    td:first-child {
-      white-space: nowrap;
-    }
-
-    td {
-      word-break: break-all;
-    }
-
-    .score-line {
-      &.winner {
-        background: rgba(mat-color($accent, 400), 0.5);
-      }
-    }
-  }
-  .statistics-table {
-    tr:first-child {
-      background: mat-color($primary, 500);
-    }
-    tr:nth-child(even) {
-      background: rgba(mat-color($basic, 400), 0.3);
-    }
+  .player-row {
+    background: var(--primary_1);
+    color: var(--text_color);
   }
 }
 
-@mixin menu-theme($theme) {
-  #menu {
-    $primary: map-get($theme, primary);
-    .gameSelectBox {
-      color: mat-color($basic, 50);
-      .title {
-        background: rgba(0, 0, 0, 0.1);
+.player {
+  background: var(--basic_1);
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+
+  .shoots {
+    .shoot {
+      background: var(--accent_4);
+
+      &.total {
+        background: var(--primary_2);
       }
     }
-    .menu-button-00 { background: mat-color($primary, 500) }
-    .menu-button-01 { background: mat-color($primary, 800) }
-    .menu-button-02 { background: mat-color($primary, 700) }
-    .menu-button-10 { background: mat-color($primary, 700) }
-    .menu-button-11 { background: mat-color($primary, 500) }
-    .menu-button-12 { background: mat-color($primary, 800) }
-    .menu-button-20 { background: mat-color($primary, 500) }
-    .menu-button-21 { background: mat-color($primary, 800) }
-    .menu-button-22 { background: mat-color($primary, 700) }
-    .menu-button-30 { background: mat-color($primary, 700) }
-    .menu-button-31 { background: mat-color($primary, 500) }
-    .menu-button-32 { background: mat-color($primary, 800) }
   }
-}
 
-@mixin feature-module-theme($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
+  .line {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+  }
 
-  .settings {
-    #rules details p {
-      background: mat-color($primary, 500);
-      color: mat-color($basic, 50);
-    }
-    .player-row {
-      background: mat-color($primary, 500);
-      color: mat-color($basic, 50);
+  .player_info {
+    .field {
     }
   }
 
-  .player {
-    // color: mat-color($accent, 300);
-    background: mat-color($accent, 600);
+  &.highlighted, &.highlighted2 {
+    background: var(--primary_1);
+    color: var(--text_color);
 
-    .shoots {
+    .player_info {
       .shoot {
-        background: mat-color($accent, 900);
-        color: mat-color($accent, 300);
-
         &.total {
-          background: mat-color($primary, 900);
-          color: mat-color($primary, 100);
+          background: var(--primary_2);
         }
       }
     }
 
     .line {
-      border-top: 1px solid rgba(0,0,0,0.2);
-    }
-
-    .player_info {
-      .field {
-        color: mat-color($accent, 300);
-      }
-    }
-
-    &.highlighted {
-      background: linear-gradient(to top, mat-color($primary, 500), mat-color($primary, 600));
-    }
-
-    &.highlighted2 {
-      background: mat-color($primary, 700);
-    }
-
-    &.highlighted, &.highlighted2 {
-      .player_info {
-        .shoot {
-          background: mat-color($primary, 900);
-          color: mat-color($accent, 400);
-  
-          &.total {
-            background: mat-color($primary, 900);
-            color: mat-color($accent, 100);
-          }
-        }
-        .field {
-          color: mat-color($accent, 100);
-        }
-      }
-      .line {
-        border-top: 1px solid rgba(0,0,0,0.2);
-      }
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
     }
   }
-
-  #darts-table-plate {
-    .number-text, .field-note {
-      fill: mat-color($accent, 500);
-    }
-    .field-inactive {
-      //fill: mat-color($basic, 200);
-      fill: none;
-    }
-    .field-color {
-      fill: mat-color($basic, 500);
-      &.primary {
-        fill: mat-color($primary, 700);
-      }
-      &.accent {
-        fill: mat-color($accent, 600);
-      }
-    }
-    .field-color-m {
-      fill: mat-color($basic, 600);
-      &.primary {
-        fill: mat-color($primary, 900);
-      }
-      &.accent {
-        fill: mat-color($accent, 700);
-      }
-    }
-  }
-
 }
 
-body {
-  background: linear-gradient(to top, mat-color($basic, 200), #efefef);
-  color: mat-color(map-get($light-theme, accent), 900);
-  @include angular-material-theme($light-theme);
-  @include shared-module-theme($light-theme);
-  @include feature-module-theme($light-theme);
-  @include menu-theme($light-theme);
-  &.dark-theme {
-    background: linear-gradient(to top, mat-color($basic, 800), #000000);
-    color: mat-color(map-get($dark-theme, primary), 200);
-    @include angular-material-theme($dark-theme);
-    @include shared-module-theme($dark-theme);
-    @include feature-module-theme($dark-theme);
-    @include menu-theme($dark-theme);
+#darts-table-plate {
+  .number-text, .field-note {
+    fill: var(--text_color);
   }
-  &.dark-red {
-    background: linear-gradient(to top, mat-color($basic, 800), #000000);
-    color: mat-color(map-get($dark-red, primary), 200);
-    @include angular-material-theme($dark-red);
-    @include shared-module-theme($dark-red);
-    @include feature-module-theme($dark-red);
-    @include menu-theme($dark-red);
+
+  .field-inactive {
+    fill: none;
   }
-  &.light-theme-blue {
-    background: linear-gradient(to top, mat-color($basic, 200), #efefef);
-    color: mat-color(map-get($light-theme-blue, accent), 900);
-    @include angular-material-theme($light-theme-blue);
-    @include shared-module-theme($light-theme-blue);
-    @include feature-module-theme($light-theme-blue);
-    @include menu-theme($light-theme-blue);
+
+  .field-color {
+    fill: var(--table_normal);
+
+    &.primary {
+      fill: var(--table_normal_primary);
+    }
+
+    &.accent {
+      fill: var(--table_normal_accent);
+    }
+
+    &.alert {
+      fill: var(--table_normal_alert);
+    }
+  }
+
+  .field-color-m {
+    fill: var(--table_multi);
+
+    &.primary {
+      fill: var(--table_multi_primary);
+    }
+
+    &.accent {
+      fill: var(--table_multi_accent);
+    }
+
+    &.alert {
+      fill: var(--table_multi_alert);
+    }
+  }
+}
+
+.mat-dialog-container {
+  background-color: var(--basic_0);
+  color: var(--text_color);
+}
+
+.button {
+  background-color: var(--basic_0);
+  color: var(--text_color);
+
+  &.primary {
+    background-color: var(--primary_1);
+  }
+
+  &.icon {
+    background: transparent;
+
+    &.primary {
+      color: var(--primary_1);
+    }
+
+    &.accent {
+      color: var(--accent_3);
+    }
   }
 }

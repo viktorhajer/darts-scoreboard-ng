@@ -24,34 +24,34 @@
 
     <br/>
 
-    <button mat-raised-button class="button shortmedium" [color]="settings.handover ? 'primary' : ''"
+    <button class="button shortmedium" [class.primary]="settings.handover ? 'primary' : ''"
             (click)="settings.toggleHandOver()">Hand Over</button>
 
     <br/>
     <mat-divider></mat-divider>
 
     <h2>Fields</h2>
-    <button mat-raised-button class="button" [color]="settings.isFieldAllowed(i)?'primary':''"
+    <button class="button" [class.primary]="settings.isFieldAllowed(i)"
             *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
       {{numb === 21 ? 'B' : numb}}
     </button>
     <mat-divider></mat-divider>
-    <button mat-raised-button class="button shortmedium" (click)="settings.upper()">Upper</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.lower()">Lower</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.left()">Left</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.right()">Right</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.odd()">Odd</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.even()">Even</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.prime()">Prime</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.notPrime()">Not prime</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.randomize(5)">Random 05</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.randomize(10)">Random 10</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.randomize(15)">Random 15</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.small()">Small</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.high()">High</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.star()">Star</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.cross()">Cross</button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.all()">All</button>
+    <button class="button shortmedium" (click)="settings.upper()">Upper</button>
+    <button class="button shortmedium" (click)="settings.lower()">Lower</button>
+    <button class="button shortmedium" (click)="settings.left()">Left</button>
+    <button class="button shortmedium" (click)="settings.right()">Right</button>
+    <button class="button shortmedium" (click)="settings.odd()">Odd</button>
+    <button class="button shortmedium" (click)="settings.even()">Even</button>
+    <button class="button shortmedium" (click)="settings.prime()">Prime</button>
+    <button class="button shortmedium" (click)="settings.notPrime()">Not prime</button>
+    <button class="button shortmedium" (click)="settings.randomize(5)">Random 05</button>
+    <button class="button shortmedium" (click)="settings.randomize(10)">Random 10</button>
+    <button class="button shortmedium" (click)="settings.randomize(15)">Random 15</button>
+    <button class="button shortmedium" (click)="settings.small()">Small</button>
+    <button class="button shortmedium" (click)="settings.high()">High</button>
+    <button class="button shortmedium" (click)="settings.star()">Star</button>
+    <button class="button shortmedium" (click)="settings.cross()">Cross</button>
+    <button class="button shortmedium" (click)="settings.all()">All</button>
 
   </app-settings>
 

@@ -1,20 +1,14 @@
 <div class="settings">
   <h1>{{title}} Settings</h1>
-
   <h2>Players</h2>
   <app-player-settings [playground]="playground"></app-player-settings>
   <mat-divider></mat-divider>
-
   <ng-content></ng-content>
-
   <mat-divider></mat-divider>
-
-  <br/><br/>
-  <button mat-raised-button class="button shortmedium" (click)="openStatistics()">Player rank</button>
-  <button mat-raised-button class="button shortmedium" (click)="openHistory()">Game history</button>
-  <button mat-raised-button class="button shortmedium" (click)="openRules()">Rules</button>
+  <button class="button shortmedium" (click)="openStatistics()">Player rank</button>
+  <button class="button shortmedium" (click)="openHistory()">Game history</button>
+  <button class="button shortmedium" (click)="openRules()">Rules</button>
   <mat-divider></mat-divider>
-  <button mat-raised-button class="button big" color="primary" (click)="playground.newGame()">Start</button>
-  <button mat-raised-button class="button big" (click)="playground.quit()">Cancel</button>
-
+  <button class="button big" color="primary" (click)="playground.newGame()">Start</button>
+  <button class="button big" (click)="playground.quit()">Cancel</button>
 </div>

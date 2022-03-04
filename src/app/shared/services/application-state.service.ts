@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
 import {ApplicationSettings} from '~models/application-settings.model';
+import {theme} from '../../theme.constant';
+import {Theme} from '~models/theme.model';
 
 const APPLICATION_KEY = 'ApplicationSettings';
 const PLAYER_KEY = 'Players';
-const THEMES = ['light-theme', 'light-theme-blue', 'dark-theme', 'dark-red'];
 
 @Injectable({providedIn: 'root'})
 export class ApplicationStateService {
 
+  private availableThemes: Theme[] = [theme];
   settings = new ApplicationSettings();
 
   constructor() {
@@ -19,7 +21,7 @@ export class ApplicationStateService {
   }
 
   toggleColorTheme() {
-    this.settings.theme = (this.settings.theme + 1) % THEMES.length;
+    this.settings.theme = (this.settings.theme + 1) % this.availableThemes.length;
     this.setTheme();
     this.saveSettings();
   }
@@ -43,10 +45,12 @@ export class ApplicationStateService {
   }
 
   private setTheme() {
-    THEMES.forEach(theme => {
-      document.body.className = document.body.className.replace(theme, '');
+    Object.keys(this.availableThemes[this.settings.theme].properties).forEach(property => {
+      document.documentElement.style.setProperty(
+        property,
+        this.availableThemes[this.settings.theme].properties[property]
+      );
     });
-    document.body.classList.add(THEMES[this.settings.theme]);
   }
 
   private saveSettings() {

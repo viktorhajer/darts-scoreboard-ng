@@ -1,4 +1,36 @@
+:root {
+  --basic_0: #424242;
+  --basic_1: #676767;
+  --basic_2: #9e9e9e;
+  --basic_3: #757575;
+  --basic_9: #000;
+  --primary_0: #98d9b6;
+  --primary_1: #92aa9d;
+  --primary_2: #006064;
+  --accent_1: #e0e0e0;
+  --accent_2: #757575;
+  --accent_3: #9e9e9e;
+  --accent_4: #212121;
+  --text_color: #fafafa;
+  --text_color_2: #c7dfd2;
+  --warn: #e3a5a0;
+  --table_normal: #676767;
+  --table_multi: #565656;
+  --table_normal_primary: #186883;
+  --table_multi_primary: #9d9471;
+  --table_normal_accent: #7cacb1;
+  --table_multi_accent: #5a8489;
+  --table_normal_alert: #7a5656;
+  --table_multi_alert: #784848;
+  --menu_1: #92aa9d;
+  --menu_2: #3f606f;
+  --menu_3: #183440;
+  --background_1: #585858;
+  --background_2: #354850;
+}
+
 @import "styles/player-score";
+@import "styles/common-element";
 @import "styles/theming";
 
 * {
@@ -72,25 +104,4 @@ button {
 
 mat-card {
   margin: 3px;
-}
-
-.xmas {
-  h1 {
-    color: #ffffff;
-    font-size: 34px;
-    text-shadow: 4px 4px 4px #000000;
-  }
-
-  h2 {
-    color: #ffffff;
-    text-shadow: 4px 4px 4px #000000;
-  }
-
-  .player, .side-right .number {
-    opacity: 0.8;
-  }
-
-  .player_info {
-    color: #ffffff;
-  }
 }

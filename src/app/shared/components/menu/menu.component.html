@@ -3,19 +3,21 @@
 </div>
 <div id="menu">
   <div class="button-line" *ngFor="let k of [0,1,2,3]">
-    <button mat-raised-button *ngFor="let g of getGameList().slice(k*3,k*3 + 3); let i = index"
+    <button *ngFor="let g of getGameList().slice(k*3,k*3 + 3); let i = index"
             [routerLink]="['/' + g.path]"
-            class="gameSelectBox {{'menu-button-' + k + '' + i}} {{g.data.bot ? 'hasBot' : ''}}">
-      <mat-icon>{{g.data.icon}}</mat-icon>
-      <div class="title">{{g.data.name}}</div>
+            class="button gameSelectBox {{'menu-button-' + k + '' + i}} {{g.data.bot ? 'hasBot' : ''}}">
+      <div class="menu-item-container">
+        <div class="title">{{g.data.name}}</div>
+        <mat-icon>{{g.data.icon}}</mat-icon>
+      </div>
     </button>
   </div>
 </div>
 <div class="version">
-  <button mat-icon-button (click)="openGameTypeStatistics()" [color]="'primary'">
+  <button (click)="openGameTypeStatistics()" class="button primary icon">
     <mat-icon>stars</mat-icon>
   </button>
-  <button mat-icon-button (click)="openGameStatistics()" [color]="'primary'">
+  <button (click)="openGameStatistics()" class="button primary icon">
     <mat-icon>history</mat-icon>
   </button>
 </div>

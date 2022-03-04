@@ -7,7 +7,7 @@
                    'players. The hound wins by overtaking the hare.'">
 
     <h2>Hound start position</h2>
-    <button mat-raised-button class="button" [color]="(settings.houndStartIndex+1) === start?'primary':''"
+    <button class="button" [class.primary]="(settings.houndStartIndex+1) === start"
             *ngFor="let start of settings.getSelectableHoundStart()"
             (click)="settings.setHoundStart(start - 1)">{{start}}</button>
 

@@ -6,72 +6,72 @@
                   'must hit each number in turn and cannot proceed until to the next number until the number is hit. ' +
                    'The winner is the player who hist all the numbers in order first.'">
     <h2>Games</h2>
-    <button mat-raised-button class="button shortmedium" [color]="settings.jump?'primary':''" (click)="settings.toggleJump()">
+    <button class="button shortmedium" [class.primary]="settings.jump" (click)="settings.toggleJump()">
       Enable Jump
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.punishment?'primary':''" (click)="settings.togglePunishment()">
+    <button class="button shortmedium" [class.primary]="settings.punishment" (click)="settings.togglePunishment()">
       Punishment
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.saboteur?'primary':''" (click)="settings.toggleSaboteur()">
+    <button class="button shortmedium" [class.primary]="settings.saboteur" (click)="settings.toggleSaboteur()">
       Saboteur
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.promoter?'primary':''" (click)="settings.togglePromoter()">
+    <button class="button shortmedium" [class.primary]="settings.promoter" (click)="settings.togglePromoter()">
       Promoter
     </button>
     <mat-divider></mat-divider>
-    <button mat-raised-button class="button shortmedium" [color]="settings.life === 3?'primary':''" (click)="settings.toggleTreeLives()">
+    <button class="button shortmedium" [class.primary]="settings.life === 3" (click)="settings.toggleTreeLives()">
       Tree Lives
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.life === 5?'primary':''" (click)="settings.toggleFiveLives()">
+    <button class="button shortmedium" [class.primary]="settings.life === 5" (click)="settings.toggleFiveLives()">
       Five Lives
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.life === 7?'primary':''" (click)="settings.toggleSevenLives()">
+    <button class="button shortmedium" [class.primary]="settings.life === 7" (click)="settings.toggleSevenLives()">
       Seven Lives
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.life === 10?'primary':''" (click)="settings.toggleTenLives()">
+    <button class="button shortmedium" [class.primary]="settings.life === 10" (click)="settings.toggleTenLives()">
       Ten Lives
     </button>
     <mat-divider></mat-divider>
-    <button mat-raised-button class="button shortmedium" [color]="settings.firstDeath?'primary':''" (click)="settings.toggleFirstDeath()">
+    <button class="button shortmedium" [class.primary]="settings.firstDeath" (click)="settings.toggleFirstDeath()">
       First Death
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.palFirst?'primary':''" (click)="settings.togglePalFirst()">
+    <button class="button shortmedium" [class.primary]="settings.palFirst" (click)="settings.togglePalFirst()">
       Pal First
     </button>
-    <button mat-raised-button class="button shortmedium" (click)="settings.setFavorite()">
-      <mat-icon>favorite</mat-icon>
+    <button class="button shortmedium" (click)="settings.setFavorite()">
+      FAV
     </button>
     <mat-divider></mat-divider>
 
     <h2>Field's order</h2>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==0?'primary':''" (click)="settings.setStyle(0)">
+    <button class="button shortmedium" [class.primary]="settings.style==0" (click)="settings.setStyle(0)">
       Ascending
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==4?'primary':''" (click)="settings.setStyle(4)">
+    <button class="button shortmedium" [class.primary]="settings.style==4" (click)="settings.setStyle(4)">
       Descending
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==1?'primary':''" (click)="settings.setStyle(1)">
+    <button class="button shortmedium" [class.primary]="settings.style==1" (click)="settings.setStyle(1)">
       Clockwise
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==2?'primary':''" (click)="settings.setStyle(2)">
+    <button class="button shortmedium" [class.primary]="settings.style==2" (click)="settings.setStyle(2)">
       Anticlockwise
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==8?'primary':''" (click)="settings.setStyle(8)">
+    <button class="button shortmedium" [class.primary]="settings.style==8" (click)="settings.setStyle(8)">
       TripleClock
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==9?'primary':''" (click)="settings.setStyle(9)">
+    <button class="button shortmedium" [class.primary]="settings.style==9" (click)="settings.setStyle(9)">
       ZoneClock
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==3?'primary':''" (click)="settings.setStyle(3)">
+    <button class="button shortmedium" [class.primary]="settings.style==3" (click)="settings.setStyle(3)">
       Random
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==6?'primary':''" (click)="settings.setStyle(6)">
+    <button class="button shortmedium" [class.primary]="settings.style==6" (click)="settings.setStyle(6)">
       Random11
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==5?'primary':''" (click)="settings.setStyle(5)">
+    <button class="button shortmedium" [class.primary]="settings.style==5" (click)="settings.setStyle(5)">
       Recurrence
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.style==7?'primary':''" (click)="settings.setStyle(7)">
+    <button class="button shortmedium" [class.primary]="settings.style==7" (click)="settings.setStyle(7)">
       Pirate
     </button>
   </app-settings>

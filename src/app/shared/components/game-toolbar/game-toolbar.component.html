@@ -1,8 +1,8 @@
 <div class="toolbar">
-  <button mat-raised-button (click)="newGame()">
+  <button class="button icon-button" (click)="newGame()">
     <mat-icon>refresh</mat-icon>
   </button>
-  <button mat-raised-button (click)="undo()">
+  <button class="button icon-button" (click)="undo()">
     <mat-icon>undo</mat-icon>
   </button>
 </div>
@@ -12,6 +12,6 @@
 </div>
 
 <div class="theme-chooser">
-  <button mat-icon-button (click)="quit()" color="primary"><mat-icon>menu</mat-icon></button>
-  <button mat-icon-button (click)="showSettings()" color="primary"><mat-icon>build</mat-icon></button>
+  <button (click)="quit()" class="button primary icon"><mat-icon>menu</mat-icon></button>
+  <button (click)="showSettings()" class="button primary icon"><mat-icon>build</mat-icon></button>
 </div>

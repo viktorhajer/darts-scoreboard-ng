@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {GameService} from '~services/game.service';
-import {Playground} from '~models/playground.model';
 import {ApplicationStateService} from '~services/application-state.service';
+import {DialogService} from '~services/dialog.service';
 
 @Component({
   selector: 'app-number-plate-shanghai',
@@ -14,6 +14,7 @@ export class NumberPlateShanghaiComponent {
   @Input() playground: any;
 
   constructor(public game: GameService,
+              private dialogService: DialogService,
               public application: ApplicationStateService) {
   }
 
@@ -22,12 +23,17 @@ export class NumberPlateShanghaiComponent {
   }
 
   win() {
-    const score = this.actualIndex + 1;
-    this.playground.throwNumber([score, score]);
-    this.playground.doublePoint();
-    this.playground.throwNumber([score, score]);
-    this.playground.triplePoint();
-    this.playground.throwNumber([score, score]);
+    this.dialogService.openConfirmDialog('Confirmation', 'Are you sure?').afterClosed()
+      .subscribe(data => {
+        if (data) {
+          const score = this.actualIndex + 1;
+          this.playground.throwNumber([score, score]);
+          this.playground.doublePoint();
+          this.playground.throwNumber([score, score]);
+          this.playground.triplePoint();
+          this.playground.throwNumber([score, score]);
+        }
+      });
   }
 
   throwNumber(count: number) {

@@ -6,7 +6,7 @@ export class SoundService {
   audioElement: HTMLAudioElement;
 
   no() {
-    this.play('oh_no.mp3');
+    // this.play('oh_no.mp3');
   }
 
   private play(soundFileName: string) {

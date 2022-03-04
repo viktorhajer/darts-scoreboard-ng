@@ -6,17 +6,17 @@
                   'player achieves this on number 1, the play moves to number 2 and so on until someone wins.'">
 
     <h2>Fields</h2>
-    <button mat-raised-button class="button" [color]="settings.numbs[i]?'primary':''"
+    <button class="button" [class.primary]="settings.numbs[i]"
             *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
       {{numb === 21 ? 'B' : numb}}
     </button>
     <mat-divider></mat-divider>
 
-    <button mat-raised-button class="button shortmedium" (click)="settings.randomize()">Randomize</button>
-    <button mat-raised-button class="button shortmedium"  [color]="settings.noScore?'primary':''"
+    <button class="button shortmedium" (click)="settings.randomize()">Randomize</button>
+    <button class="button shortmedium"  [class.primary]="settings.noScore"
             (click)="settings.toggleNoScore()">No score
     </button>
-    <button mat-raised-button class="button shortmedium"  [color]="settings.halveIt?'primary':''"
+    <button class="button shortmedium"  [class.primary]="settings.halveIt"
             (click)="settings.toggleHalveIt()">Halve It
     </button>
   </app-settings>

@@ -3,6 +3,7 @@
   text-align: center;
   cursor: pointer;
 }
+
 #menu {
   width: 100vw;
 
@@ -13,14 +14,23 @@
     justify-content: center;
   }
 
+  .menu-item-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+  }
+
   .gameSelectBox {
-    height: 180px;
-    width: 180px;
+    height: 190px;
+    width: 190px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0;
-    padding-top: 15px;
+    margin: 0;
+    color: var(--text_color);
 
     mat-icon {
       font-size: 60px;
@@ -31,28 +41,77 @@
     .title {
       font-size: 16px;
       white-space: pre;
-      text-align: left;
+      text-align: center;
       padding: 10px;
-      position: absolute;
-      top: 0;
-      left: 0;
       line-height: 25px;
       letter-spacing: 1px;
       font-weight: normal;
-      width: calc(100% - 20px);
+      width: 160px;
+      margin: 0 0 25px 0;
+      background: rgba(0, 0, 0, 0.1);
     }
   }
 
   .hasBot:after {
     content: 'B';
     position: relative;
-    top: 66px;
-    right: -44px;
+    top: 72px;
+    right: 12px;
     margin: -4px;
   }
+
+  .menu-button-00 {
+    background: var(--menu_1);
+  }
+
+  .menu-button-01 {
+    background: var(--menu_3);
+  }
+
+  .menu-button-02 {
+    background: var(--menu_2);
+  }
+
+  .menu-button-10 {
+    background: var(--menu_2);
+  }
+
+  .menu-button-11 {
+    background: var(--menu_1);
+  }
+
+  .menu-button-12 {
+    background: var(--menu_3);
+  }
+
+  .menu-button-20 {
+    background: var(--menu_1);
+  }
+
+  .menu-button-21 {
+    background: var(--menu_3);
+  }
+
+  .menu-button-22 {
+    background: var(--menu_2);
+  }
+
+  .menu-button-30 {
+    background: var(--menu_2);
+  }
+
+  .menu-button-31 {
+    background: var(--menu_1);
+  }
+
+  .menu-button-32 {
+    background: var(--menu_3);
+  }
 }
+
 .version {
   position: fixed;
   bottom: 0;
   right: 5px;
+  //color: mat-color($accent, 400);
 }

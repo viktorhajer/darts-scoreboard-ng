@@ -49,9 +49,9 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     const bullIndex = this.getFieldIndex(25);
 
     if (this.playground.zeroEnabled) {
-      this.drawArcPosition(svg, 20, 25, 30, 'field-color', -1);
+      this.drawArcPosition(svg, 20, 25, 30, 'field-color primary', -1);
       this.drawText(svg, '0', 0, 25, 23, -1, 1,
-        'number-text' + ' ' + this.getNumberColor(0), () => this.throwZero());
+        'number-text', () => this.throwZero());
     }
 
     this.drawArc(svg, 0, 165, 0, Math.PI * 4, 'field-inactive', -1, 1);
@@ -87,6 +87,8 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
       return 'primary';
     } else if (this.playground.isSecondaryField(fieldIndex)) {
       return 'accent';
+    } else if (this.playground.isAlertField(fieldIndex)) {
+      return 'alert';
     } else if (!this.playground.isFieldEnabled(fieldIndex)) {
       return 'disabled';
     }
@@ -156,7 +158,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
         .startAngle(0)
         .endAngle(Math.PI * 4)
       )
-      .attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex))
+      .attr('class', styleClass)
       .on('click', () => this.throwZero());
   }
 

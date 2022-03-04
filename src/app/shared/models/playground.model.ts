@@ -206,15 +206,15 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
     return false;
   }
 
+  isAlertField(fieldIndex: number): boolean {
+    return false;
+  }
+
   getFieldIcon(fieldIndex: number): string {
     return '';
   }
 
   getFieldNote(fieldIndex: number): string {
-    return '';
-  }
-
-  getFieldNoteBottom(fieldIndex: number): string {
     return '';
   }
 

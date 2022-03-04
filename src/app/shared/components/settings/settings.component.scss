@@ -18,21 +18,4 @@
     display: flex;
     justify-content: space-between;
   }
-
-  .button, mat-form-field {
-    margin: 3px;
-    height: 45px;
-
-    &.big {
-      width: 30.4vw;
-    }
-
-    &.medium {
-      width: 20.2vw;
-    }
-
-    &.shortmedium {
-      width: 15vw;
-    }
-  }
 }

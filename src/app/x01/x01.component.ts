@@ -105,4 +105,8 @@ export class X01Component extends Playground<PlaygroundState> {
   getInfo(): number {
     return  this.game.getActualPlayer().score;
   }
+
+  isPrimaryField(fieldIndex: number): boolean {
+    return true;
+  }
 }

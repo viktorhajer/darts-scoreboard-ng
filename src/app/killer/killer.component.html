@@ -20,7 +20,7 @@
       </mat-form-field>
     </div>
     <mat-divider></mat-divider>
-    <button mat-raised-button class="button shortmedium" [color]="settings.suicide?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.suicide"
             (click)="settings.toggleSuicide()">Suicide</button>
   </app-settings>
 

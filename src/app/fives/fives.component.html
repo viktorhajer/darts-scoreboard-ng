@@ -6,19 +6,19 @@
                   'scored, one point is awarded. E.g. if a player scores fifteen then he or she gains three points.'">
 
     <h2>Games</h2>
-    <button mat-raised-button class="button" [color]="settings.noCheat?'primary':''" (click)="settings.toggleNoCheat()">
+    <button class="button" [class.primary]="settings.noCheat" (click)="settings.toggleNoCheat()">
       No Cheat
     </button>
     <mat-divider></mat-divider>
 
     <h2>Divider</h2>
-    <button mat-raised-button class="button" [color]="settings.divider === divider?'primary':''"
+    <button class="button" [class.primary]="settings.divider === divider"
             *ngFor="let divider of settings.getSelectableDividers()"
             (click)="settings.setDivider(divider)">{{divider}}</button>
     <mat-divider></mat-divider>
 
     <h2>Limit</h2>
-    <button mat-raised-button class="button" [color]="settings.limit === limit?'primary':''"
+    <button class="button" [class.primary]="settings.limit === limit"
             *ngFor="let limit of settings.getSelectableLimits()"
             (click)="settings.setLimit(limit)">{{limit}}</button>
   </app-settings>

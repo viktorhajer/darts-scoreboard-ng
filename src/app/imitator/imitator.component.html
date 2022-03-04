@@ -4,19 +4,19 @@
                 [rules]="'...'">
 
     <h2>Number of Round</h2>
-    <button mat-raised-button class="button" [color]="settings.round===3?'primary':''" (click)="settings.setRound(3)">
+    <button class="button" [class.primary]="settings.round===3" (click)="settings.setRound(3)">
       3
     </button>
-    <button mat-raised-button class="button" [color]="settings.round===5?'primary':''" (click)="settings.setRound(5)">
+    <button class="button" [class.primary]="settings.round===5" (click)="settings.setRound(5)">
       5
     </button>
-    <button mat-raised-button class="button" [color]="settings.round===10?'primary':''" (click)="settings.setRound(10)">
+    <button class="button" [class.primary]="settings.round===10" (click)="settings.setRound(10)">
       10
     </button>
-    <button mat-raised-button class="button" [color]="settings.round===15?'primary':''" (click)="settings.setRound(15)">
+    <button class="button" [class.primary]="settings.round===15" (click)="settings.setRound(15)">
       15
     </button>
-    <button mat-raised-button class="button" [color]="settings.round===20?'primary':''" (click)="settings.setRound(20)">
+    <button class="button" [class.primary]="settings.round===20" (click)="settings.setRound(20)">
       20
     </button>
   </app-settings>

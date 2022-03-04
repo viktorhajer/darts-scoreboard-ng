@@ -6,49 +6,49 @@
                   'was existing at the start of the turn.'">
 
     <h2>Games</h2>
-    <button mat-raised-button class="button" [color]="settings.startValue===101?'primary':''"
+    <button class="button" [class.primary]="settings.startValue===101"
             (click)="settings.setStartValue(101)">101
     </button>
-    <button mat-raised-button class="button" [color]="settings.startValue===201?'primary':''"
+    <button class="button" [class.primary]="settings.startValue===201"
             (click)="settings.setStartValue(201)">201
     </button>
-    <button mat-raised-button class="button" [color]="settings.startValue===301?'primary':''"
+    <button class="button" [class.primary]="settings.startValue===301"
             (click)="settings.setStartValue(301)">301
     </button>
-    <button mat-raised-button class="button" [color]="settings.startValue===501?'primary':''"
+    <button class="button" [class.primary]="settings.startValue===501"
             (click)="settings.setStartValue(501)">501
     </button>
-    <button mat-raised-button class="button" [color]="settings.startValue===701?'primary':''"
+    <button class="button" [class.primary]="settings.startValue===701"
             (click)="settings.setStartValue(701)">701
     </button>
-    <button mat-raised-button class="button" [color]="settings.startValue===901?'primary':''"
+    <button class="button" [class.primary]="settings.startValue===901"
             (click)="settings.setStartValue(901)">901
     </button>
     <mat-divider></mat-divider>
 
     <h2>Check In</h2>
-    <button mat-raised-button class="button shortmedium" [color]="settings.start===1?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.start===1"
             (click)="settings.setStart(1)">Normal
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.start===2?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.start===2"
             (click)="settings.setStart(2)">Double
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.start===3?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.start===3"
             (click)="settings.setStart(3)">Triple
     </button>
     <mat-divider></mat-divider>
 
     <h2>Check Out</h2>
-    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===1?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.checkout===1"
             (click)="settings.setCheckout(1)">Single
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===2?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.checkout===2"
             (click)="settings.setCheckout(2)">Double
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===3?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.checkout===3"
             (click)="settings.setCheckout(3)">Triple
     </button>
-    <button mat-raised-button class="button shortmedium" [color]="settings.checkout===4?'primary':''"
+    <button class="button shortmedium" [class.primary]="settings.checkout===4"
             (click)="settings.setCheckout(4)">High Score
     </button>
   </app-settings>
