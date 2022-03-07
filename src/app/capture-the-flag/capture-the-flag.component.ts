@@ -22,7 +22,7 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'ctf');
+    super('Capture the Flag', application, game, route, dialogService, soundService, botService, statisticsService, 'ctf');
     this.settings = new CaptureTheFlagSettings();
   }
 

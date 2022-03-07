@@ -22,7 +22,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'shanghai');
+    super('Shanghai / Halve It', application, game, route, dialogService, soundService, botService, statisticsService, 'shanghai');
     this.settings = new ShanghaiSettings();
   }
 

@@ -22,7 +22,7 @@ export class X01Component extends Playground<PlaygroundState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
+    super('X01', application, game, route, dialogService, soundService, botService, statisticsService, 'x01');
     this.settings = new X01Settings();
   }
 

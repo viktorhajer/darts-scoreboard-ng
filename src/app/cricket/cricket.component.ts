@@ -23,7 +23,7 @@ export class CricketComponent extends Playground<CricketState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'cricket');
+    super('Ultimate Cricket', application, game, route, dialogService, soundService, botService, statisticsService, 'cricket');
     this.settings = new CricketSettings();
   }
 

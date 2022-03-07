@@ -31,7 +31,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   gameStatistics: GameStatistics;
   hasChanges = new BehaviorSubject<number>(Date.now());
 
-  protected constructor(public application: ApplicationStateService,
+  protected constructor(public gameTitle: string,
+                        public application: ApplicationStateService,
                         public game: GameService,
                         public route: Router,
                         public dialogService: DialogService,

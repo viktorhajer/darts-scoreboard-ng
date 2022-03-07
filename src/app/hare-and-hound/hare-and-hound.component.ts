@@ -22,7 +22,7 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'hare-hound', 2, 2);
+    super('Hare and Hound', application, game, route, dialogService, soundService, botService, statisticsService, 'hare-hound', 2, 2);
     this.settings = new HareAndHoundSettings();
   }
 

@@ -22,7 +22,7 @@ export class KnockoutComponent extends Playground<KnockoutState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'knockout', 2);
+    super('Knockout', application, game, route, dialogService, soundService, botService, statisticsService, 'knockout', 2);
     this.settings = new KnockoutSettings();
   }
 

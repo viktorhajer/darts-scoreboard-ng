@@ -22,7 +22,7 @@ export class ScamComponent extends Playground<PlaygroundState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'scam', 2);
+    super('Scam', application, game, route, dialogService, soundService, botService, statisticsService, 'scam', 2);
     this.settings = new ScamSettings();
   }
 

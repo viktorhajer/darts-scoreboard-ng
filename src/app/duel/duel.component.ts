@@ -22,7 +22,7 @@ export class DuelComponent extends Playground<DuelState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'duel', 2);
+    super('Duel', application, game, route, dialogService, soundService, botService, statisticsService, 'duel', 2);
     this.settings = new DuelSettings();
   }
 

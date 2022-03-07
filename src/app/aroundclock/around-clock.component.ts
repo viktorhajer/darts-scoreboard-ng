@@ -23,7 +23,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'around-clock', 2);
+    super('Around The Clock', application, game, route, dialogService, soundService, botService, statisticsService, 'around-clock', 2);
     this.settings = new AroundClockSettings();
   }
 

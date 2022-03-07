@@ -24,7 +24,7 @@ export class KillerComponent extends Playground<KillerState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super(application, game, route, dialogService, soundService, botService, statisticsService, 'killer', 2);
+    super('Killer', application, game, route, dialogService, soundService, botService, statisticsService, 'killer', 2);
     this.settings = new KillerSettings();
     this.nextEnabled = false;
     this.zeroEnabled = false;
