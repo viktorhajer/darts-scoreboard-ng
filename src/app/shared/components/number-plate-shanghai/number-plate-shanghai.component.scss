@@ -1,10 +1,9 @@
 .side-right {
-
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-flow: row wrap;
   height: 90vh;
+  margin-top: 20px;
 
   .number {
     margin: 0.1vw;

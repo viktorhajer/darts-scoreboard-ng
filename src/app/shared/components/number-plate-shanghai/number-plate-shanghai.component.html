@@ -1,6 +1,6 @@
 <div class="side-right">
-
   <div class="numbers">
+    <h1>Field: {{ actualIndex + 1 }}</h1>
     <div class="button-line" *ngFor="let k of [0,1,2]">
       <button *ngFor="let j of [1,2,3]" class="button number primary" (click)="throwNumber(j + (k*3))">
         {{ j + (k*3) }}
