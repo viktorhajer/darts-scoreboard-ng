@@ -55,10 +55,7 @@
   0% {
     fill: var(--text_color);
   }
-  50% {
-    fill: var(--table_normal_primary);
-  }
   100% {
-    fill: var(--text_color);
+    fill: var(--table_normal_primary);
   }
 }

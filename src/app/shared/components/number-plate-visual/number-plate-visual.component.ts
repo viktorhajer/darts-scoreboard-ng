@@ -111,11 +111,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
         Playground.getFieldValueFromIndex(fieldIndex)]);
     }
     this.drawTable();
-
-    const fieldElement = document.querySelector(`path.field_${fieldIndex}_${multi}`);
-    fieldElement.classList.value;
-    fieldElement.classList.add('clicked');
-    //setTimeout(() => fieldElement.classList.remove('clicked'), 1000);
+    document.querySelector(`path.field_${fieldIndex}_${multi}`).classList.add('clicked');
   }
 
   private throwZero() {

@@ -10,9 +10,18 @@ body {
   }
 
   .player-row {
-    background: var(--primary_1);
+    background: var(--menu_1a);
     color: var(--text_color);
   }
+
+  .player-row:nth-of-type(3n+1) {
+    background: var(--menu_2a);
+  }
+
+  .player-row:nth-of-type(3n+2) {
+    background: var(--menu_3a);
+  }
+
 }
 
 .player {
