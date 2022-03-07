@@ -49,7 +49,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     const bullIndex = this.getFieldIndex(25);
 
     if (this.playground.zeroEnabled) {
-      this.drawArcPosition(svg, 20, 25, 30, 'field-color primary', -1);
+      this.drawArcPosition(svg, 20, 25, 30, 'field-color primary');
       this.drawText(svg, '0', 0, 25, 23, -1, 1,
         'number-text', () => this.throwZero());
     }
@@ -111,6 +111,11 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
         Playground.getFieldValueFromIndex(fieldIndex)]);
     }
     this.drawTable();
+
+    const fieldElement = document.querySelector(`path.field_${fieldIndex}_${multi}`);
+    fieldElement.classList.value;
+    fieldElement.classList.add('clicked');
+    //setTimeout(() => fieldElement.classList.remove('clicked'), 1000);
   }
 
   private throwZero() {
@@ -128,7 +133,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
       .attr('dy', '1em')
       .attr('text-anchor', 'middle')
       .attr('transform', 'rotate(' + rotate + ', 165, 165)')
-      .attr('class', className)
+      .attr('class', `field_${fieldIndex}_${multi} ${className}`)
       .text(text)
       .on('click', () => onclick ? onclick() : this.throwNumber(fieldIndex, multi));
   }
@@ -144,11 +149,11 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
         .startAngle(startAngle)
         .endAngle(endAngle)
       )
-      .attr('class', styleClass + ' ' + this.getNumberColor(fieldIndex))
+      .attr('class', `field_${fieldIndex}_${multi} ${styleClass} ${this.getNumberColor(fieldIndex)}`)
       .on('click', () => this.throwNumber(fieldIndex, multi));
   }
 
-  private drawArcPosition(svg: any, radius: number, x: number, y: number, styleClass: string, fieldIndex: number) {
+  private drawArcPosition(svg: any, radius: number, x: number, y: number, styleClass: string) {
     svg
       .append('path')
       .attr('transform', 'translate(' + x + ', ' + y + ')')

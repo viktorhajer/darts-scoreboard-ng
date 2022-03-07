@@ -6,6 +6,39 @@
 
   #darts-table-plate {
     width: 100%;
+
+    .number-text, .field-note {
+      font-family: sans-serif;
+      font-weight: bold;
+      font-size: 11px;
+
+      &.disabled {
+        opacity: 0.3;
+      }
+
+      &.smaller {
+        font-size: 8px;
+      }
+    }
+
+    .field-note {
+      font-size: 6px;
+    }
+
+    path, text {
+      cursor: pointer;
+    }
+
+    .field-color, .field-color-m {
+      &.disabled {
+        opacity: 0.4;
+      }
+
+      &.clicked {
+        animation-name: field-clicked;
+        animation-duration: 200ms;
+      }
+    }
   }
 
   button {
@@ -16,32 +49,16 @@
     right: 0px;
     top: -70px;
   }
+}
 
-  .number-text, .field-note {
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 11px;
-
-    &.disabled {
-      opacity: 0.3;
-    }
-
-    &.smaller {
-      font-size: 8px;
-    }
+@keyframes field-clicked {
+  0% {
+    fill: var(--text_color);
   }
-
-  .field-note {
-    font-size: 6px;
+  50% {
+    fill: var(--table_normal_primary);
   }
-
-  path, text {
-    cursor: pointer;
-  }
-
-  .field-color, .field-color-m {
-    &.disabled {
-      opacity: 0.4;
-    }
+  100% {
+    fill: var(--text_color);
   }
 }
