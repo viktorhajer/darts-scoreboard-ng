@@ -1,11 +1,8 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [playground]="playground"
-                [rules]="'....'">
-
+  <app-settings *ngIf="settingsOpen" [playground]="playground">
     <h2>Games</h2>
     <div class="field-set">
-
       <mat-form-field appearance="outline" class="big">
         <mat-label>Life limit</mat-label>
         <input [(ngModel)]="settings.startPoint" type="number" matInput>

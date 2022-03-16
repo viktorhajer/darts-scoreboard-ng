@@ -1,7 +1,6 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [playground]="playground"
-                [rules]="'...'">
+  <app-settings *ngIf="settingsOpen" [playground]="playground">
     <h2>Fields</h2>
     <button class="button" [class.primary]="settings.isFieldAllowed(i)"
             *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">

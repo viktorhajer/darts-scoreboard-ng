@@ -1,11 +1,6 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [playground]="playground"
-                [rules]="'The frist player is the hare, and his opponent is the hound in pursuit. The hare must travel ' +
-                 'clockwise around the board starting at 20. The hare wins by returning to 20 before the hound catches ' +
-                  'up with him. The hound usually starts from either 12 or 5, depending on the preference of the ' +
-                   'players. The hound wins by overtaking the hare.'">
-
+  <app-settings *ngIf="settingsOpen" [playground]="playground">
     <h2>Hound start position</h2>
     <button class="button" [class.primary]="(settings.houndStartIndex+1) === start"
             *ngFor="let start of settings.getSelectableHoundStart()"

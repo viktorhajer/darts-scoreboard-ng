@@ -11,13 +11,8 @@ import {DialogService} from '~services/dialog.service';
 })
 export class SettingsComponent {
   @Input() playground: Playground<PlaygroundState>;
-  @Input() rules: string;
 
   constructor(private readonly dialogService: DialogService) {
-  }
-
-  openRules() {
-    this.dialogService.openDialog(this.playground.gameTitle, this.rules);
   }
 
   openStatistics() {

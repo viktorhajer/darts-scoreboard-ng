@@ -3,6 +3,7 @@ export class X01Settings {
   startValue = 201;
   start = 1;
   checkout = 2;
+  punishment = true;
 
   isNormalStart(): boolean {
     return this.start === 1;
@@ -42,5 +43,9 @@ export class X01Settings {
 
   setStartValue(startValue: number) {
     this.startValue = startValue;
+  }
+
+  togglePunishment() {
+    this.punishment = !this.punishment;
   }
 }

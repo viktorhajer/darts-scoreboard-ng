@@ -1,8 +1,6 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [playground]="playground"
-                [rules]="'...'">
-
+  <app-settings *ngIf="settingsOpen" [playground]="playground">
     <h2>Number of Round</h2>
     <button class="button" [class.primary]="settings.round===3" (click)="settings.setRound(3)">
       3

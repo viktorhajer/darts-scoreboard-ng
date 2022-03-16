@@ -1,9 +1,6 @@
 <div id="playgroundContent">
 
-  <app-settings *ngIf="settingsOpen" [playground]="playground"
-                [rules]="'The objective shall be to \'own\' or \'close\' certain numbers on the board, and to achieve ' +
-                'the highest point score. The player or team to do so first, shall be the winner.'">
-
+  <app-settings *ngIf="settingsOpen" [playground]="playground">
     <h2>Fields</h2>
     <button class="button" [class.primary]="settings.isFieldAllowed(i)"
             *ngFor="let numb of settings.getNumbers(); let i = index" (click)="settings.setNumber(i)">
