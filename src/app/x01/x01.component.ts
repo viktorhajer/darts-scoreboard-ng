@@ -40,8 +40,14 @@ export class X01Component extends Playground<PlaygroundState> {
 
   checkPlayerState(player: Player) {
     let next = false;
-    if (this.settings.punishment) {
-      this.game.players.filter(p => p.id !== player.id && p.score === player.score).forEach(p => p.score = this.settings.startValue);
+    if (this.settings.saboteur || this.settings.punishment) {
+      this.game.players.filter(p => p.id !== player.id && p.score === player.score).forEach(p => {
+        if (this.settings.saboteur) {
+          p.score = this.settings.startValue;
+        } else {
+          player.score = this.settings.startValue;
+        }
+      });
     }
     if ((this.settings.isHighScoreGame() && player.score <= 0) ||
       ((player.score === 0 && (this.settings.isNormalCheckout()

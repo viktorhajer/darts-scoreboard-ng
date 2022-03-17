@@ -3,7 +3,8 @@ export class X01Settings {
   startValue = 201;
   start = 1;
   checkout = 2;
-  punishment = true;
+  punishment = false;
+  saboteur = true;
 
   isNormalStart(): boolean {
     return this.start === 1;
@@ -47,5 +48,15 @@ export class X01Settings {
 
   togglePunishment() {
     this.punishment = !this.punishment;
+    if (this.punishment) {
+      this.saboteur = false;
+    }
+  }
+
+  toggleSaboteur() {
+    this.saboteur = !this.saboteur;
+    if (this.saboteur) {
+      this.punishment = false;
+    }
   }
 }

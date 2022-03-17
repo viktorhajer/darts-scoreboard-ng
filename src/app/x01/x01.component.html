@@ -20,6 +20,11 @@
     <button class="button" [class.primary]="settings.startValue===901"
             (click)="settings.setStartValue(901)">901
     </button>
+
+    <mat-divider></mat-divider>
+    <button class="button" [class.primary]="settings.saboteur" (click)="settings.toggleSaboteur()">
+      Saboteur
+    </button>
     <button class="button" [class.primary]="settings.punishment" (click)="settings.togglePunishment()">
       Punishment
     </button>

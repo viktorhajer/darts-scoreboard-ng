@@ -8,15 +8,16 @@
 
     .name {
       margin-right: 10px;
-      width: 110px;
+      width: 80px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .score {
       margin-left: 20px;
       width: 150px;
-      text-align: right;
+      white-space: nowrap;
     }
   }
 
