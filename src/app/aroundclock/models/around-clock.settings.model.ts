@@ -55,6 +55,9 @@ export class AroundClockSettings {
       case 9:
         this.fields = AroundClockSettings.getZoneClockFields();
         break;
+      case 10:
+        this.fields = AroundClockSettings.getZoneClockFields().reverse();
+        break;
       default:
         this.fields = AroundClockSettings.getBaseFields();
     }
@@ -116,6 +119,18 @@ export class AroundClockSettings {
     this.saboteur = true;
     this.palFirst = true;
     this.fields = AroundClockSettings.getZoneClockFields();
+  }
+
+  setInverseFavorite() {
+    this.jump = true;
+    this.style = 10;
+    this.firstDeath = true;
+    this.punishment = true;
+    this.life = 10;
+    this.promoter = false;
+    this.saboteur = true;
+    this.palFirst = true;
+    this.fields = AroundClockSettings.getZoneClockFields().reverse();
   }
 
   private static getBaseFields(): number[] {

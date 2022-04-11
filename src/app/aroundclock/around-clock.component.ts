@@ -178,14 +178,15 @@ export class AroundClockComponent extends Playground<AroundClockState> {
         const otherPlayerState = this.getPlayerState(otherPlayer);
         if (this.getFieldIndex(otherPlayerState.actFieldIndex) === realFieldIndex && (!targetedField || (this.settings.palFirst && otherPlayerState.actFieldIndex != 0))) {
           if (this.settings.saboteur) {
+            hasChanges = true;
             otherPlayerState.decreaseActFieldIndex(this.settings.jump ? originalMulti : 1);
-          } else {
+          } else if (otherPlayerState.actFieldIndex !== this.settings.fields.length - 1) {
             otherPlayerState.increaseActFieldIndex(this.settings.jump ? originalMulti : 1);
             if (otherPlayerState.actFieldIndex >= this.settings.fields.length) {
               otherPlayerState.actFieldIndex = this.settings.fields.length - 1;
             }
+            hasChanges = true;
           }
-          hasChanges = true;
         }
       });
     }
