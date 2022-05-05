@@ -43,8 +43,8 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
 
   private drawTable() {
     d3.select('#darts-table-plate svg').remove();
-    const svg = d3.select('#darts-table-plate').append('svg').attr('width', '98%')
-      .attr('height', '98%').attr('viewBox', '0 0 330 330');
+    const svg = d3.select('#darts-table-plate').append('svg').attr('width', '94%')
+      .attr('height', '94%').attr('viewBox', '0 0 330 330');
     const numbers = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
     const bullIndex = this.getFieldIndex(25);
 

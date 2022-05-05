@@ -15,9 +15,9 @@ export class AppComponent implements AfterViewInit {
 
   constructor(public applicationStateService: ApplicationStateService,
               private soundService: SoundService) {
-    document.addEventListener('touchmove',  (event: any) => {
-      if (event.scale !== 1) { event.preventDefault(); }
-    }, { passive: false });
+    // document.addEventListener('touchmove',  (event: any) => {
+    //   if (event.scale !== 1) { event.preventDefault(); }
+    // }, { passive: false });
   }
 
   ngAfterViewInit() {

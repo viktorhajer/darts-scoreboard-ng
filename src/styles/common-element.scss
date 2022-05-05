@@ -16,15 +16,11 @@
 
 .button, mat-form-field {
   &.big {
-    width: 30.4vw;
-  }
-
-  &.medium {
-    width: 20.2vw;
+    width: 236px;
   }
 
   &.shortmedium {
-    width: 15vw;
+    width: 115px;
   }
 }
 
@@ -39,13 +35,13 @@
   vertical-align: baseline;
   text-align: center;
   margin: 3px;
-  min-width: 64px;
+  width: 54px;
   line-height: 36px;
   padding: 0 16px;
   border-radius: 4px;
   overflow: visible;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
 
   &.icon-button {

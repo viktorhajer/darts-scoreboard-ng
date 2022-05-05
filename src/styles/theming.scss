@@ -1,6 +1,7 @@
 body {
-  background: linear-gradient(to top, var(--background_1), var(--background_2));
+  background: var(--background_1) linear-gradient(to top, var(--background_1), var(--background_2)) no-repeat;
   color: var(--text_color_2);
+  overflow: auto;
 }
 
 .settings {

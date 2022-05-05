@@ -115,3 +115,40 @@
   right: 5px;
   //color: mat-color($accent, 400);
 }
+
+@media screen and (max-width: 570px) {
+  #menu_title {
+    display: none;
+  }
+
+  #menu {
+    padding-top: 45px;
+
+    .gameSelectBox {
+      width: calc(30vw - 20px);
+      height: calc(30vw - 20px);
+
+      mat-icon {
+        font-size: calc(15vw - 28px);
+        width: auto;
+        height: auto;
+      }
+
+      .title {
+        font-size: 10px;
+        text-align: center;
+        padding: 4px;
+        letter-spacing: 0px;
+        width: calc(30vw - 28px);
+        margin: 0 0 12px 0;
+        line-height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .hasBot:after {
+      display: none;
+    }
+  }
+}
