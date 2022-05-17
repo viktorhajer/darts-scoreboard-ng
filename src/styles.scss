@@ -94,6 +94,105 @@ button {
   }
 }
 
+.mobile {
+  .dialog-container {
+    width: 90vw;
+  }
+  .version {
+    display: none;
+  }
+  #playgroundContent {
+    flex-flow: column;
+
+    .theme-chooser, .round-info {
+      display: none;
+    }
+
+    .side-left, .side-right {
+      float: none;
+      width: 100vw;
+    }
+
+    .side-right {
+      position: absolute;
+      bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: wrap row;
+
+      .number {
+        margin: 2px;
+        font-size: 15px;
+        width: 18vw;
+        height: 18vw;
+        float: none;
+
+        .field-note {
+          font-size: 9px;
+        }
+        mat-icon {
+          display: none;
+        }
+      }
+    }
+
+    .player_container {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      align-items: center;
+
+      .player {
+        width: 99vw;
+
+        .player_info {
+          .name {
+            font-size: 14px;
+          }
+          .score {
+            font-weight: normal;
+            font-size: 18px;
+          }
+          .field-set, .line {
+            display: none;
+          }
+          .shoots {
+            .shoot {
+              width: 25px;
+              height: 20px;
+              margin: 0 2px;
+              font-size: 12px;
+            }
+          }
+        }
+
+      }
+    }
+
+    .settings {
+      h1 {
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      h2 {
+        display: none;
+      }
+
+      .add-player {
+        .mat-form-field-wrapper {
+          padding: 0;
+        }
+      }
+      .player-name {
+        font-weight: normal;
+      }
+    }
+  }
+
+}
+
 .hidden-info {
   opacity: 0.3;
   position: absolute;

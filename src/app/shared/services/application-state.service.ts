@@ -11,12 +11,15 @@ export class ApplicationStateService {
 
   private availableThemes: Theme[] = [theme];
   settings = new ApplicationSettings();
+  isMobile = false;
 
   constructor() {
+    this.isMobile = window.innerWidth < 450;
     const data = localStorage.getItem(APPLICATION_KEY);
     if (data) {
       this.settings = JSON.parse(data);
     }
+    this.settings.details = this.isMobile ? 1 : 0;
     // this.setTheme();
   }
 

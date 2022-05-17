@@ -1,10 +1,10 @@
 <audio #audioElement></audio>
-<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute">
+<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute" [class.mobile]="application.isMobile">
   <router-outlet #outlet="outlet"></router-outlet>
 </div>
-<div class="theme-chooser">
+<div class="theme-chooser" *ngIf="!application.isMobile">
 <!--  <button (click)="applicationStateService.toggleColorTheme()" class="button primary icon"><mat-icon>invert_colors</mat-icon></button>-->
-  <button (click)="applicationStateService.toggleDetails()" class="button icon" [class.primary]="applicationStateService.settings.details">
+  <button (click)="application.toggleDetails()" class="button icon" [class.primary]="application.settings.details">
     <mat-icon>track_changes</mat-icon>
   </button>
 </div>

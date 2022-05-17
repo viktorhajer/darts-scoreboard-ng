@@ -1,4 +1,10 @@
 <div class="toolbar">
+  <button class="button icon-button" (click)="quit()" *ngIf="application.isMobile">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button class="button icon-button" (click)="showSettings()" *ngIf="application.isMobile">
+    <mat-icon>build</mat-icon>
+  </button>
   <button class="button icon-button" (click)="newGame()">
     <mat-icon>refresh</mat-icon>
   </button>

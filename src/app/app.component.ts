@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
 
   @ViewChild('audioElement') audioElementRef: ElementRef;
 
-  constructor(public applicationStateService: ApplicationStateService,
+  constructor(public application: ApplicationStateService,
               private soundService: SoundService) {
     // document.addEventListener('touchmove',  (event: any) => {
     //   if (event.scale !== 1) { event.preventDefault(); }

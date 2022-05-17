@@ -1,4 +1,4 @@
-<div class="dialog-container">
+<div class="dialog-container" [class.mobile]="application.isMobile">
   <div mat-dialog-title class="subtitle-1"><p>{{ data.title }}</p></div>
   <mat-dialog-content class="body-2" *ngIf="!!data.content">
     <p>{{ data.content }}</p>
