@@ -1,4 +1,4 @@
-import {OnInit} from '@angular/core';
+import { OnInit, Directive } from '@angular/core';
 import {v4 as uuid} from 'uuid';
 import {Player} from './player.model';
 import {Throw} from './throw.model';
@@ -17,6 +17,7 @@ import {BehaviorSubject} from 'rxjs';
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
+@Directive()
 export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   throwEnabled = true;
