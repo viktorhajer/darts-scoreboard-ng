@@ -10,7 +10,7 @@
     "module": "es2020",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -19,10 +19,17 @@
       "dom"
     ],
     "paths": {
-      "~services/*": ["src/app/shared/services/*"],
-      "~components/*": ["src/app/shared/components/*"],
-      "~models/*": ["src/app/shared/models/*"]
-    }
+      "~services/*": [
+        "src/app/shared/services/*"
+      ],
+      "~components/*": [
+        "src/app/shared/components/*"
+      ],
+      "~models/*": [
+        "src/app/shared/models/*"
+      ]
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

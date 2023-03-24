@@ -36,7 +36,10 @@
             (click)="settings.setStyle(3)">No Score
     </button>
     <button class="button shortmedium" [class.primary]="settings.punishment"
-            (click)="settings.togglePunishment()">Punish(25)
+            (click)="settings.togglePunishment()">Punish({{getPunishValue()}})
+    </button>
+    <button class="button shortmedium" [class.primary]="settings.promoter" (click)="settings.togglePromoter()">
+      Promoter
     </button>
   </app-settings>
 

@@ -23,7 +23,10 @@ export class StatisticsService {
   }
 
   getGameStatistics(gameName?: string): GameStatistics[] {
-    const statistics = this.storageService.getObject(STATISTICS_STORAGE_KEY);
+    let statistics = this.storageService.getObject(STATISTICS_STORAGE_KEY);
+    if (statistics) {
+      statistics = [];
+    }
     return gameName ? statistics.filter(i => i.g === gameName) : statistics;
   }
 

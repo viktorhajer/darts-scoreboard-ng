@@ -3,7 +3,6 @@ import {FIELDS_COUNT, Playground} from '~models/playground.model';
 import {GameService} from '~services/game.service';
 import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
-import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
 import {ApplicationStateService} from '~services/application-state.service';
@@ -11,12 +10,13 @@ import {ScamSettings} from './models/scam.settings.model';
 import {SoundService} from '~services/sound.service';
 import {StatisticsService} from '~services/statistics.service';
 import {BotService, PLAYER_DELAY_FAST} from '~services/bot.service';
+import {ScamState} from './models/scam.state.model';
 
 @Component({
   templateUrl: './scam.component.html',
   animations: [slideInAnimation],
 })
-export class ScamComponent extends Playground<PlaygroundState> {
+export class ScamComponent extends Playground<ScamState> {
 
   settings: ScamSettings;
 
@@ -27,19 +27,29 @@ export class ScamComponent extends Playground<PlaygroundState> {
   }
 
   calculatePoints(player: Player, fieldIndex: number, score: number) {
+    const state = this.getPlayerState(player);
     if (!!this.game.numbs[fieldIndex]) {
       if (this.settings.stopper && this.game.isTheFirstPlayer(player)) {
         this.game.numbs[fieldIndex] = 0;
       } else if (this.settings.stopper) {
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier * (this.settings.reverse ? -1 : 1);
       } else {
+        state.ownFields.push(fieldIndex);
         player.score += (this.settings.isNoScoreGame() ? 1 : score) * this.multiplier * (this.settings.reverse ? -1 : 1);
         this.game.numbs[fieldIndex] = 0;
       }
-    } else if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
+    } else {
       const newScore = score === 0 ? this.settings.punishmentValue : score;
       const scr = (this.settings.isNoScoreGame() ? 1 : newScore) * this.multiplier;
-      player.score -= scr;
+      if (this.settings.punishment && ((this.settings.stopper && !this.game.isTheFirstPlayer(player)) || !this.settings.stopper)) {
+        player.score -= scr;
+      }
+      if (this.settings.promoter) {
+        const owner = this.game.players.find(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
+        if (owner && owner.name !== player.name) {
+          owner.score += scr;
+        }
+      }
     }
   }
 
@@ -66,12 +76,23 @@ export class ScamComponent extends Playground<PlaygroundState> {
   }
 
   customReset() {
+    this.game.players.forEach(player => {
+      player.state = new ScamState();
+    });
     this.game.numbs = this.settings.numbs.map(i => i ? 1 : 0);
     this.settings.fields.forEach(f => this.settings.numbs[f] = true);
   }
 
   getGameConfig(): string {
     return this.settings.fields.length + '';
+  }
+
+  getFieldNote(fieldIndex: number): string {
+    const player = this.game.players.find(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex))
+    if (player) {
+      return player.name.substr(0, 1).toUpperCase();
+    }
+    return '';
   }
 
   botThrow() {
@@ -90,5 +111,9 @@ export class ScamComponent extends Playground<PlaygroundState> {
       this.throwNumber([this.isFieldEnabled(index) ? Playground.getFieldValueFromIndex(index) : 0,
         Playground.getFieldValueFromIndex(index)]);
     }, PLAYER_DELAY_FAST);
+  }
+
+  getPunishValue(): number {
+    return this.settings.isNoScoreGame() ? 1 : 25;
   }
 }
