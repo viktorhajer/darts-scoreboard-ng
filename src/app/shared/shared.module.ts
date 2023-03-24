@@ -22,11 +22,9 @@ const components = [NumberPlateComponent, GameToolbarComponent, GameStatisticsDi
   GameHistoryDialogComponent, GameTypeStatisticsDialogComponent, MenuComponent];
 
 @NgModule({
-  imports: [CommonModule, MaterialModule, RouterModule],
-  declarations: components,
-  exports: [CommonModule, FormsModule, MaterialModule, ...components],
-  entryComponents: [DialogComponent, GameStatisticsDialogComponent,
-    GameHistoryDialogComponent, GameTypeStatisticsDialogComponent]
+    imports: [CommonModule, MaterialModule, RouterModule],
+    declarations: components,
+    exports: [CommonModule, FormsModule, MaterialModule, ...components]
 })
 export class SharedModule {
 }
