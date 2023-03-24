@@ -110,7 +110,6 @@
       }
     }
   },
-  "defaultProject": "darts-scoreboard-ng",
   "cli": {
     "analytics": false
   }
