@@ -1,10 +1,11 @@
 .dialog-container {
 
   .subtitle-1 {
-    line-height: 1em;
+    padding: 10px;
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   mat-dialog-actions {
@@ -18,7 +19,7 @@
   }
 
   mat-dialog-content {
-    overflow-y: scroll;
+    overflow-y: auto;
 
     table {
       width: 100%;

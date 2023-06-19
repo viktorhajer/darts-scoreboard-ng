@@ -226,6 +226,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   touch-action: manipulation;
   width: 100%;
+  overflow: hidden;
 }
 
 button {
@@ -239,28 +240,39 @@ button {
 #playgroundContent {
   width: 100vw;
   display: flex;
+  flex-flow: column;
 }
 #playgroundContent .side-left {
-  width: 22vw;
-  transition: all 100ms ease-in-out;
-}
-#playgroundContent .side-left.detailed {
-  width: 30vw;
+  width: 100vw;
   transition: all 100ms ease-in-out;
 }
 #playgroundContent .side-left .player_container.visual {
   position: absolute;
-  bottom: 10px;
-  right: 15px;
+  bottom: 50px;
+}
+#playgroundContent .side-left .player_container .player {
+  width: 99vw;
+}
+#playgroundContent .side-left .player_container .player .player_info .name {
+  font-size: 14px;
+}
+#playgroundContent .side-left .player_container .player .player_info .score {
+  font-weight: normal;
+  font-size: 18px;
+}
+#playgroundContent .side-left .player_container .player .player_info .field-set, #playgroundContent .side-left .player_container .player .player_info .line {
+  display: none;
+}
+#playgroundContent .side-left .player_container .player .player_info .shoots .shoot {
+  width: 25px;
+  height: 20px;
+  margin: 0 2px;
+  font-size: 12px;
 }
 #playgroundContent .side-right {
-  width: 78vw;
-  float: right;
+  width: 100vw;
   transition: all 100ms ease-in-out;
-}
-#playgroundContent .side-right.detailed {
-  width: 70vw;
-  transition: all 100ms ease-in-out;
+  margin-top: 15px;
 }
 
 .mobile .dialog-container {
@@ -269,61 +281,14 @@ button {
 .mobile .version {
   display: none;
 }
-.mobile #playgroundContent {
-  flex-flow: column;
-}
-.mobile #playgroundContent .theme-chooser, .mobile #playgroundContent .round-info {
-  display: none;
-}
-.mobile #playgroundContent .side-left, .mobile #playgroundContent .side-right {
-  float: none;
-  width: 100vw;
-}
-.mobile #playgroundContent .side-right {
-  position: absolute;
-  bottom: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-flow: wrap row;
-}
 .mobile #playgroundContent .side-right .number {
-  margin: 2px;
   font-size: 15px;
-  width: 18vw;
-  height: 18vw;
-  float: none;
 }
 .mobile #playgroundContent .side-right .number .field-note {
   font-size: 9px;
 }
 .mobile #playgroundContent .side-right .number mat-icon {
   display: none;
-}
-.mobile #playgroundContent .player_container {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-}
-.mobile #playgroundContent .player_container .player {
-  width: 99vw;
-}
-.mobile #playgroundContent .player_container .player .player_info .name {
-  font-size: 14px;
-}
-.mobile #playgroundContent .player_container .player .player_info .score {
-  font-weight: normal;
-  font-size: 18px;
-}
-.mobile #playgroundContent .player_container .player .player_info .field-set, .mobile #playgroundContent .player_container .player .player_info .line {
-  display: none;
-}
-.mobile #playgroundContent .player_container .player .player_info .shoots .shoot {
-  width: 25px;
-  height: 20px;
-  margin: 0 2px;
-  font-size: 12px;
 }
 .mobile #playgroundContent .settings h1 {
   font-weight: 500;

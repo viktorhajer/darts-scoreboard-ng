@@ -6,7 +6,7 @@
   margin-top: 20px;
 
   .number {
-    margin: 0.1vw;
+    margin: 2px;
     font-size: calc(11px + 0.8vw + 0.8vh);
     height: 20vw;
     width: 20vw;
@@ -19,7 +19,7 @@
     }
 
     &.next {
-      width: 40vw;
+      width: calc(40vw + 4px);
     }
   }
 }

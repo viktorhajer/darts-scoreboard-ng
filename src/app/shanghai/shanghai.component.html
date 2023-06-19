@@ -15,6 +15,9 @@
     <button class="button shortmedium"  [class.primary]="settings.halveIt"
             (click)="settings.toggleHalveIt()">Halve It
     </button>
+    <button class="button shortmedium"  [class.primary]="settings.resetIt"
+            (click)="settings.toggleResetIt()">Reset It
+    </button>
   </app-settings>
 
   <div class="side-left" [class.detailed]="application.settings.details">

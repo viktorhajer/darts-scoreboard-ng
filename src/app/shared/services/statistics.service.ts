@@ -24,9 +24,11 @@ export class StatisticsService {
 
   getGameStatistics(gameName?: string): GameStatistics[] {
     let statistics = this.storageService.getObject(STATISTICS_STORAGE_KEY);
-    if (statistics) {
+    console.log(statistics);
+    if (!statistics) {
       statistics = [];
     }
+    console.log(statistics);
     return gameName ? statistics.filter(i => i.g === gameName) : statistics;
   }
 

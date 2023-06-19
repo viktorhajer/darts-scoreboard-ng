@@ -1,47 +1,31 @@
 .player_info {
   padding: 1vw;
-
-  &.player_info_visual {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .name {
-      margin-right: 10px;
-      width: 80px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .score {
-      margin-left: 20px;
-      width: 150px;
-      white-space: nowrap;
-    }
-  }
-
-  .line {
-    margin: 1vw 0;
-  }
-
-  .line-space {
-    margin: 1.5vw 0;
-  }
-
-  .small {
-    font-size: calc(0.6vw + 0.5vh);
-    font-weight: bold;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 
   .name {
-    font-size: calc(5px + 1vw);
     display: flex;
     align-items: center;
+    margin-right: 10px;
+    width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: calc(5px + 1vw);
+
     mat-icon {
       margin-right: 10px;
       font-size: calc(20px + 1vw);
     }
+  }
+
+  .shoot-score {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 12px;
   }
 
   .shoots {
@@ -68,34 +52,14 @@
     font-size: 3.2vw;
     letter-spacing: 0.5vw;
     font-weight: bold;
-    float: right;
+    margin-left: 20px;
+    text-align: right;
+    white-space: nowrap;
+    width: 80px;
 
     label {
       font-size: 1vw;
       letter-spacing: 0.2vw;
-    }
-  }
-
-  .note {
-    font-size: 2.0vw;
-    margin-right: 10px;
-    float: right;
-
-    label {
-      font-size: 1.5vw;
-    }
-  }
-  .field-set {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  .field {
-    font-size: calc(0.7vw + 0.7vh);
-    width: 70px;
-    opacity: 0.4;
-
-    &.highlighted, &.active {
-      opacity: 1;
     }
   }
 }

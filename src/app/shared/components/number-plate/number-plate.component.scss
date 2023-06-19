@@ -1,13 +1,17 @@
 .side-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap row;
+
   .number {
     display: flex;
     flex-flow: column;
     align-items: center;
-    float: left;
-    margin: 0.1vw;
+    margin: 2px;
     font-size: calc(11px + 0.8vw + 0.8vh);
-    height: 19.4vh;
-    width: 15.3vw;
+    width: calc(100% / 5 - 20px);
+    height: 18vw;
 
     mat-icon {
       font-size: 30px;
@@ -45,11 +49,5 @@
 
   .number:disabled {
     opacity: 0.5;
-  }
-
-  &.detailed {
-    .number {
-      width: 13.7vw;
-    }
   }
 }

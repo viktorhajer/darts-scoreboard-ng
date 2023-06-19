@@ -22,16 +22,8 @@
     <div class="player_container" *ngIf="!settingsOpen" [class.visual]="!application.settings.details">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{player.isInactive() ? 'inactive' : ''}}"
           *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player" [scoreDisplayed]="false" [highlighted]="getPlayerState(player).killer">
-          <ng-container *ngIf="getPlayerField(player) !== '0'">
-            <div class="score"><label>Field: </label>{{getPlayerField(player)}}</div>
-            <div class="clear"></div>
-            <div class="line"></div>
-            <div class="score">
-              <label>Life: </label>{{player.life}}
-              <ng-container *ngIf="!getPlayerState(player).killer"><label>Boarding: </label>{{getPlayerState(player).boarding}}</ng-container>
-            </div>
-          </ng-container>
+        <app-player-score [player]="player" [scoreDisplayed]="false"
+                          [lifeDisplayed]="true" [highlighted]="getPlayerState(player).killer">
         </app-player-score>
       </div>
     </div>

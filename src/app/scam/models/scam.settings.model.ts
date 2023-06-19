@@ -6,7 +6,7 @@ export class ScamSettings extends CricketSettings {
   punishment = true;
   reverse = false;
   punishmentValue = 25;
-  promoter = false;
+  promoter = true;
 
   constructor() {
    super();
@@ -15,7 +15,7 @@ export class ScamSettings extends CricketSettings {
   }
 
   toggleStopper() {
-    this.promoter = false;
+    this.promoter = true;
     this.stopper = !this.stopper;
   }
 

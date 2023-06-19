@@ -1,8 +1,8 @@
 <div class="toolbar">
-  <button class="button icon-button" (click)="quit()" *ngIf="application.isMobile">
+  <button class="button icon-button" (click)="quit()">
     <mat-icon>menu</mat-icon>
   </button>
-  <button class="button icon-button" (click)="showSettings()" *ngIf="application.isMobile">
+  <button class="button icon-button" (click)="showSettings()">
     <mat-icon>build</mat-icon>
   </button>
   <button class="button icon-button" (click)="newGame()">
@@ -11,13 +11,4 @@
   <button class="button icon-button" (click)="undo()">
     <mat-icon>undo</mat-icon>
   </button>
-</div>
-
-<div class="round-info" [class.detailed]="application.settings.details">
-  {{getInfo()}}
-</div>
-
-<div class="theme-chooser">
-  <button (click)="quit()" class="button primary icon"><mat-icon>menu</mat-icon></button>
-  <button (click)="showSettings()" class="button primary icon"><mat-icon>build</mat-icon></button>
 </div>

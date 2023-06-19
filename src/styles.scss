@@ -49,6 +49,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   touch-action: manipulation;
   width: 100%;
+  overflow: hidden;
 }
 
 button {
@@ -60,88 +61,20 @@ button {
 }
 
 #playgroundContent {
-
   width: 100vw;
   display: flex;
+  flex-flow: column;
 
   .side-left {
-    width: 22vw;
+    width: 100vw;
     transition: all 100ms ease-in-out;
 
-    &.detailed {
-      width: 30vw;
-      transition: all 100ms ease-in-out;
-    }
-
     .player_container {
+
       &.visual {
         position: absolute;
-        bottom: 10px;
-        right: 15px;
+        bottom: 50px;
       }
-    }
-  }
-
-  .side-right {
-    width: 78vw;
-    float: right;
-    transition: all 100ms ease-in-out;
-
-    &.detailed {
-      width: 70vw;
-      transition: all 100ms ease-in-out;
-    }
-  }
-}
-
-.mobile {
-  .dialog-container {
-    width: 90vw;
-  }
-  .version {
-    display: none;
-  }
-  #playgroundContent {
-    flex-flow: column;
-
-    .theme-chooser, .round-info {
-      display: none;
-    }
-
-    .side-left, .side-right {
-      float: none;
-      width: 100vw;
-    }
-
-    .side-right {
-      position: absolute;
-      bottom: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-flow: wrap row;
-
-      .number {
-        margin: 2px;
-        font-size: 15px;
-        width: 18vw;
-        height: 18vw;
-        float: none;
-
-        .field-note {
-          font-size: 9px;
-        }
-        mat-icon {
-          display: none;
-        }
-      }
-    }
-
-    .player_container {
-      display: flex;
-      flex-flow: column;
-      justify-content: center;
-      align-items: center;
 
       .player {
         width: 99vw;
@@ -150,13 +83,16 @@ button {
           .name {
             font-size: 14px;
           }
+
           .score {
             font-weight: normal;
             font-size: 18px;
           }
+
           .field-set, .line {
             display: none;
           }
+
           .shoots {
             .shoot {
               width: 25px;
@@ -166,7 +102,39 @@ button {
             }
           }
         }
+      }
+    }
+  }
 
+  .side-right {
+    width: 100vw;
+    transition: all 100ms ease-in-out;
+    margin-top: 15px;
+  }
+}
+
+.mobile {
+  .dialog-container {
+    width: 90vw;
+  }
+
+  .version {
+    display: none;
+  }
+
+  #playgroundContent {
+
+    .side-right {
+      .number {
+        font-size: 15px;
+
+        .field-note {
+          font-size: 9px;
+        }
+
+        mat-icon {
+          display: none;
+        }
       }
     }
 
@@ -185,6 +153,7 @@ button {
           padding: 0;
         }
       }
+
       .player-name {
         font-weight: normal;
       }

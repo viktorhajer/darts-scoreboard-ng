@@ -20,14 +20,7 @@
     <div class="player_container" *ngIf="!settingsOpen" [class.visual]="!application.settings.details">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}}"
            *ngFor="let player of game.players; let i = index">
-        <app-player-score [player]="player">
-          <div class="field-set">
-            <div class="field {{isActiveField(field) ? 'highlighted': ''}}"
-                 *ngFor="let field of settings.fields">
-              {{field === 20 ? 'B' : (field + 1)}}: <span class="small">{{ getFieldValue(player, field) }}</span>
-            </div>
-          </div>
-        </app-player-score>
+        <app-player-score [player]="player"></app-player-score>
       </div>
     </div>
   </div>

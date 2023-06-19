@@ -16,6 +16,9 @@
 
   .field-set {
     display: flex;
-    justify-content: space-between;
+
+    mat-form-field {
+      margin-right: 10px;
+    }
   }
 }

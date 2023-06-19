@@ -1,5 +1,7 @@
 .dialog-container {
   width: 70vw;
+  overflow: hidden;
+  padding-bottom: 25px;
 
   td:first-child {
     white-space: nowrap;

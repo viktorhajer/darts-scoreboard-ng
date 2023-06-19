@@ -4,11 +4,13 @@ export class ShanghaiSettings {
   numbs: boolean[] = [];
   noScore: boolean;
   halveIt: boolean;
+  resetIt: boolean;
 
   constructor() {
     this.fields = [];
     this.noScore = false;
     this.halveIt = true;
+    this.resetIt = false;
     let defaultSet = true;
     for (let i = 0; i < 21; i++) {
       this.numbs[i] = defaultSet;
@@ -39,8 +41,17 @@ export class ShanghaiSettings {
 
   toggleHalveIt() {
     this.halveIt = !this.halveIt;
+    if (this.halveIt) {
+      this.resetIt = false;
+    }
   }
 
+  toggleResetIt() {
+    this.resetIt = !this.resetIt;
+    if (this.resetIt) {
+      this.halveIt = false;
+    }
+  }
 
   getNumbers() {
     const numbers: number[] = [];

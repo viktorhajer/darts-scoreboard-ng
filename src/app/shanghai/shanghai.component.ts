@@ -52,6 +52,8 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
       }
       if (multi === 1 && this.settings.halveIt) {
         player.score = Math.round(player.score / 2);
+      } else if (multi === 1 && this.settings.resetIt) {
+        player.score = 0;
       }
       player.setWin(multi === 24);
       if (player.win) {
@@ -135,6 +137,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   }
 
   getGameConfig(): string {
-    return this.settings.fields.length + ',' + (this.settings.halveIt ? '1' : '0');
+    return this.settings.fields.length + ','
+      + (this.settings.halveIt ? '1' : '0') + '-' + (this.settings.resetIt ? '1' : '0');
   }
 }

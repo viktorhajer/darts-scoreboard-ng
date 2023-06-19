@@ -47,10 +47,6 @@ export class GameToolbarComponent {
     this.playground.undo();
   }
 
-  getInfo(): number {
-    return this.info || this.info === 0 ? this.info : this.getRound();
-  }
-
   private showConfirmation(content: string, callback: () => void) {
     if (this.playground.gameHistory.length) {
       this.dialogService.openConfirmDialog('Confirmation', content)
