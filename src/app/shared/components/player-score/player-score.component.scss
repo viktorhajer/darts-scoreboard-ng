@@ -1,9 +1,9 @@
 .player_info {
-  padding: 1vw;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 20px);
 
   .name {
     display: flex;
@@ -34,7 +34,7 @@
 
     .shoot {
       margin: 0.1vw;
-      border-radius: 0.5vw;
+      border-radius: 4px;
       display: flex;
       justify-content: center;
       align-items: center;

@@ -74,11 +74,10 @@ button {
       &.visual {
         position: absolute;
         bottom: 50px;
+        left: 2px;
       }
 
       .player {
-        width: 99vw;
-
         .player_info {
           .name {
             font-size: 14px;
@@ -126,8 +125,6 @@ button {
 
     .side-right {
       .number {
-        font-size: 15px;
-
         .field-note {
           font-size: 9px;
         }

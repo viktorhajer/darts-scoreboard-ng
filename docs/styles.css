@@ -40,8 +40,8 @@
 }
 
 .player {
-  margin: 0.7vw 0.1vw;
-  border-radius: 0.5vw;
+  margin: 2px;
+  border-radius: 4px;
 }
 .player.highlighted.highlighted2 {
   opacity: 1;
@@ -249,9 +249,7 @@ button {
 #playgroundContent .side-left .player_container.visual {
   position: absolute;
   bottom: 50px;
-}
-#playgroundContent .side-left .player_container .player {
-  width: 99vw;
+  left: 2px;
 }
 #playgroundContent .side-left .player_container .player .player_info .name {
   font-size: 14px;
@@ -280,9 +278,6 @@ button {
 }
 .mobile .version {
   display: none;
-}
-.mobile #playgroundContent .side-right .number {
-  font-size: 15px;
 }
 .mobile #playgroundContent .side-right .number .field-note {
   font-size: 9px;

@@ -9,8 +9,8 @@
     flex-flow: column;
     align-items: center;
     margin: 2px;
-    font-size: calc(11px + 0.8vw + 0.8vh);
-    width: calc(100% / 5 - 20px);
+    font-size: 14px;
+    width: calc(100% / 5 - 10px);
     height: 18vw;
 
     mat-icon {
@@ -25,7 +25,7 @@
     }
 
     .field-note {
-      font-size: 12px;
+      font-size: 9px;
       width: 13vw;
       overflow: hidden;
       word-break: normal;
