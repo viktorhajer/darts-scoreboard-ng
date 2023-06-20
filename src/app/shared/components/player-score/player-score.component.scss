@@ -1,15 +1,16 @@
 .player_info {
-  padding: 10px;
+  height: 45px;
+  padding-left: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: calc(100% - 20px);
+  width: calc(100% - 10px);
 
   .name {
     display: flex;
     align-items: center;
     margin-right: 10px;
-    width: 90px;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -55,7 +56,7 @@
     margin-left: 20px;
     text-align: right;
     white-space: nowrap;
-    width: 80px;
+    width: 25px;
 
     label {
       font-size: 1vw;

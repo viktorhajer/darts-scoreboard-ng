@@ -70,13 +70,6 @@ button {
     transition: all 100ms ease-in-out;
 
     .player_container {
-
-      &.visual {
-        position: absolute;
-        bottom: 50px;
-        left: 2px;
-      }
-
       .player {
         .player_info {
           .name {

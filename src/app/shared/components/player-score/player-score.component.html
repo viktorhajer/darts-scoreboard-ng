@@ -9,8 +9,8 @@
       <div class="shoot">{{!player.throws[2] ? '-' : player.throws[2]}}</div>
       <div class="shoot total" *ngIf="scoreDisplayed">{{!player.getThrowsTotal() ? '0' : player.getThrowsTotal()}}</div>
     </div>
-    <div class="score" *ngIf="scoreDisplayed && !lifeDisplayed">{{player.score}}</div>
-    <div class="score" *ngIf="!scoreDisplayed && lifeDisplayed"><label>Life: </label>{{player.life}}</div>
+    <div class="score" *ngIf="scoreDisplayed">{{player.score}}</div>
+    <div class="score" *ngIf="lifeDisplayed"><label>Life: </label>{{player.life}}</div>
     <div class="clear"></div>
   </div>
 </div>

@@ -246,11 +246,6 @@ button {
   width: 100vw;
   transition: all 100ms ease-in-out;
 }
-#playgroundContent .side-left .player_container.visual {
-  position: absolute;
-  bottom: 50px;
-  left: 2px;
-}
 #playgroundContent .side-left .player_container .player .player_info .name {
   font-size: 14px;
 }

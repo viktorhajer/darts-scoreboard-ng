@@ -8,8 +8,8 @@
   .number {
     margin: 2px;
     font-size: 14px;
-    height: 20vw;
-    width: 20vw;
+    height: 26vw;
+    width: 26vw;
 
     mat-icon {
       position: absolute;
@@ -19,7 +19,7 @@
     }
 
     &.next {
-      width: calc(40vw + 4px);
+      width: calc(52vw + 4px);
     }
   }
 }
