@@ -17,7 +17,7 @@
 
   <div class="side-left" [class.detailed]="application.settings.details">
     <app-game-toolbar [playground]="playground" [info]="getInfo()" *ngIf="!settingsOpen"></app-game-toolbar>
-    <div class="player_container" *ngIf="!settingsOpen" [class.visual]="!application.settings.details">
+    <div class="player_container" *ngIf="!settingsOpen">
       <div class="player {{(i === game.actualPlayerIndex) ? 'highlighted' : ''}} {{player.isInactive() ? 'inactive' : ''}}"
            *ngFor="let player of game.players; let i = index">
         <app-player-score [player]="player" [scoreDisplayed]="true" [lifeDisplayed]="true" [hasContent]="false">
