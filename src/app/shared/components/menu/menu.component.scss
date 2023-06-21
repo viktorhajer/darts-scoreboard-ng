@@ -118,11 +118,11 @@
 
 @media screen and (max-width: 570px) {
   #menu_title {
-    display: none;
+    padding: 20px;
   }
 
   #menu {
-    padding-top: 45px;
+    padding-top: 0;
 
     .gameSelectBox {
       width: calc(35vw - 20px);

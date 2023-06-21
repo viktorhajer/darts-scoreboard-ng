@@ -26,6 +26,10 @@ export class DialogService {
   openGameStatisticsDialog(statistics: PlayerStatistics[]) {
     return this.dialog.open(GameStatisticsDialogComponent, {
       data: {statistics},
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '100%',
+      width: '100%'
     });
   }
 
@@ -42,6 +46,10 @@ export class DialogService {
   openGameTypeStatistics(statistics: GameTypeStatistics[]) {
     return this.dialog.open(GameTypeStatisticsDialogComponent, {
       data: {statistics},
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+      height: '100%',
+      width: '100%'
     });
   }
 

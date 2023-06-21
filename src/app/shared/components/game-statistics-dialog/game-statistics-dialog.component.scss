@@ -1,11 +1,8 @@
 .dialog-container {
-  width: 73vw;
-  height: 75vh;
   overflow: hidden;
 
   .subtitle-1 {
     line-height: 1em;
-    margin-bottom: 1rem;
   }
 
   mat-dialog-actions {
@@ -15,7 +12,6 @@
 
   mat-dialog-content {
 
-    height: 60vh;
     overflow-y: auto;
 
     table {

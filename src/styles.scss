@@ -30,6 +30,11 @@
   --menu_3b: #5caf9f;
   --background_1: #585858;
   --background_2: #354850;
+  --mdc-theme-primary: rgba(255, 255, 255, 0.6);
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 @import "styles/player-score";
@@ -108,10 +113,6 @@ button {
 .mobile {
   .dialog-container {
     width: 90vw;
-  }
-
-  .version {
-    display: none;
   }
 
   #playgroundContent {

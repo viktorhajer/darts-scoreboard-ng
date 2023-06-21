@@ -24,11 +24,9 @@ export class StatisticsService {
 
   getGameStatistics(gameName?: string): GameStatistics[] {
     let statistics = this.storageService.getObject(STATISTICS_STORAGE_KEY);
-    console.log(statistics);
     if (!statistics) {
       statistics = [];
     }
-    console.log(statistics);
     return gameName ? statistics.filter(i => i.g === gameName) : statistics;
   }
 
@@ -40,9 +38,12 @@ export class StatisticsService {
   }
 
   getGameTypeStatistics(): GameTypeStatistics[] {
-    const stat = this.storageService.getObject(STATISTICS_STORAGE_KEY) as GameStatistics[];
+    let statistics = this.storageService.getObject(STATISTICS_STORAGE_KEY) as GameStatistics[];
     const games: GameTypeStatistics[] = [];
-    stat.forEach(s => {
+    if (!statistics) {
+      statistics = [];
+    }
+    statistics.forEach(s => {
       let type = games.find(g => g.name === s.g);
       if (!type) {
         type = {name: s.g, count: 0};
