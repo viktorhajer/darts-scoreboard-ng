@@ -17,6 +17,9 @@ export class ScamSettings extends CricketSettings {
   toggleStopper() {
     this.promoter = true;
     this.stopper = !this.stopper;
+    if (this.stopper) {
+      this.punishment = false;
+    }
   }
 
   toggleReverse() {

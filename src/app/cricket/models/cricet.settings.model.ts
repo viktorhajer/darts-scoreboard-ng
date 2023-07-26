@@ -40,11 +40,15 @@ export class CricketSettings {
   }
 
   star() {
-    this.setAllowedField([20, 9, 14, 13, 4, 16, 7, 2, 15, 21]);
+    this.setAllowedField([20, 18, 13, 10, 2, 3, 7, 8, 14, 12, 21]);
+  }
+
+  reverseStar() {
+    this.setAllowedField([1, 4, 6, 15, 17, 19, 16, 11, 9, 5, 21]);
   }
 
   cross() {
-    this.setAllowedField([20, 3, 11, 6, 21]);
+    this.setAllowedField([5, 20, 1, 19, 3, 17, 14, 8, 11, 6, 13, 10, 21]);
   }
 
   upper() {
