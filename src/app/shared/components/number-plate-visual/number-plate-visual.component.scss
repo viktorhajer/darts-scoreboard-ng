@@ -1,5 +1,5 @@
 .side-right_visual {
-  width: 98vw;
+  width: 100vw;
 
   h1 {
     position: absolute;
@@ -46,12 +46,20 @@
     }
   }
 
-  button {
-    margin-right: 3px;
-    width: 82px;
-    height: 52px;
+  .buttons {
     position: absolute;
     right: 0px;
+    bottom: 0px;
+  }
+
+  button {
+    margin-right: 3px;
+    width: 60px;
+    height: 38px;
+
+    &.zero {
+      width: 44px;
+    }
   }
 }
 

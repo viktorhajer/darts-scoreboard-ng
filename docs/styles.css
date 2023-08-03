@@ -5,45 +5,6 @@
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[6].rules[0].oneOf[0].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[6].rules[1].use[0]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[6].rules[1].use[1]!./src/styles.scss?ngGlobalStyle ***!
   \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-:root {
-  --basic_0: #597985;
-  --basic_1: #676767;
-  --basic_2: #9e9e9e;
-  --basic_3: #757575;
-  --basic_9: #000;
-  --primary_0: #98d9b6;
-  --primary_1: #92aa9d;
-  --primary_2: #006064;
-  --accent_1: #e0e0e0;
-  --accent_2: #757575;
-  --accent_3: #9e9e9e;
-  --accent_4: #212121;
-  --text_color: #fafafa;
-  --text_color_2: #c7dfd2;
-  --warn: #e3a5a0;
-  --table_normal: #676767;
-  --table_multi: #565656;
-  --table_normal_primary: #186883;
-  --table_multi_primary: #9d9471;
-  --table_normal_accent: #7cacb1;
-  --table_multi_accent: #5a8489;
-  --table_normal_alert: #915656;
-  --table_multi_alert: #af6565;
-  --menu_1a: #bf8160;
-  --menu_1b: #b78870;
-  --menu_2a: #5e8d9f;
-  --menu_2b: #6d94a3;
-  --menu_3a: #6c957f;
-  --menu_3b: #5caf9f;
-  --background_1: #585858;
-  --background_2: #354850;
-  --mdc-theme-primary: rgba(255, 255, 255, 0.6);
-}
-
-.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
-  color: rgba(255, 255, 255, 0.6);
-}
-
 .player {
   margin: 2px;
   border-radius: 4px;
@@ -220,6 +181,39 @@ body {
 }
 .button.icon.accent {
   color: var(--accent_3);
+}
+
+:root {
+  --basic_0: #94b0baa8;
+  --basic_1: #82b3bc;
+  --primary_1: #2483a1a6;
+  --primary_2: #006064;
+  --accent_3: #9e9e9e;
+  --accent_4: #212121;
+  --text_color: #fafafa;
+  --text_color_2: #ffffff;
+  --warn: #e3a5a0;
+  --table_normal: #6767679c;
+  --table_multi: #565656b8;
+  --table_normal_primary: #186883c7;
+  --table_multi_primary: #9d9471c7;
+  --table_normal_accent: #7cacb1;
+  --table_multi_accent: #5a8489;
+  --table_normal_alert: #915656;
+  --table_multi_alert: #af6565;
+  --menu_1a: #365c708a;
+  --menu_1b: #00000063;
+  --menu_2a: #448ba6;
+  --menu_2b: #6d94a3;
+  --menu_3a: #92aaad;
+  --menu_3b: #5caf9f;
+  --background_1: #285769;
+  --background_2: #71abb2;
+  --mdc-theme-primary: rgba(255, 255, 255, 0.6);
+}
+
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 html, body {
