@@ -8,7 +8,7 @@ export class DuelSettings extends CricketSettings {
 
   constructor() {
     super();
-    this.star();
+    this.black();
     this.startPoint = 30;
     this.targetPoint = 200;
     this.punishment = 10;

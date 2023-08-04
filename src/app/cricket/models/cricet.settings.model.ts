@@ -39,11 +39,11 @@ export class CricketSettings {
     this.setAllowedField([11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]);
   }
 
-  star() {
+  black() {
     this.setAllowedField([20, 18, 13, 10, 2, 3, 7, 8, 14, 12, 21]);
   }
 
-  reverseStar() {
+  white() {
     this.setAllowedField([1, 4, 6, 15, 17, 19, 16, 11, 9, 5, 21]);
   }
 
@@ -51,11 +51,11 @@ export class CricketSettings {
     this.setAllowedField([5, 20, 1, 19, 3, 17, 14, 8, 11, 6, 13, 10, 21]);
   }
 
-  upper() {
+  top() {
     this.setAllowedField([14, 9, 12, 5, 20, 1, 18, 4, 13, 21]);
   }
 
-  lower() {
+  bottom() {
     this.setAllowedField([10, 15, 2, 17, 3, 19, 7, 16, 8, 21]);
   }
 
