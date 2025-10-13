@@ -13,8 +13,9 @@ import {BotService, PLAYER_DELAY_FAST} from '~services/bot.service';
 import {ScamState} from './models/scam.state.model';
 
 @Component({
-  templateUrl: './scam.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './scam.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class ScamComponent extends Playground<ScamState> {
 

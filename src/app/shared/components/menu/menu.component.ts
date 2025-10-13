@@ -6,8 +6,9 @@ import {routes} from '../../../app-game-types';
 import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss'],
+    standalone: false
 })
 export class MenuComponent {
 

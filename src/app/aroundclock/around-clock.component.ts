@@ -13,8 +13,9 @@ import {StatisticsService} from '~services/statistics.service';
 import {BotService, PLAYER_DELAY} from '~services/bot.service';
 
 @Component({
-  templateUrl: './around-clock.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './around-clock.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class AroundClockComponent extends Playground<AroundClockState> {
 

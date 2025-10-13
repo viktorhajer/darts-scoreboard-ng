@@ -3,8 +3,9 @@ import {Component, Inject} from '@angular/core';
 import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
-  templateUrl: 'confirm-dialog.component.html',
-  styleUrls: ['confirm-dialog.component.scss']
+    templateUrl: 'confirm-dialog.component.html',
+    styleUrls: ['confirm-dialog.component.scss'],
+    standalone: false
 })
 export class ConfirmDialogComponent {
   constructor(protected dialogRef: MatDialogRef<ConfirmDialogComponent>,

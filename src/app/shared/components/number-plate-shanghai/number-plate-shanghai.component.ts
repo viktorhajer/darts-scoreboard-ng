@@ -4,9 +4,10 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {DialogService} from '~services/dialog.service';
 
 @Component({
-  selector: 'app-number-plate-shanghai',
-  templateUrl: './number-plate-shanghai.component.html',
-  styleUrls: ['./number-plate-shanghai.component.scss']
+    selector: 'app-number-plate-shanghai',
+    templateUrl: './number-plate-shanghai.component.html',
+    styleUrls: ['./number-plate-shanghai.component.scss'],
+    standalone: false
 })
 export class NumberPlateShanghaiComponent {
 

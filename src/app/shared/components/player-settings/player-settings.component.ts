@@ -5,9 +5,10 @@ import {ApplicationStateService} from '~services/application-state.service';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 @Component({
-  selector: 'app-player-settings',
-  templateUrl: './player-settings.component.html',
-  styleUrls: ['./player-settings.component.scss']
+    selector: 'app-player-settings',
+    templateUrl: './player-settings.component.html',
+    styleUrls: ['./player-settings.component.scss'],
+    standalone: false
 })
 export class PlayerSettingsComponent {
   @Input() playground: Playground<PlaygroundState>;

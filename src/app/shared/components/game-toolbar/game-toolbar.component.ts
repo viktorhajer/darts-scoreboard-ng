@@ -6,9 +6,10 @@ import {DialogService} from '~services/dialog.service';
 import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
-  selector: 'app-game-toolbar',
-  templateUrl: './game-toolbar.component.html',
-  styleUrls: ['./game-toolbar.component.scss']
+    selector: 'app-game-toolbar',
+    templateUrl: './game-toolbar.component.html',
+    styleUrls: ['./game-toolbar.component.scss'],
+    standalone: false
 })
 export class GameToolbarComponent {
 

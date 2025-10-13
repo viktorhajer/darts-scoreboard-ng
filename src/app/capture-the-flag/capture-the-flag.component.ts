@@ -13,8 +13,9 @@ import {StatisticsService} from '~services/statistics.service';
 import {BotService} from '~services/bot.service';
 
 @Component({
-  templateUrl: './capture-the-flag.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './capture-the-flag.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
 

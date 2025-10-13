@@ -13,8 +13,9 @@ import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.servi
 import {BotService} from '~services/bot.service';
 
 @Component({
-  templateUrl: './hare-and-hound.component.html',
-  animations: [slideInAnimation]
+    templateUrl: './hare-and-hound.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class HareAndHoundComponent extends Playground<HareAndHoundState> {
 

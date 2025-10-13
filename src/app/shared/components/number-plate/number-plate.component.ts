@@ -4,9 +4,10 @@ import {Playground} from '~models/playground.model';
 import {ApplicationStateService} from '~services/application-state.service';
 
 @Component({
-  selector: 'app-number-plate',
-  templateUrl: './number-plate.component.html',
-  styleUrls: ['./number-plate.component.scss']
+    selector: 'app-number-plate',
+    templateUrl: './number-plate.component.html',
+    styleUrls: ['./number-plate.component.scss'],
+    standalone: false
 })
 export class NumberPlateComponent {
 

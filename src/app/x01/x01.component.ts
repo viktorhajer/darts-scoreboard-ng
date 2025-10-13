@@ -13,8 +13,9 @@ import {StatisticsService} from '~services/statistics.service';
 import {BotService, PLAYER_DELAY} from '~services/bot.service';
 
 @Component({
-  templateUrl: './x01.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './x01.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class X01Component extends Playground<PlaygroundState> {
 

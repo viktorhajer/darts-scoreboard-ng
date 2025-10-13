@@ -13,8 +13,9 @@ import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.servi
 import {BotService} from '~services/bot.service';
 
 @Component({
-  templateUrl: './shanghai.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './shanghai.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class ShanghaiComponent extends Playground<ShanghaiState> {
 

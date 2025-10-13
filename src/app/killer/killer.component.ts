@@ -15,8 +15,9 @@ import {BotService} from '~services/bot.service';
 const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 
 @Component({
-  templateUrl: './killer.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './killer.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class KillerComponent extends Playground<KillerState> {
 

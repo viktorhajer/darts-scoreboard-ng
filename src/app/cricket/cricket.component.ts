@@ -13,8 +13,9 @@ import {StatisticsService} from '~services/statistics.service';
 import {BotService} from '~services/bot.service';
 
 @Component({
-  templateUrl: './cricket.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './cricket.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class CricketComponent extends Playground<CricketState> {
 

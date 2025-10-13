@@ -5,8 +5,9 @@ import {STAT_NAME_SEPARATOR} from '~services/statistics.service';
 import {environment} from '../../../../environments/environment';
 
 @Component({
-  templateUrl: 'game-history-dialog.component.html',
-  styleUrls: ['game-history-dialog.component.scss']
+    templateUrl: 'game-history-dialog.component.html',
+    styleUrls: ['game-history-dialog.component.scss'],
+    standalone: false
 })
 export class GameHistoryDialogComponent {
   constructor(protected dialogRef: MatDialogRef<GameHistoryDialogComponent>,

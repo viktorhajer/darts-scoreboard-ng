@@ -3,8 +3,9 @@ import {Component, Inject} from '@angular/core';
 import {PlayerStatistics} from '~models/player-statistics.model';
 
 @Component({
-  templateUrl: 'game-statistics-dialog.component.html',
-  styleUrls: ['game-statistics-dialog.component.scss']
+    templateUrl: 'game-statistics-dialog.component.html',
+    styleUrls: ['game-statistics-dialog.component.scss'],
+    standalone: false
 })
 export class GameStatisticsDialogComponent {
   constructor(protected dialogRef: MatDialogRef<GameStatisticsDialogComponent>,

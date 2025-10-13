@@ -13,8 +13,9 @@ import {StatisticsService} from '~services/statistics.service';
 import {BotService} from '~services/bot.service';
 
 @Component({
-  templateUrl: './fives.component.html',
-  animations: [slideInAnimation]
+    templateUrl: './fives.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class FivesComponent extends Playground<PlaygroundState> {
 

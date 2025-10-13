@@ -3,8 +3,9 @@ import {Component, Inject} from '@angular/core';
 import {Player} from '~models/player.model';
 
 @Component({
-  templateUrl: 'dialog.component.html',
-  styleUrls: ['dialog.component.scss']
+    templateUrl: 'dialog.component.html',
+    styleUrls: ['dialog.component.scss'],
+    standalone: false
 })
 export class DialogComponent {
   constructor(protected dialogRef: MatDialogRef<DialogComponent>,

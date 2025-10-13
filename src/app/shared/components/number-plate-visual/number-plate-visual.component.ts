@@ -9,10 +9,11 @@ import {takeUntil} from 'rxjs/operators';
 const ARC_WIDTH = 0.295;
 
 @Component({
-  selector: 'app-number-plate-visual',
-  templateUrl: './number-plate-visual.component.html',
-  styleUrls: ['./number-plate-visual.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-number-plate-visual',
+    templateUrl: './number-plate-visual.component.html',
+    styleUrls: ['./number-plate-visual.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class NumberPlateVisualComponent implements OnInit, OnDestroy {
 

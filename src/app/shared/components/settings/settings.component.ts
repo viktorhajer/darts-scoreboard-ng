@@ -4,10 +4,11 @@ import {PlaygroundState} from '~models/playground-state.model';
 import {DialogService} from '~services/dialog.service';
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss'],
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-settings',
+    templateUrl: './settings.component.html',
+    styleUrls: ['./settings.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SettingsComponent {
   @Input() playground: Playground<PlaygroundState>;

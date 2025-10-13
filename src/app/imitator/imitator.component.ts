@@ -13,8 +13,9 @@ import {StatisticsService} from '~services/statistics.service';
 import {BotService} from '~services/bot.service';
 
 @Component({
-  templateUrl: './imitator.component.html',
-  animations: [slideInAnimation],
+    templateUrl: './imitator.component.html',
+    animations: [slideInAnimation],
+    standalone: false
 })
 export class ImitatorComponent extends Playground<ImitatorState> {
 
