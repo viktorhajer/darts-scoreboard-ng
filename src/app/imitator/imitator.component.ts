@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {ImitatorSettings} from './models/imitator.settings.model';
-import {SoundService} from '~services/sound.service';
+import {SoundService} from '../shared/services/sound.service';
 import {ImitatorState} from './models/imitator.state.model';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './imitator.component.html',
@@ -42,7 +42,7 @@ export class ImitatorComponent extends Playground<ImitatorState> {
     }
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return this.game.actualThrow === 0 && this.getPlayerState(this.game.getActualPlayer()).actFieldIndex === fieldIndex;
   }
 
@@ -56,7 +56,7 @@ export class ImitatorComponent extends Playground<ImitatorState> {
     this.game.players.forEach(player => player.state = new ImitatorState());
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.round + '';
   }
 }

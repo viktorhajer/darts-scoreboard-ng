@@ -1,18 +1,18 @@
 import { OnInit, Directive } from '@angular/core';
-import {v4 as uuid} from 'uuid';
+import {v4 as uuidV4} from 'uuid';
 import {Player} from './player.model';
 import {Throw} from './throw.model';
 import {Router} from '@angular/router';
-import {PlaygroundState} from '~models/playground-state.model';
-import {DialogService} from '~services/dialog.service';
-import {ApplicationStateService} from '~services/application-state.service';
-import {GameService} from '~services/game.service';
-import {SoundService} from '~services/sound.service';
-import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
-import {GameStatistics} from '~models/game-statistics.model';
-import {PlayerStatistics} from '~models/player-statistics.model';
-import {BotService, PLAYER_NAME} from '~services/bot.service';
 import {BehaviorSubject} from 'rxjs';
+import {PlaygroundState} from './playground-state.model';
+import {GameService} from '../services/game.service';
+import {GameStatistics} from './game-statistics.model';
+import {ApplicationStateService} from '../services/application-state.service';
+import {DialogService} from '../services/dialog.service';
+import {SoundService} from '../services/sound.service';
+import {BotService, PLAYER_NAME} from '../services/bot.service';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '../services/statistics.service';
+import {PlayerStatistics} from './player-statistics.model';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
@@ -22,14 +22,14 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   throwEnabled = true;
   settingsOpen = true;
-  gameHistory: GameService[];
+  gameHistory: GameService[] = [];
   nextEnabled = true;
   zeroEnabled = true;
   multiEnabled = true;
   playground = this;
-  multiplier: number;
-  extraEndingMsg: string;
-  gameStatistics: GameStatistics;
+  multiplier = 1;
+  extraEndingMsg = '';
+  gameStatistics = new GameStatistics();
   hasChanges = new BehaviorSubject<number>(Date.now());
 
   protected constructor(public gameTitle: string,
@@ -121,7 +121,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   addPlayer(name: any) {
     if (!!name.value.trim().length && !this.game.players.some(p => p.name === name.value)) {
-      this.game.players.push(new Player(uuid(), name.value));
+      this.game.players.push(new Player(uuidV4(), name.value));
       this.application.storePlayer(name.value);
     }
     name.value = '';
@@ -164,7 +164,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   undo() {
     if (this.gameHistory.length > 0) {
-      this.game = this.gameHistory.pop();
+      this.game = this.gameHistory.pop() as GameService;
       this.hasChanges.next(Date.now());
     }
   }
@@ -303,7 +303,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
 
   abstract customReset(): void;
 
-  abstract calculatePoints(player: Player, fieldIndex: number, score: number, scoreReal?: number);
+  abstract calculatePoints(player: Player, fieldIndex: number, score: number, scoreReal?: number): void;
 
-  abstract checkPlayerState(player: Player);
+  abstract checkPlayerState(player: Player): void;
 }

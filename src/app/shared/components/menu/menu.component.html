@@ -5,10 +5,10 @@
   <div class="button-line" *ngFor="let k of [0,1,2,3]">
     <button *ngFor="let g of getGameList().slice(k*3,k*3 + 3); let i = index"
             [routerLink]="['/' + g.path]"
-            class="button gameSelectBox {{'menu-button-' + k + '' + i}} {{g.data.bot ? 'hasBot' : ''}}">
+            class="button gameSelectBox {{'menu-button-' + k + '' + i}} {{g.bot ? 'hasBot' : ''}}">
       <div class="menu-item-container">
-        <div class="title">{{g.data.name}}</div>
-        <mat-icon>{{g.data.icon}}</mat-icon>
+        <div class="title">{{g.name}}</div>
+        <mat-icon>{{g.icon}}</mat-icon>
       </div>
     </button>
   </div>

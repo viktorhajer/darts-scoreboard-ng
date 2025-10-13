@@ -1,9 +1,9 @@
-import {FIELDS_COUNT} from '~models/playground.model';
+import {FIELDS_COUNT} from '../../shared/models/playground.model';
 
 export class CaptureTheFlagSettings {
 
   fields: number[];
-  style: number;
+  style: number = 0;
   noScore = false;
 
   constructor() {

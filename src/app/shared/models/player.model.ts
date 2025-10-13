@@ -1,17 +1,17 @@
 import {Throw} from './throw.model';
-import {PlaygroundState} from '~models/playground-state.model';
+import {PlaygroundState} from './playground-state.model';
 
 export class Player {
   score = 0;
   throws: number[] = [];
-  throwsHistory: Throw[];
+  throwsHistory: Throw[] = [];
   win = false;
   winDateTime = 0;
   first = true;
-  state: PlaygroundState;
+  state: PlaygroundState | null = null;
   life = 1;
 
-  constructor(public id: number, public name = '') {
+  constructor(public id: string, public name = '') {
   }
 
   setWin(win = true) {

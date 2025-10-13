@@ -1,6 +1,6 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
-import {Player} from '~models/player.model';
+import {Player} from '../../models/player.model';
 
 @Component({
     templateUrl: 'dialog.component.html',

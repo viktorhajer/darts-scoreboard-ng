@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ApplicationSettings} from '~models/application-settings.model';
+import {ApplicationSettings} from '../models/application-settings.model';
 import {theme} from '../../theme.constant';
-import {Theme} from '~models/theme.model';
+import {Theme} from '../models/theme.model';
 
 const APPLICATION_KEY = 'ApplicationSettings';
 const PLAYER_KEY = 'Players';

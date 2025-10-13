@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {GameService} from '~services/game.service';
-import {ApplicationStateService} from '~services/application-state.service';
-import {DialogService} from '~services/dialog.service';
+import {GameService} from '../../services/game.service';
+import {ApplicationStateService} from '../../services/application-state.service';
+import {DialogService} from '../../services/dialog.service';
 
 @Component({
     selector: 'app-number-plate-shanghai',
@@ -11,7 +11,7 @@ import {DialogService} from '~services/dialog.service';
 })
 export class NumberPlateShanghaiComponent {
 
-  @Input() actualIndex: number;
+  @Input() actualIndex: number = 0;
   @Input() playground: any;
 
   constructor(public game: GameService,

@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {PlaygroundState} from '~models/playground-state.model';
-import {ApplicationStateService} from '~services/application-state.service';
+import {Playground} from '../../models/playground.model';
+import {PlaygroundState} from '../../models/playground-state.model';
+import {ApplicationStateService} from '../../services/application-state.service';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 @Component({
@@ -11,8 +11,9 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
     standalone: false
 })
 export class PlayerSettingsComponent {
+  //@ts-ignore
   @Input() playground: Playground<PlaygroundState>;
-  storedPlayers = [];
+  storedPlayers: string[] = [];
 
   constructor(private application: ApplicationStateService) {
     this.storedPlayers = this.application.getStoredPlayers();

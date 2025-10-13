@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {StorageService} from '~services/storage.service';
-import {GameStatistics} from '~models/game-statistics.model';
-import {GameTypeStatistics} from '~models/game-type-statistics.model';
+import {StorageService} from './storage.service';
+import {GameStatistics} from '../models/game-statistics.model';
+import {GameTypeStatistics} from '../models/game-type-statistics.model';
 
 export const STAT_NAME_SEPARATOR = '____';
 const STATISTICS_STORAGE_KEY = 'statistics';
@@ -27,14 +27,14 @@ export class StatisticsService {
     if (!statistics) {
       statistics = [];
     }
-    return gameName ? statistics.filter(i => i.g === gameName) : statistics;
+    return gameName ? statistics.filter((i: GameStatistics) => i.g === gameName) : statistics;
   }
 
   getPlayerStatistics(playerName: string, gameName?: string): GameStatistics[] {
-    const playerStat = this.storageService.getObject(STATISTICS_STORAGE_KEY).filter(i =>
+    const playerStat = this.storageService.getObject(STATISTICS_STORAGE_KEY).filter((i: GameStatistics) =>
       i.l.some(p => p.indexOf(playerName) !== -1) ||
       i.w.some(p => p.indexOf(playerName) !== -1));
-    return gameName ? playerStat.filter(i => i.g === gameName) : playerStat;
+    return gameName ? playerStat.filter((i: GameStatistics) => i.g === gameName) : playerStat;
   }
 
   getGameTypeStatistics(): GameTypeStatistics[] {

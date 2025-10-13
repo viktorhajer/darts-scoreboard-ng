@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
-import {SoundService} from '~services/sound.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
+import {SoundService} from '../shared/services/sound.service';
 import {DuelSettings} from './models/duel.settings.model';
 import {DuelState} from './models/duel.state.model';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './duel.component.html',
@@ -69,20 +69,20 @@ export class DuelComponent extends Playground<DuelState> {
     return player.score <= 0;
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return this.getPlayerState(this.game.getActualPlayer()).ownFields.some(i => i === fieldIndex);
   }
 
-  isSecondaryField(fieldIndex: number): boolean {
+  override isSecondaryField(fieldIndex: number): boolean {
     return this.settings.isFieldAllowed(fieldIndex) &&
       !this.game.players.some(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
   }
 
-  isAlertField(fieldIndex: number): boolean {
+  override isAlertField(fieldIndex: number): boolean {
     return this.game.players.some(p => p != this.game.getActualPlayer() && this.getPlayerState(p).ownFields.some(i => i === fieldIndex));
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     const player = this.game.players.find(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex))
     if (player) {
       return player.name.substr(0, 1).toUpperCase();
@@ -97,7 +97,7 @@ export class DuelComponent extends Playground<DuelState> {
     });
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.fields.length+','+this.settings.targetPoint+','+this.settings.startPoint;
   }
 

@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
 import {Router} from '@angular/router';
-import {PlaygroundState} from '~models/playground-state.model';
-import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
 import {FivesSettings} from './models/fives.settings.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {PlaygroundState} from '../shared/models/playground-state.model';
+import {Playground} from '../shared/models/playground.model';
+import {ApplicationStateService} from '../shared/services/application-state.service';
+import {GameService} from '../shared/services/game.service';
+import {SoundService} from '../shared/services/sound.service';
+import {DialogService} from '../shared/services/dialog.service';
+import {BotService} from '../shared/services/bot.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {Player} from '../shared/models/player.model';
 
 @Component({
     templateUrl: './fives.component.html',
@@ -50,7 +50,7 @@ export class FivesComponent extends Playground<PlaygroundState> {
     }
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     if (this.game.actualThrow === 2) {
       const mod = this.settings.divider - (this.game.getActualPlayer().getThrowsTotal() % this.settings.divider);
       let max = mod + this.settings.divider;
@@ -68,7 +68,7 @@ export class FivesComponent extends Playground<PlaygroundState> {
     this.game.players.forEach(player => player.score = this.settings.limit);
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.divider + ',' + this.settings.limit;
   }
 }

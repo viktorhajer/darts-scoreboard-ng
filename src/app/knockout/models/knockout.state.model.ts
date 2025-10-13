@@ -1,4 +1,4 @@
-import {PlaygroundState} from '~models/playground-state.model';
+import {PlaygroundState} from '../../shared/models/playground-state.model';
 
 export class KnockoutState extends PlaygroundState {
 

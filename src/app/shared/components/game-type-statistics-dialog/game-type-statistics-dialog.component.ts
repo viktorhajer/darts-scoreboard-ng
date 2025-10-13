@@ -1,6 +1,6 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
-import {GameTypeStatistics} from '~models/game-type-statistics.model';
+import {GameTypeStatistics} from '../../models/game-type-statistics.model';
 
 @Component({
     templateUrl: 'game-type-statistics-dialog.component.html',

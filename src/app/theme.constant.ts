@@ -1,4 +1,4 @@
-import {Theme} from '~models/theme.model';
+import {Theme} from './shared/models/theme.model';
 
 export const theme: Theme = {
   properties: {

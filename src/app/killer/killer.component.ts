@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {KillerState} from './models/killer.state.model';
 import {KillerSettings} from './models/killer.settings.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 const DANGER_ZONE_ICON = 'sentiment_very_dissatisfied';
 
@@ -87,14 +87,14 @@ export class KillerComponent extends Playground<KillerState> {
     }
   }
 
-  isFieldEnabled(fieldIndex: number): boolean {
+  override isFieldEnabled(fieldIndex: number): boolean {
     if (this.game.round === 0) {
       return fieldIndex !== 20 && !this.getAllEnabledFields().some(f => f === fieldIndex);
     }
     return this.getAllEnabledFields().some(f => f === fieldIndex);
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     if (this.game.round === 0) {
       return this.isFieldEnabled(fieldIndex);
     }
@@ -105,7 +105,7 @@ export class KillerComponent extends Playground<KillerState> {
     return state.actField === fieldIndex;
   }
 
-  isSecondaryField(fieldIndex: number): boolean {
+  override isSecondaryField(fieldIndex: number): boolean {
     const state = this.getPlayerState(this.game.getActualPlayer());
     if (state.killer) {
       return state.actField === fieldIndex;
@@ -113,7 +113,7 @@ export class KillerComponent extends Playground<KillerState> {
     return false;
   }
 
-  getFieldIcon(fieldIndex: number): string {
+  override getFieldIcon(fieldIndex: number): string {
     if (this.game.players.some(p => {
       const state = this.getPlayerState(p);
       return !p.isInactive() && p.life <= 3 && state.actField === fieldIndex;
@@ -123,7 +123,7 @@ export class KillerComponent extends Playground<KillerState> {
     return '';
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     const owner = this.game.players.find(p => (p.state as KillerState).actField === fieldIndex);
 
     if (owner) {
@@ -149,15 +149,15 @@ export class KillerComponent extends Playground<KillerState> {
     });
   }
 
-  customSettingsValidation(): boolean {
+  override customSettingsValidation(): boolean {
     return this.settings.numberOfLives > 0 && this.settings.boardingLimit > 0;
   }
 
-  decoratePlayerStat(player: Player): string {
+  override decoratePlayerStat(player: Player): string {
     return player.name;
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.boardingLimit + ',' + this.settings.numberOfLives;
   }
 

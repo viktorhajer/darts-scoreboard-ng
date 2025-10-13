@@ -1,21 +1,21 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
-import {Player} from '~models/player.model';
 import {AroundClockState} from './models/around-clock.state.model';
 import {AroundClockSettings} from './models/around-clock.settings.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService, PLAYER_DELAY} from '~services/bot.service';
+import {Player} from '../shared/models/player.model';
+import {ApplicationStateService} from '../shared/services/application-state.service';
+import {GameService} from '../shared/services/game.service';
+import {SoundService} from '../shared/services/sound.service';
+import {DialogService} from '../shared/services/dialog.service';
+import {BotService, PLAYER_DELAY} from '../shared/services/bot.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {Playground} from '../shared/models/playground.model';
 
 @Component({
-    templateUrl: './around-clock.component.html',
-    animations: [slideInAnimation],
-    standalone: false
+  templateUrl: './around-clock.component.html',
+  animations: [slideInAnimation],
+  standalone: false
 })
 export class AroundClockComponent extends Playground<AroundClockState> {
 
@@ -92,7 +92,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     }
   }
 
-  botThrow() {
+  override botThrow() {
     const state = this.getPlayerState(this.game.getActualPlayer());
     const target = this.getFieldIndex(state.actFieldIndex);
     const index = this.botService.calculateTarget(target);
@@ -123,15 +123,15 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     this.hiddenInfo = !this.hiddenInfo;
   }
 
-  isFieldEnabled(fieldIndex: number): boolean {
+  override isFieldEnabled(fieldIndex: number): boolean {
     return this.game.players.some(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex);
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return fieldIndex === this.getFieldIndex(this.getPlayerState(this.game.getActualPlayer()).actFieldIndex);
   }
 
-  isSecondaryField(fieldIndex: number): boolean {
+  override isSecondaryField(fieldIndex: number): boolean {
     if (!this.isPrimaryField(fieldIndex)) {
       return this.game.players.filter(p => p !== this.game.getActualPlayer())
         .some(p => fieldIndex === this.getFieldIndex(this.getPlayerState(p).actFieldIndex));
@@ -139,7 +139,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     return false;
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     const owners = this.game.players
       .filter(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex).map(p => p.name.substr(0, 1));
     return !!owners.length ? owners.join(',') : '';
@@ -153,7 +153,7 @@ export class AroundClockComponent extends Playground<AroundClockState> {
     this.settings.setStyle();
   }
 
-  decoratePlayerStat(player: Player): string {
+  override decoratePlayerStat(player: Player): string {
     return player.name;
   }
 

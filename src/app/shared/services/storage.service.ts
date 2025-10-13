@@ -13,11 +13,12 @@ export class StorageService {
     return !!this.getItem(key);
   }
 
-  getItem(key: string): string {
+  getItem(key: string): string | null {
     return this.storage.getItem(key);
   }
 
   getObject(key: string): any {
+    // @ts-ignore
     return JSON.parse(this.getItem(key));
   }
 

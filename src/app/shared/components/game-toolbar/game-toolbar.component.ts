@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
-import {Playground} from '~models/playground.model';
+import {Playground} from '../../models/playground.model';
 import {Router} from '@angular/router';
-import {PlaygroundState} from '~models/playground-state.model';
-import {DialogService} from '~services/dialog.service';
-import {ApplicationStateService} from '~services/application-state.service';
+import {PlaygroundState} from '../../models/playground-state.model';
+import {DialogService} from '../../services/dialog.service';
+import {ApplicationStateService} from '../../services/application-state.service';
 
 @Component({
     selector: 'app-game-toolbar',
@@ -13,9 +13,10 @@ import {ApplicationStateService} from '~services/application-state.service';
 })
 export class GameToolbarComponent {
 
+  //@ts-ignore
   @Input() playground: Playground<PlaygroundState>;
-  @Input() reversRound: number;
-  @Input() info: number;
+  @Input() reversRound: number = 0;
+  @Input() info: number = 0;
 
   constructor(public route: Router,
               public application: ApplicationStateService,

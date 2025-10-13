@@ -1,8 +1,8 @@
-import {PlaygroundState} from '~models/playground-state.model';
+import {PlaygroundState} from '../../shared/models/playground-state.model';
 
 export class ScamState extends PlaygroundState {
 
-  ownFields = [];
+  ownFields: number[] = [];
 
   constructor() {
     super();

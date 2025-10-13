@@ -1,15 +1,15 @@
 import {Component} from '@angular/core';
-import {FIELDS_COUNT, Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {FIELDS_COUNT, Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {ScamSettings} from './models/scam.settings.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService, PLAYER_DELAY_FAST} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService, PLAYER_DELAY_FAST} from '../shared/services/bot.service';
 import {ScamState} from './models/scam.state.model';
 
 @Component({
@@ -64,15 +64,15 @@ export class ScamComponent extends Playground<ScamState> {
     }
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return !!this.game.numbs[fieldIndex];
   }
 
-  isAlertField(fieldIndex: number): boolean {
+  override isAlertField(fieldIndex: number): boolean {
     return this.settings.punishment && !this.game.numbs[fieldIndex];
   }
 
-  isFieldEnabled(fieldIndex: number): boolean {
+  override isFieldEnabled(fieldIndex: number): boolean {
     return this.settings.punishment || !!this.game.numbs[fieldIndex];
   }
 
@@ -84,11 +84,11 @@ export class ScamComponent extends Playground<ScamState> {
     this.settings.fields.forEach(f => this.settings.numbs[f] = true);
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.fields.length + '';
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     const player = this.game.players.find(p => this.getPlayerState(p).ownFields.some(i => i === fieldIndex))
     if (player) {
       return player.name.substr(0, 1).toUpperCase();
@@ -96,7 +96,7 @@ export class ScamComponent extends Playground<ScamState> {
     return '';
   }
 
-  botThrow() {
+  override botThrow() {
     let fields = [...Array(FIELDS_COUNT).keys()];
     if (this.settings.reverse) {
       fields.reverse();

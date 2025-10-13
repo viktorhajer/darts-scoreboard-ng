@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {KnockoutSettings} from './models/knockout.settings.model';
 import {KnockoutState} from './models/knockout.state.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './knockout.component.html',
@@ -59,7 +59,7 @@ export class KnockoutComponent extends Playground<KnockoutState> {
     });
   }
 
-  customSettingsValidation(): boolean {
+  override customSettingsValidation(): boolean {
     return this.settings.numberOfLives > 0;
   }
 
@@ -69,7 +69,7 @@ export class KnockoutComponent extends Playground<KnockoutState> {
     return (state.score ? state.score : 0) - (this.game.actualThrow === 0 ? 0 : player.score);
   }
 
-  decoratePlayerStat(player: Player): string {
+  override decoratePlayerStat(player: Player): string {
     return player.name;
   }
 }

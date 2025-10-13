@@ -1,7 +1,7 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {PlaygroundState} from '~models/playground-state.model';
-import {DialogService} from '~services/dialog.service';
+import {Playground} from '../../models/playground.model';
+import {PlaygroundState} from '../../models/playground-state.model';
+import {DialogService} from '../../services/dialog.service';
 
 @Component({
     selector: 'app-settings',
@@ -11,6 +11,7 @@ import {DialogService} from '~services/dialog.service';
     standalone: false
 })
 export class SettingsComponent {
+  //@ts-ignore
   @Input() playground: Playground<PlaygroundState>;
 
   constructor(private readonly dialogService: DialogService) {

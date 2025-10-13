@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {PlaygroundState} from '~models/playground-state.model';
-import {DialogService} from '~services/dialog.service';
+import {PlaygroundState} from '../shared/models/playground-state.model';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {X01Settings} from './models/x01.settings.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService, PLAYER_DELAY} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService, PLAYER_DELAY} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './x01.component.html',
@@ -72,11 +72,11 @@ export class X01Component extends Playground<PlaygroundState> {
     this.game.players.forEach(player => player.score = this.settings.startValue);
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.startValue + '';
   }
 
-  botThrow() {
+  override botThrow() {
     let target = Math.floor(Math.random() * 10) + 10;
 
     if (!this.settings.isHighScoreGame()) {
@@ -116,7 +116,7 @@ export class X01Component extends Playground<PlaygroundState> {
     return  this.game.getActualPlayer().score;
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return true;
   }
 }

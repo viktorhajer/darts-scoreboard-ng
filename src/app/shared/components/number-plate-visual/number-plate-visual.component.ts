@@ -1,7 +1,7 @@
 import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
-import {GameService} from '~services/game.service';
-import {Playground} from '~models/playground.model';
-import {ApplicationStateService} from '~services/application-state.service';
+import {GameService} from '../../services/game.service';
+import {Playground} from '../../models/playground.model';
+import {ApplicationStateService} from '../../services/application-state.service';
 import * as d3 from 'd3';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
@@ -29,11 +29,11 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     this.drawTable();
     this.playground.hasChanges
       .pipe(takeUntil(this.ngUnsubscribeHasChange))
-      .subscribe(flag => this.drawTable());
+      .subscribe(() => this.drawTable());
   }
 
   ngOnDestroy() {
-    this.ngUnsubscribeHasChange.next();
+    this.ngUnsubscribeHasChange.next(null);
     this.ngUnsubscribeHasChange.complete();
   }
 
@@ -112,6 +112,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
         Playground.getFieldValueFromIndex(fieldIndex)]);
     }
     this.drawTable();
+    //@ts-ignore
     document.querySelector(`path.field_${fieldIndex}_${multi}`).classList.add('clicked');
   }
 
@@ -122,7 +123,7 @@ export class NumberPlateVisualComponent implements OnInit, OnDestroy {
     }
   }
 
-  private drawText(svg, text: string, rotate: number, x: number, y: number, fieldIndex: number,
+  private drawText(svg: any, text: string, rotate: number, x: number, y: number, fieldIndex: number,
                    multi: number, className: string, onclick?: () => void) {
     svg.append('text')
       .attr('x', x)

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {Router, Routes} from '@angular/router';
-import {StatisticsService} from '~services/statistics.service';
-import {DialogService} from '~services/dialog.service';
+import {StatisticsService} from '../../services/statistics.service';
+import {DialogService} from '../../services/dialog.service';
 import {routes} from '../../../app-game-types';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../../services/application-state.service';
 
 @Component({
     templateUrl: './menu.component.html',
@@ -23,8 +23,9 @@ export class MenuComponent {
     this.router.navigate(['/' + routes[random].path]);
   }
 
-  getGameList(): Routes {
-    return routes.filter(r => !!r.data);
+  getGameList(): {path: string, bot: string, name: string, icon: string }[] {
+    //@ts-ignore
+    return routes.filter(r => !!r.data).map(r => ({path: r.path, bot: r.data.bot, name: r.data.name, icon: r.data.icon}));
   }
 
   openGameTypeStatistics() {

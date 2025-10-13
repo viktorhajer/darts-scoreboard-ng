@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {ShanghaiSettings} from './models/shanghai.settings.model';
 import {ShanghaiState} from './models/shanghai.state.model';
-import {SoundService} from '~services/sound.service';
-import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './shanghai.component.html',
@@ -91,7 +91,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     this.game.players.forEach(player => player.state = new ShanghaiState());
   }
 
-  customSettingsValidation(): boolean {
+  override customSettingsValidation(): boolean {
     return this.settings.fields.length > 0;
   }
 
@@ -103,7 +103,7 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return this.settings.fields.indexOf(fieldIndex) < this.game.round;
   }
 
-  isFieldEnabled(fieldIndex: number): boolean {
+  override isFieldEnabled(fieldIndex: number): boolean {
     return this.settings.fields.indexOf(fieldIndex) === this.game.round;
   }
 
@@ -111,11 +111,11 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return this.settings.fields[this.game.round];
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex);
   }
 
-  getTheFinalResult(): Player[] {
+  override getTheFinalResult(): Player[] {
     let winners = this.game.players.filter(p => p.win);
     if (!winners.length) {
       return [];
@@ -133,11 +133,11 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
     return [...winners, ...losers];
   }
 
-  decoratePlayerStat(player: Player): string {
+  override decoratePlayerStat(player: Player): string {
     return player.name + STAT_NAME_SEPARATOR + player.score + ((player.win && this.extraEndingMsg) ? ('/s') : '');
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.fields.length + ','
       + (this.settings.halveIt ? '1' : '0') + '-' + (this.settings.resetIt ? '1' : '0');
   }

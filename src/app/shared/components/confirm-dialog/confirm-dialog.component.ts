@@ -1,6 +1,6 @@
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Component, Inject} from '@angular/core';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../../services/application-state.service';
 
 @Component({
     templateUrl: 'confirm-dialog.component.html',

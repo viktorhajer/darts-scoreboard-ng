@@ -1,5 +1,5 @@
-import {PlaygroundState} from '~models/playground-state.model';
-import {FieldValue} from '~models/field-value.model';
+import {PlaygroundState} from '../../shared/models/playground-state.model';
+import {FieldValue} from '../../shared/models/field-value.model';
 
 export class CaptureTheFlagState extends PlaygroundState {
 

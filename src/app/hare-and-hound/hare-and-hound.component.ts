@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {FIELDS_COUNT, Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {FIELDS_COUNT, Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {HareAndHoundSettings} from './models/hare-and-hound.settings.model';
 import {HareAndHoundState} from './models/hare-and-hound.state.model';
-import {SoundService} from '~services/sound.service';
-import {STAT_NAME_SEPARATOR, StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {STAT_NAME_SEPARATOR, StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './hare-and-hound.component.html',
@@ -40,40 +40,40 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
 
   checkPlayerState(player: Player) {
     player.setWin((this.isHare() && player.score <= 0) ||
-      (!this.isHare() &&
-        (player.score + this.settings.getHareStartIndex()) <= this.game.players.find(p => this.isHare(p)).score));
+      // @ts-ignore
+      (!this.isHare() &&  (player.score + this.settings.getHareStartIndex()) <= this.game.players.find(p => this.isHare(p)).score));
 
     if (!player.win && this.game.isTheLastThrow()) {
       this.game.nextPlayer();
     }
   }
 
-  isFieldEnabled(fieldIndex: number, actFieldIndex?: number): boolean {
+  override isFieldEnabled(fieldIndex: number, actFieldIndex?: number): boolean {
     if (!actFieldIndex) {
       actFieldIndex = this.getPlayerState(this.game.getActualPlayer()).actFieldIndex;
     }
     return fieldIndex === this.getFieldIndex(actFieldIndex);
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex);
   }
 
-  isSecondaryField(fieldIndex: number): boolean {
+  override isSecondaryField(fieldIndex: number): boolean {
     if (!this.isFieldEnabled(fieldIndex)) {
       return this.game.players.some(p => fieldIndex === this.getFieldIndex(this.getPlayerState(p).actFieldIndex));
     }
     return false;
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     const owners = this.game.players
       .filter(p => this.getFieldIndex(this.getPlayerState(p).actFieldIndex) === fieldIndex)
       .map(p => p.name.substr(0, 1));
     return !!owners.length ? owners.join(',') : '';
   }
 
-  getFieldIcon(fieldIndex: number): string {
+  override getFieldIcon(fieldIndex: number): string {
     if (!this.isPrimaryField(fieldIndex) && !this.isSecondaryField(fieldIndex)) {
       return '';
     }
@@ -91,11 +91,11 @@ export class HareAndHoundComponent extends Playground<HareAndHoundState> {
     });
   }
 
-  decoratePlayerStat(player: Player): string {
+  override decoratePlayerStat(player: Player): string {
     return player.name + STAT_NAME_SEPARATOR + `${this.isHare(player) ? '0' : '1'}`;
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return (20 - HareAndHoundSettings.getBaseFields().indexOf(this.settings.houndStartIndex)) + '';
   }
 

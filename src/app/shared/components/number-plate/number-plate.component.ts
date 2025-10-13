@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {GameService} from '~services/game.service';
-import {Playground} from '~models/playground.model';
-import {ApplicationStateService} from '~services/application-state.service';
+import {GameService} from '../../services/game.service';
+import {Playground} from '../../models/playground.model';
+import {ApplicationStateService} from '../../services/application-state.service';
 
 @Component({
     selector: 'app-number-plate',

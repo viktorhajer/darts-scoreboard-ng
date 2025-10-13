@@ -1,6 +1,6 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import {Player} from '~models/player.model';
-import {ApplicationStateService} from '~services/application-state.service';
+import {Player} from '../../models/player.model';
+import {ApplicationStateService} from '../../services/application-state.service';
 
 @Component({
     selector: 'app-player-score',
@@ -10,7 +10,7 @@ import {ApplicationStateService} from '~services/application-state.service';
     standalone: false
 })
 export class PlayerScoreComponent {
-  @Input() player: Player;
+  @Input() player: Player = new Player('');
   @Input() hasContent = true;
   @Input() scoreDisplayed = true;
   @Input() lifeDisplayed = false;

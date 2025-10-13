@@ -4,10 +4,10 @@ import {Player} from '../models/player.model';
 @Injectable({providedIn: 'root'})
 export class GameService {
   players: Player[] = [];
-  actualPlayerIndex: number;
-  actualThrow: number;
+  actualPlayerIndex: number = 0;
+  actualThrow: number = 0;
   actualFieldIndex = 0;
-  round: number;
+  round: number = 0;
   victoryFirst = true;
   numbs: number[] = [];
 
@@ -124,6 +124,7 @@ export class GameService {
   }
 
   rotatePlayers(): void {
+    //@ts-ignore
     this.players.push(this.players.shift());
   }
 

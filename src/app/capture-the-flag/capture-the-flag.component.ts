@@ -1,21 +1,22 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {CaptureTheFlagState} from './models/capture-the-flag.state.model';
 import {CaptureTheFlagSettings} from './models/capture-the-flag.settings.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
+
 
 @Component({
-    templateUrl: './capture-the-flag.component.html',
-    animations: [slideInAnimation],
-    standalone: false
+  templateUrl: './capture-the-flag.component.html',
+  animations: [slideInAnimation],
+  standalone: false
 })
 export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
 
@@ -80,7 +81,7 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
     }
   }
 
-  customSettingsValidation(): boolean {
+  override customSettingsValidation(): boolean {
     return this.settings.fields.length > 0;
   }
 
@@ -88,20 +89,20 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
     return this.settings.fields[this.game.actualFieldIndex] === fieldIndex;
   }
 
-  isFieldEnabled(fieldIndex: number): boolean {
+  override isFieldEnabled(fieldIndex: number): boolean {
     return fieldIndex === 20 || this.settings.fields.indexOf(fieldIndex) === this.game.actualFieldIndex;
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex);
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     const player = this.game.players.find(player => this.getPlayerState(player).getFieldCount(fieldIndex) >= 3);
     return player ? player.name : '';
   }
 
-  getTheFinalResult(): Player[] {
+  override getTheFinalResult(): Player[] {
     let winners = this.game.players.filter(p => p.win);
     if (!winners.length) {
       return [];
@@ -119,8 +120,8 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
     return [...winners, ...losers];
   }
 
-  getGameConfig(): string {
-    return this.settings.fields.length+'';
+  override getGameConfig(): string {
+    return this.settings.fields.length + '';
   }
 
   private checkWinner(player: Player) {

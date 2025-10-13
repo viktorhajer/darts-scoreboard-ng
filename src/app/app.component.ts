@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {slideInAnimation} from './route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
-import {SoundService} from '~services/sound.service';
+import {ApplicationStateService} from './shared/services/application-state.service';
+import {SoundService} from './shared/services/sound.service';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +11,7 @@ import {SoundService} from '~services/sound.service';
     standalone: false
 })
 export class AppComponent implements AfterViewInit {
-
+  //@ts-ignore
   @ViewChild('audioElement') audioElementRef: ElementRef;
 
   constructor(public application: ApplicationStateService,

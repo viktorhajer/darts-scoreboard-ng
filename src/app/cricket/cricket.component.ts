@@ -1,16 +1,16 @@
 import {Component} from '@angular/core';
-import {Playground} from '~models/playground.model';
-import {GameService} from '~services/game.service';
-import {Player} from '~models/player.model';
+import {Playground} from '../shared/models/playground.model';
+import {GameService} from '../shared/services/game.service';
+import {Player} from '../shared/models/player.model';
 import {Router} from '@angular/router';
-import {DialogService} from '~services/dialog.service';
+import {DialogService} from '../shared/services/dialog.service';
 import {slideInAnimation} from '../route-animation';
-import {ApplicationStateService} from '~services/application-state.service';
+import {ApplicationStateService} from '../shared/services/application-state.service';
 import {CricketSettings} from './models/cricet.settings.model';
 import {CricketState} from './models/cricet.state.model';
-import {SoundService} from '~services/sound.service';
-import {StatisticsService} from '~services/statistics.service';
-import {BotService} from '~services/bot.service';
+import {SoundService} from '../shared/services/sound.service';
+import {StatisticsService} from '../shared/services/statistics.service';
+import {BotService} from '../shared/services/bot.service';
 
 @Component({
     templateUrl: './cricket.component.html',
@@ -20,6 +20,7 @@ import {BotService} from '~services/bot.service';
 export class CricketComponent extends Playground<CricketState> {
 
   settings: CricketSettings;
+  //@ts-ignore
   playerToDisplay: Player;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
@@ -101,24 +102,24 @@ export class CricketComponent extends Playground<CricketState> {
     return this.getPlayerState(player).getFieldCount(fieldIndex) >= 3;
   }
 
-  isFieldEnabled(fieldIndex: number): boolean {
+  override isFieldEnabled(fieldIndex: number): boolean {
     if (this.settings.isNoScoreGame()) {
       return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldDoneForPlayer(this.getPlayerToDisplay(), fieldIndex);
     }
     return this.settings.fields.indexOf(fieldIndex) !== -1 && !this.isFieldClosed(fieldIndex);
   }
 
-  isPrimaryField(fieldIndex: number): boolean {
+  override isPrimaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex) &&
       !this.isFieldDoneForPlayer(this.getPlayerToDisplay(), fieldIndex);
   }
 
-  isSecondaryField(fieldIndex: number): boolean {
+  override isSecondaryField(fieldIndex: number): boolean {
     return this.isFieldEnabled(fieldIndex) &&
       this.isFieldDoneForPlayer(this.getPlayerToDisplay(), fieldIndex);
   }
 
-  getFieldNote(fieldIndex: number): string {
+  override getFieldNote(fieldIndex: number): string {
     if (this.isPrimaryField(fieldIndex)) {
       const playerFieldCount = this.getPlayerState(this.getPlayerToDisplay()).getFieldCount(fieldIndex);
       const remaining = ''.padStart(3 - playerFieldCount, '●');
@@ -135,20 +136,21 @@ export class CricketComponent extends Playground<CricketState> {
     this.game.players.forEach(player => player.state = new CricketState());
   }
 
-  customSettingsValidation(): boolean {
+  override customSettingsValidation(): boolean {
     return this.settings.fields.length > 0;
   }
 
-  changePlayerToDisplay(player?: Player) {
+  changePlayerToDisplay(player: Player) {
     this.playerToDisplay = player;
+    //@ts-ignore
     setTimeout(() => this.playerToDisplay = null, 1500);
   }
 
-  decoratePlayerStat(player: Player): string {
+  override decoratePlayerStat(player: Player): string {
     return player.name;
   }
 
-  getGameConfig(): string {
+  override getGameConfig(): string {
     return this.settings.fields.length+','+this.settings.style;
   }
 

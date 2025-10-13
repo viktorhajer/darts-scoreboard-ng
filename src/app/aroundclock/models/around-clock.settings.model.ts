@@ -1,4 +1,4 @@
-import {FIELDS_COUNT} from '~models/playground.model';
+import {FIELDS_COUNT} from '../../shared/models/playground.model';
 
 export class AroundClockSettings {
   jump: boolean;
