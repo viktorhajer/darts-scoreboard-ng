@@ -11,6 +11,7 @@ import {DialogService} from '../shared/services/dialog.service';
 import {BotService, PLAYER_DELAY} from '../shared/services/bot.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {Playground} from '../shared/models/playground.model';
+import {SoundControlService} from '../shared/services/sound-control.service';
 
 @Component({
   templateUrl: './around-clock.component.html',
@@ -22,9 +23,10 @@ export class AroundClockComponent extends Playground<AroundClockState> {
   settings: AroundClockSettings;
   hiddenInfo = true;
 
-  constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super('Around The Clock', application, game, route, dialogService, soundService, botService, statisticsService, 'around-clock', 2);
+  constructor(application: ApplicationStateService, game: GameService, route: Router, dialogService: DialogService,
+              soundService: SoundService, botService: BotService, statisticsService: StatisticsService, soundControl: SoundControlService) {
+    super('Around The Clock', application, game, route, dialogService, soundService,
+      botService, statisticsService, soundControl, 'around-clock', 2);
     this.settings = new AroundClockSettings();
   }
 

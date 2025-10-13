@@ -11,6 +11,7 @@ import {CaptureTheFlagSettings} from './models/capture-the-flag.settings.model';
 import {SoundService} from '../shared/services/sound.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService} from '../shared/services/bot.service';
+import {SoundControlService} from '../shared/services/sound-control.service';
 
 
 @Component({
@@ -23,8 +24,10 @@ export class CaptureTheFlagComponent extends Playground<CaptureTheFlagState> {
   settings: CaptureTheFlagSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super('Capture the Flag', application, game, route, dialogService, soundService, botService, statisticsService, 'ctf');
+              dialogService: DialogService, soundService: SoundService, botService: BotService,
+              statisticsService: StatisticsService, soundControl: SoundControlService) {
+    super('Capture the Flag', application, game, route, dialogService, soundService,
+      botService, statisticsService, soundControl,'ctf');
     this.settings = new CaptureTheFlagSettings();
   }
 

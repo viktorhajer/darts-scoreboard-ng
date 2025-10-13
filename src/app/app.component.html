@@ -5,6 +5,10 @@
 </div>
 <div class="theme-chooser">
 <!--  <button (click)="applicationStateService.toggleColorTheme()" class="button primary icon"><mat-icon>invert_colors</mat-icon></button>-->
+  <button (click)="soundControl.toggleActivation()" class="button icon"
+          [class.primary]="!soundControl.active">
+    <mat-icon>chat</mat-icon>
+  </button>
   <button (click)="application.toggleDetails()" class="button icon" [class.primary]="application.settings.details">
     <mat-icon>track_changes</mat-icon>
   </button>

@@ -11,6 +11,7 @@ import {ShanghaiState} from './models/shanghai.state.model';
 import {SoundService} from '../shared/services/sound.service';
 import {STAT_NAME_SEPARATOR, StatisticsService} from '../shared/services/statistics.service';
 import {BotService} from '../shared/services/bot.service';
+import {SoundControlService} from '../shared/services/sound-control.service';
 
 @Component({
     templateUrl: './shanghai.component.html',
@@ -22,8 +23,10 @@ export class ShanghaiComponent extends Playground<ShanghaiState> {
   settings: ShanghaiSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super('Shanghai / Halve It', application, game, route, dialogService, soundService, botService, statisticsService, 'shanghai');
+              dialogService: DialogService, soundService: SoundService, botService: BotService,
+              statisticsService: StatisticsService, soundControl: SoundControlService) {
+    super('Shanghai / Halve It', application, game, route, dialogService, soundService, botService,
+      statisticsService, soundControl, 'shanghai');
     this.settings = new ShanghaiSettings();
   }
 

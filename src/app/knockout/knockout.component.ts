@@ -11,6 +11,7 @@ import {KnockoutState} from './models/knockout.state.model';
 import {SoundService} from '../shared/services/sound.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService} from '../shared/services/bot.service';
+import {SoundControlService} from '../shared/services/sound-control.service';
 
 @Component({
     templateUrl: './knockout.component.html',
@@ -22,8 +23,10 @@ export class KnockoutComponent extends Playground<KnockoutState> {
   settings: KnockoutSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super('Knockout', application, game, route, dialogService, soundService, botService, statisticsService, 'knockout', 2);
+              dialogService: DialogService, soundService: SoundService, botService: BotService,
+              statisticsService: StatisticsService, soundControl: SoundControlService) {
+    super('Knockout', application, game, route, dialogService, soundService, botService,
+      statisticsService, soundControl, 'knockout', 2);
     this.settings = new KnockoutSettings();
   }
 

@@ -11,6 +11,7 @@ import {SoundService} from '../shared/services/sound.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService, PLAYER_DELAY_FAST} from '../shared/services/bot.service';
 import {ScamState} from './models/scam.state.model';
+import {SoundControlService} from '../shared/services/sound-control.service';
 
 @Component({
     templateUrl: './scam.component.html',
@@ -22,8 +23,10 @@ export class ScamComponent extends Playground<ScamState> {
   settings: ScamSettings;
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
-              dialogService: DialogService, soundService: SoundService, botService: BotService, statisticsService: StatisticsService) {
-    super('Scam', application, game, route, dialogService, soundService, botService, statisticsService, 'scam', 2);
+              dialogService: DialogService, soundService: SoundService, botService: BotService,
+              statisticsService: StatisticsService, soundControl: SoundControlService) {
+    super('Scam', application, game, route, dialogService, soundService, botService,
+      statisticsService, soundControl, 'scam', 2);
     this.settings = new ScamSettings();
   }
 

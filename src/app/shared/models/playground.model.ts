@@ -1,9 +1,9 @@
-import { OnInit, Directive } from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {v4 as uuidV4} from 'uuid';
 import {Player} from './player.model';
 import {Throw} from './throw.model';
 import {Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {PlaygroundState} from './playground-state.model';
 import {GameService} from '../services/game.service';
 import {GameStatistics} from './game-statistics.model';
@@ -13,12 +13,14 @@ import {SoundService} from '../services/sound.service';
 import {BotService, PLAYER_NAME} from '../services/bot.service';
 import {STAT_NAME_SEPARATOR, StatisticsService} from '../services/statistics.service';
 import {PlayerStatistics} from './player-statistics.model';
+import {KEYWORD_DUPLA, KEYWORD_NEXT, KEYWORD_TRIPLA, SoundControlService} from '../services/sound-control.service';
+import {takeUntil} from 'rxjs/operators';
 
 export const FIELDS_COUNT = 21;
 const MAXIMUM_NUMBER_OF_PLAYERS = 6;
 
 @Directive()
-export abstract class Playground<T extends PlaygroundState> implements OnInit {
+export abstract class Playground<T extends PlaygroundState> implements OnInit, OnDestroy {
 
   throwEnabled = true;
   settingsOpen = true;
@@ -31,6 +33,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   extraEndingMsg = '';
   gameStatistics = new GameStatistics();
   hasChanges = new BehaviorSubject<number>(Date.now());
+  private soundControlUnsubscribe = new Subject<void>();
 
   protected constructor(public gameTitle: string,
                         public application: ApplicationStateService,
@@ -40,9 +43,26 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
                         public soundService: SoundService,
                         public botService: BotService,
                         public statisticsService: StatisticsService,
+                        public soundControl: SoundControlService,
                         public gameName: string,
                         public minimumNumberOfPlayers = 1,
                         public maximumNumberOfPlayers?: number) {
+
+    soundControl.throwNumber
+      .pipe(takeUntil(this.soundControlUnsubscribe))
+      .subscribe((data: any) => {
+        if (!this.settingsOpen) {
+          if (data.extras === KEYWORD_NEXT) {
+            this.skip();
+          } else if (data.extras === KEYWORD_DUPLA) {
+            this.multiplier = 2;
+          } else if (data.extras === KEYWORD_TRIPLA) {
+            this.multiplier = 3;
+          } else if (data.num !== -1) {
+            this.throwNumber([data.num, data.num]);
+          }
+        }
+      });
   }
 
   static getFieldValueFromIndex(fieldIndex: number): number {
@@ -52,6 +72,11 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit {
   ngOnInit() {
     this.settingsOpen = true;
     this.extraEndingMsg = '';
+  }
+
+  ngOnDestroy() {
+    this.soundControlUnsubscribe.next();
+    this.soundControlUnsubscribe.complete();
   }
 
   throwNumber(args: number[]) {

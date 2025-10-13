@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {MenuComponent} from './shared/components/menu/menu.component';
-import {X01Module} from './x01/x01.module';
 import {CricketModule} from './cricket/cricket.module';
 import {AroundClockModule} from './aroundclock/around-clock.module';
 import {ShanghaiModule} from './shanghai/shanghai.module';
@@ -12,6 +11,7 @@ import {CaptureTheFlagModule} from './capture-the-flag/capture-the-flag.module';
 import {ImitatorModule} from './imitator/imitator.module';
 import {ScamModule} from './scam/scam.module';
 import {DuelModule} from './duel/duel.module';
+import {X01Module} from './x01/x01.module';
 
 export const routes: Routes = [
   {
