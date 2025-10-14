@@ -11,7 +11,7 @@ import {SoundService} from '../shared/services/sound.service';
 import {ImitatorState} from './models/imitator.state.model';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService} from '../shared/services/bot.service';
-import {SoundControlService} from '../shared/services/sound-control.service';
+import {VoiceControlService} from '../shared/services/voice-control.service';
 
 @Component({
     templateUrl: './imitator.component.html',
@@ -24,9 +24,9 @@ export class ImitatorComponent extends Playground<ImitatorState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService,
-              statisticsService: StatisticsService, soundControl: SoundControlService) {
+              statisticsService: StatisticsService, voiceControl: VoiceControlService) {
     super('Imitator', application, game, route, dialogService, soundService, botService,
-      statisticsService, soundControl, 'imitator');
+      statisticsService, voiceControl, 'imitator');
     this.nextEnabled = false;
     this.settings = new ImitatorSettings();
   }

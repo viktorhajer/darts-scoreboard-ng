@@ -11,7 +11,7 @@ import {DialogService} from '../shared/services/dialog.service';
 import {BotService} from '../shared/services/bot.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {Player} from '../shared/models/player.model';
-import {SoundControlService} from '../shared/services/sound-control.service';
+import {VoiceControlService} from '../shared/services/voice-control.service';
 
 @Component({
     templateUrl: './fives.component.html',
@@ -24,9 +24,9 @@ export class FivesComponent extends Playground<PlaygroundState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService,
-              statisticsService: StatisticsService, soundControl: SoundControlService) {
+              statisticsService: StatisticsService, voiceControl: VoiceControlService) {
     super('Fives', application, game, route, dialogService, soundService, botService,
-      statisticsService, soundControl,'fives');
+      statisticsService, voiceControl,'fives');
     this.settings = new FivesSettings();
   }
 

@@ -11,7 +11,7 @@ import {CricketState} from './models/cricet.state.model';
 import {SoundService} from '../shared/services/sound.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService} from '../shared/services/bot.service';
-import {SoundControlService} from '../shared/services/sound-control.service';
+import {VoiceControlService} from '../shared/services/voice-control.service';
 
 @Component({
     templateUrl: './cricket.component.html',
@@ -26,9 +26,9 @@ export class CricketComponent extends Playground<CricketState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService,
-              statisticsService: StatisticsService, soundControl: SoundControlService) {
+              statisticsService: StatisticsService, voiceControl: VoiceControlService) {
     super('Ultimate Cricket', application, game, route, dialogService, soundService, botService,
-      statisticsService, soundControl,'cricket');
+      statisticsService, voiceControl,'cricket');
     this.settings = new CricketSettings();
   }
 

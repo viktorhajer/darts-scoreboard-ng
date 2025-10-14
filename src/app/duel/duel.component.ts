@@ -11,7 +11,7 @@ import {DuelSettings} from './models/duel.settings.model';
 import {DuelState} from './models/duel.state.model';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService} from '../shared/services/bot.service';
-import {SoundControlService} from '../shared/services/sound-control.service';
+import {VoiceControlService} from '../shared/services/voice-control.service';
 
 @Component({
     templateUrl: './duel.component.html',
@@ -24,9 +24,9 @@ export class DuelComponent extends Playground<DuelState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService,
-              statisticsService: StatisticsService, soundControl: SoundControlService) {
+              statisticsService: StatisticsService, voiceControl: VoiceControlService) {
     super('Duel', application, game, route, dialogService, soundService, botService,
-      statisticsService, soundControl, 'duel', 2);
+      statisticsService, voiceControl, 'duel', 2);
     this.settings = new DuelSettings();
   }
 

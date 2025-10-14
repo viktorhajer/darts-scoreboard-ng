@@ -1,6 +1,8 @@
 import {Injectable, NgZone} from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
+import {DialogService} from './dialog.service';
 
+const VOICE_DIALOG_DURATION = 2000; // milliseconds
 const KEYWORD_START = 'start';
 const KEYWORD_STOP = 'stop';
 export const KEYWORD_DUPLA = 'dupla';
@@ -8,7 +10,7 @@ export const KEYWORD_TRIPLA = 'tripla';
 export const KEYWORD_NEXT = 'next';
 
 @Injectable({providedIn: 'root'})
-export class SoundControlService {
+export class VoiceControlService {
 
   active = false;
   listening = false;
@@ -16,7 +18,7 @@ export class SoundControlService {
 
   throwNumber = new BehaviorSubject<{ num: number, extras: string }>({num: -1, extras: ''});
 
-  constructor(private readonly zone: NgZone) {
+  constructor(private readonly zone: NgZone, private readonly dialogService: DialogService) {
     //@ts-ignore
     this.recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
     this.recognition.lang = 'hu-HU'; // magyar nyelv
@@ -47,8 +49,13 @@ export class SoundControlService {
       sentence.split(' ').forEach((word: string) => {
         if (this.hasWord(word, KEYWORD_START)) {
           this.listening = true;
+          // Voice control started dialog
+          const dialogRef = this.dialogService.openDialog('Voice control started', 'The application is listening for commands.');
+          setTimeout(() => dialogRef.close(), VOICE_DIALOG_DURATION);
         } else if (this.hasWord(word, KEYWORD_STOP)) {
           this.listening = false;
+          const dialogRef = this.dialogService.openDialog('Voice control stopped', 'The application has stopped listening for commands.');
+          setTimeout(() => dialogRef.close(), VOICE_DIALOG_DURATION);
         } else if (this.listening) {
           if (this.hasWord(word, KEYWORD_NEXT)) {
             this.throwNumber.next({num: -1, extras: KEYWORD_NEXT});

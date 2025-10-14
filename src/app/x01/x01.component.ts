@@ -11,7 +11,7 @@ import {X01Settings} from './models/x01.settings.model';
 import {SoundService} from '../shared/services/sound.service';
 import {StatisticsService} from '../shared/services/statistics.service';
 import {BotService, PLAYER_DELAY} from '../shared/services/bot.service';
-import {SoundControlService} from '../shared/services/sound-control.service';
+import {VoiceControlService} from '../shared/services/voice-control.service';
 
 @Component({
     templateUrl: './x01.component.html',
@@ -24,9 +24,9 @@ export class X01Component extends Playground<PlaygroundState> {
 
   constructor(application: ApplicationStateService, game: GameService, route: Router,
               dialogService: DialogService, soundService: SoundService, botService: BotService,
-              statisticsService: StatisticsService, soundControl: SoundControlService) {
+              statisticsService: StatisticsService, voiceControl: VoiceControlService) {
     super('X01', application, game, route, dialogService, soundService, botService,
-      statisticsService, soundControl, 'x01');
+      statisticsService, voiceControl, 'x01');
     this.settings = new X01Settings();
   }
 

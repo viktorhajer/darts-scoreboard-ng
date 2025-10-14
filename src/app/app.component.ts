@@ -2,7 +2,7 @@ import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from
 import {slideInAnimation} from './route-animation';
 import {ApplicationStateService} from './shared/services/application-state.service';
 import {SoundService} from './shared/services/sound.service';
-import {SoundControlService} from './shared/services/sound-control.service';
+import {VoiceControlService} from './shared/services/voice-control.service';
 
 @Component({
     selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
   listening = false;
 
   constructor(public application: ApplicationStateService,
-              public soundControl: SoundControlService,
+              public voiceControl: VoiceControlService,
               private soundService: SoundService) {
     // document.addEventListener('touchmove',  (event: any) => {
     //   if (event.scale !== 1) { event.preventDefault(); }

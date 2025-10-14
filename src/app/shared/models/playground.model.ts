@@ -13,7 +13,7 @@ import {SoundService} from '../services/sound.service';
 import {BotService, PLAYER_NAME} from '../services/bot.service';
 import {STAT_NAME_SEPARATOR, StatisticsService} from '../services/statistics.service';
 import {PlayerStatistics} from './player-statistics.model';
-import {KEYWORD_DUPLA, KEYWORD_NEXT, KEYWORD_TRIPLA, SoundControlService} from '../services/sound-control.service';
+import {KEYWORD_DUPLA, KEYWORD_NEXT, KEYWORD_TRIPLA, VoiceControlService} from '../services/voice-control.service';
 import {takeUntil} from 'rxjs/operators';
 
 export const FIELDS_COUNT = 21;
@@ -33,7 +33,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit, O
   extraEndingMsg = '';
   gameStatistics = new GameStatistics();
   hasChanges = new BehaviorSubject<number>(Date.now());
-  private soundControlUnsubscribe = new Subject<void>();
+  private voiceControlUnsubscribe = new Subject<void>();
 
   protected constructor(public gameTitle: string,
                         public application: ApplicationStateService,
@@ -43,13 +43,13 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit, O
                         public soundService: SoundService,
                         public botService: BotService,
                         public statisticsService: StatisticsService,
-                        public soundControl: SoundControlService,
+                        public voiceControl: VoiceControlService,
                         public gameName: string,
                         public minimumNumberOfPlayers = 1,
                         public maximumNumberOfPlayers?: number) {
 
-    soundControl.throwNumber
-      .pipe(takeUntil(this.soundControlUnsubscribe))
+    voiceControl.throwNumber
+      .pipe(takeUntil(this.voiceControlUnsubscribe))
       .subscribe((data: any) => {
         if (!this.settingsOpen) {
           if (data.extras === KEYWORD_NEXT) {
@@ -75,8 +75,8 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit, O
   }
 
   ngOnDestroy() {
-    this.soundControlUnsubscribe.next();
-    this.soundControlUnsubscribe.complete();
+    this.voiceControlUnsubscribe.next();
+    this.voiceControlUnsubscribe.complete();
   }
 
   throwNumber(args: number[]) {
