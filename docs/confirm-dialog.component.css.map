@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/confirm-dialog/confirm-dialog.component.scss"],
+  "sourcesContent": [".dialog-container {\r\n  width: 50vw;\r\n  text-align: center;\r\n  padding: 20px 0;\r\n\r\n  &.mobile {\r\n    width: auto;\r\n  }\r\n\r\n  .subtitle-1 {\r\n    line-height: 1em;\r\n    margin-bottom: 1rem;\r\n  }\r\n\r\n  mat-dialog-content {\r\n    margin-bottom: 1rem;\r\n  }\r\n\r\n  mat-dialog-actions {\r\n    justify-content: space-around;\r\n\r\n    button {\r\n      width: 75px;\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": ";AAAA,CAAA;AACE,SAAA;AACA,cAAA;AACA,WAAA,KAAA;;AAEA,CALF,gBAKE,CAAA;AACE,SAAA;;AAGF,CATF,iBASE,CAAA;AACE,eAAA;AACA,iBAAA;;AAGF,CAdF,iBAcE;AACE,iBAAA;;AAGF,CAlBF,iBAkBE;AACE,mBAAA;;AAEA,CArBJ,iBAqBI,mBAAA;AACE,SAAA;;",
+  "names": []
+}

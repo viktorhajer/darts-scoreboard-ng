@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/settings/settings.component.scss"],
+  "sourcesContent": [".settings {\r\n  padding: 10px;\r\n  width: calc(100vw - 20px);\r\n  height: calc(100vh - 20px);\r\n  overflow: auto;\r\n\r\n  h2 {\r\n    display: flex;\r\n    align-items: center;\r\n    font-size: 18px;\r\n    margin-left: 5px;\r\n  }\r\n\r\n  mat-divider {\r\n    clear: both;\r\n    margin: 5px 0;\r\n  }\r\n\r\n  .field-set {\r\n    display: flex;\r\n\r\n    mat-form-field {\r\n      margin-right: 10px;\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": ";AAAA,CAAA;AACE,WAAA;AACA,SAAA,KAAA,MAAA,EAAA;AACA,UAAA,KAAA,MAAA,EAAA;AACA,YAAA;;AAEA,CANF,SAME;AACE,WAAA;AACA,eAAA;AACA,aAAA;AACA,eAAA;;AAGF,CAbF,SAaE;AACE,SAAA;AACA,UAAA,IAAA;;AAGF,CAlBF,SAkBE,CAAA;AACE,WAAA;;AAEA,CArBJ,SAqBI,CAHF,UAGE;AACE,gBAAA;;",
+  "names": []
+}

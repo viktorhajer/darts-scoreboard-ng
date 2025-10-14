@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/number-plate-shanghai/number-plate-shanghai.component.scss"],
+  "sourcesContent": [".side-right {\r\n  display: flex;\r\n  justify-content: center;\r\n  flex-flow: row wrap;\r\n  height: 90vh;\r\n  margin-top: 20px;\r\n\r\n  .number {\r\n    margin: 2px;\r\n    font-size: 14px;\r\n    height: 26vw;\r\n    width: 26vw;\r\n\r\n    mat-icon {\r\n      position: absolute;\r\n      top: 10px;\r\n      left: 5px;\r\n      font-size: 30px;\r\n    }\r\n\r\n    &.next {\r\n      width: calc(52vw + 4px);\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": ";AAAA,CAAA;AACE,WAAA;AACA,mBAAA;AACA,aAAA,IAAA;AACA,UAAA;AACA,cAAA;;AAEA,CAPF,WAOE,CAAA;AACE,UAAA;AACA,aAAA;AACA,UAAA;AACA,SAAA;;AAEA,CAbJ,WAaI,CANF,OAME;AACE,YAAA;AACA,OAAA;AACA,QAAA;AACA,aAAA;;AAGF,CApBJ,WAoBI,CAbF,MAaE,CAAA;AACE,SAAA,KAAA,KAAA,EAAA;;",
+  "names": []
+}

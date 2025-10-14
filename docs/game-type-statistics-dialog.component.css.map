@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/game-type-statistics-dialog/game-type-statistics-dialog.component.scss"],
+  "sourcesContent": [".dialog-container {\r\n  overflow: hidden;\r\n\r\n  .subtitle-1 {\r\n    line-height: 1em;\r\n  }\r\n\r\n  mat-dialog-actions {\r\n    justify-content: space-around;\r\n    margin-bottom: -0.5rem;\r\n  }\r\n\r\n  mat-dialog-content {\r\n    overflow-y: auto;\r\n\r\n    table {\r\n      width: 100%;\r\n      margin: 0 0 1rem 0;\r\n\r\n      th, td {\r\n        text-align: center;\r\n        padding: 0.2rem;\r\n        font-weight: normal;\r\n        font-size: 13px;\r\n      }\r\n\r\n      th:first-child, td:first-child {\r\n        text-align: left;\r\n      }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": ";AAAA,CAAA;AACE,YAAA;;AAEA,CAHF,iBAGE,CAAA;AACE,eAAA;;AAGF,CAPF,iBAOE;AACE,mBAAA;AACA,iBAAA;;AAGF,CAZF,iBAYE;AACE,cAAA;;AAEA,CAfJ,iBAeI,mBAAA;AACE,SAAA;AACA,UAAA,EAAA,EAAA,KAAA;;AAEA,CAnBN,iBAmBM,mBAAA,MAAA;AAAA,CAnBN,iBAmBM,mBAAA,MAAA;AACE,cAAA;AACA,WAAA;AACA,eAAA;AACA,aAAA;;AAGF,CA1BN,iBA0BM,mBAAA,MAAA,EAAA;AAAA,CA1BN,iBA0BM,mBAAA,MAAA,EAAA;AACE,cAAA;;",
+  "names": []
+}

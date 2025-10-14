@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/game-history-dialog/game-history-dialog.component.scss"],
+  "sourcesContent": [".dialog-container {\r\n\r\n  .subtitle-1 {\r\n    line-height: 1em;\r\n\r\n    .app-version {\r\n      position: absolute;\r\n      right: 10px;\r\n      top: 10px;\r\n      font-size: 12px;\r\n    }\r\n  }\r\n\r\n  mat-dialog-actions {\r\n    justify-content: space-around;\r\n    margin-bottom: -0.5rem;\r\n  }\r\n\r\n  .mat-dialog-content {\r\n    height: 85vh;\r\n    max-height: unset !important;\r\n  }\r\n\r\n  mat-dialog-content {\r\n    overflow-y: auto;\r\n\r\n    table {\r\n      width: 100%;\r\n      margin: 0 0 1rem 0;\r\n\r\n      th, td {\r\n        text-align: center;\r\n        padding: 0.2rem;\r\n        font-weight: normal;\r\n        font-size: 13px;\r\n      }\r\n\r\n      th:first-child, td:first-child {\r\n        text-align: left;\r\n      }\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": ";AAEE,CAAA,iBAAA,CAAA;AACE,eAAA;;AAEA,CAHF,iBAGE,CAHF,WAGE,CAAA;AACE,YAAA;AACA,SAAA;AACA,OAAA;AACA,aAAA;;AAIJ,CAXA,iBAWA;AACE,mBAAA;AACA,iBAAA;;AAGF,CAhBA,iBAgBA,CAAA;AACE,UAAA;AACA,cAAA;;AAGF,CArBA,iBAqBA;AACE,cAAA;;AAEA,CAxBF,iBAwBE,mBAAA;AACE,SAAA;AACA,UAAA,EAAA,EAAA,KAAA;;AAEA,CA5BJ,iBA4BI,mBAAA,MAAA;AAAA,CA5BJ,iBA4BI,mBAAA,MAAA;AACE,cAAA;AACA,WAAA;AACA,eAAA;AACA,aAAA;;AAGF,CAnCJ,iBAmCI,mBAAA,MAAA,EAAA;AAAA,CAnCJ,iBAmCI,mBAAA,MAAA,EAAA;AACE,cAAA;;",
+  "names": []
+}

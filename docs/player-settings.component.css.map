@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/shared/components/player-settings/player-settings.component.scss"],
+  "sourcesContent": [".add-player {\r\n  margin-bottom: 10px;\r\n}\r\n\r\n.player-table  {\r\n  width: 60.8vw;\r\n  .player-row {\r\n    height: 30px;\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    padding: 5px 15px;\r\n    font-weight: bold;\r\n    border-radius: 4px;\r\n    margin-bottom: 5px;\r\n  }\r\n}\r\n"],
+  "mappings": ";AAAA,CAAA;AACE,iBAAA;;AAGF,CAAA;AACE,SAAA;;AACA,CAFF,aAEE,CAAA;AACE,UAAA;AACA,WAAA;AACA,mBAAA;AACA,eAAA;AACA,WAAA,IAAA;AACA,eAAA;AACA,iBAAA;AACA,iBAAA;;",
+  "names": []
+}
