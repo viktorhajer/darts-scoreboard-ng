@@ -34961,6 +34961,7 @@ var ApplicationStateService = class _ApplicationStateService {
     this.availableThemes = [theme];
     this.settings = new ApplicationSettings();
     this.isMobile = false;
+    this.isGameInProgress = false;
     this.isMobile = window.innerWidth < 450;
     const data = localStorage.getItem(APPLICATION_KEY);
     if (data) {
@@ -52475,6 +52476,36 @@ var VERSION4 = new Version("20.3.4");
 
 // src/app/app.component.ts
 var _c03 = ["audioElement"];
+function AppComponent_Conditional_5_Template(rf, ctx) {
+  if (rf & 1) {
+    const _r1 = \u0275\u0275getCurrentView();
+    \u0275\u0275elementStart(0, "div", 2)(1, "button", 3);
+    \u0275\u0275listener("click", function AppComponent_Conditional_5_Template_button_click_1_listener() {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.voiceControl.toggleActivation());
+    });
+    \u0275\u0275elementStart(2, "mat-icon");
+    \u0275\u0275text(3, "chat");
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(4, "button", 3);
+    \u0275\u0275listener("click", function AppComponent_Conditional_5_Template_button_click_4_listener() {
+      \u0275\u0275restoreView(_r1);
+      const ctx_r1 = \u0275\u0275nextContext();
+      return \u0275\u0275resetView(ctx_r1.application.toggleDetails());
+    });
+    \u0275\u0275elementStart(5, "mat-icon");
+    \u0275\u0275text(6, "track_changes");
+    \u0275\u0275elementEnd()()();
+  }
+  if (rf & 2) {
+    const ctx_r1 = \u0275\u0275nextContext();
+    \u0275\u0275advance();
+    \u0275\u0275classProp("primary", !ctx_r1.voiceControl.active);
+    \u0275\u0275advance(3);
+    \u0275\u0275classProp("primary", ctx_r1.application.settings.details);
+  }
+}
 var AppComponent = class _AppComponent {
   constructor(application, voiceControl, soundService) {
     this.application = application;
@@ -52499,39 +52530,21 @@ var AppComponent = class _AppComponent {
         let _t;
         \u0275\u0275queryRefresh(_t = \u0275\u0275loadQuery()) && (ctx.audioElementRef = _t.first);
       }
-    }, standalone: false, decls: 12, vars: 9, consts: [["audioElement", ""], ["outlet", "outlet"], [1, "theme-chooser"], [1, "button", "icon", 3, "click"]], template: function AppComponent_Template(rf, ctx) {
+    }, standalone: false, decls: 6, vars: 6, consts: [["audioElement", ""], ["outlet", "outlet"], [1, "theme-chooser"], [1, "button", "icon", 3, "click"]], template: function AppComponent_Template(rf, ctx) {
       if (rf & 1) {
-        const _r1 = \u0275\u0275getCurrentView();
         \u0275\u0275element(0, "audio", null, 0);
         \u0275\u0275elementStart(2, "div");
         \u0275\u0275element(3, "router-outlet", null, 1);
         \u0275\u0275elementEnd();
-        \u0275\u0275elementStart(5, "div", 2)(6, "button", 3);
-        \u0275\u0275listener("click", function AppComponent_Template_button_click_6_listener() {
-          \u0275\u0275restoreView(_r1);
-          return \u0275\u0275resetView(ctx.voiceControl.toggleActivation());
-        });
-        \u0275\u0275elementStart(7, "mat-icon");
-        \u0275\u0275text(8, "chat");
-        \u0275\u0275elementEnd()();
-        \u0275\u0275elementStart(9, "button", 3);
-        \u0275\u0275listener("click", function AppComponent_Template_button_click_9_listener() {
-          \u0275\u0275restoreView(_r1);
-          return \u0275\u0275resetView(ctx.application.toggleDetails());
-        });
-        \u0275\u0275elementStart(10, "mat-icon");
-        \u0275\u0275text(11, "track_changes");
-        \u0275\u0275elementEnd()()();
+        \u0275\u0275conditionalCreate(5, AppComponent_Conditional_5_Template, 7, 4, "div", 2);
       }
       if (rf & 2) {
-        const outlet_r2 = \u0275\u0275reference(4);
+        const outlet_r3 = \u0275\u0275reference(4);
         \u0275\u0275advance(2);
         \u0275\u0275classProp("mobile", ctx.application.isMobile)("detailed", ctx.application.settings.details);
-        \u0275\u0275property("@routeAnimations", outlet_r2 && outlet_r2.isActivated && outlet_r2.activatedRoute);
-        \u0275\u0275advance(4);
-        \u0275\u0275classProp("primary", !ctx.voiceControl.active);
+        \u0275\u0275property("@routeAnimations", outlet_r3 && outlet_r3.isActivated && outlet_r3.activatedRoute);
         \u0275\u0275advance(3);
-        \u0275\u0275classProp("primary", ctx.application.settings.details);
+        \u0275\u0275conditional(ctx.application.isGameInProgress ? 5 : -1);
       }
     }, dependencies: [RouterOutlet, MatIcon], styles: ["\n\n.theme-chooser[_ngcontent-%COMP%] {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n}\n/*# sourceMappingURL=app.component.css.map */"], data: { animation: [slideInAnimation] } });
   }
@@ -52539,7 +52552,7 @@ var AppComponent = class _AppComponent {
 (() => {
   (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AppComponent, [{
     type: Component,
-    args: [{ selector: "app-root", animations: [slideInAnimation], standalone: false, template: '<audio #audioElement></audio>\r\n<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute" [class.mobile]="application.isMobile"\r\n     [class.detailed]="application.settings.details">\r\n  <router-outlet #outlet="outlet"></router-outlet>\r\n</div>\r\n<div class="theme-chooser">\r\n<!--  <button (click)="applicationStateService.toggleColorTheme()" class="button primary icon"><mat-icon>invert_colors</mat-icon></button>-->\r\n  <button (click)="voiceControl.toggleActivation()" class="button icon"\r\n          [class.primary]="!voiceControl.active">\r\n    <mat-icon>chat</mat-icon>\r\n  </button>\r\n  <button (click)="application.toggleDetails()" class="button icon" [class.primary]="application.settings.details">\r\n    <mat-icon>track_changes</mat-icon>\r\n  </button>\r\n</div>\r\n', styles: ["/* src/app/app.component.scss */\n.theme-chooser {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n}\n/*# sourceMappingURL=app.component.css.map */\n"] }]
+    args: [{ selector: "app-root", animations: [slideInAnimation], standalone: false, template: '<audio #audioElement></audio>\r\n<div [@routeAnimations]="outlet && outlet.isActivated && outlet.activatedRoute" [class.mobile]="application.isMobile"\r\n     [class.detailed]="application.settings.details">\r\n  <router-outlet #outlet="outlet"></router-outlet>\r\n</div>\r\n@if (application.isGameInProgress) {\r\n  <div class="theme-chooser">\r\n    <!--  <button (click)="applicationStateService.toggleColorTheme()" class="button primary icon"><mat-icon>invert_colors</mat-icon></button>-->\r\n    <button (click)="voiceControl.toggleActivation()" class="button icon"\r\n            [class.primary]="!voiceControl.active">\r\n      <mat-icon>chat</mat-icon>\r\n    </button>\r\n    <button (click)="application.toggleDetails()" class="button icon" [class.primary]="application.settings.details">\r\n      <mat-icon>track_changes</mat-icon>\r\n    </button>\r\n  </div>\r\n}\r\n', styles: ["/* src/app/app.component.scss */\n.theme-chooser {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n}\n/*# sourceMappingURL=app.component.css.map */\n"] }]
   }], () => [{ type: ApplicationStateService }, { type: VoiceControlService }, { type: SoundService }], { audioElementRef: [{
     type: ViewChild,
     args: ["audioElement"]
@@ -70276,6 +70289,7 @@ var Playground = class _Playground {
   }
   ngOnInit() {
     this.settingsOpen = true;
+    this.application.isGameInProgress = false;
     this.extraEndingMsg = "";
   }
   ngOnDestroy() {
@@ -70349,6 +70363,7 @@ var Playground = class _Playground {
   }
   newGame(rotate = false) {
     this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+    this.application.isGameInProgress = !this.settingsOpen;
     if (!this.playerSettingsValidation()) {
       let msg = "Number of players are incorrect.";
       if (this.minimumNumberOfPlayers) {
@@ -70399,6 +70414,7 @@ var Playground = class _Playground {
   }
   quit() {
     this.reset();
+    this.application.isGameInProgress = false;
     this.route.navigate(["/"]);
   }
   customSettingsValidation() {
@@ -70713,6 +70729,7 @@ var GameToolbarComponent = class _GameToolbarComponent {
       this.playground.game.resetScore();
       this.playground.multiplier = 1;
       this.playground.extraEndingMsg = "";
+      this.application.isGameInProgress = false;
     });
   }
   newGame() {
@@ -70724,6 +70741,7 @@ var GameToolbarComponent = class _GameToolbarComponent {
     this.showConfirmation("Are you sure you want to navigate to the settings page?", () => {
       this.playground.reset();
       this.playground.settingsOpen = true;
+      this.application.isGameInProgress = false;
     });
   }
   undo() {

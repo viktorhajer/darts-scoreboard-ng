@@ -29,6 +29,7 @@ export class GameToolbarComponent {
       this.playground.game.resetScore();
       this.playground.multiplier = 1;
       this.playground.extraEndingMsg = '';
+      this.application.isGameInProgress = false;
     });
   }
 
@@ -42,6 +43,7 @@ export class GameToolbarComponent {
     this.showConfirmation('Are you sure you want to navigate to the settings page?', () => {
       this.playground.reset();
       this.playground.settingsOpen = true;
+      this.application.isGameInProgress = false;
     });
   }
 

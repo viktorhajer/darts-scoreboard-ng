@@ -71,6 +71,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit, O
 
   ngOnInit() {
     this.settingsOpen = true;
+    this.application.isGameInProgress = false;
     this.extraEndingMsg = '';
   }
 
@@ -158,6 +159,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit, O
 
   newGame(rotate = false) {
     this.settingsOpen = !this.playerSettingsValidation() || !this.customSettingsValidation();
+    this.application.isGameInProgress = !this.settingsOpen;
     if (!this.playerSettingsValidation()) {
       let msg = 'Number of players are incorrect.';
       if (this.minimumNumberOfPlayers) {
@@ -214,6 +216,7 @@ export abstract class Playground<T extends PlaygroundState> implements OnInit, O
 
   quit() {
     this.reset();
+    this.application.isGameInProgress = false;
     this.route.navigate(['/']);
   }
 

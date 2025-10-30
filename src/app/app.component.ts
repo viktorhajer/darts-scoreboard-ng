@@ -1,15 +1,15 @@
-import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
 import {slideInAnimation} from './route-animation';
 import {ApplicationStateService} from './shared/services/application-state.service';
 import {SoundService} from './shared/services/sound.service';
 import {VoiceControlService} from './shared/services/voice-control.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: 'app.component.html',
-    styleUrls: ['./app.component.scss'],
-    animations: [slideInAnimation],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.scss'],
+  animations: [slideInAnimation],
+  standalone: false
 })
 export class AppComponent implements AfterViewInit {
   //@ts-ignore

@@ -12,6 +12,7 @@ export class ApplicationStateService {
   private availableThemes: Theme[] = [theme];
   settings = new ApplicationSettings();
   isMobile = false;
+  isGameInProgress = false;
 
   constructor() {
     this.isMobile = window.innerWidth < 450;
